@@ -1,0 +1,9 @@
+[
+  {
+    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
+    "ID": "caseHistory",
+    "Label": " ",
+    "FieldType": "CaseHistoryViewer",
+    "SecurityClassification": "Public"
+  }
+]

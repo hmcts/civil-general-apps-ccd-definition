@@ -1,0 +1,42 @@
+[
+  {
+    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
+    "ID": "[APPLICANTSOLICITORONE]",
+    "Name": "Applicant Solicitor 1",
+    "Description": "Applicant Solicitor 1 role",
+    "JurisdictionID": "CIVIL-GENERAL-APPLICATION",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
+    "ID": "[APPLICANTSOLICITORTWO]",
+    "Name": "Applicant Solicitor 2",
+    "Description": "Applicant Solicitor 2 role",
+    "JurisdictionID": "CIVIL-GENERAL-APPLICATION",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
+    "ID": "[RESPONDENTSOLICITORONE]",
+    "Name": "Respondent Solicitor 1",
+    "Description": "Respondent Solicitor 1 role",
+    "JurisdictionID": "CIVIL-GENERAL-APPLICATION",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
+    "ID": "[RESPONDENTSOLICITORTWO]",
+    "Name": "Respondent Solicitor 2",
+    "Description": "Respondent Solicitor 2 role",
+    "JurisdictionID": "CIVIL-GENERAL-APPLICATION",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
+    "ID": "[CREATOR]",
+    "Name": "Creator",
+    "Description": "Creator of case",
+    "JurisdictionID": "CIVIL-GENERAL-APPLICATION",
+    "SecurityClassification": "Public"
+  }
+]
