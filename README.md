@@ -1,9 +1,5 @@
 # civil-general-apps-ccd-definition
 
-## Purpose
-
-Civil General Applications ccd definition
-
 ## Build (Dev)
 
 run:

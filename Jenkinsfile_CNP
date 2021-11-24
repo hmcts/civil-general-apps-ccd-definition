@@ -3,7 +3,7 @@
 @Library("Infrastructure")
 
 def type = "java"
-def product = "rpe"
-def component = "demo"
+def product = "civil"
+def component = "general-apps-ccd-definition"
 
 withPipeline(type, product, component) {}
