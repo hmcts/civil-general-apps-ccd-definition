@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
+    "TabID": "[CASE_REFERENCE]",
+    "TabLabel": "Notes",
+    "TabDisplayOrder": 7,
+    "CaseFieldID": "[CASE_REFERENCE]",
+    "TabFieldDisplayOrder": 1
+  }
+]

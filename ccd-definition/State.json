@@ -1,0 +1,9 @@
+[
+  {
+    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
+    "ID": "DUMMY_STATE",
+    "Name": "Dummy",
+    "Description": "Initiatation test state",
+    "DisplayOrder": 1
+  }
+]

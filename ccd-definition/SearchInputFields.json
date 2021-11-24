@@ -1,0 +1,8 @@
+[
+  {
+    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
+    "CaseFieldID": "[CASE_REFERENCE]",
+    "Label": "CCD Case Number",
+    "DisplayOrder": 1
+  }
+]

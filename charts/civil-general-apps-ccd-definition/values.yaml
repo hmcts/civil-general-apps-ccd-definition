@@ -1,0 +1,12 @@
+java:
+  applicationPort: 4555
+  image: 'hmctspublic.azurecr.io/civil/general-apps-ccd-definition:latest'
+  ingressHost: civil-general-apps-ccd-definition-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  aadIdentityName: civil
+#  Uncomment once the vault containing the app insights key has been set up
+#  keyVaults:
+#    civil:
+#      secrets:
+#        - name: AppInsightsInstrumentationKey
+#          alias: azure.application-insights.instrumentation-key
+  environment:
