@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for civil-general-apps-ccd-definition App
 name: civil-general-apps-ccd-definition
 home: https://github.com/hmcts/civil-general-apps-ccd-definition
-version: 0.0.1
+version: 0.0.2
 maintainers:
   - name: HMCTS civil team
 dependencies:
