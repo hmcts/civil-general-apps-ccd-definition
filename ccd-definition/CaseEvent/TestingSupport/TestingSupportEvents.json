@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "UPDATE_CASE_DATA",
     "Name": "Update case data",
     "Description": "Testing support event to update case data ",

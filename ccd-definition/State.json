@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "DUMMY_STATE",
     "Name": "Dummy",
     "Description": "Initiatation test state",

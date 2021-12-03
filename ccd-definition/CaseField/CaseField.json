@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "caseHistory",
     "Label": " ",
     "FieldType": "CaseHistoryViewer",
