@@ -1,0 +1,18 @@
+[
+    {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "ID": "LINK_CASE_TO_GENERAL_APPLICATION",
+        "Name": "Link a case to an application",
+        "Description": "Application created, post actions triggered",
+        "CaseLinkField": {
+            "CaseReference": "[CASE_REFERENCE]"
+        },
+        "PostConditionState": "*",
+        "SecurityClassification": "Public",
+        "ShowSummary": "Y",
+        "ShowEventNotes": "N",
+        "RetriesTimeoutAboutToStartEvent": 0,
+        "RetriesTimeoutURLAboutToSubmitEvent": 0,
+        "RetriesTimeoutURLSubmittedEvent": 0
+    }
+]
