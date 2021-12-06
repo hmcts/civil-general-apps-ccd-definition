@@ -1,0 +1,56 @@
+[
+    {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseFieldID": "generalApplicationTypeList",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "caseworker-civil-solicitor"
+            ],
+            "CRUD": "CRU"
+          },
+          {
+            "UserRoles": [
+              "caseworker-civil-admin"
+            ],
+            "CRUD": "R"
+          }
+        ]
+      },
+      {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseFieldID": "orderAgreement",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "caseworker-civil-solicitor"
+            ],
+            "CRUD": "CRU"
+          },
+          {
+            "UserRoles": [
+              "caseworker-civil-admin"
+            ],
+            "CRUD": "R"
+          }
+        ]
+      },
+      {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseFieldID": "judgeOrderApprovalRequiredYesOrNo",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "caseworker-civil-solicitor"
+            ],
+            "CRUD": "CRU"
+          },
+          {
+            "UserRoles": [
+              "caseworker-civil-admin"
+            ],
+            "CRUD": "R"
+          }
+        ]
+    }
+]

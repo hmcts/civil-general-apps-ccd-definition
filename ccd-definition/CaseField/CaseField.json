@@ -1,9 +1,23 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "caseHistory",
+    "ID": "generalApplicationTypeList",
+    "Label": "Type of General Application",
+    "FieldType": "GeneralApplicationTypes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderAgreement",
+    "Label": "A judge will still need to approve this order",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judgeOrderApprovalRequiredYesOrNo",
     "Label": " ",
-    "FieldType": "CaseHistoryViewer",
+    "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   }
 ]

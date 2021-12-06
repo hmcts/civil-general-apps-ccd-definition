@@ -1,0 +1,17 @@
+[
+    {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "ID": "CREATE_GENERAL_APPLICATION",
+        "Name": "Make an application",
+        "Description": "Application created, post actions triggered",
+        "DisplayOrder": 17,
+        "PostConditionState": "*",
+        "SecurityClassification": "Public",
+        "ShowSummary": "Y",
+        "ShowEventNotes": "N",
+        "EndButtonLabel": "Submit",
+        "RetriesTimeoutAboutToStartEvent": 0,
+        "RetriesTimeoutURLAboutToSubmitEvent": 0,
+        "RetriesTimeoutURLSubmittedEvent": 0
+      }
+]

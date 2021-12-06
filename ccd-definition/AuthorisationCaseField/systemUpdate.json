@@ -1,0 +1,20 @@
+[
+    {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseFieldID": "generalApplicationTypeList",
+        "UserRole": "caseworker-civil-systemupdate",
+        "CRUD": "CRUD"
+      },
+      {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseFieldID": "orderAgreement",
+        "UserRole": "caseworker-civil-systemupdate",
+        "CRUD": "CRUD"
+      },
+      {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseFieldID": "judgeOrderApprovalRequiredYesOrNo",
+        "UserRole": "caseworker-civil-systemupdate",
+        "CRUD": "CRUD"
+      }
+]
