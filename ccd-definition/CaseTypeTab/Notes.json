@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
+    "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "[CASE_REFERENCE]",
     "TabLabel": "Notes",
     "TabDisplayOrder": 7,

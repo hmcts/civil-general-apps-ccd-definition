@@ -1,0 +1,37 @@
+[
+    {
+      "CaseTypeID": "GENERALAPPLICATION",
+      "CaseEventID": "GENERAL_APPLICATION_CREATION",
+      "CaseFieldID": "gaType",
+      "DisplayContext": "COMPLEX",
+      "PageID": "GATypePage",
+      "PageDisplayOrder": 1,
+      "PageFieldDisplayOrder": 1,
+      "PageColumnNumber": 1,
+      "ShowSummaryChangeOption": "Y"
+    },
+    {
+      "CaseTypeID": "GENERALAPPLICATION",
+      "CaseEventID": "GENERAL_APPLICATION_CREATION",
+      "CaseFieldID": "gaRespondentAgreement",
+      "DisplayContext": "COMPLEX",
+      "PageID": "GeneralApplicationPage",
+      "PageDisplayOrder": 2,
+      "PageFieldDisplayOrder": 1,
+      "PageColumnNumber": 1,
+      "ShowSummaryChangeOption": "Y"
+    },
+    {
+      "CaseTypeID": "GENERALAPPLICATION",
+      "CaseEventID": "GENERAL_APPLICATION_CREATION",
+      "CaseFieldID": "gaParentLink",
+      "DisplayContext": "COMPLEX",
+      "PageID": "ParentLinkPage",
+      "PageDisplayOrder": 3,
+      "PageFieldDisplayOrder": 2,
+      "PageColumnNumber": 1,
+      "ShowSummaryChangeOption": "Y"
+    }
+
+  ]
+  

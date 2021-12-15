@@ -1,9 +1,30 @@
 [
   {
-    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
-    "ID": "caseHistory",
-    "Label": " ",
-    "FieldType": "CaseHistoryViewer",
-    "SecurityClassification": "Public"
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaType",
+    "Label": "What type of application do you want to make?",
+    "FieldType": "GAType",
+    "SecurityClassification": "Public",
+    "_Definition":  "Type of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaRespondentAgreement",
+    "Label": "Has respondent agreed to the order that you want the judge to make?",
+    "FieldType": "GARespondentAgreement",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case related to respondent agreement",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaParentLink",
+    "Label": "Link application to Parent case",
+    "FieldType": "GACaseLink",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application",
+    "_Category":  "COMMON"
   }
+
 ]

@@ -1,0 +1,25 @@
+[
+    {
+      "ID": "GeneralApplication",
+      "ListElementCode": "applicationType",
+      "FieldType": "MultiSelectList",
+      "FieldTypeParameter": "GeneralApplicationTypes",
+      "ElementLabel": "General Application type",
+      "SecurityClassification": "Public"
+    },
+    {
+      "ID": "GeneralApplication",
+      "ListElementCode": "orderAgreementYesNo",
+      "FieldType": "YesOrNo",
+      "ElementLabel": "Has the respondent agreed?",
+      "SecurityClassification": "Public"
+    },
+    {
+      "ID": "GeneralApplication",
+      "ListElementCode": "gaCaseLink",
+      "FieldType": "CaseLink",
+      "ElementLabel": "Enter a valid Case ID",
+      "SecurityClassification": "Public"
+    }
+  ]
+  

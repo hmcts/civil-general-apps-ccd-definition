@@ -1,0 +1,10 @@
+[
+    {
+      "ID": "GACaseLink",
+      "ListElementCode": "gaCaseLink",
+      "FieldType": "CaseLink",
+      "CaseReference" : "Text",
+      "ElementLabel": "Parent case id",
+      "SecurityClassification": "Public"
+    }
+  ]

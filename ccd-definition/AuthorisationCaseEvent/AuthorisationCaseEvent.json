@@ -1,0 +1,26 @@
+[
+    {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseEventID": "GENERAL_APPLICATION_CREATION",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "caseworker-civil-solicitor"
+            ],
+            "CRUD": "CRU"
+          },
+          {
+            "UserRoles": [
+              "caseworker-civil-admin"
+            ],
+            "CRUD": "CRU"
+          },
+          {
+            "UserRoles": [
+              "caseworker-civil-systemupdate"
+            ],
+            "CRUD": "CRU"
+          }
+        ]
+      }
+]
