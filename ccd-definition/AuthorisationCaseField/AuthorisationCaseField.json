@@ -1,0 +1,56 @@
+[
+      {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseFieldID": "gaRespondentAgreement",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "caseworker-civil-solicitor"
+            ],
+            "CRUD": "CRUD"
+          },
+          {
+            "UserRoles": [
+              "caseworker-civil-admin"
+            ],
+            "CRUD": "CRUD"
+          }
+        ]
+      },
+      {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseFieldID": "gaType",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "caseworker-civil-solicitor"
+            ],
+            "CRUD": "CRUD"
+          },
+          {
+            "UserRoles": [
+              "caseworker-civil-admin"
+            ],
+            "CRUD": "CRUD"
+          }
+        ]
+      },
+      {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseFieldID": "gaParentLink",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "caseworker-civil-solicitor"
+            ],
+            "CRUD": "CRUD"
+          },
+          {
+            "UserRoles": [
+              "caseworker-civil-admin"
+            ],
+            "CRUD": "CRUD"
+          }
+        ]
+      }
+]

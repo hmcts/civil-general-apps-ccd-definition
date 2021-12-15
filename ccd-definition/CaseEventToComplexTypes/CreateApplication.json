@@ -1,0 +1,30 @@
+[
+    {
+      "ID": "GARespondentAgreementPage",
+      "CaseEventID": "GENERAL_APPLICATION_CREATION",
+      "CaseFieldID": "gaRespondentAgreement",
+      "ListElementCode": "orderAgreementYesNo",
+      "EventElementLabel": " ",
+      "FieldDisplayOrder": 1,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "GATypePage",
+      "CaseEventID": "GENERAL_APPLICATION_CREATION",
+      "CaseFieldID": "gaType",
+      "ListElementCode": "childApplicationType",
+      "EventElementLabel": " ",
+      "FieldDisplayOrder": 1,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "GACaseLinkPage",
+      "CaseEventID": "GENERAL_APPLICATION_CREATION",
+      "CaseFieldID": "gaParentLink",
+      "ListElementCode": "gaCaseLink",
+      "EventElementLabel": " ",
+      "FieldDisplayOrder": 1,
+      "DisplayContext": "MANDATORY"
+    }
+  ]
+  

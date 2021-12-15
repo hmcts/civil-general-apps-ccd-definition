@@ -1,0 +1,11 @@
+[
+    {
+      "CaseTypeID": "GENERALAPPLICATION",
+      "UserRoles": [
+        "caseworker-civil-solicitor",
+        "caseworker-civil-admin"
+      ],
+      "CRUD": "CRUD"
+    }
+  ]
+  

@@ -1,0 +1,20 @@
+[
+      {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseFieldID": "gaRespondentAgreement",
+        "UserRole": "caseworker-civil-systemupdate",
+        "CRUD": "CRUD"
+      },
+      {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseFieldID": "gaType",
+        "UserRole": "caseworker-civil-systemupdate",
+        "CRUD": "CRUD"
+      },
+      {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseFieldID": "gaParentLink",
+        "UserRole": "caseworker-civil-systemupdate",
+        "CRUD": "CRUD"
+      }
+]
