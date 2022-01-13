@@ -1,0 +1,29 @@
+[
+    {
+      "CaseTypeID": "GENERALAPPLICATION",
+      "CaseStateID": "PENDING_CASE_ISSUED",
+      "AccessControl": [
+        {
+          "UserRoles": [
+            "[APPLICANTSOLICITORONE]",
+            "[CREATOR]",
+            "caseworker-civil-admin"
+          ],
+          "CRUD": "CRUD"
+        },
+        {
+          "UserRoles": [
+            "caseworker-civil-solicitor"
+          ],
+          "CRUD": "CRUD"
+        },
+        {
+          "UserRoles": [
+            "caseworker-civil-systemupdate"
+          ],
+          "CRUD": "CRUD"
+        }
+      ]
+    }
+  ]
+  
