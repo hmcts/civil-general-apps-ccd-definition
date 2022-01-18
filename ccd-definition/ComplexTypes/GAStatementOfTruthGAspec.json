@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "GAStatementOfTruthGAspec",
+    "ListElementCode": "name",
+    "FieldType": "Text",
+    "ElementLabel": "Name",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAStatementOfTruthGAspec",
+    "ListElementCode": "role",
+    "FieldType": "Text",
+    "ElementLabel": "Role",
+    "SecurityClassification": "Public"
+  }
+]

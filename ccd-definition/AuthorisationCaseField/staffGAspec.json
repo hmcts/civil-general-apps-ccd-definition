@@ -1,12 +1,6 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppTypeLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -25,6 +19,12 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppEvidenceDocument",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondentAgreement",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -37,7 +37,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppUIStatementOfTruth",
+    "CaseFieldID": "generalAppStatementOfTruth",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   },
@@ -61,18 +61,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppDetailsOfOrderLabel",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppReasonsOfOrderLabel",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppDetailsOfOrder",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -80,12 +68,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppReasonsOfOrder",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppUploadEvidences",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },

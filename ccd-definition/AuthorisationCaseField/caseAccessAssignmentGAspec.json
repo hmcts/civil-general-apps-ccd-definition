@@ -1,12 +1,6 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppType",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"

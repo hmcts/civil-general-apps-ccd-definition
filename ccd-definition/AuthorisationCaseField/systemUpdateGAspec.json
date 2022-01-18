@@ -1,12 +1,6 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppType",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
@@ -14,6 +8,12 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppPBADetails",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppEvidenceDocument",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
