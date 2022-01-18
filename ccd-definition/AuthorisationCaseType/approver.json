@@ -2,7 +2,7 @@
     {
       "CaseTypeID": "GENERALAPPLICATION",
       "UserRole": "caseworker-approver",
-      "CRUD": "CRUD"
+      "CRUD": "R"
     }
   ]
   
