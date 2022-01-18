@@ -1,13 +1,19 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
+    "CaseFieldID": "generalAppType",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppType",
+    "CaseFieldID": "generalAppParentCaseLink",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "businessProcess",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },
