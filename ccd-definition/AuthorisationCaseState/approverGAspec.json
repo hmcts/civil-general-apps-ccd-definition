@@ -1,0 +1,9 @@
+[
+    {
+      "CaseTypeID": "GENERALAPPLICATION",
+      "CaseStateID": "PENDING_CASE_ISSUED",
+      "UserRole": "caseworker-approver",
+      "CRUD": "CRUD"
+    }
+  ]
+  
