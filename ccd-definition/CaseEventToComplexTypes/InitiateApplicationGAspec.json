@@ -300,7 +300,7 @@
     "ID": "GAPBADetailsGAspec",
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
     "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "applicantsPbaAccountsList",
+    "ListElementCode": "applicantsPbaAccounts",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
