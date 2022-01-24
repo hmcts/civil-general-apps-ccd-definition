@@ -1,0 +1,90 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDetails",
+    "TabLabel": "Application Details",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppType",
+    "TabFieldDisplayOrder": 1
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDetails",
+    "TabLabel": "Application Details",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppRespondentAgreement",
+    "TabFieldDisplayOrder": 2
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDetails",
+    "TabLabel": "Application Details",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppStatementOfTruth",
+    "TabFieldDisplayOrder": 3
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDetails",
+    "TabLabel": "Application Details",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppUrgencyRequirement",
+    "TabFieldDisplayOrder": 4
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDetails",
+    "TabLabel": "Application Details",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppInformOtherParty",
+    "TabFieldDisplayOrder": 5
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDetails",
+    "TabLabel": "Application Details",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppDetailsOfOrder",
+    "TabFieldDisplayOrder": 6
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDetails",
+    "TabLabel": "Application Details",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppReasonsOfOrder",
+    "TabFieldDisplayOrder": 7
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDetails",
+    "TabLabel": "Application Details",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppHearingDetails",
+    "TabFieldDisplayOrder": 8
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDetails",
+    "TabLabel": "Application Details",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppPBADetails",
+    "TabFieldDisplayOrder": 9
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDetails",
+    "TabLabel": "Application Details",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppEvidenceDocument",
+    "TabFieldDisplayOrder": 10
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDetails",
+    "TabLabel": "Application Details",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppParentCaseLink",
+    "TabFieldDisplayOrder": 11
+  }
+]

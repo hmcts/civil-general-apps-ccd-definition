@@ -1,9 +1,9 @@
 [
   {
-    "CaseTypeID": "CIVIL-GENERAL-APPLICATION",
-    "ID": "DUMMY_STATE",
-    "Name": "Dummy",
-    "Description": "Initiatation test state",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "PENDING_CASE_ISSUED",
+    "Name": "Claim Issue Pending",
+    "Description": "Holding state whilst payment is taken",
     "DisplayOrder": 1
   }
 ]
