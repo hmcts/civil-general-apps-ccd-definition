@@ -87,6 +87,7 @@ withPipeline(type, product, component) {
         """
 
         env.URL="https://xui-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+        env.CIVIL_SERVICE_URL="http://civil-service-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
         env.CIVIL_GENERAL_APPLICATIONS_URL="http://civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
     }
 
@@ -100,6 +101,7 @@ withPipeline(type, product, component) {
         env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
         env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
         env.CIVIL_SERVICE_URL="http://civil-service-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+        env.CIVIL_GENERAL_APPLICATIONS_URL="http://civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
     }
 
     after('functionalTest:preview') {

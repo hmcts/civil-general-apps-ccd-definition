@@ -70,6 +70,39 @@ test {
   failFast = true
 }
 
+task installDependencies(type: Exec, description: 'Installs Yarn dependencies.') {
+  commandLine '/usr/bin/yarn', '--mutex', 'network', '--frozen-lockfile', '--silent', 'install'
+}
+
+task checkDependenciesIntegrity(type: Exec, description: 'Checks integrity of Yarn dependencies.') {
+  commandLine '/usr/bin/yarn', '--mutex', 'network', '--frozen-lockfile', '--silent', 'check', '--integrity'
+}
+
+task lintUserInterfaceTests(type: Exec, description: 'Runs linting of E2E tests.') {
+  commandLine '/usr/bin/yarn', '--silent', 'lint'
+}
+
+task awaitApplicationReadiness(type: Exec, description: 'Awaits until application is ready.') {
+  commandLine './bin/wait-for.sh', System.env.URL
+  commandLine './bin/wait-for.sh', System.env.CIVIL_SERVICE_URL
+}
+
+task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
+  commandLine '/usr/bin/yarn', '--silent', 'test:smoke'
+}
+
+task runFunctionalTests(type: Exec, description: 'Runs functional tests.') {
+  commandLine '/usr/bin/yarn', '--silent', 'test:functional'
+}
+
+task smoke(description: 'Runs the smoke tests.') {
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, lintUserInterfaceTests, runSmokeTests))
+}
+
+task functional(description: 'Runs the functional tests.') {
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runFunctionalTests))
+}
+
 task functional(type: Test) {
   description = "Runs functional tests"
   group = "Verification"
