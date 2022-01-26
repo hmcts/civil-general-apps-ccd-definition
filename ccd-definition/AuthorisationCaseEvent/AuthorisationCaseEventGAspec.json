@@ -5,15 +5,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-systemupdate"
         ],
-        "CRUD": "R"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   }

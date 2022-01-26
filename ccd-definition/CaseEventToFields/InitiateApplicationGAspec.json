@@ -153,5 +153,16 @@
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseFieldID": "isMultiParty",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "isMultiPartyPage",
+    "PageDisplayOrder": 8,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
   }
 ]

@@ -2,10 +2,9 @@
     {
       "CaseTypeID": "GENERALAPPLICATION",
       "UserRoles": [
-        "caseworker-civil-solicitor",
-        "caseworker-civil-admin"
+        "caseworker-civil-systemupdate"
       ],
-      "CRUD": "R"
+      "CRUD": "CRUD"
     }
   ]
   
