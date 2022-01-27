@@ -1,6 +1,16 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalApplications",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalApplicationCaseListLabel",
     "Label": "Application Type",
     "HintText": "  ",
@@ -150,8 +160,9 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "isMultiParty",
-    "FieldType": "YesOrNo",
     "Label": " ",
+    "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   }
+
 ]
