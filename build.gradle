@@ -83,8 +83,8 @@ task lintUserInterfaceTests(type: Exec, description: 'Runs linting of E2E tests.
 }
 
 task awaitApplicationReadiness(type: Exec, description: 'Awaits until application is ready.') {
-  commandLine './bin/wait-for.sh', System.env.URL
-  commandLine './bin/wait-for.sh', System.env.CIVIL_SERVICE_URL
+  commandLine './bin/wait-for.sh', System.env.URL == null ?  'empty' : System.env.URL
+  commandLine './bin/wait-for.sh', System.env.CIVIL_SERVICE_URL == null ?  'empty' : System.env.CIVIL_SERVICE_URL
 }
 
 task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
@@ -103,11 +103,11 @@ task functional(description: 'Runs the functional tests.') {
   dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runFunctionalTests))
 }
 
-task functional(type: Test) {
-  description = "Runs functional tests"
-  group = "Verification"
-  testClassesDirs = sourceSets.functionalTest.output.classesDirs
-  classpath = sourceSets.functionalTest.runtimeClasspath
+def inStrictOrder(Task... tasks) {
+  for (int i = 0; i < tasks.size() - 1; i++) {
+    tasks[i + 1].mustRunAfter(tasks[i])
+  }
+  return tasks
 }
 
 task integration(type: Test) {
@@ -116,12 +116,6 @@ task integration(type: Test) {
   testClassesDirs = sourceSets.integrationTest.output.classesDirs
   classpath = sourceSets.integrationTest.runtimeClasspath
   failFast = true
-}
-
-task smoke(type: Test) {
-  description = "Runs Smoke Tests"
-  testClassesDirs = sourceSets.smokeTest.output.classesDirs
-  classpath = sourceSets.smokeTest.runtimeClasspath
 }
 
 checkstyle {
