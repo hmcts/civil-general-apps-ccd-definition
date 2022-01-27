@@ -1,8 +1,9 @@
 .gradle
-/build/
+**/build/
 !gradle/wrapper/gradle-wrapper.jar
 *.class
 bin/main/application.yaml
+**/target
 
 ### STS ###
 .apt_generated
@@ -20,3 +21,14 @@ bin/main/application.yaml
 *.ipr
 
 .DS_Store
+
+
+# node_modules
+package-lock.json
+node_modules/
+
+# test_output
+output/
+test-results/
+/e2e/reporters/
+/e2e/reporters/accessibility-reporter/
