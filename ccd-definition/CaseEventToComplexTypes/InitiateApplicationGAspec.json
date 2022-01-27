@@ -292,6 +292,24 @@
     "ID": "GAPBADetailsGAspec",
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
     "CaseFieldID": "generalAppPBADetails",
+    "ListElementCode": "generalAppFeeToPayLabel108",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed = \"Yes\" OR generalAppInformOtherParty.isWithNotice = \"No\""
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseFieldID": "generalAppPBADetails",
+    "ListElementCode": "generalAppFeeToPayLabel275",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "generalAppInformOtherParty.isWithNotice = \"Yes\""
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseFieldID": "generalAppPBADetails",
     "ListElementCode": "generalAppFeeToPayLabel",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
@@ -303,7 +321,7 @@
     "ListElementCode": "applicantsPbaAccounts",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "GAPBADetailsGAspec",
