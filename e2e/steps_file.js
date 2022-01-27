@@ -143,7 +143,7 @@ module.exports = function () {
       }, SIGNED_IN_SELECTOR);
     },
 
-     grabCaseNumber: async function () {
+    grabCaseNumber: async function () {
       this.waitForElement(CASE_HEADER);
 
       return await this.grabTextFrom(CASE_HEADER);
@@ -189,20 +189,20 @@ module.exports = function () {
         () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
         () => claimantSolicitorOrganisation.enterOrganisationDetails(),
         () => claimantSolicitorServiceAddress.enterOrganisationServiceAddress(),
-        ... conditionalSteps(config.multipartyTestsEnabled, [
+        ...conditionalSteps(config.multipartyTestsEnabled, [
           () => addAnotherClaimant.enterAddAnotherClaimant()
         ]),
         () => party.enterParty('respondent1', address),
-        ... conditionalSteps(litigantInPerson, [
+        ...conditionalSteps(litigantInPerson, [
           () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'no')
         ]),
-        ... conditionalSteps(!litigantInPerson, [
+        ...conditionalSteps(!litigantInPerson, [
           () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'yes'),
           () => defendantSolicitorOrganisation.enterOrganisationDetails('1'),
           () => defendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
           () => defendantSolicitorEmail.enterSolicitorEmail('1')
         ]),
-        ... conditionalSteps(config.multipartyTestsEnabled, [
+        ...conditionalSteps(config.multipartyTestsEnabled, [
           () => addAnotherDefendant.enterAddAnotherDefendant(),
           () => party.enterParty('respondent2', address),
           () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
@@ -248,8 +248,8 @@ module.exports = function () {
         () => applicationTypePage.selectApplicationType(applicationType),
         () => consentCheckPage.selectConsentCheck(consentCheck),
         () => urgencyCheckPage.selectUrgencyRequirement('yes'),
-        ... conditionalSteps(consentCheck === 'no', [
-          () => withOutNoticePage.selectNotice('no'),
+        ...conditionalSteps(consentCheck === 'no', [
+          () => withOutNoticePage.selectNotice('yes'),
         ]),
         () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH),
         () => hearingAndTrialPage.isHearingScheduled('no'),
@@ -259,7 +259,7 @@ module.exports = function () {
         () => hearingAndTrialPage.selectHearingDuration('fortyFiveMin'),
         () => hearingAndTrialPage.isUnavailableTrailRequired('no'),
         () => hearingAndTrialPage.selectSupportRequirement('disabledAccess'),
-        () => gaPBANumberPage.selectPbaNumber('activeAccount1'),
+        () => gaPBANumberPage.selectPbaNumber('activeAccount1', consentCheck),
         () => answersPage.verifyCheckAnswerForm(caseId, consentCheck),
         () => event.submit('Submit', 'You have made an application')
       ]);
@@ -335,7 +335,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => responseTypePage.selectResponseType(responseType),
-        ... conditionalSteps(responseType === 'fullDefence', [
+        ...conditionalSteps(responseType === 'fullDefence', [
           () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH),
           () => respondentDetails.verifyDetails(),
           () => confirmDetailsPage.confirmReference(),
@@ -568,7 +568,7 @@ module.exports = function () {
       ]);
     },
 
-    async respondToClaimSpec(responseType,defenceType,paidAmount) {
+    async respondToClaimSpec(responseType, defenceType, paidAmount) {
       eventName = 'Respond to claim';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
@@ -576,10 +576,10 @@ module.exports = function () {
         () => specConfirmDefendantsDetails.confirmDetails(),
         () => specConfirmLegalRepDetails.confirmDetails(),
         () => responseTypeSpecPage.selectResponseType(responseType),
-        ... conditionalSteps(responseType === 'fullDefence', [
-          () => defenceTypePage.selectDefenceType(defenceType,paidAmount)
+        ...conditionalSteps(responseType === 'fullDefence', [
+          () => defenceTypePage.selectDefenceType(defenceType, paidAmount)
         ]),
-        ... conditionalSteps(defenceType === 'hasPaid' && paidAmount === 1000, [
+        ...conditionalSteps(defenceType === 'hasPaid' && paidAmount === 1000, [
           () => freeMediationPage.selectMediation('yes'),
           () => useExpertPage.claimExpert('no'),
           () => enterWitnessesPage.howManyWitnesses(),
@@ -587,7 +587,7 @@ module.exports = function () {
           () => smallClaimsHearingPage.selectHearing('no'),
           () => chooseCourtSpecPage.chooseCourt('yes'),
         ]),
-        ... conditionalSteps(paidAmount < 1000 && (defenceType === 'dispute' || defenceType === 'hasPaid'), [
+        ...conditionalSteps(paidAmount < 1000 && (defenceType === 'dispute' || defenceType === 'hasPaid'), [
           () => disputeClaimDetailsPage.enterReasons(),
           () => claimResponseTimelineLRspecPage.addManually(),
           () => this.clickContinue(),
@@ -598,7 +598,7 @@ module.exports = function () {
           () => smallClaimsHearingPage.selectHearing('no'),
           () => chooseCourtSpecPage.chooseCourt('yes'),
         ]),
-        ... conditionalSteps(defenceType === 'hasPaid' && paidAmount === 15000, [
+        ...conditionalSteps(defenceType === 'hasPaid' && paidAmount === 15000, [
           () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
           () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
           () => this.clickContinue(),
@@ -609,7 +609,7 @@ module.exports = function () {
           () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
           () => chooseCourtSpecPage.chooseCourt('yes'),
         ]),
-        ... conditionalSteps(paidAmount === 10000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+        ...conditionalSteps(paidAmount === 10000 && (defenceType === 'dispute' || defenceType === 'hasPaid'), [
           () => disputeClaimDetailsPage.enterReasons(),
           () => claimResponseTimelineLRspecPage.addManually(),
           () => this.clickContinue(),
@@ -624,10 +624,10 @@ module.exports = function () {
           () => chooseCourtSpecPage.chooseCourt('yes'),
         ]),
         () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
-        ... conditionalSteps(paidAmount <= 1000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+        ...conditionalSteps(paidAmount <= 1000 && (defenceType === 'dispute' || defenceType === 'hasPaid'), [
           () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
         ]),
-        ... conditionalSteps(paidAmount >= 10000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+        ...conditionalSteps(paidAmount >= 10000 && (defenceType === 'dispute' || defenceType === 'hasPaid'), [
           () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
         ]),
         () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),

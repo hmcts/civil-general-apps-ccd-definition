@@ -17,7 +17,6 @@ Scenario('Applicant solicitor creates Single general application @ga', async ({I
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   caseId = await I.grabCaseNumber();
-  pause();
   await I.makeAnApplication(app, caseNumber, 'no');
   await verifyGeneralApplication(I, caseId, app);
 }).retry(2);
