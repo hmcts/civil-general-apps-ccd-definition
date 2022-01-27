@@ -87,12 +87,10 @@ task awaitApplicationReadiness(type: Exec, description: 'Awaits until applicatio
   commandLine './bin/wait-for.sh', System.env.CIVIL_SERVICE_URL == null ?  'empty' : System.env.CIVIL_SERVICE_URL
 }
 
-task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
-  commandLine '/usr/bin/yarn', '--silent', 'test:smoke'
+task runSmokeTests(description: 'Runs smoke tests.') {
 }
 
-task runFunctionalTests(type: Exec, description: 'Runs functional tests.') {
-  commandLine '/usr/bin/yarn', '--silent', 'test:functional'
+task runFunctionalTests(description: 'Runs functional tests.') {
 }
 
 task smoke(description: 'Runs the smoke tests.') {
