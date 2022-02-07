@@ -8,8 +8,8 @@
       "SecurityClassification": "Public"
     },
     {
-      "ID": "generalApplicationCaseList",
-      "ListElementCode": "generalApplicationCaseLinkList",
+      "ID": "GeneralApplicationGAspec",
+      "ListElementCode": "generalAppParentCaseLink",
       "FieldType": "CaseLink",
       "Label": "Application ID",
       "ElementLabel": "Application ID",
@@ -102,4 +102,3 @@
         "SecurityClassification": "Public"
       }
   ]
-  
