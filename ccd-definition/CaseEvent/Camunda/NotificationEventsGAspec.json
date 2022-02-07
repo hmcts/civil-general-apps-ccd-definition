@@ -1,0 +1,15 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "NOTIFY_GENERAL_APPLICATION_RESPONDENT",
+    "Name": "Email: Notify claim",
+    "Description": "Notify respondent that a general application has been made",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  }
+]
