@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "ASSIGN_GA_ROLES",
     "Name": "Assigning of GA roles",
     "Description": "Assigning Applicant and Respondent roles to the correct Solicitor",

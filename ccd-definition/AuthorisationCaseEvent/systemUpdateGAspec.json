@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "ASSIGN_GA_ROLES",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
