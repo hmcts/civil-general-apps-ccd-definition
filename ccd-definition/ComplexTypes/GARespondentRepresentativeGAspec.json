@@ -1,0 +1,10 @@
+[
+    {
+      "ID": "GARespondentRepresentativeGAspec",
+      "ListElementCode": "respondentRep",
+      "FieldType": "YesOrNo",
+      "ElementLabel": " ",
+      "SecurityClassification": "Public"
+    }
+  ]
+  
