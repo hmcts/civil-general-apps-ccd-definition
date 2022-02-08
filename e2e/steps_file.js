@@ -240,34 +240,70 @@ module.exports = function () {
       ]);
     },
 
-    async makeAnApplication(applicationType, caseId, consentCheck) {
+    async selectApplicationType(applicationType, caseId) {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
-
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => applicationTypePage.selectApplicationType(applicationType),
+      ]);
+    },
+
+    async selectConsentCheck(consentCheck) {
+      await this.triggerStepsWithScreenshot([
         () => consentCheckPage.selectConsentCheck(consentCheck),
-        () => urgencyCheckPage.selectUrgencyRequirement('yes'),
-        ...conditionalSteps(consentCheck === 'no', [
-          () => withOutNoticePage.selectNotice('yes'),
-        ]),
+      ]);
+    },
+
+    async isUrgentApplication(urgent) {
+      await this.triggerStepsWithScreenshot([
+        () => urgencyCheckPage.selectUrgencyRequirement(urgent),
+      ]);
+    },
+
+    async selectNotice(notice) {
+      await this.triggerStepsWithScreenshot([
+        () => withOutNoticePage.selectNotice(notice),
+      ]);
+    },
+
+    async enterApplicationDetails() {
+      await this.triggerStepsWithScreenshot([
         () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH),
-        () => hearingAndTrialPage.isHearingScheduled('no'),
-        () => hearingAndTrialPage.isJudgeRequired('no'),
-        () => hearingAndTrialPage.isTrialRequired('no'),
+      ]);
+    },
+
+    async fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement) {
+      await this.triggerStepsWithScreenshot([
+        () => hearingAndTrialPage.isHearingScheduled(hearingScheduled),
+        () => hearingAndTrialPage.isJudgeRequired(judgeRequired),
+        () => hearingAndTrialPage.isTrialRequired(trialRequired),
         () => hearingAndTrialPage.selectHearingPreferences('inPerson'),
         () => hearingAndTrialPage.selectHearingDuration('fortyFiveMin'),
-        () => hearingAndTrialPage.isUnavailableTrailRequired('no'),
-        () => hearingAndTrialPage.selectSupportRequirement('disabledAccess'),
+        () => hearingAndTrialPage.isUnavailableTrailRequired(unavailableTrailRequired),
+        () => hearingAndTrialPage.selectSupportRequirement(supportRequirement),
+      ]);
+    },
+
+    async selectPbaNumber(consentCheck) {
+      await this.triggerStepsWithScreenshot([
         () => gaPBANumberPage.selectPbaNumber('activeAccount1', consentCheck),
+      ]);
+    },
+
+    async verifyCheckAnswerForm(caseId, consentCheck) {
+      await this.triggerStepsWithScreenshot([
         () => answersPage.verifyCheckAnswerForm(caseId, consentCheck),
+      ]);
+    },
+
+    async submitApplication() {
+      await this.triggerStepsWithScreenshot([
         () => event.submit('Submit', 'You have made an application')
       ]);
     },
 
     async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber, caseId) {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
-
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => applicationTypePage.verifyAllApplicationTypes(appTypes, caseNumber)
@@ -280,7 +316,6 @@ module.exports = function () {
         () => confirmationPage.verifyApplicationType(appType)
       ]);
     },
-
 
     async notifyClaimDetails() {
       eventName = 'Notify claim details';
