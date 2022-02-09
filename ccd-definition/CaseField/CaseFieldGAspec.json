@@ -27,6 +27,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseLink",
+    "Label": "caseLink",
+    "HintText": "  ",
+    "FieldType": "CaseLink",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppTypeLabel",
     "Label": "<p class=\"govuk-inset-text\">To make an application not shown on this list, you'll need to submit a paper application to the court.</p>",
     "HintText": "  ",
@@ -39,6 +47,16 @@
     "Label": "What type of applications do you want to make?",
     "HintText": "  ",
     "FieldType": "GATypeGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "Type of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalApplicationType",
+    "Label": "What type of applications do you want to make?",
+    "HintText": "  ",
+    "FieldType": "Text",
     "SecurityClassification": "Public",
     "_Definition":  "Type of the child application on the case",
     "_Category":  "COMMON"
@@ -191,5 +209,23 @@
     "Label": " ",
     "FieldType": "Email",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppSubmittedDateGAspec",
+    "Label": "General Application Submitted on",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalApplicationsDetails",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
   }
 ]

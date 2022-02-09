@@ -1,0 +1,14 @@
+[
+    {
+      "CaseTypeID": "GENERALAPPLICATION",
+      "ID": "MAKE_PBA_PAYMENT_GASPEC",
+      "Name": "Make PBA payment",
+      "Description": "Make PBA payment",
+      "PreConditionState(s)": "*",
+      "PostConditionState": "*",
+      "SecurityClassification": "Public",
+      "ShowSummary": "N",
+      "ShowEventNotes": "N",
+      "RetriesTimeoutURLAboutToSubmitEvent": 0
+    }
+  ]
