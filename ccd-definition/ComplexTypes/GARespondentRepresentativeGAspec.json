@@ -1,7 +1,7 @@
 [
     {
       "ID": "GARespondentRepresentativeGAspec",
-      "ListElementCode": "respondentRep",
+      "ListElementCode": "hasAgreed",
       "FieldType": "YesOrNo",
       "ElementLabel": " ",
       "SecurityClassification": "Public"
