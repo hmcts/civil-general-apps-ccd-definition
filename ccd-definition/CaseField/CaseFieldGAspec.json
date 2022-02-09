@@ -191,5 +191,12 @@
     "Label": " ",
     "FieldType": "Email",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppRespondent1Representative",
+    "Label": "Do you agree that the court should make the order that the applicant has requested?",
+    "FieldType": "GARespondentRepresentativeGAspec",
+    "SecurityClassification": "Public"
   }
 ]
