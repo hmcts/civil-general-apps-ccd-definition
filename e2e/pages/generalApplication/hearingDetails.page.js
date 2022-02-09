@@ -56,12 +56,18 @@ module.exports = {
       }
     },
     unavailableTrailRequired: {
-      id: '#generalAppHearingDetails_UnavailableTrailRequiredYesOrNo',
+      id: '#generalAppHearingDetails_unavailableTrialRequiredYesOrNo_radio',
       options: {
         yes: 'Yes',
         no: 'No'
       }
     },
+    unavailableDateFromDay: '#unavailableTrialDateFrom-day',
+    unavailableDateFromMonth: '#unavailableTrialDateFrom-month',
+    unavailableDateFromYear: '#unavailableTrialDateFrom-year',
+    unavailableDateToDay: '#unavailableTrialDateTo-day',
+    unavailableDateToMonth: '#unavailableTrialDateTo-month',
+    unavailableDateToYear: '#unavailableTrialDateTo-year',
     supportRequirement: {
       id: '#generalAppHearingDetails_SupportRequirement',
       options: {
@@ -71,7 +77,8 @@ module.exports = {
         languageInterpreter: 'Language interpreter',
         otherSupport: 'Other support'
       }
-    }
+    },
+    supportRequirementSignLanguage: '#generalAppHearingDetails_SupportRequirementSignLanguage',
   },
 
   async isHearingScheduled(hearingScheduledCheck) {
@@ -143,16 +150,32 @@ module.exports = {
 
   async isUnavailableTrailRequired(trailRequired) {
     I.waitForElement(this.fields.unavailableTrailRequired.id);
-    await within(this.fields.unavailableTrailRequired.id, () => {
-      I.click(this.fields.unavailableTrailRequired.options[trailRequired]);
-    });
+    if ('yes' === trailRequired) {
+      await within(this.fields.unavailableTrailRequired.id, () => {
+        I.click(this.fields.unavailableTrailRequired.options[trailRequired]);
+        I.wait(2);
+        I.click({css: '#generalAppHearingDetails_generalAppUnavailableDates .button:nth-child(2)'});
+        I.waitForVisible(this.fields.unavailableDateFromDay);
+        I.fillField(this.fields.unavailableDateFromDay, 1);
+        I.fillField(this.fields.unavailableDateFromMonth, 10);
+        I.fillField(this.fields.unavailableDateFromYear, 2022);
+        I.fillField(this.fields.unavailableDateToDay, 1);
+        I.fillField(this.fields.unavailableDateToMonth, 10);
+        I.fillField(this.fields.unavailableDateToYear, 2023);
+      });
+    } else {
+      await within(this.fields.unavailableTrailRequired.id, () => {
+        I.click(this.fields.unavailableTrailRequired.options[trailRequired]);
+      });
+    }
   },
 
   async selectSupportRequirement(supportRequirement) {
     I.waitForElement(this.fields.supportRequirement.id);
-    await within(this.fields.supportRequirement.id, () => {
-      I.click(this.fields.supportRequirement.options[supportRequirement]);
-    });
+    I.click(this.fields.supportRequirement.options[supportRequirement]);
+    if ('signLanguageInterpreter' === supportRequirement) {
+      await I.fillField(this.fields.supportRequirementSignLanguage, 'SignLanguage');
+    }
     await I.clickContinue();
   }
 };
