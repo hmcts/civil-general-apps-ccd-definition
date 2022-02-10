@@ -11,11 +11,20 @@
   },
   {
     "ID": "GARespondentAgreementPage",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppRespondentAgreement",
+    "ListElementCode": "hasAgreedLabel",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GARespondentAgreementPage",
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
     "CaseFieldID": "generalAppRespondentAgreement",
     "ListElementCode": "hasAgreed",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 1,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
