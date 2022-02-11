@@ -36,7 +36,7 @@ Scenario('Applicant solicitor creates Multiple general applications @ga', async 
   await I.selectConsentCheck('yes');
   await I.isUrgentApplication('no');
   await I.enterApplicationDetails();
-  await I.fillHearingDetails('yes', 'yes', 'yes', 'no', 'signLanguageInterpreter')
+  await I.fillHearingDetails('yes', 'yes', 'yes', 'no', 'signLanguageInterpreter');
   await I.selectPbaNumber('yes');
   await I.verifyCheckAnswerForm(caseNumber, 'yes');
   await I.submitApplication();
