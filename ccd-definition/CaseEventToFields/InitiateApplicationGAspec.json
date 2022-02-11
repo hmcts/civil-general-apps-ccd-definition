@@ -93,7 +93,7 @@
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
     "CaseFieldID": "generalAppEvidenceDocument",
     "PageFieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "StatementOfTruth",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
@@ -151,6 +151,17 @@
     "PageID": "GAPBADetailsGAspec",
     "PageDisplayOrder": 7,
     "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseFieldID": "isMultiParty",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "isMultiPartyPage",
+    "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   }

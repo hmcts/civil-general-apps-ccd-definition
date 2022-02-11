@@ -1,12 +1,23 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppTypeLabel",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "R"
       }
@@ -18,8 +29,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -31,8 +41,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -44,8 +53,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -57,8 +65,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -70,8 +77,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -83,8 +89,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -94,7 +99,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppStatementOfTruthConsent",
     "UserRoles": [
-      "caseworker-civil-solicitor"
+      "caseworker-civil-systemupdate"
     ],
     "CRUD": "CRUD"
   },
@@ -102,13 +107,141 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppStatementOfTruth",
     "UserRoles": [
-      "caseworker-civil-solicitor"
+      "caseworker-civil-systemupdate"
     ],
     "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppStatementOfTruthLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppUrgencyRequirement",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppInformOtherParty",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "isApplicationUrgent",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppDetailsOfOrder",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppReasonsOfOrder",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppUploadEvidenceLabel",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppHearingDetails",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "isMultiParty",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "applicantSolicitor1UserDetails",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "applicant1OrganisationPolicy",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondent1OrganisationPolicy",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentSolicitor1EmailAddress",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppRespondent1Representative",
     "AccessControl": [
       {
         "UserRoles": [
@@ -123,87 +256,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppUrgencyRequirement",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppInformOtherParty",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "isApplicationUrgent",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppDetailsOfOrder",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppReasonsOfOrder",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppUploadEvidenceLabel",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppHearingDetails",
-    "UserRoles": [
-      "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
-    ],
-    "CRUD": "CRUD"
   }
 ]

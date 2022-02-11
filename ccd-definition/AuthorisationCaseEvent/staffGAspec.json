@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  }
-]

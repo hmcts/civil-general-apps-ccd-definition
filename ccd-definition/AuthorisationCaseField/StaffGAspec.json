@@ -1,0 +1,26 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "applicantSolicitor1UserDetails",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "applicant1OrganisationPolicy",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondent1OrganisationPolicy",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentSolicitor1EmailAddress",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  }
+]
