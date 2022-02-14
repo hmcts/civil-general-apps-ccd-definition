@@ -14,5 +14,6 @@
     ]]></notes>
     <cve>CVE-2020-10663</cve>
     <cve>CVE-2020-7712</cve>
+    <cve>CVE-2022-23181</cve>
    </suppress>
 </suppressions>
