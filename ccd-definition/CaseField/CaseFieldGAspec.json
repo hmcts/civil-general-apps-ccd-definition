@@ -199,5 +199,12 @@
     "Label": "Do you agree that the court should make the order that the applicant has requested?",
     "FieldType": "GARespondentRepresentativeGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppDeadlineNotification",
+    "Label": " ",
+    "FieldType": "GeneralApplicationGAspec",
+    "SecurityClassification": "Public"
   }
 ]
