@@ -357,6 +357,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
+    "ListElementCode": "isPCClaimantMakingApplication",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppParentCaseLink",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
