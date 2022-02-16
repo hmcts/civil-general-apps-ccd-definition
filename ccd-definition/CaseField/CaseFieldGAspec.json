@@ -206,5 +206,12 @@
     "Label": " ",
     "FieldType": "GeneralApplicationGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppDeadlineNotificationDate",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
   }
 ]
