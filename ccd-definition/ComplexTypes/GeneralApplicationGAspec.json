@@ -128,5 +128,12 @@
       "ElementLabel": " ",
       "FieldType": "Email",
       "SecurityClassification": "Public"
+    },
+    {
+      "ID": "GeneralApplicationGAspec",
+      "ListElementCode": "generalAppDeadlineNotification",
+      "ElementLabel": " ",
+      "FieldType": "TextArea",
+      "SecurityClassification": "Public"
     }
 ]

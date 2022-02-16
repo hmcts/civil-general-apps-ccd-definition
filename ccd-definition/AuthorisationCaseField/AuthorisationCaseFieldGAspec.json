@@ -256,5 +256,21 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppDeadlineNotification",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppDeadlineNotificationDate",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
   }
 ]
