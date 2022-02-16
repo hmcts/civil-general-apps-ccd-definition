@@ -24,6 +24,9 @@ Scenario('Applicant solicitor creates Single general application @ga', async ({I
   await I.fillHearingDetails('no', 'no', 'no', 'no', 'disabledAccess');
   await I.selectPbaNumber('no');
   await I.verifyCheckAnswerForm(caseNumber, 'no');
+  await I.clickOnHearingDetailsChangeLink('no');
+  await I.updateHearingDetails();
+  await I.see('update@gmail.com');
   await I.submitApplication();
   await verifyGeneralApplication(I, caseId, appTypes.slice(0, 1));
 }).retry(2);
