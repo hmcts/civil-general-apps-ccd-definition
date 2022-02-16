@@ -9,6 +9,7 @@
       "SecurityClassification": "Public",
       "ShowSummary": "N",
       "ShowEventNotes": "N",
+      "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
       "RetriesTimeoutURLAboutToSubmitEvent": 0
     }
   ]
