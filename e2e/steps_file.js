@@ -284,6 +284,12 @@ module.exports = function () {
       ]);
     },
 
+    async updateHearingDetails() {
+      await this.triggerStepsWithScreenshot([
+        () => hearingAndTrialPage.updateHearingDetails(),
+      ]);
+    },
+
     async selectPbaNumber(consentCheck) {
       await this.triggerStepsWithScreenshot([
         () => gaPBANumberPage.selectPbaNumber('activeAccount1', consentCheck),
@@ -293,6 +299,12 @@ module.exports = function () {
     async verifyCheckAnswerForm(caseId, consentCheck) {
       await this.triggerStepsWithScreenshot([
         () => answersPage.verifyCheckAnswerForm(caseId, consentCheck),
+      ]);
+    },
+
+    async clickOnHearingDetailsChangeLink(consentCheck) {
+      await this.triggerStepsWithScreenshot([
+        () => answersPage.clickOnChangeLink(consentCheck),
       ]);
     },
 
