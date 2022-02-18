@@ -167,6 +167,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "isPCClaimantMakingApplication",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "applicantSolicitor1UserDetails",
     "Label": " ",
     "FieldType": "GAUserDetailsGAspec",
