@@ -1,18 +1,19 @@
 const config = require('../config.js');
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const caseEventMessage = eventName => `Case ${caseId} has been updated with event: ${eventName}`;
+const mpScenario = 'ONE_V_ONE';
 let caseNumber;
 let caseId;
 let appTypes = ['Strike out', 'Stay the claim', 'Extend time', 'Summary judgment'];
 
-Feature('General Application creation @e2e-tests');
+Feature('CCD 1v1 - General Application Journey @e2e-tests');
 
-Scenario('Create case for @ga', async ({api}) => {
-  caseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+Scenario('Create case for 1v1', async ({api}) => {
+  caseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Case created for general application: ' + caseNumber);
 });
 
-Scenario('Applicant solicitor creates Single general application @ga', async ({I}) => {
+Scenario('Create Single general application for 1v1', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   caseId = await I.grabCaseNumber();
@@ -29,9 +30,11 @@ Scenario('Applicant solicitor creates Single general application @ga', async ({I
   await I.see('update@gmail.com');
   await I.submitApplication();
   await verifyGeneralApplication(I, caseId, appTypes.slice(0, 1));
+  await I.clickOnTab('Applications');
+  pause();
 }).retry(2);
 
-Scenario('Applicant solicitor creates Multiple general applications @ga', async ({I}) => {
+Scenario.skip('Create Multiple general applications for 1v1', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   caseId = await I.grabCaseNumber();

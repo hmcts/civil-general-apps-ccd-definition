@@ -329,6 +329,12 @@ module.exports = function () {
       ]);
     },
 
+    async clickOnTab(tabName) {
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.clickOnTab(tabName)
+      ]);
+    },
+
     async notifyClaimDetails() {
       eventName = 'Notify claim details';
 
