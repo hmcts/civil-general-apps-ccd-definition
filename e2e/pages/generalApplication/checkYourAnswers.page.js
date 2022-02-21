@@ -19,7 +19,16 @@ module.exports = {
       I.seeNumberOfVisibleElements('.case-field-change a', 9);
     }
     I.seeTextEquals('examplePDF.pdf', '.collection-field-table a');
-  }
+  },
+
+  async clickOnChangeLink(consentCheck) {
+    if ('yes' === consentCheck) {
+      I.click({css: '.check-your-answers tr:nth-child(7) a'});
+    } else {
+      I.click({css: '.check-your-answers tr:nth-child(8) a'});
+    }
+    I.seeInCurrentUrl('/INITIATE_GENERAL_APPLICATIONHearingDetails');
+  },
 };
 
 

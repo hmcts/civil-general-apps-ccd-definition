@@ -24,6 +24,9 @@ Scenario('Applicant solicitor creates Single general application @ga', async ({I
   await I.fillHearingDetails('no', 'no', 'no', 'no', 'disabledAccess');
   await I.selectPbaNumber('no');
   await I.verifyCheckAnswerForm(caseNumber, 'no');
+  await I.clickOnHearingDetailsChangeLink('no');
+  await I.updateHearingDetails();
+  await I.see('update@gmail.com');
   await I.submitApplication();
   await verifyGeneralApplication(I, caseId, appTypes.slice(0, 1));
 }).retry(2);
@@ -36,7 +39,7 @@ Scenario('Applicant solicitor creates Multiple general applications @ga', async 
   await I.selectConsentCheck('yes');
   await I.isUrgentApplication('no');
   await I.enterApplicationDetails();
-  await I.fillHearingDetails('yes', 'yes', 'yes', 'no', 'signLanguageInterpreter')
+  await I.fillHearingDetails('yes', 'yes', 'yes', 'no', 'signLanguageInterpreter');
   await I.selectPbaNumber('yes');
   await I.verifyCheckAnswerForm(caseNumber, 'yes');
   await I.submitApplication();

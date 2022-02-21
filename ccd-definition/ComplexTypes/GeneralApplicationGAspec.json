@@ -15,14 +15,14 @@
       "ElementLabel": "Application ID",
       "SecurityClassification": "Public"
     },
-  {
-    "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "caseLink",
-    "FieldType": "CaseLink",
-    "Label": "Application ID",
-    "ElementLabel": "Application ID",
-    "SecurityClassification": "Public"
-  },
+    {
+      "ID": "GeneralApplicationGAspec",
+      "ListElementCode": "caseLink",
+      "FieldType": "CaseLink",
+      "Label": "Application ID",
+      "ElementLabel": "Application ID",
+      "SecurityClassification": "Public"
+    },
     {
       "ID": "GeneralApplicationGAspec",
       "ListElementCode": "generalAppType",
@@ -111,6 +111,13 @@
     },
     {
       "ID": "GeneralApplicationGAspec",
+      "ListElementCode": "isPCClaimantMakingApplication",
+      "FieldType": "YesOrNo",
+      "ElementLabel": " ",
+      "SecurityClassification": "Public"
+    },
+    {
+      "ID": "GeneralApplicationGAspec",
       "ListElementCode": "applicantSolicitor1UserDetails",
       "ElementLabel": " ",
       "FieldType": "GAUserDetailsGAspec",
@@ -137,12 +144,19 @@
       "FieldType": "Email",
       "SecurityClassification": "Public"
     },
-  {
-    "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "generalAppSubmittedDateGAspec",
-    "FieldType": "DateTime",
-    "Label": "Submitted on",
-    "ElementLabel": "Submitted on",
-    "SecurityClassification": "Public"
-  }
+    {
+      "ID": "GeneralApplicationGAspec",
+      "ListElementCode": "generalAppSubmittedDateGAspec",
+      "FieldType": "DateTime",
+      "Label": "Submitted on",
+      "ElementLabel": "Submitted on",
+      "SecurityClassification": "Public"
+    },
+    {
+      "ID": "GeneralApplicationGAspec",
+      "ListElementCode": "generalAppDeadlineNotification",
+      "ElementLabel": " ",
+      "FieldType": "TextArea",
+      "SecurityClassification": "Public"
+    }
 ]

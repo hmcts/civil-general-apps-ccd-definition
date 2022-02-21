@@ -93,7 +93,7 @@
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
     "CaseFieldID": "generalAppEvidenceDocument",
     "PageFieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "StatementOfTruth",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
@@ -164,5 +164,16 @@
     "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseFieldID": "generalAppDeadlineNotification",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "generalAppDeadlineNotificationPage",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
   }
 ]
