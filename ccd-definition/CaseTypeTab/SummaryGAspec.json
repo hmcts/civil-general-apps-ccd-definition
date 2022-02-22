@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "SummaryGA",
+    "TabLabel": "Summary General Application",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppParentCaseLink",
+    "TabFieldDisplayOrder": 1
+  }
+]
