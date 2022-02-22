@@ -1,4 +1,5 @@
 const config = require('../../config.js');
+const {waitForFinishedBusinessProcess} = require("../../api/testingSupport");
 const caseEventMessage = eventName => `Case ${caseId} has been updated with event: ${eventName}`;
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let caseNumber;
@@ -16,21 +17,14 @@ Scenario('Create Single general application for 1v2 different Solicitor', async 
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   caseId = await I.grabCaseNumber();
-  await I.selectApplicationType(appTypes.slice(0, 1), caseNumber);
-  await I.selectConsentCheck('no');
-  await I.isUrgentApplication('yes');
-  await I.selectNotice('yes');
-  await I.enterApplicationDetails();
-  await I.fillHearingDetails('no', 'no', 'no', 'no', 'disabledAccess');
-  await I.selectPbaNumber('no');
-  await I.verifyCheckAnswerForm(caseNumber, 'no');
-  await I.clickOnHearingDetailsChangeLink('no');
-  await I.updateHearingDetails();
-  await I.see('update@gmail.com');
-  await I.submitApplication();
+  await I.createGeneralApplication(
+    appTypes.slice(0, 1),
+    caseNumber, '' +
+    'no', 'yes', 'yes', 'no', 'no', 'no', 'no',
+    'disabledAccess');
   console.log('General Application created: ' + caseNumber);
   await I.see(caseId);
-  await I.verifyGAConfirmationPage(appTypes.slice(0, 1));
+  await waitForFinishedBusinessProcess(caseNumber);
   await I.click('Close and Return to case details');
   await I.see(caseEventMessage('Make an application'));
 }).retry(2);

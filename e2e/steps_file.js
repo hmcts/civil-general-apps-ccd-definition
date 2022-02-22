@@ -124,6 +124,66 @@ let eventNumber = 0;
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
 
+const selectApplicationType = (eventName, applicationType, caseId) => [
+  () => caseViewPage.startEvent(eventName, caseId),
+  () => applicationTypePage.selectApplicationType(applicationType),
+];
+
+const selectConsentCheck = (consentCheck) => [
+  () => consentCheckPage.selectConsentCheck(consentCheck)
+];
+
+const isUrgentApplication = (urgent) => [
+  () => urgencyCheckPage.selectUrgencyRequirement(urgent),
+];
+
+const selectNotice = (notice) => [
+  () => withOutNoticePage.selectNotice(notice),
+];
+
+const enterApplicationDetails = () => [
+  () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH),
+];
+
+const fillHearingDetails = (hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement) => [
+  () => hearingAndTrialPage.isHearingScheduled(hearingScheduled),
+  () => hearingAndTrialPage.isJudgeRequired(judgeRequired),
+  () => hearingAndTrialPage.isTrialRequired(trialRequired),
+  () => hearingAndTrialPage.selectHearingPreferences('inPerson'),
+  () => hearingAndTrialPage.selectHearingDuration('fortyFiveMin'),
+  () => hearingAndTrialPage.isUnavailableTrailRequired(unavailableTrailRequired),
+  () => hearingAndTrialPage.selectSupportRequirement(supportRequirement),
+];
+
+const updateHearingDetails = () => [
+  () => hearingAndTrialPage.updateHearingDetails(),
+];
+
+const selectPbaNumber = (consentCheck) => [
+  () => gaPBANumberPage.selectPbaNumber('activeAccount1', consentCheck),
+];
+
+const verifyCheckAnswerForm = (caseId, consentCheck) => [
+  () => answersPage.verifyCheckAnswerForm(caseId, consentCheck),
+];
+
+const clickOnHearingDetailsChangeLink = (consentCheck) => [
+  () => answersPage.clickOnChangeLink(consentCheck),
+];
+
+const submitApplication = () => [
+  () => event.submit('Submit', 'You have made an application')
+];
+
+const verifyGAConfirmationPage = (appType) => [
+  () => confirmationPage.verifyConfirmationPage(),
+  () => confirmationPage.verifyApplicationType(appType)
+];
+
+const clickOnTab = (tabName) => [
+  () => caseViewPage.clickOnTab(tabName)
+];
+
 module.exports = function () {
   return actor({
     // Define custom steps here, use 'this' to access default methods of I.
@@ -134,7 +194,7 @@ module.exports = function () {
       }
 
       await this.retryUntilExists(async () => {
-        this.amOnPage(config.url.manageCase);
+        this.amOnPage(config.url.manageCase, 60);
 
         if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
           output.log(`Signing in user: ${user.type}`);
@@ -189,29 +249,21 @@ module.exports = function () {
         () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
         () => claimantSolicitorOrganisation.enterOrganisationDetails(),
         () => claimantSolicitorServiceAddress.enterOrganisationServiceAddress(),
-        ...conditionalSteps(config.multipartyTestsEnabled, [
-          () => addAnotherClaimant.enterAddAnotherClaimant()
-        ]),
+        () => addAnotherClaimant.enterAddAnotherClaimant(),
         () => party.enterParty('respondent1', address),
-        ...conditionalSteps(litigantInPerson, [
-          () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'no')
-        ]),
-        ...conditionalSteps(!litigantInPerson, [
-          () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'yes'),
-          () => defendantSolicitorOrganisation.enterOrganisationDetails('1'),
-          () => defendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
-          () => defendantSolicitorEmail.enterSolicitorEmail('1')
-        ]),
-        ...conditionalSteps(config.multipartyTestsEnabled, [
-          () => addAnotherDefendant.enterAddAnotherDefendant(),
-          () => party.enterParty('respondent2', address),
-          () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
-          () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(),
-          () => defendantSolicitorOrganisation.enterOrganisationDetails('2'),
-          () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
-          () => secondDefendantSolicitorReference.enterReference(),
-          () => defendantSolicitorEmail.enterSolicitorEmail('2')
-        ]),
+        () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'no'),
+        () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'yes'),
+        () => defendantSolicitorOrganisation.enterOrganisationDetails('1'),
+        () => defendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
+        () => defendantSolicitorEmail.enterSolicitorEmail('1'),
+        () => addAnotherDefendant.enterAddAnotherDefendant(),
+        () => party.enterParty('respondent2', address),
+        () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
+        () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(),
+        () => defendantSolicitorOrganisation.enterOrganisationDetails('2'),
+        () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
+        () => secondDefendantSolicitorReference.enterReference(),
+        () => defendantSolicitorEmail.enterSolicitorEmail('2'),
         () => claimTypePage.selectClaimType(),
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
@@ -237,101 +289,6 @@ module.exports = function () {
         () => continuePage.continue(),
         () => event.submit('Submit', 'Notification of claim sent'),
         () => event.returnToCaseDetails()
-      ]);
-    },
-
-    async selectApplicationType(applicationType, caseId) {
-      eventName = events.INITIATE_GENERAL_APPLICATION.name;
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(eventName, caseId),
-        () => applicationTypePage.selectApplicationType(applicationType),
-      ]);
-    },
-
-    async selectConsentCheck(consentCheck) {
-      await this.triggerStepsWithScreenshot([
-        () => consentCheckPage.selectConsentCheck(consentCheck),
-      ]);
-    },
-
-    async isUrgentApplication(urgent) {
-      await this.triggerStepsWithScreenshot([
-        () => urgencyCheckPage.selectUrgencyRequirement(urgent),
-      ]);
-    },
-
-    async selectNotice(notice) {
-      await this.triggerStepsWithScreenshot([
-        () => withOutNoticePage.selectNotice(notice),
-      ]);
-    },
-
-    async enterApplicationDetails() {
-      await this.triggerStepsWithScreenshot([
-        () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH),
-      ]);
-    },
-
-    async fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement) {
-      await this.triggerStepsWithScreenshot([
-        () => hearingAndTrialPage.isHearingScheduled(hearingScheduled),
-        () => hearingAndTrialPage.isJudgeRequired(judgeRequired),
-        () => hearingAndTrialPage.isTrialRequired(trialRequired),
-        () => hearingAndTrialPage.selectHearingPreferences('inPerson'),
-        () => hearingAndTrialPage.selectHearingDuration('fortyFiveMin'),
-        () => hearingAndTrialPage.isUnavailableTrailRequired(unavailableTrailRequired),
-        () => hearingAndTrialPage.selectSupportRequirement(supportRequirement),
-      ]);
-    },
-
-    async updateHearingDetails() {
-      await this.triggerStepsWithScreenshot([
-        () => hearingAndTrialPage.updateHearingDetails(),
-      ]);
-    },
-
-    async selectPbaNumber(consentCheck) {
-      await this.triggerStepsWithScreenshot([
-        () => gaPBANumberPage.selectPbaNumber('activeAccount1', consentCheck),
-      ]);
-    },
-
-    async verifyCheckAnswerForm(caseId, consentCheck) {
-      await this.triggerStepsWithScreenshot([
-        () => answersPage.verifyCheckAnswerForm(caseId, consentCheck),
-      ]);
-    },
-
-    async clickOnHearingDetailsChangeLink(consentCheck) {
-      await this.triggerStepsWithScreenshot([
-        () => answersPage.clickOnChangeLink(consentCheck),
-      ]);
-    },
-
-    async submitApplication() {
-      await this.triggerStepsWithScreenshot([
-        () => event.submit('Submit', 'You have made an application')
-      ]);
-    },
-
-    async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber, caseId) {
-      eventName = events.INITIATE_GENERAL_APPLICATION.name;
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(eventName, caseId),
-        () => applicationTypePage.verifyAllApplicationTypes(appTypes, caseNumber)
-      ]);
-    },
-
-    async verifyGAConfirmationPage(appType) {
-      await this.triggerStepsWithScreenshot([
-        () => confirmationPage.verifyConfirmationPage(),
-        () => confirmationPage.verifyApplicationType(appType)
-      ]);
-    },
-
-    async clickOnTab(tabName) {
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.clickOnTab(tabName)
       ]);
     },
 
@@ -697,6 +654,34 @@ module.exports = function () {
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('.ccd-dropdown');
+    },
+
+    async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber, caseId) {
+      eventName = events.INITIATE_GENERAL_APPLICATION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => applicationTypePage.verifyAllApplicationTypes(appTypes, caseNumber),
+      ]);
+    },
+
+    async createGeneralApplication(appTypes, caseId, consentCheck, isUrgent, notice, hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement) {
+      eventName = events.INITIATE_GENERAL_APPLICATION.name;
+      await this.triggerStepsWithScreenshot([
+        ...selectApplicationType(eventName, appTypes, caseId),
+        ...selectConsentCheck(consentCheck),
+        ...isUrgentApplication(isUrgent),
+        ...conditionalSteps(consentCheck === 'no', [
+          ...selectNotice(notice),
+        ]),
+        ...enterApplicationDetails(),
+        ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement),
+        ...selectPbaNumber(consentCheck),
+        ...verifyCheckAnswerForm(caseId, consentCheck),
+        ...clickOnHearingDetailsChangeLink(consentCheck),
+        ...updateHearingDetails(),
+        ...submitApplication(),
+        ...verifyGAConfirmationPage(appTypes),
+      ]);
     }
   });
 };
