@@ -91,7 +91,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-		"CRUD": "CRU"
+	    	"CRUD": "CRU"
 		      },
       {
         "UserRoles": [
