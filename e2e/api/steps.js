@@ -712,22 +712,19 @@ async function updateCaseDataWithPlaceholders(data, document) {
   return JSON.parse(data);
 }
 
-const assignCase = async () => {
+/*const assignCase = async () => {
   await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   switch(mpScenario){
     case 'ONE_V_TWO_TWO_LEGAL_REP': {
       await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
       break;
-    }await assignCase();
-      await waitForFinishedBusinessProcess(caseId);
-      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-      await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
+    }
     case 'ONE_V_TWO_ONE_LEGAL_REP': {
       await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
       break;
     }
   }
-};
+};*/
 
 // solicitor 1 should not see details for respondent 2
 // solicitor 2 should not see details for respondent 1

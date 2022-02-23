@@ -1,5 +1,5 @@
 const config = require('../../config.js');
-const {waitForFinishedBusinessProcess} = require("../../api/testingSupport");
+const {waitForFinishedBusinessProcess} = require('../../api/testingSupport');
 const caseEventMessage = eventName => `Case ${caseId} has been updated with event: ${eventName}`;
 const mpScenario = 'TWO_V_ONE';
 let {getAppTypes} = require('../../pages/generalApplication/GeneralApplicationTypes');
