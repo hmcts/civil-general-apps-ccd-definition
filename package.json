@@ -35,5 +35,9 @@
     "totp-generator": "^0.0.7",
     "uuid": "^3.4.0",
     "webdriverio": "^6.12.1"
+  },
+  "resolutions": {
+    "**/**/ansi-regex": "^5.0.1",
+    "**/**/follow-redirects": "^1.14.8"
   }
 }
