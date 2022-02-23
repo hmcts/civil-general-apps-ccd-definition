@@ -530,6 +530,13 @@
         "CRUD": "R"
       }
     ]
-  }
-
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "hearingDetailsResp",
+    "UserRoles": [
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRU"
+   }
 ]
