@@ -1,7 +1,7 @@
 [
     {
       "CaseTypeID": "GENERALAPPLICATION",
-      "CaseStateID": "PENDING_CASE_ISSUED",
+      "CaseStateID": "PENDING_APPLICATION_ISSUED",
       "AccessControl": [
         {
           "UserRoles": [
