@@ -1,16 +1,16 @@
 const config = require('../config.js');
+const mpScenario = 'ONE_V_ONE';
 let caseNumber;
 let caseId;
-let appTypes = ['Strike out', 'Summary judgment', 'Stay the claim', 'Extend time'];
-
+let {getAppTypes} = require('../pages/generalApplication/GeneralApplicationTypes');
 
 Feature('General Application @smoke-tests');
 
 Scenario('Applicant solicitor should be able to go to General app screen', async ({I, api}) => {
-  caseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
-  console.log('Case created for general application: ' + caseNumber);
+  caseNumber = await api.createClaimWithRepresentedRespondent(
+    config.applicantSolicitorUser, mpScenario);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   caseId = await I.grabCaseNumber();
-  await I.goToGeneralAppScreenAndVerifyAllApps(appTypes, caseId, caseNumber);
+  await I.goToGeneralAppScreenAndVerifyAllApps(getAppTypes(), caseId, caseNumber);
 }).retry(2);
