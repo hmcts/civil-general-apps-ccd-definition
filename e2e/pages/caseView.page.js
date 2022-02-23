@@ -36,8 +36,8 @@ module.exports = {
   },
 
   async clickOnTab(tabName) {
-    I.seeInCurrentUrl('cases/case-details/');
+    I.waitInUrl('cases/case-details/', 2);
     I.see(tabName);
-    I.click(this.tabs[tabName]);
+    I.click(tabName, 'div.mat-tab-labels');
   }
 };

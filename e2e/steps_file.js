@@ -64,6 +64,7 @@ const hearingAndTrialPage = require('./pages/generalApplication/hearingDetails.p
 const gaPBANumberPage = require('./pages/generalApplication/gaPBANumber.page');
 const answersPage = require('./pages/generalApplication/checkYourAnswers.page');
 const confirmationPage = require('./pages/generalApplication/gaConfirmation.page');
+const applicationTab = require('./pages/generalApplication/applicationTab.page');
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
@@ -661,6 +662,13 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => applicationTypePage.verifyAllApplicationTypes(appTypes, caseNumber),
+      ]);
+    },
+
+    async clickAndVerifyTab(tabName, appType) {
+      await this.triggerStepsWithScreenshot([
+        ...clickOnTab(tabName),
+        () => applicationTab.verifyApplicationDetails(appType),
       ]);
     },
 

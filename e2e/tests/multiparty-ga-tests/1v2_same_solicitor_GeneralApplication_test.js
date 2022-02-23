@@ -2,9 +2,9 @@ const config = require('../../config.js');
 const {waitForFinishedBusinessProcess} = require("../../api/testingSupport");
 const caseEventMessage = eventName => `Case ${caseId} has been updated with event: ${eventName}`;
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
+let {getAppTypes} = require('../../pages/generalApplication/GeneralApplicationTypes');
 let caseNumber;
 let caseId;
-let appTypes = ['Strike out', 'Stay the claim', 'Extend time', 'Summary judgment'];
 
 Feature('CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests');
 
@@ -18,7 +18,7 @@ Scenario('Create Single general application for 1v2 Same Solicitor', async ({I})
   await I.navigateToCaseDetails(caseNumber);
   caseId = await I.grabCaseNumber();
   await I.createGeneralApplication(
-    appTypes.slice(0, 1),
+    getAppTypes().slice(0, 1),
     caseNumber, '' +
     'no', 'yes', 'yes', 'no', 'no', 'no', 'no',
     'disabledAccess');
@@ -27,4 +27,5 @@ Scenario('Create Single general application for 1v2 Same Solicitor', async ({I})
   await waitForFinishedBusinessProcess(caseNumber);
   await I.click('Close and Return to case details');
   await I.see(caseEventMessage('Make an application'));
+  await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 1));
 }).retry(2);
