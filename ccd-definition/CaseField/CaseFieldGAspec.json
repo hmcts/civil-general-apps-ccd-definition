@@ -259,6 +259,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingDetailsResp",
+    "Label": "Scheduled hearings and trials",
+    "FieldType": "GAHearingDetailsRespGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "civilServiceUserRoles",
     "Label": " ",
     "FieldType": "GAUserDetailsGAspec",

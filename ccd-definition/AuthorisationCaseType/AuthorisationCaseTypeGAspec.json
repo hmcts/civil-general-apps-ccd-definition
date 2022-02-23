@@ -5,6 +5,12 @@
         "caseworker-civil-systemupdate"
       ],
       "CRUD": "CRUD"
-    }
-  ]
-  
+    },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "UserRoles": [
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRU"
+  }
+]
