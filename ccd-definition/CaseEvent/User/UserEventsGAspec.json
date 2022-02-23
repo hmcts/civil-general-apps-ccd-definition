@@ -18,7 +18,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "RESPOND_TO_APPLICATION",
-    "Name": "Respond to an application",
+    "Name": "Respond to application",
     "Description": "Applicant response",
     "DisplayOrder": 2,
     "PreConditionState(s)": "",
