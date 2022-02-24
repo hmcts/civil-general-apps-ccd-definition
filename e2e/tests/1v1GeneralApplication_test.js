@@ -29,7 +29,7 @@ Scenario('Create Single general application for 1v1', async ({I}) => {
   await I.click('Close and Return to case details');
   await I.see(caseEventMessage('Make an application'));
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 1), 1);
-}).retry(0);
+}).retry(2);
 
 Scenario('Create Multiple general applications for 1v1', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
@@ -46,4 +46,4 @@ Scenario('Create Multiple general applications for 1v1', async ({I}) => {
   await I.click('Close and Return to case details');
   await I.see(caseEventMessage('Make an application'));
   // await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 5), 2);
-}).retry(0);
+}).retry(2);
