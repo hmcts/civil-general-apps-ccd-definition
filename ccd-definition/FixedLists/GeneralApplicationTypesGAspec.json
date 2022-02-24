@@ -24,7 +24,7 @@
     "DisplayOrder": 4
   },
   {
-    "ID": "GeneralApplicationTypes`GAspec",
+    "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "AMEND_THE_STATEMENT_OF_CASE",
     "ListElement": "Amend the statement of case",
     "DisplayOrder": 5
