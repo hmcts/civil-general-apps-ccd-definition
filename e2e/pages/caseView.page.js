@@ -1,12 +1,14 @@
 const {I} = inject();
-const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 
 const EVENT_TRIGGER_LOCATOR = 'ccd-case-event-trigger';
 
 module.exports = {
 
   tabs: {
-    history: 'History'
+    summary: 'Summary',
+    claimDetails: 'Claim details',
+    history: 'History',
+    Applications: 'Applications'
   },
   fields: {
     eventDropdown: '#next-step',
@@ -20,7 +22,7 @@ module.exports = {
   },
 
   async startEvent(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
+    // await waitForFinishedBusinessProcess(caseId);
     await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
       this.start(event);
@@ -31,5 +33,11 @@ module.exports = {
     if (await I.hasSelector(this.fields.eventDropdown)) {
       throw new Error('Expected to have no events available');
     }
+  },
+
+  async clickOnTab(tabName) {
+    I.waitInUrl('cases/case-details/', 2);
+    I.see(tabName);
+    I.click(tabName, 'div.mat-tab-labels');
   }
 };

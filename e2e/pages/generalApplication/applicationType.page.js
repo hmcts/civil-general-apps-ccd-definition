@@ -9,7 +9,9 @@ module.exports = {
         strikeOut: 'Strike out',
         summaryJudgement: 'Summary judgement',
         stayTheClaim: 'Stay the claim',
-        extendTime: 'Extend time'
+        extendTime: 'Extend time',
+        amendTheStatementOfCase: 'Amend the statement of case',
+        reliefFromSanctions: 'Relief from sanctions',
       }
     },
   },
