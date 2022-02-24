@@ -5,7 +5,7 @@
     "Name": "Make an application",
     "Description": "Application created, post actions triggered",
     "DisplayOrder": 1,
-    "PreConditionState(s)": "",
+    "PreConditionState(s)": "*",
     "PostConditionState": "PENDING_APPLICATION_ISSUED",
     "SecurityClassification": "Public",
     "ShowSummary": "Y",

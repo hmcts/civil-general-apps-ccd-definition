@@ -1,50 +1,94 @@
 [
-    {
-      "CaseTypeID": "GENERALAPPLICATION",
-      "CaseStateID": "PENDING_APPLICATION_ISSUED",
-      "AccessControl": [
-        {
-          "UserRoles": [
-            "caseworker-civil-systemupdate",
-            "caseworker-civil-solicitor"
-          ],
-          "CRUD": "CRUD"
-        }
-      ]
-    },
-    {
-      "CaseTypeID": "GENERALAPPLICATION",
-      "CaseStateID": "AWAITING_RESPONDENT_RESPONSE",
-      "AccessControl": [
-        {
-          "UserRoles": [
-            "caseworker-civil-systemupdate",
-            "caseworker-civil-solicitor"
-          ],
-          "CRUD": "CRUD"
-        }
-      ]
-    },
-    {
-      "CaseTypeID": "GENERALAPPLICATION",
-      "CaseStateID": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION",
-      "AccessControl": [
-        {
-          "UserRoles": [
-            "caseworker-civil-systemupdate",
-            "caseworker-civil-solicitor"
-          ],
-          "CRUD": "CRUD"
-        }
-      ]
-    },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "PENDING_APPLICATION_ISSUED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "AWAITING_RESPONDENT_RESPONSE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseStateID": "PENDING_CASE_ISSUED",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "PENDING_APPLICATION_ISSUED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "AWAITING_RESPONDENT_RESPONSE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "PENDING_CASE_ISSUED",
+    "AccessControl": [
+      {
+        "UserRoles": [
           "caseworker-civil-solicitor"
         ],
         "CRUD": "CRUD"
