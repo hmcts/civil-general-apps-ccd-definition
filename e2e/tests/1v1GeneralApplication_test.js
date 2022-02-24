@@ -28,15 +28,15 @@ Scenario('Create Single general application for 1v1', async ({I}) => {
   await waitForFinishedBusinessProcess(caseNumber);
   await I.click('Close and Return to case details');
   await I.see(caseEventMessage('Make an application'));
-  await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 1));
-}).retry(2);
+  await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 1), 1);
+}).retry(0);
 
 Scenario('Create Multiple general applications for 1v1', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   caseId = await I.grabCaseNumber();
   await I.createGeneralApplication(
-    getAppTypes().slice(0, 3),
+    getAppTypes().slice(0, 5),
     caseNumber,
     'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter');
@@ -45,4 +45,5 @@ Scenario('Create Multiple general applications for 1v1', async ({I}) => {
   await waitForFinishedBusinessProcess(caseNumber);
   await I.click('Close and Return to case details');
   await I.see(caseEventMessage('Make an application'));
-}).retry(2);
+  // await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 5), 2);
+}).retry(0);

@@ -18,7 +18,7 @@ Scenario('Create Multiple general application for 2v1', async ({I}) => {
   await I.navigateToCaseDetails(caseNumber);
   caseId = await I.grabCaseNumber();
   await I.createGeneralApplication(
-    getAppTypes().slice(0, 3),
+    getAppTypes().slice(0, 4),
     caseNumber,
     'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter');
@@ -27,5 +27,5 @@ Scenario('Create Multiple general application for 2v1', async ({I}) => {
   await waitForFinishedBusinessProcess(caseNumber);
   await I.click('Close and Return to case details');
   await I.see(caseEventMessage('Make an application'));
-  await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 3));
+  await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 4), 1);
 }).retry(2);

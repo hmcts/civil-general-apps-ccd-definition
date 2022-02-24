@@ -665,10 +665,10 @@ module.exports = function () {
       ]);
     },
 
-    async clickAndVerifyTab(tabName, appType) {
+    async clickAndVerifyTab(tabName, appType, appCount) {
       await this.triggerStepsWithScreenshot([
         ...clickOnTab(tabName),
-        () => applicationTab.verifyApplicationDetails(appType),
+        () => applicationTab.verifyApplicationDetails(appType, appCount),
       ]);
     },
 

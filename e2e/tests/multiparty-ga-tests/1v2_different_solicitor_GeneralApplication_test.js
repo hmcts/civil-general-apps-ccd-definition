@@ -27,5 +27,5 @@ Scenario('Create Multiple general application for 1v2 different Solicitor', asyn
   await waitForFinishedBusinessProcess(caseNumber);
   await I.click('Close and Return to case details');
   await I.see(caseEventMessage('Make an application'));
-  await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 3));
+  await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 3), 1);
 }).retry(2);
