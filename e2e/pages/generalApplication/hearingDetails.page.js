@@ -177,6 +177,14 @@ module.exports = {
       await I.fillField(this.fields.supportRequirementSignLanguage, 'SignLanguage');
     }
     await I.clickContinue();
-  }
+  },
+
+  async updateHearingDetails() {
+    I.waitForElement(this.fields.hearingScheduled.id);
+    await I.fillField(this.fields.hearingDetailsEmailID, 'update@gmail.com');
+    await I.clickContinue();
+    await I.clickContinue();
+    I.seeInCurrentUrl('/INITIATE_GENERAL_APPLICATION/submit');
+  },
 };
 

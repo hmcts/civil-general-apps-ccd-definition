@@ -10,6 +10,17 @@
           "CRUD": "CRUD"
         }
       ]
-    }
-  ]
-  
+    },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "PENDING_CASE_ISSUED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  }
+]

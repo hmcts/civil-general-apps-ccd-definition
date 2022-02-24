@@ -27,6 +27,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseLink",
+    "Label": "caseLink",
+    "HintText": "  ",
+    "FieldType": "CaseLink",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppTypeLabel",
     "Label": "<p class=\"govuk-inset-text\">To make an application not shown on this list, you'll need to submit a paper application to the court.</p>",
     "HintText": "  ",
@@ -39,6 +47,16 @@
     "Label": "What type of applications do you want to make?",
     "HintText": "  ",
     "FieldType": "GATypeGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "Type of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalApplicationType",
+    "Label": "What type of applications do you want to make?",
+    "HintText": "  ",
+    "FieldType": "Text",
     "SecurityClassification": "Public",
     "_Definition":  "Type of the child application on the case",
     "_Category":  "COMMON"
@@ -167,6 +185,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "isPCClaimantMakingApplication",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "applicantSolicitor1UserDetails",
     "Label": " ",
     "FieldType": "GAUserDetailsGAspec",
@@ -195,9 +220,48 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppSubmittedDateGAspec",
+    "Label": "General Application Submitted on",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalApplicationsDetails",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppRespondent1Representative",
     "Label": "Do you agree that the court should make the order that the applicant has requested?",
     "FieldType": "GARespondentRepresentativeGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppDeadlineNotification",
+    "Label": " ",
+    "FieldType": "GeneralApplicationGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppDeadlineNotificationDate",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingDetailsResp",
+    "Label": "Scheduled hearings and trials",
+    "FieldType": "GAHearingDetailsRespGAspec",
     "SecurityClassification": "Public"
   }
 ]
