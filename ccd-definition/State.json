@@ -82,5 +82,12 @@
     "Name": "Application Closed",
     "Description": "Application Closed",
     "DisplayOrder": 12
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "PENDING_CASE_ISSUED",
+    "Name": "Claim Issue Pending",
+    "Description": "Holding state whilst payment is taken",
+    "DisplayOrder": 13
   }
 ]
