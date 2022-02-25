@@ -335,5 +335,13 @@
       "caseworker-civil-systemupdate"
     ],
     "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "hearingDetailsResp",
+    "UserRoles": [
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRU"
   }
 ]
