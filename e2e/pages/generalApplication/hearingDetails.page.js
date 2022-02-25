@@ -185,6 +185,7 @@ module.exports = {
     await I.clickContinue();
     await I.clickContinue();
     I.seeInCurrentUrl('/INITIATE_GENERAL_APPLICATION/submit');
+    await I.see('update@gmail.com');
   },
 };
 

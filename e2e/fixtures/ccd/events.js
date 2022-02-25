@@ -88,5 +88,5 @@ module.exports = {
     id: 'INITIATE_GENERAL_APPLICATION',
     name: 'Make an application',
     order: 17
-  },
+  }
 };
