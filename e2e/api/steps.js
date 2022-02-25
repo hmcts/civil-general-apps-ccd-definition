@@ -112,7 +112,7 @@ module.exports = {
     await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
       null, 'Case data validation failed');
 
-    await assertSubmittedEvent('PENDING_APPLICATION_ISSUED', {
+    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
       body: 'Your claim will not be issued until payment is confirmed.'
     });
@@ -133,7 +133,7 @@ module.exports = {
     await apiRequest.startEvent(eventName);
     await validateEventPages(data.CREATE_CLAIM_RESPONDENT_LIP);
 
-    await assertSubmittedEvent('PENDING_APPLICATION_ISSUED', {
+    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received and will progress offline',
       body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
@@ -151,7 +151,7 @@ module.exports = {
     await apiRequest.startEvent(eventName);
     await validateEventPages(data.CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS);
 
-    await assertSubmittedEvent('PENDING_APPLICATION_ISSUED', {
+    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received and will progress offline',
       body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
@@ -170,15 +170,15 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     await validateEventPages(data.CREATE_CLAIM_TERMINATED_PBA);
-    await assertSubmittedEvent('PENDING_APPLICATION_ISSUED', {
+    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
       body: 'You have until DATE to notify the defendant of the claim and claim details.'
     });
 
     await assignCaseToDefendant(caseId);
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PENDING_APPLICATION_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_APPLICATION_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PENDING_CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
     // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
   },
 
@@ -188,13 +188,13 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, caseId);
     await validateEventPages(data.RESUBMIT_CLAIM);
-    await assertSubmittedEvent('PENDING_APPLICATION_ISSUED', {
+    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Claim pending',
       body: 'Your claim will be processed. Wait for us to contact you.'
     });
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_APPLICATION_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
     // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
   },
 

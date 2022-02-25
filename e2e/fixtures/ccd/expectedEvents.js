@@ -16,7 +16,7 @@ module.exports = {
     AWAITING_APPLICANT_INTENTION: [
       events.CLAIMANT_RESPONSE,
     ],
-    PENDING_APPLICATION_ISSUED: [
+    PENDING_CASE_ISSUED: [
       events.RESUBMIT_CLAIM,
       events.NOTIFY_DEFENDANT_OF_CLAIM
     ]
@@ -58,7 +58,7 @@ module.exports = {
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],
-    PENDING_APPLICATION_ISSUED: [
+    PENDING_CASE_ISSUED: [
       events.AMEND_PARTY_DETAILS
     ]
   }
