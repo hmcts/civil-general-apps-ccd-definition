@@ -1,11 +1,24 @@
-{
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "RESPOND_TO_APPLICATION",
-    "CaseFieldID": "generalAppRespondent1Representative",
-    "DisplayContext": "MANDATORY",
-    "PageID": "GARespondent1RepeScreen",
-    "PageDisplayOrder": 8,
-    "PageFieldDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
-}
+[
+    {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseEventID": "RESPOND_TO_APPLICATION",
+        "CaseFieldID": "generalAppRespondent1Representative",
+        "DisplayContext": "MANDATORY",
+        "PageID": "GARespondent1RespScreen",
+        "PageDisplayOrder": 1,
+        "PageFieldDisplayOrder": 1,
+        "PageColumnNumber": 1,
+        "ShowSummaryChangeOption": "Y"
+    },
+    {
+        "CaseTypeID": "GENERALAPPLICATION",
+        "CaseEventID": "RESPOND_TO_APPLICATION",
+        "CaseFieldID": "hearingDetailsResp",
+        "DisplayContext": "COMPLEX",
+        "PageID": "GARespHearingScreen",
+        "PageDisplayOrder": 2,
+        "PageFieldDisplayOrder": 2,
+        "PageColumnNumber": 1,
+        "ShowSummaryChangeOption": "Y"
+    }
+]
