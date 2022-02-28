@@ -338,6 +338,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "hearingDetailsResp",
+    "UserRoles": [
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "civilServiceUserRoles",
     "UserRoles": [
       "caseworker-civil-systemupdate"
