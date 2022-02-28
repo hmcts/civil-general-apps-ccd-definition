@@ -5,7 +5,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "GeneralApplicationTypesGAspec",
     "HintText": "  ",
-    "ElementLabel": "  ",
+    "ElementLabel": " Application type",
     "SecurityClassification": "Public"
   }
 ]
