@@ -6,7 +6,7 @@
     "Description": "Application created, post actions triggered",
     "DisplayOrder": 1,
     "PreConditionState(s)": "",
-    "PostConditionState": "PENDING_CASE_ISSUED",
+    "PostConditionState": "PENDING_APPLICATION_ISSUED",
     "SecurityClassification": "Public",
     "ShowSummary": "Y",
     "ShowEventNotes": "N",
