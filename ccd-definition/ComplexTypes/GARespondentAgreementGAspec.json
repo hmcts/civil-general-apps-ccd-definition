@@ -3,14 +3,14 @@
     "ID": "GARespondentAgreementGAspec",
     "ListElementCode": "hasAgreedLabel",
     "FieldType": "Label",
-    "ElementLabel": "A judge will still need to approve this order",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GARespondentAgreementGAspec",
     "ListElementCode": "hasAgreed",
     "FieldType": "YesOrNo",
-    "ElementLabel": "A judge will still need to approve this order.",
+    "ElementLabel": "Application by consent",
     "SecurityClassification": "Public"
   }
 ]
