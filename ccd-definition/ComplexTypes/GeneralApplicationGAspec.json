@@ -158,5 +158,12 @@
       "ElementLabel": " ",
       "FieldType": "TextArea",
       "SecurityClassification": "Public"
+    },
+    {
+      "ID": "GeneralApplicationGAspec",
+      "ListElementCode": "civilServiceUserRoles",
+      "ElementLabel": " ",
+      "FieldType": "GAUserDetailsGAspec",
+      "SecurityClassification": "Public"
     }
 ]
