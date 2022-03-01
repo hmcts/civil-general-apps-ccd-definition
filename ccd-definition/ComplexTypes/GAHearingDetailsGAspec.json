@@ -65,7 +65,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingPreferencesDetailLabel",
-    "ElementLabel": "## Your hearing preferences\n #### A judge will still need to approve the hearing.\n",
+    "ElementLabel": " ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -178,7 +178,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingSupportRequirementsLabel",
-    "ElementLabel": "#### Support requirements(optional)\n",
+    "ElementLabel": " ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -187,7 +187,7 @@
     "ListElementCode": "SupportRequirement",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "GAHearingSupportRequirementsGAspec",
-    "ElementLabel": "Select any support you, your client and any experts or witness you would require for a court hearing",
+    "ElementLabel": "Support requirements (optional)",
     "SecurityClassification": "Public"
   },
   {

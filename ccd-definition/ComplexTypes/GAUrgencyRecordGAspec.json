@@ -3,7 +3,7 @@
     "ID": "GAUrgencyRecordGAspec",
     "ListElementCode": "generalAppUrgency",
     "FieldType": "YesOrNo",
-    "ElementLabel": " ",
+    "ElementLabel": "Urgent application",
     "SecurityClassification": "Public"
   },
   {

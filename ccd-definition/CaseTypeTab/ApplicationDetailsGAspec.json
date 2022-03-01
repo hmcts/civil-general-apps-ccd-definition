@@ -4,7 +4,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppType",
+    "CaseFieldID": "generalAppRespondentAgreement",
     "TabFieldDisplayOrder": 1
   },
   {
@@ -12,7 +12,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppRespondentAgreement",
+    "CaseFieldID": "isApplicationUrgent",
     "TabFieldDisplayOrder": 2
   },
   {
@@ -20,7 +20,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppStatementOfTruth",
+    "CaseFieldID": "generalAppInformOtherParty",
     "TabFieldDisplayOrder": 3
   },
   {
@@ -28,16 +28,8 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppUrgencyRequirement",
+    "CaseFieldID": "generalAppType",
     "TabFieldDisplayOrder": 4
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Summary",
-    "TabLabel": "Summary",
-    "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppInformOtherParty",
-    "TabFieldDisplayOrder": 5
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -60,7 +52,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppHearingDetails",
+    "CaseFieldID": "generalAppEvidenceDocument",
     "TabFieldDisplayOrder": 8
   },
   {
@@ -68,7 +60,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppPBADetails",
+    "CaseFieldID": "generalAppHearingDetails",
     "TabFieldDisplayOrder": 9
   },
   {
@@ -76,15 +68,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppEvidenceDocument",
-    "TabFieldDisplayOrder": 10
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Summary",
-    "TabLabel": "Summary",
-    "TabDisplayOrder": 1,
     "CaseFieldID": "generalAppParentCaseLink",
-    "TabFieldDisplayOrder": 11
+    "TabFieldDisplayOrder": 10
   }
 ]

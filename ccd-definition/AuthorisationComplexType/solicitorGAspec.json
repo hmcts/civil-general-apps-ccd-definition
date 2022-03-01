@@ -364,7 +364,7 @@
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppEvidenceDocument",
     "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",

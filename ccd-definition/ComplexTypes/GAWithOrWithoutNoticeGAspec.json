@@ -3,7 +3,7 @@
     "ID": "GAWithOrWithoutNotice",
     "ListElementCode": "isWithNoticeLabel",
     "FieldType": "Label",
-    "ElementLabel": "<p class=\"govuk-inset-text\">If you select 'No', this is known as making an application without notice – you can only do this if it's permitted by a rule practice direction or court order</p>\n",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
@@ -11,7 +11,7 @@
     "ListElementCode": "isWithNotice",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GARadioYesOrNo",
-    "ElementLabel": " ",
+    "ElementLabel": "Without notice",
     "SecurityClassification": "Public"
   },
   {
