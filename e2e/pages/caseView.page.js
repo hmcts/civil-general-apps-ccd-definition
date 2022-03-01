@@ -16,8 +16,14 @@ module.exports = {
   goButton: 'Go',
 
   start: function (event) {
-    I.selectOption(this.fields.eventDropdown, event);
-    I.click(this.goButton);
+    if (event === 'Respond to application') {
+      I.waitForClickable('.event-trigger .button', 3)
+      I.click(this.goButton);
+      pause();
+    } else {
+      I.selectOption(this.fields.eventDropdown, event);
+      I.click(this.goButton);
+    }
     I.waitForElement(EVENT_TRIGGER_LOCATOR);
   },
 
@@ -39,5 +45,9 @@ module.exports = {
     I.waitInUrl('cases/case-details/', 2);
     I.see(tabName);
     I.click(tabName, 'div.mat-tab-labels');
+  },
+
+  async clickOnFirstChildCaseId() {
+    I.click({css: '.collection-field-table a'});
   }
 };

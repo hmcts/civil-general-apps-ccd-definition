@@ -2,9 +2,8 @@ const config = require('../../config.js');
 const {waitForFinishedBusinessProcess} = require('../../api/testingSupport');
 const caseEventMessage = eventName => `Case ${caseId} has been updated with event: ${eventName}`;
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
-let {getAppTypes} = require('../../pages/generalApplication/GeneralApplicationTypes');
-let caseNumber;
-let caseId;
+let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
+let caseNumber, caseId;
 
 Feature('CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests');
 

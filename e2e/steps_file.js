@@ -65,6 +65,8 @@ const gaPBANumberPage = require('./pages/generalApplication/gaPBANumber.page');
 const answersPage = require('./pages/generalApplication/checkYourAnswers.page');
 const confirmationPage = require('./pages/generalApplication/gaConfirmation.page');
 const applicationTab = require('./pages/generalApplication/applicationTab.page');
+const respConsentCheckPage = require('./pages/generalApplication/responseJourneyPages/responseConsentCheck.page');
+const respHearingDetailsPage = require('./pages/generalApplication/responseJourneyPages/responseHearingDetails.page');
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
@@ -662,6 +664,26 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => applicationTypePage.verifyAllApplicationTypes(appTypes, caseNumber),
+      ]);
+    },
+
+    grabChildCaseNumber: async function () {
+      this.waitInUrl('#Applications', 3);
+      return await this.grabTextFrom('.collection-field-table a span');
+    },
+
+    async respondToApplication(caseId, consentCheck, hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement) {
+      eventName = events.RESPOND_TO_APPLICATION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.start(eventName),
+        () => respConsentCheckPage.selectConsentCheck(consentCheck),
+        () => respHearingDetailsPage.isRespHearingScheduled(hearingScheduled),
+        () => respHearingDetailsPage.isRespJudgeRequired(judgeRequired),
+        () => respHearingDetailsPage.isRespTrialRequired(trialRequired),
+        () => respHearingDetailsPage.selectRespHearingPreferences('inPerson'),
+        () => respHearingDetailsPage.selectRespHearingDuration('fortyFiveMin'),
+        () => respHearingDetailsPage.isRespUnavailableTrailRequired(unavailableTrailRequired),
+        () => respHearingDetailsPage.selectRespSupportRequirement(supportRequirement),
       ]);
     },
 

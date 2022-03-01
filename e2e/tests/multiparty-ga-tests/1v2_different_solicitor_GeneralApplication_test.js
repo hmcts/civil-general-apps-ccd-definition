@@ -2,11 +2,11 @@ const config = require('../../config.js');
 const {waitForFinishedBusinessProcess} = require('../../api/testingSupport');
 const caseEventMessage = eventName => `Case ${caseId} has been updated with event: ${eventName}`;
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
-let {getAppTypes} = require('../../pages/generalApplication/GeneralApplicationTypes');
-let caseNumber;
-let caseId;
+let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
+let caseNumber, caseId, childCaseId;
+const childCaseNum = () => `${childCaseId.split('-').join('')}`;
 
-Feature('CCD 1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests');
+Feature('CCD 1v2 Different Solicitor - General Application Journey @ga');
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({api}) => {
   caseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -28,4 +28,8 @@ Scenario('Create Multiple general application for 1v2 different Solicitor', asyn
   await I.click('Close and Return to case details');
   await I.see(caseEventMessage('Make an application'));
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 3), 1);
-}).retry(2);
+  childCaseId = await I.grabChildCaseNumber();
+  await I.navigateToCaseDetails(childCaseNum());
+  await I.respondToApplication(childCaseNum(), 'yes', 'yes', 'yes', 'yes', 'no',
+    'signLanguageInterpreter');
+}).retry(0);
