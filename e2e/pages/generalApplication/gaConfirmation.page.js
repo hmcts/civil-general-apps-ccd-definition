@@ -20,6 +20,7 @@ module.exports = {
     appTypes.forEach(type => {
       return I.see(type);
     });
+    I.wait(15);
   }
 };
 

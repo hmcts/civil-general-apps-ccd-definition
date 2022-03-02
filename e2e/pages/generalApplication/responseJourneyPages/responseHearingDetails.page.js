@@ -177,7 +177,6 @@ module.exports = {
       await I.fillField(this.fields.supportRequirementSignLanguage, 'SignLanguage');
     }
     await I.clickContinue();
-    pause();
   },
 
   async updateRespHearingDetails() {

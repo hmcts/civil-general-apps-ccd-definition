@@ -1,35 +1,36 @@
 const config = require('../../config.js');
-const {waitForFinishedBusinessProcess} = require('../../api/testingSupport');
 const caseEventMessage = eventName => `Case ${caseId} has been updated with event: ${eventName}`;
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
+const appStatus = 'Application Submitted - Awaiting Judicial Decision';
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 let caseNumber, caseId, childCaseId;
 const childCaseNum = () => `${childCaseId.split('-').join('')}`;
 
-Feature('CCD 1v2 Different Solicitor - General Application Journey @ga');
+Feature('CCD 1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests');
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({api}) => {
   caseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Case created for general application: ' + caseNumber);
-});
+}).retry(1);
 
-Scenario('Create Multiple general application for 1v2 different Solicitor', async ({I}) => {
+Scenario('Create Multiple general application for 1v2 different Solicitor and respond to application', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   caseId = await I.grabCaseNumber();
   await I.createGeneralApplication(
     getAppTypes().slice(0, 3),
     caseNumber,
-    'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'no',
+    'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter');
   console.log('General Application created: ' + caseNumber);
   await I.see(caseId);
-  await waitForFinishedBusinessProcess(caseNumber);
   await I.click('Close and Return to case details');
   await I.see(caseEventMessage('Make an application'));
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 3), 1);
+  await I.see(appStatus);
   childCaseId = await I.grabChildCaseNumber();
-  await I.navigateToCaseDetails(childCaseNum());
   await I.respondToApplication(childCaseNum(), 'yes', 'yes', 'yes', 'yes', 'no',
-    'signLanguageInterpreter');
-}).retry(0);
+    'signLanguageInterpreter', getAppTypes().slice(0, 3));
+  console.log('Responded to application: ' + childCaseNum());
+  await I.click('Close and Return to case details');
+}).retry(1);

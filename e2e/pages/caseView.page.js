@@ -1,5 +1,4 @@
 const {I} = inject();
-
 const EVENT_TRIGGER_LOCATOR = 'ccd-case-event-trigger';
 
 module.exports = {
@@ -17,9 +16,8 @@ module.exports = {
 
   start: function (event) {
     if (event === 'Respond to application') {
-      I.waitForClickable('.event-trigger .button', 3)
+      I.waitForClickable('.event-trigger .button', 3);
       I.click(this.goButton);
-      pause();
     } else {
       I.selectOption(this.fields.eventDropdown, event);
       I.click(this.goButton);
