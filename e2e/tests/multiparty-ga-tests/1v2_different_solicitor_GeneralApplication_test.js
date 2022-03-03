@@ -1,7 +1,7 @@
 const config = require('../../config.js');
 const caseEventMessage = eventName => `Case ${caseId} has been updated with event: ${eventName}`;
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
-const appStatus = 'Application Submitted - Awaiting Judicial Decision';
+const appStatus = 'Awaiting Respondent Response';
 const childCaseNum = () => `${childCaseId.split('-').join('')}`;
 
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
@@ -21,7 +21,7 @@ Scenario('Create Multiple general application for 1v2 different Solicitor and re
   await I.createGeneralApplication(
     getAppTypes().slice(0, 3),
     caseNumber,
-    'yes', 'no', 'no', 'yes', 'yes', 'yes', 'no',
+    'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter');
   console.log('General Application created: ' + caseNumber);
   await I.see(caseId);
