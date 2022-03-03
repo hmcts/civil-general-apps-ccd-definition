@@ -69,6 +69,8 @@ const respConsentCheckPage = require('./pages/generalApplication/responseJourney
 const respHearingDetailsPage = require('./pages/generalApplication/responseJourneyPages/responseHearingDetails.page');
 const responseCheckYourAnswersPage = require('./pages/generalApplication/responseJourneyPages/responseCheckYourAnswers.page');
 const responseConfirmationPage = require('./pages/generalApplication/responseJourneyPages/responseConfirmation.page');
+const responseSummaryPage = require('./pages/generalApplication/responseJourneyPages/responseSummary.page');
+
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
@@ -691,6 +693,12 @@ module.exports = function () {
         ...submitApplication('You have responded to an application'),
         () => responseConfirmationPage.verifyRespConfirmationPage(),
         () => responseConfirmationPage.verifyRespApplicationType(appTypes),
+      ]);
+    },
+
+    async verifyResponseSummaryPage() {
+      await this.triggerStepsWithScreenshot([
+        () => responseSummaryPage.verifySummaryPageAfterResponding(),
       ]);
     },
 

@@ -14,12 +14,12 @@ module.exports = {
     I.seeTextEquals('You have responded to an application', '#confirmation-header h1');
   },
 
-  async verifyRespApplicationType() {
- /*   I.waitForElement(this.fields.confirmation.id);
+  async verifyRespApplicationType(appTypes) {
+    I.waitForElement(this.fields.confirmation.id);
     appTypes.forEach(type => {
       return I.see(type);
     });
-    I.wait(2);*/
+    I.wait(2);
   }
 };
 

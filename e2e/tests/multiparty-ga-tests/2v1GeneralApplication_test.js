@@ -2,6 +2,7 @@ const config = require('../../config.js');
 const caseEventMessage = eventName => `Case ${caseId} has been updated with event: ${eventName}`;
 const mpScenario = 'TWO_V_ONE';
 const appStatus = 'Application Submitted - Awaiting Judicial Decision';
+
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 let caseNumber, caseId;
 
@@ -27,4 +28,4 @@ Scenario('Create Multiple general application for 2v1', async ({I}) => {
   await I.see(caseEventMessage('Make an application'));
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 4), 1);
   await I.see(appStatus);
-}).retry(1);
+}).retry(0);

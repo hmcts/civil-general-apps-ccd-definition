@@ -12,5 +12,7 @@ module.exports = {
     applicationTypes.forEach(type => {
       return I.see(type);
     });
+    I.refreshPage();
+    I.wait(2);
   },
 };
