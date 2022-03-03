@@ -118,5 +118,24 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+	    	"CRUD": "R"
+		      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
