@@ -46,5 +46,17 @@
     "CaseFieldID": "generalAppParentCaseLink",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "applicantSolicitors",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "defendantSolicitors",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
   }
 ]
