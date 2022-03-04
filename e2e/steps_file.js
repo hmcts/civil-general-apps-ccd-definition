@@ -65,6 +65,12 @@ const gaPBANumberPage = require('./pages/generalApplication/gaPBANumber.page');
 const answersPage = require('./pages/generalApplication/checkYourAnswers.page');
 const confirmationPage = require('./pages/generalApplication/gaConfirmation.page');
 const applicationTab = require('./pages/generalApplication/applicationTab.page');
+const respConsentCheckPage = require('./pages/generalApplication/responseJourneyPages/responseConsentCheck.page');
+const respHearingDetailsPage = require('./pages/generalApplication/responseJourneyPages/responseHearingDetails.page');
+const responseCheckYourAnswersPage = require('./pages/generalApplication/responseJourneyPages/responseCheckYourAnswers.page');
+const responseConfirmationPage = require('./pages/generalApplication/responseJourneyPages/responseConfirmation.page');
+const responseSummaryPage = require('./pages/generalApplication/responseJourneyPages/responseSummary.page');
+
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
@@ -142,8 +148,8 @@ const selectNotice = (notice) => [
   () => withOutNoticePage.selectNotice(notice),
 ];
 
-const enterApplicationDetails = () => [
-  () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH),
+const enterApplicationDetails = (consentCheck) => [
+  () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH, consentCheck),
 ];
 
 const fillHearingDetails = (hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement) => [
@@ -172,8 +178,8 @@ const clickOnHearingDetailsChangeLink = (consentCheck) => [
   () => answersPage.clickOnChangeLink(consentCheck),
 ];
 
-const submitApplication = () => [
-  () => event.submit('Submit', 'You have made an application')
+const submitApplication = (confMessage) => [
+  () => event.submit('Submit', confMessage)
 ];
 
 const verifyGAConfirmationPage = (appType) => [
@@ -665,6 +671,37 @@ module.exports = function () {
       ]);
     },
 
+    async grabChildCaseNumber() {
+      this.waitInUrl('#Applications', 3);
+      return await this.grabTextFrom('.collection-field-table a span');
+    },
+
+    async respondToApplication(caseId, consentCheck, hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement, appTypes) {
+      eventName = events.RESPOND_TO_APPLICATION.name;
+      await this.navigateToCaseDetails(caseId);
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.start(eventName),
+        () => respConsentCheckPage.selectConsentCheck(consentCheck),
+        () => respHearingDetailsPage.isRespHearingScheduled(hearingScheduled),
+        () => respHearingDetailsPage.isRespJudgeRequired(judgeRequired),
+        () => respHearingDetailsPage.isRespTrialRequired(trialRequired),
+        () => respHearingDetailsPage.selectRespHearingPreferences('inPerson'),
+        () => respHearingDetailsPage.selectRespHearingDuration('fortyFiveMin'),
+        () => respHearingDetailsPage.isRespUnavailableTrailRequired(unavailableTrailRequired),
+        () => respHearingDetailsPage.selectRespSupportRequirement(supportRequirement),
+        () => responseCheckYourAnswersPage.respVerifyCheckAnswerForm(caseId),
+        ...submitApplication('You have responded to an application'),
+        () => responseConfirmationPage.verifyRespConfirmationPage(),
+        () => responseConfirmationPage.verifyRespApplicationType(appTypes),
+      ]);
+    },
+
+    async verifyResponseSummaryPage() {
+      await this.triggerStepsWithScreenshot([
+        () => responseSummaryPage.verifySummaryPageAfterResponding(),
+      ]);
+    },
+
     async clickAndVerifyTab(tabName, appType, appCount) {
       await this.triggerStepsWithScreenshot([
         ...clickOnTab(tabName),
@@ -681,13 +718,13 @@ module.exports = function () {
         ...conditionalSteps(consentCheck === 'no', [
           ...selectNotice(notice),
         ]),
-        ...enterApplicationDetails(),
+        ...enterApplicationDetails(consentCheck),
         ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement),
         ...selectPbaNumber(consentCheck),
         ...verifyCheckAnswerForm(caseId, consentCheck),
         ...clickOnHearingDetailsChangeLink(consentCheck),
         ...updateHearingDetails(),
-        ...submitApplication(),
+        ...submitApplication('You have made an application'),
         ...verifyGAConfirmationPage(appTypes),
       ]);
     }

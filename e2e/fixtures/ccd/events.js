@@ -88,5 +88,11 @@ module.exports = {
     id: 'INITIATE_GENERAL_APPLICATION',
     name: 'Make an application',
     order: 17
+  },
+  RESPOND_TO_APPLICATION: {
+    description: 'Applicant response',
+    id: 'RESPOND_TO_APPLICATION',
+    name: 'Respond to application',
+    order: 18
   }
 };
