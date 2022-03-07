@@ -293,5 +293,12 @@
     "Label": "What is your decision on this application?",
     "FieldType": "GAJudicialDecisionGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialDecisionMakeOrder",
+    "Label": " ",
+    "FieldType": "GAJudicialMakeAnOrderGAspec",
+    "SecurityClassification": "Public"
   }
 ]

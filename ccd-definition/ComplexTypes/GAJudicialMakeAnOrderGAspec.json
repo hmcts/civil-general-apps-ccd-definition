@@ -1,0 +1,17 @@
+[
+    {
+      "ID": "GAJudicialMakeAnOrderGAspec",
+      "ListElementCode": "makeAnOrder",
+      "ElementLabel": " ",
+      "FieldType": "FixedRadioList",
+      "FieldTypeParameter": "GAJudgeMakeAnOrderOptionGAspec",
+      "SecurityClassification": "Public"
+    },
+    {
+      "ID": "GAJudicialMakeAnOrderGAspec",
+      "ListElementCode": "makeAnOrderText",
+      "ElementLabel": "Reason for decision",
+      "FieldType": "TextArea",
+      "SecurityClassification": "Public"
+    }
+  ]
