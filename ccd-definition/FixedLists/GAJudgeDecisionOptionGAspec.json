@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "GAJudgeDecisionOptionGAspec",
+    "ListElementCode": "MAKE_AN_ORDER",
+    "ListElement": "Make an order",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "GAJudgeDecisionOptionGAspec",
+    "ListElementCode": "REQUEST_MORE_INFO",
+    "ListElement": "Request more information",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "GAJudgeDecisionOptionGAspec",
+    "ListElementCode": "LIST_FOR_A_HEARING",
+    "ListElement": "List for a hearing",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "GAJudgeDecisionOptionGAspec",
+    "ListElementCode": "MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS",
+    "ListElement": "Make an order for written representations",
+    "DisplayOrder": 4
+  }
+]
