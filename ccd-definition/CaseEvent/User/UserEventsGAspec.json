@@ -21,7 +21,7 @@
     "Name": "Respond to application",
     "Description": "Applicant response",
     "DisplayOrder": 2,
-    "PreConditionState(s)": "PENDING_APPLICATION_ISSUED",
+    "PreConditionState(s)": "AWAITING_RESPONDENT_RESPONSE",
     "PostConditionState": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION",
     "SecurityClassification": "Public",
     "EndButtonLabel": "Submit",
