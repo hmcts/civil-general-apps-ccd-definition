@@ -9,18 +9,17 @@ module.exports = {
     applicationList: '#confirmation-body li'
   },
 
-  async verifyConfirmationPage() {
-    I.waitForElement(this.fields.confirmation.id);
-    I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATION/confirm');
-    I.seeTextEquals('You have made an application', '#confirmation-header h1');
+  async verifyRespConfirmationPage() {
+    I.seeInCurrentUrl('RESPOND_TO_APPLICATION/confirm');
+    I.seeTextEquals('You have responded to an application', '#confirmation-header h1');
   },
 
-  async verifyApplicationType(appTypes) {
+  async verifyRespApplicationType(appTypes) {
     I.waitForElement(this.fields.confirmation.id);
     appTypes.forEach(type => {
       return I.see(type);
     });
-    I.wait(15);
+    I.wait(2);
   }
 };
 
