@@ -91,7 +91,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         correct: 'No'
       },
       applicantSolicitor1UserDetails: {
-        email: 'civilunspecified@gmail.com',
+        email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
         id: 'c18d5f8d-06fa-477d-ac09-5b6129828a5b'
       }
     },
@@ -138,7 +138,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       respondentSolicitor1ServiceAddress: buildAddress('service')
     },
     DefendantSolicitorEmail: {
-      respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
+      respondentSolicitor1EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
     },
     AddAnotherDefendant: {
       addRespondent2: 'No'
@@ -259,7 +259,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
           respondentSolicitor2Reference: 'sol2reference'
         },
         SecondDefendantSolicitorEmail: {
-          respondentSolicitor2EmailAddress: 'civilunspecified@gmail.com'
+          respondentSolicitor2EmailAddress: 'hmcts.civil+organisation.2.solicitor.1@gmail.com'
         }
       };
     }

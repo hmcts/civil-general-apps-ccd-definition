@@ -25,6 +25,12 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "civilServiceUserRoles",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppSubmittedDateGAspec",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
@@ -40,5 +46,17 @@
     "CaseFieldID": "generalAppParentCaseLink",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "applicantSolicitors",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "defendantSolicitors",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
   }
 ]

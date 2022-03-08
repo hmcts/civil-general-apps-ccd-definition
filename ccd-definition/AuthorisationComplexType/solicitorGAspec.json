@@ -364,7 +364,7 @@
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppEvidenceDocument",
     "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -454,6 +454,20 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppDeadlineNotification",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "applicantSolicitors",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "defendantSolicitors",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   }

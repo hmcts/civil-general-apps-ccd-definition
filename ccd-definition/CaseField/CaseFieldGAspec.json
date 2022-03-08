@@ -44,7 +44,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppType",
-    "Label": "What type of applications do you want to make?",
+    "Label": " ",
     "HintText": "  ",
     "FieldType": "GATypeGAspec",
     "SecurityClassification": "Public",
@@ -64,7 +64,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppRespondentAgreement",
-    "Label": "Has the respondent agreed to the order that you want the judge to make?",
+    "Label": " ",
     "FieldType": "GARespondentAgreementGAspec",
     "SecurityClassification": "Public",
     "_Definition":  "The details of the child application on the case related to respondent agreement",
@@ -98,7 +98,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppUrgencyRequirement",
-    "Label": "Is this an urgent application?",
+    "Label": " ",
     "FieldType": "GAUrgencyRecordGAspec",
     "SecurityClassification": "Public",
     "_Definition":  "This fields holds whether or not the application is urgent, and if it is then the further details and reasons",
@@ -115,7 +115,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppInformOtherParty",
-    "Label": "Do you want the court to inform the other party of this application?\n",
+    "Label": " ",
     "FieldType": "GAWithOrWithoutNotice",
     "SecurityClassification": "Public",
     "_Definition":  "This fields holds whether or not the other party should be notified of this application. If no, then reasons behind not notifying.",
@@ -125,7 +125,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppDetailsOfOrder",
-    "Label": "What order do you want the court to make?",
+    "Label": "Draft order",
     "HintText": "This is the draft order that you are requesting from the court",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
@@ -133,7 +133,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppReasonsOfOrder",
-    "Label": "Reasons for requesting this order",
+    "Label": "Reason",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
@@ -147,7 +147,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppHearingDetails",
-    "Label": "Scheduled hearings and trials",
+    "Label": "Hearing details",
     "FieldType": "GAHearingDetailsGAspec",
     "SecurityClassification": "Public"
   },
@@ -262,6 +262,36 @@
     "ID": "hearingDetailsResp",
     "Label": "Scheduled hearings and trials",
     "FieldType": "GAHearingDetailsRespGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "civilServiceUserRoles",
+    "Label": " ",
+    "FieldType": "GAUserDetailsGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "applicantSolicitors",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GASolicitorsDetailsGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "defendantSolicitors",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GASolicitorsDetailsGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialDecision",
+    "Label": "What is your decision on this application?",
+    "FieldType": "GAJudicialDecisionGAspec",
     "SecurityClassification": "Public"
   }
 ]

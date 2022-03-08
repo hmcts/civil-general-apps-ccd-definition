@@ -158,5 +158,28 @@
       "ElementLabel": " ",
       "FieldType": "TextArea",
       "SecurityClassification": "Public"
+    },
+    {
+      "ID": "GeneralApplicationGAspec",
+      "ListElementCode": "civilServiceUserRoles",
+      "ElementLabel": " ",
+      "FieldType": "GAUserDetailsGAspec",
+      "SecurityClassification": "Public"
+    },
+    {
+      "ID": "GeneralApplicationGAspec",
+      "ListElementCode": "applicantSolicitors",
+      "ElementLabel": " ",
+      "FieldType": "Collection",
+      "FieldTypeParameter": "GASolicitorsDetailsGAspec",
+      "SecurityClassification": "Public"
+    },
+    {
+      "ID": "GeneralApplicationGAspec",
+      "ListElementCode": "defendantSolicitors",
+      "ElementLabel": " ",
+      "FieldType": "Collection",
+      "FieldTypeParameter": "GASolicitorsDetailsGAspec",
+      "SecurityClassification": "Public"
     }
 ]
