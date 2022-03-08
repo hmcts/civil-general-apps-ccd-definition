@@ -35,4 +35,5 @@ Scenario('Create Multiple general application for 1v2 different Solicitor and re
   console.log('Responded to application: ' + childCaseNum());
   await I.click('Close and Return to case details');
   await I.verifyResponseSummaryPage();
+  await I.judgeMakeDecision('makeAnOrder');
 }).retry(0);

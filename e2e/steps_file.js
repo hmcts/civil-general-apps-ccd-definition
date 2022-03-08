@@ -70,6 +70,7 @@ const respHearingDetailsPage = require('./pages/generalApplication/responseJourn
 const responseCheckYourAnswersPage = require('./pages/generalApplication/responseJourneyPages/responseCheckYourAnswers.page');
 const responseConfirmationPage = require('./pages/generalApplication/responseJourneyPages/responseConfirmation.page');
 const responseSummaryPage = require('./pages/generalApplication/responseJourneyPages/responseSummary.page');
+const judgeDecisionPage = require('./pages/generalApplication/judgesJourneyPages/judgeDecision.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -693,6 +694,14 @@ module.exports = function () {
         ...submitApplication('You have responded to an application'),
         () => responseConfirmationPage.verifyRespConfirmationPage(),
         () => responseConfirmationPage.verifyRespApplicationType(appTypes),
+      ]);
+    },
+
+    async judgeMakeDecision(decision) {
+      eventName = events.JUDGE_MAKES_DECISION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.start(eventName),
+        () => judgeDecisionPage.selectJudgeDecision(decision),
       ]);
     },
 

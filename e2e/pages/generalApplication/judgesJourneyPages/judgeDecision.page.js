@@ -4,7 +4,7 @@ module.exports = {
 
   fields: {
     judgeDecision: {
-      id: '#',
+      id: '#judicialDecision_judicialDecision',
       options: {
         makeAnOrder: 'Make an order',
         requestMoreInfo: 'Request more information',
@@ -16,7 +16,7 @@ module.exports = {
 
   async selectJudgeDecision(decision) {
     I.waitForElement(this.fields.judgeDecision.id);
-    I.seeInCurrentUrl('RESPOND_TO_APPLICATION/RESPOND_TO_APPLICATIONGARespondent1RespScreen');
+    I.seeInCurrentUrl('JUDGE_MAKES_DECISION/JUDGE_MAKES_DECISIONGAJudicialDecision');
     I.click(this.fields.judgeDecision.options[decision]);
     await I.clickContinue();
   }
