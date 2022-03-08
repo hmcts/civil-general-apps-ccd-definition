@@ -5,9 +5,21 @@
     "CaseFieldID": "judicialDecision",
     "DisplayContext": "MANDATORY",
     "PageID": "GAJudicialDecision",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
+    "PageFieldDisplayOrder": 2,
+    "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "PageID": "GAJudicialMakeADecisionScreen",
+    "DisplayContext": "MANDATORY",
+    "PageColumnNumber": 1,
+    "PageFieldDisplayOrder": 1,
+    "PageDisplayOrder": 2,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "judicialDecision.decision = \"MAKE_AN_ORDER\""
   }
 ]
