@@ -286,5 +286,12 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "GASolicitorsDetailsGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialDecision",
+    "Label": "What is your decision on this application?",
+    "FieldType": "GAJudicialDecisionGAspec",
+    "SecurityClassification": "Public"
   }
 ]
