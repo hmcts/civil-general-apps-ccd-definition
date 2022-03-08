@@ -38,5 +38,13 @@
     "Description": "Creator of case",
     "JurisdictionID": "CIVIL",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "[JUDGE]",
+    "Name": "Judge",
+    "Description": "Judge",
+    "JurisdictionID": "CIVIL",
+    "SecurityClassification": "Public"
   }
 ]
