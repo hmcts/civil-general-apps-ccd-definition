@@ -458,5 +458,12 @@
     "ListElementCode": "defendantSolicitors",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "respondentsResponses",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]

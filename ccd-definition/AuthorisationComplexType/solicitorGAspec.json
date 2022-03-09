@@ -449,6 +449,13 @@
     "ListElementCode": "defendantSolicitors",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "respondentsResponses",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
   }
 ]
 
