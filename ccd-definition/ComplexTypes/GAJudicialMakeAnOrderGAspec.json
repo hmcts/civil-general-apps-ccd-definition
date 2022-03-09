@@ -1,22 +1,6 @@
 [
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
-    "ListElementCode": "applicationIsCloakedLabel",
-    "ElementLabel": "## This application is cloaked",
-    "FieldType": "Label",
-    "FieldTypeParameter": "GAJudgeMakeAnOrderOptionGAspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAJudicialMakeAnOrderGAspec",
-    "ListElementCode": "ConsentAgreementCheckBox",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "MakeAppAvailableCheckGAspec",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "makeAnOrder",
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",

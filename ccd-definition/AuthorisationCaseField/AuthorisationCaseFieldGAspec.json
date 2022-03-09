@@ -339,6 +339,34 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "applicationIsCloaked",
+    "UserRoles": [
+      "caseworker-civil-systemupdate",
+      "caseworker-civil-solicitor",
+      "caseworker-civil-judge"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "applicationIsCloakedLabel",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "makeAppVisibleToAll",
+    "UserRoles": [
+      "caseworker-civil-systemupdate",
+      "caseworker-civil-solicitor",
+      "caseworker-civil-judge"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicantSolicitor1UserDetails",
     "UserRoles": [
       "caseworker-civil-systemupdate"

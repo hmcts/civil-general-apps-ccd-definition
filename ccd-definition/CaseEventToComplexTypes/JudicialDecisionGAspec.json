@@ -1,5 +1,25 @@
 [
   {
+    "ID": "GAWithOrWithoutNotice",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "generalAppRespondentAgreement",
+    "ListElementCode": "hasAgreed",
+    "EventElementLabel": "",
+    "EventHintText": "",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "GAWithOrWithoutNotice",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "generalAppInformOtherParty",
+    "ListElementCode": "isWithNotice",
+    "EventElementLabel": "",
+    "EventHintText": "",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
     "ID": "GAJudicialDecision",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialDecision",
@@ -13,29 +33,9 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "applicationIsCloakedLabel",
-    "EventElementLabel": " ",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed = \"Yes\" OR generalAppInformOtherParty.isWithNotice = \"No\""
-  },
-  {
-    "ID": "GAJudicialMakeADecisionScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
-    "CaseFieldID": "ConsentAgreementCheckBox",
-    "ListElementCode": "makeAnOrderText",
-    "EventElementLabel": " ",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed = \"Yes\" OR generalAppInformOtherParty.isWithNotice = \"No\""
-  },
-  {
-    "ID": "GAJudicialMakeADecisionScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
-    "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "makeAnOrder",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -44,7 +44,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "makeAnOrderText",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   }
 ]

@@ -8,7 +8,46 @@
     "PageColumnNumber": 1,
     "PageFieldDisplayOrder": 2,
     "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/judicial-decision-option"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "applicationIsCloaked",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "GAJudicialMakeADecisionScreen",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "judicialDecisionMakeOrder = \"DO_NOT_SHOW_IN_UI\"",
+    "Comment": "Hidden field to show applicationIsCloakedLabel and makeAppVisibleToAll when application is without notice",
+    "PageShowCondition": "judicialDecision.decision = \"MAKE_AN_ORDER\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "applicationIsCloakedLabel",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "GAJudicialMakeADecisionScreen",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "applicationIsCloaked=\"Yes\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "makeAppVisibleToAll",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "GAJudicialMakeADecisionScreen",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "applicationIsCloaked=\"Yes\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -17,9 +56,8 @@
     "PageID": "GAJudicialMakeADecisionScreen",
     "DisplayContext": "MANDATORY",
     "PageColumnNumber": 1,
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
     "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "judicialDecision.decision = \"MAKE_AN_ORDER\""
+    "ShowSummaryChangeOption": "Y"
   }
 ]
