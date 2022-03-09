@@ -141,12 +141,11 @@ ccd:
         IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET: ${IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET}
         IDAM_DATA_STORE_SYSTEM_USER_USERNAME: ${IDAM_DATA_STORE_SYSTEM_USER_USERNAME}
         IDAM_DATA_STORE_SYSTEM_USER_PASSWORD: ${IDAM_DATA_STORE_SYSTEM_USER_PASSWORD}
-        ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-role-am
+        ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-serv
       keyVaults: []
       ingressHost: civil-ga-ccd-service-data-store-staging-aat.service.core-compute-aat.internal
   am-role-assignment-service:
     java:
-      ingressHost: role-am-${SERVICE_FQDN}
       keyVaults:
         am:
           secrets:
