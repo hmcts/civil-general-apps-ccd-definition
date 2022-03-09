@@ -63,7 +63,7 @@ java:
     DOCUMENT_MANAGEMENT_SECURED: true
 
 idam-pr:
-  releaseNameOverride: ${SERVICE_NAME}-xui-idam-pr
+  releaseNameOverride: ${SERVICE_NAME}-idam-pr
   enabled: true
   redirect_uris:
     XUI:
