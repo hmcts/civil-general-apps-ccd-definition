@@ -3,6 +3,7 @@
 @Library("Infrastructure")
 import uk.gov.hmcts.contino.AppPipelineConfig
 import uk.gov.hmcts.contino.AppPipelineDsl
+import uk.gov.hmcts.contino.GithubAPI
 
 def type = "java"
 def product = "civil"
@@ -40,12 +41,19 @@ def secrets = [
         ]
 ]
 
+def checkForEnableHelmLabel(branch_name) {
+  return new GithubAPI(this).getLabelsbyPattern(branch_name, "enableHelm").contains("enableHelm")
+}
+
 withPipeline(type, product, component) {
     pipelineConf = config
     disableLegacyDeployment()
     enableAksStagingDeployment()
 
     onPR {
+      if (!checkForEnableHelmLabel(env.BRANCH_NAME)) {
+        enableCleanupOfHelmReleaseOnSuccess();
+      }
         loadVaultSecrets(secrets)
     }
     onMaster {
@@ -61,9 +69,9 @@ withPipeline(type, product, component) {
                 try {
                     sh '''
             set -e
-    
+
             git remote set-url origin $(git config remote.origin.url | sed "s/github.com/${BEARER_TOKEN}@github.com/g")
-    
+
             git fetch origin demo:demo
             git push --force origin HEAD:demo
           '''
@@ -81,8 +89,8 @@ withPipeline(type, product, component) {
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-general-apps-ccd-definition civil-general-apps-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
-          #./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*LRspec.json"
-          #./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*LRspec.json"
+          ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*LRspec.json"
+          ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*LRspec.json"
           ./bin/import-bpmn-diagram.sh .
         """
 
