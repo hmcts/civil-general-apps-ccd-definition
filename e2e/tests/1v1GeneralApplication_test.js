@@ -2,9 +2,10 @@ const config = require('../config.js');
 const caseEventMessage = eventName => `Case ${caseId} has been updated with event: ${eventName}`;
 const mpScenario = 'ONE_V_ONE';
 const appStatus = 'Application Submitted - Awaiting Judicial Decision';
+const childCaseNum = () => `${childCaseId.split('-').join('')}`;
 
 let {getAppTypes} = require('../pages/generalApplication/generalApplicationTypes');
-let caseNumber, caseId;
+let caseNumber, caseId, childCaseId;
 
 Feature('CCD 1v1 - General Application Journey @e2e-tests');
 
@@ -29,6 +30,9 @@ Scenario('Create Single general application for 1v1 and respond to application',
   await I.see(caseEventMessage('Make an application'));
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 1), 1);
   await I.see(appStatus);
+  childCaseId = await I.grabChildCaseNumber();
+  await I.navigateToCaseDetails(childCaseNum());
+  await I.judgeMakeDecision('makeAnOrder');
 }).retry(0);
 
 Scenario('Create Multiple general applications for 1v1', async ({I}) => {
@@ -46,4 +50,7 @@ Scenario('Create Multiple general applications for 1v1', async ({I}) => {
   await I.see(caseEventMessage('Make an application'));
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 5), 2);
   await I.see(appStatus);
+  childCaseId = await I.grabChildCaseNumber();
+  await I.navigateToCaseDetails(childCaseNum());
+  await I.judgeMakeDecision('makeAnOrder');
 }).retry(0);

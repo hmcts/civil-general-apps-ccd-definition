@@ -45,6 +45,7 @@ module.exports = {
     await I.see(tabName);
     await I.click(tabName, this.fields.tab);
     await I.wait(2);
+    await I.refreshPage();
     await I.click('Summary', this.fields.tab);
     await I.wait(2);
     await I.click(tabName, this.fields.tab);
