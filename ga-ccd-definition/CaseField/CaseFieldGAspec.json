@@ -185,30 +185,9 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "isPCClaimantMakingApplication",
+    "ID": "parentClaimantIsApplicant",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "applicantSolicitor1UserDetails",
-    "Label": " ",
-    "FieldType": "GAUserDetailsGAspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "applicant1OrganisationPolicy",
-    "Label": " ",
-    "FieldType": "OrganisationPolicy",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "respondent1OrganisationPolicy",
-    "Label": " ",
-    "FieldType": "OrganisationPolicy",
     "SecurityClassification": "Public"
   },
   {
