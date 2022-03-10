@@ -331,7 +331,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "isPCClaimantMakingApplication",
+    "CaseFieldID": "parentClaimantIsApplicant",
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],
@@ -362,30 +362,6 @@
       "caseworker-civil-systemupdate",
       "caseworker-civil-solicitor",
       "caseworker-civil-judge"
-    ],
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "applicantSolicitor1UserDetails",
-    "UserRoles": [
-      "caseworker-civil-systemupdate"
-    ],
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "applicant1OrganisationPolicy",
-    "UserRoles": [
-      "caseworker-civil-systemupdate"
-    ],
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "UserRoles": [
-      "caseworker-civil-systemupdate"
     ],
     "CRUD": "CRUD"
   },

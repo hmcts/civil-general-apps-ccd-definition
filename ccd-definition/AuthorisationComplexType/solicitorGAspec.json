@@ -376,7 +376,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "isPCClaimantMakingApplication",
+    "ListElementCode": "parentClaimantIsApplicant",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },
@@ -384,27 +384,6 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppParentCaseLink",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
-    "ListElementCode": "applicantSolicitor1UserDetails",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
-    "ListElementCode": "applicant1OrganisationPolicy",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
-    "ListElementCode": "respondent1OrganisationPolicy",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },
