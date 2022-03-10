@@ -16,11 +16,11 @@
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "applicationIsCloaked",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "PageID": "GAJudicialMakeADecisionScreen",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "judicialDecisionMakeOrder = \"DO_NOT_SHOW_IN_UI\"",
     "Comment": "Hidden field to show applicationIsCloakedLabel and makeAppVisibleToAll when application is without notice",
     "PageShowCondition": "judicialDecision.decision = \"MAKE_AN_ORDER\""
@@ -34,7 +34,7 @@
     "PageID": "GAJudicialMakeADecisionScreen",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "applicationIsCloaked=\"Yes\""
   },
   {
@@ -42,22 +42,22 @@
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "makeAppVisibleToAll",
     "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "GAJudicialMakeADecisionScreen",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "applicationIsCloaked=\"Yes\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "PageID": "GAJudicialMakeADecisionScreen",
-    "DisplayContext": "MANDATORY",
-    "PageColumnNumber": 1,
     "PageFieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "PageID": "GAJudicialMakeADecisionScreen",
     "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   }
 ]

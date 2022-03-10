@@ -315,7 +315,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-judge"
+          "caseworker-civil-judge",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -351,7 +352,9 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicationIsCloakedLabel",
     "UserRoles": [
-      "caseworker-civil-systemupdate"
+      "caseworker-civil-systemupdate",
+      "caseworker-civil-solicitor",
+      "caseworker-civil-judge"
     ],
     "CRUD": "CRUD"
   },
