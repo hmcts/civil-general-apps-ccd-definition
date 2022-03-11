@@ -7,6 +7,7 @@ import uk.gov.hmcts.contino.AppPipelineDsl
 def type = "java"
 def product = "civil"
 def component = "general-apps-ccd-definition"
+def camundaBranch = "master"
 AppPipelineConfig pipelineConf
 
 static Map<String, Object> secret(String secretName, String envVariable) {
@@ -83,7 +84,7 @@ withPipeline(type, product, component) {
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
           ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*LRspec.json"
           ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*LRspec.json"
-          ./bin/import-bpmn-diagram.sh .
+          ./bin/import-bpmn-diagram.sh
         """
         env.URL="https://xui-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
         env.CIVIL_SERVICE_URL="http://civil-service-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
