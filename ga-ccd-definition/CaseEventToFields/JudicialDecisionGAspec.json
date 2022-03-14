@@ -20,7 +20,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "judicialDecision = \"DO_NOT_SHOW_IN_UI\"",
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\"",
     "Comment": "Hidden field to show applicationIsCloakedLabel and makeAppVisibleToAll when application is without notice",
     "PageShowCondition": "judicialDecision.decision = \"MAKE_AN_ORDER\""
   },
