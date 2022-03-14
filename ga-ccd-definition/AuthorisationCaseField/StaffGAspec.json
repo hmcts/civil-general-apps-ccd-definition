@@ -40,5 +40,11 @@
     "CaseFieldID": "defendantSolicitors",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentsResponses",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
   }
 ]

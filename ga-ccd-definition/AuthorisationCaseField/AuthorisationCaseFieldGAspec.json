@@ -346,7 +346,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -403,6 +404,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentsResponses",
+    "UserRoles": [
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "civilServiceUserRoles",
     "UserRoles": [
       "caseworker-civil-systemupdate"
@@ -420,6 +429,22 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "defendantSolicitors",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentsResponses",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "hearingDetailsResp",
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],

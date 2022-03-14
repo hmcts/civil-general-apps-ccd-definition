@@ -449,6 +449,27 @@
     "ListElementCode": "defendantSolicitors",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "respondentsResponses",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentsResponses",
+    "ListElementCode": "generalAppRespondent1Representative",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentsResponses",
+    "ListElementCode": "gaHearingDetails",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
   }
 ]
 

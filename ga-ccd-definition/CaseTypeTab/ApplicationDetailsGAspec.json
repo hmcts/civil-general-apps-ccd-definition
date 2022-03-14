@@ -70,5 +70,14 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "generalAppParentCaseLink",
     "TabFieldDisplayOrder": 10
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "ElementLabel": "Respondend response",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "respondentsResponses",
+    "TabFieldDisplayOrder": 11
   }
 ]
