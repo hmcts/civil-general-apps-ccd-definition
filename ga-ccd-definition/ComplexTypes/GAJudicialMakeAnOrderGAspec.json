@@ -1,0 +1,40 @@
+[
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "judgeRecitalText",
+    "ElementLabel": "Judge’s recital",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "makeAnOrder",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "GAJudgeMakeAnOrderOptionGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "orderText",
+    "ElementLabel": "Order",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\""
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "dismissalOrderText",
+    "ElementLabel": "Dismissal order",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "makeAnOrder = \"DISMISS_THE_APPLICATION\""
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "reasonForDecisionText",
+    "ElementLabel": "Reason for decision",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  }
+]
