@@ -9,5 +9,27 @@
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "previewOrderDocumentLabel",
+    "DisplayContext": "READONLY",
+    "PageID": "GAJudicalPreviewOrderDoc",
+    "PageDisplayOrder": 10,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "previewOrderDocument",
+    "DisplayContext": "READONLY",
+    "PageID": "GAJudicalPreviewOrderDoc",
+    "PageDisplayOrder": 10,
+    "PageFieldDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
   }
 ]

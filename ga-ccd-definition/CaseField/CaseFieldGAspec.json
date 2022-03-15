@@ -274,6 +274,20 @@
     "SecurityClassification": "Public"
   },
   {
+  "CaseTypeID": "GENERALAPPLICATION",
+  "ID": "previewOrderDocumentLabel",
+  "Label": "## Preview order document",
+  "FieldType": "Label",
+  "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "previewOrderDocument",
+    "Label": " ",
+    "FieldType": "GAJudicalPreviewOrderDocGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "respondentsResponses",
     "Label": " ",
