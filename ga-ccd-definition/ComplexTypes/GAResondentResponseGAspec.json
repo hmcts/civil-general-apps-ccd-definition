@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "GAResondentResponseGAspec",
+    "ListElementCode": "gaHearingDetails",
+    "FieldType": "GAHearingDetailsRespGAspec",
+    "ElementLabel": "Respondent hearing details ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAResondentResponseGAspec",
+    "ListElementCode": "generalAppRespondent1Representative",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Respondent has agreed",
+    "SecurityClassification": "Public"
+  }
+]

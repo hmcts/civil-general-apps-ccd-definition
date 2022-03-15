@@ -272,5 +272,13 @@
     "Label": "What is your decision on this application?",
     "FieldType": "GAJudicialDecisionGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "respondentsResponses",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GAResondentResponseGAspec",
+    "SecurityClassification": "Public"
   }
 ]
