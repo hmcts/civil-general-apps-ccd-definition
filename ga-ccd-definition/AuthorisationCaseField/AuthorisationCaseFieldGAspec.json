@@ -310,7 +310,61 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "isMultiParty",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "applicantPartyName",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "claimant1PartyName",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "claimant2PartyName",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "defendant1PartyName",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "defendant2PartyName",
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],
@@ -321,6 +375,36 @@
     "CaseFieldID": "parentClaimantIsApplicant",
     "UserRoles": [
       "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "applicationIsCloaked",
+    "UserRoles": [
+      "caseworker-civil-systemupdate",
+      "caseworker-civil-solicitor",
+      "caseworker-civil-judge"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "applicationIsCloakedLabel",
+    "UserRoles": [
+      "caseworker-civil-systemupdate",
+      "caseworker-civil-solicitor",
+      "caseworker-civil-judge"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "makeAppVisibleToAll",
+    "UserRoles": [
+      "caseworker-civil-systemupdate",
+      "caseworker-civil-solicitor",
+      "caseworker-civil-judge"
     ],
     "CRUD": "CRUD"
   },
@@ -381,6 +465,21 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "previewOrderDocumentLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge",
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "previewOrderDocumentLink",
     "AccessControl": [
       {
         "UserRoles": [

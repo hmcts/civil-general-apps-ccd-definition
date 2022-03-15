@@ -1,9 +1,0 @@
-[
-  {
-    "ID": "GAJudicalPreviewOrderDocGAspec",
-    "ListElementCode": "previewOrderDocument",
-    "ElementLabel": "<a target=\"_blank\" href=${previewOrderDocument.document_url}>${previewOrderDocument.document_filename}</a>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  }
-]
