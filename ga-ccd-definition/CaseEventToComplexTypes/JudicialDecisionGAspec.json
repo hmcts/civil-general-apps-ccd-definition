@@ -49,9 +49,18 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "reasonForDecisionText",
+    "ListElementCode": "directionsText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialMakeADecisionScreen",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "reasonForDecisionText",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   }
 ]

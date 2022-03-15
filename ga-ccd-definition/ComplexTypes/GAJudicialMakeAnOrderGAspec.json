@@ -20,6 +20,7 @@
     "ElementLabel": "Order",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
+    "Max": 4000,
     "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\""
   },
   {
@@ -28,13 +29,24 @@
     "ElementLabel": "Dismissal order",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
+    "Max": 4000,
     "FieldShowCondition": "makeAnOrder = \"DISMISS_THE_APPLICATION\""
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "directionsText",
+    "ElementLabel": "Directions",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Max": 4000,
+    "FieldShowCondition": "makeAnOrder = \"GIVE_DIRECTIONS_WITHOUT_HEARING\""
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "reasonForDecisionText",
     "ElementLabel": "Reason for decision",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Max": 400
   }
 ]
