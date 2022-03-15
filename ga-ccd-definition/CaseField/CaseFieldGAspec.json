@@ -309,6 +309,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "respondentsResponses",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GAResondentResponseGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialDecisionMakeOrder",
     "Label": " ",
     "FieldType": "GAJudicialMakeAnOrderGAspec",
