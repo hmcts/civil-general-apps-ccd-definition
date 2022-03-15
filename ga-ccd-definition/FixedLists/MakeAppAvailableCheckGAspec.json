@@ -1,0 +1,8 @@
+[
+  {
+    "ID": "MakeAppAvailableCheckGAspec",
+    "ListElementCode": "ConsentAgreementCheckBox",
+    "ListElement": "Make application visible to all parties",
+    "DisplayOrder": 1
+  }
+]

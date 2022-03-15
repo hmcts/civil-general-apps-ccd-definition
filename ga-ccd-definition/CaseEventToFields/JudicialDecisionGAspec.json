@@ -5,8 +5,57 @@
     "CaseFieldID": "judicialDecision",
     "DisplayContext": "MANDATORY",
     "PageID": "GAJudicialDecision",
-    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
     "PageFieldDisplayOrder": 2,
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "applicationIsCloaked",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "GAJudicialMakeADecisionScreen",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\"",
+    "Comment": "Hidden field to show applicationIsCloakedLabel and makeAppVisibleToAll when application is without notice",
+    "PageShowCondition": "judicialDecision.decision = \"MAKE_AN_ORDER\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "applicationIsCloakedLabel",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "GAJudicialMakeADecisionScreen",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "applicationIsCloaked=\"Yes\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "makeAppVisibleToAll",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "GAJudicialMakeADecisionScreen",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "applicationIsCloaked=\"Yes\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "PageID": "GAJudicialMakeADecisionScreen",
+    "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   }
