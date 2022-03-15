@@ -185,6 +185,41 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "applicantPartyName",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "claimant1PartyName",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "claimant2PartyName",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "defendant1PartyName",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "defendant2PartyName",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "parentClaimantIsApplicant",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -279,6 +314,37 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "GAResondentResponseGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialDecisionMakeOrder",
+    "Label": " ",
+    "FieldType": "GAJudicialMakeAnOrderGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "applicationIsCloaked",
+    "Label": "Hide applicationIsCloakedLabel",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Comment": "workaround field to show applicationIsCloakedLabel when applicationIsCloaked is Yes. Also hides ConsentAgreementCheckBox"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "applicationIsCloakedLabel",
+    "Label": "## This application is cloaked",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "makeAppVisibleToAll",
+    "Label": " ",
+    "ListElementCode": "ConsentAgreementCheckBox",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "MakeAppAvailableCheckGAspec",
     "SecurityClassification": "Public"
   }
 ]
