@@ -6,8 +6,8 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationGAspec",
     "SecurityClassification": "Public",
-    "_Definition": "The details of the child application on the case",
-    "_Category": "COMMON"
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -48,8 +48,8 @@
     "HintText": "  ",
     "FieldType": "GATypeGAspec",
     "SecurityClassification": "Public",
-    "_Definition": "Type of the child application on the case",
-    "_Category": "COMMON"
+    "_Definition":  "Type of the child application on the case",
+    "_Category":  "COMMON"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -58,8 +58,8 @@
     "HintText": "  ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "_Definition": "Type of the child application on the case",
-    "_Category": "COMMON"
+    "_Definition":  "Type of the child application on the case",
+    "_Category":  "COMMON"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -67,8 +67,8 @@
     "Label": " ",
     "FieldType": "GARespondentAgreementGAspec",
     "SecurityClassification": "Public",
-    "_Definition": "The details of the child application on the case related to respondent agreement",
-    "_Category": "COMMON"
+    "_Definition":  "The details of the child application on the case related to respondent agreement",
+    "_Category":  "COMMON"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -101,8 +101,8 @@
     "Label": " ",
     "FieldType": "GAUrgencyRecordGAspec",
     "SecurityClassification": "Public",
-    "_Definition": "This fields holds whether or not the application is urgent, and if it is then the further details and reasons",
-    "_Category": "COMMON"
+    "_Definition":  "This fields holds whether or not the application is urgent, and if it is then the further details and reasons",
+    "_Category":  "COMMON"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -118,9 +118,10 @@
     "Label": " ",
     "FieldType": "GAWithOrWithoutNotice",
     "SecurityClassification": "Public",
-    "_Definition": "This fields holds whether or not the other party should be notified of this application. If no, then reasons behind not notifying.",
-    "_Category": "COMMON"
+    "_Definition":  "This fields holds whether or not the other party should be notified of this application. If no, then reasons behind not notifying.",
+    "_Category":  "COMMON"
   },
+
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppDetailsOfOrder",
@@ -156,8 +157,8 @@
     "Label": "Pay for application with PBA\n",
     "FieldType": "GAPBADetailsGAspec",
     "SecurityClassification": "Public",
-    "_Definition": "This fields holds applicant's PBA details.",
-    "_Category": "COMMON"
+    "_Definition":  "This fields holds applicant's PBA details.",
+    "_Category":  "COMMON"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -246,8 +247,8 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
-    "_Definition": "The details of the child application on the case",
-    "_Category": "COMMON"
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
