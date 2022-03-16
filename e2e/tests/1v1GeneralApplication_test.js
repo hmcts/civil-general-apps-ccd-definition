@@ -32,7 +32,7 @@ Scenario('Create Single general application for 1v1 and respond to application',
   await I.see(appStatus);
   childCaseId = await I.grabChildCaseNumber();
   await I.navigateToCaseDetails(childCaseNum());
-  await I.judgeMakeDecision('makeAnOrder');
+  await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'yes');
 }).retry(0);
 
 Scenario('Create Multiple general applications for 1v1', async ({I}) => {
@@ -52,5 +52,5 @@ Scenario('Create Multiple general applications for 1v1', async ({I}) => {
   await I.see(appStatus);
   childCaseId = await I.grabChildCaseNumber();
   await I.navigateToCaseDetails(childCaseNum());
-  await I.judgeMakeDecision('makeAnOrder');
+  await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'yes');
 }).retry(0);
