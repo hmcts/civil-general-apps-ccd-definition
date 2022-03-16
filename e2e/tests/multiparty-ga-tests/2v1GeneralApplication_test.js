@@ -2,20 +2,16 @@ const config = require('../../config.js');
 const caseEventMessage = eventName => `Case ${caseId} has been updated with event: ${eventName}`;
 const mpScenario = 'TWO_V_ONE';
 const appStatus = 'Application Submitted - Awaiting Judicial Decision';
-const childCaseNum = () => `${childCaseId.split('-').join('')}`;
-
+// const childCaseNum = () => `${childCaseId.split('-').join('')}`;
 
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
-let caseNumber, caseId, childCaseId;
+let caseNumber, caseId;
 
 Feature('CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests');
 
-Scenario('Claimant solicitor raises a claim for 2 claimants against 1 defendant', async ({api}) => {
+Scenario('Create Multiple general application for 2v1', async ({I, api}) => {
   caseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Case created for general application: ' + caseNumber);
-}).retry(1);
-
-Scenario('Create Multiple general application for 2v1', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   caseId = await I.grabCaseNumber();
@@ -30,7 +26,8 @@ Scenario('Create Multiple general application for 2v1', async ({I}) => {
   await I.see(caseEventMessage('Make an application'));
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 4), 1);
   await I.see(appStatus);
-  childCaseId = await I.grabChildCaseNumber();
-  await I.navigateToCaseDetails(childCaseNum());
-  await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no');
-}).retry(0);
+  // Refactor as part of CIV-1425
+  // childCaseId = await I.grabChildCaseNumber();
+ /* await I.navigateToCaseDetails(childCaseNum());
+  await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no');*/
+}).retry(1);
