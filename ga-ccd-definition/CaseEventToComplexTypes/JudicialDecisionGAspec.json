@@ -62,5 +62,105 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "ListForHearingLabel",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "HearingPreferencesPreferredType",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "HearingPreferredLocationLabel",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "HearingPreferredLocation",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "JudicialTimeEstimateLabel",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "JudicialTimeEstimate",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "JudicialSupportRequirementLabel",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "JudicialSupportRequirement",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "AddlnInfoCourtStaffLabel",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "AddlnInfoCourtStaff",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "OPTIONAL"
   }
 ]

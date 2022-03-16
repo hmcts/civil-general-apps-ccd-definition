@@ -333,6 +333,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialListForHearing",
+    "Label": "List for a hearing",
+    "FieldType": "GAJudgesHearingListGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "applicationIsCloakedLabel",
     "Label": "## This application is cloaked",
     "FieldType": "Label",

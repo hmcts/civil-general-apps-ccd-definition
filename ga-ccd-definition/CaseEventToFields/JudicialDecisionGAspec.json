@@ -6,7 +6,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "GAJudicialDecision",
     "PageColumnNumber": 1,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -58,5 +58,18 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "DisplayContext": "COMPLEX",
+    "PageID": "GAJudicialHearingDetailsScreen",
+    "PageFieldDisplayOrder": 1,
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "Comment": "List for a hearing",
+    "PageShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\""
   }
 ]
