@@ -118,6 +118,11 @@ withPipeline(type, product, component) {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
   }
 
+  before('smoketest:aat') {
+    env.URL="https://civil-ga-ccd-service-xui-staging.aat.platform.hmcts.net"
+    env.CIVIL_GENERAL_APPLICATIONS_URL="http://civil-general-apps-ccd-definition-staging.service.core-compute-aat.internal"
+  }
+
 
 
     onMaster() {
