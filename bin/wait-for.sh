@@ -3,6 +3,7 @@
 set -eu
 
 service_base_urls=${@}
+echo "service base urls: ${service_base_urls}"
 
 max_health_check_attempts=30
 
