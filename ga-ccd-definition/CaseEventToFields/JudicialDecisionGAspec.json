@@ -22,7 +22,8 @@
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\"",
     "Comment": "Hidden field to show applicationIsCloakedLabel and makeAppVisibleToAll when application is without notice",
-    "PageShowCondition": "judicialDecision.decision = \"MAKE_AN_ORDER\""
+    "PageShowCondition": "judicialDecision.decision = \"MAKE_AN_ORDER\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-make-decision-screen"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
