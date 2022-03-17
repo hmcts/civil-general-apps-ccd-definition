@@ -6,6 +6,12 @@
     "CRUD": "CRU"
   },
   {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judgeDecisionSummaryPDF",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
   "CaseTypeID": "GENERALAPPLICATION",
   "CaseFieldID": "generalApplications",
   "UserRole": "caseworker-caa",
