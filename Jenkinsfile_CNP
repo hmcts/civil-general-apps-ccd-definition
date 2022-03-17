@@ -40,6 +40,12 @@ def secrets = [
         ]
 ]
 
+def createGithubRelease() {
+  sh """
+    ./bin/create-github-release.sh
+  """
+}
+
 withPipeline(type, product, component) {
     pipelineConf = config
     disableLegacyDeployment()
@@ -106,6 +112,11 @@ withPipeline(type, product, component) {
     after('functionalTest:preview') {
         steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
     }
+
+  after('functionalTest:aat') {
+    createGithubRelease()
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
+  }
 
 
 
