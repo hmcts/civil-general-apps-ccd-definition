@@ -24,6 +24,7 @@ Scenario('Create Single general application for 1v1 and respond to application',
   console.log('1v1 General Application created: ' + caseNumber);
   await I.see(caseId);
   await I.click('Close and Return to case details');
+  await I.wait(5);
   await I.see(caseEventMessage('Make an application'));
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 1), 1);
   await I.see(appStatus);
@@ -48,6 +49,7 @@ Scenario('Create Multiple general applications for 1v1', async ({I, api}) => {
   console.log('General Application created: ' + caseNumber);
   await I.see(caseId);
   await I.click('Close and Return to case details');
+  await I.wait(5);
   await I.see(caseEventMessage('Make an application'));
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 5), 1);
   await I.see(appStatus);

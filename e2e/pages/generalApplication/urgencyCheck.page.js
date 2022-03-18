@@ -4,7 +4,7 @@ module.exports = {
 
   fields: {
     generalAppUrgencyRequirement: {
-      id: '#generalAppUrgencyRequirement_generalAppUrgency',
+      id: '#generalAppUrgencyRequirement_generalAppUrgencyRequirement',
       options: {
         yes: 'Yes',
         no: 'No'
@@ -18,17 +18,19 @@ module.exports = {
   },
 
   async selectUrgencyRequirement(urgencyCheck) {
-    I.waitForElement(this.fields.generalAppUrgencyRequirement.id);
-    I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATIONGAUrgencyRecordPage');
+    await I.waitForElement(this.fields.generalAppUrgencyRequirement.id);
+    await I.waitInUrl('INITIATE_GENERAL_APPLICATIONGAUrgencyRecordPage');
     if ('yes' === urgencyCheck) {
-      I.click(this.fields.generalAppUrgencyRequirement.options[urgencyCheck]);
+      I.click(this.fields.generalAppUrgencyRequirement.id.options[urgencyCheck]);
       await I.fillField(this.fields.considerationDay, 1);
       await I.fillField(this.fields.considerationMonth, 10);
       await I.fillField(this.fields.considerationYear, 2022);
       await I.fillField(this.fields.reasonsForUrgency, 'Test Reason for Urgency');
       await I.click(this.fields.consentAgreementCheckBox);
     } else {
-      I.click(this.fields.generalAppUrgencyRequirement.options[urgencyCheck]);
+      await within(this.fields.generalAppUrgencyRequirement.id, () => {
+        I.click(this.fields.generalAppUrgencyRequirement.options[urgencyCheck]);
+      });
     }
     await I.clickContinue();
   }

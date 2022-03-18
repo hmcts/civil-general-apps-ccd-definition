@@ -23,6 +23,7 @@ Scenario('Create Multiple general application for 1v2 different Solicitor and re
   console.log('General Application created: ' + caseNumber);
   await I.see(caseId);
   await I.click('Close and Return to case details');
+  await I.wait(5);
   await I.see(caseEventMessage('Make an application'));
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 3), 1);
   await I.see(appStatus);
