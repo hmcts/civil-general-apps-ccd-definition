@@ -577,12 +577,5 @@
     "ListElementCode": "judgeRequestMoreInfoByDate",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "judicialDecisionRequestMoreInfo",
-    "ListElementCode": "judgeSendAppToOtherPartyResponseByDate",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
   }
 ]

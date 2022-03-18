@@ -98,14 +98,5 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "GAJudicialRequestMoreInfoScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
-    "CaseFieldID": "judicialDecisionRequestMoreInfo",
-    "ListElementCode": "judgeSendAppToOtherPartyResponseByDate",
-    "EventElementLabel": " ",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
   }
 ]

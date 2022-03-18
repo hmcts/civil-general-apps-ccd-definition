@@ -23,13 +23,5 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "FieldShowCondition": "requestMoreInfoOption=\"REQUEST_MORE_INFORMATION\""
-  },
-  {
-    "ID": "GAJudicialRequestMoreInfoGAspec",
-    "ListElementCode": "judgeSendAppToOtherPartyResponseByDate",
-    "ElementLabel": "Parties must respond by 4pm on",
-    "FieldType": "Date",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "requestMoreInfoOption=\"SEND_APP_TO_OTHER_PARTY\""
   }
 ]
