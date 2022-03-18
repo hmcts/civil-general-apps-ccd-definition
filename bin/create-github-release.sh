@@ -49,17 +49,17 @@ zip -r civil-general-apps-ccd-definition.zip ga-ccd-definition
 zip -r civil-general-apps-e2e.zip e2e codecept.conf.js package.json steps.d.ts yarn.lock saucelabs.conf.js
 zip -r civil-screenshots.zip output
 ls -lash
-cp build/github-release/civil-general-apps-ccd-aat.xlsx civil-general-apps-ccd-aat.xlsx
-cp build/github-release/civil-general-apps-ccd-aat.xlsx civil-general-apps-ccd-aat.xlsx
-az login --identity
-releaseId=$(createNewRelease civil-general-apps-ccd-definition)
+#cp build/github-release/civil-general-apps-ccd-aat.xlsx civil-general-apps-ccd-aat.xlsx
+#cp build/github-release/civil-general-apps-ccd-aat.xlsx civil-general-apps-ccd-aat.xlsx
+#az login --identity
+#releaseId=$(createNewRelease civil-general-apps-ccd-definition)
 
 uploadReleaseAsset civil-general-apps-ccd-definition $releaseId civil-general-apps-ccd-definition.zip
 uploadReleaseAsset civil-general-apps-ccd-definition $releaseId civil-general-apps-e2e.zip
-uploadReleaseAsset civil-general-apps-ccd-definition $releaseId civil-general-apps-ccd-aat.xlsx
-uploadReleaseAsset civil-general-apps-ccd-definition $releaseId civil-general-apps-ccd-prod.xlsx
-uploadReleaseAsset civil-general-apps-ccd-definition $releaseId civil-general-apps-screenshots.zip
+#uploadReleaseAsset civil-general-apps-ccd-definition $releaseId civil-general-apps-ccd-aat.xlsx
+#uploadReleaseAsset civil-general-apps-ccd-definition $releaseId civil-general-apps-ccd-prod.xlsx
+#uploadReleaseAsset civil-general-apps-ccd-definition $releaseId civil-general-apps-screenshots.zip
 
 rm civil-general-apps-ccd-definition.zip
 rm civil-general-apps-e2e.zip
-rm civil-general-apps-ccd-aat.xlsx
+#rm civil-general-apps-ccd-aat.xlsx
