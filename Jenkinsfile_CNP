@@ -7,7 +7,6 @@ import uk.gov.hmcts.contino.AppPipelineDsl
 def type = "java"
 def product = "civil"
 def component = "general-apps-ccd-definition"
-def camundaBranch = "master"
 AppPipelineConfig pipelineConf
 
 static Map<String, Object> secret(String secretName, String envVariable) {
@@ -40,6 +39,12 @@ def secrets = [
                 secret('postgres-password', 'POSTGRES_PASSWORD')
         ]
 ]
+
+def createGithubRelease() {
+  sh """
+    ./bin/create-github-release.sh
+  """
+}
 
 withPipeline(type, product, component) {
     pipelineConf = config
@@ -111,6 +116,18 @@ withPipeline(type, product, component) {
     after('functionalTest:preview') {
         steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
     }
+
+  after('functionalTest:aat') {
+    createGithubRelease()
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
+  }
+
+  before('smoketest:aat') {
+    env.URL="https://civil-ga-ccd-service-xui-staging.aat.platform.hmcts.net"
+    env.CIVIL_GENERAL_APPLICATIONS_URL="http://civil-general-apps-ccd-definition-staging.service.core-compute-aat.internal"
+  }
+
+
 
     onMaster() {
     }
