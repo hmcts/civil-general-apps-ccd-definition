@@ -17,7 +17,9 @@ module.exports = {
   async selectJudgeDecision(decision) {
     I.waitForElement(this.fields.judgeDecision.id);
     I.seeInCurrentUrl('JUDGE_MAKES_DECISION/JUDGE_MAKES_DECISIONGAJudicialDecision');
-    I.click(this.fields.judgeDecision.options[decision]);
+    await within(this.fields.judgeDecision.id, () => {
+      I.click(this.fields.judgeDecision.options[decision]);
+    });
     await I.clickContinue();
   }
 };

@@ -15,7 +15,9 @@ module.exports = {
   async selectConsentCheck(consentCheck) {
     await I.waitForElement(this.fields.respondentAgreementHasAgreed.id);
     I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATIONGARespondentAgreementPage');
-    await I.click(this.fields.respondentAgreementHasAgreed.options[consentCheck]);
+    await within(this.fields.respondentAgreementHasAgreed.id, () => {
+      I.click(this.fields.respondentAgreementHasAgreed.options[consentCheck]);
+    });
     await I.clickContinue();
   }
 };

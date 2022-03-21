@@ -21,7 +21,9 @@ module.exports = {
     await I.waitForElement(this.fields.generalAppUrgencyRequirement.id);
     await I.waitInUrl('INITIATE_GENERAL_APPLICATIONGAUrgencyRecordPage');
     if ('yes' === urgencyCheck) {
-      I.click(this.fields.generalAppUrgencyRequirement.options[urgencyCheck]);
+      await within(this.fields.generalAppUrgencyRequirement.id, () => {
+        I.click(this.fields.generalAppUrgencyRequirement.options[urgencyCheck]);
+      });
       await I.fillField(this.fields.considerationDay, 1);
       await I.fillField(this.fields.considerationMonth, 10);
       await I.fillField(this.fields.considerationYear, 2022);

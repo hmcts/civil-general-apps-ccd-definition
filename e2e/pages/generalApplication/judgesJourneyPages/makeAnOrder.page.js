@@ -32,7 +32,9 @@ module.exports = {
       I.see('Make application visible to all parties');
       I.click(this.fields.consentAgreementCheckBox);
     }
-    I.click(this.fields.makeAnOrder.options[order]);
+    await within(this.fields.makeAnOrder.id, () => {
+      I.click(this.fields.makeAnOrder.options[order]);
+    });
     switch (order) {
       case 'approveOrEditTheOrder':
         I.fillField(this.fields.orderTextArea, 'Judges order');
