@@ -1,5 +1,4 @@
 const config = require('../../config.js');
-const caseEventMessage = eventName => `Case ${caseId} has been updated with event: ${eventName}`;
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
 const appStatus = 'Awaiting Respondent Response';
 // const childCaseNum = () => `${childCaseId.split('-').join('')}`;
@@ -21,10 +20,7 @@ Scenario('Create Single general application for 1v2 Same Solicitor', async ({I, 
     'no', 'no', 'yes', 'no', 'no', 'no', 'no',
     'disabledAccess');
   console.log('General Application created: ' + caseNumber);
-  await I.see(caseId);
-  await I.click('Close and Return to case details');
-  await I.wait(5);
-  await I.see(caseEventMessage('Make an application'));
+  await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 1), 1);
   await I.see(appStatus);
   // childCaseId = await I.grabChildCaseNumber();

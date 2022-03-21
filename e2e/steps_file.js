@@ -724,6 +724,12 @@ module.exports = function () {
       ]);
     },
 
+    async closeAndReturnToCaseDetails(caseId) {
+      await this.triggerStepsWithScreenshot([
+        () =>  confirmationPage.closeAndReturnToCaseDetails(caseId),
+      ]);
+    },
+
     async createGeneralApplication(appTypes, caseId, consentCheck, isUrgent, notice, hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement) {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([

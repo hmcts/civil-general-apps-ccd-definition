@@ -1,5 +1,4 @@
 const config = require('../../config.js');
-const caseEventMessage = eventName => `Case ${caseId} has been updated with event: ${eventName}`;
 const mpScenario = 'TWO_V_ONE';
 const appStatus = 'Application Submitted - Awaiting Judicial Decision';
 // const childCaseNum = () => `${childCaseId.split('-').join('')}`;
@@ -21,10 +20,7 @@ Scenario('Create Multiple general application for 2v1', async ({I, api}) => {
     'no', 'no', 'no', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter');
   console.log('General Application created: ' + caseNumber);
-  await I.see(caseId);
-  await I.click('Close and Return to case details');
-  await I.wait(5);
-  await I.see(caseEventMessage('Make an application'));
+  await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 4), 1);
   await I.see(appStatus);
   // Refactor as part of CIV-1425
