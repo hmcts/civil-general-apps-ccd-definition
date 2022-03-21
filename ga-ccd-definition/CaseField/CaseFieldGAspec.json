@@ -340,6 +340,41 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialGeneralHearingOrder",
+    "Label": "Draw a General Order",
+    "FieldType": "GAJudgesHearingGeneralOrderGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialHearingGeneralOrderHearingType",
+    "Label": "<p class=\"govuk-inset-text\">Hearing type\n\n ${judicialListForHearing.HearingPreferencesPreferredType}</p>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialGeneralOrderHearingEstimationTime",
+    "Label": "<p class=\"govuk-inset-text\">Estimated length of hearing is\n\n ${judicialListForHearing.JudicialTimeEstimate}</p>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialGeneralOrderHearingRequirement",
+    "Label": "Hearing requirements\n\n ${judicialListForHearing.JudicialSupportRequirement}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialGeneralOrderHearingDirections",
+    "Label": "Directions in relation to hearing",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "applicationIsCloakedLabel",
     "Label": "## This application is cloaked",
     "FieldType": "Label",

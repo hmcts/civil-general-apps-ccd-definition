@@ -10,7 +10,7 @@
     "ID": "GAJudgesHearingListGAspec",
     "ListElementCode": "HearingPreferencesPreferredType",
     "ElementLabel": " ",
-    "HintText": "TO-DO",
+    "HintText": "Applicant prefers In person, Nottingham. Respondent prefers telephone hearing.",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAJudicialHearingListOptionsGAspec",
     "SecurityClassification": "Public"
@@ -27,7 +27,7 @@
     "ID": "GAJudgesHearingListGAspec",
     "ListElementCode": "HearingPreferredLocation",
     "ElementLabel": " ",
-    "HintText": "TO-DO",
+    "HintText": "Applicant prefers Notingham Crown Court. Respondent prefers Cardif Crown Court.",
     "FieldType": "DynamicList",
     "FieldShowCondition": "HearingPreferencesPreferredType = \"IN_PERSON\"",
     "SecurityClassification": "Public"
@@ -43,7 +43,7 @@
     "ID": "GAJudgesHearingListGAspec",
     "ListElementCode": "JudicialTimeEstimate",
     "ElementLabel": " ",
-    "HintText": "TO-DO",
+    "HintText": "Both applicant and respondent estimate it would take 30 minutes",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAJudicialHearingTimeEstimateGAspec",
     "SecurityClassification": "Public"
@@ -58,6 +58,7 @@
   {
     "ID": "GAJudgesHearingListGAspec",
     "ListElementCode": "JudicialSupportRequirement",
+    "HintText": "Respondent requires disabled access",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "GAJudicialHearingSupportRequirementGAspec",
     "ElementLabel": " ",

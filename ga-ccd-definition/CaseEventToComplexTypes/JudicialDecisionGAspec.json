@@ -162,5 +162,14 @@
     "EventHintText": " ",
     "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialGeneralHearingOrder",
+    "ListElementCode": "judgeRecitalText",
+    "EventElementLabel": "  ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
   }
 ]

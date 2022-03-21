@@ -1,0 +1,9 @@
+[
+  {
+    "ID": "GAJudgesHearingGeneralOrderGAspec",
+    "ListElementCode": "judgeRecitalText",
+    "ElementLabel": "Judge’s recital",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  }
+]

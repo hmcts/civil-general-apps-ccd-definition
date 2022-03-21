@@ -517,6 +517,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialGeneralHearingOrder",
+    "ListElementCode": "judgeRecitalText",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "makeAnOrder",
     "UserRole": "caseworker-civil-systemupdate",

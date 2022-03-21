@@ -71,5 +71,65 @@
     "ShowSummaryChangeOption": "Y",
     "Comment": "List for a hearing",
     "PageShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialGeneralHearingOrder",
+    "DisplayContext": "COMPLEX",
+    "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
+    "PageFieldDisplayOrder": 1,
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "Comment": "Draw a General Order"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialHearingGeneralOrderHearingType",
+    "DisplayContext": "READONLY",
+    "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
+    "PageFieldDisplayOrder": 2,
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "Comment": "Draw a General Order"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialGeneralOrderHearingEstimationTime",
+    "DisplayContext": "READONLY",
+    "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
+    "PageFieldDisplayOrder": 3,
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "Comment": "Draw a General Order"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialGeneralOrderHearingRequirement",
+    "DisplayContext": "READONLY",
+    "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
+    "PageFieldDisplayOrder": 4,
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "Comment": "Draw a General Order"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialGeneralOrderHearingDirections",
+    "DisplayContext": "MANDATORY",
+    "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
+    "PageFieldDisplayOrder": 5,
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "Comment": "Draw a General Order"
   }
 ]
