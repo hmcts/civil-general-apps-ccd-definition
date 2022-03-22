@@ -38,6 +38,7 @@
   },
   "resolutions": {
     "**/**/ansi-regex": "^5.0.1",
-    "**/**/follow-redirects": "^1.14.8"
+    "**/**/follow-redirects": "^1.14.8",
+    "**/sass-lint/**/minimist": "^1.2.5"
   }
 }
