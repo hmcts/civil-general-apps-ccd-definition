@@ -76,7 +76,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialGeneralHearingOrderRecital",
-    "DisplayContext": "READONLY",
+    "DisplayContext": "MANDATORY",
     "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
     "PageFieldDisplayOrder": 1,
     "PageDisplayOrder": 4,
