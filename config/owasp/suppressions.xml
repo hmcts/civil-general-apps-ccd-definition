@@ -18,6 +18,7 @@
   ]]></notes>
     <cve>CVE-2020-10663</cve>
     <cve>CVE-2020-7712</cve>
+    <cve>CVE-2021-44906</cve>
   </suppress>
   <suppress>
     <notes><![CDATA[Awaiting openid dependencies version bump in nimbus-jose-jwt]]></notes>
@@ -93,6 +94,5 @@
     <cve>CVE-2021-44832</cve>
     <cve>CVE-2021-45046</cve>
     <cve>CVE-2021-45105</cve>
-    <cve>CVE-2021-44906</cve>
   </suppress>
 </suppressions>
