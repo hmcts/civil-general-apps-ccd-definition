@@ -324,7 +324,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "judicialGeneralHearingOrder",
+    "CaseFieldID": "judicialGeneralHearingOrderRecital",
     "AccessControl": [
       {
         "UserRoles": [

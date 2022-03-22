@@ -340,13 +340,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "judicialGeneralHearingOrder",
-    "Label": "Draw a General Order",
-    "FieldType": "GAJudgesHearingGeneralOrderGAspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialHearingGeneralOrderHearingType",
     "Label": "<p class=\"govuk-inset-text\">Hearing type\n\n ${judicialListForHearing.HearingPreferencesPreferredType}</p>",
     "FieldType": "Label",
@@ -370,6 +363,13 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialGeneralOrderHearingDirections",
     "Label": "Directions in relation to hearing",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialGeneralHearingOrderRecital",
+    "Label": "Judge’s recital",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
