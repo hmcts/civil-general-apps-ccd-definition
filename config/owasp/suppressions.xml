@@ -18,7 +18,13 @@
   ]]></notes>
     <cve>CVE-2020-10663</cve>
     <cve>CVE-2020-7712</cve>
-    <cve>CVE-2021-44906</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: minimist:1.2.5
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/minimist@.*$</packageUrl>
+    <vulnerabilityName>1067259</vulnerabilityName>
   </suppress>
   <suppress>
     <notes><![CDATA[Awaiting openid dependencies version bump in nimbus-jose-jwt]]></notes>
