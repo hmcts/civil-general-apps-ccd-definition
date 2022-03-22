@@ -346,5 +346,12 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "MakeAppAvailableCheckGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialDecisionRequestMoreInfo",
+    "Label": " ",
+    "FieldType": "GAJudicialRequestMoreInfoGAspec",
+    "SecurityClassification": "Public"
   }
 ]

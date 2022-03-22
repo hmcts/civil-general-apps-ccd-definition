@@ -22,7 +22,8 @@
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\"",
     "Comment": "Hidden field to show applicationIsCloakedLabel and makeAppVisibleToAll when application is without notice",
-    "PageShowCondition": "judicialDecision.decision = \"MAKE_AN_ORDER\""
+    "PageShowCondition": "judicialDecision.decision = \"MAKE_AN_ORDER\"",
+    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/validate-make-decision-screen"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -58,5 +59,18 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "GAJudicialRequestMoreInfoScreen",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "judicialDecision.decision = \"REQUEST_MORE_INFO\"",
+    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/validate-request-more-info-screen"
   }
 ]
