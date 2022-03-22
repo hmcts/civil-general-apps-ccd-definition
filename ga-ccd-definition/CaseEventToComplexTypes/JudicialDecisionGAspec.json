@@ -166,6 +166,27 @@
   {
     "ID": "GAJudicialDecision",
     "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "karthickTesting",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "HearingPreferencesPreferredType = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judgeHearingRecitalText",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 12,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialGeneralHearingOrder",
     "ListElementCode": "judgeRecitalText",
     "EventElementLabel": "  ",

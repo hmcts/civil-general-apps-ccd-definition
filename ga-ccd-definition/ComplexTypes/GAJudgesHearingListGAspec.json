@@ -78,5 +78,55 @@
     "FieldType": "TextArea",
     "Max": 400,
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "karthickTesting",
+    "ElementLabel": " ",
+    "FieldType": "TextArea",
+    "Max": 400,
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judgeHearingRecitalText",
+    "ElementLabel": "${karthickTesting}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judgeHearingDirectionText",
+    "ElementLabel": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judgeHearingListText",
+    "ElementLabel": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judgeHearingCourtLocationText",
+    "ElementLabel": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judgeHearingTimeEstimateText",
+    "ElementLabel": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judgeHearingSupportReqText",
+    "ElementLabel": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
