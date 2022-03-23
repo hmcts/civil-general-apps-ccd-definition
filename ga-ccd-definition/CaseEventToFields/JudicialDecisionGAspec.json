@@ -118,7 +118,8 @@
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "Comment": "Draw a General Order"
+    "Comment": "Draw a General Order",
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
