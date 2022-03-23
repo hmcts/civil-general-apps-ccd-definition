@@ -69,6 +69,13 @@
     <cpe>cpe:/2.3:a:jetbrains:kotlin:1.4.0:milestone1:*:*:*:*:*:*</cpe>
   </suppress>
   <suppress>
+    <notes><![CDATA[
+   file name: faker:5.5.3
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/faker@.*$</packageUrl>
+    <vulnerabilityName>1067281</vulnerabilityName>
+  </suppress>
+  <suppress>
     <cve>CVE-2019-12402</cve>
     <cve>CVE-2016-5394</cve>
     <cve>CVE-2016-6798</cve>
