@@ -70,7 +70,7 @@
   </suppress>
   <suppress>
     <notes><![CDATA[
-   file name: faker:5.5.3
+   file name: faker:6.6.6
    ]]></notes>
     <packageUrl regex="true">^pkg:npm/faker@.*$</packageUrl>
     <vulnerabilityName>1067281</vulnerabilityName>
