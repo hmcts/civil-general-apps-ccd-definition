@@ -72,6 +72,8 @@ const responseConfirmationPage = require('./pages/generalApplication/responseJou
 const responseSummaryPage = require('./pages/generalApplication/responseJourneyPages/responseSummary.page');
 const judgeDecisionPage = require('./pages/generalApplication/judgesJourneyPages/judgeDecision.page');
 const makeAnOrderPage = require('./pages/generalApplication/judgesJourneyPages/makeAnOrder.page');
+const requestMoreInfoPage = require('./pages/generalApplication/judgesJourneyPages/requestMoreInformation.page');
+
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -708,6 +710,15 @@ module.exports = function () {
         () => caseViewPage.start(eventName),
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => makeAnOrderPage.selectAnOrder(order, consentCheck),
+      ]);
+    },
+
+    async judgeRequestMoreInfo(decision, infoType) {
+      eventName = events.JUDGE_MAKES_DECISION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.start(eventName),
+        () => judgeDecisionPage.selectJudgeDecision(decision),
+        () => requestMoreInfoPage.requestMoreInfoOrder(infoType),
       ]);
     },
 
