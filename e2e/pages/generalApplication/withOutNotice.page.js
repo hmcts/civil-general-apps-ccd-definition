@@ -16,10 +16,14 @@ module.exports = {
   async selectNotice(noticeCheck) {
     I.waitForElement(this.fields.informOtherPartyWithNotice.id);
     if ('no' === noticeCheck) {
-      I.click(this.fields.informOtherPartyWithNotice.options[noticeCheck]);
+      await within(this.fields.informOtherPartyWithNotice.id, () => {
+        I.click(this.fields.informOtherPartyWithNotice.options[noticeCheck]);
+      });
       await I.fillField(this.fields.reasonsForWithoutNotice, 'Test Reason for Without Notice');
     } else {
-      I.click(this.fields.informOtherPartyWithNotice.options[noticeCheck]);
+      await within(this.fields.informOtherPartyWithNotice.id, () => {
+        I.click(this.fields.informOtherPartyWithNotice.options[noticeCheck]);
+      });
     }
     await I.clickContinue();
   }

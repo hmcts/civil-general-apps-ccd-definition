@@ -70,6 +70,8 @@ const respHearingDetailsPage = require('./pages/generalApplication/responseJourn
 const responseCheckYourAnswersPage = require('./pages/generalApplication/responseJourneyPages/responseCheckYourAnswers.page');
 const responseConfirmationPage = require('./pages/generalApplication/responseJourneyPages/responseConfirmation.page');
 const responseSummaryPage = require('./pages/generalApplication/responseJourneyPages/responseSummary.page');
+const judgeDecisionPage = require('./pages/generalApplication/judgesJourneyPages/judgeDecision.page');
+const makeAnOrderPage = require('./pages/generalApplication/judgesJourneyPages/makeAnOrder.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -166,8 +168,12 @@ const updateHearingDetails = () => [
   () => hearingAndTrialPage.updateHearingDetails(),
 ];
 
-const selectPbaNumber = (consentCheck) => [
-  () => gaPBANumberPage.selectPbaNumber('activeAccount1', consentCheck),
+const selectPbaNumber = () => [
+  () => gaPBANumberPage.selectPbaNumber('activeAccount1'),
+];
+
+const verifyApplicationFee = (consentCheck, notice) => [
+  () => gaPBANumberPage.verifyApplicationFee(consentCheck, notice),
 ];
 
 const verifyCheckAnswerForm = (caseId, consentCheck) => [
@@ -696,6 +702,15 @@ module.exports = function () {
       ]);
     },
 
+    async judgeMakeDecision(decision, order, consentCheck) {
+      eventName = events.JUDGE_MAKES_DECISION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.start(eventName),
+        () => judgeDecisionPage.selectJudgeDecision(decision),
+        () => makeAnOrderPage.selectAnOrder(order, consentCheck),
+      ]);
+    },
+
     async verifyResponseSummaryPage() {
       await this.triggerStepsWithScreenshot([
         () => responseSummaryPage.verifySummaryPageAfterResponding(),
@@ -706,6 +721,12 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         ...clickOnTab(tabName),
         () => applicationTab.verifyApplicationDetails(appType, appCount),
+      ]);
+    },
+
+    async closeAndReturnToCaseDetails(caseId) {
+      await this.triggerStepsWithScreenshot([
+        () =>  confirmationPage.closeAndReturnToCaseDetails(caseId),
       ]);
     },
 
@@ -720,7 +741,8 @@ module.exports = function () {
         ]),
         ...enterApplicationDetails(consentCheck),
         ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement),
-        ...selectPbaNumber(consentCheck),
+        ...verifyApplicationFee(consentCheck, notice),
+        ...selectPbaNumber(),
         ...verifyCheckAnswerForm(caseId, consentCheck),
         ...clickOnHearingDetailsChangeLink(consentCheck),
         ...updateHearingDetails(),
