@@ -89,7 +89,7 @@
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "HearingPreferencesPreferredTypeLabel1",
-    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Applicant prefers ${generalAppHearingDetails.HearingPreferencesPreferredType}. Respondent prefers ${respondentsResponses(0).gaHearingDetails.HearingPreferencesPreferredType}</span>",
+    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Applicant prefers ${generalAppHearingDetails.HearingPreferencesPreferredType}. Respondent prefers ${respondentsResponses(0).gaHearingDetails.HearingPreferencesPreferredType}.</span>",
     "EventHintText": " ",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -130,7 +130,7 @@
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judgeHearingCourtLocationText1",
-    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Applicant prefers ${generalAppHearingDetails.HearingPreferredLocation}. Respondent prefers ${respondentsResponses(0).gaHearingDetails.HearingPreferredLocation}</span>",
+    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Applicant prefers ${generalAppHearingDetails.HearingPreferredLocation} Court. Respondent prefers ${respondentsResponses(0).gaHearingDetails.HearingPreferredLocation} Court.</span>",
     "EventHintText": " ",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
@@ -143,6 +143,7 @@
     "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Both applicant and respondent prefer ${generalAppHearingDetails.HearingPreferredLocation} </span>",
     "EventHintText": " ",
     "FieldDisplayOrder": 8,
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -182,7 +183,7 @@
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judgeHearingTimeEstimateText1",
-    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Applicant estimates ${generalAppHearingDetails.HearingDuration}. Respondent estimates ${respondentsResponses(0).gaHearingDetails.HearingDuration}</span>",
+    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Applicant estimates ${generalAppHearingDetails.HearingDuration}. Respondent estimates ${respondentsResponses(0).gaHearingDetails.HearingDuration}.</span>",
     "EventHintText": " ",
     "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
@@ -192,7 +193,7 @@
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judgeHearingTimeEstimateText2",
-    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Both applicant and respondent estimate it would take ${generalAppHearingDetails.HearingDuration} </span>",
+    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Both applicant and respondent estimate it would take ${generalAppHearingDetails.HearingDuration}.</span>",
     "EventHintText": " ",
     "FieldDisplayOrder": 13,
     "DisplayContext": "MANDATORY"
@@ -222,7 +223,7 @@
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "sameHearingSupportReqByAppAndResp",
-    "EventElementLabel": "  ",
+    "EventElementLabel": " ",
     "EventHintText": " ",
     "FieldDisplayOrder": 16,
     "DisplayContext": "MANDATORY",
@@ -233,7 +234,7 @@
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judgeHearingSupportReqText1",
-    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Applicant estimates ${generalAppHearingDetails.SupportRequirement}. Respondent estimates ${respondentsResponses(0).gaHearingDetails.SupportRequirement}</span>",
+    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Applicant estimates ${generalAppHearingDetails.SupportRequirement}. Respondent estimates ${respondentsResponses(0).gaHearingDetails.SupportRequirement}.</span>",
     "EventHintText": " ",
     "FieldDisplayOrder": 17,
     "DisplayContext": "MANDATORY"
@@ -243,7 +244,7 @@
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judgeHearingSupportReqText2",
-    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Both applicant and respondent estimate it would take ${generalAppHearingDetails.SupportRequirement} </span>",
+    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Both applicant and respondent estimate it would take ${generalAppHearingDetails.SupportRequirement}.</span>",
     "EventHintText": " ",
     "FieldDisplayOrder": 18,
     "DisplayContext": "MANDATORY"

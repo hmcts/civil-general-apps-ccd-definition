@@ -341,21 +341,21 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialHearingGeneralOrderHearingType",
-    "Label": "<p class=\"govuk-inset-text\">Hearing type\n\n ${judicialListForHearing.HearingPreferencesPreferredType}</p>",
+    "Label": "Hearing type is ${judicialListForHearing.HearingPreferencesPreferredType}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialGeneralOrderHearingEstimationTime",
-    "Label": "<p class=\"govuk-inset-text\">Estimated length of hearing is\n\n ${judicialListForHearing.JudicialTimeEstimate}</p>",
+    "Label": "Estimated length of hearing is ${judicialListForHearing.JudicialTimeEstimate}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialGeneralOrderHearingRequirement",
-    "Label": "Hearing requirements\n\n ${judicialListForHearing.JudicialSupportRequirement}",
+    "Label": "Hearing requirements ${judicialListForHearing.JudicialSupportRequirement}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
