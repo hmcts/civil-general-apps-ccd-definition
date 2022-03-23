@@ -341,21 +341,21 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialHearingGeneralOrderHearingType",
-    "Label": "Hearing type is ${judicialListForHearing.HearingPreferencesPreferredType}",
+    "Label": "Hearing type is ${judicialListForHearing.hearingPreferencesPreferredType}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialGeneralOrderHearingEstimationTime",
-    "Label": "Estimated length of hearing is ${judicialListForHearing.JudicialTimeEstimate}",
+    "Label": "Estimated length of hearing is ${judicialListForHearing.judicialTimeEstimate}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialGeneralOrderHearingRequirement",
-    "Label": "Hearing requirements ${judicialListForHearing.JudicialSupportRequirement}",
+    "Label": "Hearing requirements ${judicialListForHearing.judicialSupportRequirement}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

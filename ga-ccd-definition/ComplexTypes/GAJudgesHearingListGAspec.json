@@ -1,14 +1,14 @@
 [
   {
     "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "ListForHearingLabel",
+    "ListElementCode": "listForHearingLabel",
     "ElementLabel": "### How do you want to list for a hearing?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "HearingPreferencesPreferredType",
+    "ListElementCode": "hearingPreferencesPreferredType",
     "ElementLabel": " ",
     "HintText": " ",
     "FieldType": "FixedRadioList",
@@ -17,31 +17,31 @@
   },
   {
     "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "HearingPreferredLocationLabel",
+    "ListElementCode": "hearingPreferredLocationLabel",
     "ElementLabel": "### Select a location",
     "FieldType": "Label",
-    "FieldShowCondition": "HearingPreferencesPreferredType = \"In person\"",
+    "FieldShowCondition": "hearingPreferencesPreferredType = \"In person\"",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "HearingPreferredLocation",
+    "ListElementCode": "hearingPreferredLocation",
     "ElementLabel": " ",
     "HintText": " ",
     "FieldType": "DynamicList",
-    "FieldShowCondition": "HearingPreferencesPreferredType = \"In person\"",
+    "FieldShowCondition": "hearingPreferencesPreferredType = \"In person\"",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "JudicialTimeEstimateLabel",
+    "ListElementCode": "judicialTimeEstimateLabel",
     "ElementLabel": "### How long do you estimate the hearing will take?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "JudicialTimeEstimate",
+    "ListElementCode": "judicialTimeEstimate",
     "ElementLabel": " ",
     "HintText": " ",
     "FieldType": "FixedRadioList",
@@ -50,14 +50,14 @@
   },
   {
     "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "JudicialSupportRequirementLabel",
+    "ListElementCode": "judicialSupportRequirementLabel",
     "ElementLabel": "### Support requirements (optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "JudicialSupportRequirement",
+    "ListElementCode": "judicialSupportRequirement",
     "HintText": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "GAJudicialHearingSupportRequirementGAspec",
@@ -66,7 +66,7 @@
   },
   {
     "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "AddlnInfoCourtStaffLabel",
+    "ListElementCode": "addlnInfoCourtStaffLabel",
     "ElementLabel": "### Additional information for court staff (optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -90,7 +90,7 @@
   },
   {
     "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "HearingPreferencesPreferredTypeLabel1",
+    "ListElementCode": "hearingPreferencesPreferredTypeLabel1",
     "ElementLabel": " ",
     "HintText": " ",
     "FieldType": "Label",
@@ -99,7 +99,7 @@
   },
   {
     "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "HearingPreferencesPreferredTypeLabel2",
+    "ListElementCode": "hearingPreferencesPreferredTypeLabel2",
     "ElementLabel": " ",
     "HintText": " ",
     "FieldType": "Label",
@@ -122,7 +122,7 @@
     "ElementLabel": " ",
     "FieldType": "Label",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "HearingPreferencesPreferredType = \"In person\""
+    "FieldShowCondition": "hearingPreferencesPreferredType = \"In person\""
   },
   {
     "ID": "GAJudgesHearingListGAspec",
