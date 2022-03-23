@@ -21,6 +21,13 @@ module.exports = {
       return I.see(type);
     });
     I.wait(15);
+  },
+
+  async closeAndReturnToCaseDetails(caseId) {
+    await I.see(caseId);
+    await I.click('Close and Return to case details');
+    await I.waitForInvisible(locate('.loading-spinner-in-action').withText('Loading'));
+    await I.see(`Case ${caseId} has been updated with event: Make an application`);
   }
 };
 

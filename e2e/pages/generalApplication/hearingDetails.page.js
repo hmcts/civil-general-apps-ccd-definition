@@ -172,7 +172,9 @@ module.exports = {
 
   async selectSupportRequirement(supportRequirement) {
     I.waitForElement(this.fields.supportRequirement.id);
-    I.click(this.fields.supportRequirement.options[supportRequirement]);
+    await within(this.fields.supportRequirement.id, () => {
+      I.click(this.fields.supportRequirement.options[supportRequirement]);
+    });
     if ('signLanguageInterpreter' === supportRequirement) {
       await I.fillField(this.fields.supportRequirementSignLanguage, 'SignLanguage');
     }
