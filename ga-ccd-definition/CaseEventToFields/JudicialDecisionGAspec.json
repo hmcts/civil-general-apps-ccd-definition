@@ -95,7 +95,8 @@
     "PageID": "GAJudicialWrittenRepresentationsDrawGeneralOrder",
     "PageDisplayOrder": 9,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
