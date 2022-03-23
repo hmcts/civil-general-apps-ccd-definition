@@ -43,8 +43,16 @@
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "directionsResponseByDate",
+    "ElementLabel": "Respond by 4pm on",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "makeAnOrder = \"GIVE_DIRECTIONS_WITHOUT_HEARING\""
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "reasonForDecisionText",
-    "ElementLabel": "Reason for decision",
+    "ElementLabel": "Reasons for decision",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 400

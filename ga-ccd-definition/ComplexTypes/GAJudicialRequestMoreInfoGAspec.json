@@ -1,0 +1,27 @@
+[
+  {
+    "ID": "GAJudicialRequestMoreInfoGAspec",
+    "ListElementCode": "requestMoreInfoOption",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "GAJudgeRequestMoreInfoOptionGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialRequestMoreInfoGAspec",
+    "ListElementCode": "judgeRequestMoreInfoText",
+    "ElementLabel": "Enter the information required",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Max": 1000,
+    "FieldShowCondition": "requestMoreInfoOption=\"REQUEST_MORE_INFORMATION\""
+  },
+  {
+    "ID": "GAJudicialRequestMoreInfoGAspec",
+    "ListElementCode": "judgeRequestMoreInfoByDate",
+    "ElementLabel": "Applicant must respond by 4pm on",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "requestMoreInfoOption=\"REQUEST_MORE_INFORMATION\""
+  }
+]
