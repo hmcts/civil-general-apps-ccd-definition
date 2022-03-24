@@ -98,5 +98,14 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderForWrittenRepresentations",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
+    "ListElementCode": "makeAnOrderForWrittenRepresentations",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
   }
 ]
