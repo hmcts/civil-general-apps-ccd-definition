@@ -91,12 +91,14 @@
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialGeneralHearingOrderRecital",
     "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
+    "PageLabel": "Draw a General Order",
     "PageFieldDisplayOrder": 1,
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
-    "Comment": "Draw a General Order"
+    "Comment": "Draw a General Order",
+    "PageShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -138,14 +140,15 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "JUDGE_MAKES_DECISION",
-    "CaseFieldID": "judicialGeneralOrderHearingDirections",
+    "CaseFieldID": "judicialGOHearingDirections",
     "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
     "PageFieldDisplayOrder": 5,
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
-    "Comment": "Draw a General Order"
+    "Comment": "Draw a General Order",
+    "Max": 400
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",

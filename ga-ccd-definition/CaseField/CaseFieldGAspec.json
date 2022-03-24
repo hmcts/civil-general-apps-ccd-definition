@@ -361,10 +361,11 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "judicialGeneralOrderHearingDirections",
+    "ID": "judicialGOHearingDirections",
     "Label": "Directions in relation to hearing",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Max": 400
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",

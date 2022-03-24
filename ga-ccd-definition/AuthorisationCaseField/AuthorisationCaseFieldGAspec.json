@@ -492,7 +492,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "judicialGeneralOrderHearingDirections",
+    "CaseFieldID": "judicialGOHearingDirections",
     "AccessControl": [
       {
         "UserRoles": [
