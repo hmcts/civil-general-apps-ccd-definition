@@ -107,5 +107,222 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "listForHearingLabel",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "sameHearingPrefByAppAndResp",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "hearingPreferencesPreferredTypeLabel1",
+    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Applicant prefers ${generalAppHearingDetails.HearingPreferencesPreferredType}. Respondent prefers ${respondentsResponses(0).gaHearingDetails.HearingPreferencesPreferredType}.</span>",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "hearingPreferencesPreferredTypeLabel2",
+    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Both applicant and respondent prefer ${generalAppHearingDetails.HearingPreferencesPreferredType} </span>",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "hearingPreferencesPreferredType",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "sameCourtLocationPrefByAppAndResp",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judgeHearingCourtLocationText1",
+    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Applicant prefers ${generalAppHearingDetails.HearingPreferredLocation} Court. Respondent prefers ${respondentsResponses(0).gaHearingDetails.HearingPreferredLocation} Court.</span>",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judgeHearingCourtLocationText2",
+    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Both applicant and respondent prefer ${generalAppHearingDetails.HearingPreferredLocation} </span>",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 8,
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\"",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "hearingPreferredLocation",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judicialTimeEstimateLabel",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "MANDATORY"
+  },
+
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "sameHearingTimeEstByAppAndResp",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judgeHearingTimeEstimateText1",
+    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Applicant estimates ${generalAppHearingDetails.HearingDuration}. Respondent estimates ${respondentsResponses(0).gaHearingDetails.HearingDuration}.</span>",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 12,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judgeHearingTimeEstimateText2",
+    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Both applicant and respondent estimate it would take ${generalAppHearingDetails.HearingDuration}.</span>",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 13,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judicialTimeEstimate",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 14,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judicialSupportRequirementLabel",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 15,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "sameHearingSupportReqByAppAndResp",
+    "EventElementLabel": " ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 16,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judgeHearingSupportReqText1",
+    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Applicant estimates ${generalAppHearingDetails.SupportRequirement}. Respondent estimates ${respondentsResponses(0).gaHearingDetails.SupportRequirement}.</span>",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 17,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judgeHearingSupportReqText2",
+    "EventElementLabel": "<span class = \"form-hint ng-star-inserted\"> Both applicant and respondent estimate it would take ${generalAppHearingDetails.SupportRequirement}.</span>",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 18,
+    "DisplayContext": "MANDATORY"
+  },
+
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judicialSupportRequirement",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 19,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "addlnInfoCourtStaffLabel",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 20,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "AddlnInfoCourtStaff",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 21,
+    "DisplayContext": "OPTIONAL"
   }
 ]
