@@ -24,7 +24,7 @@
    file name: minimist:1.2.5
    ]]></notes>
     <packageUrl regex="true">^pkg:npm/minimist@.*$</packageUrl>
-    <vulnerabilityName>1067259</vulnerabilityName>
+    <vulnerabilityName>1067285</vulnerabilityName>
   </suppress>
   <suppress>
     <notes><![CDATA[Awaiting openid dependencies version bump in nimbus-jose-jwt]]></notes>
