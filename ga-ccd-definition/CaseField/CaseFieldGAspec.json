@@ -448,6 +448,13 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 1000
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialGeneralOrderHeading",
+    "Label": "## Draw a General Order",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
 
