@@ -11,11 +11,12 @@ module.exports = {
   },
   fields: {
     eventDropdown: '#next-step',
+    tab: 'div.mat-tab-labels',
   },
   goButton: 'Go',
 
   start: function (event) {
-    if (event === 'Respond to application') {
+    if (event === 'Make decision') {
       I.waitForClickable('.event-trigger .button', 3);
       I.click(this.goButton);
     } else {
@@ -40,9 +41,16 @@ module.exports = {
   },
 
   async clickOnTab(tabName) {
-    I.waitInUrl('cases/case-details/', 2);
-    I.see(tabName);
-    I.click(tabName, 'div.mat-tab-labels');
+    await I.waitInUrl('cases/case-details/', 2);
+    await I.see(tabName);
+    await I.click(tabName, this.fields.tab);
+    await I.wait(3);
+    await I.refreshPage();
+    await I.wait(3);
+    await I.click('Summary', this.fields.tab);
+    await I.wait(3);
+    await I.click(tabName, this.fields.tab);
+    await I.wait(5);
   },
 
   async clickOnFirstChildCaseId() {

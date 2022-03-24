@@ -20,6 +20,13 @@
     <cve>CVE-2020-7712</cve>
   </suppress>
   <suppress>
+    <notes><![CDATA[
+   file name: minimist:1.2.5
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/minimist@.*$</packageUrl>
+    <vulnerabilityName>1067259</vulnerabilityName>
+  </suppress>
+  <suppress>
     <notes><![CDATA[Awaiting openid dependencies version bump in nimbus-jose-jwt]]></notes>
     <cve>CVE-2007-1651</cve>
     <cve>CVE-2007-1652</cve>
@@ -45,6 +52,13 @@
     <cve>CVE-2020-29245</cve>
   </suppress>
   <suppress>
+    <notes><![CDATA[
+   file name: jackson-databind-2.10.0.jar
+   ]]></notes>
+    <packageUrl regex="true">^pkg:maven/com\.fasterxml\.jackson\.core/jackson\-databind@.*$</packageUrl>
+    <cve>CVE-2020-36518</cve>
+  </suppress>
+  <suppress>
     <notes><![CDATA[file name: guava-28.2-jre.jar]]></notes>
     <packageUrl regex="true">^pkg:maven/com\.google\.guava/guava@.*$</packageUrl>
     <cve>CVE-2020-8908</cve>
@@ -53,6 +67,13 @@
     <notes><![CDATA[suppresses false positive see (https://github.com/jeremylong/DependencyCheck/issues/2785)]]></notes>
     <cve>CVE-2020-29582</cve>
     <cpe>cpe:/2.3:a:jetbrains:kotlin:1.4.0:milestone1:*:*:*:*:*:*</cpe>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: faker:5.5.3
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/faker@.*$</packageUrl>
+    <vulnerabilityName>1067281</vulnerabilityName>
   </suppress>
   <suppress>
     <cve>CVE-2019-12402</cve>

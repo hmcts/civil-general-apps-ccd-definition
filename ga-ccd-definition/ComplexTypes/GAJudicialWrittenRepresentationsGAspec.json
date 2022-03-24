@@ -1,0 +1,35 @@
+[
+  {
+    "ID": "GAJudicialWrittenRepresentationsGAspec",
+    "ListElementCode": "makeAnOrderForWrittenRepresentations",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "GAJudgeWrittenRepresentationsOptionsGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialWrittenRepresentationsGAspec",
+    "ListElementCode": "writtenSequentailRepresentationsBy",
+    "ElementLabel": "The respondent may upload any written representations by 4pm on",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "makeAnOrderForWrittenRepresentations=\"SEQUENTIAL_REPRESENTATIONS\""
+  },
+  {
+    "ID": "GAJudicialWrittenRepresentationsGAspec",
+    "ListElementCode": "sequentialMustRespondWithin",
+    "ElementLabel": "Once the respondent has uploaded written representations, the applicat must respond withing Day(s)",
+    "FieldType": "Text",
+    "Max": 2,
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "makeAnOrderForWrittenRepresentations=\"SEQUENTIAL_REPRESENTATIONS\""
+  },
+  {
+    "ID": "GAJudicialWrittenRepresentationsGAspec",
+    "ListElementCode": "writtenConcurrentRepresentationsBy",
+    "ElementLabel": "Any written representations and any further witness statements may be uploaded by 4pm on",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "makeAnOrderForWrittenRepresentations = \"CONCURRENT_REPRESENTATIONS\""
+  }
+]

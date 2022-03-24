@@ -1,0 +1,17 @@
+[
+  {
+    "ID": "GAJudicialWrittenRepDrawGeneralOrderGAspec",
+    "ListElementCode": "judgeRecitalText",
+    "ElementLabel": "Judge’s recital",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialWrittenRepDrawGeneralOrderGAspec",
+    "ListElementCode": "directionInRelationToHearingText",
+    "ElementLabel": "Directions in relation to hearing",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Max": 1000
+  }
+]
