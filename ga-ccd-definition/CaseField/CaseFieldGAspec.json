@@ -353,5 +353,58 @@
     "Label": " ",
     "FieldType": "GAJudicialRequestMoreInfoGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
+    "Label": "Make an order for written representations",
+    "FieldType": "GAJudicialWrittenRepresentationsGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "writtenRepresentationsDrawGeneralOrder",
+    "Label": "Draw a General Order",
+    "FieldType": "GAJudicialWrittenRepDrawGeneralOrderGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "sequentialWrittenRepresentationUploadyBy",
+    "Label": "The respondent may upload any written representations by 4pm on ${judicialDecisionMakeAnOrderForWrittenRepresentations.writtenSequentailRepresentationsBy}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "sequentialWrittenRepresentationRespondWithin",
+    "Label": "Once the respondent has uploaded written representations, the applicant must respond within ${judicialDecisionMakeAnOrderForWrittenRepresentations.sequentialMustRespondWithin} days",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "concurrentWrittenRepresentationUploadyBy",
+    "Label": "The applicant and respondent must respond with written representations by 4pm on ${judicialDecisionMakeAnOrderForWrittenRepresentations.writtenConcurrentRepresentationsBy}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judgeRecitalText",
+    "Label": "Judge’s recital",
+    "ElementLabel": "Judge’s recital",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "directionInRelationToHearingText",
+    "Label": "Directions in relation to hearing",
+    "ElementLabel": "Directions in relation to hearing",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Max": 1000
   }
 ]
+
