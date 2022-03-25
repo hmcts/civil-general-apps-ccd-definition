@@ -20,7 +20,7 @@
     "ListElementCode": "hearingPreferredLocationLabel",
     "ElementLabel": "### Select a location",
     "FieldType": "Label",
-    "FieldShowCondition": "hearingPreferencesPreferredType = \"In person\"",
+    "FieldShowCondition": "hearingPreferencesPreferredType = \"IN_PERSON\"",
     "SecurityClassification": "Public"
   },
   {
@@ -29,7 +29,7 @@
     "ElementLabel": " ",
     "HintText": " ",
     "FieldType": "DynamicList",
-    "FieldShowCondition": "hearingPreferencesPreferredType = \"In person\"",
+    "FieldShowCondition": "hearingPreferencesPreferredType = \"IN_PERSON\"",
     "SecurityClassification": "Public"
   },
   {
@@ -73,7 +73,7 @@
   },
   {
     "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "AddlnInfoCourtStaff",
+    "ListElementCode": "addlnInfoCourtStaff",
     "ElementLabel": " ",
     "FieldType": "TextArea",
     "Max": 400,
@@ -122,7 +122,7 @@
     "ElementLabel": " ",
     "FieldType": "Label",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "hearingPreferencesPreferredType = \"In person\""
+    "FieldShowCondition": "hearingPreferencesPreferredType = \"IN_PERSON\""
   },
   {
     "ID": "GAJudgesHearingListGAspec",
@@ -160,8 +160,6 @@
     "SecurityClassification": "Public",
     "FieldShowCondition": "sameHearingTimeEstByAppAndResp = \"Yes\""
   },
-
-
   {
     "ID": "GAJudgesHearingListGAspec",
     "ListElementCode": "sameHearingSupportReqByAppAndResp",

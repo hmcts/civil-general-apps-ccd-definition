@@ -1,19 +1,19 @@
 [
   {
     "ID": "GAJudicialHearingListOptionsGAspec",
-    "ListElementCode": "Video",
-    "ListElement": "Video conference hearing",
+    "ListElementCode": "VIDEO",
+    "ListElement": "Video",
     "DisplayOrder": 1
   },
   {
     "ID": "GAJudicialHearingListOptionsGAspec",
-    "ListElementCode": "Telephone",
-    "ListElement": "Telephone hearing",
+    "ListElementCode": "TELEPHONE",
+    "ListElement": "Telephone",
     "DisplayOrder": 2
   },
   {
     "ID": "GAJudicialHearingListOptionsGAspec",
-    "ListElementCode": "In person",
+    "ListElementCode": "IN_PERSON",
     "ListElement": "In person",
     "DisplayOrder": 3
   }
