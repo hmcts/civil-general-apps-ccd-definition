@@ -100,15 +100,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "GAJudicialMakeAnOrderForWrittenRepresentations",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
-    "CaseFieldID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
-    "ListElementCode": "makeAnOrderForWrittenRepresentations",
-    "EventElementLabel": " ",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "GAJudicialDecision",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialListForHearing",
@@ -319,7 +310,7 @@
     "ID": "GAJudicialDecision",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialListForHearing",
-    "ListElementCode": "AddlnInfoCourtStaff",
+    "ListElementCode": "addlnInfoCourtStaff",
     "EventElementLabel": "  ",
     "EventHintText": " ",
     "FieldDisplayOrder": 21,

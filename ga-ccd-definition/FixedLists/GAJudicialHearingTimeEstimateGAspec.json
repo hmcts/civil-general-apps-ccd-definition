@@ -1,37 +1,37 @@
 [
   {
     "ID": "GAJudicialHearingTimeEstimateGAspec",
-    "ListElementCode": "15 minutes",
+    "ListElementCode": "MINUTES_15",
     "ListElement": "15 minutes",
     "DisplayOrder": 1
   },
   {
     "ID": "GAJudicialHearingTimeEstimateGAspec",
-    "ListElementCode": "30 minutes",
+    "ListElementCode": "MINUTES_30",
     "ListElement": "30 minutes",
     "DisplayOrder": 2
   },
   {
     "ID": "GAJudicialHearingTimeEstimateGAspec",
-    "ListElementCode": "45 minutes",
+    "ListElementCode": "MINUTES_45",
     "ListElement": "45 minutes",
     "DisplayOrder": 3
   },
   {
     "ID": "GAJudicialHearingTimeEstimateGAspec",
-    "ListElementCode": "1 hour",
+    "ListElementCode": "HOUR_1",
     "ListElement": "1 hour",
     "DisplayOrder": 4
   },
   {
     "ID": "GAJudicialHearingTimeEstimateGAspec",
-    "ListElementCode": "2 hours",
+    "ListElementCode": "HOURS_2",
     "ListElement": "2 hours",
     "DisplayOrder": 5
   },
   {
     "ID": "GAJudicialHearingTimeEstimateGAspec",
-    "ListElementCode": "Other",
+    "ListElementCode": "OTHER",
     "ListElement": "Other",
     "DisplayOrder": 6
   }
