@@ -319,7 +319,7 @@
     "ID": "GAJudicialDecision",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialListForHearing",
-    "ListElementCode": "AddlnInfoCourtStaff",
+    "ListElementCode": "addlnInfoCourtStaff",
     "EventElementLabel": "  ",
     "EventHintText": " ",
     "FieldDisplayOrder": 21,
