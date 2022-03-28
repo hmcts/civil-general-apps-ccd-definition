@@ -1,0 +1,65 @@
+const {I} = inject();
+
+module.exports = {
+
+  fields: {
+    hearingPreferences: {
+      id: '#judicialListForHearing_hearingPreferencesPreferredType',
+      options: {
+        inPerson: 'In person',
+        videoConferenceHearing: 'Video conference hearing',
+        telephoneHearing: 'Telephone hearing'
+      }
+    },
+    judicialTimeEstimate: {
+      id: '#judicialListForHearing_judicialTimeEstimate',
+      options: {
+        fifteenMin: '15 minutes',
+        thirtyMin: '30 minutes',
+        fortyFiveMin: '45 minutes',
+        oneHour: '1 hour',
+        other: 'Other'
+      }
+    },
+    judicialSupportRequirement: {
+      id: '#judicialListForHearing_judicialSupportRequirement',
+      options: {
+        disabledAccess: 'Disabled access',
+        hearingLoop: 'Hearing loop',
+        signLanguageInterpreter: 'Sign language interpreter',
+        languageInterpreter: 'Language interpreter',
+        otherSupport: 'Other support'
+      }
+    },
+    additionalInfoForCourtStaffTextArea: '#judicialListForHearing_AddlnInfoCourtStaff',
+  },
+
+
+  async selectJudicialHearingPreferences(hearingPreferences) {
+    I.seeInCurrentUrl('JUDGE_MAKES_DECISION/JUDGE_MAKES_DECISIONGAJudicialHearingDetailsScreen');
+    I.waitForElement(this.fields.hearingPreferences.id);
+    await within(this.fields.hearingPreferences.id, () => {
+      I.click(this.fields.hearingPreferences.options[hearingPreferences]);
+    });
+    if ('inPerson' === hearingPreferences) {
+      await I.see('Select an option from the dropdown');
+    }
+  },
+
+  async selectJudicialTimeEstimate(timeEstimate) {
+    I.waitForElement(this.fields.judicialTimeEstimate.id);
+    await within(this.fields.judicialTimeEstimate.id, () => {
+      I.click(this.fields.judicialTimeEstimate.options[timeEstimate]);
+    });
+  },
+
+  async selectJudicialSupportRequirement(supportRequirement) {
+    I.waitForElement(this.fields.judicialSupportRequirement.id);
+    await within(this.fields.judicialSupportRequirement.id, () => {
+      I.click(this.fields.judicialSupportRequirement.options[supportRequirement]);
+    });
+    await I.fillField(this.fields.additionalInfoForCourtStaffTextArea, 'Information for court staff');
+    await I.clickContinue();
+  },
+};
+

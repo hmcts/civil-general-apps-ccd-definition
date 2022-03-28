@@ -21,6 +21,9 @@ module.exports = {
     I.seeInCurrentUrl('JUDGE_MAKES_DECISIONGAJudicialRequestMoreInfoScreen');
     switch (info) {
       case 'requestMoreInfo':
+        await within(this.fields.requestMoreInfo.id, () => {
+          I.click(this.fields.requestMoreInfo.options[info]);
+        });
         I.fillField(this.fields.judgeRequestMoreInfoTextArea, 'Judges request more information');
         I.see('Applicant must respond by 4pm on');
         I.fillField(this.fields.judgeRequestMoreInfoDay, '01');
