@@ -177,6 +177,29 @@
   },
   {
     "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "vulnerabilityQuestionsLabel",
+    "ElementLabel": "Vulnerability questions",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "vulnerabilityQuestionsYesOrNo",
+    "ElementLabel": "Do you believe you, or a witness who will give evidence on your behalf, are vulnerable?",
+    "FieldType": "YesOrNo",
+    "FieldTypeParameter": "GAHearingSupportRequirementsGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "vulnerabilityQuestion",
+    "ElementLabel": "How are you or the witness vulnerable and what support or adjustments do you want the court to consider?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "vulnerabilityQuestionsYesOrNo = \"Yes\""
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingSupportRequirementsLabel",
     "ElementLabel": " ",
     "FieldType": "Label",
