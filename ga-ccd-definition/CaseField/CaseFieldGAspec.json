@@ -333,6 +333,49 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialListForHearing",
+    "Label": "List for a hearing",
+    "FieldType": "GAJudgesHearingListGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialHearingGeneralOrderHearingType",
+    "Label": "${judicialHearingGeneralOrderHearingText}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialGeneralOrderHearingEstimationTime",
+    "Label": "${judicialGeneralOrderHearingEstimationTimeText}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialGeneralOrderHearingRequirement",
+    "Label": "Hearing requirements ${judicialListForHearing.judicialSupportRequirement}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialGOHearingDirections",
+    "Label": "Directions in relation to hearing",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Max": 400
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialGeneralHearingOrderRecital",
+    "Label": "Judge’s recital",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "applicationIsCloakedLabel",
     "Label": "## This application is cloaked",
     "FieldType": "Label",
@@ -405,6 +448,27 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 1000
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialGeneralOrderHeading",
+    "Label": "## Draw a General Order",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialHearingGeneralOrderHearingText",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialGeneralOrderHearingEstimationTimeText",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
   }
 ]
 
