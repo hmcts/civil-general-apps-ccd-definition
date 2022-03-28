@@ -341,14 +341,14 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialHearingGeneralOrderHearingType",
-    "Label": "Hearing type is ${judicialListForHearing.hearingPreferencesPreferredType}",
+    "Label": "${judicialHearingGeneralOrderHearingText}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialGeneralOrderHearingEstimationTime",
-    "Label": "Estimated length of hearing is ${judicialListForHearing.judicialTimeEstimate}",
+    "Label": "${judicialGeneralOrderHearingEstimationTimeText}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -461,6 +461,20 @@
     "ID": "judicialGeneralOrderHeading",
     "Label": "## Draw a General Order",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialHearingGeneralOrderHearingText",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialGeneralOrderHearingEstimationTimeText",
+    "Label": " ",
+    "FieldType": "TextArea",
     "SecurityClassification": "Public"
   }
 ]
