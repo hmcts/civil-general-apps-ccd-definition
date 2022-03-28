@@ -210,7 +210,7 @@
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "PageShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\""
   },
   {
@@ -233,7 +233,7 @@
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "judicialDecisionMakeAnOrderForWrittenRepresentations.makeAnOrderForWrittenRepresentations = \"SEQUENTIAL_REPRESENTATIONS\""
   },
   {
@@ -245,7 +245,7 @@
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "judicialDecisionMakeAnOrderForWrittenRepresentations.makeAnOrderForWrittenRepresentations = \"SEQUENTIAL_REPRESENTATIONS\""
   },
   {
@@ -257,7 +257,7 @@
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "judicialDecisionMakeAnOrderForWrittenRepresentations.makeAnOrderForWrittenRepresentations = \"CONCURRENT_REPRESENTATIONS\""
   },
   {
