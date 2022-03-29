@@ -399,6 +399,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicidalDecisionMakeAnOrderForWrittenRepresentationsLabel",
+    "Label": "## Draw a General Order",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
     "Label": "Make an order for written representations",
     "FieldType": "GAJudicialWrittenRepresentationsGAspec",
