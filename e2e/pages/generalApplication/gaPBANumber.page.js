@@ -1,4 +1,5 @@
 const {I} = inject();
+const expect = require('chai').expect;
 
 module.exports = {
 
@@ -12,20 +13,29 @@ module.exports = {
       }
     },
     pbaReference: '#generalAppPBADetails_pbaReference',
+    errorMessage: '.error-message',
   },
 
-  async selectPbaNumber(pbaNumber, consentCheck) {
+  async selectPbaNumber(pbaNumber) {
     I.waitForElement(this.fields.pbaNumber.id);
     I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATIONGAPBADetailsGAspec');
     I.see('Pay for application with PBA');
-    if ('yes' === consentCheck) {
-      I.see('£108');
-    } else {
-      I.see('£275');
-    }
     I.selectOption(this.fields.pbaNumber.id, this.fields.pbaNumber.options[pbaNumber]);
+    await I.click('Continue');
+    let pbaErrorMessage = await I.grabTextFrom(this.fields.errorMessage);
+    expect(pbaErrorMessage).to.equals('Enter a reference for your PBA account statements is required');
     await I.fillField(this.fields.pbaReference, 'Test PBA reference number');
     await I.clickContinue();
-  }
+  },
+
+  async verifyApplicationFee(consentCheck, notice) {
+    I.waitForElement(this.fields.pbaNumber.id);
+    I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATIONGAPBADetailsGAspec');
+    if ('no' === consentCheck && 'yes' === notice) {
+      I.see('£275');
+    } else {
+      I.see('£108');
+    }
+  },
 };
 

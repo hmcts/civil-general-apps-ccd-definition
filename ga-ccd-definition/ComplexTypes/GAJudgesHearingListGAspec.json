@@ -1,0 +1,114 @@
+[
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "listForHearingLabel",
+    "ElementLabel": "### How do you want to list for a hearing?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "hearingPreferencesPreferredType",
+    "ElementLabel": " ",
+    "HintText": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "GAJudicialHearingListOptionsGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "hearingPreferredLocationLabel",
+    "ElementLabel": "### Select a location",
+    "FieldType": "Label",
+    "FieldShowCondition": "hearingPreferencesPreferredType = \"IN_PERSON\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "hearingPreferredLocation",
+    "ElementLabel": " ",
+    "HintText": " ",
+    "FieldType": "DynamicList",
+    "FieldShowCondition": "hearingPreferencesPreferredType = \"IN_PERSON\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judicialTimeEstimateLabel",
+    "ElementLabel": "### How long do you estimate the hearing will take?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judicialTimeEstimate",
+    "ElementLabel": " ",
+    "HintText": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "GAJudicialHearingTimeEstimateGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judicialSupportRequirementLabel",
+    "ElementLabel": "### Support requirements (optional)",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judicialSupportRequirement",
+    "HintText": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "GAJudicialHearingSupportRequirementGAspec",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "addlnInfoCourtStaffLabel",
+    "ElementLabel": "### Additional information for court staff (optional)",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "addlnInfoCourtStaff",
+    "ElementLabel": " ",
+    "FieldType": "TextArea",
+    "Max": 400,
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "hearingPreferencesPreferredTypeLabel1",
+    "ElementLabel": " ",
+    "HintText": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judgeHearingCourtLocationText1",
+    "ElementLabel": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "hearingPreferencesPreferredType = \"IN_PERSON\""
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judgeHearingTimeEstimateText1",
+    "ElementLabel": " ",
+    "HintText": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judgeHearingSupportReqText1",
+    "ElementLabel": " ",
+    "HintText": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  }
+]

@@ -537,7 +537,77 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "directionsResponseByDate",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "reasonForDecisionText",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
+    "ListElementCode": "requestMoreInfoOption",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
+    "ListElementCode": "judgeRequestMoreInfoText",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
+    "ListElementCode": "judgeRequestMoreInfoByDate",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
+    "ListElementCode": "makeAnOrderForWrittenRepresentations",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
+    "ListElementCode": "writtenSequentailRepresentationsBy",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
+    "ListElementCode": "sequentialMustRespondWithin",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
+    "ListElementCode": "writtenConcurrentRepresentationsBy",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "writtenRepresentationsDrawGeneralOrder",
+    "ListElementCode": "judgeRecitalText",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "writtenRepresentationsDrawGeneralOrder",
+    "ListElementCode": "directionInRelationToHearingText",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   }
