@@ -75,7 +75,7 @@ xui-webapp:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: hmctspublic.azurecr.io/xui/webapp:latest
-    ingressHost: civil-ga-ccd-xui-staging.aat.platform.hmcts.ne
+    ingressHost: civil-ga-ccd-xui-staging.aat.platform.hmcts.net
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health
       HEALTH_CCD_DATA_API: http://${SERVICE_NAME}-ccd-data-store-api/health
@@ -141,11 +141,12 @@ ccd:
         IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET: ${IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET}
         IDAM_DATA_STORE_SYSTEM_USER_USERNAME: ${IDAM_DATA_STORE_SYSTEM_USER_USERNAME}
         IDAM_DATA_STORE_SYSTEM_USER_PASSWORD: ${IDAM_DATA_STORE_SYSTEM_USER_PASSWORD}
-        ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-serv
+        ROLE_ASSIGNMENT_URL: role-am-${SERVICE_FQDN}
       keyVaults: []
       ingressHost: civil-ga-ccd-data-store-staging-aat.service.core-compute-aat.internal
   am-role-assignment-service:
     java:
+      ingressHost: role-am-${SERVICE_FQDN}
       keyVaults:
         am:
           secrets:
