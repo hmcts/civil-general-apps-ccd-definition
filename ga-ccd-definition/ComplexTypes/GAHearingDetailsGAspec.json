@@ -216,7 +216,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "SupportRequirementSignLanguage",
-    "ElementLabel": "Sign language",
+    "ElementLabel": "What type of sign language do you need an interpreter for?",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "FieldShowCondition": "SupportRequirementCONTAINS\"SIGN_INTERPRETER\""
@@ -224,7 +224,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "SupportRequirementLanguageInterpreter",
-    "ElementLabel": "Language",
+    "ElementLabel": "What spoken or written language do you need an interpreter for?",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "FieldShowCondition": "SupportRequirementCONTAINS\"LANGUAGE_INTERPRETER\""
@@ -232,7 +232,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "SupportRequirementOther",
-    "ElementLabel": "Support needed",
+    "ElementLabel": "What other support do you need?",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "FieldShowCondition": "SupportRequirementCONTAINS\"OTHER_SUPPORT\""
