@@ -105,10 +105,10 @@ ccd:
       enabled: true
 
   global:
-    ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
-    ccdDataStoreUrl: http://civil-ga-ccd-service-data-store-staging-aat.service.core-compute-aat.internal
-    ccdDefinitionStoreUrl: http://civil-ga-ccd-service-definition-store-staging-aat.service.core-compute-aat.internal
-    ccdUserProfileUrl: http://${SERVICE_NAME}-ccd-user-profile-api
+    ccdApiGatewayIngress: http://civil-ga-ccd-gateway-staging-aat.service.core-compute-aat.internal
+    ccdDataStoreUrl: http://civil-ga-ccd-data-store-staging-aat.service.core-compute-aat.internal
+    ccdDefinitionStoreUrl: http://civil-ga-ccd-definition-store-staging-aat.service.core-compute-aat.internal
+    ccdUserProfileUrl: http://civil-ga-ccd-xui-staging-aat.service.core-compute-aat.internal
     dmStoreUrl: http://dm-store-aat.service.core-compute-aat.internal
     idamApiUrl: https://idam-api.aat.platform.hmcts.net
     idamWebUrl: https://idam-web-public.aat.platform.hmcts.net
