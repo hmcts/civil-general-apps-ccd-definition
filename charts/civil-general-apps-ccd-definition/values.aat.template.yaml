@@ -67,7 +67,7 @@ idam-pr:
   enabled: true
   redirect_uris:
     XUI:
-      - https://civil-ga-ccd-service-xui-staging.aat.platform.hmcts.net/oauth2/callback
+      - https://civil-ga-ccd-xui-staging.aat.platform.hmcts.net/oauth2/callback
 
 xui-webapp:
   enabled: true
