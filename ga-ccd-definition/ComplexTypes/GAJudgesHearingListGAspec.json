@@ -81,92 +81,26 @@
   },
   {
     "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "sameHearingPrefByAppAndResp",
-    "ElementLabel": " ",
-    "HintText": " ",
-    "FieldType": "YesOrNo",
-    "FieldTypeParameter": "GAJudicialHearingListOptionsGAspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAJudgesHearingListGAspec",
     "ListElementCode": "hearingPreferencesPreferredTypeLabel1",
     "ElementLabel": " ",
     "HintText": " ",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "sameHearingPrefByAppAndResp = \"No\" OR sameHearingPrefByAppAndResp = \"\""
-  },
-  {
-    "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "hearingPreferencesPreferredTypeLabel2",
-    "ElementLabel": " ",
-    "HintText": " ",
-    "FieldType": "Label",
-    "FieldTypeParameter": "GAJudicialHearingListOptionsGAspec",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "sameHearingPrefByAppAndResp = \"Yes\""
-  },
-  {
-    "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "sameCourtLocationPrefByAppAndResp",
-    "ElementLabel": " ",
-    "HintText": " ",
-    "FieldType": "YesOrNo",
-    "FieldTypeParameter": "GAJudicialHearingListOptionsGAspec",
+    "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GAJudgesHearingListGAspec",
     "ListElementCode": "judgeHearingCourtLocationText1",
     "ElementLabel": " ",
-    "FieldType": "Label",
+    "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "FieldShowCondition": "hearingPreferencesPreferredType = \"IN_PERSON\""
-  },
-  {
-    "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "judgeHearingCourtLocationText2",
-    "ElementLabel": " ",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "sameCourtLocationPrefByAppAndResp = \"No\" OR sameCourtLocationPrefByAppAndResp = \"\""
-  },
-  {
-    "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "sameHearingTimeEstByAppAndResp",
-    "ElementLabel": " ",
-    "HintText": " ",
-    "FieldType": "YesOrNo",
-    "FieldTypeParameter": "GAJudicialHearingListOptionsGAspec",
-    "SecurityClassification": "Public"
   },
   {
     "ID": "GAJudgesHearingListGAspec",
     "ListElementCode": "judgeHearingTimeEstimateText1",
     "ElementLabel": " ",
     "HintText": " ",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "sameHearingTimeEstByAppAndResp = \"No\" OR sameHearingTimeEstByAppAndResp = \"\""
-  },
-  {
-    "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "judgeHearingTimeEstimateText2",
-    "ElementLabel": " ",
-    "HintText": " ",
-    "FieldType": "Label",
-    "FieldTypeParameter": "GAJudicialHearingListOptionsGAspec",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "sameHearingTimeEstByAppAndResp = \"Yes\""
-  },
-  {
-    "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "sameHearingSupportReqByAppAndResp",
-    "ElementLabel": " ",
-    "HintText": " ",
-    "FieldType": "YesOrNo",
-    "FieldTypeParameter": "GAJudicialHearingListOptionsGAspec",
+    "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
   {
@@ -174,18 +108,7 @@
     "ListElementCode": "judgeHearingSupportReqText1",
     "ElementLabel": " ",
     "HintText": " ",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "sameHearingSupportReqByAppAndResp = \"No\" OR sameHearingSupportReqByAppAndResp = \"\""
-  },
-  {
-    "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "judgeHearingSupportReqText2",
-    "ElementLabel": " ",
-    "HintText": " ",
-    "FieldType": "Label",
-    "FieldTypeParameter": "GAJudicialHearingListOptionsGAspec",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "sameHearingSupportReqByAppAndResp = \"Yes\""
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
   }
 ]
