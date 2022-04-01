@@ -78,56 +78,52 @@ module.exports = {
         otherSupport: 'Other support'
       }
     },
+    vulnerabilityQuestions: {
+      id: '#hearingDetailsResp_vulnerabilityQuestionsYesOrNo',
+      options: {
+        yes: 'Yes',
+        no: 'No'
+      }
+    },
+    vulnerabilityQuestionTextArea: '#hearingDetailsResp_vulnerabilityQuestion',
     supportRequirementSignLanguage: '#hearingDetailsResp_SupportRequirementSignLanguage',
   },
 
   async isRespHearingScheduled(hearingScheduledCheck) {
     I.waitForElement(this.fields.hearingScheduled.id);
     I.seeInCurrentUrl('RESPOND_TO_APPLICATION/RESPOND_TO_APPLICATIONGARespHearingScreen');
+    await within(this.fields.hearingScheduled.id, () => {
+      I.click(this.fields.hearingScheduled.options[hearingScheduledCheck]);
+    });
     if ('yes' === hearingScheduledCheck) {
-      await within(this.fields.hearingScheduled.id, () => {
-        I.click(this.fields.hearingScheduled.options[hearingScheduledCheck]);
-      });
       await I.fillField(this.fields.hearingDateDay, 1);
       await I.fillField(this.fields.hearingDateMonth, 10);
       await I.fillField(this.fields.hearingDateYear, 2022);
-    } else {
-      await within(this.fields.hearingScheduled.id, () => {
-        I.click(this.fields.hearingScheduled.options[hearingScheduledCheck]);
-      });
     }
   },
 
   async isRespJudgeRequired(judgeRequired) {
     I.waitForElement(this.fields.judgeRequired.id);
+    await within(this.fields.judgeRequired.id, () => {
+      I.click(this.fields.judgeRequired.options[judgeRequired]);
+    });
     if ('yes' === judgeRequired) {
-      await within(this.fields.judgeRequired.id, () => {
-        I.click(this.fields.judgeRequired.options[judgeRequired]);
-      });
       await I.fillField(this.fields.judgeName, 'Steve Smith');
-    } else {
-      await within(this.fields.judgeRequired.id, () => {
-        I.click(this.fields.judgeRequired.options[judgeRequired]);
-      });
     }
   },
 
   async isRespTrialRequired(trialRequired) {
     I.waitForElement(this.fields.trialRequired.id);
+    await within(this.fields.trialRequired.id, () => {
+      I.click(this.fields.trialRequired.options[trialRequired]);
+    });
     if ('yes' === trialRequired) {
-      await within(this.fields.trialRequired.id, () => {
-        I.click(this.fields.trialRequired.options[trialRequired]);
-      });
       await I.fillField(this.fields.trialDateFromDay, 1);
       await I.fillField(this.fields.trialDateFromMonth, 10);
       await I.fillField(this.fields.trialDateFromYear, 2022);
       await I.fillField(this.fields.trialDateToDay, 1);
       await I.fillField(this.fields.trialDateToMonth, 10);
       await I.fillField(this.fields.trialDateToYear, 2023);
-    } else {
-      await within(this.fields.trialRequired.id, () => {
-        I.click(this.fields.trialRequired.options[trialRequired]);
-      });
     }
   },
 
@@ -150,23 +146,29 @@ module.exports = {
 
   async isRespUnavailableTrailRequired(trailRequired) {
     I.waitForElement(this.fields.unavailableTrailRequired.id);
+    await within(this.fields.unavailableTrailRequired.id, () => {
+      I.click(this.fields.unavailableTrailRequired.options[trailRequired]);
+    });
     if ('yes' === trailRequired) {
-      await within(this.fields.unavailableTrailRequired.id, () => {
-        I.click(this.fields.unavailableTrailRequired.options[trailRequired]);
-        I.wait(2);
-        I.click({css: '#hearingDetailsResp_generalAppUnavailableDates .button:nth-child(2)'});
-        I.waitForVisible(this.fields.unavailableDateFromDay);
-        I.fillField(this.fields.unavailableDateFromDay, 1);
-        I.fillField(this.fields.unavailableDateFromMonth, 10);
-        I.fillField(this.fields.unavailableDateFromYear, 2022);
-        I.fillField(this.fields.unavailableDateToDay, 1);
-        I.fillField(this.fields.unavailableDateToMonth, 10);
-        I.fillField(this.fields.unavailableDateToYear, 2023);
-      });
-    } else {
-      await within(this.fields.unavailableTrailRequired.id, () => {
-        I.click(this.fields.unavailableTrailRequired.options[trailRequired]);
-      });
+      I.wait(2);
+      I.click({css: '#hearingDetailsResp_generalAppUnavailableDates .button:nth-child(2)'});
+      I.waitForVisible(this.fields.unavailableDateFromDay);
+      I.fillField(this.fields.unavailableDateFromDay, 1);
+      I.fillField(this.fields.unavailableDateFromMonth, 10);
+      I.fillField(this.fields.unavailableDateFromYear, 2022);
+      I.fillField(this.fields.unavailableDateToDay, 1);
+      I.fillField(this.fields.unavailableDateToMonth, 10);
+      I.fillField(this.fields.unavailableDateToYear, 2023);
+    }
+  },
+
+  async selectRespVulnerabilityQuestions(vulnerabilityQuestions) {
+    I.waitForElement(this.fields.vulnerabilityQuestions.id);
+    await within(this.fields.vulnerabilityQuestions.id, () => {
+      I.click(this.fields.vulnerabilityQuestions.options[vulnerabilityQuestions]);
+    });
+    if ('yes' === vulnerabilityQuestions) {
+      await I.fillField(this.fields.vulnerabilityQuestionTextArea, 'Test Test');
     }
   },
 
@@ -179,14 +181,6 @@ module.exports = {
       await I.fillField(this.fields.supportRequirementSignLanguage, 'SignLanguage');
     }
     await I.clickContinue();
-  },
-
-  async updateRespHearingDetails() {
-    I.waitForElement(this.fields.hearingScheduled.id);
-    await I.fillField(this.fields.hearingDetailsEmailID, 'update@gmail.com');
-    await I.clickContinue();
-    I.seeInCurrentUrl('/RESPOND_TO_APPLICATION/submit');
-    await I.see('update@gmail.com');
   },
 };
 
