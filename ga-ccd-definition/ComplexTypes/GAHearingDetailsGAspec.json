@@ -127,7 +127,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingDuration",
-    "ElementLabel": "How long would you like the hearing to take?",
+    "ElementLabel": "How long do you think the hearing will last?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAHearingDurationGAspec",
     "SecurityClassification": "Public"
@@ -177,6 +177,29 @@
   },
   {
     "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "vulnerabilityQuestionsLabel",
+    "ElementLabel": "Vulnerability questions",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "vulnerabilityQuestionsYesOrNo",
+    "ElementLabel": "Do you believe you, or a witness who will give evidence on your behalf, are vulnerable?",
+    "FieldType": "YesOrNo",
+    "FieldTypeParameter": "GAHearingSupportRequirementsGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "vulnerabilityQuestion",
+    "ElementLabel": "How are you or the witness vulnerable and what support or adjustments do you want the court to consider?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "vulnerabilityQuestionsYesOrNo = \"Yes\""
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingSupportRequirementsLabel",
     "ElementLabel": " ",
     "FieldType": "Label",
@@ -193,7 +216,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "SupportRequirementSignLanguage",
-    "ElementLabel": "Sign language",
+    "ElementLabel": "What type of sign language do you need an interpreter for?",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "FieldShowCondition": "SupportRequirementCONTAINS\"SIGN_INTERPRETER\""
@@ -201,7 +224,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "SupportRequirementLanguageInterpreter",
-    "ElementLabel": "Language",
+    "ElementLabel": "What spoken or written language do you need an interpreter for?",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "FieldShowCondition": "SupportRequirementCONTAINS\"LANGUAGE_INTERPRETER\""
@@ -209,7 +232,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "SupportRequirementOther",
-    "ElementLabel": "Support needed",
+    "ElementLabel": "What other support do you need?",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "FieldShowCondition": "SupportRequirementCONTAINS\"OTHER_SUPPORT\""
