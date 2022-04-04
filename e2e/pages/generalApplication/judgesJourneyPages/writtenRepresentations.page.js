@@ -33,7 +33,7 @@ module.exports = {
         I.fillField(this.fields.sequentialRepYear, '2024');
         I.fillField(this.fields.sequentialMustRespondWithin, '10');
         break;
-      case 'giveDirections':
+      case 'concurrentRep':
         I.see('Any written representations and any further witness statements may be uploaded by 4pm on');
         I.fillField(this.fields.concurrentRepDay, '01');
         I.fillField(this.fields.concurrentRepMonth, '01');

@@ -19,22 +19,15 @@ module.exports = {
   async requestMoreInfoOrder(info) {
     await I.waitForElement(this.fields.requestMoreInfo.id);
     I.seeInCurrentUrl('JUDGE_MAKES_DECISIONGAJudicialRequestMoreInfoScreen');
-    switch (info) {
-      case 'requestMoreInfo':
-        await within(this.fields.requestMoreInfo.id, () => {
-          I.click(this.fields.requestMoreInfo.options[info]);
-        });
-        I.fillField(this.fields.judgeRequestMoreInfoTextArea, 'Judges request more information');
-        I.see('Applicant must respond by 4pm on');
-        I.fillField(this.fields.judgeRequestMoreInfoDay, '01');
-        I.fillField(this.fields.judgeRequestMoreInfoMonth, '01');
-        I.fillField(this.fields.judgeRequestMoreInfoYear, '2024');
-        break;
-      case 'sendApplicationToOtherParty':
-        await within(this.fields.requestMoreInfo.id, () => {
-          I.click(this.fields.requestMoreInfo.options[info]);
-        });
-        break;
+    await within(this.fields.requestMoreInfo.id, () => {
+      I.click(this.fields.requestMoreInfo.options[info]);
+    });
+    if ('requestMoreInformation' === info) {
+      I.fillField(this.fields.judgeRequestMoreInfoTextArea, 'Judges request more information');
+      I.see('Applicant must respond by 4pm on');
+      I.fillField(this.fields.judgeRequestMoreInfoDay, '01');
+      I.fillField(this.fields.judgeRequestMoreInfoMonth, '01');
+      I.fillField(this.fields.judgeRequestMoreInfoYear, '2024');
     }
     await I.clickContinue();
   }

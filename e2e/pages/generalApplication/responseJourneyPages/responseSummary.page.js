@@ -15,8 +15,8 @@ module.exports = {
     I.see('Summary');
     I.see('Parent Case ID');
     I.see('Hearing details');
-    // Enable this as part of CIV-1425
-    // I.dontSee(events.RESPOND_TO_APPLICATION.name);
+    I.dontSee(events.RESPOND_TO_APPLICATION.name);
+    I.see('Respondent hearing details');
   },
 
   async verifySummaryPageBeforeResponding() {

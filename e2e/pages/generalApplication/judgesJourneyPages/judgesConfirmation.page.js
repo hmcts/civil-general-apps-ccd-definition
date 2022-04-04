@@ -20,11 +20,11 @@ module.exports = {
     await I.see('The applicant will be notified.');
   },
 
-  async closeAndReturnToCaseDetails(caseId) {
-    await I.see(caseId);
+  async closeAndReturnToCaseDetails(childCaseId) {
+    await I.see(childCaseId);
     await I.click('Close and Return to case details');
     await I.waitForInvisible(locate('.loading-spinner-in-action').withText('Loading'));
-    await I.see(`Case ${caseId} has been updated with event: Make decision`);
+    await I.see(`Case ${childCaseId} has been updated with event: Make decision`);
   }
 };
 

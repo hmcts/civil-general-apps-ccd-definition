@@ -29,7 +29,7 @@ module.exports = {
     I.see('Judge’s recital');
     let judgeRecitalText = await I.grabValueFrom(this.fields.judgeRecitalTextArea);
     expect(judgeRecitalText).to.contains('Upon reading the application');
-    I.see('Reason for decision');
+    I.see('Reasons for decision');
     if (consentCheck === 'no') {
       I.seeTextEquals('This application is cloaked', '#applicationIsCloakedLabel h2');
       I.see('Make application visible to all parties');

@@ -7,8 +7,8 @@ module.exports = {
       id: '#judicialListForHearing_hearingPreferencesPreferredType',
       options: {
         inPerson: 'In person',
-        videoConferenceHearing: 'Video conference hearing',
-        telephoneHearing: 'Telephone hearing'
+        videoConferenceHearing: 'Video',
+        telephoneHearing: 'Telephone'
       }
     },
     judicialTimeEstimate: {
@@ -31,7 +31,7 @@ module.exports = {
         otherSupport: 'Other support'
       }
     },
-    additionalInfoForCourtStaffTextArea: '#judicialListForHearing_AddlnInfoCourtStaff',
+    additionalInfoForCourtStaffTextArea: '#judicialListForHearing_addlnInfoCourtStaff',
   },
 
 

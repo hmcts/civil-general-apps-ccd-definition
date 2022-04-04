@@ -8,10 +8,10 @@ module.exports = {
     }
   },
 
-  async verifyJudgesCheckAnswerForm(caseId) {
+  async verifyJudgesCheckAnswerForm(caseNumber) {
     I.seeInCurrentUrl('JUDGE_MAKES_DECISION/submit');
     I.see('Check your answers');
-    I.seeInCurrentUrl(caseId);
+    I.seeInCurrentUrl(caseNumber);
     I.seeNumberOfVisibleElements('.button', 2);
   },
 };

@@ -13,9 +13,10 @@ module.exports = {
   async verifyHearingDetailsGeneralOrderScreen(hearingPreferences, timeEstimate) {
     await I.waitForElement(this.fields.hearingDetailsJudgeRecitalTextArea);
     I.seeInCurrentUrl('/JUDGE_MAKES_DECISIONGAJudicialHearingDetailsGeneralOrderScreen');
+    I.see('Draw a General Order');
     I.see('Judge’s recital');
     let judgeRecitalText = await I.grabValueFrom(this.fields.hearingDetailsJudgeRecitalTextArea);
-    expect(judgeRecitalText).to.contains('Upon the application of');
+    expect(judgeRecitalText).to.contains('Upon the application of Claimant');
     await I.see(`Hearing type is ${hearingPreferences}`);
     await I.see(`Estimated length of hearing is ${timeEstimate}`);
     await I.see('Directions in relation to hearing');
@@ -24,14 +25,19 @@ module.exports = {
     await I.clickContinue();
   },
 
-  async verifyWrittenRepresentationsDrawGeneralOrderScreen() {
+  async verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType) {
     await I.waitForElement(this.fields.writtenRepresentationsJudgeRecitalTextArea);
     I.seeInCurrentUrl('/JUDGE_MAKES_DECISIONGAJudicialWrittenRepresentationsDrawGeneralOrder');
+    I.see('Draw a General Order');
     I.see('Judge’s recital');
     let judgeRecitalText = await I.grabValueFrom(this.fields.writtenRepresentationsJudgeRecitalTextArea);
     expect(judgeRecitalText).to.contains('Upon reading the application of Claimant');
-    await I.see('The respondent may upload any written representations by 4pm on');
-    await I.see('Once the respondent has uploaded written representations, the applicant must respond within 12 days');
+    if ('sequentialRep' === representationsType) {
+      await I.see('The respondent may upload any written representations by 4pm on');
+      await I.see('Once the respondent has uploaded written representations, the applicant must respond within 10 days');
+    } else {
+      await I.see('The applicant and respondent must respond with written representations by 4pm on');
+    }
     let directionText = await I.grabValueFrom(this.fields.writtenRepresentationsDirectionsTextArea);
     expect(directionText).to.contains('A person who was not notified of the application before this order');
     await I.clickContinue();
