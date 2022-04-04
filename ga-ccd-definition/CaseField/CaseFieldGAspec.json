@@ -164,9 +164,18 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppApplnSolictor",
     "Label": "Applicant Solicitor Details",
-    "FieldType": "GAApplnSolGAspec",
+    "FieldType": "GASolicitorDetailsGAspec",
     "SecurityClassification": "Public",
     "_Definition":  "This fields holds applicant's Solicitor details.",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppRespondentSolictor",
+    "Label": "Respondent Solicitor Details",
+    "FieldType": "GASolicitorDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "This fields holds respondent's Solicitor details.",
     "_Category":  "COMMON"
   },
   {
