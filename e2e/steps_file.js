@@ -154,13 +154,14 @@ const enterApplicationDetails = (consentCheck) => [
   () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH, consentCheck),
 ];
 
-const fillHearingDetails = (hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement) => [
+const fillHearingDetails = (hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, vulnerabilityQuestions, supportRequirement) => [
   () => hearingAndTrialPage.isHearingScheduled(hearingScheduled),
   () => hearingAndTrialPage.isJudgeRequired(judgeRequired),
   () => hearingAndTrialPage.isTrialRequired(trialRequired),
   () => hearingAndTrialPage.selectHearingPreferences('inPerson'),
   () => hearingAndTrialPage.selectHearingDuration('fortyFiveMin'),
   () => hearingAndTrialPage.isUnavailableTrailRequired(unavailableTrailRequired),
+  () => hearingAndTrialPage.selectVulnerabilityQuestions(vulnerabilityQuestions),
   () => hearingAndTrialPage.selectSupportRequirement(supportRequirement),
 ];
 
@@ -694,6 +695,7 @@ module.exports = function () {
         () => respHearingDetailsPage.selectRespHearingPreferences('inPerson'),
         () => respHearingDetailsPage.selectRespHearingDuration('fortyFiveMin'),
         () => respHearingDetailsPage.isRespUnavailableTrailRequired(unavailableTrailRequired),
+        () => respHearingDetailsPage.selectRespVulnerabilityQuestions('no'),
         () => respHearingDetailsPage.selectRespSupportRequirement(supportRequirement),
         () => responseCheckYourAnswersPage.respVerifyCheckAnswerForm(caseId),
         ...submitApplication('You have responded to an application'),
@@ -726,7 +728,7 @@ module.exports = function () {
 
     async closeAndReturnToCaseDetails(caseId) {
       await this.triggerStepsWithScreenshot([
-        () =>  confirmationPage.closeAndReturnToCaseDetails(caseId),
+        () => confirmationPage.closeAndReturnToCaseDetails(caseId),
       ]);
     },
 
@@ -740,7 +742,7 @@ module.exports = function () {
           ...selectNotice(notice),
         ]),
         ...enterApplicationDetails(consentCheck),
-        ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement),
+        ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, 'yes', supportRequirement),
         ...verifyApplicationFee(consentCheck, notice),
         ...selectPbaNumber(),
         ...verifyCheckAnswerForm(caseId, consentCheck),

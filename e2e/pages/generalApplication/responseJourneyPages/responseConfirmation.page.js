@@ -11,7 +11,7 @@ module.exports = {
 
   async verifyRespConfirmationPage() {
     I.seeInCurrentUrl('RESPOND_TO_APPLICATION/confirm');
-    I.seeTextEquals('You have responded to an application', '#confirmation-header h1');
+    I.seeTextEquals('You have provided the requested info', '#confirmation-header h1');
   },
 
   async verifyRespApplicationType(appTypes) {
