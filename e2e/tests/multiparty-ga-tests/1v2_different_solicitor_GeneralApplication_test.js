@@ -8,7 +8,7 @@ let caseNumber, caseId, childCaseNumber, childCaseId;
 
 Feature('CCD 1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests');
 
-Scenario('Create multiple general applications for 1v2 different Solicitor - respond to application - List for a hearing journey', async ({I, api}) => {
+Scenario('GA for 1v2 different Solicitor - respond to application - List for a hearing journey', async ({I, api}) => {
   caseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Case created for general application: ' + caseNumber);
   await I.login(config.applicantSolicitorUser);
@@ -33,5 +33,5 @@ Scenario('Create multiple general applications for 1v2 different Solicitor - res
   await I.verifyResponseSummaryPage();
   await I.judgeListForAHearingDecision('listForAHearing', childCaseNum());
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
-  console.log('Judges made an order for Sequential written representations on case: ' + childCaseNum());
+  console.log('Judges list for a hearing on case: ' + childCaseNum());
 }).retry(0);

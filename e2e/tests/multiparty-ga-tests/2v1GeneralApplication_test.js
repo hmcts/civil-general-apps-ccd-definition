@@ -8,7 +8,7 @@ let caseNumber, caseId, childCaseId, childCaseNumber;
 
 Feature('CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests');
 
-Scenario('Create Multiple general application for 2v1 - Concurrent written representations journey', async ({I, api}) => {
+Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, api}) => {
   caseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Case created for general application: ' + caseNumber);
   await I.login(config.applicantSolicitorUser);

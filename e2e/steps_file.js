@@ -734,7 +734,12 @@ module.exports = function () {
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => requestMoreInfoPage.requestMoreInfoOrder(infoType),
         () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseId),
-        ...submitApplication('You have requested more information'),
+        ...conditionalSteps(infoType === 'requestMoreInformation', [
+          ...submitApplication('You have requested more information'),
+        ]),
+        ...conditionalSteps(infoType === 'sendApplicationToOtherParty', [
+          ...submitApplication('You have requested a response'),
+        ]),
         () => judgesConfirmationPage.verifyReqMoreInfoConfirmationPage(),
       ]);
     },
