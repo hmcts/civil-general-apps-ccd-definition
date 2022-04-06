@@ -72,6 +72,12 @@ const responseConfirmationPage = require('./pages/generalApplication/responseJou
 const responseSummaryPage = require('./pages/generalApplication/responseJourneyPages/responseSummary.page');
 const judgeDecisionPage = require('./pages/generalApplication/judgesJourneyPages/judgeDecision.page');
 const makeAnOrderPage = require('./pages/generalApplication/judgesJourneyPages/makeAnOrder.page');
+const requestMoreInfoPage = require('./pages/generalApplication/judgesJourneyPages/requestMoreInformation.page');
+const judgesCheckYourAnswers = require('./pages/generalApplication/judgesJourneyPages/judgesCheckYourAnswers.page');
+const judgesConfirmationPage = require('./pages/generalApplication/judgesJourneyPages/judgesConfirmation.page');
+const listForHearingPage = require('./pages/generalApplication/judgesJourneyPages/listForHearing.page');
+const drawGeneralOrderPage = require('./pages/generalApplication/judgesJourneyPages/drawGeneralOrder.page');
+const writtenRepresentationsPage = require('./pages/generalApplication/judgesJourneyPages/writtenRepresentations.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -124,6 +130,7 @@ const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
+const GA_CASE_HEADER = '.heading-h2';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 
@@ -154,13 +161,14 @@ const enterApplicationDetails = (consentCheck) => [
   () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH, consentCheck),
 ];
 
-const fillHearingDetails = (hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement) => [
+const fillHearingDetails = (hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, vulnerabilityQuestions, supportRequirement) => [
   () => hearingAndTrialPage.isHearingScheduled(hearingScheduled),
   () => hearingAndTrialPage.isJudgeRequired(judgeRequired),
   () => hearingAndTrialPage.isTrialRequired(trialRequired),
   () => hearingAndTrialPage.selectHearingPreferences('inPerson'),
   () => hearingAndTrialPage.selectHearingDuration('fortyFiveMin'),
   () => hearingAndTrialPage.isUnavailableTrailRequired(unavailableTrailRequired),
+  () => hearingAndTrialPage.selectVulnerabilityQuestions(vulnerabilityQuestions),
   () => hearingAndTrialPage.selectSupportRequirement(supportRequirement),
 ];
 
@@ -218,8 +226,12 @@ module.exports = function () {
 
     grabCaseNumber: async function () {
       this.waitForElement(CASE_HEADER);
-
       return await this.grabTextFrom(CASE_HEADER);
+    },
+
+    grabGACaseNumber: async function () {
+      this.waitForElement(GA_CASE_HEADER);
+      return await this.grabTextFrom(GA_CASE_HEADER);
     },
 
     async signOut() {
@@ -694,20 +706,69 @@ module.exports = function () {
         () => respHearingDetailsPage.selectRespHearingPreferences('inPerson'),
         () => respHearingDetailsPage.selectRespHearingDuration('fortyFiveMin'),
         () => respHearingDetailsPage.isRespUnavailableTrailRequired(unavailableTrailRequired),
+        () => respHearingDetailsPage.selectRespVulnerabilityQuestions('no'),
         () => respHearingDetailsPage.selectRespSupportRequirement(supportRequirement),
         () => responseCheckYourAnswersPage.respVerifyCheckAnswerForm(caseId),
-        ...submitApplication('You have responded to an application'),
+        ...submitApplication('You have provided the requested info'),
         () => responseConfirmationPage.verifyRespConfirmationPage(),
         () => responseConfirmationPage.verifyRespApplicationType(appTypes),
       ]);
     },
 
-    async judgeMakeDecision(decision, order, consentCheck) {
+    async judgeMakeDecision(decision, order, consentCheck, caseNumber) {
       eventName = events.JUDGE_MAKES_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.start(eventName),
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => makeAnOrderPage.selectAnOrder(order, consentCheck),
+        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
+        ...submitApplication('Your order has been made'),
+        () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
+      ]);
+    },
+
+    async judgeRequestMoreInfo(decision, infoType, caseId) {
+      eventName = events.JUDGE_MAKES_DECISION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.start(eventName),
+        () => judgeDecisionPage.selectJudgeDecision(decision),
+        () => requestMoreInfoPage.requestMoreInfoOrder(infoType),
+        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseId),
+        ...conditionalSteps(infoType === 'requestMoreInformation', [
+          ...submitApplication('You have requested more information'),
+        ]),
+        ...conditionalSteps(infoType === 'sendApplicationToOtherParty', [
+          ...submitApplication('You have requested a response'),
+        ]),
+        () => judgesConfirmationPage.verifyReqMoreInfoConfirmationPage(),
+      ]);
+    },
+
+    async judgeListForAHearingDecision(decision, caseNumber) {
+      eventName = events.JUDGE_MAKES_DECISION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.start(eventName),
+        () => judgeDecisionPage.selectJudgeDecision(decision),
+        () => listForHearingPage.selectJudicialHearingPreferences('videoConferenceHearing'),
+        () => listForHearingPage.selectJudicialTimeEstimate('fifteenMin'),
+        () => listForHearingPage.selectJudicialSupportRequirement('disabledAccess'),
+        () => drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('Video', '15 minutes'),
+        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
+        ...submitApplication('Your order has been made'),
+        () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
+      ]);
+    },
+
+    async judgeWrittenRepresentationsDecision(decision, representationsType, caseNumber) {
+      eventName = events.JUDGE_MAKES_DECISION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.start(eventName),
+        () => judgeDecisionPage.selectJudgeDecision(decision),
+        () => writtenRepresentationsPage.selectWrittenRepresentations(representationsType),
+        () => drawGeneralOrderPage.verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType),
+        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
+        ...submitApplication('Your order has been made'),
+        () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
       ]);
     },
 
@@ -726,7 +787,19 @@ module.exports = function () {
 
     async closeAndReturnToCaseDetails(caseId) {
       await this.triggerStepsWithScreenshot([
-        () =>  confirmationPage.closeAndReturnToCaseDetails(caseId),
+        () => confirmationPage.closeAndReturnToCaseDetails(caseId),
+      ]);
+    },
+
+    async judgeCloseAndReturnToCaseDetails(caseId) {
+      await this.triggerStepsWithScreenshot([
+        () => judgesConfirmationPage.closeAndReturnToCaseDetails(caseId),
+      ]);
+    },
+
+    async respCloseAndReturnToCaseDetails(caseId) {
+      await this.triggerStepsWithScreenshot([
+        () => responseConfirmationPage.closeAndReturnToCaseDetails(caseId),
       ]);
     },
 
@@ -740,7 +813,7 @@ module.exports = function () {
           ...selectNotice(notice),
         ]),
         ...enterApplicationDetails(consentCheck),
-        ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement),
+        ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, 'yes', supportRequirement),
         ...verifyApplicationFee(consentCheck, notice),
         ...selectPbaNumber(),
         ...verifyCheckAnswerForm(caseId, consentCheck),

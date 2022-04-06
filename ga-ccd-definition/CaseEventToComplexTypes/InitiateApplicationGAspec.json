@@ -291,25 +291,25 @@
   },
   {
     "ID": "HearingDetails",
-    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
-    "ListElementCode": "HearingSupportRequirementsLabel",
+    "ListElementCode": "vulnerabilityQuestionsLabel",
     "FieldDisplayOrder": 25,
     "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "HearingDetails",
-    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
-    "ListElementCode": "SupportRequirement",
+    "ListElementCode": "vulnerabilityQuestionsYesOrNo",
     "FieldDisplayOrder": 26,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "HearingDetails",
-    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
-    "ListElementCode": "SupportRequirementSignLanguage",
+    "ListElementCode": "vulnerabilityQuestion",
     "FieldDisplayOrder": 27,
     "DisplayContext": "MANDATORY"
   },
@@ -317,8 +317,32 @@
     "ID": "HearingDetails",
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
     "CaseFieldID": "generalAppHearingDetails",
-    "ListElementCode": "SupportRequirementLanguageInterpreter",
+    "ListElementCode": "HearingSupportRequirementsLabel",
     "FieldDisplayOrder": 28,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "HearingDetails",
+    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseFieldID": "generalAppHearingDetails",
+    "ListElementCode": "SupportRequirement",
+    "FieldDisplayOrder": 29,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "HearingDetails",
+    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseFieldID": "generalAppHearingDetails",
+    "ListElementCode": "SupportRequirementSignLanguage",
+    "FieldDisplayOrder": 30,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingDetails",
+    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseFieldID": "generalAppHearingDetails",
+    "ListElementCode": "SupportRequirementLanguageInterpreter",
+    "FieldDisplayOrder": 31,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -326,7 +350,7 @@
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "SupportRequirementOther",
-    "FieldDisplayOrder": 29,
+    "FieldDisplayOrder": 32,
     "DisplayContext": "MANDATORY"
   },
   {
