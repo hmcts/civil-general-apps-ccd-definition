@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 const config = require('../../config.js');
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
 const appStatus = 'Awaiting Respondent Response';
@@ -24,7 +26,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 1), 1);
   await I.see(appStatus);
   // Refactor as part of CIV-1425
-  childCaseNumber = await I.grabChildCaseNumber();
+ /* childCaseNumber = await I.grabChildCaseNumber();
   await I.respondToApplication(childCaseNum(), 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter', getAppTypes().slice(0, 1));
   console.log('Responded to application: ' + childCaseNum());
@@ -33,7 +35,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.verifyResponseSummaryPage();
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'sequentialRep', childCaseNum());
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
-  console.log('Judges made an order for Sequential written representations on case: ' + childCaseNum());
+  console.log('Judges made an order for Sequential written representations on case: ' + childCaseNum());*/
 }).retry(0);
 
 Scenario('GA for 1v2 Same Solicitor - Send application to other party journey', async ({I, api}) => {
@@ -52,7 +54,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey', 
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 5), 1);
   await I.see(appStatus);
   // Refactor as part of CIV-1425
-  childCaseNumber = await I.grabChildCaseNumber();
+  /*childCaseNumber = await I.grabChildCaseNumber();
   await I.respondToApplication(childCaseNum(), 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter', getAppTypes().slice(0, 5));
   console.log('Responded to application: ' + childCaseNum());
@@ -61,5 +63,5 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey', 
   await I.verifyResponseSummaryPage();
   await I.judgeRequestMoreInfo('requestMoreInfo', 'sendApplicationToOtherParty', childCaseNum());
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
-  console.log('Judges sent application to other party and requested hearing details on case: ' + childCaseNum());
+  console.log('Judges sent application to other party and requested hearing details on case: ' + childCaseNum());*/
 }).retry(0);

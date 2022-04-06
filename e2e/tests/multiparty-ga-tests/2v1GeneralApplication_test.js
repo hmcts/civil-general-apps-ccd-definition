@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 const config = require('../../config.js');
 const mpScenario = 'TWO_V_ONE';
 const appStatus = 'Application Submitted - Awaiting Judicial Decision';
@@ -24,10 +26,10 @@ Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, a
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 4), 1);
   await I.see(appStatus);
   // Refactor as part of CIV-1425
-  childCaseNumber = await I.grabChildCaseNumber();
+ /* childCaseNumber = await I.grabChildCaseNumber();
   await I.navigateToCaseDetails(childCaseNum());
   childCaseId = await I.grabCaseNumber();
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'concurrentRep', childCaseNum());
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
-  console.log('Judges made an order for Concurrent written representations on case: ' + childCaseNum());
+  console.log('Judges made an order for Concurrent written representations on case: ' + childCaseNum());*/
 }).retry(0);

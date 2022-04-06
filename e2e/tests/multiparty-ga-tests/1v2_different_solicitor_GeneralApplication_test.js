@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const config = require('../../config.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const appStatus = 'Awaiting Respondent Response';
@@ -24,7 +25,7 @@ Scenario('GA for 1v2 different Solicitor - respond to application - List for a h
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 3), 1);
   await I.see(appStatus);
   // Refactor as part of CIV-1425
-  childCaseNumber = await I.grabChildCaseNumber();
+  /*childCaseNumber = await I.grabChildCaseNumber();
   await I.respondToApplication(childCaseNum(), 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter', getAppTypes().slice(0, 3));
   console.log('Responded to application: ' + childCaseNum());
@@ -33,5 +34,5 @@ Scenario('GA for 1v2 different Solicitor - respond to application - List for a h
   await I.verifyResponseSummaryPage();
   await I.judgeListForAHearingDecision('listForAHearing', childCaseNum());
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
-  console.log('Judges list for a hearing on case: ' + childCaseNum());
+  console.log('Judges list for a hearing on case: ' + childCaseNum());*/
 }).retry(0);
