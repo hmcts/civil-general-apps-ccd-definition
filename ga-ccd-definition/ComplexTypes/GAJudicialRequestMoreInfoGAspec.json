@@ -19,7 +19,7 @@
   {
     "ID": "GAJudicialRequestMoreInfoGAspec",
     "ListElementCode": "judgeRequestMoreInfoByDate",
-    "ElementLabel": "Applicant must respond by 4pm on",
+    "ElementLabel": "When should this application be referred to a Judge again?",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "FieldShowCondition": "requestMoreInfoOption=\"REQUEST_MORE_INFORMATION\""
