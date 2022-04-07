@@ -1,14 +1,15 @@
+/* eslint-disable no-unused-vars */
 const config = require('../config.js');
 const mpScenario = 'ONE_V_ONE';
 const appStatus = 'Application Submitted - Awaiting Judicial Decision';
-// const childCaseNum = () => `${childCaseId.split('-').join('')}`;
+const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 
 let {getAppTypes} = require('../pages/generalApplication/generalApplicationTypes');
-let caseNumber, caseId;
+let caseNumber, caseId, childCaseId, childCaseNumber;
 
 Feature('CCD 1v1 - General Application Journey @e2e-tests');
 
-Scenario('Create Single general application for 1v1 and respond to application', async ({I, api}) => {
+Scenario('Create single general application for 1v1 - Make an order journey', async ({I, api}) => {
   caseNumber = await api.createClaimWithRepresentedRespondent(
     config.applicantSolicitorUser, mpScenario);
   console.log('Case created for general application: ' + caseNumber);
@@ -25,12 +26,15 @@ Scenario('Create Single general application for 1v1 and respond to application',
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 1), 1);
   await I.see(appStatus);
   // Refactor as part of CIV-1425
-  // childCaseId = await I.grabChildCaseNumber();
-  /*wait I.navigateToCaseDetails(childCaseNum());
-  await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'yes');*/
-}).retry(1);
+ /* childCaseNumber = await I.grabChildCaseNumber();
+  await I.navigateToCaseDetails(childCaseNum());
+  childCaseId = await I.grabCaseNumber();
+  await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'yes', childCaseNum());
+  await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+  console.log('Judges made a decision on case: ' + childCaseNum());*/
+}).retry(0);
 
-Scenario('Create Multiple general applications for 1v1', async ({I, api}) => {
+Scenario('Create multiple general applications for 1v1 - Request more information journey', async ({I, api}) => {
   caseNumber = await api.createClaimWithRepresentedRespondent(
     config.applicantSolicitorUser, mpScenario);
   console.log('Case created for general application: ' + caseNumber);
@@ -47,7 +51,10 @@ Scenario('Create Multiple general applications for 1v1', async ({I, api}) => {
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 5), 1);
   await I.see(appStatus);
   // Refactor as part of CIV-1425
-  // childCaseId = await I.grabChildCaseNumber();
-  /*await I.navigateToCaseDetails(childCaseNum());
-  await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'yes');*/
-}).retry(1);
+  /*childCaseNumber = await I.grabChildCaseNumber();
+  await I.navigateToCaseDetails(childCaseNum());
+  childCaseId = await I.grabCaseNumber();
+  await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum());
+  await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+  console.log('Judges requested more information on case: ' + childCaseNum());*/
+}).retry(0);

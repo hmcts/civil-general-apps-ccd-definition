@@ -15,18 +15,12 @@ module.exports = {
     I.see('Summary');
     I.see('Parent Case ID');
     I.see('Hearing details');
-    // Enable this as part of CIV-1425
-    // I.dontSee(events.RESPOND_TO_APPLICATION.name);
-  },
-
-  async verifySummaryPageBeforeResponding() {
-    I.seeInCurrentUrl('cases/case-details/');
-    I.refreshPage();
-    I.wait(2);
-    I.see('Summary');
-    I.see('Parent Case ID');
-    I.see('Hearing details');
-    I.see(events.RESPOND_TO_APPLICATION.name);
-  },
+    I.see('Preferred location');
+    I.dontSee(events.RESPOND_TO_APPLICATION.name);
+    I.seeTextEquals('examplePDF.pdf', '.Summary ccd-read-document-field > a');
+    I.seeNumberOfVisibleElements('.Summary a', 2);
+    I.see('Respondent hearing details');
+    I.see('Vulnerability questions');
+  }
 };
 

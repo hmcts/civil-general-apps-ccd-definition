@@ -195,23 +195,23 @@
     "ID": "HearingDetails",
     "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "hearingDetailsResp",
-    "ListElementCode": "HearingSupportRequirementsLabel",
+    "ListElementCode": "vulnerabilityQuestionsLabel",
     "FieldDisplayOrder": 25,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "HearingDetails",
     "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "hearingDetailsResp",
-    "ListElementCode": "SupportRequirement",
+    "ListElementCode": "vulnerabilityQuestionsYesOrNo",
     "FieldDisplayOrder": 26,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "HearingDetails",
     "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "hearingDetailsResp",
-    "ListElementCode": "SupportRequirementSignLanguage",
+    "ListElementCode": "vulnerabilityQuestion",
     "FieldDisplayOrder": 27,
     "DisplayContext": "MANDATORY"
   },
@@ -219,8 +219,33 @@
     "ID": "HearingDetails",
     "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "hearingDetailsResp",
-    "ListElementCode": "SupportRequirementLanguageInterpreter",
+    "ListElementCode": "HearingSupportRequirementsLabel",
     "FieldDisplayOrder": 28,
+    "DisplayContext": "OPTIONAL"
+  },
+
+  {
+    "ID": "HearingDetails",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "hearingDetailsResp",
+    "ListElementCode": "SupportRequirement",
+    "FieldDisplayOrder": 29,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "HearingDetails",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "hearingDetailsResp",
+    "ListElementCode": "SupportRequirementSignLanguage",
+    "FieldDisplayOrder": 30,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingDetails",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "hearingDetailsResp",
+    "ListElementCode": "SupportRequirementLanguageInterpreter",
+    "FieldDisplayOrder": 31,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -228,7 +253,7 @@
     "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "hearingDetailsResp",
     "ListElementCode": "SupportRequirementOther",
-    "FieldDisplayOrder": 29,
+    "FieldDisplayOrder": 32,
     "DisplayContext": "MANDATORY"
   }
 ]
