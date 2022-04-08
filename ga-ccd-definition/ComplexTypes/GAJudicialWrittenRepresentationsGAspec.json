@@ -17,7 +17,7 @@
   },
   {
     "ID": "GAJudicialWrittenRepresentationsGAspec",
-    "ListElementCode": "sequentialMustRespondWithin",
+    "ListElementCode": "sequentialApplicantMustRespondWithin",
     "ElementLabel": "The applicant may upload any written representations by 4pm on",
     "FieldType": "Date",
     "SecurityClassification": "Public",
