@@ -1,3 +1,4 @@
+/* eslint-disable  no-case-declarations */
 const {I} = inject();
 const expect = require('chai').expect;
 
@@ -40,7 +41,8 @@ module.exports = {
     });
     switch (order) {
       case 'approveOrEditTheOrder':
-        I.fillField(this.fields.orderTextArea, 'Judges order');
+        let orderText = await I.grabValueFrom(this.fields.orderTextArea);
+        expect(orderText).to.equals('Test Order details');
         break;
       case 'dismissTheApplication':
         I.fillField(this.fields.dismissalOrderTextArea, 'Judges dismissed the order');
