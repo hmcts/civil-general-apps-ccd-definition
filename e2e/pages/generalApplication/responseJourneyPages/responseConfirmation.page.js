@@ -20,6 +20,12 @@ module.exports = {
       return I.see(type);
     });
     I.wait(2);
+  },
+
+  async closeAndReturnToCaseDetails(childCaseId) {
+    await I.click('Close and Return to case details');
+    await I.waitForInvisible(locate('.loading-spinner-in-action').withText('Loading'));
+    await I.see(`Case ${childCaseId} has been updated with event: Respond to application`);
   }
 };
 

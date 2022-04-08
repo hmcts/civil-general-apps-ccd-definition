@@ -1,14 +1,15 @@
+/* eslint-disable no-unused-vars */
 const config = require('../../config.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const appStatus = 'Awaiting Respondent Response';
-// const childCaseNum = () => `${childCaseId.split('-').join('')}`;
+const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
-let caseNumber, caseId;
+let caseNumber, caseId, childCaseNumber, childCaseId;
 
 Feature('CCD 1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests');
 
-Scenario('Create Multiple general application for 1v2 different Solicitor and respond to application', async ({I, api}) => {
+Scenario('GA for 1v2 different Solicitor - respond to application - List for a hearing journey', async ({I, api}) => {
   caseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Case created for general application: ' + caseNumber);
   await I.login(config.applicantSolicitorUser);
@@ -23,12 +24,15 @@ Scenario('Create Multiple general application for 1v2 different Solicitor and re
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 3), 1);
   await I.see(appStatus);
-  // childCaseId = await I.grabChildCaseNumber();
   // Refactor as part of CIV-1425
-  /*await I.respondToApplication(childCaseNum(), 'yes', 'yes', 'yes', 'yes', 'no',
+  /*childCaseNumber = await I.grabChildCaseNumber();
+  await I.respondToApplication(childCaseNum(), 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter', getAppTypes().slice(0, 3));
   console.log('Responded to application: ' + childCaseNum());
-  await I.click('Close and Return to case details');
-  await I.verifyResponseSummaryPage();*/
-  // await I.judgeMakeDecision('makeAnOrder');
-}).retry(1);
+  childCaseId = await I.grabGACaseNumber();
+  await I.respCloseAndReturnToCaseDetails(childCaseId);
+  await I.verifyResponseSummaryPage();
+  await I.judgeListForAHearingDecision('listForAHearing', childCaseNum());
+  await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+  console.log('Judges list for a hearing on case: ' + childCaseNum());*/
+}).retry(0);

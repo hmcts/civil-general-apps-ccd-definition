@@ -121,5 +121,6 @@
     <cve>CVE-2021-44832</cve>
     <cve>CVE-2021-45046</cve>
     <cve>CVE-2021-45105</cve>
+    <cve>CVE-2022-22965</cve>
   </suppress>
 </suppressions>
