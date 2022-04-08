@@ -428,7 +428,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "sequentialWrittenRepresentationRespondWithin",
-    "Label": "Once the respondent has uploaded written representations, the applicant must respond within ${judicialDecisionMakeAnOrderForWrittenRepresentations.sequentialMustRespondWithin} days",
+    "Label": "The applicant may upload any written representations by 4pm on ${judicialDecisionMakeAnOrderForWrittenRepresentations.sequentialMustRespondWithin}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

@@ -18,10 +18,8 @@
   {
     "ID": "GAJudicialWrittenRepresentationsGAspec",
     "ListElementCode": "sequentialMustRespondWithin",
-    "ElementLabel": "Once the respondent has uploaded written representations, the applicant must respond withing Day(s)",
-    "FieldType": "Text",
-    "Max": 2,
-    "RegularExpression": "\\b([1-9]|[1-9][0-9])\\b",
+    "ElementLabel": "The applicant may upload any written representations by 4pm on",
+    "FieldType": "Date",
     "SecurityClassification": "Public",
     "FieldShowCondition": "makeAnOrderForWrittenRepresentations=\"SEQUENTIAL_REPRESENTATIONS\""
   },
