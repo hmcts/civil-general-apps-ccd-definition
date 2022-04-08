@@ -600,7 +600,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
-    "ListElementCode": "sequentialMustRespondWithin",
+    "ListElementCode": "sequentialApplicantMustRespondWithin",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
