@@ -281,7 +281,7 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "judicialDecisionMakeAnOrderForWrittenRepresentations.makeAnOrderForWrittenRepresentations = \"SEQUENTIAL_REPRESENTATIONS\""
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -293,7 +293,7 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "judicialDecisionMakeAnOrderForWrittenRepresentations.makeAnOrderForWrittenRepresentations = \"SEQUENTIAL_REPRESENTATIONS\""
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -305,6 +305,6 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "judicialDecisionMakeAnOrderForWrittenRepresentations.makeAnOrderForWrittenRepresentations = \"CONCURRENT_REPRESENTATIONS\""
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\""
   }
 ]
