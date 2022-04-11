@@ -270,5 +270,41 @@
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialSequentialDateText",
+    "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
+    "PageFieldDisplayOrder": 7,
+    "PageDisplayOrder": 7,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "judicialDecisionMakeAnOrderForWrittenRepresentations.makeAnOrderForWrittenRepresentations = \"SEQUENTIAL_REPRESENTATIONS\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialApplicanSequentialDateText",
+    "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
+    "PageFieldDisplayOrder": 8,
+    "PageDisplayOrder": 7,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "judicialDecisionMakeAnOrderForWrittenRepresentations.makeAnOrderForWrittenRepresentations = \"SEQUENTIAL_REPRESENTATIONS\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialConcurrentDateText",
+    "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
+    "PageFieldDisplayOrder": 9,
+    "PageDisplayOrder": 7,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "judicialDecisionMakeAnOrderForWrittenRepresentations.makeAnOrderForWrittenRepresentations = \"CONCURRENT_REPRESENTATIONS\""
   }
 ]
