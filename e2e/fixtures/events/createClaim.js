@@ -138,7 +138,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       respondentSolicitor1ServiceAddress: buildAddress('service')
     },
     DefendantSolicitorEmail: {
-      respondentSolicitor1EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
+      respondentSolicitor1EmailAddress: 'hmcts.civil+organisation.2.solicitor.1@gmail.com'
     },
     AddAnotherDefendant: {
       addRespondent2: 'No'
