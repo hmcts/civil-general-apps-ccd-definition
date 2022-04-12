@@ -44,7 +44,7 @@
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "directionsResponseByDate",
-    "ElementLabel": "Respond by 4pm on",
+    "ElementLabel": "When should this application be referred to a Judge again?",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "FieldShowCondition": "makeAnOrder = \"GIVE_DIRECTIONS_WITHOUT_HEARING\""
