@@ -21,7 +21,7 @@ module.exports = {
   async enterApplicationDetails(file, consentCheck) {
     I.waitForElement(this.fields.generalAppDetailsOfOrder);
     I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATIONStatementOfTruth');
-    await I.fillField(this.fields.generalAppDetailsOfOrder, 'Test Details');
+    await I.fillField(this.fields.generalAppDetailsOfOrder, 'Test Order details');
     await I.fillField(this.fields.generalAppReasonsOfOrder, 'Test reasons for orders');
     if (consentCheck === 'no') {
       await I.click(this.fields.consentAgreementCheckBox);
