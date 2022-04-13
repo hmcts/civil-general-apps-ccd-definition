@@ -644,7 +644,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
-    "ListElementCode": "sequentialMustRespondWithin",
+    "ListElementCode": "sequentialApplicantMustRespondWithin",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
@@ -690,5 +690,4 @@
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
-
 ]
