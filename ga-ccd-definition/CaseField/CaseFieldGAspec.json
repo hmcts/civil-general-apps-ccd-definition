@@ -440,21 +440,21 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "sequentialWrittenRepresentationUploadyBy",
-    "Label": "The respondent may upload any written representations by 4pm on ${judicialDecisionMakeAnOrderForWrittenRepresentations.writtenSequentailRepresentationsBy}",
+    "Label": "${judicialSequentialDateText}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "sequentialWrittenRepresentationRespondWithin",
-    "Label": "The applicant may upload any written representations by 4pm on ${judicialDecisionMakeAnOrderForWrittenRepresentations.sequentialApplicantMustRespondWithin}",
+    "Label": "${judicialApplicanSequentialDateText}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "concurrentWrittenRepresentationUploadyBy",
-    "Label": "The applicant and respondent must respond with written representations by 4pm on ${judicialDecisionMakeAnOrderForWrittenRepresentations.writtenConcurrentRepresentationsBy}",
+    "Label": "${judicialConcurrentDateText}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -499,6 +499,27 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialGeneralOrderHearingEstimationTimeText",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialSequentialDateText",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialApplicanSequentialDateText",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialConcurrentDateText",
     "Label": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
