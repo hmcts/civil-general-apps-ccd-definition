@@ -34,7 +34,7 @@ module.exports = {
     expect(judgeRecitalText).to.contains('Upon reading the application of Claimant');
     if ('sequentialRep' === representationsType) {
       await I.see('The respondent may upload any written representations by 4pm on');
-      await I.see('Once the respondent has uploaded written representations, the applicant must respond within 10 days');
+      await I.see('The applicant may upload any written representations by 4pm on');
     } else {
       await I.see('The applicant and respondent must respond with written representations by 4pm on');
     }

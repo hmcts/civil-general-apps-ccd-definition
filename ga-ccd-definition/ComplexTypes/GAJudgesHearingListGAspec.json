@@ -35,7 +35,7 @@
   {
     "ID": "GAJudgesHearingListGAspec",
     "ListElementCode": "judicialTimeEstimateLabel",
-    "ElementLabel": "### How long do you estimate the hearing will take?",
+    "ElementLabel": "### How long do you think the hearing will last?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -63,6 +63,30 @@
     "FieldTypeParameter": "GAJudicialHearingSupportRequirementGAspec",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judgeSignLanguage",
+    "ElementLabel": "What type of sign language?",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "judicialSupportRequirementCONTAINS\"SIGN_INTERPRETER\""
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judgeLanguageInterpreter",
+    "ElementLabel": "What spoken or written language?",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "judicialSupportRequirementCONTAINS\"LANGUAGE_INTERPRETER\""
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judgeOtherSupport",
+    "ElementLabel": "What other support is needed?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "judicialSupportRequirementCONTAINS\"OTHER_SUPPORT\""
   },
   {
     "ID": "GAJudgesHearingListGAspec",

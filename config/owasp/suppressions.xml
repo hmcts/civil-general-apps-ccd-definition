@@ -24,6 +24,13 @@
    file name: minimist:1.2.5
    ]]></notes>
     <packageUrl regex="true">^pkg:npm/minimist@.*$</packageUrl>
+    <vulnerabilityName>1067342</vulnerabilityName>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: minimist:1.2.5
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/minimist@.*$</packageUrl>
     <vulnerabilityName>1067285</vulnerabilityName>
   </suppress>
   <suppress>
