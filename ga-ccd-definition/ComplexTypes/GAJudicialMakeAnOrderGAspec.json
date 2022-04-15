@@ -25,6 +25,39 @@
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "judgeApporveEditOptionParty",
+    "ElementLabel": "For which party?",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "GAJudgeOrderClaimantOrDefenseFixedList",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\" AND displayJudgeApporveEditOptionParty=\"Yes\""
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "judgeApporveEditOptionDate",
+    "ElementLabel": "Date for Order to end",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\" AND displayJudgeApporveEditOptionDate=\"Yes\""
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "displayJudgeApporveEditOptionDate",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "makeAnOrder=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "displayJudgeApporveEditOptionParty",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "makeAnOrder=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "dismissalOrderText",
     "ElementLabel": "Dismissal order",
     "FieldType": "TextArea",
