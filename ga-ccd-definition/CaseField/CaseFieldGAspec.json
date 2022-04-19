@@ -374,7 +374,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialGeneralOrderHearingRequirement",
-    "Label": "Hearing requirements ${judicialListForHearing.judicialSupportRequirement}",
+    "Label": "${judicialHearingGOHearingReqText}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -485,6 +485,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialHearingGeneralOrderHearingText",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialHearingGOHearingReqText",
     "Label": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
