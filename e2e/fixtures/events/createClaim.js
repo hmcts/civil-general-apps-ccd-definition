@@ -138,20 +138,20 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       respondentSolicitor1ServiceAddress: buildAddress('service')
     },
     DefendantSolicitorEmail: {
-      respondentSolicitor1EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
+      respondentSolicitor1EmailAddress: 'hmcts.civil+organisation.2.solicitor.1@gmail.com'
     },
     AddAnotherDefendant: {
       addRespondent2: 'No'
     },
     ...hasRespondent2(mpScenario) ? {
-        SecondDefendant: {},
-        SecondDefendantLegalRepresentation: {},
-        SecondDefendantSolicitorOrganisation: {},
-        SecondDefendantSolicitorServiceAddress: {},
-        SecondDefendantSolicitorReference: {},
-        SecondDefendantSolicitorEmail: {},
-        SameLegalRepresentative: {},
-      } : {},
+      SecondDefendant: {},
+      SecondDefendantLegalRepresentation: {},
+      SecondDefendantSolicitorOrganisation: {},
+      SecondDefendantSolicitorServiceAddress: {},
+      SecondDefendantSolicitorReference: {},
+      SecondDefendantSolicitorEmail: {},
+      SameLegalRepresentative: {},
+    } : {},
     ClaimType: {
       claimType: 'PERSONAL_INJURY'
     },
@@ -246,10 +246,9 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
           respondent2OrganisationPolicy: {
             OrgPolicyReference: 'Defendant policy reference 2',
             OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
-            Organisation:
-
-              {OrganisationID: 'H2156A0'}
-            ,
+            Organisation: {
+              OrganisationID: 'H2156A0'
+            },
           },
         },
         SecondDefendantSolicitorServiceAddress: {
@@ -259,7 +258,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
           respondentSolicitor2Reference: 'sol2reference'
         },
         SecondDefendantSolicitorEmail: {
-          respondentSolicitor2EmailAddress: 'hmcts.civil+organisation.2.solicitor.1@gmail.com'
+          respondentSolicitor2EmailAddress: 'hmcts.civil+organisation.3.solicitor.1@gmail.com'
         }
       };
     }
@@ -280,7 +279,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
 
 const hasRespondent2 = (mpScenario) => {
   return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
-      || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP';
+    || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP';
 };
 
 module.exports = {

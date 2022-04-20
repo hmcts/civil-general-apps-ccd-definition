@@ -92,7 +92,7 @@ const hearingSupportRequirementsPage = require('./fragments/dq/hearingSupportReq
 const furtherInformationPage = require('./fragments/dq/furtherInformation.page');
 const welshLanguageRequirementsPage = require('./fragments/dq/language.page');
 
-const events = require('./fixtures/ccd/events.js');
+const events = require('./fixtures/ga-ccd/events.js');
 const address = require('./fixtures/address.js');
 const specCreateCasePage = require('./pages/createClaim/createCaseLRspec.page');
 const specPartyDetails = require('./fragments/claimantDetailsLRspec');
