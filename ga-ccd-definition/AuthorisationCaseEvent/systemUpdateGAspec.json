@@ -1,6 +1,12 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "START_BUSINESS_PROCESS_MAKE_DECISION",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "ASSIGN_GA_ROLES",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
@@ -14,6 +20,12 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "LINK_GENERAL_APPLICATION_CASE_TO_PARENT_CASE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERATE_JUDGES_FORM",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
