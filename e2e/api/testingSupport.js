@@ -8,7 +8,7 @@ let incidentMessage;
 const MAX_RETRIES = 300;
 const RETRY_TIMEOUT_MS = 1000;
 
-module.exports =  {
+module.exports = {
   waitForFinishedBusinessProcess: async caseId => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
@@ -33,7 +33,7 @@ module.exports =  {
       throw new Error(`Business process failed for case: ${caseId}, incident message: ${incidentMessage}`);
   },
 
-  assignCaseToDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONE', user = config.defendantSolicitorUser) => {
+  assignCaseToDefendant: async (caseId, caseRole, user = config.defendantSolicitorUser) => {
     const authToken = await idamHelper.accessToken(user);
 
     await retry(() => {
@@ -41,38 +41,16 @@ module.exports =  {
         `${config.url.civilService}/testing-support/assign-case/${caseId}/${caseRole}`,
         {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}` },
+          'Authorization': `Bearer ${authToken}`
+        },
         {},
         'POST')
         .then(response => {
           if (response.status === 200) {
-            console.log( 'Role created successfully');
+            console.log('Role created successfully');
           } else if (response.status === 409) {
             console.log('Role already exists!');
-          } else  {
-            throw new Error(`Error occurred with status : ${response.status}`);
-          }
-        });
-    });
-  },
-
-  assignCaseToLRSpecDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONESPEC', user = config.defendantSolicitorUser) => {
-    const authToken = await idamHelper.accessToken(user);
-
-    await retry(() => {
-      return restHelper.request(
-        `${config.url.civilService}/testing-support/assign-case/${caseId}/${caseRole}`,
-        {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}` },
-        {},
-        'POST')
-        .then(response => {
-          if (response.status === 200) {
-            console.log( 'Role created successfully');
-          } else if (response.status === 409) {
-            console.log('Role already exists!');
-          } else  {
+          } else {
             throw new Error(`Error occurred with status : ${response.status}`);
           }
         });
@@ -95,24 +73,12 @@ module.exports =  {
         'POST')
         .then(response => {
           if (response.status === 200) {
-            caseIds.forEach(caseId => console.log( `User unassigned from case [${caseId}] successfully`));
-          }
-          else  {
+            caseIds.forEach(caseId => console.log(`User unassigned from case [${caseId}] successfully`));
+          } else {
             throw new Error(`Error occurred with status : ${response.status}`);
           }
         });
     });
-  },
-
-  updateCaseData: async (caseId, caseData) => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
-
-    await restHelper.retriedRequest(
-      `${config.url.civilService}/testing-support/case/${caseId}`,
-      {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`,
-      }, caseData, 'PUT');
   },
 
   uploadDocument: async () => {
@@ -128,5 +94,4 @@ module.exports =  {
 
     return await response.json();
   }
-
 };
