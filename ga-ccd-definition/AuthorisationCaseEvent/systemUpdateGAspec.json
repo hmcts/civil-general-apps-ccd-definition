@@ -19,6 +19,12 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_JUDGE_BUSINESS_PROCESS_GASPEC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "LINK_GENERAL_APPLICATION_CASE_TO_PARENT_CASE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
