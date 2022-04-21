@@ -58,3 +58,7 @@ Scenario('Create multiple general applications for 1v1 - Request more informatio
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   console.log('Judges requested more information on case: ' + childCaseNum());*/
 }).retry(0);
+
+AfterSuite(async  ({api}) => {
+  await api.cleanUp();
+});

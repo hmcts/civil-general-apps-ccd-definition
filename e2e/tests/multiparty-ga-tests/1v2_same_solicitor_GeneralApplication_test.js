@@ -65,3 +65,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey', 
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   console.log('Judges sent application to other party and requested hearing details on case: ' + childCaseNum());*/
 }).retry(0);
+
+AfterSuite(async  ({api}) => {
+  await api.cleanUp();
+});

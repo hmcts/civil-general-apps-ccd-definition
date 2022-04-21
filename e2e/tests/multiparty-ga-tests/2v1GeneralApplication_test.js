@@ -33,3 +33,7 @@ Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, a
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   console.log('Judges made an order for Concurrent written representations on case: ' + childCaseNum());*/
 }).retry(0);
+
+AfterSuite(async  ({api}) => {
+  await api.cleanUp();
+});
