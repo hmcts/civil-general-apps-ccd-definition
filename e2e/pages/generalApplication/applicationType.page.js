@@ -10,7 +10,7 @@ module.exports = {
         summaryJudgement: 'Summary judgement',
         stayTheClaim: 'Stay the claim',
         extendTime: 'Extend time',
-        amendTheStatementOfCase: 'Amend a stmt of case',
+        amendTheStatementOfCase: 'Amend a statement of case',
         reliefFromSanctions: 'Relief from sanctions',
       }
     },
