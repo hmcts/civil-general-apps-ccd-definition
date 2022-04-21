@@ -8,6 +8,7 @@ chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
+const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
@@ -117,7 +118,10 @@ module.exports = {
       body: 'Your claim will not be issued until payment is confirmed.'
     });
 
-
+    await assignCase();
+    await waitForFinishedBusinessProcess(caseId);
+   /* await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');*/
     // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
 
     //field is deleted in about to submit callback
@@ -542,6 +546,10 @@ module.exports = {
 
     // caseNote is set to null in service
     deleteCaseFields('caseNote');
+  },
+
+  cleanUp: async () => {
+    await unAssignAllUsers();
   }
 };
 
@@ -635,6 +643,7 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
 
   if (eventName === 'CREATE_CLAIM') {
     caseId = responseBody.id;
+    await addUserCaseMapping(caseId, config.applicantSolicitorUser);
     console.log('Case created: ' + caseId);
   }
 };
@@ -712,19 +721,19 @@ async function updateCaseDataWithPlaceholders(data, document) {
   return JSON.parse(data);
 }
 
-/*const assignCase = async () => {
-  await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+const assignCase = async () => {
+  await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   switch(mpScenario){
     case 'ONE_V_TWO_TWO_LEGAL_REP': {
-      await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
       break;
     }
     case 'ONE_V_TWO_ONE_LEGAL_REP': {
-      await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
       break;
     }
   }
-};*/
+};
 
 // solicitor 1 should not see details for respondent 2
 // solicitor 2 should not see details for respondent 1
