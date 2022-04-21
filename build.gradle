@@ -88,19 +88,19 @@ task awaitApplicationReadiness(type: Exec, description: 'Awaits until applicatio
 }
 
 task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
-  //commandLine '/usr/bin/yarn', '--silent', 'test:smoke'
+  commandLine '/usr/bin/yarn', '--silent', 'test:smoke'
 }
 
 task runFunctionalTests(type: Exec, description: 'Runs functional tests.') {
- // commandLine '/usr/bin/yarn', '--silent', 'test:functional'
+  commandLine '/usr/bin/yarn', '--silent', 'test:functional'
 }
 
 task smoke(description: 'Runs the smoke tests.') {
-  //dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, lintUserInterfaceTests, runSmokeTests))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, lintUserInterfaceTests, runSmokeTests))
 }
 
 task functional(description: 'Runs the functional tests.') {
-  //dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runFunctionalTests))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runFunctionalTests))
 }
 
 def inStrictOrder(Task... tasks) {
