@@ -47,9 +47,9 @@ module.exports = {
         'POST')
         .then(response => {
           if (response.status === 200) {
-            console.log('Role created successfully');
+            console.log('Role assigned successfully');
           } else if (response.status === 409) {
-            console.log('Role already exists!');
+            console.log('Role assigned failed');
           } else {
             throw new Error(`Error occurred with status : ${response.status}`);
           }

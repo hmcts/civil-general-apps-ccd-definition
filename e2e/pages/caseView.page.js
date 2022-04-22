@@ -12,6 +12,7 @@ module.exports = {
   fields: {
     eventDropdown: '#next-step',
     tab: 'div.mat-tab-labels',
+    spinner: '.loading-spinner-in-action',
   },
   goButton: 'Go',
 
@@ -42,15 +43,12 @@ module.exports = {
 
   async clickOnTab(tabName) {
     await I.waitInUrl('cases/case-details/', 2);
-    await I.see(tabName);
     await I.click(tabName, this.fields.tab);
-    await I.wait(5);
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'));
+    await I.wait(1);
     await I.refreshPage();
-    await I.wait(5);
-    await I.click('Summary', this.fields.tab);
-    await I.wait(5);
-    await I.click(tabName, this.fields.tab);
-    await I.wait(5);
+    await I.wait(2);
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'));
   },
 
   async clickOnFirstChildCaseId() {

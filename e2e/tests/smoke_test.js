@@ -11,5 +11,5 @@ Scenario('Applicant solicitor should be able to go to General app screen', async
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   caseId = await I.grabCaseNumber();
-  await I.goToGeneralAppScreenAndVerifyAllApps(getAppTypes(), caseId, caseNumber);
+  await I.goToGeneralAppScreenAndVerifyAllApps(getAppTypes(), caseId);
 }).retry(1);
