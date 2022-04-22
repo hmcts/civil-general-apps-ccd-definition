@@ -37,7 +37,6 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.clickOnTab('Applications');
   await I.see(judgeDecisionStatus);
   // We currently do not have JUDGE role in role assignment service. Hence, not log in as judge.
-  await I.navigateToCaseDetails(childCaseNum());
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'sequentialRep', childCaseNum());
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   console.log('Judges made an order for Sequential written representations on case: ' + childCaseNum());
@@ -70,7 +69,6 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     await I.navigateToCaseDetails(parentCaseNum);
     await I.clickOnTab('Applications');
     await I.see(judgeDecisionStatus);
-    await I.navigateToCaseDetails(childCaseNum());
     await I.judgeRequestMoreInfo('requestMoreInfo', 'sendApplicationToOtherParty', childCaseNum());
     await I.judgeCloseAndReturnToCaseDetails(childCaseId);
     console.log('Judges sent application to other party and requested hearing details on case: ' + childCaseNum());

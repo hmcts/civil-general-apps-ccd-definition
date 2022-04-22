@@ -26,6 +26,8 @@ Scenario('GA for 1v2 different Solicitor - respond to application - List for a h
   await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 3), 1);
   await I.see(respondentStatus);
   childCaseNumber = await I.grabChildCaseNumber();
+  await I.navigateToCaseDetails(childCaseNum());
+  await I.verifyApplicantSummaryPage();
   await I.login(config.defendantSolicitorUser);
   await I.respondToApplication(childCaseNum(), 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter', getAppTypes().slice(0, 3));
@@ -36,19 +38,17 @@ Scenario('GA for 1v2 different Solicitor - respond to application - List for a h
   await I.navigateToCaseDetails(parentCaseNumber);
   await I.clickOnTab('Applications');
   await I.see(respondentStatus);
-  // CIV-1995 - Enable after this bug fix
-/*  await I.login(config.secondDefendantSolicitorUser);
-  await I.navigateToCaseDetails(childCaseNum());
+  await I.login(config.secondDefendantSolicitorUser);
   await I.respondToApplication(childCaseNum(), 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter', getAppTypes().slice(0, 3));
   console.log('Org2 solicitor Responded to application: ' + childCaseNum());
   await I.respCloseAndReturnToCaseDetails(childCaseId);
   await I.navigateToCaseDetails(parentCaseNumber);
   await I.clickOnTab('Applications');
-  await I.see(judgeDecisionStatus);*/
-  /*  await I.judgeListForAHearingDecision('listForAHearing', childCaseNum());
-    await I.judgeCloseAndReturnToCaseDetails(childCaseId);
-    console.log('Judges list for a hearing on case: ' + childCaseNum());*/
+  await I.see(judgeDecisionStatus);
+  await I.judgeListForAHearingDecision('listForAHearing', childCaseNum());
+  await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+  console.log('Judges list for a hearing on case: ' + childCaseNum());
 }).retry(0);
 
 AfterSuite(async ({api}) => {
