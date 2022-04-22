@@ -36,3 +36,7 @@ Scenario('GA for 1v2 different Solicitor - respond to application - List for a h
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   console.log('Judges list for a hearing on case: ' + childCaseNum());*/
 }).retry(0);
+
+AfterSuite(async  ({api}) => {
+  await api.cleanUp();
+});

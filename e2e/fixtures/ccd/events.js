@@ -83,19 +83,10 @@ module.exports = {
     name: 'Add a case note',
     order: 16
   },
-  INITIATE_GENERAL_APPLICATION: {
-    description: 'Application created, post actions triggered',
-    id: 'INITIATE_GENERAL_APPLICATION',
-    name: 'Make an application'
-  },
-  RESPOND_TO_APPLICATION: {
-    description: 'Applicant response',
-    id: 'RESPOND_TO_APPLICATION',
-    name: 'Respond to application'
-  },
-  JUDGE_MAKES_DECISION: {
-    description: 'Judge makes decision',
-    id: 'JUDGE_MAKES_DECISION',
-    name: 'Make decision'
-  },
+  CHANGE_SOLICITOR_EMAIL: {
+    description: 'Change solicitor email',
+    id: 'CHANGE_SOLICITOR_EMAIL',
+    name: 'Change solicitor email',
+    order: 17
+  }
 };

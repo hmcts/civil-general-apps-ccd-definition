@@ -44,11 +44,11 @@ module.exports = {
     await I.waitInUrl('cases/case-details/', 2);
     await I.see(tabName);
     await I.click(tabName, this.fields.tab);
-    await I.wait(3);
+    await I.wait(5);
     await I.refreshPage();
-    await I.wait(3);
+    await I.wait(5);
     await I.click('Summary', this.fields.tab);
-    await I.wait(3);
+    await I.wait(5);
     await I.click(tabName, this.fields.tab);
     await I.wait(5);
   },
