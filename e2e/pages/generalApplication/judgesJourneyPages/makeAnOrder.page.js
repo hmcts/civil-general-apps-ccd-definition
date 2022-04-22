@@ -42,7 +42,7 @@ module.exports = {
     switch (order) {
       case 'approveOrEditTheOrder':
         let orderText = await I.grabValueFrom(this.fields.orderTextArea);
-        expect(orderText).to.equals('Test Order details');
+        expect(orderText).to.contains('Test Order details');
         break;
       case 'dismissTheApplication':
         I.fillField(this.fields.dismissalOrderTextArea, 'Judges dismissed the order');

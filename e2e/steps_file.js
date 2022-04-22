@@ -65,6 +65,7 @@ const gaPBANumberPage = require('./pages/generalApplication/gaPBANumber.page');
 const answersPage = require('./pages/generalApplication/checkYourAnswers.page');
 const confirmationPage = require('./pages/generalApplication/gaConfirmation.page');
 const applicationTab = require('./pages/generalApplication/applicationTab.page');
+const applicantSummaryPage = require('./pages/generalApplication/applicantSummary.page');
 const respConsentCheckPage = require('./pages/generalApplication/responseJourneyPages/responseConsentCheck.page');
 const respHearingDetailsPage = require('./pages/generalApplication/responseJourneyPages/responseHearingDetails.page');
 const responseCheckYourAnswersPage = require('./pages/generalApplication/responseJourneyPages/responseCheckYourAnswers.page');
@@ -448,6 +449,12 @@ module.exports = function () {
       await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
     },
 
+    async clickOnTab(tabName) {
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.clickOnTab(tabName)
+    ]);
+    },
+
     /**
      * Retries defined action util element described by the locator is invisible. If element is not invisible
      * after 4 tries (run + 3 retries) this step throws an error. Use cases include checking no error present on page.
@@ -775,6 +782,12 @@ module.exports = function () {
     async verifyResponseSummaryPage() {
       await this.triggerStepsWithScreenshot([
         () => responseSummaryPage.verifySummaryPageAfterResponding(),
+      ]);
+    },
+
+    async verifyApplicantSummaryPage() {
+      await this.triggerStepsWithScreenshot([
+        () => applicantSummaryPage.verifySummaryPage(),
       ]);
     },
 

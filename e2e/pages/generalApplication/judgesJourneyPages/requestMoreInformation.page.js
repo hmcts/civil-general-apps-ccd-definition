@@ -24,7 +24,7 @@ module.exports = {
     });
     if ('requestMoreInformation' === info) {
       I.fillField(this.fields.judgeRequestMoreInfoTextArea, 'Judges request more information');
-      I.see('Applicant must respond by 4pm on');
+      I.see('When should this application be referred to a Judge again?');
       I.fillField(this.fields.judgeRequestMoreInfoDay, '01');
       I.fillField(this.fields.judgeRequestMoreInfoMonth, '01');
       I.fillField(this.fields.judgeRequestMoreInfoYear, '2024');

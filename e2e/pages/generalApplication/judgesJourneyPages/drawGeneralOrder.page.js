@@ -21,7 +21,7 @@ module.exports = {
     await I.see(`Estimated length of hearing is ${timeEstimate}`);
     await I.see('Directions in relation to hearing');
     let directionText = await I.grabValueFrom(this.fields.hearingDetailsDirectionsTextArea);
-    expect(directionText).to.contains('A person who was not notified of the application before this order was made may apply to have the order set aside or varied.');
+    expect(directionText).to.contains('Any application under this paragraph must be made within 7 days.');
     await I.clickContinue();
   },
 
@@ -39,7 +39,7 @@ module.exports = {
       await I.see('The applicant and respondent must respond with written representations by 4pm on');
     }
     let directionText = await I.grabValueFrom(this.fields.writtenRepresentationsDirectionsTextArea);
-    expect(directionText).to.contains('A person who was not notified of the application before this order');
+    expect(directionText).to.contains('Any application under this paragraph must be made within 7 days.');
     await I.clickContinue();
   },
 };
