@@ -5,7 +5,7 @@ module.exports = {
       'Stay the claim',
       'Extend time',
       'Summary judgment',
-      'Amend a stmt of case',
+      'Amend a statement of case',
       'Relief from sanctions'
     ];
   }
