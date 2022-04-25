@@ -65,6 +65,7 @@ const gaPBANumberPage = require('./pages/generalApplication/gaPBANumber.page');
 const answersPage = require('./pages/generalApplication/checkYourAnswers.page');
 const confirmationPage = require('./pages/generalApplication/gaConfirmation.page');
 const applicationTab = require('./pages/generalApplication/applicationTab.page');
+const applicantSummaryPage = require('./pages/generalApplication/applicantSummary.page');
 const respConsentCheckPage = require('./pages/generalApplication/responseJourneyPages/responseConsentCheck.page');
 const respHearingDetailsPage = require('./pages/generalApplication/responseJourneyPages/responseHearingDetails.page');
 const responseCheckYourAnswersPage = require('./pages/generalApplication/responseJourneyPages/responseCheckYourAnswers.page');
@@ -140,8 +141,8 @@ let eventNumber = 0;
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
 
-const selectApplicationType = (eventName, applicationType, caseId) => [
-  () => caseViewPage.startEvent(eventName, caseId),
+const selectApplicationType = (eventName, applicationType) => [
+  () => caseViewPage.start(eventName),
   () => applicationTypePage.selectApplicationType(applicationType),
 ];
 
@@ -448,6 +449,12 @@ module.exports = function () {
       await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
     },
 
+    async clickOnTab(tabName) {
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.clickOnTab(tabName)
+    ]);
+    },
+
     /**
      * Retries defined action util element described by the locator is invisible. If element is not invisible
      * after 4 tries (run + 3 retries) this step throws an error. Use cases include checking no error present on page.
@@ -681,10 +688,10 @@ module.exports = function () {
       await this.waitForSelector('.ccd-dropdown');
     },
 
-    async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber, caseId) {
+    async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber) {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(eventName, caseId),
+        () => caseViewPage.start(eventName),
         () => applicationTypePage.verifyAllApplicationTypes(appTypes, caseNumber),
       ]);
     },
@@ -696,9 +703,8 @@ module.exports = function () {
 
     async respondToApplication(caseId, consentCheck, hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement, appTypes) {
       eventName = events.RESPOND_TO_APPLICATION.name;
-      await this.navigateToCaseDetails(caseId);
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.start(eventName),
+        () => caseViewPage.startEvent(eventName,caseId),
         () => respConsentCheckPage.selectConsentCheck(consentCheck),
         () => respHearingDetailsPage.isRespHearingScheduled(hearingScheduled),
         () => respHearingDetailsPage.isRespJudgeRequired(judgeRequired),
@@ -718,7 +724,7 @@ module.exports = function () {
     async judgeMakeDecision(decision, order, consentCheck, caseNumber) {
       eventName = events.JUDGE_MAKES_DECISION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.start(eventName),
+        () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => makeAnOrderPage.selectAnOrder(order, consentCheck),
         () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
@@ -727,13 +733,13 @@ module.exports = function () {
       ]);
     },
 
-    async judgeRequestMoreInfo(decision, infoType, caseId) {
+    async judgeRequestMoreInfo(decision, infoType, caseNumber) {
       eventName = events.JUDGE_MAKES_DECISION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.start(eventName),
+        () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => requestMoreInfoPage.requestMoreInfoOrder(infoType),
-        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseId),
+        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
         ...conditionalSteps(infoType === 'requestMoreInformation', [
           ...submitApplication('You have requested more information'),
         ]),
@@ -747,7 +753,7 @@ module.exports = function () {
     async judgeListForAHearingDecision(decision, caseNumber) {
       eventName = events.JUDGE_MAKES_DECISION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.start(eventName),
+        () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => listForHearingPage.selectJudicialHearingPreferences('videoConferenceHearing'),
         () => listForHearingPage.selectJudicialTimeEstimate('fifteenMin'),
@@ -762,7 +768,7 @@ module.exports = function () {
     async judgeWrittenRepresentationsDecision(decision, representationsType, caseNumber) {
       eventName = events.JUDGE_MAKES_DECISION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.start(eventName),
+        () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => writtenRepresentationsPage.selectWrittenRepresentations(representationsType),
         () => drawGeneralOrderPage.verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType),
@@ -775,6 +781,12 @@ module.exports = function () {
     async verifyResponseSummaryPage() {
       await this.triggerStepsWithScreenshot([
         () => responseSummaryPage.verifySummaryPageAfterResponding(),
+      ]);
+    },
+
+    async verifyApplicantSummaryPage() {
+      await this.triggerStepsWithScreenshot([
+        () => applicantSummaryPage.verifySummaryPage(),
       ]);
     },
 
@@ -806,7 +818,7 @@ module.exports = function () {
     async createGeneralApplication(appTypes, caseId, consentCheck, isUrgent, notice, hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement) {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
-        ...selectApplicationType(eventName, appTypes, caseId),
+        ...selectApplicationType(eventName, appTypes),
         ...selectConsentCheck(consentCheck),
         ...isUrgentApplication(isUrgent),
         ...conditionalSteps(consentCheck === 'no', [
