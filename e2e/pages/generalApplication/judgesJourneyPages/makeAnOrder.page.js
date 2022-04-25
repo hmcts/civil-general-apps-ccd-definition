@@ -22,6 +22,10 @@ module.exports = {
     directionsResponseDay: '#directionsResponseByDate-day',
     directionsResponseMonth: '#directionsResponseByDate-month',
     directionsResponseYear: '#directionsResponseByDate-year',
+    partyDropdown: '#judicialDecisionMakeOrder_judgeApporveEditOptionParty',
+    judgeApproveEditOptionDateDay: '#judgeApporveEditOptionDate-day',
+    judgeApproveEditOptionDateMonth: '#judgeApporveEditOptionDate-month',
+    judgeApproveEditOptionDateYear: '#judgeApporveEditOptionDate-year',
   },
 
   async selectAnOrder(order, consentCheck) {
@@ -43,6 +47,12 @@ module.exports = {
       case 'approveOrEditTheOrder':
         let orderText = await I.grabValueFrom(this.fields.orderTextArea);
         expect(orderText).to.contains('Test Order details');
+        I.see('For which party?');
+        I.selectOption(this.fields.partyDropdown, 'Claimant');
+        I.see('Date for Order to end');
+        I.fillField(this.fields.judgeApproveEditOptionDateDay, '01');
+        I.fillField(this.fields.judgeApproveEditOptionDateMonth, '01');
+        I.fillField(this.fields.judgeApproveEditOptionDateYear, '2024');
         break;
       case 'dismissTheApplication':
         I.fillField(this.fields.dismissalOrderTextArea, 'Judges dismissed the order');

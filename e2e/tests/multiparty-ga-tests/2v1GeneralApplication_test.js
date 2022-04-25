@@ -8,7 +8,7 @@ const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 let parentCaseNumber, caseId, childCaseId, childCaseNumber;
 
-Feature('CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests');
+Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests');
 
 Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, api}) => {
   parentCaseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
