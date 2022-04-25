@@ -26,7 +26,7 @@
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "judgeApporveEditOptionParty",
-    "ElementLabel": "For which party?",
+    "ElementLabel": "For which document?",
     "FieldType": "FixedList",
     "FieldTypeParameter": "GAJudgeOrderClaimantOrDefenseFixedList",
     "SecurityClassification": "Public",
