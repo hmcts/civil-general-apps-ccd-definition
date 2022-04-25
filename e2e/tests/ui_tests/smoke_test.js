@@ -1,7 +1,7 @@
-const config = require('../config.js');
+const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 let caseNumber, caseId;
-let {getAppTypes} = require('../pages/generalApplication/generalApplicationTypes');
+let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 
 Feature('General Application @smoke-tests');
 
