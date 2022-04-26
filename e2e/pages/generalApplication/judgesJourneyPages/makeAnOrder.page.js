@@ -22,7 +22,7 @@ module.exports = {
     directionsResponseDay: '#directionsResponseByDate-day',
     directionsResponseMonth: '#directionsResponseByDate-month',
     directionsResponseYear: '#directionsResponseByDate-year',
-    partyDropdown: '#judicialDecisionMakeOrder_judgeApporveEditOptionParty',
+    documentDropdown: '#judicialDecisionMakeOrder_judgeApporveEditOptionParty',
     judgeApproveEditOptionDateDay: '#judgeApporveEditOptionDate-day',
     judgeApproveEditOptionDateMonth: '#judgeApporveEditOptionDate-month',
     judgeApproveEditOptionDateYear: '#judgeApporveEditOptionDate-year',
@@ -47,8 +47,10 @@ module.exports = {
       case 'approveOrEditTheOrder':
         let orderText = await I.grabValueFrom(this.fields.orderTextArea);
         expect(orderText).to.contains('Test Order details');
-        I.see('For which party?');
-        I.selectOption(this.fields.partyDropdown, 'Claimant');
+        I.see('For which document?');
+        let documentDropdownValues = await I.grabTextFromAll(this.fields.documentDropdown);
+        expect(documentDropdownValues.toString().replace(/(\r\n|\n|\r)/gm, ', ').trim()).to.equals('--Select a value--, Claim Form, Defense Form');
+        I.selectOption(this.fields.documentDropdown, 'Claim Form');
         I.see('Date for Order to end');
         I.fillField(this.fields.judgeApproveEditOptionDateDay, '01');
         I.fillField(this.fields.judgeApproveEditOptionDateMonth, '01');
