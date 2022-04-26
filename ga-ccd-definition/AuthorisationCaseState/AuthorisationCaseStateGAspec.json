@@ -25,6 +25,18 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "AWAITING_WRITTEN_REPRESENTATIONS",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseStateID": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION",
     "AccessControl": [
       {
@@ -73,6 +85,18 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "AWAITING_WRITTEN_REPRESENTATIONS",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseStateID": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION",
     "AccessControl": [
       {
@@ -98,6 +122,18 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseStateID": "AWAITING_RESPONDENT_RESPONSE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-judge"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "AWAITING_WRITTEN_REPRESENTATIONS",
     "AccessControl": [
       {
         "UserRoles": [

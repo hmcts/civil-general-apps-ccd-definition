@@ -146,6 +146,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppWrittenRepUploadLabel",
+    "Label": "## Before uploading your files, make sure: \n* the file size is no larger than 100MB \n* the file format is either JPG, PNG, SVG, DOC or PDF \n* the file name describes the document you are uploading - for example, 'Receipt for repair work'\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppHearingDetails",
     "Label": "Hearing details",
     "FieldType": "GAHearingDetailsGAspec",
@@ -185,6 +192,24 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Supporting evidence",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppWrittenRepUpload",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Response file",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaWrittenRepDocList",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": " ",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
     "SecurityClassification": "Public"
   },
