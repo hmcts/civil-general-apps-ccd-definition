@@ -6,11 +6,11 @@ let parentCaseNumber;
 
 Feature('GA 1v1 API tests @api-tests');
 
-Scenario('Create General application', async ({api}) => {
+Scenario('Initiate General application for 1v1', async ({api}) => {
   parentCaseNumber = await api.createClaimWithRepresentedRespondent(
     config.applicantSolicitorUser, mpScenario);
   console.log('Case created for general application: ' + parentCaseNumber);
-  // To do GA API test
+  await api.initiateGeneralApplication(config.applicantSolicitorUser, parentCaseNumber);
 });
 
 AfterSuite(async ({api}) => {

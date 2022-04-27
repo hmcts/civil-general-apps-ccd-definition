@@ -11,10 +11,14 @@ const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
+const genAppData = require('../fixtures/ga-ccd/createGeneralApplication.js');
+const events = require('../fixtures/ga-ccd/events.js');
+
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
 
 const data = {
+  INITIATE_GENERAL_APPLICATION: genAppData.createGAData(),
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
@@ -127,6 +131,20 @@ module.exports = {
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
     return caseId;
+  },
+
+  initiateGeneralApplication: async (user, parentCaseId) => {
+    eventName = events.INITIATE_GENERAL_APPLICATION.id;
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName, parentCaseId);
+    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION, parentCaseId);
+    const responseBody = await response.json();
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.state, 'CASE_ISSUED');
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+    await waitForFinishedBusinessProcess(parentCaseId);
   },
 
   createClaimWithRespondentLitigantInPerson: async (user) => {
