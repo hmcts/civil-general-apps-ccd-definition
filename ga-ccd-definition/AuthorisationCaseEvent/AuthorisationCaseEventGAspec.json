@@ -140,6 +140,24 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "CHANGE_STATE_TO_AWAITING_JUDICIAL_DECISION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "RESPOND_TO_APPLICATION",
     "AccessControl": [
       {
