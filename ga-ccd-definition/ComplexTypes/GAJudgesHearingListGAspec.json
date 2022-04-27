@@ -134,5 +134,20 @@
     "HintText": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judicialVulnerabilityLabel",
+    "ElementLabel": "### Vulnerability questions",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judicialVulnerabilityText",
+    "ElementLabel": " ",
+    "HintText": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
   }
 ]

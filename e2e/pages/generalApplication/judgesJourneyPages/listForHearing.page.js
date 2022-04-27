@@ -61,5 +61,11 @@ module.exports = {
     await I.fillField(this.fields.additionalInfoForCourtStaffTextArea, 'Information for court staff');
     await I.clickContinue();
   },
+
+  async verifyVulnerabilityQuestions() {
+    I.seeNumberOfVisibleElements('.case-field .case-field__value span', 5);
+    await I.see('Applicant requires support with regards to vulnerability');
+    await I.see('Test Test');
+  },
 };
 
