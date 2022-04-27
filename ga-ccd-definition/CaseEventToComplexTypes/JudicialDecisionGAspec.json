@@ -40,7 +40,7 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "judgeApporveEditOptionParty",
+    "ListElementCode": "judgeApproveEditOptionDoc",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
@@ -49,7 +49,7 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "judgeApporveEditOptionDate",
+    "ListElementCode": "judgeApproveEditOptionDate",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
