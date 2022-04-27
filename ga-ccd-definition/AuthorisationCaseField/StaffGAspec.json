@@ -46,11 +46,5 @@
     "CaseFieldID": "respondentsResponses",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "makeDecisionDocuments",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
   }
 ]
