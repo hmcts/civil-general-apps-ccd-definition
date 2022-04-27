@@ -602,28 +602,28 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "judgeApporveEditOptionDate",
+    "ListElementCode": "judgeApproveEditOptionDate",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "judgeApporveEditOptionParty",
+    "ListElementCode": "judgeApproveEditOptionDoc",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "displayJudgeApporveEditOptionDate",
+    "ListElementCode": "displayjudgeApproveEditOptionDate",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "displayJudgeApporveEditOptionParty",
+    "ListElementCode": "displayjudgeApproveEditOptionDoc",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },

@@ -25,24 +25,24 @@
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
-    "ListElementCode": "judgeApporveEditOptionParty",
+    "ListElementCode": "judgeApproveEditOptionDoc",
     "ElementLabel": "For which document?",
     "FieldType": "FixedList",
     "FieldTypeParameter": "GAJudgeOrderClaimantOrDefenseFixedList",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\" AND displayJudgeApporveEditOptionParty=\"Yes\""
+    "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\" AND displayjudgeApproveEditOptionDoc=\"Yes\""
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
-    "ListElementCode": "judgeApporveEditOptionDate",
+    "ListElementCode": "judgeApproveEditOptionDate",
     "ElementLabel": "Date for Order to end",
     "FieldType": "Date",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\" AND displayJudgeApporveEditOptionDate=\"Yes\""
+    "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\" AND displayjudgeApproveEditOptionDate=\"Yes\""
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
-    "ListElementCode": "displayJudgeApporveEditOptionDate",
+    "ListElementCode": "displayjudgeApproveEditOptionDate",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
@@ -50,7 +50,7 @@
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
-    "ListElementCode": "displayJudgeApporveEditOptionParty",
+    "ListElementCode": "displayjudgeApproveEditOptionDoc",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",

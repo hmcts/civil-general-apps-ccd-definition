@@ -22,10 +22,10 @@ module.exports = {
     directionsResponseDay: '#directionsResponseByDate-day',
     directionsResponseMonth: '#directionsResponseByDate-month',
     directionsResponseYear: '#directionsResponseByDate-year',
-    documentDropdown: '#judicialDecisionMakeOrder_judgeApporveEditOptionParty',
-    judgeApproveEditOptionDateDay: '#judgeApporveEditOptionDate-day',
-    judgeApproveEditOptionDateMonth: '#judgeApporveEditOptionDate-month',
-    judgeApproveEditOptionDateYear: '#judgeApporveEditOptionDate-year',
+    documentDropdown: '#judicialDecisionMakeOrder_judgeApproveEditOptionDoc',
+    judgeApproveEditOptionDateDay: '#judgeApproveEditOptionDate-day',
+    judgeApproveEditOptionDateMonth: '#judgeApproveEditOptionDate-month',
+    judgeApproveEditOptionDateYear: '#judgeApproveEditOptionDate-year',
   },
 
   async selectAnOrder(order, consentCheck) {
