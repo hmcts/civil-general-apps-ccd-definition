@@ -12,7 +12,23 @@
     "TabID": "Application Documents",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
-    "CaseFieldID": "generalAppEvidenceDocument",
+    "CaseFieldID": "gaDirectionDocList",
     "TabFieldDisplayOrder": 2
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application Documents",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "gaAddlnInfoList",
+    "TabFieldDisplayOrder": 3
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application Documents",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "generalAppEvidenceDocument",
+    "TabFieldDisplayOrder": 4
   }
 ]
