@@ -6,7 +6,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "GAUploadDocForWrittenRepScreen",
-    "PageLabel": "Upload a file in response to the judge's written representations",
+    "PageLabel": "Upload a file in response to Judge's written representations",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"

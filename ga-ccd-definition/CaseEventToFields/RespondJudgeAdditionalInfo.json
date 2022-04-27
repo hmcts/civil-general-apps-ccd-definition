@@ -1,21 +1,21 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "RESPOND_TO_JUDGE_DIRECTIONS",
+    "CaseEventID": "RESPOND_TO_JUDGE_ADDITIONAL_INFO",
     "CaseFieldID": "generalAppWrittenRepUploadLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "GAUploadDocForDirectionOrderScreen",
-    "PageLabel": "Upload a file in response to Judge's directions",
+    "PageID": "GAUploadDocForAddlnInfoScreen",
+    "PageLabel": "Upload a file in response to Judge's additional information",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "RESPOND_TO_JUDGE_DIRECTIONS",
-    "CaseFieldID": "generalAppDirOrderUpload",
-    "PageID": "GAUploadDocForDirectionOrderScreen",
+    "CaseEventID": "RESPOND_TO_JUDGE_ADDITIONAL_INFO",
+    "CaseFieldID": "generalAppAddlnInfoUpload",
+    "PageID": "GAUploadDocForAddlnInfoScreen",
     "PageFieldDisplayOrder": 2,
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
