@@ -8,7 +8,7 @@ const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 let parentCaseNumber, caseId, childCaseId, childCaseNumber;
 
-Feature('CCD 1v1 - General Application Journey @e2e-tests');
+Feature('GA CCD 1v1 - General Application Journey @e2e-tests');
 
 Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
   parentCaseNumber = await api.createClaimWithRepresentedRespondent(
@@ -18,13 +18,13 @@ Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
   await I.navigateToCaseDetails(parentCaseNumber);
   caseId = await I.grabCaseNumber();
   await I.createGeneralApplication(
-    getAppTypes().slice(0, 1),
+    getAppTypes().slice(3, 4),
     parentCaseNumber, '' +
     'yes', 'no', 'no', 'no', 'no', 'no', 'no',
     'disabledAccess');
   console.log('1v1 General Application created: ' + parentCaseNumber);
   await I.closeAndReturnToCaseDetails(caseId);
-  await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 1), 1);
+  await I.clickAndVerifyTab('Applications', getAppTypes().slice(3, 4), 1);
   await I.see(judgeDecisionStatus);
   childCaseNumber = await I.grabChildCaseNumber();
   await I.navigateToCaseDetails(childCaseNum());
