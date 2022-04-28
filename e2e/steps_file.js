@@ -757,6 +757,7 @@ module.exports = function () {
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => listForHearingPage.selectJudicialHearingPreferences('videoConferenceHearing'),
         () => listForHearingPage.selectJudicialTimeEstimate('fifteenMin'),
+        () => listForHearingPage.verifyVulnerabilityQuestions(),
         () => listForHearingPage.selectJudicialSupportRequirement('disabledAccess'),
         () => drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('Video', '15 minutes'),
         () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
