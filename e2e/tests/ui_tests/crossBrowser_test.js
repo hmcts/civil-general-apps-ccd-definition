@@ -1,9 +1,9 @@
-const config = require('../config.js');
+const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 const appStatus = 'Awaiting Respondent Response';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 
-let {getAppTypes} = require('../pages/generalApplication/generalApplicationTypes');
+let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 let caseNum, caseId, childCaseId, childCaseNumber;
 
 Feature('End-to-end General application journey @cross-browser-tests');
