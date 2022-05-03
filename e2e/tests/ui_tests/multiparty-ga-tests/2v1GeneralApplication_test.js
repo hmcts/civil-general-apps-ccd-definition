@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 
-const config = require('../../config.js');
+const config = require('../../../config.js');
 const mpScenario = 'TWO_V_ONE';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 
-let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
+let {getAppTypes} = require('../../../pages/generalApplication/generalApplicationTypes');
 let parentCaseNumber, caseId, childCaseId, childCaseNumber;
 
 Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests');
