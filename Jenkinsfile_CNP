@@ -118,6 +118,10 @@ withPipeline(type, product, component) {
         steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
     }
 
+  after('smoketest:aat') {
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
+  }
+
   after('functionalTest:aat') {
     createGithubRelease()
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
