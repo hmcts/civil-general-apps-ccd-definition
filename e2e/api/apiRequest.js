@@ -75,5 +75,22 @@ module.exports = {
         event_data: caseData,
         event_token: tokens.ccdEvent
       }, 'POST', 201);
-  }
+  },
+
+  fetchUpdatedCaseData: async (caseId) => {
+    let url = getCcdDataStoreBaseUrl();
+    if (caseId) {
+      url += `/cases/${caseId}`;
+    }
+
+    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET')
+      .then(response => response.json());
+    tokens.ccdEvent = response.token;
+
+    //const updatedResponseBody = await response.json();
+    //let myArray = JSON.stringify(response);
+    //console.log('************* Case Data: ******************* ' + myArray);
+
+    return response.case_data || {};
+  },
 };

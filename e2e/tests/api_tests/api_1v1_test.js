@@ -11,9 +11,12 @@ Scenario('Initiate General application for 1v1', async ({api}) => {
     config.applicantSolicitorUser, mpScenario);
   console.log('Case created for general application: ' + parentCaseNumber);
   await api.initiateGeneralApplication(config.applicantSolicitorUser, parentCaseNumber);
+
+  //await api.respondentResponse(config.defendantSolicitorUser, parentCaseNumber);
+
 });
 
-AfterSuite(async ({api}) => {
+/*AfterSuite(async ({api}) => {
   await api.cleanUp();
-});
+});*/
 

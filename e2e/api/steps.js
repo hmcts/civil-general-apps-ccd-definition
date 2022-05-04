@@ -123,6 +123,7 @@ module.exports = {
     });
 
     await assignCase();
+    console.log('************* Civil Case ID: ******************* ' + caseId);
     await waitForFinishedBusinessProcess(caseId);
    /* await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');*/
@@ -142,11 +143,27 @@ module.exports = {
     const responseBody = await response.json();
     assert.equal(response.status, 201);
     assert.equal(responseBody.state, 'CASE_ISSUED');
+    console.log('General application case state : CASE_ISSUED ');
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
     await waitForFinishedBusinessProcess(parentCaseId);
+
+    console.log('************* GeneralApp Case ID: ******************* ' + caseId);
+
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
+    let myArray = JSON.stringify(updatedResponse);
+    console.log('************* Case Data: ******************* ' + myArray);
   },
 
+  /*respondentResponse: async (user, parentCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName =     eventName = events.RESPOND_TO_APPLICATION.id;
+    let returnedCaseData = await apiRequest.startEvent(eventName, parentCaseId);
+
+    console.log('Case Data: ' + returnedCaseData);
+
+  },
+*/
   createClaimWithRespondentLitigantInPerson: async (user) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
