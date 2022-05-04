@@ -215,6 +215,42 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppDirOrderUpload",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Response file",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaDirectionDocList",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": " ",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppAddlnInfoUpload",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Response file",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaAddlnInfoList",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": " ",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "businessProcess",
     "Label": " ",
     "FieldType": "BusinessProcess",
