@@ -3,6 +3,7 @@ const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 const respondentStatus = 'Awaiting Respondent Response';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
+const additionalInfoStatus = 'Additional Information Required';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
@@ -24,7 +25,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
     'signLanguageInterpreter');
   console.log('General Application created: ' + parentCaseNumber);
   await I.closeAndReturnToCaseDetails(caseId);
-  await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 5), 1);
+  await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 5), 1);
   await I.see(respondentStatus);
   childCaseNumber = await I.grabChildCaseNumber();
   await I.navigateToCaseDetails(childCaseNum());
@@ -35,12 +36,15 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
     'signLanguageInterpreter', getAppTypes().slice(0, 5));
   console.log('Org1 solicitor Responded to application: ' + childCaseNum());
   await I.respCloseAndReturnToCaseDetails(childCaseId);
-  await I.navigateToCaseDetails(parentCaseNumber);
-  await I.clickOnTab('Applications');
+  await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDecisionStatus);
   await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum());
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   console.log('Judges requested more information on case: ' + childCaseNum());
+  await I.navigateToTab(parentCaseNumber, 'Applications');
+  await I.see(additionalInfoStatus);
+  await I.respondToJudgeAdditionalInfo(childCaseNum(), childCaseId);
+  console.log('Responded to Judge Additional Information on case: ' + childCaseNum());
 }).retry(0);
 
 AfterSuite(async ({api}) => {
