@@ -339,6 +339,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaRespondentDetails",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppDeadlineNotification",
     "Label": " ",
     "FieldType": "GeneralApplicationGAspec",
