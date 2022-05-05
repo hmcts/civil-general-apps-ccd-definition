@@ -6,6 +6,8 @@ const totp = require('totp-generator');
 
 const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
+const getCcdDataStoreGABaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseTypeGA}`;
+
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getRequestHeaders = (userAuth) => {
   return {
@@ -14,6 +16,7 @@ const getRequestHeaders = (userAuth) => {
     'ServiceAuthorization': tokens.s2sAuth
   };
 };
+const getGeneralApplicationBaseUrl = () => `${config.url.generalApplication}/testing-support/case/`;
 
 module.exports = {
   setupTokens: async (user) => {
@@ -51,6 +54,35 @@ module.exports = {
     return response.case_details.case_data || {};
   },
 
+  startGAEvent: async (eventName, caseId) => {
+    let url = getCcdDataStoreGABaseUrl();
+    if (caseId) {
+      url += `/cases/${caseId}`;
+    }
+    url += `/event-triggers/${eventName}/token`;
+
+    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET')
+      .then(response => response.json());
+    tokens.ccdEvent = response.token;
+
+    return response.case_details.case_data || {};
+  },
+
+  submitGAEvent: async (eventName, caseData, caseId) => {
+    let url = `${getCcdDataStoreGABaseUrl()}/cases`;
+    if (caseId) {
+      url += `/${caseId}/events`;
+    }
+
+    return restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth),
+      {
+        data: caseData,
+        event: {id: eventName},
+        event_data: caseData,
+        event_token: tokens.ccdEvent
+      }, 'POST', 201);
+  },
+
   validatePage: async (eventName, pageId, caseData, caseId, expectedStatus = 200) => {
     return restHelper.retriedRequest(`${getCcdDataStoreBaseUrl()}/validate?pageId=${eventName}${pageId}`, getRequestHeaders(tokens.userAuth),
       {
@@ -78,19 +110,21 @@ module.exports = {
   },
 
   fetchUpdatedCaseData: async (caseId) => {
-    let url = getCcdDataStoreBaseUrl();
+
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    let url = getGeneralApplicationBaseUrl();
+    console.log('*** Civil Case Reference: '  + caseId + ' ***');
     if (caseId) {
-      url += `/cases/${caseId}`;
+      url += `${caseId}`;
     }
 
-    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET')
-      .then(response => response.json());
-    tokens.ccdEvent = response.token;
+    let response = await restHelper.retriedRequest(url,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null, 'GET');
 
-    //const updatedResponseBody = await response.json();
-    //let myArray = JSON.stringify(response);
-    //console.log('************* Case Data: ******************* ' + myArray);
-
-    return response.case_data || {};
+    return response
   },
 };

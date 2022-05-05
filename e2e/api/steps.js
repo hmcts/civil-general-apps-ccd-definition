@@ -7,11 +7,12 @@ chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
 
-const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
+const {waitForFinishedBusinessProcess, waitForGAFinishedBusinessProcess, assignCaseToDefendant, waitForGACCDStateFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const genAppData = require('../fixtures/ga-ccd/createGeneralApplication.js');
+const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentResponse.js');
 const events = require('../fixtures/ga-ccd/events.js');
 
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
@@ -19,6 +20,7 @@ const testingSupport = require('./testingSupport');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData(),
+  RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
@@ -123,7 +125,6 @@ module.exports = {
     });
 
     await assignCase();
-    console.log('************* Civil Case ID: ******************* ' + caseId);
     await waitForFinishedBusinessProcess(caseId);
    /* await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');*/
@@ -147,23 +148,35 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
     await waitForFinishedBusinessProcess(parentCaseId);
-
-    console.log('************* GeneralApp Case ID: ******************* ' + caseId);
+    await waitForGAFinishedBusinessProcess(parentCaseId);
+    console.log(' End of waitForGAFinishedBusinessProcess');
 
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
-    let myArray = JSON.stringify(updatedResponse);
-    console.log('************* Case Data: ******************* ' + myArray);
+    const updatedCivilCaseData = await updatedResponse.json();
+    let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+    console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
+
+    return gaCaseReference;
   },
 
-  /*respondentResponse: async (user, parentCaseId) => {
+  respondentResponse: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
-    eventName =     eventName = events.RESPOND_TO_APPLICATION.id;
-    let returnedCaseData = await apiRequest.startEvent(eventName, parentCaseId);
+    eventName = events.RESPOND_TO_APPLICATION.id;
 
-    console.log('Case Data: ' + returnedCaseData);
+    await waitForGACCDStateFinishedBusinessProcess(gaCaseId);
+    await apiRequest.startGAEvent(eventName, gaCaseId);
 
+    const response = await apiRequest.submitGAEvent(eventName, data.RESPOND_TO_APPLICATION, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.state, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
+    await waitForFinishedBusinessProcess(gaCaseId);
+    console.log('*** Respondent response to GA Case Reference Completed: ' + gaCaseId + " ***");
   },
-*/
+
   createClaimWithRespondentLitigantInPerson: async (user) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
