@@ -58,8 +58,8 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "AWAITING_WRITTEN_REPRESENTATIONS",
-    "Name": "Written Representations Required",
-    "Description": "Written Representations Required",
+    "Name": "Awaiting Written Representations",
+    "Description": "Awaiting Written Representations",
     "DisplayOrder": 9
   },
   {

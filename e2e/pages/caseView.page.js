@@ -1,3 +1,4 @@
+const config = require('../config');
 const {I} = inject();
 const EVENT_TRIGGER_LOCATOR = 'ccd-case-event-trigger';
 
@@ -41,13 +42,13 @@ module.exports = {
     }
   },
 
-  async clickOnTab(tabName) {
-    await I.waitInUrl('cases/case-details/', 2);
-    await I.click(tabName, this.fields.tab);
+  async navigateToTab(caseNumber, tabName) {
+    const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+    await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
+    await I.wait(5);
     await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'));
-    await I.wait(1);
     await I.refreshPage();
-    await I.wait(2);
+    await I.wait(3);
     await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'));
   },
 
