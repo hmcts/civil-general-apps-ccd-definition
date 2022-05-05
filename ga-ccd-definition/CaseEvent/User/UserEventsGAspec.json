@@ -55,7 +55,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION",
-    "Name": "Respond to judges written Rep",
+    "Name": "Respond to judges written rep",
     "Description": "Applicant and Respondent response",
     "DisplayOrder": 4,
     "PreConditionState(s)": "AWAITING_WRITTEN_REPRESENTATIONS",
@@ -73,7 +73,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "RESPOND_TO_JUDGE_DIRECTIONS",
-    "Name": "Respond to judges Directions",
+    "Name": "Respond to judges directions",
     "Description": "Applicant and Respondent response",
     "DisplayOrder": 5,
     "PreConditionState(s)": "AWAITING_DIRECTIONS_ORDER_DOCS",
@@ -91,7 +91,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "RESPOND_TO_JUDGE_ADDITIONAL_INFO",
-    "Name": "Respond to judges addln info",
+    "Name": "Respond to judges addn info",
     "Description": "Applicant and Respondent response",
     "DisplayOrder": 5,
     "PreConditionState(s)": "AWAITING_ADDITIONAL_INFORMATION",

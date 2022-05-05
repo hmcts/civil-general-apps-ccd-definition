@@ -4,9 +4,24 @@
     "TabID": "Application Documents",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
-    "CaseFieldID": "makeDecisionDocuments",
-    "TabFieldDisplayOrder": 1,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "CaseFieldID": "gaWrittenRepDocList",
+    "TabFieldDisplayOrder": 1
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application Documents",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "gaDirectionDocList",
+    "TabFieldDisplayOrder": 2
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application Documents",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "gaAddlnInfoList",
+    "TabFieldDisplayOrder": 3
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -14,6 +29,6 @@
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "generalAppEvidenceDocument",
-    "TabFieldDisplayOrder": 2
+    "TabFieldDisplayOrder": 4
   }
 ]

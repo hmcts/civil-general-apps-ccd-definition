@@ -79,6 +79,8 @@ const judgesConfirmationPage = require('./pages/generalApplication/judgesJourney
 const listForHearingPage = require('./pages/generalApplication/judgesJourneyPages/listForHearing.page');
 const drawGeneralOrderPage = require('./pages/generalApplication/judgesJourneyPages/drawGeneralOrder.page');
 const writtenRepresentationsPage = require('./pages/generalApplication/judgesJourneyPages/writtenRepresentations.page');
+const uploadScreenPage = require('./pages/generalApplication/judgesJourneyPages/uploadScreen.page');
+const applicationDocumentPage = require('./pages/generalApplication/judgesJourneyPages/applicationDocument.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -197,13 +199,17 @@ const submitApplication = (confMessage) => [
   () => event.submit('Submit', confMessage)
 ];
 
+const submitSupportingDocument = (confMessage) => [
+  () => event.submitSupportingDoc('Submit', confMessage)
+];
+
 const verifyGAConfirmationPage = (appType) => [
   () => confirmationPage.verifyConfirmationPage(),
   () => confirmationPage.verifyApplicationType(appType)
 ];
 
-const clickOnTab = (tabName) => [
-  () => caseViewPage.clickOnTab(tabName)
+const navigateToTab = (caseNumber, tabName) => [
+  () => caseViewPage.navigateToTab(caseNumber, tabName)
 ];
 
 module.exports = function () {
@@ -449,9 +455,9 @@ module.exports = function () {
       await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
     },
 
-    async clickOnTab(tabName) {
+    async navigateToTab(caseNumber, tabName) {
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.clickOnTab(tabName)
+        () => caseViewPage.navigateToTab(caseNumber, tabName)
     ]);
     },
 
@@ -750,6 +756,42 @@ module.exports = function () {
       ]);
     },
 
+    async respondToJudgeAdditionalInfo(caseNumber, childCaseId) {
+      eventName = events.RESPOND_TO_JUDGE_ADDITIONAL_INFO.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseNumber),
+        () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_ADDITIONAL_INFO.id,
+          childCaseId, TEST_FILE_PATH),
+        ...submitSupportingDocument(eventName),
+        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
+        () => applicationDocumentPage.verifyUploadedFile('Additional Information Documents', 'examplePDF.pdf'),
+      ]);
+    },
+
+    async respondToJudgesDirections(caseNumber, childCaseId) {
+      eventName = events.RESPOND_TO_JUDGE_DIRECTIONS.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseNumber),
+        () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_DIRECTIONS.id,
+          childCaseId, TEST_FILE_PATH),
+        ...submitSupportingDocument(eventName),
+        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
+        () => applicationDocumentPage.verifyUploadedFile('Directions Order Documents', 'examplePDF.pdf'),
+      ]);
+    },
+
+    async respondToJudgesWrittenRep(caseNumber, childCaseId) {
+      eventName = events.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseNumber),
+        () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.id,
+          childCaseId, TEST_FILE_PATH),
+        ...submitSupportingDocument(eventName),
+        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
+        () => applicationDocumentPage.verifyUploadedFile('Written Representation Documents', 'examplePDF.pdf'),
+      ]);
+    },
+
     async judgeListForAHearingDecision(decision, caseNumber) {
       eventName = events.JUDGE_MAKES_DECISION.name;
       await this.triggerStepsWithScreenshot([
@@ -791,9 +833,9 @@ module.exports = function () {
       ]);
     },
 
-    async clickAndVerifyTab(tabName, appType, appCount) {
+    async clickAndVerifyTab(caseNumber, tabName, appType, appCount) {
       await this.triggerStepsWithScreenshot([
-        ...clickOnTab(tabName),
+        ...navigateToTab(caseNumber, tabName),
         () => applicationTab.verifyApplicationDetails(appType, appCount),
       ]);
     },
