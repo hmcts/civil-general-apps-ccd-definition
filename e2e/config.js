@@ -12,7 +12,7 @@ module.exports = {
     dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
     idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
     civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
-    generalApplication: process.env.GENERAL_APPLICATION_URL || 'http://localhost:4550',
+    generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
   },
   s2s: {
     microservice: 'civil_service',
