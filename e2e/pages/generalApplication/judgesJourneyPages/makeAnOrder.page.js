@@ -61,7 +61,7 @@ module.exports = {
         break;
       case 'giveDirections':
         I.fillField(this.fields.directionsTextArea, 'Judges directions');
-        I.see('Respond by 4pm on');
+        I.see('When should this application be referred to a Judge again?');
         I.fillField(this.fields.directionsResponseDay, '01');
         I.fillField(this.fields.directionsResponseMonth, '01');
         I.fillField(this.fields.directionsResponseYear, '2024');

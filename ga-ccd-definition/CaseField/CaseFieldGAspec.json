@@ -209,7 +209,7 @@
     "ID": "gaWrittenRepDocList",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
-    "Label": " ",
+    "Label": "Written Representation Documents",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
     "SecurityClassification": "Public"
   },
@@ -227,7 +227,7 @@
     "ID": "gaDirectionDocList",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
-    "Label": " ",
+    "Label": "Directions Order Documents",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
     "SecurityClassification": "Public"
   },
@@ -245,7 +245,7 @@
     "ID": "gaAddlnInfoList",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
-    "Label": " ",
+    "Label": "Additional Information Documents",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
     "SecurityClassification": "Public"
   },
@@ -590,14 +590,6 @@
     "ID": "judicialConcurrentDateText",
     "Label": " ",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "makeDecisionDocuments",
-    "Label": "Judge Makes Decision Document",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"
   }
 ]

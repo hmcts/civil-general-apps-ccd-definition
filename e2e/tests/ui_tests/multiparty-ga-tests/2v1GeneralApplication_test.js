@@ -3,6 +3,7 @@
 const config = require('../../../config.js');
 const mpScenario = 'TWO_V_ONE';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
+const writtenRepStatus = 'Awaiting Written Representations';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 
 let {getAppTypes} = require('../../../pages/generalApplication/generalApplicationTypes');
@@ -23,7 +24,7 @@ Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, a
     'signLanguageInterpreter');
   console.log('General Application created: ' + parentCaseNumber);
   await I.closeAndReturnToCaseDetails(caseId);
-  await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 4), 1);
+  await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(judgeDecisionStatus);
   childCaseNumber = await I.grabChildCaseNumber();
   await I.navigateToCaseDetails(childCaseNum());
@@ -31,6 +32,10 @@ Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, a
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'concurrentRep', childCaseNum());
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   console.log('Judges made an order for Concurrent written representations on case: ' + childCaseNum());
+  await I.navigateToTab(parentCaseNumber, 'Applications');
+  await I.see(writtenRepStatus);
+  await I.respondToJudgesWrittenRep(childCaseNum(), childCaseId);
+  console.log('Responded to Judges written representations on case: ' + childCaseNum());
 }).retry(0);
 
 AfterSuite(async  ({api}) => {
