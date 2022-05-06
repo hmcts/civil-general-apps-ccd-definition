@@ -119,12 +119,10 @@ module.exports = {
       url += `${caseId}`;
     }
 
-    let response = await restHelper.retriedRequest(url,
+    return await restHelper.retriedRequest(url,
       {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
       },null, 'GET');
-
-    return response
   },
 };

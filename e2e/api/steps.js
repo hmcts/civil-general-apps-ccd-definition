@@ -7,7 +7,7 @@ chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
 
-const {waitForFinishedBusinessProcess, waitForGAFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
+const {waitForFinishedBusinessProcess, waitForGAFinishedBusinessProcess, waitForGACamundaEventsFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
@@ -160,6 +160,8 @@ module.exports = {
   },
 
   respondentResponse: async (user, gaCaseId) => {
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId);
+
     await apiRequest.setupTokens(user);
     eventName = events.RESPOND_TO_APPLICATION.id;
     await apiRequest.startGAEvent(eventName, gaCaseId);
@@ -172,7 +174,7 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
     await waitForFinishedBusinessProcess(gaCaseId);
-    console.log('*** Respondent response to GA Case Reference Completed: ' + gaCaseId + " ***");
+    console.log('*** Respondent response to GA Case Reference Completed: ' + gaCaseId + ' ***');
   },
 
   createClaimWithRespondentLitigantInPerson: async (user) => {
