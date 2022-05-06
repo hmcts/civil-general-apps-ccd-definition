@@ -7,7 +7,7 @@ chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
 
-const {waitForFinishedBusinessProcess, waitForGAFinishedBusinessProcess, assignCaseToDefendant, waitForGACCDStateFinishedBusinessProcess} = require('../api/testingSupport');
+const {waitForFinishedBusinessProcess, waitForGAFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
@@ -162,8 +162,6 @@ module.exports = {
   respondentResponse: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
     eventName = events.RESPOND_TO_APPLICATION.id;
-
-    await waitForGACCDStateFinishedBusinessProcess(gaCaseId);
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
     const response = await apiRequest.submitGAEvent(eventName, data.RESPOND_TO_APPLICATION, gaCaseId);

@@ -38,31 +38,7 @@ module.exports = {
 
     await retry(() => {
       return restHelper.request(
-        `${config.url.generalApplication}/testing-support/case/${caseId}/business-process/create-GA-case`,
-        {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`,
-        }, null, 'GET')
-        .then(async response => await response.json()).then(response => {
-          let businessProcess = response.businessProcess;
-          if (response.incidentMessage) {
-            incidentMessage = response.incidentMessage;
-          } else if (businessProcess && businessProcess.status !== 'FINISHED') {
-            throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
-              + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`);
-          }
-        });
-    }, MAX_RETRIES, RETRY_TIMEOUT_MS);
-    if (incidentMessage)
-      throw new Error(`Business process failed for case: ${caseId}, incident message: ${incidentMessage}`);
-  },
-
-  waitForGACCDStateFinishedBusinessProcess: async caseId => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
-
-    await retry(() => {
-      return restHelper.request(
-        `${config.url.generalApplication}/testing-support/case/${caseId}/business-process`,
+        `${config.url.generalApplication}/testing-support/case/${caseId}/business-process/ga`,
         {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`,
