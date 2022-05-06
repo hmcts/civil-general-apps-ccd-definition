@@ -584,6 +584,14 @@
     "Label": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "makeDecisionDocuments",
+    "Label": "Judge Makes Decision Document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
   }
 ]
 
