@@ -23,7 +23,7 @@ Scenario('GA for 1v2 different Solicitor - respond to application - List for a h
     'signLanguageInterpreter');
   console.log('General Application created: ' + parentCaseNumber);
   await I.closeAndReturnToCaseDetails(caseId);
-  await I.clickAndVerifyTab('Applications', getAppTypes().slice(0, 3), 1);
+  await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 3), 1);
   await I.see(respondentStatus);
   childCaseNumber = await I.grabChildCaseNumber();
   await I.navigateToCaseDetails(childCaseNum());
@@ -35,16 +35,14 @@ Scenario('GA for 1v2 different Solicitor - respond to application - List for a h
   childCaseId = await I.grabGACaseNumber();
   await I.respCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyResponseSummaryPage();
-  await I.navigateToCaseDetails(parentCaseNumber);
-  await I.clickOnTab('Applications');
+  await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(respondentStatus);
   await I.login(config.secondDefendantSolicitorUser);
   await I.respondToApplication(childCaseNum(), 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter', getAppTypes().slice(0, 3));
   console.log('Org2 solicitor Responded to application: ' + childCaseNum());
   await I.respCloseAndReturnToCaseDetails(childCaseId);
-  await I.navigateToCaseDetails(parentCaseNumber);
-  await I.clickOnTab('Applications');
+  await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDecisionStatus);
   await I.judgeListForAHearingDecision('listForAHearing', childCaseNum());
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
