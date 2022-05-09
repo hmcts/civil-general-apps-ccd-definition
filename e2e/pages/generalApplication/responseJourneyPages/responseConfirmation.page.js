@@ -1,4 +1,5 @@
 const {I} = inject();
+const expect = require('chai').expect;
 
 module.exports = {
 
@@ -6,7 +7,9 @@ module.exports = {
     confirmation: {
       id: '#confirmation-body'
     },
-    applicationList: '#confirmation-body li'
+    applicationList: '#confirmation-body li',
+    errorMessage: 'ul.error-summary-list li',
+    goButton: 'Go',
   },
 
   async verifyRespConfirmationPage() {
@@ -26,6 +29,13 @@ module.exports = {
     await I.click('Close and Return to case details');
     await I.waitForInvisible(locate('.loading-spinner-in-action').withText('Loading'));
     await I.see(`Case ${childCaseId} has been updated with event: Respond to application`);
+  },
+
+  async verifyAlreadyRespondedErrorMessage() {
+    I.waitForClickable('.event-trigger .button', 3);
+    I.click(this.fields.goButton);
+    let actualErrorMsg = await I.grabTextFrom(this.fields.errorMessage);
+    expect(actualErrorMsg).to.equals('The application has already been responded to.');
   }
 };
 
