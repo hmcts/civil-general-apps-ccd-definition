@@ -1,8 +1,14 @@
 [
   {
     "ID": "DocumentType",
+    "ListElementCode": "DIRECTION_ORDER",
+    "ListElement": "Direction order",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "DocumentType",
     "ListElementCode": "REQUEST_FOR_INFORMATION",
     "ListElement": "Request for information",
-    "DisplayOrder": 1
+    "DisplayOrder": 2
   }
 ]
