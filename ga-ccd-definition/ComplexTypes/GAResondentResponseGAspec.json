@@ -12,5 +12,13 @@
     "FieldType": "YesOrNo",
     "ElementLabel": "Respondent has agreed",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAResondentResponseGAspec",
+    "ListElementCode": "gaRespondentDetails",
+    "FieldType": "Text",
+    "ElementLabel": "Respondent id",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "gaRespondentDetails=\"DO_NOT_SHOW_IN_UI\""
   }
 ]
