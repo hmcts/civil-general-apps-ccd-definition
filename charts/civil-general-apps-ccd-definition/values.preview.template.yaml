@@ -236,6 +236,7 @@ ccd:
 
 camunda-bpm:
   enabled: true
+  image: 'hmctspublic.azurecr.io/civil/camunda:pr-196'
   java:
     disableKeyVaults: true
     releaseNameOverride: ${SERVICE_NAME}-camunda
