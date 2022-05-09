@@ -149,7 +149,6 @@ module.exports = {
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
     await waitForFinishedBusinessProcess(parentCaseId);
     await waitForGAFinishedBusinessProcess(parentCaseId);
-    console.log(' End of waitForGAFinishedBusinessProcess');
 
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
     const updatedCivilCaseData = await updatedResponse.json();
@@ -173,8 +172,6 @@ module.exports = {
     assert.equal(responseBody.state, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
-    await waitForFinishedBusinessProcess(gaCaseId);
-    console.log('*** Respondent response to GA Case Reference Completed: ' + gaCaseId + ' ***');
   },
 
   createClaimWithRespondentLitigantInPerson: async (user) => {

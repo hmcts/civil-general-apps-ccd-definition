@@ -33,8 +33,15 @@ module.exports = {
       throw new Error(`Business process failed for case: ${caseId}, incident message: ${incidentMessage}`);
   },
 
+  /**
+   * This request call is the extract the GA from Civil Service and
+   * waits for General Application Camunda tasks to finish
+   *
+   * @param caseId - Civil Case Reference
+   */
   waitForGAFinishedBusinessProcess: async caseId => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    console.log('** Start waitForGAFinishedBusinessProcess to wait for GA Camunda Tasks to Start and Finish **');
 
     await retry(() => {
       return restHelper.request(
@@ -53,12 +60,20 @@ module.exports = {
           }
         });
     }, MAX_RETRIES, RETRY_TIMEOUT_MS);
+    console.log('** End of waitForGAFinishedBusinessProcess **');
+
     if (incidentMessage)
       throw new Error(`Business process failed for case: ${caseId}, incident message: ${incidentMessage}`);
   },
 
+  /**
+   * Waits for General Application Camunda tasks to finish
+   *
+   * @param caseId - GA Case Reference
+   */
   waitForGACamundaEventsFinishedBusinessProcess: async caseId => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    console.log('** Start waitForGACamundaEventsFinishedBusinessProcess to wait for GA Camunda Tasks to Start and Finish **');
 
     await retry(() => {
       return restHelper.request(
@@ -77,6 +92,8 @@ module.exports = {
           }
         });
     }, MAX_RETRIES, RETRY_TIMEOUT_MS);
+    console.log('** End of waitForGACamundaEventsFinishedBusinessProcess **');
+
     if (incidentMessage)
       throw new Error(`Business process failed for case: ${caseId}, incident message: ${incidentMessage}`);
   },
