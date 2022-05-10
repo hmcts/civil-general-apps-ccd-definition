@@ -7,8 +7,32 @@
   },
   {
     "ID": "DocumentType",
+    "ListElementCode": "DISMISSAL_ORDER",
+    "ListElement": "Dismissal order",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "DocumentType",
     "ListElementCode": "REQUEST_FOR_INFORMATION",
     "ListElement": "Request for information",
-    "DisplayOrder": 2
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "HEARING_ORDER",
+    "ListElement": "Hearing order",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "WRITTEN_REP_SEQUENTIAL",
+    "ListElement": "Written representation sequential",
+    "DisplayOrder": 5
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "WRITTEN_REP_CONCURRENT",
+    "ListElement": "Written representation concurrent",
+    "DisplayOrder": 6
   }
 ]
