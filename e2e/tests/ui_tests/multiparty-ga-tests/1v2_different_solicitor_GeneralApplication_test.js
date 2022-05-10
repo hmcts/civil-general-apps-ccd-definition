@@ -35,6 +35,7 @@ Scenario('GA for 1v2 different Solicitor - respond to application - List for a h
   childCaseId = await I.grabGACaseNumber();
   await I.respCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyResponseSummaryPage();
+  await I.respondToSameApplicationAndVerifyErrorMsg();
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(respondentStatus);
   await I.login(config.secondDefendantSolicitorUser);

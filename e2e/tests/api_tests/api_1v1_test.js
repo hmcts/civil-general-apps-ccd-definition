@@ -2,15 +2,22 @@
 const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 
-let parentCaseNumber;
+let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v1 API tests @api-tests');
 
 Scenario('Initiate General application for 1v1', async ({api}) => {
-  parentCaseNumber = await api.createClaimWithRepresentedRespondent(
+  civilCaseReference = await api.createClaimWithRepresentedRespondent(
     config.applicantSolicitorUser, mpScenario);
-  console.log('Case created for general application: ' + parentCaseNumber);
-  await api.initiateGeneralApplication(config.applicantSolicitorUser, parentCaseNumber);
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+  console.log('Make a General Application');
+  gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
+});
+
+Scenario('Respondent response for 1V1', async ({api}) => {
+  console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
+  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
+  console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
 AfterSuite(async ({api}) => {
