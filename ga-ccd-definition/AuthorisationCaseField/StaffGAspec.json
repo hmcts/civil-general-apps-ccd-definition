@@ -52,5 +52,11 @@
     "CaseFieldID": "gaDetailsRespondentSol",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
