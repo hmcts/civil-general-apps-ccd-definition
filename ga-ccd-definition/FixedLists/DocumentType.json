@@ -1,38 +1,44 @@
 [
   {
     "ID": "DocumentType",
-    "ListElementCode": "DIRECTION_ORDER",
-    "ListElement": "Direction order",
+    "ListElementCode": "GENERAL_ORDER",
+    "ListElement": "General order",
     "DisplayOrder": 1
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "DISMISSAL_ORDER",
-    "ListElement": "Dismissal order",
+    "ListElement": "Direction order",
     "DisplayOrder": 2
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DIRECTION_ORDER",
+    "ListElement": "Dismissal order",
+    "DisplayOrder": 3
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "REQUEST_FOR_INFORMATION",
     "ListElement": "Request for information",
-    "DisplayOrder": 3
+    "DisplayOrder": 4
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "HEARING_ORDER",
     "ListElement": "Hearing order",
-    "DisplayOrder": 4
+    "DisplayOrder": 5
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "WRITTEN_REP_SEQUENTIAL",
     "ListElement": "Written representation sequential",
-    "DisplayOrder": 5
+    "DisplayOrder": 6
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "WRITTEN_REP_CONCURRENT",
     "ListElement": "Written representation concurrent",
-    "DisplayOrder": 6
+    "DisplayOrder": 7
   }
 ]
