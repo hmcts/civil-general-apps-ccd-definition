@@ -579,6 +579,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "respondentsResponses",
+    "ListElementCode": "gaRespondentDetails",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentsResponses",
     "ListElementCode": "gaHearingDetails",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
