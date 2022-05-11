@@ -727,6 +727,12 @@ module.exports = function () {
       ]);
     },
 
+    async respondToSameApplicationAndVerifyErrorMsg() {
+      await this.triggerStepsWithScreenshot([
+        () => responseConfirmationPage.verifyAlreadyRespondedErrorMessage(),
+      ]);
+    },
+
     async judgeMakeDecision(decision, order, consentCheck, caseNumber) {
       eventName = events.JUDGE_MAKES_DECISION.name;
       await this.triggerStepsWithScreenshot([
