@@ -131,7 +131,7 @@ module.exports = {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
     let url = getGeneralApplicationBaseUrl();
-    console.log('*** Civil Case Reference: '  + caseId + ' ***');
+    console.log('*** GA Case Reference: '  + caseId + ' ***');
     if (caseId) {
       url += `${caseId}/business-process`;
     }
