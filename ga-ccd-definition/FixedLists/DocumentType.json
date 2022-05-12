@@ -31,13 +31,13 @@
   },
   {
     "ID": "DocumentType",
-    "ListElementCode": "WRITTEN_REP_SEQUENTIAL",
+    "ListElementCode": "WRITTEN_REPRESENTATION_SEQUENTIAL",
     "ListElement": "Written representation sequential",
     "DisplayOrder": 6
   },
   {
     "ID": "DocumentType",
-    "ListElementCode": "WRITTEN_REP_CONCURRENT",
+    "ListElementCode": "WRITTEN_REPRESENTATION_CONCURRENT",
     "ListElement": "Written representation concurrent",
     "DisplayOrder": 7
   }
