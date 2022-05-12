@@ -20,6 +20,12 @@ Scenario('Respondent response for 1V1', async ({api}) => {
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
+Scenario('Judge makes decision 1V1', async ({api}) => {
+  console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');
+  await api.judgeMakesDecision(config.applicantSolicitorUser, gaCaseReference);
+  console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
+});
+
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });

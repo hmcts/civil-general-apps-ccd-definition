@@ -7,12 +7,13 @@ chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
 
-const {waitForFinishedBusinessProcess, waitForGAFinishedBusinessProcess, waitForGACamundaEventsFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
+const {waitForFinishedBusinessProcess, waitForJudgeDecisionFinishedBusinessProcess, waitForGAFinishedBusinessProcess, waitForGACamundaEventsFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const genAppData = require('../fixtures/ga-ccd/createGeneralApplication.js');
 const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentResponse.js');
+const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
 const events = require('../fixtures/ga-ccd/events.js');
 
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
@@ -21,6 +22,7 @@ const testingSupport = require('./testingSupport');
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData(),
   RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
+  JUDGE_MAKES_DECISION: genAppJudgeMakeDecisionData.judgeMakesDecisionData(),
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
@@ -159,7 +161,7 @@ module.exports = {
   },
 
   respondentResponse: async (user, gaCaseId) => {
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId);
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE');
 
     await apiRequest.setupTokens(user);
     eventName = events.RESPOND_TO_APPLICATION.id;
@@ -172,6 +174,25 @@ module.exports = {
     assert.equal(responseBody.state, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
+  },
+
+  judgeMakesDecision: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.JUDGE_MAKES_DECISION.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_DECISION, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have requested more information');
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'JUDGE_MAKES_DECISION');
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'AWAITING_ADDITIONAL_INFORMATION');
   },
 
   createClaimWithRespondentLitigantInPerson: async (user) => {

@@ -125,4 +125,21 @@ module.exports = {
         'Authorization': `Bearer ${authToken}`,
       },null, 'GET');
   },
+
+  fetchUpdatedGABusinessProcessData: async (caseId) => {
+
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    let url = getGeneralApplicationBaseUrl();
+    console.log('*** Civil Case Reference: '  + caseId + ' ***');
+    if (caseId) {
+      url += `${caseId}/business-process`;
+    }
+
+    return await restHelper.retriedRequest(url,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null, 'GET');
+  },
 };
