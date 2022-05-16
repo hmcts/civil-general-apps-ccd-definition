@@ -714,7 +714,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
-    "ListElementCode": "endDateForMoreInfoSubmission",
+    "ListElementCode": "deadlineForMoreInfoSubmission",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
