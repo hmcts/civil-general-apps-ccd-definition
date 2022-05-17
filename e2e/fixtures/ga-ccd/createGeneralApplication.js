@@ -75,8 +75,8 @@ module.exports = {
         paymentSuccessfulDate: null,
         fee: {
           calculatedAmountInPence: '27500',
-          code: 'FEE0210',
-          version: '3'
+          code: 'FEE0442',
+          version: '2'
         },
         paymentDetails: {
           status: null,
