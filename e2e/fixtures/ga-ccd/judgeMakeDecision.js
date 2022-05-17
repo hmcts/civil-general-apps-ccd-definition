@@ -21,5 +21,20 @@ module.exports = {
         makeAnOrderForWrittenRepresentations: 'CONCURRENT_REPRESENTATIONS'
       }
     };
+  },
+  judgeMakeDecisionDirectionOrder: () => {
+    return {
+      judicialDecision : {
+        decision: 'MAKE_AN_ORDER'
+      },
+      judicialDecisionMakeOrder: {
+        makeAnOrder: 'GIVE_DIRECTIONS_WITHOUT_HEARING',
+        directionsText: 'sample text',
+        reasonForDecisionText: 'sample text',
+        directionsResponseByDate: '2023-06-05',
+        displayjudgeApproveEditOptionDoc: 'No',
+        displayjudgeApproveEditOptionDate: 'No'
+      }
+    };
   }
 };
