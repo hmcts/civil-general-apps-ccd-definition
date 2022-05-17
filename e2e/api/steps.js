@@ -7,7 +7,7 @@ chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
 
-const {waitForFinishedBusinessProcess, waitForJudgeDecisionFinishedBusinessProcess, waitForGAFinishedBusinessProcess, waitForGACamundaEventsFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
+const {waitForFinishedBusinessProcess, waitForGAFinishedBusinessProcess, waitForGACamundaEventsFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
