@@ -7,8 +7,8 @@
   },
   {
     "ID": "GAJudgeOrderClaimantOrDefenseFixedList",
-    "ListElementCode": "DEFENSE_FORM",
-    "ListElement": "Defense Form",
+    "ListElementCode": "DEFENCE_FORM",
+    "ListElement": "Defence Form",
     "DisplayOrder": 2
   }
 ]
