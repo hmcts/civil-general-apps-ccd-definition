@@ -1,6 +1,7 @@
 /* eslint-disable  no-case-declarations */
 const {I} = inject();
 const expect = require('chai').expect;
+const {verifyJudgeRecitalText} = require('../../generalAppCommons');
 
 module.exports = {
 
@@ -32,8 +33,7 @@ module.exports = {
     await I.waitForElement(this.fields.makeAnOrder.id);
     I.seeInCurrentUrl('/JUDGE_MAKES_DECISIONGAJudicialMakeADecisionScreen');
     I.see('Judge’s recital');
-    let judgeRecitalText = await I.grabValueFrom(this.fields.judgeRecitalTextArea);
-    expect(judgeRecitalText).to.contains('Upon reading the application');
+    await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.judgeRecitalTextArea));
     I.see('Reasons for decision');
     if (consentCheck === 'no') {
       I.seeTextEquals('This application is cloaked', '#applicationIsCloakedLabel h2');
