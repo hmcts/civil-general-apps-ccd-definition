@@ -23,5 +23,13 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "FieldShowCondition": "requestMoreInfoOption=\"REQUEST_MORE_INFORMATION\""
+  },
+  {
+    "ID": "GAJudicialRequestMoreInfoGAspec",
+    "ListElementCode": "deadlineForMoreInfoSubmission",
+    "ElementLabel": " ",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "requestMoreInfoOption=\"DO_NOT_SHOW_IN_UI\""
   }
 ]

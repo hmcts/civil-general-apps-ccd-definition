@@ -332,6 +332,28 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaDetailsRespondentSol",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaDetailsRespondentSolTwo",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppRespondent1Representative",
     "Label": "Do you agree that the court should make the order that the applicant has requested?",
     "FieldType": "GARespondentRepresentativeGAspec",

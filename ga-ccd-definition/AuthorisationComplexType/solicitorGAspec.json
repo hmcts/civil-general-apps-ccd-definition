@@ -684,6 +684,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
+    "ListElementCode": "deadlineForMoreInfoSubmission",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "ListElementCode": "judgeRequestMoreInfoText",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
