@@ -1,5 +1,6 @@
 const {I} = inject();
 const expect = require('chai').expect;
+const {verifyJudgeRecitalText, verifyHearingDetailsJudgeRecitalText} = require('../../generalAppCommons');
 
 module.exports = {
 
@@ -15,8 +16,7 @@ module.exports = {
     I.seeInCurrentUrl('/JUDGE_MAKES_DECISIONGAJudicialHearingDetailsGeneralOrderScreen');
     I.see('Draw a General Order');
     I.see('Judge’s recital');
-    let judgeRecitalText = await I.grabValueFrom(this.fields.hearingDetailsJudgeRecitalTextArea);
-    expect(judgeRecitalText).to.contains('Upon the application of Claimant');
+    await verifyHearingDetailsJudgeRecitalText(await I.grabValueFrom(this.fields.hearingDetailsJudgeRecitalTextArea));
     await I.see(`Hearing type is ${hearingPreferences}`);
     await I.see(`Estimated length of hearing is ${timeEstimate}`);
     await I.see('Directions in relation to hearing');
@@ -30,8 +30,7 @@ module.exports = {
     I.seeInCurrentUrl('/JUDGE_MAKES_DECISIONGAJudicialWrittenRepresentationsDrawGeneralOrder');
     I.see('Draw a General Order');
     I.see('Judge’s recital');
-    let judgeRecitalText = await I.grabValueFrom(this.fields.writtenRepresentationsJudgeRecitalTextArea);
-    expect(judgeRecitalText).to.contains('Upon reading the application of Claimant');
+    await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.writtenRepresentationsJudgeRecitalTextArea));
     if ('sequentialRep' === representationsType) {
       await I.see('The respondent may upload any written representations by 4pm on');
       await I.see('The applicant may upload any written representations by 4pm on');
