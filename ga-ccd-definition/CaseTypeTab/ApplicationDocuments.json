@@ -4,7 +4,7 @@
     "TabID": "Application Documents",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
-    "CaseFieldID": "makeDecisionDocuments",
+    "CaseFieldID": "generalOrderDocument",
     "TabFieldDisplayOrder": 1,
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
   },
@@ -13,8 +13,62 @@
     "TabID": "Application Documents",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
+    "CaseFieldID": "dismissalOrderDocument",
+    "TabFieldDisplayOrder": 2,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application Documents",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "directionOrderDocument",
+    "TabFieldDisplayOrder": 3,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application Documents",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "requestForInformationDocument",
+    "TabFieldDisplayOrder": 4,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application Documents",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "hearingOrderDocument",
+    "TabFieldDisplayOrder": 5,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application Documents",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "writtenRepSequentialDocument",
+    "TabFieldDisplayOrder": 6,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application Documents",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "writtenRepConcurrentDocument",
+    "TabFieldDisplayOrder": 7,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application Documents",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
     "CaseFieldID": "gaWrittenRepDocList",
-    "TabFieldDisplayOrder": 2
+    "TabFieldDisplayOrder": 8
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -22,7 +76,7 @@
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaDirectionDocList",
-    "TabFieldDisplayOrder": 3
+    "TabFieldDisplayOrder": 9
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -30,7 +84,7 @@
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlnInfoList",
-    "TabFieldDisplayOrder": 4
+    "TabFieldDisplayOrder": 10
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -38,6 +92,6 @@
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "generalAppEvidenceDocument",
-    "TabFieldDisplayOrder": 5
+    "TabFieldDisplayOrder": 11
   }
 ]
