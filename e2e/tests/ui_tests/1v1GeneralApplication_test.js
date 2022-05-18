@@ -33,6 +33,9 @@ Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
   await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'yes', childCaseNum());
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   console.log('Judges made a decision on case: ' + childCaseNum());
+  await I.login(config.defendantSolicitorUser);
+  await I.navigateToCaseDetails(parentCaseNumber);
+  I.dontSee('Applications', 'div.mat-tab-label-content');
 }).retry(0);
 
 Scenario('GA for 1v1 - Respond to judges directions journey', async ({I, api}) => {
