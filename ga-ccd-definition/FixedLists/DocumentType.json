@@ -8,13 +8,13 @@
   {
     "ID": "DocumentType",
     "ListElementCode": "DISMISSAL_ORDER",
-    "ListElement": "Direction order",
+    "ListElement": "Dismissal order",
     "DisplayOrder": 2
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "DIRECTION_ORDER",
-    "ListElement": "Dismissal order",
+    "ListElement": "Direction order",
     "DisplayOrder": 3
   },
   {
