@@ -71,7 +71,7 @@ module.exports = {
    *
    * @param caseId - GA Case Reference
    */
-  waitForGACamundaEventsFinishedBusinessProcess: async caseId => {
+  waitForGACamundaEventsFinishedBusinessProcess: async (caseId, ccdState) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
     console.log('** Start waitForGACamundaEventsFinishedBusinessProcess to wait for GA Camunda Tasks to Start and Finish **');
 
@@ -86,7 +86,7 @@ module.exports = {
           let businessProcess = response.businessProcess;
           if (response.incidentMessage) {
             incidentMessage = response.incidentMessage;
-          } else if (businessProcess && businessProcess.status !== 'FINISHED' && response.ccdState !== 'AWAITING_RESPONDENT_RESPONSE') {
+          } else if (businessProcess && businessProcess.status !== 'FINISHED' && response.ccdState !== ccdState) {
             throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
               + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`);
           }
