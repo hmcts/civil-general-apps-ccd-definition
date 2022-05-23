@@ -81,6 +81,10 @@
     <cpe>cpe:/2.3:a:jetbrains:kotlin:1.4.0:milestone1:*:*:*:*:*:*</cpe>
   </suppress>
   <suppress>
+    <notes>tomcat embed core high severe dependency from spring boot 1.5.12</notes>
+    <cve>CVE-2022-29885</cve>
+  </suppress>
+  <suppress>
     <notes><![CDATA[
    file name: faker:5.5.3
    ]]></notes>
