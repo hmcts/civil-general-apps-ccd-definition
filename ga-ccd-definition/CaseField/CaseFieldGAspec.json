@@ -147,7 +147,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppWrittenRepUploadLabel",
-    "Label": "## Before uploading your files, make sure: \n* the file size is no larger than 100MB \n* the file format is either JPG, PNG, SVG, DOC or PDF \n* the file name describes the document you are uploading - for example, 'Receipt for repair work'\n",
+    "Label": "## Before uploading your files, make sure: \n* the file size is no larger than 100MB \n* the file format is either JPG, PNG, SVG, DOC, DOCX, DOT, PDF, RTF, XLT or XLSX \n* the file name describes the document you are uploading - for example, 'Receipt for repair work'\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -322,6 +322,28 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalApplicationsDetails",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaDetailsRespondentSol",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaDetailsRespondentSolTwo",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
@@ -590,6 +612,62 @@
     "ID": "judicialConcurrentDateText",
     "Label": " ",
     "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalOrderDocument",
+    "Label": "General order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "dismissalOrderDocument",
+    "Label": "Dismissal order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "directionOrderDocument",
+    "Label": "Direction order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "requestForInformationDocument",
+    "Label": "Request for information document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingOrderDocument",
+    "Label": "Hearing order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "writtenRepSequentialDocument",
+    "Label": "Written representation sequential document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "writtenRepConcurrentDocument",
+    "Label": "Written representation concurrent document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"
   }
 ]

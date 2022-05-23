@@ -1,6 +1,7 @@
 /* eslint-disable  no-case-declarations */
 const {I} = inject();
 const expect = require('chai').expect;
+const {verifyJudgeRecitalText} = require('../../generalAppCommons');
 
 module.exports = {
 
@@ -32,8 +33,7 @@ module.exports = {
     await I.waitForElement(this.fields.makeAnOrder.id);
     I.seeInCurrentUrl('/JUDGE_MAKES_DECISIONGAJudicialMakeADecisionScreen');
     I.see('Judge’s recital');
-    let judgeRecitalText = await I.grabValueFrom(this.fields.judgeRecitalTextArea);
-    expect(judgeRecitalText).to.contains('Upon reading the application');
+    await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.judgeRecitalTextArea));
     I.see('Reasons for decision');
     if (consentCheck === 'no') {
       I.seeTextEquals('This application is cloaked', '#applicationIsCloakedLabel h2');
@@ -49,7 +49,7 @@ module.exports = {
         expect(orderText).to.contains('Test Order details');
         I.see('For which document?');
         let documentDropdownValues = await I.grabTextFromAll(this.fields.documentDropdown);
-        expect(documentDropdownValues.toString().replace(/(\r\n|\n|\r)/gm, ', ').trim()).to.equals('--Select a value--, Claim Form, Defense Form');
+        expect(documentDropdownValues.toString().replace(/(\r\n|\n|\r)/gm, ', ').trim()).to.equals('--Select a value--, Claim Form, Defence Form');
         I.selectOption(this.fields.documentDropdown, 'Claim Form');
         I.see('Date for Order to end');
         I.fillField(this.fields.judgeApproveEditOptionDateDay, '01');

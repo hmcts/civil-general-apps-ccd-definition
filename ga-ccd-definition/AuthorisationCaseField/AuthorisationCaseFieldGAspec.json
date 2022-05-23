@@ -27,6 +27,34 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaDetailsRespondentSol",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppTypeLabel",
     "AccessControl": [
       {
@@ -965,6 +993,146 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialListForHearing",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalOrderDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "dismissalOrderDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "directionOrderDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "requestForInformationDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "hearingOrderDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "writtenRepSequentialDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "writtenRepConcurrentDocument",
     "AccessControl": [
       {
         "UserRoles": [
