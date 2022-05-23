@@ -3,7 +3,7 @@
       "CaseTypeID": "GENERALAPPLICATION",
       "ID": "CHANGE_STATE_TO_AWAITING_JUDICIAL_DECISION",
       "Name": "Change application state",
-      "Description": "If no response after deadline, move to APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION state",
+      "Description": "If no response after deadline or meet date specified by Judge in Judge's screen, move to APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION state",
       "PreConditionState(s)": "*",
       "PostConditionState": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION",
       "SecurityClassification": "Public",
