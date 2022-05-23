@@ -10,7 +10,8 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "UserRoles": [
-      "caseworker-civil-solicitor"
+      "caseworker-civil-solicitor",
+      "judge-profile"
     ],
     "CRUD": "RU"
   }
