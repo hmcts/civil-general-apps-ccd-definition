@@ -147,7 +147,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppWrittenRepUploadLabel",
-    "Label": "## Before uploading your files, make sure: \n* the file size is no larger than 100MB \n* the file format is either JPG, PNG, SVG, DOC or PDF \n* the file name describes the document you are uploading - for example, 'Receipt for repair work'\n",
+    "Label": "## Before uploading your files, make sure: \n* the file size is no larger than 100MB \n* the file format is either JPG, PNG, SVG, DOC, DOCX, DOT, PDF, RTF, XLT or XLSX \n* the file name describes the document you are uploading - for example, 'Receipt for repair work'\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
