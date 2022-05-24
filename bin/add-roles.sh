@@ -11,3 +11,9 @@ for role in "${roles[@]}"
 do
   ./bin/utils/ccd-add-role.sh "caseworker-civil-${role}"
 done
+
+accessprofiles=("judge-profile")
+for accessprofile in "${accessprofiles[@]}"
+do
+  ./bin/utils/ccd-add-role.sh "${accessprofile}"
+done
