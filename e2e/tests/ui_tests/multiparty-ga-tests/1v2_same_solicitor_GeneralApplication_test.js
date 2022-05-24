@@ -39,6 +39,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   // We currently do not have JUDGE role in role assignment service. Hence, not log in as judge.
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'sequentialRep', childCaseNum());
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+  await I.verifyJudgesSummaryPage('Sequential representations');
   console.log('Judges made an order for Sequential written representations on case: ' + childCaseNum());
   await I.navigateToTab(parentCaseNum, 'Applications');
   await I.see(writtenRepStatus);

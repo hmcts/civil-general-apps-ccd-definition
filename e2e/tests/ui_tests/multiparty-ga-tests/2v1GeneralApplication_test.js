@@ -31,6 +31,7 @@ Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, a
   childCaseId = await I.grabCaseNumber();
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'concurrentRep', childCaseNum());
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+  await I.verifyJudgesSummaryPage('Concurrent representations');
   console.log('Judges made an order for Concurrent written representations on case: ' + childCaseNum());
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(writtenRepStatus);
