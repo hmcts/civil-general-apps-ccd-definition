@@ -1,6 +1,12 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "START_BUSINESS_PROCESS_MAKE_DECISION",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

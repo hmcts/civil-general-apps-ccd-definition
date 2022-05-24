@@ -2,8 +2,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "UserRoles": [
-      "caseworker-civil-systemupdate",
-      "caseworker-civil-judge"
+      "caseworker-civil-systemupdate"
     ],
     "CRUD": "CRUD"
   },
