@@ -31,7 +31,7 @@ module.exports = {
   async closeAndReturnToCaseDetails(childCaseId) {
     await I.see(childCaseId);
     await I.click('Close and Return to case details');
-    await I.waitForInvisible(locate('.loading-spinner-in-action').withText('Loading'));
+    await I.waitForInvisible(locate('.loading-spinner-in-action').withText('Loading'), 5);
     await I.see(`Case ${childCaseId} has been updated with event: Make decision`);
   }
 };
