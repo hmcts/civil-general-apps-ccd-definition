@@ -86,7 +86,7 @@
   </suppress>
   <suppress>
     <notes><![CDATA[
-   file name: faker:5.5.3 
+   file name: faker:5.5.3
    ]]></notes>
     <packageUrl regex="true">^pkg:npm/faker@.*$</packageUrl>
     <vulnerabilityName>1067281</vulnerabilityName>
@@ -132,5 +132,13 @@
     <cve>CVE-2021-45105</cve>
     <cve>CVE-2022-22965</cve>
     <cve>CVE-2022-22950</cve>
+  </suppress>
+  <suppress>
+    <notes>
+      spring-beans-5.3.18.jar has got a vulnerability which is part of the spring boot version 1.5.12 which
+      we cant upgrade at the moment due to dependency with springfox not working with it
+    </notes>
+    <cve>CVE-2022-22970</cve>
+    <cve>CVE-2022-22971</cve>
   </suppress>
 </suppressions>
