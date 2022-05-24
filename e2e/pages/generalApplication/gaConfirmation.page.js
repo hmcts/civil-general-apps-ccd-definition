@@ -1,4 +1,5 @@
 const {I} = inject();
+const {waitForFinishedBusinessProcess, waitForGAFinishedBusinessProcess} = require('../../api/testingSupport');
 
 module.exports = {
 
@@ -15,12 +16,13 @@ module.exports = {
     I.seeTextEquals('You have made an application', '#confirmation-header h1');
   },
 
-  async verifyApplicationType(appTypes) {
+  async verifyApplicationType(appTypes, parentCaseId) {
     I.waitForElement(this.fields.confirmation.id);
     appTypes.forEach(type => {
       return I.see(type);
     });
-    I.wait(15);
+    await waitForFinishedBusinessProcess(parentCaseId);
+    await waitForGAFinishedBusinessProcess(parentCaseId);
   },
 
   async closeAndReturnToCaseDetails(caseId) {

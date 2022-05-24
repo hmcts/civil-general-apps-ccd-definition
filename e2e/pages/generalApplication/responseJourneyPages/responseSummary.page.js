@@ -10,8 +10,7 @@ module.exports = {
 
   async verifySummaryPageAfterResponding() {
     I.seeInCurrentUrl('cases/case-details/');
-    I.refreshPage();
-    I.wait(2);
+    I.wait(1);
     I.see('Summary');
     I.see('Parent Case ID');
     I.see('Hearing details');

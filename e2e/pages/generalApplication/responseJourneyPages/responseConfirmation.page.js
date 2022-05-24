@@ -22,7 +22,6 @@ module.exports = {
     appTypes.forEach(type => {
       return I.see(type);
     });
-    I.wait(2);
   },
 
   async closeAndReturnToCaseDetails(childCaseId) {

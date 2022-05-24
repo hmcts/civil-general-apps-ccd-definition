@@ -3,11 +3,11 @@ const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
 const judgeDirectionsOrderStatus = 'Directions Order Made';
-
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
+const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
-let parentCaseNumber, caseId, childCaseId, childCaseNumber;
+let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference;
 
 Feature('GA CCD 1v1 - General Application Journey @e2e-tests');
 
@@ -24,6 +24,8 @@ Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
     'yes', 'no', 'no', 'no', 'no', 'no', 'no',
     'disabledAccess');
   console.log('1v1 General Application created: ' + parentCaseNumber);
+  gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(3, 4), 1);
   await I.see(judgeDecisionStatus);
@@ -31,6 +33,7 @@ Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
   await I.navigateToCaseDetails(childCaseNum());
   childCaseId = await I.grabCaseNumber();
   await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'yes', childCaseNum());
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   console.log('Judges made a decision on case: ' + childCaseNum());
   await I.login(config.defendantSolicitorUser);
@@ -50,6 +53,8 @@ Scenario('GA for 1v1 - Respond to judges directions journey', async ({I, api}) =
     'no', 'no', 'no', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter');
   console.log('General Application created: ' + parentCaseNumber);
+  gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(judgeDecisionStatus);
@@ -57,6 +62,7 @@ Scenario('GA for 1v1 - Respond to judges directions journey', async ({I, api}) =
   await I.navigateToCaseDetails(childCaseNum());
   childCaseId = await I.grabCaseNumber();
   await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', childCaseNum());
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   console.log('Judges Directions Order Made on case: ' + childCaseNum());
   await I.navigateToTab(parentCaseNumber, 'Applications');
