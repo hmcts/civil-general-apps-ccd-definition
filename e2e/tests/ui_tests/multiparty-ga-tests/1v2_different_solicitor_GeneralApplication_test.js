@@ -4,9 +4,10 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const respondentStatus = 'Awaiting Respondent Response';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
+const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
 
 let {getAppTypes} = require('../../../pages/generalApplication/generalApplicationTypes');
-let parentCaseNumber, caseId, childCaseNumber, childCaseId;
+let parentCaseNumber, caseId, childCaseNumber, childCaseId, gaCaseReference;
 
 Feature('GA CCD 1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests');
 
@@ -22,6 +23,8 @@ Scenario('GA for 1v2 different Solicitor - respond to application - List for a h
     'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter');
   console.log('General Application created: ' + parentCaseNumber);
+  gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 3), 1);
   await I.see(respondentStatus);
@@ -46,6 +49,7 @@ Scenario('GA for 1v2 different Solicitor - respond to application - List for a h
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDecisionStatus);
   await I.judgeListForAHearingDecision('listForAHearing', childCaseNum());
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   console.log('Judges list for a hearing on case: ' + childCaseNum());
 }).retry(0);

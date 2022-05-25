@@ -162,6 +162,19 @@ module.exports = {
     return gaCaseReference;
   },
 
+  getGACaseReference: async (user, parentCaseId) => {
+    eventName = events.INITIATE_GENERAL_APPLICATION.id;
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName, parentCaseId);
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
+    const updatedCivilCaseData = await updatedResponse.json();
+    let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+    console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
+
+    return gaCaseReference;
+  },
+
   respondentResponse: async (user, gaCaseId) => {
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE');
 
