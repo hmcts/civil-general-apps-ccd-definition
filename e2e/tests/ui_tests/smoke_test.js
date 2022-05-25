@@ -5,9 +5,10 @@ const respondentStatus = 'Awaiting Respondent Response';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
 const additionalInfoStatus = 'Additional Information Required';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
+const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
-let parentCaseNumber, caseId, childCaseId, childCaseNumber;
+let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference;
 
 Feature('General Application end to end journey @smoke-tests');
 
@@ -24,6 +25,8 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
     'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter');
   console.log('General Application created: ' + parentCaseNumber);
+  gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 5), 1);
   await I.see(respondentStatus);
@@ -39,6 +42,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDecisionStatus);
   await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum());
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   console.log('Judges requested more information on case: ' + childCaseNum());
   await I.navigateToTab(parentCaseNumber, 'Applications');

@@ -5,9 +5,10 @@ const mpScenario = 'TWO_V_ONE';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
 const writtenRepStatus = 'Awaiting Written Representations';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
+const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
 
 let {getAppTypes} = require('../../../pages/generalApplication/generalApplicationTypes');
-let parentCaseNumber, caseId, childCaseId, childCaseNumber;
+let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference;
 
 Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests');
 
@@ -23,6 +24,8 @@ Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, a
     'no', 'no', 'no', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter');
   console.log('General Application created: ' + parentCaseNumber);
+  gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(judgeDecisionStatus);
@@ -30,6 +33,7 @@ Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, a
   await I.navigateToCaseDetails(childCaseNum());
   childCaseId = await I.grabCaseNumber();
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'concurrentRep', childCaseNum());
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   console.log('Judges made an order for Concurrent written representations on case: ' + childCaseNum());
   await I.navigateToTab(parentCaseNumber, 'Applications');
@@ -38,6 +42,6 @@ Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, a
   console.log('Responded to Judges written representations on case: ' + childCaseNum());
 }).retry(0);
 
-AfterSuite(async  ({api}) => {
+AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
