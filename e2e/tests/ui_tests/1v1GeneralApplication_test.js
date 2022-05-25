@@ -64,6 +64,7 @@ Scenario('GA for 1v1 - Respond to judges directions journey', async ({I, api}) =
   await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', childCaseNum());
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+  await I.verifyJudgesSummaryPage('Judges Directions');
   console.log('Judges Directions Order Made on case: ' + childCaseNum());
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDirectionsOrderStatus);
