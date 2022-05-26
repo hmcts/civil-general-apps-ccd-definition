@@ -774,6 +774,13 @@ module.exports = function () {
       ]);
     },
 
+    async verifyApplicationDocument(childCaseNumber, docType) {
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.navigateToTab(childCaseNumber, 'Application Documents'),
+        () => applicationDocumentPage.verifyUploadedDocumentPDF(docType, childCaseNumber),
+      ]);
+    },
+
     async respondToJudgesDirections(caseNumber, childCaseId) {
       eventName = events.RESPOND_TO_JUDGE_DIRECTIONS.name;
       await this.triggerStepsWithScreenshot([
