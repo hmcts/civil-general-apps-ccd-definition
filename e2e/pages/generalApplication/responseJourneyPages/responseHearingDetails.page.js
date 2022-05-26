@@ -150,7 +150,7 @@ module.exports = {
       I.click(this.fields.unavailableTrailRequired.options[trailRequired]);
     });
     if ('yes' === trailRequired) {
-      I.wait(2);
+      I.wait(1);
       I.click({css: '#hearingDetailsResp_generalAppUnavailableDates .button:nth-child(2)'});
       I.waitForVisible(this.fields.unavailableDateFromDay);
       I.fillField(this.fields.unavailableDateFromDay, 1);

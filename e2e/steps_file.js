@@ -203,9 +203,9 @@ const submitSupportingDocument = (confMessage) => [
   () => event.submitSupportingDoc('Submit', confMessage)
 ];
 
-const verifyGAConfirmationPage = (appType) => [
+const verifyGAConfirmationPage = (appType, parentCaseId) => [
   () => confirmationPage.verifyConfirmationPage(),
-  () => confirmationPage.verifyApplicationType(appType)
+  () => confirmationPage.verifyApplicationType(appType, parentCaseId)
 ];
 
 const navigateToTab = (caseNumber, tabName) => [
@@ -888,7 +888,7 @@ module.exports = function () {
         ...clickOnHearingDetailsChangeLink(consentCheck),
         ...updateHearingDetails(),
         ...submitApplication('You have made an application'),
-        ...verifyGAConfirmationPage(appTypes),
+        ...verifyGAConfirmationPage(appTypes, caseId),
       ]);
     }
   });
