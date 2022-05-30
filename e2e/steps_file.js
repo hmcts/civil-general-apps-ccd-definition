@@ -81,6 +81,7 @@ const drawGeneralOrderPage = require('./pages/generalApplication/judgesJourneyPa
 const writtenRepresentationsPage = require('./pages/generalApplication/judgesJourneyPages/writtenRepresentations.page');
 const uploadScreenPage = require('./pages/generalApplication/judgesJourneyPages/uploadScreen.page');
 const applicationDocumentPage = require('./pages/generalApplication/judgesJourneyPages/applicationDocument.page');
+const judgesSummary = require('./pages/generalApplication/judgesJourneyPages/judgesSummary.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -837,6 +838,12 @@ module.exports = function () {
     async verifyResponseSummaryPage() {
       await this.triggerStepsWithScreenshot([
         () => responseSummaryPage.verifySummaryPageAfterResponding(),
+      ]);
+    },
+
+    async verifyJudgesSummaryPage(decisionType) {
+      await this.triggerStepsWithScreenshot([
+        () => judgesSummary.verifyJudgesSummaryPage(decisionType),
       ]);
     },
 

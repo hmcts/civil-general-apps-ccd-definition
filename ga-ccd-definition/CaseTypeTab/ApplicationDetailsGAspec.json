@@ -4,7 +4,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppRespondentAgreement",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "TabFieldDisplayOrder": 1
   },
   {
@@ -12,7 +12,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "isApplicationUrgent",
+    "CaseFieldID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
     "TabFieldDisplayOrder": 2
   },
   {
@@ -20,7 +20,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppInformOtherParty",
+    "CaseFieldID": "judicialDecisionMakeOrder",
     "TabFieldDisplayOrder": 3
   },
   {
@@ -28,7 +28,8 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppType",
+    "CaseFieldID": "judicialDecision",
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\"",
     "TabFieldDisplayOrder": 4
   },
   {
@@ -36,7 +37,16 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppDetailsOfOrder",
+    "CaseFieldID": "directionInRelationToHearingText",
+    "TabFieldDisplayOrder": 5,
+    "FieldShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppRespondentAgreement",
     "TabFieldDisplayOrder": 6
   },
   {
@@ -44,7 +54,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppReasonsOfOrder",
+    "CaseFieldID": "isApplicationUrgent",
     "TabFieldDisplayOrder": 7
   },
   {
@@ -52,7 +62,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppEvidenceDocument",
+    "CaseFieldID": "generalAppInformOtherParty",
     "TabFieldDisplayOrder": 8
   },
   {
@@ -60,7 +70,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppHearingDetails",
+    "CaseFieldID": "generalAppType",
     "TabFieldDisplayOrder": 9
   },
   {
@@ -68,8 +78,40 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppParentCaseLink",
+    "CaseFieldID": "generalAppDetailsOfOrder",
     "TabFieldDisplayOrder": 10
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppReasonsOfOrder",
+    "TabFieldDisplayOrder": 11
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppEvidenceDocument",
+    "TabFieldDisplayOrder": 12
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppHearingDetails",
+    "TabFieldDisplayOrder": 13
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppParentCaseLink",
+    "TabFieldDisplayOrder": 14
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -78,6 +120,6 @@
     "ElementLabel": "Respondend response",
     "TabDisplayOrder": 1,
     "CaseFieldID": "respondentsResponses",
-    "TabFieldDisplayOrder": 11
+    "TabFieldDisplayOrder": 15
   }
 ]
