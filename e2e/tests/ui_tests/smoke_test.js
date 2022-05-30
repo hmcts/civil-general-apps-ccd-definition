@@ -44,6 +44,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum());
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+  await I.verifyJudgesSummaryPage('Request more information');
   await I.verifyApplicationDocument(childCaseNum(), 'Request for information');
   console.log('Judges requested more information on case: ' + childCaseNum());
   await I.navigateToTab(parentCaseNumber, 'Applications');
