@@ -43,7 +43,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'sequentialRep', childCaseNum());
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
-  await I.verifyJudgesSummaryPage('Sequential representations');
+  await I.verifyApplicationDocument(childCaseNum(), 'Written representation sequential');
   console.log('Judges made an order for Sequential written representations on case: ' + childCaseNum());
   await I.navigateToTab(parentCaseNum, 'Applications');
   await I.see(writtenRepStatus);
