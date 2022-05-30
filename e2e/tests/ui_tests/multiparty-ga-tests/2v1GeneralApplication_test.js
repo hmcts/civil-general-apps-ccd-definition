@@ -10,7 +10,7 @@ const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/te
 let {getAppTypes} = require('../../../pages/generalApplication/generalApplicationTypes');
 let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference;
 
-Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests');
+Feature('GA CCD 2v1 - General Application Journey @multiparty-e2e-tests');
 
 Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, api}) => {
   parentCaseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -36,6 +36,7 @@ Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, a
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Concurrent representations');
+  await I.verifyApplicationDocument(childCaseNum(), 'Written representation concurrent');
   console.log('Judges made an order for Concurrent written representations on case: ' + childCaseNum());
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(writtenRepStatus);
