@@ -14,6 +14,8 @@ Feature('GA CCD 1v1 - General Application Journey @e2e-tests');
 Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
   parentCaseNumber = await api.createClaimWithRepresentedRespondent(
     config.applicantSolicitorUser, mpScenario);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
+  await api.notifyClaimDetails(config.applicantSolicitorUser);
   console.log('Case created for general application: ' + parentCaseNumber);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(parentCaseNumber);
@@ -44,6 +46,8 @@ Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
 
 Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   parentCaseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
+  await api.notifyClaimDetails(config.applicantSolicitorUser);
   console.log('Case created for general application: ' + parentCaseNumber);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(parentCaseNumber);
