@@ -5,9 +5,9 @@
   "scripts": {
     "lint": "eslint e2e",
     "test": "npx codeceptjs run --steps",
-    "test:smoke": "npx codeceptjs run --grep @smoke-tests --reporter mocha-multi --verbose",
-    "test:api": "npx codeceptjs run --grep @api-tests --reporter mocha-multi --verbose",
-    "test:e2e": "npx codeceptjs run --grep '@e2e-tests|@multiparty-e2e-tests' --reporter mocha-multi --verbose",
+    "test:smoke": "MOCHAWESOME_REPORTFILENAME=smoke npx codeceptjs run --grep @smoke-tests --reporter mocha-multi --verbose",
+    "test:api": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-tests --reporter mocha-multi --verbose",
+    "test:e2e": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep '@e2e-tests|@multiparty-e2e-tests' --reporter mocha-multi --verbose",
     "test:e2e-multiparty": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @multiparty-e2e-tests1 --reporter mocha-multi --verbose",
     "test:functional": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep '@e2e-tests|@multiparty-e2e-tests' --reporter mocha-multi --verbose",
     "test:crossbrowser-e2e": "MOCHAWESOME_REPORTFILENAME=crossbrowser codeceptjs run-multiple --grep @cross-browser-tests ${BROWSER_GROUP:-'--all'} -c saucelabs.conf.js --reporter mocha-multi",
