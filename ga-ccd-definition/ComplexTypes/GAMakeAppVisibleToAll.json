@@ -1,0 +1,11 @@
+[
+  {
+    "ID": "GAmakeAppVisibleToRespondents",
+    "ListElementCode": "makeAppAvailableCheck",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "MakeAppAvailableCheckGAspec",
+    "HintText": "  ",
+    "ElementLabel": " Application type",
+    "SecurityClassification": "Public"
+  }
+]

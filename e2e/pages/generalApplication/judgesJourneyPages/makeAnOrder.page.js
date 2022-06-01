@@ -19,7 +19,7 @@ module.exports = {
     dismissalOrderTextArea: '#judicialDecisionMakeOrder_dismissalOrderText',
     directionsTextArea: '#judicialDecisionMakeOrder_directionsText',
     reasonForDecisionTextArea: '#judicialDecisionMakeOrder_reasonForDecisionText',
-    consentAgreementCheckBox: '#makeAppVisibleToAll-ConsentAgreementCheckBox',
+    consentAgreementCheckBox: '#makeAppVisibleToRespondents-ConsentAgreementCheckBox',
     directionsResponseDay: '#directionsResponseByDate-day',
     directionsResponseMonth: '#directionsResponseByDate-month',
     directionsResponseYear: '#directionsResponseByDate-year',

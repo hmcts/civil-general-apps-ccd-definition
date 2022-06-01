@@ -856,7 +856,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "makeAppVisibleToAll",
+    "CaseFieldID": "makeAppVisibleToRespondents",
     "UserRoles": [
       "caseworker-civil-systemupdate",
       "caseworker-civil-solicitor",
