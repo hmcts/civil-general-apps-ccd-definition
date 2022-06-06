@@ -356,7 +356,7 @@ module.exports = {
     // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
   },
 
-  notifyClaim: async (user, multipartyScenario) => {
+  notifyClaim: async (user, multipartyScenario, caseId) => {
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
     mpScenario = multipartyScenario;
 
@@ -373,7 +373,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  notifyClaimDetails: async (user) => {
+  notifyClaimDetails: async (user, caseId) => {
     await apiRequest.setupTokens(user);
 
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';

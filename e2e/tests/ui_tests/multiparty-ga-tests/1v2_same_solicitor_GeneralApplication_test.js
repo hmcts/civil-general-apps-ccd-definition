@@ -14,8 +14,8 @@ Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e
 
 Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey', async ({I, api}) => {
   parentCaseNum = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
-  await api.notifyClaimDetails(config.applicantSolicitorUser);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNum);
+  await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNum);
   console.log('Case created for general application: ' + parentCaseNum);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(parentCaseNum);
@@ -57,6 +57,8 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
 Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
   async ({I, api}) => {
     parentCaseNum = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+    await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNum);
+    await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNum);
     console.log('Case created for general application: ' + parentCaseNum);
     await I.login(config.applicantSolicitorUser);
     await I.navigateToCaseDetails(parentCaseNum);
