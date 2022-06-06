@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for civil-general-apps-ccd-definition App
 name: civil-general-apps-ccd-definition
 home: https://github.com/hmcts/civil-general-apps-ccd-definition
-version: 0.0.7
+version: 0.0.8
 maintainers:
   - name: HMCTS Civil team
 
@@ -28,7 +28,7 @@ dependencies:
     repository: '@hmctspublic'
     condition: idam-pr.enabled
   - name: postgresql
-    version: ~10.14.4
+    version: ~10.16.0
     repository: https://charts.bitnami.com/bitnami
     condition: postgresql.enabled
   - name: camunda-bpm
