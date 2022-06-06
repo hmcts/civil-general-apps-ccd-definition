@@ -9,6 +9,8 @@ Feature('GA 1v1 API tests @api-tests');
 Scenario('Initiate General application for 1v1', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(
     config.applicantSolicitorUser, mpScenario);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
+  await api.notifyClaimDetails(config.applicantSolicitorUser);
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
