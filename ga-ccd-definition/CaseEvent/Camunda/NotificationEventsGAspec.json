@@ -11,5 +11,18 @@
       "ShowSummary": "N",
       "ShowEventNotes": "N",
       "RetriesTimeoutURLAboutToSubmitEvent": 0
+    },
+    {
+      "CaseTypeID": "GENERALAPPLICATION",
+      "ID": "START_NOTIFICATION_PROCESS_MAKE_DECISION",
+      "Name": "Email: List for hearing",
+      "Description": "Notify applicant for List for Hearing",
+      "PreConditionState(s)": "*",
+      "PostConditionState": "*",
+      "SecurityClassification": "Public",
+      "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+      "ShowSummary": "N",
+      "ShowEventNotes": "N",
+      "RetriesTimeoutURLAboutToSubmitEvent": 0
     }
   ]
