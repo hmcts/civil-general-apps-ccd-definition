@@ -147,8 +147,8 @@ module.exports = {
     const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION, parentCaseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
-    assert.equal(responseBody.state, 'CASE_ISSUED');
-    console.log('General application case state : CASE_ISSUED ');
+    assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
     await waitForFinishedBusinessProcess(parentCaseId);
@@ -361,8 +361,7 @@ module.exports = {
     mpScenario = multipartyScenario;
 
     await apiRequest.setupTokens(user);
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    assertContainsPopulatedFields(returnedCaseData);
+    await apiRequest.startEvent(eventName, caseId);
 
     await validateEventPages(data[eventName]);
 
@@ -372,17 +371,13 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
   },
 
   notifyClaimDetails: async (user) => {
     await apiRequest.setupTokens(user);
 
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    assertContainsPopulatedFields(returnedCaseData);
+    await apiRequest.startEvent(eventName, caseId);
 
     await validateEventPages(data[eventName]);
 
@@ -392,9 +387,6 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 
   amendPartyDetails: async (user) => {
