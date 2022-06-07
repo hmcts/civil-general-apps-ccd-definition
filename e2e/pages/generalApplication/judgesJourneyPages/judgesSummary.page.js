@@ -38,6 +38,11 @@ module.exports = {
         await I.see('Request more information');
         await I.see('When should this application be referred to a Judge again?');
         break;
+      case 'Dismissal order':
+        await I.see('Judges dismissed the order');
+        await I.see('Dismissal order');
+        await I.see('Reasons for decision');
+        break;
     }
   }
 };
