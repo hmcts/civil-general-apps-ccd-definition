@@ -14,6 +14,8 @@ Feature('End-to-end General application journey @cross-browser-tests');
 Scenario('End to End Judges Journey', async ({I, api}) => {
   parentCaseNumber = await api.createClaimWithRepresentedRespondent(
     config.applicantSolicitorUser, mpScenario);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
+  await api.notifyClaimDetails(config.applicantSolicitorUser);
   console.log('Case created for general application: ' + parentCaseNumber);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(parentCaseNumber);
