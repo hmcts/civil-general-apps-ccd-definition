@@ -101,7 +101,7 @@ const setupConfig = {
         options: {
           reportDir: testConfig.TestOutputDir,
           reportName: 'index',
-          reportTitle: 'Crossbrowser results',
+          reportTitle: 'GA Cross browser results',
           inlineAssets: true,
         },
       },
