@@ -3,6 +3,7 @@ const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
 const judgeDirectionsOrderStatus = 'Directions Order Made';
+const judgeDismissOrderStatus = 'Application Dismissed';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 
@@ -76,6 +77,40 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await I.see(judgeDirectionsOrderStatus);
   await I.respondToJudgesDirections(childCaseNum(), childCaseId);
   console.log('Responded to Judges directions on case: ' + childCaseNum());
+}).retry(0);
+
+Scenario('GA for 1v1 - Dismissal order journey', async ({I, api}) => {
+  parentCaseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
+  await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
+  console.log('Case created for general application: ' + parentCaseNumber);
+  await I.login(config.applicantSolicitorUser);
+  await I.navigateToCaseDetails(parentCaseNumber);
+  caseId = await I.grabCaseNumber();
+  await I.createGeneralApplication(
+    getAppTypes().slice(0, 4),
+    parentCaseNumber,
+    'no', 'no', 'no', 'yes', 'yes', 'yes', 'no',
+    'signLanguageInterpreter');
+  console.log('General Application created: ' + parentCaseNumber);
+  gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
+  await I.closeAndReturnToCaseDetails(caseId);
+  await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 4), 1);
+  await I.see(judgeDecisionStatus);
+  childCaseNumber = await I.grabChildCaseNumber();
+  await I.navigateToCaseDetails(childCaseNum());
+  childCaseId = await I.grabCaseNumber();
+  await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'no', childCaseNum());
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
+  await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+  await I.verifyJudgesSummaryPage('Dismissal order');
+  await I.verifyApplicationDocument(childCaseNum(), 'Dismissal order');
+  await I.dontSee('Go');
+  await I.dontSee('Next step');
+  console.log('Judges Dismissed this order: ' + childCaseNum());
+  await I.navigateToTab(parentCaseNumber, 'Applications');
+  await I.see(judgeDismissOrderStatus);
 }).retry(0);
 
 AfterSuite(async ({api}) => {
