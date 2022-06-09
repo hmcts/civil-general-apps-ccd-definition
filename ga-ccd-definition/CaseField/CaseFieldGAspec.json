@@ -375,9 +375,9 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "generalAppDeadlineNotificationDate",
+    "ID": "generalAppNotificationDeadlineDate",
     "Label": " ",
-    "FieldType": "TextArea",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
   {

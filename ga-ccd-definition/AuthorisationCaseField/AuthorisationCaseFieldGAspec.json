@@ -928,7 +928,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppDeadlineNotificationDate",
+    "CaseFieldID": "generalAppNotificationDeadlineDate",
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],
