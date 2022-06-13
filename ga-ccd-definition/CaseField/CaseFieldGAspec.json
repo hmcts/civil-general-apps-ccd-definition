@@ -305,14 +305,7 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "respondentSolicitor1EmailAddress",
-    "Label": " ",
-    "FieldType": "Email",
-    "SecurityClassification": "Public"
-  },
-  {
+   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppSubmittedDateGAspec",
     "Label": "General Application Submitted on",
