@@ -3,6 +3,7 @@ const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const respondentStatus = 'Awaiting Respondent Response';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
+const listForHearingStatus = 'Listed for a Hearing';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
 
@@ -54,7 +55,11 @@ Scenario('GA for 1v2 different Solicitor - respond to application - Hearing orde
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyApplicationDocument(childCaseNum(), 'Hearing order');
+  await I.dontSee('Go');
+  await I.dontSee('Next step');
   console.log('Judges list for a hearing on case: ' + childCaseNum());
+  await I.navigateToTab(parentCaseNumber, 'Applications');
+  await I.see(listForHearingStatus);
 }).retry(0);
 
 AfterSuite(async ({api}) => {

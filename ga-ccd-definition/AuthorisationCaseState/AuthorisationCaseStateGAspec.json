@@ -288,5 +288,19 @@
         "CRUD": "CRUD"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "LISTING_FOR_A_HEARING",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
   }
 ]
