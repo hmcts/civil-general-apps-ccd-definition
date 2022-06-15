@@ -502,7 +502,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialDecisionRequestMoreInfo",
-    "Label": " ",
+    "Label": "Request for information",
     "FieldType": "GAJudicialRequestMoreInfoGAspec",
     "SecurityClassification": "Public"
   },
