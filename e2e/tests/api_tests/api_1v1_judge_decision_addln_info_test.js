@@ -8,8 +8,8 @@ Feature('GA 1v1 Judge Make Decision Additional Information Required API tests @a
 
 Scenario('Judge makes decision 1V1 - AWAITING_ADDITIONAL_INFORMATION', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
-  await api.notifyClaimDetails(config.applicantSolicitorUser);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
