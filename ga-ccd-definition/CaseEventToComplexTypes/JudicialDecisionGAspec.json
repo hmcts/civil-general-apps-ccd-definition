@@ -102,15 +102,6 @@
   {
     "ID": "GAJudicialRequestMoreInfoScreen",
     "CaseEventID": "JUDGE_MAKES_DECISION",
-    "ListElementCode": "requestMoreInformationLabel",
-    "EventElementLabel": " ",
-    "EventHintText": " ",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "GAJudicialRequestMoreInfoScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "ListElementCode": "judgeRequestMoreInfoText",
     "EventElementLabel": " ",
