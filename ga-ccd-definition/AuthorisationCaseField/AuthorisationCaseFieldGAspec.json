@@ -864,15 +864,7 @@
     ],
     "CRUD": "CRUD"
   },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "respondentSolicitor1EmailAddress",
-    "UserRoles": [
-      "caseworker-civil-systemupdate"
-    ],
-    "CRUD": "CRUD"
-  },
-  {
+   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppSubmittedDateGAspec",
     "UserRoles": [

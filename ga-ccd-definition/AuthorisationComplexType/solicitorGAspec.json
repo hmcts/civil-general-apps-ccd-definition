@@ -506,14 +506,7 @@
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
-    "ListElementCode": "respondentSolicitor1EmailAddress",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "R"
-  },
-  {
+   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppSubmittedDateGAspec",
