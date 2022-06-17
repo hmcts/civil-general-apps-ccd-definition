@@ -1,11 +1,5 @@
 [
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "respondentSolicitor1EmailAddress",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
+   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "civilServiceUserRoles",
     "CRUD": "R",
