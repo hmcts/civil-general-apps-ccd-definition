@@ -1,0 +1,19 @@
+[
+  {
+    "LiveFrom": "02/02/2021",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "submitAndPay",
+    "Name": "Submit and pay",
+    "Description": "Submit and pay",
+    "DisplayOrder": 1,
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToStartEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "EndButtonLabel": "Pay now",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N"
+  }
+]
