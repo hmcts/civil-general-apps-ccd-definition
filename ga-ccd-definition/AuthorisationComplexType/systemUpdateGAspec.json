@@ -497,13 +497,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "respondentSolicitor1EmailAddress",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
