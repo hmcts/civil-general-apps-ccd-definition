@@ -544,7 +544,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppDeadlineNotification",
+    "ListElementCode": "generalAppDateDeadline",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },
