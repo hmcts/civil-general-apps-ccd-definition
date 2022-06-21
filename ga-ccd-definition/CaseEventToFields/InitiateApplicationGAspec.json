@@ -223,7 +223,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "generalAppDeadlineNotification",
+    "CaseFieldID": "generalAppDateDeadline",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "generalAppDeadlineNotificationPage",
