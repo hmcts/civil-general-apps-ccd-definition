@@ -777,6 +777,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
+    "ListElementCode": "isWithNotice",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "ListElementCode": "judgeRequestMoreInfoText",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

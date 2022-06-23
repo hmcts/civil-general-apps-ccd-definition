@@ -746,12 +746,12 @@ module.exports = function () {
       ]);
     },
 
-    async judgeRequestMoreInfo(decision, infoType, caseNumber) {
+    async judgeRequestMoreInfo(decision, infoType, caseNumber, withoutNotice) {
       eventName = events.JUDGE_MAKES_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
-        () => requestMoreInfoPage.requestMoreInfoOrder(infoType),
+        () => requestMoreInfoPage.requestMoreInfoOrder(infoType, withoutNotice),
         () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
         ...conditionalSteps(infoType === 'requestMoreInformation', [
           ...submitApplication('You have requested more information'),
