@@ -544,7 +544,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppDeadlineNotification",
+    "ListElementCode": "generalAppDateDeadline",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },
@@ -678,6 +678,14 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "ListElementCode": "deadlineForMoreInfoSubmission",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
+    "ListElementCode": "isWithNotice",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
