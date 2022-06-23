@@ -35,7 +35,7 @@ module.exports = {
         break;
       case 'Request more information':
         await I.see('Enter the information required');
-        await I.see('Request more information');
+        await I.see('Request for information');
         await I.see('When should this application be referred to a Judge again?');
         break;
       case 'Dismissal order':
