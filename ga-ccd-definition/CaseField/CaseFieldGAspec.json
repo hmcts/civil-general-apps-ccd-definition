@@ -272,6 +272,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalApplicationParties",
+    "Label": " ",
+    "FieldType": "GAPartiesGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "claimant1PartyName",
     "Label": " ",
     "FieldType": "Text",
