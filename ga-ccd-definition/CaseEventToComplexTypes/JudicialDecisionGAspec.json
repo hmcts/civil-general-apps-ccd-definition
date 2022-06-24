@@ -105,7 +105,7 @@
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "ListElementCode": "judgeRequestMoreInfoText",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 2,
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -114,7 +114,7 @@
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "ListElementCode": "judgeRequestMoreInfoByDate",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
   {
