@@ -113,6 +113,14 @@
   },
   {
     "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judgeHearingCourtLocationLabel",
+    "ElementLabel": "### Where do you want to list for a hearing?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "hearingPreferencesPreferredType = \"IN_PERSON\""
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
     "ListElementCode": "judgeHearingCourtLocationText1",
     "ElementLabel": " ",
     "FieldType": "TextArea",
