@@ -361,16 +361,16 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "generalAppDeadlineNotification",
+    "ID": "generalAppDateDeadline",
     "Label": " ",
     "FieldType": "GeneralApplicationGAspec",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "generalAppDeadlineNotificationDate",
+    "ID": "generalAppNotificationDeadlineDate",
     "Label": " ",
-    "FieldType": "TextArea",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
   {
@@ -495,7 +495,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialDecisionRequestMoreInfo",
-    "Label": " ",
+    "Label": "Request for information",
     "FieldType": "GAJudicialRequestMoreInfoGAspec",
     "SecurityClassification": "Public"
   },

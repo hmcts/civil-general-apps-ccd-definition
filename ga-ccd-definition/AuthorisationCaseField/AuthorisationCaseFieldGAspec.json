@@ -912,7 +912,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppDeadlineNotification",
+    "CaseFieldID": "generalAppDateDeadline",
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],
@@ -920,7 +920,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppDeadlineNotificationDate",
+    "CaseFieldID": "generalAppNotificationDeadlineDate",
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],
