@@ -4,9 +4,9 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('specsdfdsfsd @api-test-spec-claim');
+Feature('GA SPEC Claim 1v1 Judge Make Order Directions Order API tests @api-test-spec-claim');
 
-Scenario('specfdsfdsfds test', async ({api}) => {
+Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
     civilCaseReference = await api.createClaimSpecWithRepresentedRespondent(
         config.applicantSolicitorUser, mpScenario);
     await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -25,6 +25,5 @@ Scenario('specfdsfdsfds test', async ({api}) => {
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+    await api.cleanUp();
 });
-
