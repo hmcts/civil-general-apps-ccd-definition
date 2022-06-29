@@ -5,7 +5,7 @@ const {retry} = require('./retryHelper');
 
 let incidentMessage;
 
-const MAX_RETRIES = 300;
+const MAX_RETRIES = 50;
 const RETRY_TIMEOUT_MS = 1000;
 
 module.exports = {

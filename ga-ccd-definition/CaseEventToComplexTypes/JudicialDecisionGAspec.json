@@ -30,17 +30,17 @@
   {
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "JUDGE_MAKES_DECISION",
-    "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "orderText",
+    "CaseFieldID": "makeAppVisibleToRespondents",
+    "ListElementCode": "makeAppAvailableCheck",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "judgeApproveEditOptionDoc",
+    "ListElementCode": "orderText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
@@ -49,7 +49,7 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "judgeApproveEditOptionDate",
+    "ListElementCode": "judgeApproveEditOptionDoc",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
@@ -58,7 +58,7 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "dismissalOrderText",
+    "ListElementCode": "judgeApproveEditOptionDate",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
@@ -67,7 +67,7 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "directionsText",
+    "ListElementCode": "dismissalOrderText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
@@ -76,7 +76,7 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "directionsResponseByDate",
+    "ListElementCode": "directionsText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
@@ -85,9 +85,18 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "reasonForDecisionText",
+    "ListElementCode": "directionsResponseByDate",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialMakeADecisionScreen",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "reasonForDecisionText",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -96,7 +105,7 @@
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "ListElementCode": "requestMoreInfoOption",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 1,
+    "FieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -105,7 +114,7 @@
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "ListElementCode": "judgeRequestMoreInfoText",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 2,
+    "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -114,7 +123,7 @@
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "ListElementCode": "judgeRequestMoreInfoByDate",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 13,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -151,7 +160,7 @@
     "ID": "GAJudicialDecision",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialListForHearing",
-    "ListElementCode": "judgeHearingCourtLocationText1",
+    "ListElementCode": "judgeHearingCourtLocationLabel",
     "EventElementLabel": " ",
     "EventHintText": " ",
     "FieldDisplayOrder": 4,
@@ -161,17 +170,17 @@
     "ID": "GAJudicialDecision",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialListForHearing",
-    "ListElementCode": "hearingPreferredLocation",
-    "EventElementLabel": "  ",
+    "ListElementCode": "judgeHearingCourtLocationText1",
+    "EventElementLabel": " ",
     "EventHintText": " ",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "GAJudicialDecision",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialListForHearing",
-    "ListElementCode": "judicialTimeEstimateLabel",
+    "ListElementCode": "hearingPreferredLocation",
     "EventElementLabel": "  ",
     "EventHintText": " ",
     "FieldDisplayOrder": 6,
@@ -181,10 +190,20 @@
     "ID": "GAJudicialDecision",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judicialTimeEstimateLabel",
+    "EventElementLabel": "  ",
+    "EventHintText": " ",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialDecision",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judgeHearingTimeEstimateText1",
     "EventElementLabel": " ",
     "EventHintText": " ",
-    "FieldDisplayOrder": 7,
+    "FieldDisplayOrder": 8,
     "DisplayContext": "READONLY"
   },
   {
@@ -194,7 +213,7 @@
     "ListElementCode": "judicialTimeEstimate",
     "EventElementLabel": "  ",
     "EventHintText": " ",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -204,7 +223,7 @@
     "ListElementCode": "judicialVulnerabilityLabel",
     "EventElementLabel": " ",
     "EventHintText": " ",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -214,7 +233,7 @@
     "ListElementCode": "judicialVulnerabilityText",
     "EventElementLabel": " ",
     "EventHintText": " ",
-    "FieldDisplayOrder": 10,
+    "FieldDisplayOrder": 11,
     "DisplayContext": "READONLY"
   },
   {
@@ -224,7 +243,7 @@
     "ListElementCode": "judicialSupportRequirementLabel",
     "EventElementLabel": "  ",
     "EventHintText": " ",
-    "FieldDisplayOrder": 11,
+    "FieldDisplayOrder": 12,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -234,7 +253,7 @@
     "ListElementCode": "judgeHearingSupportReqText1",
     "EventElementLabel": " ",
     "EventHintText": " ",
-    "FieldDisplayOrder": 12,
+    "FieldDisplayOrder": 13,
     "DisplayContext": "READONLY"
   },
   {
@@ -244,7 +263,7 @@
     "ListElementCode": "judicialSupportRequirement",
     "EventElementLabel": "  ",
     "EventHintText": " ",
-    "FieldDisplayOrder": 13,
+    "FieldDisplayOrder": 14,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -254,7 +273,7 @@
     "ListElementCode": "judgeSignLanguage",
     "EventElementLabel": "  ",
     "EventHintText": " ",
-    "FieldDisplayOrder": 14,
+    "FieldDisplayOrder": 15,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -264,7 +283,7 @@
     "ListElementCode": "judgeLanguageInterpreter",
     "EventElementLabel": "  ",
     "EventHintText": " ",
-    "FieldDisplayOrder": 15,
+    "FieldDisplayOrder": 16,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -274,7 +293,7 @@
     "ListElementCode": "judgeOtherSupport",
     "EventElementLabel": "  ",
     "EventHintText": " ",
-    "FieldDisplayOrder": 16,
+    "FieldDisplayOrder": 17,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -284,7 +303,7 @@
     "ListElementCode": "addlnInfoCourtStaffLabel",
     "EventElementLabel": "  ",
     "EventHintText": " ",
-    "FieldDisplayOrder": 17,
+    "FieldDisplayOrder": 18,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -294,7 +313,7 @@
     "ListElementCode": "addlnInfoCourtStaff",
     "EventElementLabel": "  ",
     "EventHintText": " ",
-    "FieldDisplayOrder": 18,
+    "FieldDisplayOrder": 19,
     "DisplayContext": "OPTIONAL"
   }
 ]

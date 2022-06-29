@@ -75,4 +75,34 @@
     <cve>CVE-2022-22970</cve>
     <cve>CVE-2022-22971</cve>
   </suppress>
+  <suppress until="2022-07-01">
+    <notes>
+    Still using Spring Framework versions 5.3.0 - 5.3.16 which has got vulnerability.
+    </notes>
+    <cve>CVE-2022-22950</cve>
+  </suppress>
+  <suppress until="2022-07-01">
+    <notes>
+      Still using spring-plugin-core-1.2.0 which has got vulnerability.
+    </notes>
+    <cve>CVE-2018-11040</cve>
+  </suppress>
+  <suppress until="2022-07-01">
+    <notes>
+      Still using spring-plugin-core-1.2.0 which has got vulnerability.
+    </notes>
+    <cve>CVE-2020-5421</cve>
+  </suppress>
+  <suppress until="2022-07-01">
+    <notes>
+      Still using spring-plugin-core-1.2.0 which has got vulnerability.
+    </notes>
+    <cve>CVE-2018-1257</cve>
+  </suppress>
+  <suppress until="2022-07-01">
+    <notes>
+      Still using spring-plugin-core-1.2.0 which has got vulnerability.
+    </notes>
+    <cve>CVE-2018-11039</cve>
+  </suppress>
 </suppressions>
