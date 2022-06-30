@@ -105,4 +105,10 @@
     </notes>
     <cve>CVE-2018-11039</cve>
   </suppress>
+  <suppress until="2022-07-01">
+    <notes>
+      Still using version of tomcat which has got vulnerability.
+    </notes>
+    <cve>CCVE-2022-34305</cve>
+  </suppress>
 </suppressions>
