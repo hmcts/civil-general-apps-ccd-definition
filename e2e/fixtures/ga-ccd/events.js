@@ -27,6 +27,6 @@ module.exports = {
   RESPOND_TO_JUDGE_ADDITIONAL_INFO: {
     description: 'Judge makes decision',
     id: 'RESPOND_TO_JUDGE_ADDITIONAL_INFO',
-    name: 'Respond to judges addn info'
-  },
+    name: 'Respond to judges add info'
+  }
 };

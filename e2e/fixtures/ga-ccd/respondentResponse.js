@@ -1,3 +1,7 @@
+const uuid = require('uuid');
+const config = require('../../config.js');
+
+const docUuid = uuid.v1();
 module.exports = {
   respondGAData: () => {
     return {
@@ -31,6 +35,48 @@ module.exports = {
         generalAppUnavailableDates: [],
         SupportRequirement: []
       }
+    };
+  }, toJudgeDirectionsOrders: () => {
+    return {
+      generalAppDirOrderUpload:[
+       {
+         id: docUuid,
+         value: {
+           document_url: '${TEST_DOCUMENT_URL}',
+           document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+           document_filename: '${TEST_DOCUMENT_FILENAME}',
+           documentHash: null
+         }
+      }
+    ]
+    };
+  }, toJudgeAdditionalInfo: () => {
+    return {
+      generalAppAddlnInfoUpload:[
+        {
+          id: docUuid,
+          value: {
+            document_url: '${TEST_DOCUMENT_URL}',
+            document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+            document_filename: '${TEST_DOCUMENT_FILENAME}',
+            documentHash: null
+          }
+        }
+      ]
+    };
+  }, toJudgeWrittenRepresentation: () => {
+    return {
+      generalAppWrittenRepUpload: [
+        {
+          id: docUuid,
+          value: {
+            document_url: '${TEST_DOCUMENT_URL}',
+            document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+            document_filename: '${TEST_DOCUMENT_FILENAME}',
+            documentHash: null
+          }
+        }
+      ]
     };
   }
 };

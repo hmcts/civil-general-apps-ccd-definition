@@ -6,7 +6,8 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v1 Judge Make Order Written Rep API tests @api-tests');
 
-Scenario('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS', async ({api}) => {
+Scenario('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS- Respondent upload Directions Document'
+  , async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(
     config.applicantSolicitorUser, mpScenario);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -22,6 +23,10 @@ Scenario('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS', async ({api}) => 
   console.log('*** Start Judge Make Order on GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
   await api.judgeMakesDecisionWrittenRep(config.applicantSolicitorUser, gaCaseReference);
   console.log('*** End Judge Make Order GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
+
+  console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');
+  await api.respondentResponseToWrittenRepresentations(config.applicantSolicitorUser, gaCaseReference);
+  console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
 AfterSuite(async ({api}) => {
