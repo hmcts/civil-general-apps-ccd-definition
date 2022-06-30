@@ -1,6 +1,6 @@
 exports.config = {
   tests: './e2e/tests/**/*_test.js',
-  output: './output',
+  output: 'test-results/functional',
   helpers: {
     Puppeteer: {
       restart: false,
@@ -54,13 +54,13 @@ exports.config = {
       'mocha-junit-reporter': {
         stdout: '-',
         options: {
-          mochaFile: 'test-results/result.xml',
+          mochaFile: process.env.REPORT_FILE || 'test-results/functional/result.xml',
         },
       },
       'mochawesome': {
         stdout: '-',
         options: {
-          reportDir: './output',
+          reportDir: process.env.REPORT_DIR || 'test-results/functional',
           inlineAssets: true,
           json: false,
         },
