@@ -223,6 +223,28 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseFieldID": "workAllocationLocation",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "isMultiPartyPage",
+    "PageDisplayOrder": 8,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseFieldID": "workAllocationLocationName",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "isMultiPartyPage",
+    "PageDisplayOrder": 8,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERAL_APPLICATION_CREATION",
     "CaseFieldID": "generalAppDateDeadline",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",

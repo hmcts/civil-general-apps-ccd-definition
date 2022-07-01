@@ -300,6 +300,20 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "workAllocationLocation",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "workAllocationLocationName",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "parentClaimantIsApplicant",
     "Label": " ",
     "FieldType": "YesOrNo",

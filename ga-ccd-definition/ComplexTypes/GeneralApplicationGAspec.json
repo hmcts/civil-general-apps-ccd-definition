@@ -161,6 +161,20 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "workAllocationLocation",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "workAllocationLocationName",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "parentClaimantIsApplicant",
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
