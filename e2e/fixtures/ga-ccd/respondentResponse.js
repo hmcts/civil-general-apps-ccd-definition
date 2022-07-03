@@ -1,5 +1,4 @@
 const uuid = require('uuid');
-const config = require('../../config.js');
 
 const docUuid = uuid.v1();
 module.exports = {

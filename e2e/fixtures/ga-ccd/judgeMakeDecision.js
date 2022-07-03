@@ -44,10 +44,10 @@ module.exports = {
       },
       judicialDecisionMakeOrder: {
         makeAnOrder: 'DISMISS_THE_APPLICATION',
-        judgeRecitalText:"sample text",
-        orderText:"sample text",
-        dismissalOrderText:"sample text",
-        reasonForDecisionText:"sample text",
+        judgeRecitalText:'sample text',
+        orderText:'sample text',
+        dismissalOrderText:'sample text',
+        reasonForDecisionText:'sample text',
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No'
       }

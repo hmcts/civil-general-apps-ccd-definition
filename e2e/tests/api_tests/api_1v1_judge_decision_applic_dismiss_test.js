@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-const testingSupport = require("../../api/testingSupport");
 const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
