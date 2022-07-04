@@ -7,6 +7,7 @@ import uk.gov.hmcts.contino.AppPipelineDsl
 def type = "java"
 def product = "civil"
 def component = "general-apps-ccd-definition"
+def ccddefbranch = "feature/CIV-3206"
 AppPipelineConfig pipelineConf
 
 static Map<String, Object> secret(String secretName, String envVariable) {
@@ -53,7 +54,7 @@ withPipeline(type, product, component) {
 
     onPR {
         loadVaultSecrets(secrets);
-      enableCleanupOfHelmReleaseOnSuccess();
+      //enableCleanupOfHelmReleaseOnSuccess();
     }
     onMaster {
         loadVaultSecrets(secrets)
@@ -87,7 +88,7 @@ withPipeline(type, product, component) {
           ./bin/add-roles.sh
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
-          ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*DJspec.json"
+          ./bin/import-ccd-definition.sh "-e *DJspec.json,*DJ.json,*-prod.json,*DJ-SDO-nonprod.json,*DJ-nonprod.json" ${ccddefbranch}
           ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
           ./bin/import-bpmn-diagram.sh .
         """
