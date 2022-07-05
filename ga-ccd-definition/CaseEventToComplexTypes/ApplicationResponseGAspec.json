@@ -109,7 +109,7 @@
     "CaseFieldID": "hearingDetailsResp",
     "ListElementCode": "HearingPreferredLocation",
     "FieldDisplayOrder": 14,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "HearingDetails",
