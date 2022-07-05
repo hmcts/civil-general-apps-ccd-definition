@@ -492,11 +492,10 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "makeAppVisibleToAll",
+    "ID": "makeAppVisibleToRespondents",
     "Label": " ",
     "ListElementCode": "ConsentAgreementCheckBox",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "MakeAppAvailableCheckGAspec",
+    "FieldType": "GAmakeAppVisibleToRespondents",
     "SecurityClassification": "Public"
   },
   {
