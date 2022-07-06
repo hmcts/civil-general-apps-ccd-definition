@@ -7,7 +7,7 @@ let civilCaseReference, gaCaseReference;
 Feature('GA 1v1 Judge Make Order Written Rep API tests @api-tests');
 
 Scenario('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS', async ({api}) => {
-  civilCaseReference = await api.createClaimWithRepresentedRespondent(
+  civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);

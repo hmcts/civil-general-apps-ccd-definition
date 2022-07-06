@@ -27,7 +27,7 @@ const data = {
   JUDGE_MAKES_ORDER_WRITTEN_REP: genAppJudgeMakeDecisionData.judgeMakeOrderWrittenRep(),
   JUDGE_MAKES_ORDER_DIRECTIONS_REP: genAppJudgeMakeDecisionData.judgeMakeDecisionDirectionOrder(),
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
-  CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaimSpec(mpScenario),
+  CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
   CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS: claimData.createClaimRespondentSolFirmNotInMyHmcts,
@@ -105,7 +105,7 @@ let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
-  createClaimWithRepresentedRespondent: async (user, multipartyScenario) => {
+  createUnspecifiedClaim: async (user, multipartyScenario) => {
 
     eventName = 'CREATE_CLAIM';
     caseId = null;
@@ -130,23 +130,20 @@ module.exports = {
       body: 'Your claim will not be issued until payment is confirmed.'
     });
 
-    await assignCase();
+    await assignCase(caseId, multipartyScenario);
     await waitForFinishedBusinessProcess(caseId);
-   /* await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');*/
-    // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
     return caseId;
   },
 
-  createClaimSpecWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE') => {
+  createSpecifiedClaim: async (user, multipartyScenario) => {
 
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
-    const createClaimSpecData = data.CREATE_SPEC_CLAIM(scenario);
+    const createClaimSpecData = data.CREATE_SPEC_CLAIM(multipartyScenario);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -156,10 +153,8 @@ module.exports = {
 
     await assertSubmittedSpecEvent('PENDING_CASE_ISSUED');
 
-    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
+    await assignSpecCase(caseId, multipartyScenario);
     await waitForFinishedBusinessProcess(caseId);
-   /* await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');*/
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -981,7 +976,7 @@ async function updateCaseDataWithPlaceholders(data, document) {
   return JSON.parse(data);
 }
 
-const assignCase = async () => {
+const assignCase = async (caseId, mpScenario) => {
   await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   switch(mpScenario){
     case 'ONE_V_TWO_TWO_LEGAL_REP': {
@@ -990,6 +985,20 @@ const assignCase = async () => {
     }
     case 'ONE_V_TWO_ONE_LEGAL_REP': {
       await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+      break;
+    }
+  }
+};
+
+const assignSpecCase = async (caseId, mpScenario) => {
+  await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
+  switch(mpScenario){
+    case 'ONE_V_TWO_TWO_LEGAL_REP': {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
+      break;
+    }
+    case 'ONE_V_TWO_ONE_LEGAL_REP': {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
       break;
     }
   }

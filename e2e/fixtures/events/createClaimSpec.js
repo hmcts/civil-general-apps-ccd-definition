@@ -31,7 +31,7 @@ const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
 
 module.exports = {
-  createClaimSpec: (mpScenario) => {
+  createClaim: (mpScenario) => {
     const userData = {
       userInput: {
         References: {
@@ -85,7 +85,7 @@ module.exports = {
           },
         },
         DefendantSolicitorEmail: {
-          respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
+          respondentSolicitor1EmailAddress: 'hmcts.civil+organisation.2.solicitor.1@gmail.com'
         },
 
         specRespondentCorrespondenceAddress: {
@@ -200,7 +200,7 @@ module.exports = {
           ...userData.userInput
         };
         break;
-      case 'ONE_V_TWO':
+      case 'ONE_V_TWO_TWO_LEGAL_REP':
         userData.userInput = {
           ...userData.userInput,
           AddAnotherDefendant: {
@@ -234,7 +234,7 @@ module.exports = {
           },
 
           SecondDefendantSolicitorEmail: {
-            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
+            respondentSolicitor2EmailAddress: 'hmcts.civil+organisation.3.solicitor.1@gmail.com'
           },
 
           SameLegalRepresentative: {
@@ -246,8 +246,7 @@ module.exports = {
             respondent2OrganisationPolicy: {
               OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWOSPEC]',
               Organisation: {
-                OrganisationID: '79ZRSOU',
-                OrganisationName: 'Civil - Organisation 2'
+                OrganisationID: config.defendant2SolicitorOrgId,
               }
             }
           },
@@ -279,7 +278,7 @@ module.exports = {
         };
         break;
 
-      case 'ONE_V_TWO_SAME_SOL':
+      case 'ONE_V_TWO_ONE_LEGAL_REP':
         userData.userInput = {
           ...userData.userInput,
           AddAnotherDefendant: {
@@ -313,11 +312,21 @@ module.exports = {
           },
 
           SecondDefendantSolicitorEmail: {
-            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
+            respondentSolicitor2EmailAddress: 'hmcts.civil+organisation.2.solicitor.1@gmail.com'
           },
 
           SameLegalRepresentative: {
             respondent2SameLegalRepresentative: 'Yes'
+          },
+
+          SecondDefendantSolicitorOrganisation: {
+            respondent2OrgRegistered: 'Yes',
+            respondent2OrganisationPolicy: {
+              OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
+              Organisation: {
+                OrganisationID: config.defendant1SolicitorOrgId,
+              }
+            }
           },
         };
 
@@ -346,23 +355,6 @@ module.exports = {
           ...userData.userInput,
           AddAnotherClaimant: {
             addApplicant2: 'Yes'
-          },
-
-          SecondClaimant: {
-            applicant2: {
-              type: 'ORGANISATION',
-              organisationName: 'Claim 2',
-              partyName: 'Claim 2',
-              partyTypeDisplayValue: 'Organisation',
-              primaryAddress: {
-                AddressLine1: '43 Montgomery Close',
-                PostTown: 'Norwich',
-                PostCode: 'NR5 9LL'
-              }
-            }
-          },
-          SecondDefendantSolicitorEmail: {
-            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
           }
         };
         break;
