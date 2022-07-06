@@ -117,4 +117,16 @@
     </notes>
     <cve>CVE-2022-33915</cve>
   </suppress>
+  <suppress>
+    <notes>
+      Adding suppressions because of implementation group: 'com.github.hmcts', name: 'befta-fw', version
+    </notes>
+    <cve>CVE-2020-15522</cve>
+    <cve>CVE-2021-29425</cve>
+    <cve>CVE-2020-8908</cve>
+    <cve>CVE-2022-26336</cve>
+    <cve>CVE-2019-12415</cve>
+    <cve>CVE-2021-22053</cve>
+    <cve>CVE-2021-22044</cve>
+  </suppress>
 </suppressions>
