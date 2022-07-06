@@ -36,5 +36,20 @@ module.exports = {
         displayjudgeApproveEditOptionDate: 'No'
       }
     };
+  },
+  listingForHearing: () => {
+    return {
+      judicialDecision : {
+        decision: 'MAKE_AN_ORDER'
+      },
+      judicialDecisionMakeOrder: {
+        makeAnOrder: 'LISTING_FOR_A_HEARING',
+        directionsText: 'sample text',
+        reasonForDecisionText: 'sample text',
+        directionsResponseByDate: '2023-06-05',
+        displayjudgeApproveEditOptionDoc: 'No',
+        displayjudgeApproveEditOptionDate: 'No'
+      }
+    };
   }
 };

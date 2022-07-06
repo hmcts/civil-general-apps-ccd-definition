@@ -24,6 +24,24 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
   console.log('*** End Judge Directions Order GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
+Scenario('Judge makes decision 1V1 - LIST FOR HEARING', async ({api}) => {
+  civilCaseReference = await api.createClaimWithRepresentedRespondent(
+      config.applicantSolicitorUser, mpScenario);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+  console.log('Make a General Application');
+  gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
+
+  console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
+  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
+  console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
+
+  console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
+  await api.judgeListApplicationForHearing(config.applicantSolicitorUser, gaCaseReference);
+  console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
+});
+
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
