@@ -146,7 +146,7 @@ jacocoTestReport.dependsOn {
   subprojects*.test
 }
 
-project.tasks['sonarqube'].dependsOn test, integration, jacocoTestReport
+project.tasks['sonarqube'].dependsOn test, integration
 
 sonarqube {
   properties {
