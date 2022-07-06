@@ -29,7 +29,10 @@ def secrets = [
                 secret('ccd-admin-web-oauth2-client-secret', 'ADMIN_WEB_IDAM_SECRET'),
                 secret('idam-data-store-client-secret','IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET'),
                 secret('idam-data-store-system-user-username','IDAM_DATA_STORE_SYSTEM_USER_USERNAME'),
-                secret('idam-data-store-system-user-password','IDAM_DATA_STORE_SYSTEM_USER_PASSWORD')
+                secret('idam-data-store-system-user-password','IDAM_DATA_STORE_SYSTEM_USER_PASSWORD'),
+                
+                secret('definition-importer-username', 'DEFINITION_IMPORTER_USERNAME'),
+                secret('definition-importer-password', 'DEFINITION_IMPORTER_PASSWORD')
         ],
         'civil-${env}': [
                 secret('microservicekey-civil-service', 'S2S_SECRET'),
@@ -50,6 +53,7 @@ withPipeline(type, product, component) {
     pipelineConf = config
     disableLegacyDeployment()
     enableAksStagingDeployment()
+    enableHighLevelDataSetup()
 
     onPR {
         loadVaultSecrets(secrets);
@@ -87,8 +91,8 @@ withPipeline(type, product, component) {
           ./bin/add-roles.sh
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
-          ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*DJspec.json"
-          ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
+       #   ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*DJspec.json"
+       #   ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
           ./bin/import-bpmn-diagram.sh .
         """
         env.URL="https://xui-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
