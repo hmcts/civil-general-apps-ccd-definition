@@ -250,7 +250,7 @@ module.exports = {
   },
   judgeListApplicationForHearing: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
-    eventName = events.LIST_FOR_A_HEARING.id;
+    eventName = events.JUDGE_MAKES_DECISION.id;
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
     const response = await apiRequest.submitGAEvent(eventName, data.LIST_FOR_A_HEARING, gaCaseId);

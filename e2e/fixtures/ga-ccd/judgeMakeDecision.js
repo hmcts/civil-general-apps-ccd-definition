@@ -40,10 +40,9 @@ module.exports = {
   listingForHearing: () => {
     return {
       judicialDecision : {
-        decision: 'MAKE_AN_ORDER'
+        decision: 'LIST_FOR_A_HEARING'
       },
       judicialDecisionMakeOrder: {
-        makeAnOrder: 'LISTING_FOR_A_HEARING',
         directionsText: 'sample text',
         reasonForDecisionText: 'sample text',
         directionsResponseByDate: '2023-06-05',
