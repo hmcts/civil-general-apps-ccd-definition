@@ -215,8 +215,13 @@ dependencies {
   implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.2'
   implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: '2.17.2'
   
-  implementation group: 'com.github.hmcts', name: 'ccd-test-definitions', version: '7.0.0'
+  // implementation group: 'com.github.hmcts', name: 'ccd-test-definitions', version: '7.0.0'
   implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.7.1'
+  constraints {
+    implementation('org.apache.commons:commons-compress:1.21') {
+      because 'CVE-2021-35515, CVE-2021-35516, CVE-2021-35517, CVE-2021-36090'
+    }
+  }
 
   testImplementation(platform('org.junit:junit-bom:5.8.2'))
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
