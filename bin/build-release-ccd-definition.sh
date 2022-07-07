@@ -27,4 +27,8 @@ mkdir -p ${github_dir}
 # build the ccd definition file
 ${root_dir}/bin/utils/process-definition.sh ${config_dir} ${release_definition_output_file} "${excludedFilenamePatterns}"
 
-cp ${release_definition_output_file} ${github_file}
+echo 123A
+ls ${release_definition_output_file} 
+echo 123B
+${github_file}
+echo 123C
