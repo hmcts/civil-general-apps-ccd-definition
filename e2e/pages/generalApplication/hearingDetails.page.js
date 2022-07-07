@@ -43,6 +43,7 @@ module.exports = {
         withoutAHearing: 'Without a hearing'
       }
     },
+    hearingPreferredLocation: '#generalAppHearingDetails_HearingPreferredLocation',
     reasonForPreferredHearingType: '#generalAppHearingDetails_ReasonForPreferredHearingType',
     hearingDetailsTelephoneNumber: '#generalAppHearingDetails_HearingDetailsTelephoneNumber',
     hearingDetailsEmailID: '#generalAppHearingDetails_HearingDetailsEmailID',
@@ -180,6 +181,12 @@ module.exports = {
     if ('signLanguageInterpreter' === supportRequirement) {
       await I.fillField(this.fields.supportRequirementSignLanguage, 'SignLanguage');
     }
+    await I.click('Continue');
+    await I.see('Preferred location is required');
+    await I.seeNumberOfVisibleElements(this.fields.hearingPreferredLocation, 1);
+    await within(this.fields.hearingPreferences.id, () => {
+      I.click(this.fields.hearingPreferences.options['withoutAHearing']);
+    });
     await I.clickContinue();
   },
 

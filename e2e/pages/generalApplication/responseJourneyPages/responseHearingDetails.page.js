@@ -180,6 +180,11 @@ module.exports = {
     if ('signLanguageInterpreter' === supportRequirement) {
       await I.fillField(this.fields.supportRequirementSignLanguage, 'SignLanguage');
     }
+    await I.click('Continue');
+    await I.see('Preferred location is required');
+    await within(this.fields.hearingPreferences.id, () => {
+      I.click(this.fields.hearingPreferences.options['videoConferenceHearing']);
+    });
     await I.clickContinue();
   },
 };
