@@ -28,7 +28,9 @@ mkdir -p ${github_dir}
 ${root_dir}/bin/utils/process-definition.sh ${config_dir} ${release_definition_output_file} "${excludedFilenamePatterns}"
 
 echo 123A
-ls ${release_definition_output_file} 
+echo "config_dir $config_dir"
+echo "release_definition_output_file $release_definition_output_file"
+echo "excludedFilenamePatterns $excludedFilenamePatterns"3
+echo "size of xlsx"
+wc -c ${release_definition_output_file} 
 echo 123B
-${github_file}
-echo 123C
