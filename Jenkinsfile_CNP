@@ -72,9 +72,12 @@ def archiveCoreCaseDataDefinitions() {
           eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
           ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
       """
-      echo 123
-      wc -c "ccd-release-config/civil-ccd-preview.xlsx"
-      echo 321
+      sh """
+          echo 123
+          wc -c "ccd-release-config/civil-ccd-preview.xlsx"
+          echo 321
+      """
+
     }
 
     dir("${WORKSPACE}/build") {
