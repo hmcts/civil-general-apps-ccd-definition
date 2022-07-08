@@ -101,7 +101,7 @@ withPipeline(type, product, component) {
     onPR {
         env.ENVIRONMENT = "preview"
         env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
-        env.TEST_DATA_LOAD_SKIP_PERIOD = 1.0
+        env.TEST_DATA_LOAD_SKIP_PERIOD = 3.0
         loadVaultSecrets(secrets);
         enableCleanupOfHelmReleaseOnSuccess();
     }
