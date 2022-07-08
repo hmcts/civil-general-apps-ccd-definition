@@ -70,7 +70,6 @@ test {
 }
 
 task highLevelDataSetup(type: JavaExec) {
-  dependsOn classes
   main = "uk.gov.hmcts.reform.civil.HighLevelDataSetupApp"
   classpath += sourceSets.main.runtimeClasspath
   jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']

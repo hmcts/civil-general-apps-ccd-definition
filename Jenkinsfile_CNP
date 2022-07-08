@@ -72,12 +72,6 @@ def archiveCoreCaseDataDefinitions() {
           eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
           ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
       """
-      // sh """
-      //     echo 123
-      //     ls "ccd-release-config"
-      //     echo 321
-      // """
-
     }
 
     dir("${WORKSPACE}/build") {
@@ -137,14 +131,13 @@ withPipeline(type, product, component) {
         }
     }
 
-    before('highleveldatasetup') {
-      archiveCoreCaseDataDefinitions()
-    }
+    // before('highleveldatasetup') {
+    //   archiveCoreCaseDataDefinitions()
+    // }
     
     before('smoketest:preview') {
       sh """
           eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
-          ./gradlew highLevelDataSetup --args="PREVIEW"
           ./bin/add-roles.sh
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
