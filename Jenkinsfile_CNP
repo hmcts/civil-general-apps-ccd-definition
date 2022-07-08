@@ -30,7 +30,7 @@ def secrets = [
                 secret('idam-data-store-client-secret','IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET'),
                 secret('idam-data-store-system-user-username','IDAM_DATA_STORE_SYSTEM_USER_USERNAME'),
                 secret('idam-data-store-system-user-password','IDAM_DATA_STORE_SYSTEM_USER_PASSWORD'),
-                
+
                 secret('definition-importer-username', 'DEFINITION_IMPORTER_USERNAME'),
                 secret('definition-importer-password', 'DEFINITION_IMPORTER_PASSWORD')
         ],
@@ -134,7 +134,7 @@ withPipeline(type, product, component) {
     before('highleveldatasetup') {
       archiveCoreCaseDataDefinitions()
     }
-    
+
     before('smoketest:preview') {
       sh """
           eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
@@ -142,6 +142,7 @@ withPipeline(type, product, component) {
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
           ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*DJspec.json"
+          ./gradlew highLevelDataSetup --args="PREVIEW"
           # ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
           ./bin/import-bpmn-diagram.sh .
         """
