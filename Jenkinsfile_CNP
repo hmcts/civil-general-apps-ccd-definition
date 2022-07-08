@@ -72,11 +72,11 @@ def archiveCoreCaseDataDefinitions() {
           eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
           ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
       """
-      sh """
-          echo 123
-          ls "ccd-release-config"
-          echo 321
-      """
+      // sh """
+      //     echo 123
+      //     ls "ccd-release-config"
+      //     echo 321
+      // """
 
     }
 
