@@ -101,6 +101,7 @@ withPipeline(type, product, component) {
     onPR {
         env.ENVIRONMENT = "preview"
         env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+        env.TEST_DATA_LOAD_SKIP_PERIOD = 1.0
         loadVaultSecrets(secrets);
         enableCleanupOfHelmReleaseOnSuccess();
     }
@@ -139,7 +140,7 @@ withPipeline(type, product, component) {
     before('smoketest:preview') {
       sh """
           eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
-          ./bin/add-roles.sh
+          #./bin/add-roles.sh
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
           ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*DJspec.json"
