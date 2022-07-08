@@ -74,7 +74,7 @@ def archiveCoreCaseDataDefinitions() {
       """
       sh """
           echo 123
-          wc -c "ccd-release-config/civil-ccd-preview.xlsx"
+          ls "ccd-release-config"
           echo 321
       """
 
@@ -144,6 +144,7 @@ withPipeline(type, product, component) {
     before('smoketest:preview') {
       sh """
           eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
+          ./gradlew highLevelDataSetup --args="PREVIEW"
           ./bin/add-roles.sh
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
