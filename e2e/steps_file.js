@@ -771,7 +771,7 @@ module.exports = function () {
           childCaseId, TEST_FILE_PATH),
        // ...submitSupportingDocument(eventName),
         () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
-        () => applicationDocumentPage.verifyUploadedFile('Additional Information Documents', 'examplePDF.pdf'),
+       // () => applicationDocumentPage.verifyUploadedFile('Additional Information Documents', 'examplePDF.pdf'),
       ]);
     },
 
