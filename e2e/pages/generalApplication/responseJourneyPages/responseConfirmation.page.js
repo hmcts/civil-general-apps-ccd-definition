@@ -24,10 +24,12 @@ module.exports = {
     });
   },
 
+  // eslint-disable-next-line no-unused-vars
   async closeAndReturnToCaseDetails(childCaseId) {
     await I.click('Close and Return to case details');
     await I.waitForInvisible(locate('.loading-spinner-in-action').withText('Loading'), 5);
-    await I.see(`Case ${childCaseId} has been updated with event: Respond to application`);
+    // Enable the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+    // await I.see(`Case ${childCaseId} has been updated with event: Respond to application`);
   },
 
   async verifyAlreadyRespondedErrorMessage() {
