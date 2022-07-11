@@ -32,7 +32,9 @@ Scenario('GA for 1v2 different Solicitor - respond to application - Hearing orde
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 3), 1);
   await I.see(respondentStatus);
   childCaseNumber = await I.grabChildCaseNumber();
-  await I.navigateToCaseDetails(childCaseNum());
+  // Remove the line below when https://tools.hmcts.net/jira/browse/EUI-6328 is fixed
+  // await I.navigateToCaseDetails(childCaseNum());
+  await I.navigateToTab(childCaseNum(), 'Summary');
   await I.verifyApplicantSummaryPage();
   await I.login(config.defendantSolicitorUser);
   await I.respondToApplication(childCaseNum(), 'yes', 'yes', 'yes', 'yes', 'no',
@@ -40,6 +42,8 @@ Scenario('GA for 1v2 different Solicitor - respond to application - Hearing orde
   console.log('Org1 solicitor responded to application: ' + childCaseNum());
   childCaseId = await I.grabGACaseNumber();
   await I.respCloseAndReturnToCaseDetails(childCaseId);
+  // Remove the line below when https://tools.hmcts.net/jira/browse/EUI-6328 is fixed
+  await I.navigateToTab(childCaseNum(), 'Summary');
   await I.verifyResponseSummaryPage();
   await I.respondToSameApplicationAndVerifyErrorMsg();
   await I.navigateToTab(parentCaseNumber, 'Applications');

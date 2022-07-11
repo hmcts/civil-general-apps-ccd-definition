@@ -70,6 +70,8 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', childCaseNum());
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+  // Remove the line below when https://tools.hmcts.net/jira/browse/EUI-6328 is fixed
+  await I.navigateToTab(childCaseNum(), 'Summary');
   await I.verifyJudgesSummaryPage('Judges Directions');
   await I.verifyApplicationDocument(childCaseNum(), 'Direction order');
   console.log('Judges Directions Order Made on case: ' + childCaseNum());
@@ -104,6 +106,8 @@ Scenario('GA for 1v1 - Dismissal order journey', async ({I, api}) => {
   await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'no', childCaseNum());
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+  // Remove the line below when https://tools.hmcts.net/jira/browse/EUI-6328 is fixed
+  await I.navigateToTab(childCaseNum(), 'Summary');
   await I.verifyJudgesSummaryPage('Dismissal order');
   await I.verifyApplicationDocument(childCaseNum(), 'Dismissal order');
   await I.dontSee('Go');

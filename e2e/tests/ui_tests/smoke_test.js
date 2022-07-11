@@ -33,7 +33,9 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 5), 1);
   await I.see(respondentStatus);
   childCaseNumber = await I.grabChildCaseNumber();
-  await I.navigateToCaseDetails(childCaseNum());
+  // Remove the line below when https://tools.hmcts.net/jira/browse/EUI-6328 is fixed
+  // await I.navigateToCaseDetails(childCaseNum());
+  await I.navigateToTab(childCaseNum(), 'Summary');
   await I.verifyApplicantSummaryPage();
   childCaseId = await I.grabCaseNumber();
   await I.login(config.defendantSolicitorUser);
@@ -46,6 +48,8 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+  // Remove the line below when https://tools.hmcts.net/jira/browse/EUI-6328 is fixed
+  await I.navigateToTab(childCaseNum(), 'Summary');
   await I.verifyJudgesSummaryPage('Request more information');
   await I.verifyApplicationDocument(childCaseNum(), 'Request for information');
   console.log('Judges requested more information on case: ' + childCaseNum());

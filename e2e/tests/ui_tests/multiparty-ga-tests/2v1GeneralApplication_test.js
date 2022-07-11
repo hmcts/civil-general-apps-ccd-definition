@@ -37,6 +37,8 @@ Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, a
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'concurrentRep', childCaseNum());
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+  // Remove the line below when https://tools.hmcts.net/jira/browse/EUI-6328 is fixed
+  await I.navigateToTab(childCaseNum(), 'Summary');
   await I.verifyJudgesSummaryPage('Concurrent representations');
   await I.verifyApplicationDocument(childCaseNum(), 'Written representation concurrent');
   console.log('Judges made an order for Concurrent written representations on case: ' + childCaseNum());
