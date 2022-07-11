@@ -38,8 +38,6 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   console.log('Org1 solicitor responded to application: ' + childCaseNum());
   childCaseId = await I.grabGACaseNumber();
   await I.respCloseAndReturnToCaseDetails(childCaseId);
-  // Remove the line below when https://tools.hmcts.net/jira/browse/EUI-6328 is fixed
-  await I.navigateToTab(childCaseNum(), 'Summary');
   await I.verifyResponseSummaryPage();
   await I.navigateToTab(parentCaseNum, 'Applications');
   await I.see(judgeDecisionStatus);
@@ -47,8 +45,6 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'sequentialRep', childCaseNum());
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
-  // Remove the line below when https://tools.hmcts.net/jira/browse/EUI-6328 is fixed
-  await I.navigateToTab(childCaseNum(), 'Summary');
   await I.verifyJudgesSummaryPage('Sequential representations');
   await I.verifyApplicationDocument(childCaseNum(), 'Written representation sequential');
   console.log('Judges made an order for Sequential written representations on case: ' + childCaseNum());

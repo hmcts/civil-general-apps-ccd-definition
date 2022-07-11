@@ -8,6 +8,7 @@ module.exports = {
   },
 
   async verifyJudgesSummaryPage(decisionType) {
+    await I.click('Summary');
     I.seeInCurrentUrl('cases/case-details/');
     I.see('Summary');
     I.see('Parent Case ID');

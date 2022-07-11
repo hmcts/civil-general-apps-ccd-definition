@@ -9,6 +9,7 @@ module.exports = {
   },
 
   async verifySummaryPageAfterResponding() {
+    await I.click('Summary');
     I.seeInCurrentUrl('cases/case-details/');
     I.wait(1);
     I.see('Summary');
