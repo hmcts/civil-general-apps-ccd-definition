@@ -769,7 +769,7 @@ module.exports = function () {
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_ADDITIONAL_INFO.id,
           childCaseId, TEST_FILE_PATH),
-        ...submitSupportingDocument(eventName),
+       // ...submitSupportingDocument(eventName),
         () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
         () => applicationDocumentPage.verifyUploadedFile('Additional Information Documents', 'examplePDF.pdf'),
       ]);
