@@ -483,14 +483,14 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "workAllocationLocation",
+    "ListElementCode": "caseManagementLocation",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "workAllocationLocationName",
+    "ListElementCode": "isCcmccLocation",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },

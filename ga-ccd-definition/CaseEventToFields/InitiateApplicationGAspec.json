@@ -223,7 +223,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "workAllocationLocation",
+    "CaseFieldID": "caseManagementLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "isMultiPartyPage",
@@ -234,7 +234,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "workAllocationLocationName",
+    "CaseFieldID": "isCcmccLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "isMultiPartyPage",

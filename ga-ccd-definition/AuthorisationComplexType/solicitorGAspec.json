@@ -495,14 +495,14 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "workAllocationLocation",
+    "ListElementCode": "caseManagementLocation",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "workAllocationLocationName",
+    "ListElementCode": "isCcmccLocation",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },

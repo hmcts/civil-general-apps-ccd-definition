@@ -818,7 +818,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "workAllocationLocation",
+    "CaseFieldID": "caseManagementLocation",
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],
@@ -826,7 +826,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "workAllocationLocationName",
+    "CaseFieldID": "isCcmccLocation",
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],

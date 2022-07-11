@@ -300,16 +300,16 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "workAllocationLocation",
+    "ID": "caseManagementLocation",
     "Label": " ",
-    "FieldType": "Text",
+    "FieldType": "GACaseLocationGAspec",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "workAllocationLocationName",
+    "ID": "isCcmccLocation",
     "Label": " ",
-    "FieldType": "Text",
+    "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
