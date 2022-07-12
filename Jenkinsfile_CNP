@@ -135,7 +135,8 @@ withPipeline(type, product, component) {
 
     before('highleveldatasetup') {
       sh """
-        if [[ "PR-" == *"$env.BRANCH_NAME"* ]] || [[ "demo" == *"$env.BRANCH_NAME"* ]]; then
+        echo $env.BRANCH_NAME
+        if [[ "PR-" == *"$env.BRANCH_NAME"* ]] ; then
             echo "12345abcdef"
             echo BRANCH_NAME
             echo $env.BRANCH_NAME
