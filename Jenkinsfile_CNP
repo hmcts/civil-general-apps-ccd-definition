@@ -96,7 +96,13 @@ withPipeline(type, product, component) {
     pipelineConf = config
     disableLegacyDeployment()
     enableAksStagingDeployment()
-    
+    // if (env.BRANCH_NAME == 'master') {
+    //     echo 'I only execute on the master branch'
+    // } else {
+    //     echo 'I execute elsewhere'
+    // }
+    echo BRANCH_NAME
+    echo env.BRANCH_NAME
 
     onPR {
         env.ENVIRONMENT = "preview"
