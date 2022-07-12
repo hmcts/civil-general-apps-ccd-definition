@@ -134,9 +134,13 @@ withPipeline(type, product, component) {
     }
 
     before('highleveldatasetup') {
-      echo "12345abcdef"
-      echo BRANCH_NAME
-      echo $env.BRANCH_NAME
+      sh """
+        echo "12345abcdef"
+        echo BRANCH_NAME
+        echo $env.BRANCH_NAME
+        """
+    }
+
       archiveCoreCaseDataDefinitions()
     }
 
