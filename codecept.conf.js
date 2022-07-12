@@ -1,6 +1,6 @@
 exports.config = {
   tests: './e2e/tests/**/*_test.js',
-  output: 'test-results/functional',
+  output: process.env.REPORT_DIR || 'test-results/functional',
   helpers: {
     Puppeteer: {
       restart: false,
