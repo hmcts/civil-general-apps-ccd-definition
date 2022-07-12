@@ -93,6 +93,9 @@ def archiveCoreCaseDataDefinitions() {
 }
 
 withPipeline(type, product, component) {
+    echo BRANCH_NAME
+    echo env.BRANCH_NAME
+
     pipelineConf = config
     disableLegacyDeployment()
     enableAksStagingDeployment()
@@ -101,8 +104,8 @@ withPipeline(type, product, component) {
     // } else {
     //     echo 'I execute elsewhere'
     // }
-    echo BRANCH_NAME
-    echo env.BRANCH_NAME
+    // echo BRANCH_NAME
+    // echo env.BRANCH_NAME
 
     onPR {
         env.ENVIRONMENT = "preview"
