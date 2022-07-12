@@ -135,16 +135,13 @@ withPipeline(type, product, component) {
 
     before('highleveldatasetup') {
       sh """
-        // echo $env.BRANCH_NAME
-        // if [[ $env.BRANCH_NAME == *"PR-"* ]]; then
-        //     echo "12345abcdef"
-        //     echo BRANCH_NAME
-        //     echo $env.BRANCH_NAME
-        // fi
-string='My long string'
-if [[ $string == *"My long"* ]]; then
-  echo "It's there!"
-fi
+        echo $env.BRANCH_NAME
+        if [[ $env.BRANCH_NAME == PR-* ]]; then
+            echo "12345abcdef"
+            echo BRANCH_NAME
+            echo $env.BRANCH_NAME
+        fi
+        
         """
 
       archiveCoreCaseDataDefinitions()
