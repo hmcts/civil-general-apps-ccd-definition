@@ -93,26 +93,15 @@ def archiveCoreCaseDataDefinitions() {
 }
 
 withPipeline(type, product, component) {
-    echo BRANCH_NAME
-    echo env.BRANCH_NAME
-
     pipelineConf = config
     disableLegacyDeployment()
     enableAksStagingDeployment()
-    // if (env.BRANCH_NAME == 'master') {
-    //     echo 'I only execute on the master branch'
-    // } else {
-    //     echo 'I execute elsewhere'
-    // }
-    // echo BRANCH_NAME
-    // echo env.BRANCH_NAME
+    enableHighLevelDataSetup()
 
     onPR {
         env.ENVIRONMENT = "preview"
         env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
         env.TEST_DATA_LOAD_SKIP_PERIOD = 3.0
-
-        enableHighLevelDataSetup()
         loadVaultSecrets(secrets);
         enableCleanupOfHelmReleaseOnSuccess();
     }
@@ -145,6 +134,9 @@ withPipeline(type, product, component) {
     }
 
     before('highleveldatasetup') {
+      echo 12345
+      echo BRANCH_NAME
+      echo env.BRANCH_NAME
       archiveCoreCaseDataDefinitions()
     }
 
