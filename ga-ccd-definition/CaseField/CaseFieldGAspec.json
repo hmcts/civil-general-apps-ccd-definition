@@ -272,6 +272,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "litigiousPartyID",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "claimant1PartyName",
     "Label": " ",
     "FieldType": "Text",
