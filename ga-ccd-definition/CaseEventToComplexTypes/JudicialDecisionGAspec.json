@@ -184,7 +184,7 @@
     "EventElementLabel": "  ",
     "EventHintText": " ",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "GAJudicialDecision",
