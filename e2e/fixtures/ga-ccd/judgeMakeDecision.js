@@ -50,5 +50,19 @@ module.exports = {
         displayjudgeApproveEditOptionDate: 'No'
       }
     };
+  },
+  applicationsDismiss: () => {
+    return {
+      judicialDecision : {
+        decision: 'MAKE_AN_ORDER'
+      },
+      judicialDecisionMakeOrder: {
+        makeAnOrder: 'DISMISS_THE_APPLICATION',
+        reasonForDecisionText: 'sample text',
+        directionsResponseByDate: '2023-06-05',
+        displayjudgeApproveEditOptionDoc: 'No',
+        displayjudgeApproveEditOptionDate: 'No'
+      }
+    };
   }
 };
