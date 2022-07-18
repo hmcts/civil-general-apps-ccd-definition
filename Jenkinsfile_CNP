@@ -114,6 +114,13 @@ withPipeline(type, product, component) {
         loadVaultSecrets(secrets)
     }
 
+    if (onPR || onDemo) { 
+         //If the condition is true print the following statement 
+          sh """
+            echo 777
+                  """
+    }
+
     after('checkout') {
         onMaster {
             withCredentials([usernamePassword(credentialsId: 'jenkins-github-hmcts-api-token', usernameVariable: 'USERNAME', passwordVariable: 'BEARER_TOKEN')]) {
