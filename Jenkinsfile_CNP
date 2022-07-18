@@ -96,7 +96,11 @@ withPipeline(type, product, component) {
     pipelineConf = config
     disableLegacyDeployment()
     enableAksStagingDeployment()
-    enableHighLevelDataSetup()
+    // enableHighLevelDataSetup()
+    if (onPR || onDemo) { 
+        archiveCoreCaseDataDefinitions()
+        enableHighLevelDataSetup()
+    }
 
     onPR {
         env.ENVIRONMENT = "preview"
@@ -114,16 +118,6 @@ withPipeline(type, product, component) {
         loadVaultSecrets(secrets)
     }
 
-    if (onPR || onDemo) { 
-         //If the condition is true print the following statement 
-          // sh """
-          //   echo 777
-          //         """
-    } else { 
-          // sh """
-          //   echo 888
-          //         """
-    } 
 
     after('checkout') {
         onMaster {
@@ -144,29 +138,29 @@ withPipeline(type, product, component) {
         }
     }
 
-    before('highleveldatasetup') {
-      if (BRANCH_NAME=="PR-232") { 
-         //If the condition is true print the following statement 
-          sh """
-            echo 456
-                  """
-      } else { 
-          sh """
-            echo 678
-                  """
-      } 
-      // sh """
-      //   echo $env.BRANCH_NAME
-      //   if [[ $env.BRANCH_NAME =~ ^PR- ]]; then
-      //       echo "12345abcdef"
-      //       echo BRANCH_NAME
-      //       echo $env.BRANCH_NAME
-      //   fi
+    // before('highleveldatasetup') {
+    //   if (BRANCH_NAME=="PR-232") { 
+    //      //If the condition is true print the following statement 
+    //       sh """
+    //         echo 456
+    //               """
+    //   } else { 
+    //       sh """
+    //         echo 678
+    //               """
+    //   } 
+    //   // sh """
+    //   //   echo $env.BRANCH_NAME
+    //   //   if [[ $env.BRANCH_NAME =~ ^PR- ]]; then
+    //   //       echo "12345abcdef"
+    //   //       echo BRANCH_NAME
+    //   //       echo $env.BRANCH_NAME
+    //   //   fi
         
-      //   """
+    //   //   """
 
-      archiveCoreCaseDataDefinitions()
-    }
+    //   archiveCoreCaseDataDefinitions()
+    // }
 
     before('smoketest:preview') {
       sh """
