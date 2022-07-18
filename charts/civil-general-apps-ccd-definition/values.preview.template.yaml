@@ -93,6 +93,7 @@ civil-service:
           - robotics-notification-recipient
           - launch-darkly-sdk-key
           - ordnance-survey-api-key
+          - robotics-notification-multipartyrecipient
     environment:
       IDAM_CLIENT_ID: civil-service
       IDAM_CLIENT_REDIRECT_URI: https://civil-ccd-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback
@@ -127,6 +128,8 @@ civil-service:
       FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
       FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
       FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
+      POLLING_EVENT_EMITTER_ENABLED: false
+      STITCHING_API_ENABLED: false
 
 idam-pr:
   releaseNameOverride: ${SERVICE_NAME}-xui-idam-pr
