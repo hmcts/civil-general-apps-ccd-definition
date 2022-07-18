@@ -175,6 +175,13 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "caseManagementCategory",
+    "FieldType": "DynamicList",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "parentClaimantIsApplicant",
     "FieldType": "YesOrNo",
     "ElementLabel": " ",

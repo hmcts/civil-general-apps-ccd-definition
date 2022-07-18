@@ -314,6 +314,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseManagementCategory",
+    "Label": " ",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "parentClaimantIsApplicant",
     "Label": " ",
     "FieldType": "YesOrNo",
