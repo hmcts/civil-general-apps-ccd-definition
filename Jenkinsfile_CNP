@@ -114,7 +114,7 @@ withPipeline(type, product, component) {
         loadVaultSecrets(secrets)
     }
 
-    if (onPR || onDemo) { 
+    if (onPR{} || onDemo{}) { 
          //If the condition is true print the following statement 
           sh """
             echo 777
