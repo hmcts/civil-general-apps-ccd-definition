@@ -97,10 +97,6 @@ withPipeline(type, product, component) {
     disableLegacyDeployment()
     enableAksStagingDeployment()
     // enableHighLevelDataSetup()
-    if (onPR || onDemo) { 
-        archiveCoreCaseDataDefinitions()
-        enableHighLevelDataSetup()
-    }
 
     onPR {
         env.ENVIRONMENT = "preview"
@@ -110,6 +106,7 @@ withPipeline(type, product, component) {
         enableCleanupOfHelmReleaseOnSuccess();
     }
     onMaster {
+        enableHighLevelDataSetup()
         env.ENVIRONMENT="aat"
         loadVaultSecrets(secrets)
     }
@@ -138,7 +135,7 @@ withPipeline(type, product, component) {
         }
     }
 
-    // before('highleveldatasetup') {
+    before('highleveldatasetup') {
     //   if (BRANCH_NAME=="PR-232") { 
     //      //If the condition is true print the following statement 
     //       sh """
@@ -159,8 +156,8 @@ withPipeline(type, product, component) {
         
     //   //   """
 
-    //   archiveCoreCaseDataDefinitions()
-    // }
+      archiveCoreCaseDataDefinitions()
+    }
 
     before('smoketest:preview') {
       sh """
