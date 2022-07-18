@@ -86,10 +86,9 @@ withPipeline(type, product, component) {
           eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
           ./bin/add-roles.sh
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
-          #./bin/pull-latest-release-asset.sh civil-general-apps-ccd-definition civil-general-apps-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
-          ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*LRspec.json,*DJspec.json"
-          ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*LRspec.json"
+          ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*DJspec.json"
+          ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
           ./bin/import-bpmn-diagram.sh .
         """
         env.URL="https://xui-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
@@ -102,7 +101,7 @@ withPipeline(type, product, component) {
     }
 
     after('smoketest:preview') {
-        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
     }
 
     before('functionalTest:preview') {
@@ -115,16 +114,16 @@ withPipeline(type, product, component) {
     }
 
     after('functionalTest:preview') {
-        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
     }
 
   after('smoketest:aat') {
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
   }
 
   after('functionalTest:aat') {
     createGithubRelease()
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 
   before('smoketest:aat') {
@@ -134,8 +133,8 @@ withPipeline(type, product, component) {
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-general-apps-ccd-definition civil-general-apps-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
-          ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*LRspec.json,*DJspec.json"
-          ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*LRspec.json"
+          ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*DJspec.json"
+          ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
           ./bin/import-bpmn-diagram.sh .
         """
     env.URL="https://civil-ga-ccd-xui-staging.aat.platform.hmcts.net"
