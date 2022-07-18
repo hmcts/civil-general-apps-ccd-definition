@@ -119,7 +119,11 @@ withPipeline(type, product, component) {
           sh """
             echo 777
                   """
-    }
+    } else { 
+          sh """
+            echo 888
+                  """
+      } 
 
     after('checkout') {
         onMaster {

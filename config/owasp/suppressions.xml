@@ -128,5 +128,6 @@
     <cve>CVE-2019-12415</cve>
     <cve>CVE-2021-22053</cve>
     <cve>CVE-2021-22044</cve>
+    <cve>CVE-2022-31569</cve>
   </suppress>
 </suppressions>
