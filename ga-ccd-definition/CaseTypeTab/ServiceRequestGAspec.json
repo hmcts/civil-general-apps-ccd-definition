@@ -1,0 +1,8 @@
+{
+  "CaseTypeID": "GENERALAPPLICATION",
+  "TabID": "ServiceRequestTab",
+  "TabLabel": "Service Request",
+  "TabDisplayOrder": 1,
+  "CaseFieldID": "ServiceRequest",
+  "TabFieldDisplayOrder": 1
+}
