@@ -29,7 +29,11 @@ def secrets = [
                 secret('ccd-admin-web-oauth2-client-secret', 'ADMIN_WEB_IDAM_SECRET'),
                 secret('idam-data-store-client-secret','IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET'),
                 secret('idam-data-store-system-user-username','IDAM_DATA_STORE_SYSTEM_USER_USERNAME'),
-                secret('idam-data-store-system-user-password','IDAM_DATA_STORE_SYSTEM_USER_PASSWORD')
+                secret('idam-data-store-system-user-password','IDAM_DATA_STORE_SYSTEM_USER_PASSWORD'),
+                secret('ccd-api-gateway-oauth2-client-secret', 'CCD_API_GATEWAY_OAUTH2_CLIENT_SECRET'),
+                secret('microservicekey-ccd-gw', 'CCD_API_GATEWAY_S2S_KEY'),
+                secret('definition-importer-username', 'DEFINITION_IMPORTER_USERNAME'),
+                secret('definition-importer-password', 'DEFINITION_IMPORTER_PASSWORD')
         ],
         'civil-${env}': [
                 secret('microservicekey-civil-service', 'S2S_SECRET'),
@@ -46,21 +50,70 @@ def createGithubRelease() {
   """
 }
 
+def archiveCoreCaseDataDefinitions() {
+  if ( env.ENVIRONMENT == 'aat') {
+    echo "current environment is ${env.ENVIRONMENT}"
+    for(PROD_ENV in ["aat","prod"]){
+      echo "environment is ${PROD_ENV}"
+      dir("${WORKSPACE}/bin") {
+        sh """
+          eval \$(./variables/load-${PROD_ENV}-environment-variables.sh)
+          ./build-release-ccd-definition.sh ${PROD_ENV}
+        """
+      }
+
+      dir("${WORKSPACE}/build") {
+        steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${PROD_ENV}.xlsx"
+      }
+    }
+
+  } else if ( env.ENVIRONMENT == 'preview') {
+    dir("${WORKSPACE}/bin") {
+      sh """
+          eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
+          ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
+      """
+    }
+
+    dir("${WORKSPACE}/build") {
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
+    }
+  } else {
+    dir("${WORKSPACE}/bin") {
+      sh """
+          eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh)
+          ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
+        """
+    }
+
+    dir("${WORKSPACE}/build") {
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
+    }
+  }
+}
+
 withPipeline(type, product, component) {
     pipelineConf = config
     disableLegacyDeployment()
     enableAksStagingDeployment()
+    enableHighLevelDataSetup()
 
     onPR {
+        env.ENVIRONMENT = "preview"
+        env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+        env.TEST_DATA_LOAD_SKIP_PERIOD = 3.0
         loadVaultSecrets(secrets);
-      enableCleanupOfHelmReleaseOnSuccess();
+        enableCleanupOfHelmReleaseOnSuccess();
     }
     onMaster {
+        env.ENVIRONMENT="aat"
         loadVaultSecrets(secrets)
     }
     onDemo {
+        env.ENVIRONMENT = "demo"
         loadVaultSecrets(secrets)
     }
+
 
     after('checkout') {
         onMaster {
@@ -81,14 +134,19 @@ withPipeline(type, product, component) {
         }
     }
 
+    before('highleveldatasetup') {
+      archiveCoreCaseDataDefinitions()
+    }
+
     before('smoketest:preview') {
       sh """
           eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
-          ./bin/add-roles.sh
+          #./bin/add-roles.sh
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
           ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*DJspec.json"
-          ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
+          ./gradlew highLevelDataSetup --args="PREVIEW"
+          # ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
           ./bin/import-bpmn-diagram.sh .
         """
         env.URL="https://xui-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
@@ -134,7 +192,7 @@ withPipeline(type, product, component) {
           ./bin/pull-latest-release-asset.sh civil-general-apps-ccd-definition civil-general-apps-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
           ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*DJspec.json"
-          ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
+          # ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
           ./bin/import-bpmn-diagram.sh .
         """
     env.URL="https://civil-ga-ccd-xui-staging.aat.platform.hmcts.net"

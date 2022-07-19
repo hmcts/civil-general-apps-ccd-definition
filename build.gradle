@@ -1,7 +1,6 @@
 plugins {
   id 'application'
   id 'checkstyle'
-  id 'pmd'
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
   id 'org.springframework.boot' version '2.5.14'
@@ -70,6 +69,12 @@ test {
   failFast = true
 }
 
+task highLevelDataSetup(type: JavaExec) {
+  main = "uk.gov.hmcts.reform.civil.HighLevelDataSetupApp"
+  classpath += sourceSets.main.runtimeClasspath
+  jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
+}
+
 task installDependencies(type: Exec, description: 'Installs Yarn dependencies.') {
   commandLine '/usr/bin/yarn', '--mutex', 'network', '--frozen-lockfile', '--silent', 'install'
 }
@@ -124,15 +129,6 @@ checkstyle {
   getConfigDirectory().set(new File(rootDir, 'config/checkstyle'))
 }
 
-pmd {
-  toolVersion = "6.39.0"
-  sourceSets = [sourceSets.main, sourceSets.test, sourceSets.functionalTest, sourceSets.integrationTest, sourceSets.smokeTest]
-  reportsDir = file("$project.buildDir/reports/pmd")
-  // https://github.com/pmd/pmd/issues/876
-  ruleSets = []
-  ruleSetFiles = files("config/pmd/ruleset.xml")
-}
-
 jacocoTestReport {
   executionData(test, integration)
   executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
@@ -150,13 +146,14 @@ jacocoTestReport.dependsOn {
   subprojects*.test
 }
 
-project.tasks['sonarqube'].dependsOn test, integration, jacocoTestReport
+project.tasks['sonarqube'].dependsOn test, integration
 
 sonarqube {
   properties {
     property "sonar.projectName", "Reform :: civil-general-apps-ccd-definition"
     property "sonar.projectKey", "civil-general-apps-ccd-definition"
     property "sonar.coverage.jacoco.xmlReportPaths", "${jacocoTestReport.reports.xml.destination.path}"
+    property "sonar.coverage.exclusions", "**/HighLevelDataSetupApp.java"
   }
 }
 
@@ -201,13 +198,18 @@ dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
 
-  implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
-
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: reformLoggingVersion
   implementation group: 'com.github.hmcts.java-logging', name: 'logging-appinsights', version: reformLoggingVersion
 
   implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.2'
   implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: '2.17.2'
+
+  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.7.5'
+  constraints {
+    implementation('org.apache.commons:commons-compress:1.21') {
+      because 'CVE-2021-35515, CVE-2021-35516, CVE-2021-35517, CVE-2021-36090'
+    }
+  }
 
   testImplementation(platform('org.junit:junit-bom:5.8.2'))
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
