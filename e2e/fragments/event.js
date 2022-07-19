@@ -2,7 +2,6 @@ const {I} = inject();
 
 const CASE_HEADER = 'ccd-case-header > h1';
 const CONFIRMATION_HEADER = 'div#confirmation-header';
-const ALERT_MESSAGE = '.hmcts-banner__message .alert-message';
 
 module.exports = {
 
