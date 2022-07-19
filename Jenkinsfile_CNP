@@ -96,7 +96,7 @@ withPipeline(type, product, component) {
     pipelineConf = config
     disableLegacyDeployment()
     enableAksStagingDeployment()
-    // enableHighLevelDataSetup()
+    enableHighLevelDataSetup()
 
     onPR {
         env.ENVIRONMENT = "preview"
@@ -106,7 +106,6 @@ withPipeline(type, product, component) {
         enableCleanupOfHelmReleaseOnSuccess();
     }
     onMaster {
-        enableHighLevelDataSetup()
         env.ENVIRONMENT="aat"
         loadVaultSecrets(secrets)
     }
@@ -136,26 +135,6 @@ withPipeline(type, product, component) {
     }
 
     before('highleveldatasetup') {
-    //   if (BRANCH_NAME=="PR-232") { 
-    //      //If the condition is true print the following statement 
-    //       sh """
-    //         echo 456
-    //               """
-    //   } else { 
-    //       sh """
-    //         echo 678
-    //               """
-    //   } 
-    //   // sh """
-    //   //   echo $env.BRANCH_NAME
-    //   //   if [[ $env.BRANCH_NAME =~ ^PR- ]]; then
-    //   //       echo "12345abcdef"
-    //   //       echo BRANCH_NAME
-    //   //       echo $env.BRANCH_NAME
-    //   //   fi
-        
-    //   //   """
-
       archiveCoreCaseDataDefinitions()
     }
 
