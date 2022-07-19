@@ -2,7 +2,7 @@
   "CaseTypeID": "GENERALAPPLICATION",
   "TabID": "ServiceRequestTab",
   "TabLabel": "Service Request",
-  "TabDisplayOrder": 1,
+  "TabDisplayOrder": 2,
   "CaseFieldID": "ServiceRequest",
   "TabFieldDisplayOrder": 1
 }
