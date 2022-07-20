@@ -1,18 +1,6 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "LINK_GENERAL_APPLICATION_CASE_TO_PARENT_CASE",
     "AccessControl": [
       {
@@ -41,7 +29,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       }
@@ -96,7 +85,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-judge"
+          "judge-profile"
         ],
         "CRUD": "CRU"
       }
@@ -206,7 +195,12 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-judge"
+          "[APPLICANTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       }
@@ -225,7 +219,12 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-judge"
+          "[APPLICANTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       }
@@ -244,7 +243,12 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-judge"
+          "[APPLICANTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       }
@@ -263,7 +267,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-judge"
+          "judge-profile"
         ],
         "CRUD": "CRU"
       }
