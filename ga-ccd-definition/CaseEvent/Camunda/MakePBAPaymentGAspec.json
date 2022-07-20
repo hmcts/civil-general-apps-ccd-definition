@@ -11,5 +11,18 @@
       "ShowEventNotes": "N",
       "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
       "RetriesTimeoutURLAboutToSubmitEvent": 0
+    },
+    {
+      "CaseTypeID": "GENERALAPPLICATION",
+      "ID": "START_MAKE_ADDITIONAL_PAYMENT_REF",
+      "Name": "Additional Payment Reference",
+      "Description": "Payment reference for additional payment",
+      "PreConditionState(s)": "*",
+      "PostConditionState": "*",
+      "SecurityClassification": "Public",
+      "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+      "ShowSummary": "N",
+      "ShowEventNotes": "N",
+      "RetriesTimeoutURLAboutToSubmitEvent": 0
     }
-  ]
+]
