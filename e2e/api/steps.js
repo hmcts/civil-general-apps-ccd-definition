@@ -25,7 +25,11 @@ const data = {
   RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
   JUDGE_MAKES_DECISION: genAppJudgeMakeDecisionData.judgeMakesDecisionData(),
   JUDGE_MAKES_ORDER_WRITTEN_REP: genAppJudgeMakeDecisionData.judgeMakeOrderWrittenRep(),
+  RESPOND_TO_JUDGE_ADDITIONAL_INFO: genAppRespondentResponseData.toJudgeAdditionalInfo(),
+  RESPOND_TO_JUDGE_DIRECTIONS: genAppRespondentResponseData.toJudgeDirectionsOrders(),
+  RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION:genAppRespondentResponseData.toJudgeWrittenRepresentation(),
   JUDGE_MAKES_ORDER_DIRECTIONS_REP: genAppJudgeMakeDecisionData.judgeMakeDecisionDirectionOrder(),
+  JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
@@ -213,7 +217,7 @@ module.exports = {
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
   },
 
-  judgeMakesDecision: async (user, gaCaseId) => {
+  judgeMakesDecisionAdditionalInformation: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
     eventName = events.JUDGE_MAKES_DECISION.id;
     await apiRequest.startGAEvent(eventName, gaCaseId);
@@ -230,6 +234,82 @@ module.exports = {
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'AWAITING_ADDITIONAL_INFORMATION');
+  },
+
+  judgeMakesDecisionApplicationDismiss: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.JUDGE_MAKES_DECISION.id;
+
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_ORDER_DISMISS, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'JUDGE_MAKES_DECISION');
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_DISMISSED');
+  },
+
+  respondentResponseToJudgeAdditionalInfo: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.RESPOND_TO_JUDGE_ADDITIONAL_INFO.id;
+
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    console.log('*** respondentResponseToJudgeDirections: Start uploading the document ***');
+    const document = await testingSupport.uploadDocument();
+    let casaData = await updateCaseDataWithPlaceholders(data[eventName], document);
+    console.log('*** respondentResponseToJudgeDirections: Finish uploading the document ***');
+
+    const response = await apiRequest.submitGAEvent(eventName, casaData, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.equal(responseBody.state, 'AWAITING_ADDITIONAL_INFORMATION');
+  },
+
+  respondentResponseToWrittenRepresentations: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.id;
+
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    console.log('*** respondentResponseToJudgeDirections: Start uploading the document ***');
+    const document = await testingSupport.uploadDocument();
+    let casaData = await updateCaseDataWithPlaceholders(data[eventName], document);
+    console.log('*** respondentResponseToJudgeDirections: Finish uploading the document ***');
+
+    const response = await apiRequest.submitGAEvent(eventName, casaData, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.equal(responseBody.state, 'AWAITING_WRITTEN_REPRESENTATIONS');
+  },
+
+  respondentResponseToJudgeDirections: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.RESPOND_TO_JUDGE_DIRECTIONS.id;
+
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    console.log('*** respondentResponseToJudgeDirections: Start uploading the document ***');
+    const document = await testingSupport.uploadDocument();
+    let casaData = await updateCaseDataWithPlaceholders(data[eventName], document);
+    console.log('*** respondentResponseToJudgeDirections: Finish uploading the document ***');
+
+    const response = await apiRequest.submitGAEvent(eventName, casaData, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.equal(responseBody.state, 'AWAITING_DIRECTIONS_ORDER_DOCS');
   },
 
   judgeMakesDecisionWrittenRep: async (user, gaCaseId) => {

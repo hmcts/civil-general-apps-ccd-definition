@@ -811,7 +811,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
-        () => listForHearingPage.selectJudicialHearingPreferences('videoConferenceHearing'),
+        () => listForHearingPage.selectJudicialHearingPreferences('inPerson'),
         () => listForHearingPage.selectJudicialTimeEstimate('fifteenMin'),
         () => listForHearingPage.verifyVulnerabilityQuestions(),
         () => listForHearingPage.selectJudicialSupportRequirement('disabledAccess'),

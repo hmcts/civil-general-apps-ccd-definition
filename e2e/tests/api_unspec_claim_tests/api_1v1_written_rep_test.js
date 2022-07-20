@@ -22,6 +22,10 @@ Scenario('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS', async ({api}) => 
   console.log('*** Start Judge Make Order on GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
   await api.judgeMakesDecisionWrittenRep(config.applicantSolicitorUser, gaCaseReference);
   console.log('*** End Judge Make Order GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
+
+  console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');
+  await api.respondentResponseToWrittenRepresentations(config.applicantSolicitorUser, gaCaseReference);
+  console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
 AfterSuite(async ({api}) => {

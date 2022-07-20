@@ -19,8 +19,14 @@ Scenario('Judge makes decision 1V1 - AWAITING_ADDITIONAL_INFORMATION', async ({a
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.judgeMakesDecision(config.applicantSolicitorUser, gaCaseReference);
+  await api.judgeMakesDecisionAdditionalInformation(config.applicantSolicitorUser, gaCaseReference);
   console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
+
+  console.log('*** Start Respondent respond to Judge Additional information on GA Case Reference: '
+    + gaCaseReference + ' ***');
+  await api.respondentResponseToJudgeAdditionalInfo(config.applicantSolicitorUser, gaCaseReference);
+  console.log('*** End Respondent respond to Judge Additional information on GA Case Reference: '
+    + gaCaseReference + ' ***');
 });
 
 AfterSuite(async ({api}) => {

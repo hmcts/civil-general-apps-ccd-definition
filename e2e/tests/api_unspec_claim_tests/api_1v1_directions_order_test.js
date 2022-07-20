@@ -22,6 +22,10 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
   console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
   await api.judgeMakesDecisionDirectionsOrder(config.applicantSolicitorUser, gaCaseReference);
   console.log('*** End Judge Directions Order GA Case Reference: ' + gaCaseReference + ' ***');
+
+  console.log('*** Start Respondent respond to Judge Directions on GA Case Reference: ' + gaCaseReference + ' ***');
+  await api.respondentResponseToJudgeDirections(config.applicantSolicitorUser, gaCaseReference);
+  console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
 AfterSuite(async ({api}) => {
