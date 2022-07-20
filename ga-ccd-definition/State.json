@@ -89,5 +89,12 @@
     "Name": "Claim Issue Pending",
     "Description": "Holding state whilst payment is taken",
     "DisplayOrder": 13
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "PROCEEDS_IN_HERITAGE",
+    "Name": "Proceeds in Heritage",
+    "Description": "Proceeds in Heritage",
+    "DisplayOrder": 14
   }
 ]

@@ -33,6 +33,38 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "[APPLICANTSOLICITORONESPEC]",
+    "Name": "Applicant Spec Solicitor 1",
+    "Description": "Applicant Solicitor 1 role spec",
+    "JurisdictionID": "CIVIL",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "[APPLICANTSOLICITORTWOSPEC]",
+    "Name": "Applicant Spec Solicitor 2",
+    "Description": "Applicant Solicitor 2 role spec",
+    "JurisdictionID": "CIVIL",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "[RESPONDENTSOLICITORONESPEC]",
+    "Name": "Respondent Spec Solicitor 1",
+    "Description": "Respondent Solicitor 1 role spec",
+    "JurisdictionID": "CIVIL",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "[RESPONDENTSOLICITORTWOSPEC]",
+    "Name": "Respondent Spec Solicitor 2",
+    "Description": "Respondent Solicitor 2 role spec",
+    "JurisdictionID": "CIVIL",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "[CREATOR]",
     "Name": "Creator",
     "Description": "Creator of case",
