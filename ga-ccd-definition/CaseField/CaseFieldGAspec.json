@@ -420,6 +420,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppSuperClaimType",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialDecisionMakeOrder",
     "Label": " ",
     "FieldType": "GAJudicialMakeAnOrderGAspec",
