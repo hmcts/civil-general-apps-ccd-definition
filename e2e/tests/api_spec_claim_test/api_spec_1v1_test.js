@@ -4,13 +4,11 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 API tests @api-tests');
+Feature('GA SPEC Claim 1v1 API tests @api-tests');
 
 Scenario('Initiate General application for 1v1', async ({api}) => {
-  civilCaseReference = await api.createClaimWithRepresentedRespondent(
+  civilCaseReference = await api.createSpecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
@@ -23,6 +21,6 @@ Scenario('Respondent response for 1V1', async ({api}) => {
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+    await api.cleanUp();
 });
 
