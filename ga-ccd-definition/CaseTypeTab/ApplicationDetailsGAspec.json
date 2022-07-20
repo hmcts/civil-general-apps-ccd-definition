@@ -55,6 +55,24 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
+    "CaseFieldID": "judicialGeneralHearingOrderRecital",
+    "TabFieldDisplayOrder": 5,
+    "FieldShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "judicialGOHearingDirections",
+    "TabFieldDisplayOrder": 6,
+    "FieldShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
     "CaseFieldID": "generalAppRespondentAgreement",
     "TabFieldDisplayOrder": 7
   },
