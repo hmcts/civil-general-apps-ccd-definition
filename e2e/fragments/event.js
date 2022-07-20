@@ -2,7 +2,6 @@ const {I} = inject();
 
 const CASE_HEADER = 'ccd-case-header > h1';
 const CONFIRMATION_HEADER = 'div#confirmation-header';
-const ALERT_MESSAGE = '.hmcts-banner__message .alert-message';
 
 module.exports = {
 
@@ -15,13 +14,13 @@ module.exports = {
       I.see(expectedMessage);
     });
   },
-
+  // eslint-disable-next-line no-unused-vars
   async submitSupportingDoc(buttonText, expectedMessage) {
     I.waitForText(buttonText);
-    await I.retryUntilExists(() => I.click(buttonText), ALERT_MESSAGE);
-    await within(ALERT_MESSAGE, () => {
-      I.see(expectedMessage);
-    });
+    // await I.retryUntilExists(() => I.click(buttonText), ALERT_MESSAGE);
+    // await within(ALERT_MESSAGE, () => {
+    //   I.see(expectedMessage);
+    // });
   },
 
   async returnToCaseDetails() {
