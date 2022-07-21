@@ -420,6 +420,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppSuperClaimType",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialDecisionMakeOrder",
     "Label": " ",
     "FieldType": "GAJudicialMakeAnOrderGAspec",
@@ -660,6 +667,13 @@
     "Label": "Written representation concurrent document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "ServiceRequest",
+    "Label": "Service Request",
+    "FieldType": "WaysToPay",
     "SecurityClassification": "Public"
   }
 ]

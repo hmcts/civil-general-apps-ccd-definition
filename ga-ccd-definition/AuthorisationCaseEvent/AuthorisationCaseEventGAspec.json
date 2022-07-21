@@ -181,7 +181,9 @@
       {
         "UserRoles": [
           "[RESPONDENTSOLICITORONE]",
-          "[RESPONDENTSOLICITORTWO]"
+          "[RESPONDENTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
 	    	"CRUD": "CRU"
 		      },
