@@ -12,7 +12,7 @@ let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference;
 Feature('End-to-end General application journey @cross-browser-tests');
 
 Scenario('End to End Judges Journey', async ({I, api}) => {
-  parentCaseNumber = await api.createClaimWithRepresentedRespondent(
+  parentCaseNumber = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
@@ -42,7 +42,7 @@ Scenario('End to End Judges Journey', async ({I, api}) => {
   await I.respCloseAndReturnToCaseDetails(childCaseId);
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDecisionStatus);
-  await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum());
+  // await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum());
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Request more information');
