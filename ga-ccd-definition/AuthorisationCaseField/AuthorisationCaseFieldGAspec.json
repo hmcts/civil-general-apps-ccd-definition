@@ -974,6 +974,7 @@
     "CaseFieldID": "hearingDetailsResp",
     "UserRoles": [
       "caseworker-civil-solicitor",
+      "caseworker-civil-systemupdate",
       "judge-profile"
     ],
     "CRUD": "CRU"
@@ -983,6 +984,7 @@
     "CaseFieldID": "respondentsResponses",
     "UserRoles": [
       "caseworker-civil-solicitor",
+      "caseworker-civil-systemupdate",
       "judge-profile"
     ],
     "CRUD": "CRU"
@@ -1024,27 +1026,9 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "respondentsResponses",
-    "UserRoles": [
-      "caseworker-civil-systemupdate",
-      "judge-profile"
-    ],
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppSuperClaimType",
     "UserRoles": [
       "caseworker-civil-systemupdate"
-    ],
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "hearingDetailsResp",
-    "UserRoles": [
-      "caseworker-civil-systemupdate",
-      "judge-profile"
     ],
     "CRUD": "CRUD"
   },
