@@ -218,7 +218,7 @@ module.exports = {
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
   },
 
-  judgeMakesDecision: async (user, gaCaseId) => {
+  judgeMakesDecisionAdditionalInformation: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
     eventName = events.JUDGE_MAKES_DECISION.id;
     await apiRequest.startGAEvent(eventName, gaCaseId);
