@@ -109,7 +109,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "R"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -147,7 +147,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "R"
+        "CRUD": "CRUD"
       }
     ]
   },
