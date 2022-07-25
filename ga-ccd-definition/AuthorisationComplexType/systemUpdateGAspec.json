@@ -198,7 +198,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "additionalPaymentServiceReqReference",
+    "ListElementCode": "additionalPaymentServiceRef",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
