@@ -143,7 +143,7 @@ xui-webapp:
   nodejs:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
-    image: hmctspublic.azurecr.io/xui/webapp:pr-2148
+    image: hmctspublic.azurecr.io/xui/webapp:true
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health
@@ -215,8 +215,6 @@ ccd:
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
   am-role-assignment-service:
     java:
-      imagePullPolicy: Always
-      image: 'hmctspublic.azurecr.io/am/role-assignment-service:staging-6c7b377-20220719114212'
       ingressHost: role-am-${SERVICE_FQDN}
       keyVaults:
         am:
