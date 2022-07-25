@@ -68,7 +68,7 @@
   },
   {
     "ID": "GAPBADetailsGAspec",
-    "ListElementCode": "additionalPaymentServiceReqReference",
+    "ListElementCode": "additionalPaymentServiceRef",
     "ElementLabel": "Additional payment ref number",
     "FieldType": "TextArea",
     "Max": 400,
