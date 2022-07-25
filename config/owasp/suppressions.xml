@@ -131,8 +131,6 @@
     <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
     <vulnerabilityName>1081522</vulnerabilityName>
   </suppress>
-  <?xml version="1.0" encoding="UTF-8"?>
-  <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
     <suppress until="2022-09-29">
       <notes><![CDATA[
       file name: file-type:7.7.1
@@ -140,5 +138,4 @@
       <packageUrl regex="true">^pkg:npm/file\-type@.*$</packageUrl>
       <vulnerabilityName>1081704</vulnerabilityName>
     </suppress>
-  </suppressions>
 </suppressions>
