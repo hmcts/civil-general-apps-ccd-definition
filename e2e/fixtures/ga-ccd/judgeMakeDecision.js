@@ -64,5 +64,21 @@ module.exports = {
         displayjudgeApproveEditOptionDate: 'No'
       }
     };
+  },
+  judgeMakeDecisionDismissed: () => {
+    return {
+      judicialDecision : {
+        decision: 'MAKE_AN_ORDER'
+      },
+      judicialDecisionMakeOrder: {
+        makeAnOrder: 'DISMISS_THE_APPLICATION',
+        judgeRecitalText:'sample text',
+        orderText:'sample text',
+        dismissalOrderText:'sample text',
+        reasonForDecisionText:'sample text',
+        displayjudgeApproveEditOptionDoc: 'No',
+        displayjudgeApproveEditOptionDate: 'No'
+      }
+    };
   }
 };
