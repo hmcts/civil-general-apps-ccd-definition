@@ -214,6 +214,8 @@ ccd:
       ingressHost: civil-ga-ccd-data-store-staging-aat.service.core-compute-aat.internal
   am-role-assignment-service:
     java:
+      imagePullPolicy: Always
+      image: 'hmctspublic.azurecr.io/am/role-assignment-service:staging-6c7b377-20220719114212'
       keyVaults:
         am:
           secrets:
