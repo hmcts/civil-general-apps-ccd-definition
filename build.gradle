@@ -95,6 +95,14 @@ task runFunctionalTests(type: Exec, description: 'Runs functional tests.') {
   commandLine '/usr/bin/yarn', '--silent', 'test:functional'
 }
 
+task fortifyScan(type: JavaExec)  {
+    main = "uk.gov.hmcts.fortifyclient.FortifyClientMainApp"
+    classpath += sourceSets.test.runtimeClasspath
+    jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
+    // The line below prevents the build from failing if the Fortify scan detects issues
+    ignoreExitValue = true
+}
+
 task smoke(description: 'Runs the smoke tests.') {
   dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, lintUserInterfaceTests, runSmokeTests))
 }
@@ -222,6 +230,8 @@ dependencies {
 
   smokeTestImplementation sourceSets.main.runtimeClasspath
   smokeTestImplementation sourceSets.test.runtimeClasspath
+  
+  testCompile 'com.github.hmcts:fortify-client:1.2.0:all'
 }
 
 mainClassName = 'uk.gov.hmcts.reform.civil.Application'

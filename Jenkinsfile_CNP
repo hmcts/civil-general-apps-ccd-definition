@@ -50,6 +50,11 @@ withPipeline(type, product, component) {
     pipelineConf = config
     disableLegacyDeployment()
     enableAksStagingDeployment()
+    enableFortifyScan() // REMOVE AFTER SETUP
+    
+    after('fortify-scan') {
+            steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/Fortify Scan/**/*'
+    }  // MOVE
 
     onPR {
         loadVaultSecrets(secrets);
