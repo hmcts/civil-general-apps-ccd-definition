@@ -94,6 +94,8 @@ civil-service:
           - launch-darkly-sdk-key
           - ordnance-survey-api-key
           - robotics-notification-multipartyrecipient
+          - name: robotics-notification-recipient-spec
+            alias: robotics.notification.specRecipient
     environment:
       IDAM_CLIENT_ID: civil-service
       IDAM_CLIENT_REDIRECT_URI: https://civil-ccd-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback
