@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-const mpScenario = 'ONE_V_ONE';
+const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 Judge list the application for hearing  API tests @api-tests');
+Feature('GA 1v2 Judge Make Order Written Rep API tests @api-tests');
 
-Scenario('Judge makes decision 1V1 - LIST FOR HEARING', async ({api}) => {
-  civilCaseReference = await api.createClaimWithRepresentedRespondent(
+Scenario('Judge makes decision 1V2 - WRITTEN_REPRESENTATIONS', async ({api}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -19,11 +19,12 @@ Scenario('Judge makes decision 1V1 - LIST FOR HEARING', async ({api}) => {
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-  console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.judgeListApplicationForHearing(config.applicantSolicitorUser, gaCaseReference);
-  console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
+  console.log('*** Start Judge Make Order on GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
+  await api.judgeMakesDecisionWrittenRep(config.applicantSolicitorUser, gaCaseReference);
+  console.log('*** End Judge Make Order GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
 });
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
+
