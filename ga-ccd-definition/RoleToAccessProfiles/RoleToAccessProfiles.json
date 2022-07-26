@@ -135,6 +135,15 @@
     "CaseAccessCategories": ""
   },
   {
+    "RoleName": "fee-paid-judge",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "judge-profile",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName": "leadership-judge",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
@@ -162,20 +171,11 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName": "case-allocator",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "basic-access",
-    "ReadOnly": "Y",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
     "RoleName": "task-supervisor",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "basic-access",
-    "ReadOnly": "Y",
+    "AccessProfiles": "civil-administrator-standard",
+    "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
   },
@@ -183,7 +183,7 @@
     "RoleName": "hmcts-legal-operations",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "basic-access",
+    "AccessProfiles": "civil-administrator-basic",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -192,17 +192,17 @@
     "RoleName": "hmcts-admin",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "basic-access",
-    "ReadOnly": "N",
+    "AccessProfiles": "civil-administrator-basic",
+    "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
   },
   {
-    "RoleName": "hmcts-ctsc",
+    "RoleName": "case-allocator",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "basic-access",
-    "ReadOnly": "Y",
+    "AccessProfiles": "civil-administrator-standard",
+    "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
   },
@@ -210,8 +210,8 @@
     "RoleName": "ctsc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "basic-access",
-    "ReadOnly": "Y",
+    "AccessProfiles": "civil-administrator-standard",
+    "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
   },
@@ -219,8 +219,8 @@
     "RoleName": "ctsc",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "basic-access",
-    "ReadOnly": "Y",
+    "AccessProfiles": "civil-administrator-standard",
+    "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
   },
@@ -228,8 +228,8 @@
     "RoleName": "nbc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "basic-access",
-    "ReadOnly": "Y",
+    "AccessProfiles": "civil-administrator-standard",
+    "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
   },
@@ -237,8 +237,8 @@
     "RoleName": "national-business-centre",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "basic-access",
-    "ReadOnly": "Y",
+    "AccessProfiles": "civil-administrator-standard",
+    "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
   },
@@ -246,8 +246,8 @@
     "RoleName": "hearing-centre-team-leader",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "basic-access",
-    "ReadOnly": "Y",
+    "AccessProfiles": "civil-administrator-standard",
+    "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
   },
@@ -255,8 +255,8 @@
     "RoleName": "hearing-centre-admin",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "basic-access",
-    "ReadOnly": "Y",
+    "AccessProfiles": "civil-administrator-standard",
+    "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
   },
@@ -264,8 +264,8 @@
     "RoleName": "tribunal-caseworker",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "basic-access",
-    "ReadOnly": "Y",
+    "AccessProfiles": "civil-administrator-standard",
+    "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
   }
