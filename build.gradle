@@ -231,7 +231,7 @@ dependencies {
   smokeTestImplementation sourceSets.main.runtimeClasspath
   smokeTestImplementation sourceSets.test.runtimeClasspath
   
-  testCompile 'com.github.hmcts:fortify-client:1.2.0:all'
+  testCompile 'com.github.hmcts:fortify-client:1.2.1:all'
 }
 
 mainClassName = 'uk.gov.hmcts.reform.civil.Application'
