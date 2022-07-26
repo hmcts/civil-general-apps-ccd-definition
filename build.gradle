@@ -231,7 +231,7 @@ dependencies {
   smokeTestImplementation sourceSets.main.runtimeClasspath
   smokeTestImplementation sourceSets.test.runtimeClasspath
   
-  testCompile 'com.github.hmcts:fortify-client:1.2.1:all'
+  testCompile 'com.github.hmcts:fortify-client:1.2.:all'
 }
 
 mainClassName = 'uk.gov.hmcts.reform.civil.Application'
@@ -244,9 +244,6 @@ bootJar {
   }
 }
 
-configurations {
-    aatCompile.extendsFrom(testCompile)
-}
 // Gradle 7.x issue, workaround from: https://github.com/gradle/gradle/issues/17236#issuecomment-894768083
 rootProject.tasks.named("processSmokeTestResources") {
   duplicatesStrategy = 'include'
