@@ -7,6 +7,7 @@ import uk.gov.hmcts.contino.AppPipelineDsl
 def type = "java"
 def product = "civil"
 def component = "general-apps-ccd-definition"
+def camundaBranch = "master"
 AppPipelineConfig pipelineConf
 
 static Map<String, Object> secret(String secretName, String envVariable) {
@@ -141,13 +142,11 @@ withPipeline(type, product, component) {
     before('smoketest:preview') {
       sh """
           eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
-          #./bin/add-roles.sh
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
           ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*DJspec.json"
           ./gradlew highLevelDataSetup --args="PREVIEW"
-          # ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
-          ./bin/import-bpmn-diagram.sh .
+          ./bin/pull-latest-camunda-files.sh ${camundaBranch}
         """
         env.URL="https://xui-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
         env.CIVIL_SERVICE_URL="http://civil-service-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
@@ -192,8 +191,8 @@ withPipeline(type, product, component) {
           ./bin/pull-latest-release-asset.sh civil-general-apps-ccd-definition civil-general-apps-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
           ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*DJspec.json"
-          # ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
-          ./bin/import-bpmn-diagram.sh .
+          #./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
+          ./bin/pull-latest-camunda-files.sh ${camundaBranch}
         """
     env.URL="https://civil-ga-ccd-xui-staging.aat.platform.hmcts.net"
     env.CIVIL_SERVICE_URL="http://civil-ga-ccd-civil-service-staging-aat.service.core-compute-aat.internal"
