@@ -675,6 +675,36 @@
     "Label": "Service Request",
     "FieldType": "WaysToPay",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppJudgeReferEventDescription",
+    "Label": "Event Descirpiton",
+    "HintText": "A few words describing the purpose of the event.",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppJudgeReferAdditionalInfo",
+    "Label": "Additional Information",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppLegalAdvisorEventDescription",
+    "Label": "Event Descirpiton",
+    "HintText": "A few words describing the purpose of the event.",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppLegalAdvisorAdditionalInfo",
+    "Label": "Additional Information",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
   }
 ]
 
