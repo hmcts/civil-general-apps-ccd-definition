@@ -112,7 +112,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "REFER_TO_JUDGE",
-    "Name": "Refer to judge",
+    "Name": "Refer to Judge",
     "Description": "Caseworker assigns the application to Judge",
     "DisplayOrder": 7,
     "PreConditionState(s)": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION;ADDITIONAL_RESPONSE_TIME_EXPIRED",
