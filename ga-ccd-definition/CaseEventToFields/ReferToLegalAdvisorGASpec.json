@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "REFER_TO_LEGAL_ADVISOR",
-    "CaseFieldID": "generalAppJudgeReferEventDescription",
+    "CaseFieldID": "generalAppLegalAdvisorEventDescription",
     "DisplayContext": "OPTIONAL",
     "PageID": "ReferToLegalAdvisor",
     "PageDisplayOrder": 1,
@@ -13,7 +13,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "REFER_TO_LEGAL_ADVISOR",
-    "CaseFieldID": "generalAppJudgeReferAdditionalInfo",
+    "CaseFieldID": "generalAppLegalAdvisorAdditionalInfo",
     "DisplayContext": "OPTIONAL",
     "PageID": "ReferToLegalAdvisor",
     "PageDisplayOrder": 1,
