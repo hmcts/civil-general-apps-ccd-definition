@@ -4,22 +4,28 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 API tests @api-tests');
+Feature('GA 1v1 Judge Make Order Directions Order API tests @api-tests');
 
-Scenario('Initiate General application for 1v1', async ({api}) => {
-  civilCaseReference = await api.createClaimWithRepresentedRespondent(
+Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER - Respondent upload Directions Document', async ({api}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
-});
 
-Scenario('Respondent response for 1V1', async ({api}) => {
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
+
+  console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
+  await api.judgeMakesDecisionDirectionsOrder(config.applicantSolicitorUser, gaCaseReference);
+  console.log('*** End Judge Directions Order GA Case Reference: ' + gaCaseReference + ' ***');
+
+  console.log('*** Start Respondent respond to Judge Directions on GA Case Reference: ' + gaCaseReference + ' ***');
+  await api.respondentResponseToJudgeDirections(config.applicantSolicitorUser, gaCaseReference);
+  console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
 AfterSuite(async ({api}) => {

@@ -29,4 +29,9 @@ module.exports = {
     id: 'RESPOND_TO_JUDGE_ADDITIONAL_INFO',
     name: 'Respond to judges addn info'
   },
+  LIST_FOR_A_HEARING: {
+    description: 'Judge makes decision',
+    id: 'LIST_FOR_A_HEARING',
+    name: 'Respond to judges list for hearing'
+  }
 };
