@@ -273,5 +273,29 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "REFER_TO_JUDGE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "basic-access"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "REFER_TO_LEGAL_ADVISOR",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "basic-access"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
