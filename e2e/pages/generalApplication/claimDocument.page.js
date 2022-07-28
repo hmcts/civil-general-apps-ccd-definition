@@ -10,10 +10,19 @@ module.exports = {
 
   async verifyUploadedDocument(childCaseNumber, documentType) {
     await I.seeInCurrentUrl('documents');
-    await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 3);
+    switch (documentType) {
+      case 'General order document':
+      case 'Direction order document':
+        await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 3);
+        I.see('Upload documents');
+        I.seeNumberOfVisibleElements(this.fields.links, 3);
+        break;
+      case 'Dismissal order document':
+        await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 2);
+        I.seeNumberOfVisibleElements(this.fields.links, 2);
+        break;
+    }
     I.see('System generated Case Documents');
-    I.see('Upload documents');
-    I.seeNumberOfVisibleElements(this.fields.links, 3);
     let docURL = await I.grabTextFrom(locate(this.fields.links).last());
     expect(docURL).to.contains(childCaseNumber + '.pdf');
     await I.see('Type');
