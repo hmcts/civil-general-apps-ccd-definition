@@ -140,6 +140,78 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "ADDITIONAL_PAYMENT_SUCCESS_CALLBACK",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "OBTAIN_ADDITIONAL_FEE_VALUE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+  "CaseTypeID": "GENERALAPPLICATION",
+  "CaseEventID": "START_MAKE_ADDITIONAL_PAYMENT_REF",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "caseworker-civil-solicitor"
+      ],
+      "CRUD": "R"
+    },
+    {
+      "UserRoles": [
+        "caseworker-civil-admin"
+      ],
+      "CRUD": "CRU"
+    }
+  ]
+},
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "VALIDATE_FEE_GASPEC",
     "AccessControl": [
       {

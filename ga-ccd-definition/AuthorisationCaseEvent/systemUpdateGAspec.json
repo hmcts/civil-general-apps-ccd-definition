@@ -106,5 +106,18 @@
     "CaseEventID": "OBTAIN_ADDITIONAL_FEE_VALUE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "ADDITIONAL_PAYMENT_SUCCESS_CALLBACK",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
+
 ]

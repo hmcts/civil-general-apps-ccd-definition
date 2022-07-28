@@ -37,5 +37,30 @@
       "ShowSummary": "N",
       "ShowEventNotes": "N",
       "RetriesTimeoutURLAboutToSubmitEvent": 0
+    },
+    {
+      "CaseTypeID": "GENERALAPPLICATION",
+      "ID": "ADDITIONAL_PAYMENT_SUCCESS_CALLBACK",
+      "Name": "Additional Payment Callback",
+      "Description": "Payment confirmation",
+      "PreConditionState(s)": "*",
+      "PostConditionState": "*",
+      "SecurityClassification": "Public",
+      "ShowSummary": "N",
+      "ShowEventNotes": "N"
+    },
+    {
+      "CaseTypeID": "GENERALAPPLICATION",
+      "ID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
+      "Name": "Change application state",
+      "Description": "Change state to MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
+      "PreConditionState(s)": "*",
+      "PostConditionState": "*",
+      "SecurityClassification": "Public",
+      "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+      "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
+      "ShowSummary": "N",
+      "ShowEventNotes": "N",
+      "RetriesTimeoutURLAboutToSubmitEvent": 0
     }
 ]

@@ -61,6 +61,13 @@
   },
   {
     "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "additionalPaymentDetails",
+    "ElementLabel": "Additional payment details",
+    "FieldType": "GAPaymentDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
     "ListElementCode": "paymentSuccessfulDate",
     "ElementLabel": "Payment successful date",
     "FieldType": "DateTime",
@@ -70,8 +77,7 @@
     "ID": "GAPBADetailsGAspec",
     "ListElementCode": "additionalPaymentServiceRef",
     "ElementLabel": "Additional payment ref number",
-    "FieldType": "TextArea",
-    "Max": 400,
+    "FieldType": "Text",
     "SecurityClassification": "Public"
  }
 ]
