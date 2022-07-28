@@ -13,7 +13,8 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -31,7 +32,8 @@
     "ShowSummary": "Y",
     "ShowEventNotes": "N",
     "RetriesTimeoutAboutToStartEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -39,7 +41,7 @@
     "Name": "Make decision",
     "Description": "Judge makes decision",
     "DisplayOrder": 3,
-    "PreConditionState(s)": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION",
+    "PreConditionState(s)": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION;ADDITIONAL_RESPONSE_TIME_EXPIRED",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "ShowSummary": "Y",
@@ -50,7 +52,8 @@
     "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -93,7 +96,7 @@
     "ID": "RESPOND_TO_JUDGE_ADDITIONAL_INFO",
     "Name": "Respond to judges addn info",
     "Description": "Applicant and Respondent response",
-    "DisplayOrder": 5,
+    "DisplayOrder": 6,
     "PreConditionState(s)": "AWAITING_ADDITIONAL_INFORMATION",
     "PostConditionState": "*",
     "CallBackURLAboutToStartEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
@@ -105,5 +108,43 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "REFER_TO_JUDGE",
+    "Name": "Refer to judge",
+    "Description": "Caseworker assigns the application to Judge",
+    "DisplayOrder": 7,
+    "PreConditionState(s)": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION;ADDITIONAL_RESPONSE_TIME_EXPIRED",
+    "PostConditionState": "*",
+    "CallBackURLAboutToStartEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "SecurityClassification": "Public",
+    "EndButtonLabel": "Submit",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "REFER_TO_LEGAL_ADVISOR",
+    "Name": "Refer to Legal Advisor",
+    "Description": "Caseworker assigns the application to Legal Advisor",
+    "DisplayOrder": 8,
+    "PreConditionState(s)": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION;ADDITIONAL_RESPONSE_TIME_EXPIRED",
+    "PostConditionState": "*",
+    "CallBackURLAboutToStartEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "SecurityClassification": "Public",
+    "EndButtonLabel": "Submit",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "Publish": "Y"
   }
 ]
