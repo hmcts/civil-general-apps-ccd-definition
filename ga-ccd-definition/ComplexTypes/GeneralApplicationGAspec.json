@@ -232,5 +232,12 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "GAResondentResponseGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppSuperClaimType",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
   }
 ]

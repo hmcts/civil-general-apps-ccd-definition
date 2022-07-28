@@ -3,6 +3,7 @@ const {I} = inject();
 module.exports = {
 
   fields: {
+    judgeHearingLocation: '#judicialListForHearing_hearingPreferredLocation',
     hearingPreferences: {
       id: '#judicialListForHearing_hearingPreferencesPreferredType',
       options: {
@@ -68,6 +69,12 @@ module.exports = {
       I.click(this.fields.judicialSupportRequirement.options[supportRequirement]);
     });
     await I.fillField(this.fields.additionalInfoForCourtStaffTextArea, 'Information for court staff');
+    await I.click('Continue');
+    await I.see('Select your preferred hearing location.');
+    await I.seeNumberOfVisibleElements(this.fields.judgeHearingLocation, 1);
+    await within(this.fields.hearingPreferences.id, () => {
+      I.click(this.fields.hearingPreferences.options['videoConferenceHearing']);
+    });
     await I.clickContinue();
   },
 
