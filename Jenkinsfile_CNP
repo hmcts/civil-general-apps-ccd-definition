@@ -7,7 +7,7 @@ import uk.gov.hmcts.contino.AppPipelineDsl
 def type = "java"
 def product = "civil"
 def component = "general-apps-ccd-definition"
-def camundaBranch = "tempgenappbranch"
+def camundaBranch = "master"
 AppPipelineConfig pipelineConf
 
 static Map<String, Object> secret(String secretName, String envVariable) {
@@ -54,7 +54,7 @@ withPipeline(type, product, component) {
 
     onPR {
         loadVaultSecrets(secrets);
-      enableCleanupOfHelmReleaseOnSuccess();
+        enableCleanupOfHelmReleaseOnSuccess();
     }
     onMaster {
         loadVaultSecrets(secrets)
