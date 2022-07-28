@@ -144,8 +144,8 @@ withPipeline(type, product, component) {
           eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
-          ./gradlew highLevelDataSetup --args="PREVIEW"
           ./bin/import-ccd-definition.sh "-e *-prod.json,*-nonprod.json,*DJspec.json"
+          ./gradlew highLevelDataSetup --args="PREVIEW"
           ./bin/pull-latest-camunda-files.sh ${camundaBranch}
         """
         env.URL="https://xui-civil-general-apps-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
