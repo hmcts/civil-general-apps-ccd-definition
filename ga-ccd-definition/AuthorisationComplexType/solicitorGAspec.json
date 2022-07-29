@@ -198,7 +198,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "serviceReqReference",
+    "ListElementCode": "serviceRequestReference",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },

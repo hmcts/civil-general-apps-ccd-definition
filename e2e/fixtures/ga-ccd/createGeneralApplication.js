@@ -85,7 +85,7 @@ module.exports = {
           errorCode: null,
           customerReference: null
         },
-        serviceReqReference: null
+        serviceRequestReference: null
       }
     };
   }
