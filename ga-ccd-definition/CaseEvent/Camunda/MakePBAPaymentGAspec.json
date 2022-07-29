@@ -2,8 +2,8 @@
     {
       "CaseTypeID": "GENERALAPPLICATION",
       "ID": "MAKE_PBA_PAYMENT_GASPEC",
-      "Name": "Make PBA payment",
-      "Description": "Make PBA payment",
+      "Name": "Make Service Req PBA Payment",
+      "Description": "Make Service Req PBA Payment",
       "PreConditionState(s)": "*",
       "PostConditionState": "*",
       "SecurityClassification": "Public",

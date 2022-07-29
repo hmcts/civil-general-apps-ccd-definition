@@ -75,6 +75,13 @@
   },
   {
     "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "serviceRequestReference",
+    "ElementLabel": "Service Request Reference",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
     "ListElementCode": "additionalPaymentServiceRef",
     "ElementLabel": "Additional payment ref number",
     "FieldType": "Text",
