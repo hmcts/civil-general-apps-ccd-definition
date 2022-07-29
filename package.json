@@ -12,7 +12,8 @@
     "test:functional": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep '@e2e-tests|@multiparty-e2e-tests' --reporter mocha-multi --verbose",
     "test:crossbrowser-e2e": "MOCHAWESOME_REPORTFILENAME=crossbrowser codeceptjs run-multiple --grep @cross-browser-tests ${BROWSER_GROUP:-'--all'} -c saucelabs.conf.js --reporter mocha-multi",
     "test:crossbrowser": "./e2e/run-crossbrowser-tests.sh",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "highLevelDataSetup": "echo './aat/gradlew -p aat highLevelDataSetup --args=$1' > ./temp.sh && sh ./temp.sh"
   },
   "license": "MIT",
   "devDependencies": {
