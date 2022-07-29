@@ -68,7 +68,7 @@
   },
   {
     "ID": "GAPBADetailsGAspec",
-    "ListElementCode": "serviceReqReference",
+    "ListElementCode": "serviceRequestReference",
     "ElementLabel": "Service Request Reference",
     "FieldType": "Text",
     "SecurityClassification": "Public"
