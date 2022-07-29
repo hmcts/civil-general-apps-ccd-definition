@@ -300,6 +300,27 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseManagementLocation",
+    "Label": " ",
+    "FieldType": "GACaseLocationGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "isCcmccLocation",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseManagementCategory",
+    "Label": " ",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "parentClaimantIsApplicant",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -674,6 +695,36 @@
     "ID": "ServiceRequest",
     "Label": "Service Request",
     "FieldType": "WaysToPay",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppJudgeReferEventDescription",
+    "Label": "Event Descirpiton",
+    "HintText": "A few words describing the purpose of the event.",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppJudgeReferAdditionalInfo",
+    "Label": "Additional Information",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppLegalAdvisorEventDescription",
+    "Label": "Event Descirpiton",
+    "HintText": "A few words describing the purpose of the event.",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppLegalAdvisorAdditionalInfo",
+    "Label": "Additional Information",
+    "FieldType": "TextArea",
     "SecurityClassification": "Public"
   }
 ]

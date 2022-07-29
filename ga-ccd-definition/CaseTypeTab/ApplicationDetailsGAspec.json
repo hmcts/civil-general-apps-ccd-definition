@@ -148,5 +148,37 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "respondentsResponses",
     "TabFieldDisplayOrder": 16
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppJudgeReferEventDescription",
+    "TabFieldDisplayOrder": 17
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppJudgeReferAdditionalInfo",
+    "TabFieldDisplayOrder": 18
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppLegalAdvisorEventDescription",
+    "TabFieldDisplayOrder": 19
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppLegalAdvisorAdditionalInfo",
+    "TabFieldDisplayOrder": 20
   }
 ]
