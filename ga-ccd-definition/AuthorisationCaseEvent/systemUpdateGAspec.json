@@ -115,6 +115,12 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "OBTAIN_ADDITIONAL_PAYMENT_REF",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "ADDITIONAL_PAYMENT_SUCCESS_CALLBACK",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

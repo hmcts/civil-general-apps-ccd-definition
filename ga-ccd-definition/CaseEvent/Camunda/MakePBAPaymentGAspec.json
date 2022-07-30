@@ -40,6 +40,19 @@
     },
     {
       "CaseTypeID": "GENERALAPPLICATION",
+      "ID": "OBTAIN_ADDITIONAL_PAYMENT_REF",
+      "Name": "Obtain Additional Fee ref",
+      "Description": "Obtain Additional Fee Reference",
+      "PreConditionState(s)": "*",
+      "PostConditionState": "*",
+      "SecurityClassification": "Public",
+      "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+      "ShowSummary": "N",
+      "ShowEventNotes": "N",
+      "RetriesTimeoutURLAboutToSubmitEvent": 0
+    },
+    {
+      "CaseTypeID": "GENERALAPPLICATION",
       "ID": "ADDITIONAL_PAYMENT_SUCCESS_CALLBACK",
       "Name": "Additional Payment Callback",
       "Description": "Payment confirmation",

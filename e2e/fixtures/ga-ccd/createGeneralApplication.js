@@ -4,7 +4,7 @@ const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
 
 module.exports = {
-  createGAData: () => {
+  createGAData: (isWithNotice, reasonWithoutNotice,calculatedAmount, code) => {
     return {
       generalAppType: {
         types: [
@@ -23,8 +23,8 @@ module.exports = {
         ConsentAgreementCheckBox: []
       },
       generalAppInformOtherParty: {
-        isWithNotice: 'Yes',
-        reasonsForWithoutNotice: null
+        isWithNotice: isWithNotice,
+        reasonsForWithoutNotice: reasonWithoutNotice
       },
       generalAppDetailsOfOrder: 'Test Order details',
       generalAppReasonsOfOrder: 'Test reason for order',
@@ -74,8 +74,8 @@ module.exports = {
         pbaReference: 'Test PBA Reference',
         paymentSuccessfulDate: null,
         fee: {
-          calculatedAmountInPence: '27500',
-          code: 'FEE0442',
+          calculatedAmountInPence: calculatedAmount,
+          code: code,
           version: '2'
         },
         paymentDetails: {
