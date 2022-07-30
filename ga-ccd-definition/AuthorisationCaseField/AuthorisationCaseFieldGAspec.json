@@ -898,7 +898,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-judge"
+          "caseworker-civil-judge",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },

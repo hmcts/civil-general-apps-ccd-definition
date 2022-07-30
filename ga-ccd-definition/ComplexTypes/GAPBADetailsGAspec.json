@@ -61,9 +61,30 @@
   },
   {
     "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "additionalPaymentDetails",
+    "ElementLabel": "Additional payment details",
+    "FieldType": "GAPaymentDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
     "ListElementCode": "paymentSuccessfulDate",
     "ElementLabel": "Payment successful date",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
-  }
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "serviceRequestReference",
+    "ElementLabel": "Service Request Reference",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "additionalPaymentServiceRef",
+    "ElementLabel": "Additional payment ref number",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+ }
 ]
