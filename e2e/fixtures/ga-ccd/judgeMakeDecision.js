@@ -28,7 +28,7 @@ module.exports = {
         decision: 'MAKE_AN_ORDER'
       },
       judicialDecisionMakeOrder: {
-        makeAnOrder: 'GIVE_DIRECTIONS_WITHOUT_HEARING',
+        makeAnOrder: "GIVE_DIRECTIONS_WITHOUT_HEARING",
         directionsText: 'sample text',
         reasonForDecisionText: 'sample text',
         directionsResponseByDate: '2023-06-05',
@@ -48,6 +48,12 @@ module.exports = {
         directionsResponseByDate: '2023-06-05',
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No'
+      },
+      judicialListForHearing: {
+        hearingPreferredLocation: null,
+        judgeSignLanguage: "sample text",
+        judgeLanguageInterpreter: "sample text",
+        judgeOtherSupport: "sample text"
       }
     };
   },
