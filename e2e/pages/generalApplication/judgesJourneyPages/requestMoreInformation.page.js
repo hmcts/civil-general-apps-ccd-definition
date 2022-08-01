@@ -11,6 +11,7 @@ module.exports = {
       }
     },
     judgeRequestMoreInfoTextArea: '#judicialDecisionRequestMoreInfo_judgeRequestMoreInfoText',
+    judgeRequestMoreInfoRecitalTextArea: '#judicialDecisionRequestMoreInfo_judgeRecitalText',
     judgeRequestMoreInfoDay: '#judgeRequestMoreInfoByDate-day',
     judgeRequestMoreInfoMonth: '#judgeRequestMoreInfoByDate-month',
     judgeRequestMoreInfoYear: '#judgeRequestMoreInfoByDate-year',
@@ -34,6 +35,7 @@ module.exports = {
       I.fillField(this.fields.judgeRequestMoreInfoDay, '01');
       I.fillField(this.fields.judgeRequestMoreInfoMonth, '01');
       I.fillField(this.fields.judgeRequestMoreInfoYear, '2024');
+      I.fillField(this.fields.judgeRequestMoreInfoRecitalTextArea, 'Judge recital text');
     }
     await I.clickContinue();
   }
