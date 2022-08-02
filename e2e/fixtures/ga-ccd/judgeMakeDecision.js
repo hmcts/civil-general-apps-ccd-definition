@@ -51,9 +51,9 @@ module.exports = {
       },
       judicialListForHearing: {
         hearingPreferredLocation: null,
-        judgeSignLanguage: "sample text",
-        judgeLanguageInterpreter: "sample text",
-        judgeOtherSupport: "sample text"
+        judgeSignLanguage: 'sample text',
+        judgeLanguageInterpreter: 'sample text',
+        judgeOtherSupport: 'sample text'
       }
     };
   },
