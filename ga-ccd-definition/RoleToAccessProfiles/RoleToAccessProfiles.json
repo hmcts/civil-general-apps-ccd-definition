@@ -165,7 +165,7 @@
     "RoleName": "hmcts-judiciary",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "basic-access",
+    "AccessProfiles": "basic-access,judge-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
