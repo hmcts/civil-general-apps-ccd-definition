@@ -21,7 +21,6 @@ const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentRespo
 const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
-const {getAppTypes} = require("../pages/generalApplication/generalApplicationTypes");
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
