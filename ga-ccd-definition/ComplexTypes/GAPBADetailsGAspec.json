@@ -65,5 +65,12 @@
     "ElementLabel": "Payment successful date",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "serviceRequestReference",
+    "ElementLabel": "Service Request Reference",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
