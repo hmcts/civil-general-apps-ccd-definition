@@ -135,6 +135,6 @@ module.exports = {
         status: null,
         status_histories: null
       }
-    }
+    };
   }
 };
