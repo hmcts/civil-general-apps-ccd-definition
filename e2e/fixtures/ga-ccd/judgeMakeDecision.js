@@ -28,7 +28,7 @@ module.exports = {
         decision: 'MAKE_AN_ORDER'
       },
       judicialDecisionMakeOrder: {
-        makeAnOrder: "GIVE_DIRECTIONS_WITHOUT_HEARING",
+        makeAnOrder: 'GIVE_DIRECTIONS_WITHOUT_HEARING',
         directionsText: 'sample text',
         reasonForDecisionText: 'sample text',
         directionsResponseByDate: '2023-06-05',
