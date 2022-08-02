@@ -19,11 +19,12 @@ const events = require('../fixtures/ga-ccd/events.js');
 
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
+const {getAppTypes} = require("../pages/generalApplication/generalApplicationTypes");
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
     '27500','FEE0442'),
-  INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE: genAppData.createGAData('No','Test 123',
+  INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE: genAppData.createGADataWithoutNotice('No','Test 123',
     '10800','FEE0443'),
   RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
   JUDGE_MAKES_DECISION: genAppJudgeMakeDecisionData.judgeMakesDecisionData(),
@@ -63,7 +64,13 @@ const data = {
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js')
 };
-
+generalAppType: {
+  types: [
+    'STRIKE_OUT',
+    'SUMMARY_JUDGEMENT',
+    'EXTEND_TIME'
+  ]
+}
 const eventData = {
   acknowledgeClaim: {
     ONE_V_ONE: data.ACKNOWLEDGE_CLAIM,
@@ -315,12 +322,12 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_ADD_PAYMENT');
   },
 
-  receiveAdditionalPayment: async (user, gaCaseId) => {
+  additionalPaymentSuccess: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
     eventName = events.JUDGE_MAKES_DECISION.id;
 
     const response = await apiRequest.paymentApiRequestUpdateServiceCallback(
-      genAppJudgeMakeDecisionData.serviceUpdateDto(gaCaseId));
+      genAppJudgeMakeDecisionData.serviceUpdateDto(gaCaseId,'Paid'));
 
     assert.equal(response.status, 200);
 
@@ -329,6 +336,22 @@ module.exports = {
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
+  },
+
+  additionalPaymentFailure: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.JUDGE_MAKES_DECISION.id;
+
+    const response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+      genAppJudgeMakeDecisionData.serviceUpdateDto(gaCaseId,'NotPaid'));
+
+    assert.equal(response.status, 200);
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE');
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_ADD_PAYMENT');
   },
 
   respondentResponseToJudgeAdditionalInfo: async (user, gaCaseId) => {

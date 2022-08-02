@@ -88,12 +88,11 @@ module.exports = {
         decision: 'MAKE_AN_ORDER'
       },
       judicialDecisionMakeOrder: {
-        makeAnOrder: 'GIVE_DIRECTIONS_WITHOUT_HEARING',
-        directionsText: 'sample text',
-        reasonForDecisionText: 'sample text',
-        directionsResponseByDate: '2023-06-05',
-        displayjudgeApproveEditOptionDoc: 'No',
-        displayjudgeApproveEditOptionDate: 'No'
+        makeAnOrder: 'APPROVE_OR_EDIT',
+        judgeApproveEditOptionDate : '2023-06-05',
+        judgeRecitalText:'sample text',
+        orderText: 'order sample text',
+        reasonForDecisionText: 'sample text'
       },
       makeAppVisibleToRespondents: {
         makeAppAvailableCheck: [
@@ -102,12 +101,12 @@ module.exports = {
       }
     };
   },
-  serviceUpdateDto:(gaCaseId)=> {
+  serviceUpdateDto:(gaCaseId,paymentStatus)=> {
     return {
       service_request_reference: '1324646546456',
       ccd_case_number: gaCaseId,
       service_request_amount: '167.00',
-      service_request_status: 'Paid',
+      service_request_status: paymentStatus,
       payment: {
         _links: null,
         account_number: null,
