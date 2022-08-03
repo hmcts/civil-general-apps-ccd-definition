@@ -808,5 +808,40 @@
     "ListElementCode": "generalAppHearingDetails.vulnerabilityQuestion",
     "UserRole": "judge-profile",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "caseManagementLocation",
+    "UserRole": "judge-profile",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "caseManagementLocation.region",
+    "UserRole": "judge-profile",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "caseManagementLocation.baseLocation",
+    "UserRole": "judge-profile",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "isCcmccLocation",
+    "UserRole": "judge-profile",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "caseManagementCategory",
+    "UserRole": "judge-profile",
+    "CRUD": "R"
   }
 ]
