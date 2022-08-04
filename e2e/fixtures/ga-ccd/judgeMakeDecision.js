@@ -48,6 +48,12 @@ module.exports = {
         directionsResponseByDate: '2023-06-05',
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No'
+      },
+      judicialListForHearing: {
+        hearingPreferredLocation: null,
+        judgeSignLanguage: 'sample text',
+        judgeLanguageInterpreter: 'sample text',
+        judgeOtherSupport: 'sample text'
       }
     };
   },
