@@ -2,23 +2,12 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "REFER_TO_JUDGE",
-    "CaseFieldID": "generalAppJudgeReferEventDescription",
-    "DisplayContext": "OPTIONAL",
+    "CaseFieldID": "referToJudge",
     "PageID": "ReferToJudge",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "REFER_TO_JUDGE",
-    "CaseFieldID": "generalAppJudgeReferAdditionalInfo",
-    "DisplayContext": "OPTIONAL",
-    "PageID": "ReferToJudge",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 2,
-    "PageColumnNumber": 1,
+    "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y"
   }
 ]

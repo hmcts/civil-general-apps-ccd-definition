@@ -154,7 +154,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppJudgeReferEventDescription",
+    "CaseFieldID": "referToJudge",
     "TabFieldDisplayOrder": 17
   },
   {
@@ -162,23 +162,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppJudgeReferAdditionalInfo",
+    "CaseFieldID": "referToLegalAdvisor",
     "TabFieldDisplayOrder": 18
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Summary",
-    "TabLabel": "Summary",
-    "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppLegalAdvisorEventDescription",
-    "TabFieldDisplayOrder": 19
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Summary",
-    "TabLabel": "Summary",
-    "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppLegalAdvisorAdditionalInfo",
-    "TabFieldDisplayOrder": 20
   }
 ]
