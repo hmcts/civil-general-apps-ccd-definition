@@ -344,5 +344,19 @@
         "CRUD": "CRUD"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "APPLICATION_PAYMENT_FAILED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
   }
 ]

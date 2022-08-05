@@ -10,5 +10,17 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "PBA_PAYMENT_FAILED",
+    "Name": "Payment failed",
+    "Description": "Payment failed",
+    "PreConditionState(s)": "PENDING_CASE_ISSUED",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
 ]
