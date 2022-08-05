@@ -100,6 +100,7 @@
     "PreConditionState(s)": "AWAITING_ADDITIONAL_INFORMATION",
     "PostConditionState": "*",
     "CallBackURLAboutToStartEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
     "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
     "SecurityClassification": "Public",
     "EndButtonLabel": "Submit",
