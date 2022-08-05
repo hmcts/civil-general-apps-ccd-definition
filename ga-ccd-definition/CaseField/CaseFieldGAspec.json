@@ -675,6 +675,13 @@
     "Label": "Service Request",
     "FieldType": "WaysToPay",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicationClosedDate",
+    "Label": "Application Closed date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
   }
 ]
 
