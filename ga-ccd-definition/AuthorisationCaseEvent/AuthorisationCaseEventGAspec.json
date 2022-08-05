@@ -353,7 +353,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "basic-access",
           "civil-administrator-standard"
         ],
         "CRUD": "CRU"
@@ -372,7 +371,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "basic-access",
           "civil-administrator-standard"
         ],
         "CRUD": "CRU"
