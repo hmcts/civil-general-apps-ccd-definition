@@ -13,7 +13,7 @@ let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference;
 Feature('General Application end to end journey @smoke-tests');
 
 Scenario('GA for 1v1- respond to application - Request more information', async ({I, api}) => {
-  parentCaseNumber = await api.createClaimWithRepresentedRespondent(
+  parentCaseNumber = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
@@ -43,7 +43,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   await I.respCloseAndReturnToCaseDetails(childCaseId);
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDecisionStatus);
-  await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum());
+  await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Request more information');

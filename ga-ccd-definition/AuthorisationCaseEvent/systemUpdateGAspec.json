@@ -43,6 +43,12 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_PAYMENT_SERVICE_REQ_GASPEC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAKE_PBA_PAYMENT_GASPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
@@ -56,6 +62,12 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "CHANGE_STATE_TO_AWAITING_JUDICIAL_DECISION",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "CHANGE_STATE_TO_ADDITIONAL_RESPONSE_TIME_EXPIRED",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },

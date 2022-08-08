@@ -856,7 +856,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "makeAppVisibleToAll",
+    "CaseFieldID": "makeAppVisibleToRespondents",
     "UserRoles": [
       "caseworker-civil-systemupdate",
       "caseworker-civil-solicitor",
@@ -864,15 +864,7 @@
     ],
     "CRUD": "CRUD"
   },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "respondentSolicitor1EmailAddress",
-    "UserRoles": [
-      "caseworker-civil-systemupdate"
-    ],
-    "CRUD": "CRUD"
-  },
-  {
+   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppSubmittedDateGAspec",
     "UserRoles": [
@@ -920,7 +912,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppDeadlineNotification",
+    "CaseFieldID": "generalAppDateDeadline",
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],
@@ -928,7 +920,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppDeadlineNotificationDate",
+    "CaseFieldID": "generalAppNotificationDeadlineDate",
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],
@@ -945,6 +937,14 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "respondentsResponses",
+    "UserRoles": [
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppSuperClaimType",
     "UserRoles": [
       "caseworker-civil-solicitor"
     ],
@@ -977,6 +977,14 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "respondentsResponses",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppSuperClaimType",
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],
@@ -1147,6 +1155,26 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "ServiceRequest",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }

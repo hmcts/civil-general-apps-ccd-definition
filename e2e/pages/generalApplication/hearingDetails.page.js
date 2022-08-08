@@ -43,6 +43,7 @@ module.exports = {
         withoutAHearing: 'Without a hearing'
       }
     },
+    hearingPreferredLocation: '#generalAppHearingDetails_HearingPreferredLocation',
     reasonForPreferredHearingType: '#generalAppHearingDetails_ReasonForPreferredHearingType',
     hearingDetailsTelephoneNumber: '#generalAppHearingDetails_HearingDetailsTelephoneNumber',
     hearingDetailsEmailID: '#generalAppHearingDetails_HearingDetailsEmailID',
@@ -129,6 +130,7 @@ module.exports = {
 
   async selectHearingPreferences(hearingPreferences) {
     I.waitForElement(this.fields.hearingPreferences.id);
+    await I.seeNumberOfVisibleElements(this.fields.hearingPreferredLocation, 1);
     await within(this.fields.hearingPreferences.id, () => {
       I.click(this.fields.hearingPreferences.options[hearingPreferences]);
     });

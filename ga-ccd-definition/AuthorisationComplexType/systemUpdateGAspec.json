@@ -197,6 +197,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppPBADetails",
+    "ListElementCode": "serviceRequestReference",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppStatementOfTruth",
     "UserRole": "caseworker-civil-systemupdate",
@@ -497,13 +504,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "respondentSolicitor1EmailAddress",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
@@ -595,7 +595,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppDeadlineNotification",
+    "ListElementCode": "generalAppDateDeadline",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
@@ -778,6 +778,13 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "ListElementCode": "deadlineForMoreInfoSubmission",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
+    "ListElementCode": "isWithNotice",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },

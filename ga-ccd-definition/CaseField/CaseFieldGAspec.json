@@ -305,14 +305,7 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "respondentSolicitor1EmailAddress",
-    "Label": " ",
-    "FieldType": "Email",
-    "SecurityClassification": "Public"
-  },
-  {
+   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppSubmittedDateGAspec",
     "Label": "General Application Submitted on",
@@ -368,16 +361,16 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "generalAppDeadlineNotification",
+    "ID": "generalAppDateDeadline",
     "Label": " ",
     "FieldType": "GeneralApplicationGAspec",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "generalAppDeadlineNotificationDate",
+    "ID": "generalAppNotificationDeadlineDate",
     "Label": " ",
-    "FieldType": "TextArea",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
   {
@@ -423,6 +416,13 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "GAResondentResponseGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppSuperClaimType",
+    "Label": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
@@ -492,17 +492,16 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "makeAppVisibleToAll",
+    "ID": "makeAppVisibleToRespondents",
     "Label": " ",
     "ListElementCode": "ConsentAgreementCheckBox",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "MakeAppAvailableCheckGAspec",
+    "FieldType": "GAmakeAppVisibleToRespondents",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialDecisionRequestMoreInfo",
-    "Label": " ",
+    "Label": "Request for information",
     "FieldType": "GAJudicialRequestMoreInfoGAspec",
     "SecurityClassification": "Public"
   },
@@ -668,6 +667,13 @@
     "Label": "Written representation concurrent document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "ServiceRequest",
+    "Label": "Service Request",
+    "FieldType": "WaysToPay",
     "SecurityClassification": "Public"
   }
 ]

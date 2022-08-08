@@ -14,14 +14,20 @@ module.exports = {
     judgeRequestMoreInfoDay: '#judgeRequestMoreInfoByDate-day',
     judgeRequestMoreInfoMonth: '#judgeRequestMoreInfoByDate-month',
     judgeRequestMoreInfoYear: '#judgeRequestMoreInfoByDate-year',
+    requestInfoRadioButton: '#judicialDecisionRequestMoreInfo_requestMoreInfoOption input',
   },
 
-  async requestMoreInfoOrder(info) {
+  async requestMoreInfoOrder(info, withoutNotice) {
     await I.waitForElement(this.fields.requestMoreInfo.id);
     I.seeInCurrentUrl('JUDGE_MAKES_DECISIONGAJudicialRequestMoreInfoScreen');
-    await within(this.fields.requestMoreInfo.id, () => {
-      I.click(this.fields.requestMoreInfo.options[info]);
-    });
+    if (withoutNotice === 'no') {
+      I.seeNumberOfVisibleElements(this.fields.requestInfoRadioButton, 2);
+      await within(this.fields.requestMoreInfo.id, () => {
+        I.click(this.fields.requestMoreInfo.options[info]);
+      });
+    } else if (withoutNotice === 'yes') {
+      I.dontSee('Send application to other party and request hearing details');
+    }
     if ('requestMoreInformation' === info) {
       I.fillField(this.fields.judgeRequestMoreInfoTextArea, 'Judges request more information');
       I.see('When should this application be referred to a Judge again?');

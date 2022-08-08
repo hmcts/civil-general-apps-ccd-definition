@@ -59,6 +59,7 @@ java:
     FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://civil-ga-ccd-camunda-staging-aat.service.core-compute-aat.internal/engine-rest/
     FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://civil-ga-ccd-camunda-staging-aat.service.core-compute-aat.internal/engine-rest/
     TESTING_SUPPORT_ENABLED: true
+    GENAPP_LRD_URL: http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     POLLING_EVENT_EMITTER_ENABLED: false
     LAUNCH_DARKLY_ENV: service-staging
     CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-aat.service.core-compute-aat.internal
@@ -92,6 +93,9 @@ civil-service:
           - robotics-notification-recipient
           - launch-darkly-sdk-key
           - ordnance-survey-api-key
+          - robotics-notification-multipartyrecipient
+          - name: robotics-notification-recipient-spec
+            alias: robotics.notification.specRecipient
     environment:
       IDAM_CLIENT_ID: civil-service
       IDAM_CLIENT_REDIRECT_URI: https://civil-ccd-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback
@@ -109,6 +113,8 @@ civil-service:
       TESTING_SUPPORT_ENABLED: true
       FEES_API_URL: http://fees-register-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
       PAYMENTS_API_URL: http://payment-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+      GENAPP_LRD_URL: http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+      GENAPP_JRD_URL: http://rd-judicial-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
       DOCMOSIS_TORNADO_URL: https://docmosis.aat.platform.hmcts.net
       DOCUMENT_MANAGEMENT_URL: http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
       SPRING_CLOUD_BOOTSTRAP_ENABLED: true
@@ -138,7 +144,7 @@ xui-webapp:
   nodejs:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
-    image: hmctspublic.azurecr.io/xui/webapp:latest
+    image: hmctspublic.azurecr.io/xui/webapp:pr-2191
     ingressHost: civil-ga-ccd-xui-staging.aat.platform.hmcts.net
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health

@@ -36,5 +36,55 @@ module.exports = {
         displayjudgeApproveEditOptionDate: 'No'
       }
     };
+  },
+  listingForHearing: () => {
+    return {
+      judicialDecision : {
+        decision: 'LIST_FOR_A_HEARING'
+      },
+      judicialDecisionMakeOrder: {
+        directionsText: 'sample text',
+        reasonForDecisionText: 'sample text',
+        directionsResponseByDate: '2023-06-05',
+        displayjudgeApproveEditOptionDoc: 'No',
+        displayjudgeApproveEditOptionDate: 'No'
+      },
+      judicialListForHearing: {
+        hearingPreferredLocation: null,
+        judgeSignLanguage: 'sample text',
+        judgeLanguageInterpreter: 'sample text',
+        judgeOtherSupport: 'sample text'
+      }
+    };
+  },
+  applicationsDismiss: () => {
+    return {
+      judicialDecision : {
+        decision: 'MAKE_AN_ORDER'
+      },
+      judicialDecisionMakeOrder: {
+        makeAnOrder: 'DISMISS_THE_APPLICATION',
+        reasonForDecisionText: 'sample text',
+        directionsResponseByDate: '2023-06-05',
+        displayjudgeApproveEditOptionDoc: 'No',
+        displayjudgeApproveEditOptionDate: 'No'
+      }
+    };
+  },
+  judgeMakeDecisionDismissed: () => {
+    return {
+      judicialDecision : {
+        decision: 'MAKE_AN_ORDER'
+      },
+      judicialDecisionMakeOrder: {
+        makeAnOrder: 'DISMISS_THE_APPLICATION',
+        judgeRecitalText:'sample text',
+        orderText:'sample text',
+        dismissalOrderText:'sample text',
+        reasonForDecisionText:'sample text',
+        displayjudgeApproveEditOptionDoc: 'No',
+        displayjudgeApproveEditOptionDate: 'No'
+      }
+    };
   }
 };

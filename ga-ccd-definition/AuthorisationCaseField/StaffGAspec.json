@@ -1,11 +1,5 @@
 [
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "respondentSolicitor1EmailAddress",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
+   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "civilServiceUserRoles",
     "CRUD": "R",
@@ -44,6 +38,12 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "respondentsResponses",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppSuperClaimType",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   },

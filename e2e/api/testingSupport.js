@@ -5,7 +5,7 @@ const {retry} = require('./retryHelper');
 
 let incidentMessage;
 
-const MAX_RETRIES = 300;
+const MAX_RETRIES = 50;
 const RETRY_TIMEOUT_MS = 1000;
 
 module.exports = {
@@ -70,6 +70,7 @@ module.exports = {
    * Waits for General Application Camunda tasks to finish
    *
    * @param caseId - GA Case Reference
+   * @param ccdState
    */
   waitForGACamundaEventsFinishedBusinessProcess: async (caseId, ccdState) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
@@ -98,7 +99,7 @@ module.exports = {
       throw new Error(`Business process failed for case: ${caseId}, incident message: ${incidentMessage}`);
   },
 
-  assignCaseToDefendant: async (caseId, caseRole, user = config.defendantSolicitorUser) => {
+  assignCaseToDefendant: async (caseId, caseRole, user) => {
     const authToken = await idamHelper.accessToken(user);
 
     await retry(() => {
