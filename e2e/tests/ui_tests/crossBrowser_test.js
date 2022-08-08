@@ -43,7 +43,7 @@ Scenario('End to End Judges Journey', async ({I, api}) => {
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDecisionStatus);
   // await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum());
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Request more information');
   await I.verifyApplicationDocument(childCaseNum(), 'Request for information');

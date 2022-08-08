@@ -19,7 +19,7 @@ module.exports = {
 
   async requestMoreInfoOrder(info, withoutNotice) {
     await I.waitForElement(this.fields.requestMoreInfo.id);
-    I.seeInCurrentUrl('JUDGE_MAKES_DECISIONGAJudicialRequestMoreInfoScreen');
+    I.seeInCurrentUrl('MAKE_DECISIONGAJudicialRequestMoreInfoScreen');
     if (withoutNotice === 'no') {
       I.seeNumberOfVisibleElements(this.fields.requestInfoRadioButton, 2);
       await within(this.fields.requestMoreInfo.id, () => {

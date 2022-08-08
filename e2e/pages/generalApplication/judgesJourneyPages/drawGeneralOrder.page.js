@@ -13,7 +13,7 @@ module.exports = {
 
   async verifyHearingDetailsGeneralOrderScreen(hearingPreferences, timeEstimate) {
     await I.waitForElement(this.fields.hearingDetailsJudgeRecitalTextArea);
-    I.seeInCurrentUrl('/JUDGE_MAKES_DECISIONGAJudicialHearingDetailsGeneralOrderScreen');
+    I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialHearingDetailsGeneralOrderScreen');
     I.see('Draw a General Order');
     I.see('Judge’s recital');
     await verifyHearingDetailsJudgeRecitalText(await I.grabValueFrom(this.fields.hearingDetailsJudgeRecitalTextArea));
@@ -27,7 +27,7 @@ module.exports = {
 
   async verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType) {
     await I.waitForElement(this.fields.writtenRepresentationsJudgeRecitalTextArea);
-    I.seeInCurrentUrl('/JUDGE_MAKES_DECISIONGAJudicialWrittenRepresentationsDrawGeneralOrder');
+    I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialWrittenRepresentationsDrawGeneralOrder');
     I.see('Draw a General Order');
     I.see('Judge’s recital');
     await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.writtenRepresentationsJudgeRecitalTextArea));
