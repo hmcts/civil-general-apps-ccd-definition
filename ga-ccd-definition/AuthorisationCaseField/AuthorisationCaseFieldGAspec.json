@@ -1179,7 +1179,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicationClosedDate",
     "AccessControl": [
       {

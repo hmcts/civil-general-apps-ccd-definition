@@ -13,6 +13,12 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "APPLICATION_CLOSED_UPDATE_PARENT_CLAIM",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
@@ -68,6 +74,12 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAIN_CASE_CLOSED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "VERIFY_AND_CLOSE_APPLICATION",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },

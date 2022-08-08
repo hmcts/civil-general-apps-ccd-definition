@@ -677,7 +677,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "applicationClosedDate",
     "Label": "Application Closed date",
     "FieldType": "DateTime",

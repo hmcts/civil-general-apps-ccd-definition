@@ -102,7 +102,7 @@
     "UserRole": "caseworker-civil-staff"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicationClosedDate",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
