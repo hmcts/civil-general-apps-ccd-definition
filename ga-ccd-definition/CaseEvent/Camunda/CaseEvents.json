@@ -16,7 +16,7 @@
     "ID": "PBA_PAYMENT_FAILED",
     "Name": "Payment failed",
     "Description": "Payment failed",
-    "PreConditionState(s)": "PENDING_CASE_ISSUED",
+    "PreConditionState(s)": "PENDING_APPLICATION_ISSUED",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "ShowSummary": "N",
