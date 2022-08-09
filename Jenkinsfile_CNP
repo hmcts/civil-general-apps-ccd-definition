@@ -52,8 +52,9 @@ withPipeline(type, product, component) {
     disableLegacyDeployment()
     enableAksStagingDeployment()
 
-    onPR {
-        loadVaultSecrets(secrets);
+  onPR {
+    loadVaultSecrets(secrets);
+    enableCleanupOfHelmReleaseOnSuccess();
     }
     onMaster {
         loadVaultSecrets(secrets)
