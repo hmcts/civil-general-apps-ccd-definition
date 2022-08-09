@@ -7,9 +7,9 @@ const waitForTimeout = parseInt(process.env.WAIT_FOR_TIMEOUT_MS) || 45000;
 const smartWait = parseInt(process.env.SMART_WAIT) || 30000;
 const browser = process.env.SAUCELABS_BROWSER || 'chrome';
 const defaultSauceOptions = {
-  username: process.env.SAUCE_USERNAME,
-  accessKey: process.env.SAUCE_ACCESS_KEY,
-  tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
+  username: 'madhan0809',
+  accessKey: 'b9065979-87f7-40ad-b12f-ea3d23f32011',
+  tunnelIdentifier: '615943a6b4844088950ed78aec7fa746',
   acceptSslCerts: true,
   windowSize: '1600x900',
   tags: ['Civil'],
@@ -39,7 +39,7 @@ function getBrowserConfig(browserGroup) {
 }
 
 const setupConfig = {
-  tests: './e2e/tests/*_test.js',
+  tests: './e2e/tests/**/*_test.js',
   output: `${process.cwd()}/${testConfig.TestOutputDir}`,
   helpers: {
     WebDriver: {

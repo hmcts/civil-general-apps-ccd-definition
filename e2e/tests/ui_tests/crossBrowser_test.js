@@ -17,7 +17,7 @@ Scenario('End to End Judges Journey', async ({I, api}) => {
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   console.log('Case created for general application: ' + parentCaseNumber);
-  await I.login(config.applicantSolicitorUser);
+  /*await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(parentCaseNumber);
   caseId = await I.grabCaseNumber();
   await I.createGeneralApplication(
@@ -25,8 +25,8 @@ Scenario('End to End Judges Journey', async ({I, api}) => {
     parentCaseNumber,
     'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter');
-  console.log('General Application created: ' + parentCaseNumber);
-  gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
+  console.log('General Application created: ' + parentCaseNumber);*/
+  /*gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 5), 1);
@@ -51,7 +51,7 @@ Scenario('End to End Judges Journey', async ({I, api}) => {
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(additionalInfoStatus);
   await I.respondToJudgeAdditionalInfo(childCaseNum(), childCaseId);
-  console.log('Responded to Judge Additional Information on case: ' + childCaseNum());
+  console.log('Responded to Judge Additional Information on case: ' + childCaseNum());*/
 }).retry(1);
 
 AfterSuite(async ({api}) => {

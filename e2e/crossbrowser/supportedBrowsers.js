@@ -1,4 +1,4 @@
-const LATEST_MAC = 'macOS 10.15';
+const LATEST_MAC = 'macOS 12';
 const LATEST_WINDOWS = 'Windows 10';
 
 const supportedBrowsers = {
@@ -16,7 +16,7 @@ const supportedBrowsers = {
 
   // passing:  safari, chrome_win_latest, chrome_mac_latest, firefox_win
   //failing: ie11-win, firefox_mac
-  safari: {
+  /*safari: {
     safari_mac_latest: {
       browserName: 'safari',
       platformName: 'macOS 11.00',
@@ -27,16 +27,16 @@ const supportedBrowsers = {
         screenResolution: '1376x1032',
       },
     },
-  },
+  },*/
   chrome: {
-    chrome_win_latest: {
+    /*chrome_win_latest: {
       browserName: 'chrome',
       platformName: LATEST_WINDOWS,
       browserVersion: 'latest',
       'sauce:options': {
         name: 'Civil: WIN_CHROME_LATEST',
       },
-    },
+    },*/
     chrome_mac_latest: {
       browserName: 'chrome',
       platformName: LATEST_MAC,
@@ -46,7 +46,7 @@ const supportedBrowsers = {
       },
     },
   },
-  firefox: {
+  /*firefox: {
     firefox_win_latest: {
       browserName: 'firefox',
       platformName: LATEST_WINDOWS,
@@ -55,7 +55,7 @@ const supportedBrowsers = {
         name: 'Civil: WIN_FIREFOX_LATEST',
       },
     },
-  },
+  },*/
   // firefox_mac_latest: {
   //   browserName: 'firefox',
   //   platformName: LATEST_MAC,
