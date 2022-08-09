@@ -7,7 +7,7 @@ import uk.gov.hmcts.contino.AppPipelineDsl
 def type = "java"
 def product = "civil"
 def component = "general-apps-ccd-definition"
-def camundaBranch = "master"
+def camundaBranch = "CIV-3408-WaysToPays-AdditionalPayment"
 AppPipelineConfig pipelineConf
 
 static Map<String, Object> secret(String secretName, String envVariable) {
