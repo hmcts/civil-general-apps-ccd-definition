@@ -47,16 +47,16 @@ java:
         - launch-darkly-sdk-key
         - robotics-notification-multipartyrecipient
   environment:
-    CORE_CASE_DATA_API_URL: http://ccd-data-store-api-${SERVICE_FQDN}
+    CORE_CASE_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
     OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
     CMC_DB_HOST: ${SERVICE_NAME}-postgresql
     CMC_DB_USERNAME: ${POSTGRES_USER}
     CMC_DB_PASSWORD: ${POSTGRES_PASSWORD}
     CMC_DB_CONNECTION_OPTIONS: '?sslmode=allow'
     REFERENCE_DATABASE_MIGRATION: false
-    FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
-    FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
-    FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
     LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
     GENAPP_LRD_URL: http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     TESTING_SUPPORT_ENABLED: true
@@ -127,9 +127,9 @@ civil-service:
       CMC_DB_USERNAME: ${POSTGRES_USER}
       CMC_DB_PASSWORD: ${POSTGRES_PASSWORD}
       REFERENCE_DATABASE_MIGRATION: true
-      FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
-      FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
-      FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
+      FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
+      FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
+      FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
       POLLING_EVENT_EMITTER_ENABLED: false
       STITCHING_API_ENABLED: false
 
@@ -212,7 +212,7 @@ ccd:
         IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET: ${IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET}
         IDAM_DATA_STORE_SYSTEM_USER_USERNAME: ${IDAM_DATA_STORE_SYSTEM_USER_USERNAME}
         IDAM_DATA_STORE_SYSTEM_USER_PASSWORD: ${IDAM_DATA_STORE_SYSTEM_USER_PASSWORD}
-        ROLE_ASSIGNMENT_URL: http://role-am-${SERVICE_FQDN}
+        ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-ser
       keyVaults: []
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
   am-role-assignment-service:
