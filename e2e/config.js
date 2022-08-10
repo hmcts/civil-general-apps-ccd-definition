@@ -16,7 +16,7 @@ module.exports = {
   },
   s2s: {
     microservice: 'civil_service',
-    secret: process.env.S2S_SECRET || 'RD53IBEKQTO4WMQY'
+    secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
   applicantSolicitorUser: {
     password: defaultPassword,
