@@ -18,19 +18,21 @@ module.exports = {
   goButton: 'Go',
 
   start: function (event) {
-    if (event === 'Make decision') {
-      I.waitForClickable('.event-trigger .button', 3);
-      I.click(this.goButton);
-    } else {
-      I.selectOption(this.fields.eventDropdown, event);
-      I.click(this.goButton);
+    switch (event) {
+      case 'Make decision':
+      case 'Make an application':
+        I.selectOption(this.fields.eventDropdown, event);
+        I.click(this.goButton);
+        break;
+      default:
+        I.waitForClickable('.event-trigger .button', 3);
+        I.click(this.goButton);
     }
     I.waitForElement(EVENT_TRIGGER_LOCATOR);
   },
 
   async startEvent(event, caseId) {
-    // await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
+    await I.retryUntilExists(async () => {
       await I.navigateToCaseDetails(caseId);
       this.start(event);
     }, locate('h1.govuk-heading-l'));
