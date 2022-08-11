@@ -148,5 +148,21 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "respondentsResponses",
     "TabFieldDisplayOrder": 16
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "referToJudge",
+    "TabFieldDisplayOrder": 17
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "referToLegalAdvisor",
+    "TabFieldDisplayOrder": 18
   }
 ]
