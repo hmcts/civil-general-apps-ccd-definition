@@ -13,6 +13,7 @@
     "test:functional": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep '@e2e-tests|@multiparty-e2e-tests' --reporter mocha-multi --verbose",
     "test:crossbrowser-e2e": "MOCHAWESOME_REPORTFILENAME=crossbrowser codeceptjs run-multiple --grep @cross-browser-tests ${BROWSER_GROUP:-'--all'} -c saucelabs.conf.js --reporter mocha-multi",
     "test:crossbrowser": "./e2e/run-crossbrowser-tests.sh",
+    "test:fullfunctional": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep '@e2e-tests|@multiparty-e2e-tests' --reporter mocha-multi --verbose",
     "prepare": "husky install"
   },
   "license": "MIT",

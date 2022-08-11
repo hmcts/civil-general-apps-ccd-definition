@@ -117,6 +117,9 @@ const setupConfig = {
     edge: {
       browsers: getBrowserConfig('edge'),
     },
+    firefox: {
+      browsers: getBrowserConfig('firefox'),
+    },
   },
   name: 'Civil FrontEnd Cross-Browser Tests',
 };
