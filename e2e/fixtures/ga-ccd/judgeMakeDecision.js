@@ -37,6 +37,20 @@ module.exports = {
       }
     };
   },
+  judgeApprovesStrikeOutAppl: () => {
+    return {
+      judicialDecision : {
+        decision: 'MAKE_AN_ORDER'
+      },
+      judicialDecisionMakeOrder: {
+        makeAnOrder: 'APPROVE_OR_EDIT',
+        orderText: 'sample text',
+        judgeApproveEditOptionDoc: 'DEFENCE_FORM',
+        judgeApproveEditOptionDate: '2023-06-05',
+        reasonForDecisionText: 'sample text'
+      }
+    };
+  },
   listingForHearing: () => {
     return {
       judicialDecision : {
