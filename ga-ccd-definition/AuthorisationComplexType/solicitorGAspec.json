@@ -516,6 +516,27 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
+    "ListElementCode": "caseManagementLocation",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "isCcmccLocation",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "caseManagementCategory",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
     "ListElementCode": "parentClaimantIsApplicant",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
@@ -770,6 +791,34 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "writtenRepresentationsDrawGeneralOrder",
     "ListElementCode": "directionInRelationToHearingText",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "referToJudge",
+    "ListElementCode": "judgeReferEventDescription",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "referToJudge",
+    "ListElementCode": "judgeReferAdditionalInfo",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "referToLegalAdvisor",
+    "ListElementCode": "legalAdvisorEventDescription",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "referToLegalAdvisor",
+    "ListElementCode": "legalAdvisorAdditionalInfo",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   }

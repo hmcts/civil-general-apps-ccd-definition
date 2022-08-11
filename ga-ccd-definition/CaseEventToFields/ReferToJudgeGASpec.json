@@ -1,0 +1,13 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "REFER_TO_JUDGE",
+    "CaseFieldID": "referToJudge",
+    "PageID": "ReferToJudge",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y"
+  }
+]

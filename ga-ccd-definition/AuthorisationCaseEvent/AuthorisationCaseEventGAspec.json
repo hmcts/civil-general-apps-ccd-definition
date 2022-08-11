@@ -403,7 +403,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "basic-access"
+          "basic-access",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       }
@@ -415,7 +416,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "basic-access"
+          "basic-access",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       }
