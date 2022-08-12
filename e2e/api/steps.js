@@ -34,7 +34,7 @@ const data = {
   LIST_FOR_A_HEARING: genAppJudgeMakeDecisionData.listingForHearing(),
   APPLICATION_DISMISSED: genAppJudgeMakeDecisionData.applicationsDismiss(),
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
-  CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
+  CREATE_CLAIM: (mpScenario, claimantType) => claimData.createClaim(mpScenario, claimantType),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
@@ -113,13 +113,14 @@ let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
-  createUnspecifiedClaim: async (user, multipartyScenario) => {
+  createUnspecifiedClaim: async (user, multipartyScenario, claimantType) => {
 
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
-    const createClaimData = data.CREATE_CLAIM(mpScenario);
+
+    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
