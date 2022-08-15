@@ -86,6 +86,10 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await I.verifyClaimDocument(parentCaseNumber, childCaseNum(), 'Direction order document');
   await I.respondToJudgesDirections(childCaseNum(), childCaseId);
   console.log('Responded to Judges directions on case: ' + childCaseNum());
+  await I.login(config.defendantSolicitorUser);
+  await I.navigateToTab(parentCaseNumber, 'Applications');
+  await I.see(judgeDirectionsOrderStatus);
+  await I.see(childCaseNumber);
 }).retry(0);
 
 Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api}) => {
@@ -119,8 +123,12 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDismissOrderStatus);
   await I.verifyClaimDocument(parentCaseNumber, childCaseNum(), 'Dismissal order document');
+  await I.login(config.defendantSolicitorUser);
+  await I.navigateToTab(parentCaseNumber, 'Applications');
+  await I.see(judgeDismissOrderStatus);
+  await I.see(childCaseNumber);
 }).retry(0);
 
-// AfterSuite(async ({api}) => {
-//   await api.cleanUp();
-// });
+AfterSuite(async ({api}) => {
+  await api.cleanUp();
+});
