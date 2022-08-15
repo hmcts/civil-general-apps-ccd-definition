@@ -291,6 +291,20 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "APPLICATION_CLOSED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseStateID": "LISTING_FOR_A_HEARING",
     "AccessControl": [
       {
