@@ -4,7 +4,6 @@ const mpScenario = 'ONE_V_ONE';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
 const judgeDirectionsOrderStatus = 'Directions Order Made';
 const judgeApproveOrderStatus = 'Order Made';
-const additionalPaymentStatus = 'Application Additional Payment';
 const judgeDismissOrderStatus = 'Application Dismissed';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
@@ -83,14 +82,14 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await I.verifyApplicationDocument(childCaseNum(), 'Direction order');
   console.log('Judges Directions Order Made on case: ' + childCaseNum());
   await I.navigateToTab(parentCaseNumber, 'Applications');
-  await I.see(additionalPaymentStatus);
-  await I.payAndVerifyAdditionalPayment(childCaseNum());
-  await I.navigateToTab(parentCaseNumber, 'Applications');
-  await I.see(judgeApproveOrderStatus);
+  await I.see(judgeDirectionsOrderStatus);
   await I.verifyClaimDocument(parentCaseNumber, childCaseNum(), 'Direction order document');
-  // Enable back after CIV-3760
-  // await I.respondToJudgesDirections(childCaseNum(), childCaseId);
-  // console.log('Responded to Judges directions on case: ' + childCaseNum());
+  await I.respondToJudgesDirections(childCaseNum(), childCaseId);
+  console.log('Responded to Judges directions on case: ' + childCaseNum());
+  await I.login(config.defendantSolicitorUser);
+  await I.navigateToTab(parentCaseNumber, 'Applications');
+  await I.see(judgeDirectionsOrderStatus);
+  await I.see(childCaseNumber);
 }).retry(0);
 
 Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api}) => {
@@ -124,8 +123,12 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDismissOrderStatus);
   await I.verifyClaimDocument(parentCaseNumber, childCaseNum(), 'Dismissal order document');
+  await I.login(config.defendantSolicitorUser);
+  await I.navigateToTab(parentCaseNumber, 'Applications');
+  await I.see(judgeDismissOrderStatus);
+  await I.see(childCaseNumber);
 }).retry(0);
 
-// AfterSuite(async ({api}) => {
-//   await api.cleanUp();
-// });
+AfterSuite(async ({api}) => {
+  await api.cleanUp();
+});
