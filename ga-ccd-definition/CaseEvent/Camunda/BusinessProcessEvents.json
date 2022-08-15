@@ -14,6 +14,19 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "START_GENERAL_APP_BUSINESS_PROCESS",
+    "Name": "Start GA business process",
+    "Description": "Start General Application business process",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "ASSIGN_GA_ROLES",
     "Name": "Assigning of GA roles",
     "Description": "Assigning Applicant and Respondent roles to the correct Solicitor",
