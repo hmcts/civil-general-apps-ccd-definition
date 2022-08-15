@@ -1,0 +1,13 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "REFER_TO_LEGAL_ADVISOR",
+    "CaseFieldID": "referToLegalAdvisor",
+    "PageID": "ReferToLegalAdvisor",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y"
+  }
+]

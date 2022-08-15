@@ -1,0 +1,20 @@
+[
+  {
+    "ID": "ReferToLegalAdvisor",
+    "CaseEventID": "REFER_TO_LEGAL_ADVISOR",
+    "CaseFieldID": "referToLegalAdvisor",
+    "ListElementCode": "legalAdvisorEventDescription",
+    "EventElementLabel": "  ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "ReferToLegalAdvisor",
+    "CaseEventID": "REFER_TO_LEGAL_ADVISOR",
+    "CaseFieldID": "referToLegalAdvisor",
+    "ListElementCode": "legalAdvisorAdditionalInfo",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  }
+]
