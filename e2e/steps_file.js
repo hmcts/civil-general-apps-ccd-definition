@@ -83,6 +83,7 @@ const uploadScreenPage = require('./pages/generalApplication/judgesJourneyPages/
 const applicationDocumentPage = require('./pages/generalApplication/judgesJourneyPages/applicationDocument.page');
 const judgesSummary = require('./pages/generalApplication/judgesJourneyPages/judgesSummary.page');
 const claimDocumentPage = require('./pages/generalApplication/claimDocument.page');
+const serviceRequestPage = require('./pages/generalApplication/serviceRequest.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -780,6 +781,14 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.navigateToTab(childCaseNumber, 'Application Documents'),
         () => applicationDocumentPage.verifyUploadedDocumentPDF(docType, childCaseNumber),
+      ]);
+    },
+
+    async payAndVerifyAdditionalPayment(childCaseNumber) {
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.navigateToTab(childCaseNumber, 'Service Request'),
+        () => serviceRequestPage.payAdditionalAmount(childCaseNumber),
+        () => serviceRequestPage.verifyAdditionalPayment(childCaseNumber),
       ]);
     },
 

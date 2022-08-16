@@ -38,6 +38,8 @@ module.exports = {
         await I.see('The applicant may upload any written representations by 4pm');
         break;
       case 'Request more information':
+        await I.see('Judge’s recital');
+        await I.see('Request more Info - Judge recital text');
         await I.see('Enter the information required');
         await I.see('Request for information');
         await I.see('When should this application be referred to a Judge again?');
@@ -60,6 +62,12 @@ module.exports = {
         await verifyHearingDetailsJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()));
         await I.see('Judge’s recital');
         await I.see('Directions in relation to hearing');
+        break;
+      case 'Send application to other party':
+        await I.see('Judge’s recital');
+        await I.see('Send Application - Judge recital text');
+        await I.see('Request for information');
+        await I.see('Send application to other party and request hearing details');
         break;
     }
   }
