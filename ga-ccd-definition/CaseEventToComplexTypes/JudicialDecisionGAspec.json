@@ -128,7 +128,7 @@
   },
   {
     "ID": "GAJudicialRequestMoreInfoScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "ListElementCode": "judgeRequestMoreInfoByDate",
     "EventElementLabel": " ",

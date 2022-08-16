@@ -310,7 +310,7 @@ module.exports = {
 
   judgeMakesDecisionApplicationUncloak: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
-    eventName = events.JUDGE_MAKES_DECISION.id;
+    eventName = events.MAKE_DECISION.id;
 
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
@@ -329,7 +329,7 @@ module.exports = {
 
   additionalPaymentSuccess: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
-    eventName = events.JUDGE_MAKES_DECISION.id;
+    eventName = events.MAKE_DECISION.id;
 
     const response = await apiRequest.paymentApiRequestUpdateServiceCallback(
       genAppJudgeMakeDecisionData.serviceUpdateDto(gaCaseId,'Paid'));
@@ -345,7 +345,7 @@ module.exports = {
 
   additionalPaymentFailure: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
-    eventName = events.JUDGE_MAKES_DECISION.id;
+    eventName = events.MAKE_DECISION.id;
 
     const response = await apiRequest.paymentApiRequestUpdateServiceCallback(
       genAppJudgeMakeDecisionData.serviceUpdateDto(gaCaseId,'NotPaid'));
