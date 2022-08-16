@@ -88,6 +88,11 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeApproveOrderStatus);
   await I.verifyClaimDocument(parentCaseNumber, childCaseNum(), 'Direction order document');
+
+  //Due to recent Platops changes the call back url is not working. As this call back is from aat cluster.
+  //We are commenting this part of test temporarily.
+  //await I.see(judgeApproveOrderStatus);
+  //await I.verifyClaimDocument(parentCaseNumber, childCaseNum(), 'Direction order document');
   // Enable back after CIV-3760
   // await I.respondToJudgesDirections(childCaseNum(), childCaseId);
   // console.log('Responded to Judges directions on case: ' + childCaseNum());

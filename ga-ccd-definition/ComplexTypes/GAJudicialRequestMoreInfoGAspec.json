@@ -19,6 +19,13 @@
   },
   {
     "ID": "GAJudicialRequestMoreInfoGAspec",
+    "ListElementCode": "judgeRecitalText",
+    "ElementLabel": "Judge’s recital",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialRequestMoreInfoGAspec",
     "ListElementCode": "judgeRequestMoreInfoByDate",
     "ElementLabel": "When should this application be referred to a Judge again?",
     "FieldType": "Date",
