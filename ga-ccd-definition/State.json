@@ -96,5 +96,12 @@
     "Name": "Proceeds in Heritage",
     "Description": "Proceeds in Heritage",
     "DisplayOrder": 14
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "APPLICATION_ADD_PAYMENT",
+    "Name": "Application Additional Payment",
+    "Description": "Application Additional Payment",
+    "DisplayOrder": 15
   }
 ]
