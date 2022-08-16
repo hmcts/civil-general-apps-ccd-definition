@@ -240,7 +240,7 @@ module.exports = {
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
   },
 
- respondentResponse1v2: async (user, user2, gaCaseId) => {
+  respondentResponse1v2: async (user, user2, gaCaseId) => {
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE');
 
     await apiRequest.setupTokens(user);
@@ -255,19 +255,19 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
 
-   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE');
 
-   await apiRequest.setupTokens(user2);
-   eventName = events.RESPOND_TO_APPLICATION.id;
-   await apiRequest.startGAEvent(eventName, gaCaseId);
+    await apiRequest.setupTokens(user2);
+    eventName = events.RESPOND_TO_APPLICATION.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
 
-   const response2 = await apiRequest.submitGAEvent(eventName, data.RESPOND_TO_APPLICATION, gaCaseId);
-   const responseBody2 = await response2.json();
+    const response2 = await apiRequest.submitGAEvent(eventName, data.RESPOND_TO_APPLICATION, gaCaseId);
+    const responseBody2 = await response2.json();
 
-   assert.equal(response2.status, 201);
-   assert.equal(responseBody2.state, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
-   assert.equal(responseBody2.callback_response_status_code, 200);
-   assert.include(responseBody2.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
+    assert.equal(response2.status, 201);
+    assert.equal(responseBody2.state, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+    assert.equal(responseBody2.callback_response_status_code, 200);
+    assert.include(responseBody2.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
   },
 
   judgeMakesDecisionAdditionalInformation: async (user, gaCaseId) => {
@@ -320,19 +320,11 @@ module.exports = {
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
 
-
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE');
-
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
-    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
-    assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
-
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'APPLICATION_ADD_PAYMENT');
 
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_ADD_PAYMENT');
-
   },
 
   additionalPaymentSuccess: async (user, gaCaseId) => {
