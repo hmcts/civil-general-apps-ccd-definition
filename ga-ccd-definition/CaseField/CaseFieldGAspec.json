@@ -717,6 +717,13 @@
     "Label": "Application Closed date",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "applicationTakenOfflineDate",
+    "Label": "Application Proceeds in Heritage state change date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
   }
 ]
 
