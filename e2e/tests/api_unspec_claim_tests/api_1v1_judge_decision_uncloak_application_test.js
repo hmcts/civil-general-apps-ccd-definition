@@ -2,13 +2,14 @@
 const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 
-let civilCaseReference, gaCaseReference;
+let civilCaseReference, gaCaseReference, claimantType;
 
 Feature('GA 1v1 Judge Make Decision Uncloak application API  @api-tests');
 
 Scenario('Judge makes decision 1V1 - APPLICATION_ADD_PAYMENT ', async ({api}) => {
+  claimantType = 'Company';
 
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
 
@@ -30,8 +31,9 @@ Scenario('Judge makes decision 1V1 - APPLICATION_ADD_PAYMENT ', async ({api}) =>
 });
 
 Scenario('Judge makes decision 1V1 - APPLICATION_ADD_PAYMENT - Payment fails', async ({api}) => {
+  claimantType = 'Company';
 
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
 
