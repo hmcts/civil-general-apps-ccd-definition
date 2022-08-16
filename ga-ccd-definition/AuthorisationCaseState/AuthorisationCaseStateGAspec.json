@@ -330,5 +330,19 @@
         "CRUD": "CRUD"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "APPLICATION_ADD_PAYMENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
   }
 ]
