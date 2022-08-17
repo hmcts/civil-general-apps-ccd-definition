@@ -365,7 +365,7 @@ module.exports = {
         },
       },
       valid: {
-        ...createClaimData('Yes', true, mpScenario, claimantType),
+        ...createClaimData('Yes', true, mpScenario, 'Company'),
       },
       invalid: {
         Upload: {

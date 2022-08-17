@@ -7,7 +7,7 @@ let civilCaseReference, gaCaseReference, claimantType;
 Feature('GA 1v2 Judge list the application for hearing  API tests @api-tests');
 
 Scenario('Judge makes decision 1V1 - LIST FOR HEARING', async ({api}) => {
-  claimantType = 'Company';
+  claimantType = 'SoleTrader';
 
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
