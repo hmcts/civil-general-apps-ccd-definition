@@ -362,7 +362,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "AccessControl": [
       {
         "UserRoles": [

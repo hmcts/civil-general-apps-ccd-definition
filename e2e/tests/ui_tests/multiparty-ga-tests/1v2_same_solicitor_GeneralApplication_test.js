@@ -45,7 +45,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.see(judgeDecisionStatus);
   // We currently do not have JUDGE role in role assignment service. Hence, not log in as judge.
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'sequentialRep', childCaseNum());
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Sequential representations');
   await I.verifyApplicationDocument(childCaseNum(), 'Written representation sequential');
@@ -82,7 +82,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     await I.navigateToCaseDetails(childCaseNum());
     childCaseId = await I.grabCaseNumber();
     await I.judgeRequestMoreInfo('requestMoreInfo', 'sendApplicationToOtherParty', childCaseNum(), 'no');
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
     await I.judgeCloseAndReturnToCaseDetails(childCaseId);
     await I.verifyJudgesSummaryPage('Send application to other party');
     console.log('Judges sent application to other party and requested hearing details on case: ' + childCaseNum());

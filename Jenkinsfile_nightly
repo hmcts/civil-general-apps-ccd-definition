@@ -1,7 +1,7 @@
 #!groovy
 
 properties([
-  pipelineTriggers([cron('H 05 * * *')])
+  pipelineTriggers([cron('H 05 * * *')]),
   parameters([
     string(name: 'ENVIRONMENT', defaultValue: 'demo', description: 'Environment to test'),
     string(name: 'FRONTEND_URL', defaultValue: 'https://manage-case.demo.platform.hmcts.net',
@@ -66,10 +66,10 @@ withNightlyPipeline(type, product, component) {
   enableFullFunctionalTest(200)
 
   after('fullFunctionalTest') {
-    archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
+    archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 
-  enableCrossBrowserTest()
+  //enableCrossBrowserTest()
 
   after('crossBrowserTest') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
