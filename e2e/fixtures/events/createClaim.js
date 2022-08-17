@@ -92,13 +92,13 @@ const invalidPba = listElement('PBA0078095');
 const claimant = (claimantType) => {
 
   switch (claimantType) {
-    case "Individual":
+    case 'Individual':
       return individualWithPartyName;
 
-    case "Organisation":
+    case 'Organisation':
       return organisationWithPartyName;
 
-    case "SoleTrader":
+    case 'SoleTrader':
       return soleTraderWithPartyName;
 
     default:
