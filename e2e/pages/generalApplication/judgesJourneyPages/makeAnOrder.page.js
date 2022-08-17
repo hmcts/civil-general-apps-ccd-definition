@@ -31,7 +31,7 @@ module.exports = {
 
   async selectAnOrder(order, consentCheck) {
     await I.waitForElement(this.fields.makeAnOrder.id);
-    I.seeInCurrentUrl('/JUDGE_MAKES_DECISIONGAJudicialMakeADecisionScreen');
+    I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialMakeADecisionScreen');
     I.see('Judge’s recital');
     await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.judgeRecitalTextArea));
     I.see('Reasons for decision');
