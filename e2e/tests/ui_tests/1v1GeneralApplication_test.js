@@ -79,7 +79,7 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Judges Directions');
-  await I.verifyApplicationDocument(childCaseNum(), 'Direction order');
+  await I.verifyApplicationDocument(childCaseNum(), 'Directions order');
   console.log('Judges Directions Order Made on case: ' + childCaseNum());
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDirectionsOrderStatus);
