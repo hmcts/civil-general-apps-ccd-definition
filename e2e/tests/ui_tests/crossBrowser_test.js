@@ -53,16 +53,6 @@ Scenario('GA Applicant and Judges Journey', async ({I, api}) => {
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(judgeDecisionStatus);
-  // await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum());
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
-  await I.judgeCloseAndReturnToCaseDetails(childCaseId);
-  await I.verifyJudgesSummaryPage('Request more information');
-  await I.verifyApplicationDocument(childCaseNum(), 'Request for information');
-  console.log('Judges requested more information on case: ' + childCaseNum());
-  await I.navigateToTab(parentCaseNumber, 'Applications');
-  await I.see(additionalInfoStatus);
-  await I.respondToJudgeAdditionalInfo(childCaseNum(), childCaseId);
-  console.log('Responded to Judge Additional Information on case: ' + childCaseNum());
 }).retry(1);
 
 
