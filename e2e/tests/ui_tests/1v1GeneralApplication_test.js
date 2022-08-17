@@ -83,7 +83,7 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   console.log('Judges Directions Order Made on case: ' + childCaseNum());
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDirectionsOrderStatus);
-  await I.verifyClaimDocument(parentCaseNumber, childCaseNum(), 'Direction order document');
+  await I.verifyClaimDocument(parentCaseNumber, childCaseNum(), 'Directions order document');
   await I.respondToJudgesDirections(childCaseNum(), childCaseId);
   console.log('Responded to Judges directions on case: ' + childCaseNum());
   await I.login(config.defendantSolicitorUser);
