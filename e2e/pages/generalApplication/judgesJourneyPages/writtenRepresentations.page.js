@@ -23,7 +23,7 @@ module.exports = {
 
   async selectWrittenRepresentations(representationsType) {
     I.waitForElement(this.fields.makeAnOrderForWrittenRepresentations.id);
-    I.seeInCurrentUrl('JUDGE_MAKES_DECISION/JUDGE_MAKES_DECISIONGAJudicialMakeAnOrderForWrittenRepresentations');
+    I.seeInCurrentUrl('MAKE_DECISION/MAKE_DECISIONGAJudicialMakeAnOrderForWrittenRepresentations');
     await within(this.fields.makeAnOrderForWrittenRepresentations.id, () => {
       I.click(this.fields.makeAnOrderForWrittenRepresentations.options[representationsType]);
     });
