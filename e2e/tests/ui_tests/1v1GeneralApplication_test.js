@@ -37,7 +37,7 @@ Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
   await I.navigateToCaseDetails(childCaseNum());
   childCaseId = await I.grabCaseNumber();
   await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'yes', childCaseNum());
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Approve order');
   await I.verifyApplicationDocument(childCaseNum(), 'General order');
@@ -76,7 +76,7 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await I.navigateToCaseDetails(childCaseNum());
   childCaseId = await I.grabCaseNumber();
   await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', childCaseNum());
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Judges Directions');
   await I.verifyApplicationDocument(childCaseNum(), 'Directions order');
@@ -113,7 +113,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
   await I.navigateToCaseDetails(childCaseNum());
   childCaseId = await I.grabCaseNumber();
   await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'no', childCaseNum());
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Dismissal order');
   await I.verifyApplicationDocument(childCaseNum(), 'Dismissal order');

@@ -9,9 +9,9 @@ module.exports = {
     id: 'RESPOND_TO_APPLICATION',
     name: 'Respond to application'
   },
-  JUDGE_MAKES_DECISION: {
+  MAKE_DECISION: {
     description: 'Judge makes decision',
-    id: 'JUDGE_MAKES_DECISION',
+    id: 'MAKE_DECISION',
     name: 'Make decision'
   },
   RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION: {

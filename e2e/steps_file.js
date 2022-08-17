@@ -737,7 +737,7 @@ module.exports = function () {
     },
 
     async judgeMakeDecision(decision, order, consentCheck, caseNumber) {
-      eventName = events.JUDGE_MAKES_DECISION.name;
+      eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
@@ -749,7 +749,7 @@ module.exports = function () {
     },
 
     async judgeRequestMoreInfo(decision, infoType, caseNumber, withoutNotice) {
-      eventName = events.JUDGE_MAKES_DECISION.name;
+      eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
@@ -824,7 +824,7 @@ module.exports = function () {
     },
 
     async judgeListForAHearingDecision(decision, caseNumber) {
-      eventName = events.JUDGE_MAKES_DECISION.name;
+      eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
@@ -840,7 +840,7 @@ module.exports = function () {
     },
 
     async judgeWrittenRepresentationsDecision(decision, representationsType, caseNumber) {
-      eventName = events.JUDGE_MAKES_DECISION.name;
+      eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
