@@ -121,9 +121,18 @@
     "ID": "GAJudicialRequestMoreInfoScreen",
     "CaseEventID": "JUDGE_MAKES_DECISION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
-    "ListElementCode": "judgeRequestMoreInfoByDate",
+    "ListElementCode": "judgeRecitalText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 13,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialRequestMoreInfoScreen",
+    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
+    "ListElementCode": "judgeRequestMoreInfoByDate",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY"
   },
   {

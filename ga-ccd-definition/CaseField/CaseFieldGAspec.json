@@ -300,6 +300,27 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseManagementLocation",
+    "Label": " ",
+    "FieldType": "GACaseLocationGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "isCcmccLocation",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseManagementCategory",
+    "Label": " ",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "parentClaimantIsApplicant",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -632,7 +653,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "directionOrderDocument",
-    "Label": "Direction order document",
+    "Label": "Directions order document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"
@@ -674,6 +695,20 @@
     "ID": "ServiceRequest",
     "Label": "Service Request",
     "FieldType": "WaysToPay",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "referToJudge",
+    "Label": "Refer to Judge",
+    "FieldType": "GAReferToJudgeGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "referToLegalAdvisor",
+    "Label": "Refer to Legal Advisor",
+    "FieldType": "GAReferToLegalAdvisorGAspec",
     "SecurityClassification": "Public"
   }
 ]
