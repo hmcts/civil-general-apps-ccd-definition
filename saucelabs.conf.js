@@ -12,7 +12,7 @@ const defaultSauceOptions = {
   tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
   acceptSslCerts: true,
   windowSize: '1600x900',
-  tags: ['Civil'],
+  tags: ['Civil - GA'],
 };
 
 function merge(intoObject, fromObject) {
@@ -39,7 +39,7 @@ function getBrowserConfig(browserGroup) {
 }
 
 const setupConfig = {
-  tests: './e2e/tests/*_test.js',
+  tests: './e2e/tests/**/*_test.js',
   output: `${process.cwd()}/${testConfig.TestOutputDir}`,
   helpers: {
     WebDriver: {
@@ -108,17 +108,17 @@ const setupConfig = {
     },
   },
   multiple: {
-    microsoft: {
-      browsers: getBrowserConfig('microsoft'),
-    },
     chrome: {
       browsers: getBrowserConfig('chrome'),
     },
-    firefox: {
-      browsers: getBrowserConfig('firefox'),
-    },
     safari: {
       browsers: getBrowserConfig('safari'),
+    },
+    edge: {
+      browsers: getBrowserConfig('edge'),
+    },
+    firefox: {
+      browsers: getBrowserConfig('firefox'),
     },
   },
   name: 'Civil FrontEnd Cross-Browser Tests',
