@@ -12,7 +12,7 @@ module.exports = {
     await I.seeInCurrentUrl('documents');
     switch (documentType) {
       case 'General order document':
-      case 'Direction order document':
+      case 'Directions order document':
         await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 3);
         I.see('Upload documents');
         I.seeNumberOfVisibleElements(this.fields.links, 3);

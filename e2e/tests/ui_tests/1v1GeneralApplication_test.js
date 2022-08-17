@@ -80,16 +80,13 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Judges Directions');
-  await I.verifyApplicationDocument(childCaseNum(), 'Direction order');
+  await I.verifyApplicationDocument(childCaseNum(), 'Directions order');
   console.log('Judges Directions Order Made on case: ' + childCaseNum());
-  await I.navigateToTab(parentCaseNumber, 'Applications');
-  await I.see(additionalPaymentStatus);
-  await I.payAndVerifyAdditionalPayment(childCaseNum());
   await I.navigateToTab(parentCaseNumber, 'Applications');
   //Due to recent Platops changes the call back url is not working. As this call back is from aat cluster.
   //We are commenting this part of test temporarily.
   //await I.see(judgeApproveOrderStatus);
-  //await I.verifyClaimDocument(parentCaseNumber, childCaseNum(), 'Direction order document');
+  //await I.verifyClaimDocument(parentCaseNumber, childCaseNum(), 'Directions order document');
   // Enable back after CIV-3760
   // await I.respondToJudgesDirections(childCaseNum(), childCaseId);
   // console.log('Responded to Judges directions on case: ' + childCaseNum());
