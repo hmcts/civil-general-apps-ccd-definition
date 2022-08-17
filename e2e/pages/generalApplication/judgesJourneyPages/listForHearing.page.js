@@ -37,7 +37,7 @@ module.exports = {
 
 
   async selectJudicialHearingPreferences(hearingPreferences) {
-    I.seeInCurrentUrl('JUDGE_MAKES_DECISION/JUDGE_MAKES_DECISIONGAJudicialHearingDetailsScreen');
+    I.seeInCurrentUrl('MAKE_DECISION/MAKE_DECISIONGAJudicialHearingDetailsScreen');
     I.waitForElement(this.fields.hearingPreferences.id);
     await within(this.fields.hearingPreferences.id, () => {
       I.click(this.fields.hearingPreferences.options[hearingPreferences]);
