@@ -330,7 +330,7 @@ module.exports = {
 
   judgeRequestMoreInformationUncloak: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
-    eventName = events.JUDGE_MAKES_DECISION.id;
+    eventName = events.MAKE_DECISION.id;
 
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
@@ -347,7 +347,7 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_ADD_PAYMENT');
   },
 
-  additionalPaymentSuccess: async (user, gaCaseId) => {
+  additionalPaymentSuccess: async (user, gaCaseId, finalState) => {
     await apiRequest.setupTokens(user);
     eventName = events.MAKE_DECISION.id;
 
@@ -356,11 +356,11 @@ module.exports = {
 
     assert.equal(response.status, 200);
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, finalState);
 
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
-    assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
+    assert.equal(updatedGABusinessProcessData.ccdState, finalState);
   },
 
   additionalPaymentFailure: async (user, gaCaseId) => {
