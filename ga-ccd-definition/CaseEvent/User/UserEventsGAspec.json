@@ -37,7 +37,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "JUDGE_MAKES_DECISION",
+    "ID": "MAKE_DECISION",
     "Name": "Make decision",
     "Description": "Judge makes decision",
     "DisplayOrder": 3,

@@ -9,7 +9,7 @@ module.exports = {
   },
 
   async verifyJudgesCheckAnswerForm(caseNumber) {
-    I.seeInCurrentUrl('JUDGE_MAKES_DECISION/submit');
+    I.seeInCurrentUrl('MAKE_DECISION/submit');
     I.see('Check your answers');
     I.seeInCurrentUrl(caseNumber);
     I.seeNumberOfVisibleElements('.button', 2);
