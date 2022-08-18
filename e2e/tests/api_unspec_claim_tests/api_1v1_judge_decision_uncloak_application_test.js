@@ -48,11 +48,8 @@ Scenario('Judge makes decision 1V1 - APPLICATION_ADD_PAYMENT - Payment fails', a
   console.log('*** End Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
     + gaCaseReference + ' ***');
 
-  console.log('*** Start Callback for Additional Payment Failure: ' + gaCaseReference + ' ***');
-  await api.additionalPaymentFailure(config.applicantSolicitorUser, gaCaseReference);
-  console.log('*** End Callback for Additional Payment Failure on GA Case Reference: ' + gaCaseReference + ' ***');
-
 });
+
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
