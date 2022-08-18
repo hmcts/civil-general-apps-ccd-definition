@@ -22,7 +22,7 @@ postgresql:
     enabled: false
 
 java:
-  image: 'hmctspublic.azurecr.io/civil/general-applications:482'
+  image: 'hmctspublic.azurecr.io/civil/general-applications:pr-482'
   imagePullPolicy: Always
   ingressHost: ${SERVICE_FQDN}
   keyVaults:
