@@ -5,17 +5,16 @@ const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision'
 const judgeDirectionsOrderStatus = 'Directions Order Made';
 const judgeApproveOrderStatus = 'Order Made';
 const judgeDismissOrderStatus = 'Application Dismissed';
+const claimantType = 'Company';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
-let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference, claimantType;
+let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference;
 
 Feature('GA CCD 1v1 - General Application Journey @e2e-tests');
 
 Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
-  claimantType = 'Company';
-
   parentCaseNumber = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
@@ -56,8 +55,6 @@ Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
 }).retry(0);
 
 Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
-  claimantType = 'Company';
-
   parentCaseNumber = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
@@ -97,7 +94,7 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
 }).retry(0);
 
 Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api}) => {
-  parentCaseNumber = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  parentCaseNumber = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   console.log('Case created for general application: ' + parentCaseNumber);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(parentCaseNumber);

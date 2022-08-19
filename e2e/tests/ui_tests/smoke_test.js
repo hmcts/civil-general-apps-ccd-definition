@@ -8,15 +8,13 @@ const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
-let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference, claimantType;
+let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference;
 
 Feature('General Application end to end journey @smoke-tests');
 
 Scenario('GA for 1v1- respond to application - Request more information', async ({I, api}) => {
-  claimantType = 'Company';
-
   parentCaseNumber = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, claimantType);
+    config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
   console.log('Case created for general application: ' + parentCaseNumber);

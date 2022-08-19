@@ -3,16 +3,15 @@ const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 const respondentStatus = 'Awaiting Respondent Response';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
+const claimantType = 'Company';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
-let parentCaseNumber, caseId, childCaseNumber, gaCaseReference, claimantType;
+let parentCaseNumber, caseId, childCaseNumber, gaCaseReference;
 Feature('End-to-end General application journey @cross-browser-tests');
 
 Scenario('GA Applicant and Respondent Journey', async ({I, api}) => {
-  claimantType = 'Company';
-
   parentCaseNumber = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
@@ -37,7 +36,7 @@ Scenario('GA Applicant and Respondent Journey', async ({I, api}) => {
 }).retry(1);
 
 Scenario('GA Applicant and Judges Journey', async ({I, api}) => {
-  parentCaseNumber = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  parentCaseNumber = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
   console.log('Case created for general application: ' + parentCaseNumber);
