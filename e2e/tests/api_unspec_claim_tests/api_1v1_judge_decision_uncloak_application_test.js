@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 Uncloak application API  @api-tests');
+Feature('GA 1v1 Uncloak application API  @api-tests-azam');
 
 Scenario('Judge makes decision 1V1 - ORDER_MADE - Uncloak and Application Approved', async ({api}) => {
 
@@ -43,7 +43,7 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
     + gaCaseReference + ' ***');
 
   console.log('*** Start Callback for Additional Payment: ' + gaCaseReference + ' ***');
-  await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'AWAITING_ADDITIONAL_INFORMATION');
+  await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
   console.log('*** End Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReference + ' ***');
 
 });
