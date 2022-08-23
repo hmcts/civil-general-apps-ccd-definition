@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 Uncloak application API  @api-tests-azam');
+Feature('GA 1v1 Uncloak application API  @api-tests');
 
 Scenario('Judge makes decision 1V1 - ORDER_MADE - Uncloak and Application Approved', async ({api}) => {
 
