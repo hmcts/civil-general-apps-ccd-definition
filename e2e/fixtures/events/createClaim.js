@@ -1,4 +1,4 @@
-const {listElement, buildAddress } = require('../../api/dataHelper');
+const {listElement, buildAddress, date } = require('../../api/dataHelper');
 const uuid = require('uuid');
 const config = require('../../config.js');
 
@@ -28,18 +28,44 @@ const respondent2WithPartyName = {
   partyName: 'Dr Foo Bar',
   partyTypeDisplayValue: 'Individual',
 };
-const applicant1 = {
+const company = {
   type: 'COMPANY',
   companyName: 'Test Inc',
   primaryAddress: buildAddress('applicant')
 };
-const applicant1WithPartyName = {
-  ...applicant1,
+const companyWithPartyName = {
+  ...company,
   partyName: 'Test Inc',
   partyTypeDisplayValue: 'Company',
 };
 
-const applicant2 = {
+const organisation = {
+  type: 'ORGANISATION',
+  organisationName: 'Test Inc',
+  primaryAddress: buildAddress('applicant')
+};
+const organisationWithPartyName = {
+  ...organisation,
+  partyName: 'Test Inc',
+  partyTypeDisplayValue: 'Organisation',
+};
+
+const soleTrader = {
+  type: 'SOLE_TRADER',
+  soleTraderFirstName: 'Jane',
+  soleTraderLastName: 'Doe',
+  soleTraderTradingAs: 'Dr',
+  soleTraderDateOfBirth: date(-1),
+  primaryAddress: buildAddress('applicant')
+};
+
+const soleTraderWithPartyName = {
+  ...soleTrader,
+  partyName: 'Dr Jane Doe',
+  partyTypeDisplayValue: 'Sole trader',
+};
+
+const individual = {
   type: 'INDIVIDUAL',
   individualFirstName: 'Jane',
   individualLastName: 'Doe',
@@ -47,8 +73,8 @@ const applicant2 = {
   primaryAddress: buildAddress('second applicant')
 };
 
-const applicant2WithPartyName = {
-  ...applicant2,
+const individualWithPartyName = {
+  ...individual,
   partyName: 'Dr Jane Doe',
   partyTypeDisplayValue: 'Individual',
 };
@@ -63,7 +89,24 @@ let selectedPba = listElement('PBA0088192');
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
 
-const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
+const claimant = (claimantType) => {
+
+  switch (claimantType) {
+    case 'Individual':
+      return individualWithPartyName;
+
+    case 'Organisation':
+      return organisationWithPartyName;
+
+    case 'SoleTrader':
+      return soleTraderWithPartyName;
+
+    default:
+      return companyWithPartyName;
+  }
+};
+
+const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType) => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
@@ -78,7 +121,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       }
     },
     Claimant: {
-      applicant1: applicant1WithPartyName
+      applicant1: claimant(claimantType),
     },
     ClaimantLitigationFriendRequired: {
       applicant1LitigationFriendRequired: 'Yes',
@@ -113,7 +156,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     },
     ...(mpScenario === 'TWO_V_ONE') ? {
       SecondClaimant: {
-        applicant2: applicant2WithPartyName
+        applicant2: claimant(claimantType),
       },
       SecondClaimantLitigationFriendRequired: {
         applicant2LitigationFriendRequired: 'No'
@@ -284,7 +327,7 @@ const hasRespondent2 = (mpScenario) => {
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE') => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimantType) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -303,14 +346,14 @@ module.exports = {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
           },
-          applicant1: applicant1WithPartyName,
+          applicant1: claimant(claimantType),
           respondent1: respondent1WithPartyName,
           ...hasRespondent2(mpScenario) ? {
             respondent2: respondent2WithPartyName
           } : {}
         },
         ClaimantLitigationFriend: {
-          applicant1: applicant1WithPartyName,
+          applicant1: claimant(claimantType),
           applicant1LitigationFriend: applicant1LitigationFriend,
           applicantSolicitor1CheckEmail: {
             email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
@@ -322,7 +365,7 @@ module.exports = {
         },
       },
       valid: {
-        ...createClaimData('Yes', true, mpScenario),
+        ...createClaimData('Yes', true, mpScenario, 'Company'),
       },
       invalid: {
         Upload: {
