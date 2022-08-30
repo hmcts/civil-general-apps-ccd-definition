@@ -1,7 +1,7 @@
 [
   {
     "ID": "GAUrgencyRecordPage",
-    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "generalAppUrgencyRequirement",
     "ListElementCode": "generalAppUrgency",
     "EventElementLabel": " ",
@@ -11,7 +11,7 @@
   },
   {
     "ID": "GATypePage",
-    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "generalAppType",
     "ListElementCode": "types",
     "EventElementLabel": "  ",
@@ -22,7 +22,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "isCcmccLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
