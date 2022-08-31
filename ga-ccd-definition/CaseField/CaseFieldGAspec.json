@@ -710,6 +710,20 @@
     "Label": "Refer to Legal Advisor",
     "FieldType": "GAReferToLegalAdvisorGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "applicationClosedDate",
+    "Label": "Application Closed date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "applicationTakenOfflineDate",
+    "Label": "Application Proceeds in Heritage state change date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
   }
 ]
 
