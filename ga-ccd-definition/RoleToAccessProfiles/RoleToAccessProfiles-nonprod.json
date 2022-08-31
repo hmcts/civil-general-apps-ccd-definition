@@ -1,5 +1,203 @@
 [
   {
+    "RoleName" : "idam:caseworker-civil-solicitor",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "caseworker-civil-solicitor",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "idam:caseworker-civil-admin",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "caseworker-civil-admin",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "idam:caseworker-approver",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "caseworker-approver",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "idam:caseworker-civil",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "caseworker-civil",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "idam:caseworker-civil-systemupdate",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "caseworker-civil-systemupdate",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "[APPLICANTSOLICITORTWO]",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "[APPLICANTSOLICITORTWO]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "[APPLICANTSOLICITORONE]",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "[APPLICANTSOLICITORONE]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "[RESPONDENTSOLICITORONE]",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "[RESPONDENTSOLICITORONE]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "[RESPONDENTSOLICITORTWO]",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "[RESPONDENTSOLICITORTWO]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "[APPLICANTSOLICITORONESPEC]",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "[APPLICANTSOLICITORONESPEC]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "[APPLICANTSOLICITORTWOSPEC]",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "[APPLICANTSOLICITORTWOSPEC]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "[RESPONDENTSOLICITORONESPEC]",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "[RESPONDENTSOLICITORONESPEC]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "[RESPONDENTSOLICITORTWOSPEC]",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "[RESPONDENTSOLICITORTWOSPEC]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "[CREATOR]",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "[CREATOR]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "judge",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "judge-profile",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "task-supervisor",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "GS_profile",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "tribunal-caseworker",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "GS_profile,legal-adviser",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "hearing-centre-admin",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "ctsc-team-leader",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "GS_profile",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "nbc-team-leader",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "GS_profile",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "national-business-centre",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "GS_profile",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "hearing-centre-team-leader",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "GS_profile",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName" : "specific-access-judiciary",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",

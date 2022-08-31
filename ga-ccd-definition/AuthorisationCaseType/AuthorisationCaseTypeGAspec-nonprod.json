@@ -1,0 +1,19 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "UserRoles": [
+      "judge-profile",
+      "legal-adviser",
+      "admin-access",
+      "full-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "UserRoles": [
+      "GS_profile"
+    ],
+    "CRUD": "R"
+  }
+]
