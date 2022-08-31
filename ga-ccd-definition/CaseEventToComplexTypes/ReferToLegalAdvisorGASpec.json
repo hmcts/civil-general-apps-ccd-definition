@@ -16,5 +16,34 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAUrgencyRecordPage",
+    "CaseEventID": "REFER_TO_LEGAL_ADVISOR",
+    "CaseFieldID": "generalAppUrgencyRequirement",
+    "ListElementCode": "generalAppUrgency",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+  },
+  {
+    "ID": "GATypePage",
+    "CaseEventID": "REFER_TO_LEGAL_ADVISOR",
+    "CaseFieldID": "generalAppType",
+    "ListElementCode": "types",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "REFER_TO_LEGAL_ADVISOR",
+    "CaseFieldID": "judicialDecision",
+    "PageID": "GAJudicialDecision",
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
   }
 ]
