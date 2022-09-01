@@ -819,10 +819,20 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseManagementLocation",
+    "AccessControl": [
+      {
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],
     "CRUD": "CRUD"
+  },
+      {
+        "UserRoles": [
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -835,10 +845,20 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseManagementCategory",
-    "UserRoles": [
-      "caseworker-civil-systemupdate"
-    ],
-    "CRUD": "CRUD"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",

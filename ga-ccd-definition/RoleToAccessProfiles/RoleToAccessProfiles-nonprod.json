@@ -135,6 +135,24 @@
     "CaseAccessCategories": ""
   },
   {
+    "RoleName" : "hmcts-judiciary",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "GS_profile",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "hmcts-staff",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "GS_profile",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName" : "task-supervisor",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
