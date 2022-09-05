@@ -137,7 +137,7 @@
   {
     "RoleName" : "hmcts-judiciary",
     "Authorisation": "",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "GS_profile",
     "ReadOnly": "Y",
     "Disabled": "F",
@@ -146,7 +146,7 @@
   {
     "RoleName" : "hmcts-staff",
     "Authorisation": "",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "GS_profile",
     "ReadOnly": "Y",
     "Disabled": "F",
