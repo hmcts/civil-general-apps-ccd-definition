@@ -131,7 +131,7 @@ civil-service:
       POLLING_EVENT_EMITTER_ENABLED: false
 
 idam-pr:
-  releaseNameOverride: ${SERVICE_NAME}-idam-pr
+  releaseNameOverride: ${SERVICE_NAME}-xui-idam-pr
   enabled: true
   redirect_uris:
     XUI:
@@ -142,7 +142,7 @@ xui-webapp:
   nodejs:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
-    image: hmctspublic.azurecr.io/xui/webapp:pr-2191
+    image: hmctspublic.azurecr.io/xui/webapp:latest
     ingressHost: civil-ga-ccd-xui-staging.aat.platform.hmcts.net
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health
