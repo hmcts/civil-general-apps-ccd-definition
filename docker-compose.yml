@@ -1,7 +1,7 @@
 version: '2.1'
 
 services:
-  civil-general-apps-ccd-definition:
+  civil-ga-ccd-definition:
     build:
       context: .
       args:
