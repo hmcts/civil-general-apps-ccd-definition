@@ -8,12 +8,5 @@
       "full-access"
     ],
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "UserRoles": [
-      "GS_profile"
-    ],
-    "CRUD": "R"
   }
 ]

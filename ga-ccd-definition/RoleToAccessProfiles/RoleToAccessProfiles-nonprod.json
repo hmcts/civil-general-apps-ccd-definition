@@ -126,96 +126,6 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "judge",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "judge-profile",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "hmcts-judiciary",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "GS_profile",
-    "ReadOnly": "Y",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "hmcts-staff",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "GS_profile",
-    "ReadOnly": "Y",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "task-supervisor",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "GS_profile",
-    "ReadOnly": "Y",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "tribunal-caseworker",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "GS_profile,legal-adviser",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "hearing-centre-admin",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "ctsc-team-leader",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "GS_profile",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "nbc-team-leader",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "GS_profile",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "national-business-centre",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "GS_profile",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "hearing-centre-team-leader",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "GS_profile",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
     "RoleName" : "specific-access-judiciary",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
@@ -265,15 +175,6 @@
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "caseworker-civil",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "senior-tribunal-caseworker",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "GS_profile,legal-adviser",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""

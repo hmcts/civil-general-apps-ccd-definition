@@ -821,16 +821,10 @@
     "CaseFieldID": "caseManagementLocation",
     "AccessControl": [
       {
-    "UserRoles": [
-      "caseworker-civil-systemupdate"
-    ],
-    "CRUD": "CRUD"
-  },
-      {
         "UserRoles": [
-          "GS_profile"
+          "caseworker-civil-systemupdate"
         ],
-        "CRUD": "R"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -851,12 +845,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
-          "GS_profile"
-        ],
-        "CRUD": "R"
       }
     ]
   },
