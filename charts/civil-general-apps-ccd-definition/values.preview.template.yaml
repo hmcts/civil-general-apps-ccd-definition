@@ -45,19 +45,19 @@ java:
         - launch-darkly-sdk-key
         - robotics-notification-multipartyrecipient
   environment:
-    CORE_CASE_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
+    CORE_CASE_DATA_API_URL: http://civil-ga-ccd-data-store-api
     OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
     CMC_DB_HOST: ${SERVICE_NAME}-postgresql
     CMC_DB_USERNAME: ${POSTGRES_USER}
     CMC_DB_PASSWORD: ${POSTGRES_PASSWORD}
     CMC_DB_CONNECTION_OPTIONS: '?sslmode=allow'
     REFERENCE_DATABASE_MIGRATION: false
-    FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
-    FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
-    FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://civil-ga-ccd-camunda/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://civil-ga-ccd-camunda/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://civil-ga-ccd-camunda/engine-rest/
     LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
     GENAPP_LRD_URL: http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-    PAY_CALLBACK_URL: http://${SERVICE_NAME}-java/payment-request-update
+    PAY_CALLBACK_URL: http://civil-ga-ccd-java/payment-request-update
     TESTING_SUPPORT_ENABLED: true
     POLLING_EVENT_EMITTER_ENABLED: false
     CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-aat.service.core-compute-aat.internal
@@ -119,16 +119,16 @@ civil-service:
       SPRING_CLOUD_BOOTSTRAP_ENABLED: true
       RD_PROFESSIONAL_API_URL: http://rd-professional-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
       LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
-      CORE_CASE_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
+      CORE_CASE_DATA_API_URL: http://civil-ga-ccd-data-store-api
       CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-aat.service.core-compute-aat.internal
       CMC_DB_HOST: ${SERVICE_NAME}-postgresql
       CMC_DB_CONNECTION_OPTIONS: '?sslmode=allow'
       CMC_DB_USERNAME: ${POSTGRES_USER}
       CMC_DB_PASSWORD: ${POSTGRES_PASSWORD}
       REFERENCE_DATABASE_MIGRATION: true
-      FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
-      FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
-      FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
+      FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://civil-ga-ccd-camunda/engine-rest/
+      FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://civil-ga-ccd-camunda/engine-rest/
+      FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://civil-ga-ccd-camunda/engine-rest/
       POLLING_EVENT_EMITTER_ENABLED: false
       STITCHING_API_ENABLED: false
       DOCUMENT_MANAGEMENT_SECURED: true
@@ -148,11 +148,11 @@ xui-webapp:
     image: hmctspublic.azurecr.io/xui/webapp:latest
     ingressHost: xui-${SERVICE_FQDN}
     environment:
-      HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health
-      HEALTH_CCD_DATA_API: http://${SERVICE_NAME}-ccd-data-store-api/health
+      HEALTH_CCD_COMPONENT_API: http://civil-ga-ccd-api-gw/health
+      HEALTH_CCD_DATA_API: http://civil-ga-ccd-data-store-api/health
       HEALTH_TERMS_AND_CONDITIONS_API: http://xui-terms-and-conditions-${SERVICE_FQDN}.service.core-compute-preview.internal/health
-      SERVICES_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw
-      SERVICES_CCD_DATA_STORE_API: http://${SERVICE_NAME}-ccd-data-store-api
+      SERVICES_CCD_COMPONENT_API: http://civil-ga-ccd-api-gw
+      SERVICES_CCD_DATA_STORE_API: http://civil-ga-ccd-data-store-api
       SERVICES_TERMS_AND_CONDITIONS: http://xui-terms-and-conditions-${SERVICE_FQDN}.service.core-compute-preview.internal
       JURISDICTIONS: CIVIL
       LAUNCH_DARKLY_CLIENT_ID: ~
@@ -176,10 +176,10 @@ ccd:
       enabled: true
 
   global:
-    ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
-    ccdDataStoreUrl: http://${SERVICE_NAME}-ccd-data-store-api
-    ccdDefinitionStoreUrl: http://${SERVICE_NAME}-ccd-definition-store
-    ccdUserProfileUrl: http://${SERVICE_NAME}-ccd-user-profile-api
+    ccdApiGatewayIngress: http://civil-ga-ccd-api-gw
+    ccdDataStoreUrl: http://civil-ga-ccd-data-store-api
+    ccdDefinitionStoreUrl: http://civil-ga-ccd-definition-store
+    ccdUserProfileUrl: http://civil-ga-ccd-user-profile-api
     dmStoreUrl: http://dm-store-aat.service.core-compute-aat.internal
     idamApiUrl: https://idam-api.aat.platform.hmcts.net
     idamWebUrl: https://idam-web-public.aat.platform.hmcts.net
