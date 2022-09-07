@@ -20,6 +20,7 @@ postgresql:
 
 java:
   image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
+  releaseNameOverride: civil-ga-ccd-java
   imagePullPolicy: Always
   ingressHost: ${SERVICE_FQDN}
   keyVaults:
