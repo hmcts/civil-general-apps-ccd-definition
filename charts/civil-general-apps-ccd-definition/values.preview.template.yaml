@@ -67,7 +67,7 @@ civil-service:
   enabled: true
   java:
     applicationPort: 4000
-    releaseNameOverride: ${SERVICE_NAME}-civil-service
+    releaseNameOverride: civil-ga-ccd-civil-service
     image: 'hmctspublic.azurecr.io/civil/service:latest'
     imagePullPolicy: Always
     ingressHost: civil-service-${SERVICE_FQDN}
@@ -133,7 +133,7 @@ civil-service:
       DOCUMENT_MANAGEMENT_SECURED: true
 
 idam-pr:
-  releaseNameOverride: ${SERVICE_NAME}-idam-pr
+  releaseNameOverride: civil-ga-ccd-idam-pr
   enabled: true
   redirect_uris:
     XUI:
@@ -143,7 +143,7 @@ xui-webapp:
   enabled: true
   nodejs:
     imagePullPolicy: Always
-    releaseNameOverride: ${SERVICE_NAME}-xui-webapp
+    releaseNameOverride: civil-ga-ccd-xui-webapp
     image: hmctspublic.azurecr.io/xui/webapp:latest
     ingressHost: xui-${SERVICE_FQDN}
     environment:
@@ -239,7 +239,7 @@ camunda-bpm:
   enabled: true
   java:
     disableKeyVaults: true
-    releaseNameOverride: ${SERVICE_NAME}-camunda
+    releaseNameOverride: civil-ga-ccd-camunda
     ingressHost: camunda-${SERVICE_FQDN}
     environment:
       CAMUNDA_API_AUTH_ENABLED: false
