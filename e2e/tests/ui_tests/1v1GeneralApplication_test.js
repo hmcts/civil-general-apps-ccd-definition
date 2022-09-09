@@ -54,7 +54,7 @@ Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
   I.dontSee('Applications', 'div.mat-tab-label-content');
 }).retry(0);
 
-Scenario.skip('GA for 1v1 - Direction order journey', async ({I, api}) => {
+Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   parentCaseNumber = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
