@@ -123,10 +123,15 @@
       },
       {
         "UserRoles": [
-          "civil-administrator-standard",
           "civil-administrator-basic"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard"
+        ],
+        "CRUD": "RU"
       }
     ]
   },
@@ -170,10 +175,15 @@
       },
       {
         "UserRoles": [
-          "civil-administrator-standard",
           "civil-administrator-basic"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard"
+        ],
+        "CRUD": "RU"
       }
     ]
   },
