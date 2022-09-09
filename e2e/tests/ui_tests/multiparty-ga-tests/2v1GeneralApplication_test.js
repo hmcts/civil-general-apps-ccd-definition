@@ -4,6 +4,7 @@ const config = require('../../../config.js');
 const mpScenario = 'TWO_V_ONE';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
 const writtenRepStatus = 'Awaiting Written Representations';
+const claimantType = 'Company';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
 
@@ -13,7 +14,7 @@ let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference;
 Feature('GA CCD 2v1 - General Application Journey @multiparty-e2e-tests');
 
 Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, api}) => {
-  parentCaseNumber = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  parentCaseNumber = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
   console.log('Case created for general application: ' + parentCaseNumber);
@@ -35,7 +36,7 @@ Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, a
   await I.navigateToCaseDetails(childCaseNum());
   childCaseId = await I.grabCaseNumber();
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'concurrentRep', childCaseNum());
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Concurrent representations');
   await I.verifyApplicationDocument(childCaseNum(), 'Written representation concurrent');
