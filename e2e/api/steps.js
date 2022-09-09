@@ -27,6 +27,7 @@ const data = {
     '27500','FEE0442'),
   INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE: genAppData.createGADataWithoutNotice('No','Test 123',
     '10800','FEE0443'),
+  INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
   RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
   MAKE_DECISION: genAppJudgeMakeDecisionData.judgeMakesDecisionData(),
   JUDGE_MAKES_ORDER_WRITTEN_REP: genAppJudgeMakeDecisionData.judgeMakeOrderWrittenRep(),
@@ -34,16 +35,18 @@ const data = {
   RESPOND_TO_JUDGE_DIRECTIONS: genAppRespondentResponseData.toJudgeDirectionsOrders(),
   RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION: genAppRespondentResponseData.toJudgeWrittenRepresentation(),
   JUDGE_MAKES_ORDER_DIRECTIONS_REP: genAppJudgeMakeDecisionData.judgeMakeDecisionDirectionOrder(),
+  JUDGE_APPROVES_STRIKEOUT_APPLN: genAppJudgeMakeDecisionData.judgeApprovesStrikeOutAppl(),
   PAYMENT_SERVICE_REQUEST_UPDATED: genAppJudgeMakeDecisionData.serviceUpdateDto(),
   LIST_FOR_A_HEARING: genAppJudgeMakeDecisionData.listingForHearing(),
   APPLICATION_DISMISSED: genAppJudgeMakeDecisionData.applicationsDismiss(),
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
-  CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
+  CREATE_CLAIM: (mpScenario, claimantType) => claimData.createClaim(mpScenario, claimantType),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
   CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS: claimData.createClaimRespondentSolFirmNotInMyHmcts,
-  JUDGE_MAKES_ORDER_DISMISS_UNCLOAK: genAppJudgeMakeDecisionData.judgeMakeDecisionUncloakApplication(),
+  JUDGE_MAKES_ORDER_UNCLOAK: genAppJudgeMakeDecisionData.judgeMakeOrderUncloakApplication(),
+  JUDGE_REQUEST_MORE_INFO_UNCLOAK: genAppJudgeMakeDecisionData.judgeRequestMoreInfomationUncloakData(),
   RESUBMIT_CLAIM: require('../fixtures/events/resubmitClaim.js'),
   NOTIFY_DEFENDANT_OF_CLAIM: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol.js'),
   NOTIFY_DEFENDANT_OF_CLAIM_DETAILS: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol.js'),
@@ -97,13 +100,14 @@ let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
-  createUnspecifiedClaim: async (user, multipartyScenario) => {
+  createUnspecifiedClaim: async (user, multipartyScenario, claimantType) => {
 
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
-    const createClaimData = data.CREATE_CLAIM(mpScenario);
+
+    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -211,6 +215,29 @@ module.exports = {
     return gaCaseReference;
   },
 
+  initiateGeneralApplicationWithNoStrikeOut: async (user, parentCaseId) => {
+    eventName = events.INITIATE_GENERAL_APPLICATION.id;
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName, parentCaseId);
+    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT, parentCaseId);
+    const responseBody = await response.json();
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+    await waitForFinishedBusinessProcess(parentCaseId);
+    await waitForGAFinishedBusinessProcess(parentCaseId);
+
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
+    const updatedCivilCaseData = await updatedResponse.json();
+    let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+    console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
+
+    return gaCaseReference;
+  },
+
   getGACaseReference: async (user, parentCaseId) => {
     eventName = events.INITIATE_GENERAL_APPLICATION.id;
 
@@ -308,13 +335,32 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_DISMISSED');
   },
 
-  judgeMakesDecisionApplicationUncloak: async (user, gaCaseId) => {
+  judgeMakesOrderDecisionUncloak: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
     eventName = events.MAKE_DECISION.id;
 
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
-    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_ORDER_DISMISS_UNCLOAK, gaCaseId);
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_ORDER_UNCLOAK, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE');
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
+  },
+
+  judgeRequestMoreInformationUncloak: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.MAKE_DECISION.id;
+
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_REQUEST_MORE_INFO_UNCLOAK, gaCaseId);
     const responseBody = await response.json();
 
     assert.equal(response.status, 201);
@@ -327,7 +373,7 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_ADD_PAYMENT');
   },
 
-  additionalPaymentSuccess: async (user, gaCaseId) => {
+  additionalPaymentSuccess: async (user, gaCaseId, finalState) => {
     await apiRequest.setupTokens(user);
     eventName = events.MAKE_DECISION.id;
 
@@ -336,11 +382,11 @@ module.exports = {
 
     assert.equal(response.status, 200);
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, finalState);
 
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
-    assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
+    assert.equal(updatedGABusinessProcessData.ccdState, finalState);
   },
 
   additionalPaymentFailure: async (user, gaCaseId) => {
@@ -452,6 +498,44 @@ module.exports = {
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'AWAITING_DIRECTIONS_ORDER_DOCS');
+  },
+
+  judgeApprovesStrikeOutApplication: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.MAKE_DECISION.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_APPROVES_STRIKEOUT_APPLN, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION');
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'PROCEEDS_IN_HERITAGE');
+  },
+
+  judgeMakesDecisionOrderMade: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.MAKE_DECISION.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_APPROVES_STRIKEOUT_APPLN, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION');
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
   },
 
   judgeListApplicationForHearing: async (user, gaCaseId) => {
