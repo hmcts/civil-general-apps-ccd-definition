@@ -2,7 +2,6 @@ postgresql:
   enabled: true
   image:
     tag: '11.6.0'
-    debug: true
   resources:
     requests:
       cpu: 25m
@@ -55,9 +54,9 @@ java:
     FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
     FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
     FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
-    LAUNCH_DARKLY_ENV: service-staging
+    LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
     GENAPP_LRD_URL: http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-    PAY_CALLBACK_URL: http://${SERVICE_FQDN}/payment-request-update
+    PAY_CALLBACK_URL: http://${SERVICE_NAME}-java/payment-request-update
     TESTING_SUPPORT_ENABLED: true
     POLLING_EVENT_EMITTER_ENABLED: false
     CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-aat.service.core-compute-aat.internal
@@ -71,7 +70,7 @@ civil-service:
     releaseNameOverride: ${SERVICE_NAME}-civil-service
     image: 'hmctspublic.azurecr.io/civil/service:latest'
     imagePullPolicy: Always
-    ingressHost: civil-ga-ccd-civil-service-staging-aat.service.core-compute-aat.internal
+    ingressHost: civil-service-${SERVICE_FQDN}
     keyVaults:
       civil:
         resourceGroup: civil
@@ -130,6 +129,7 @@ civil-service:
       FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
       FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
       POLLING_EVENT_EMITTER_ENABLED: false
+      STITCHING_API_ENABLED: false
       DOCUMENT_MANAGEMENT_SECURED: true
 
 idam-pr:
@@ -137,24 +137,24 @@ idam-pr:
   enabled: true
   redirect_uris:
     XUI:
-      - https://civil-ga-ccd-xui-staging.aat.platform.hmcts.net/oauth2/callback
+      - https://xui-${SERVICE_FQDN}/oauth2/callback
 
 xui-webapp:
   enabled: true
   nodejs:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
-    image: hmctspublic.azurecr.io/xui/webapp:latest
-    ingressHost: civil-ga-ccd-xui-staging.aat.platform.hmcts.net
+    image: hmctspublic.azurecr.io/xui/webapp:pr-2311
+    ingressHost: xui-${SERVICE_FQDN}
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health
       HEALTH_CCD_DATA_API: http://${SERVICE_NAME}-ccd-data-store-api/health
-      HEALTH_TERMS_AND_CONDITIONS_API: http://xui-terms-and-conditions-aat.service.core-compute-aat.internal/health
+      HEALTH_TERMS_AND_CONDITIONS_API: http://xui-terms-and-conditions-${SERVICE_FQDN}.service.core-compute-preview.internal/health
       SERVICES_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw
       SERVICES_CCD_DATA_STORE_API: http://${SERVICE_NAME}-ccd-data-store-api
-      SERVICES_TERMS_AND_CONDITIONS: http://xui-terms-and-conditions-aat.service.core-compute-aat.internal
-      JURISDICTIONS: DIVORCE,PROBATE,FR,PUBLICLAW,IA,SSCS,EMPLOYMENT,CIVIL
-      SERVICES_IDAM_ISS_URL: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/hmcts
+      SERVICES_TERMS_AND_CONDITIONS: http://xui-terms-and-conditions-${SERVICE_FQDN}.service.core-compute-preview.internal
+      JURISDICTIONS: CIVIL
+      LAUNCH_DARKLY_CLIENT_ID: ~
 
 ccd:
   enabled: true
@@ -172,7 +172,7 @@ ccd:
     postgresql:
       enabled: false
     ras:
-      enabled: true
+      enabled: false
 
   global:
     ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
@@ -192,7 +192,7 @@ ccd:
         IDAM_SERVICE_KEY: ${CCD_API_GATEWAY_S2S_SECRET}
         IDAM_OAUTH2_CLIENT_SECRET: ${CCD_API_GATEWAY_IDAM_CLIENT_SECRET}
         PROXY_DOCUMENT_MANAGEMENT: http://dm-store-aat.service.core-compute-aat.internal
-      ingressHost: civil-ga-ccd-gateway-staging-aat.service.core-compute-aat.internal
+      ingressHost: gateway-${SERVICE_FQDN}
       ingressIP: ${INGRESS_IP}
       keyVaults: []
   ccd-data-store-api:
@@ -204,8 +204,8 @@ ccd:
         DATA_STORE_IDAM_KEY: ${CCD_DATA_STORE_S2S_SECRET}
         DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_ps,bulk_scan_orchestrator,ccpay_bubble,ctsc_work_allocation,em_ccd_orchestrator,xui_webapp,civil_service,ccd_case_document_am_api
         IDAM_API_BASE_URL: https://idam-api.aat.platform.hmcts.net
-        IDAM_OIDC_URL:  https://idam-web-public.aat.platform.hmcts.net
-        OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
+        IDAM_OIDC_URL: https://idam-web-public.aat.platform.hmcts.net
+        OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
         CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: civil_service,aac_manage_case_assignment
         CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-aat.service.core-compute-aat.internal
         IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET: ${IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET}
@@ -213,7 +213,7 @@ ccd:
         IDAM_DATA_STORE_SYSTEM_USER_PASSWORD: ${IDAM_DATA_STORE_SYSTEM_USER_PASSWORD}
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
       keyVaults: []
-      ingressHost: civil-ga-ccd-data-store-staging-aat.service.core-compute-aat.internal
+      ingressHost: ccd-data-store-api-${SERVICE_FQDN}
   ccd-definition-store-api:
     java:
       imagePullPolicy: Always
@@ -222,14 +222,14 @@ ccd:
         DEFINITION_STORE_IDAM_KEY: ${CCD_DEFINITION_STORE_S2S_SECRET}
         IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
       keyVaults: []
-      ingressHost: civil-ga-ccd-definition-store-staging-aat.service.core-compute-aat.internal
+      ingressHost: ccd-definition-store-${SERVICE_FQDN}
   ccd-user-profile-api:
     java:
       imagePullPolicy: Always
       enviroment:
         USER_PROFILE_DB_HOST: ${SERVICE_NAME}-postgresql
       keyVaults: []
-      ingressHost: civil-ga-ccd-xui-staging-aat.service.core-compute-aat.internal
+      ingressHost: ccd-user-profile-api-${SERVICE_FQDN}
 
   postgresql:
     persistence:
@@ -240,7 +240,7 @@ camunda-bpm:
   java:
     disableKeyVaults: true
     releaseNameOverride: ${SERVICE_NAME}-camunda
-    ingressHost: civil-ga-ccd-camunda-staging-aat.service.core-compute-aat.internal
+    ingressHost: camunda-${SERVICE_FQDN}
     environment:
       CAMUNDA_API_AUTH_ENABLED: false
       CAMUNDA_DB_HOST: ${SERVICE_NAME}-postgresql
@@ -250,3 +250,5 @@ camunda-bpm:
       CAMUNDA_BPM_DATABASE_SCHEMA_UPDATE: true
       S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
       CAMUNDA_DB_CONN_OPTIONS: ""
+      SPRING_FLYWAY_ENABLED: false
+      SPRING_CLOUD_PROPERTIESVOLUME_ENABLED: false
