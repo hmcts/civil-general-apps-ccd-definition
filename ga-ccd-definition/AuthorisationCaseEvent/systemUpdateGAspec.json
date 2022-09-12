@@ -55,6 +55,12 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "PBA_PAYMENT_FAILED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "VALIDATE_FEE_GASPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
