@@ -316,7 +316,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "caseManagementCategory",
     "Label": " ",
-    "FieldType": "DynamicList",
+    "FieldType": "GACaseManagementCategory",
     "SecurityClassification": "Public"
   },
   {
