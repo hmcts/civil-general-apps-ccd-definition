@@ -144,4 +144,12 @@
       <packageUrl regex="true">^pkg:npm/file\-type@.*$</packageUrl>
       <vulnerabilityName>1081704</vulnerabilityName>
     </suppress>
+  <suppress>
+    <notes>
+      stable spring boot 2.5.14 still got the vulnerable snakeyaml 1.28 jar. This would be fixed once its upgraded
+    </notes>
+    <cve>CVE-2022-38749</cve>
+    <cve>CVE-2022-38751</cve>
+    <cve>CVE-2022-38750</cve>
+  </suppress>
 </suppressions>
