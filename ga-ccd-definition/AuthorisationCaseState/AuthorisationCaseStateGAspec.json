@@ -123,10 +123,15 @@
       },
       {
         "UserRoles": [
-          "civil-administrator-standard",
           "civil-administrator-basic"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard"
+        ],
+        "CRUD": "RU"
       }
     ]
   },
@@ -170,10 +175,15 @@
       },
       {
         "UserRoles": [
-          "civil-administrator-standard",
           "civil-administrator-basic"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard"
+        ],
+        "CRUD": "RU"
       }
     ]
   },
@@ -264,6 +274,20 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseStateID": "APPLICATION_ADD_PAYMENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "APPLICATION_PAYMENT_FAILED",
     "AccessControl": [
       {
         "UserRoles": [
