@@ -165,6 +165,24 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "PBA_PAYMENT_FAILED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "ADDITIONAL_PAYMENT_SUCCESS_CALLBACK",
     "AccessControl": [
       {
