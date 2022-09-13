@@ -82,6 +82,8 @@ const writtenRepresentationsPage = require('./pages/generalApplication/judgesJou
 const uploadScreenPage = require('./pages/generalApplication/judgesJourneyPages/uploadScreen.page');
 const applicationDocumentPage = require('./pages/generalApplication/judgesJourneyPages/applicationDocument.page');
 const judgesSummary = require('./pages/generalApplication/judgesJourneyPages/judgesSummary.page');
+const claimDocumentPage = require('./pages/generalApplication/claimDocument.page');
+const serviceRequestPage = require('./pages/generalApplication/serviceRequest.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -735,7 +737,7 @@ module.exports = function () {
     },
 
     async judgeMakeDecision(decision, order, consentCheck, caseNumber) {
-      eventName = events.JUDGE_MAKES_DECISION.name;
+      eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
@@ -747,7 +749,7 @@ module.exports = function () {
     },
 
     async judgeRequestMoreInfo(decision, infoType, caseNumber, withoutNotice) {
-      eventName = events.JUDGE_MAKES_DECISION.name;
+      eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
@@ -782,6 +784,21 @@ module.exports = function () {
       ]);
     },
 
+    async payAndVerifyAdditionalPayment(childCaseNumber) {
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.navigateToTab(childCaseNumber, 'Service Request'),
+        () => serviceRequestPage.payAdditionalAmount(childCaseNumber),
+        () => serviceRequestPage.verifyAdditionalPayment(childCaseNumber),
+      ]);
+    },
+
+    async verifyClaimDocument(parentCaseNumber, childCaseNumber, docType) {
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.navigateToTab(parentCaseNumber, 'Claim documents'),
+        () => claimDocumentPage.verifyUploadedDocument(childCaseNumber, docType),
+      ]);
+    },
+
     async respondToJudgesDirections(caseNumber, childCaseId) {
       eventName = events.RESPOND_TO_JUDGE_DIRECTIONS.name;
       await this.triggerStepsWithScreenshot([
@@ -807,7 +824,7 @@ module.exports = function () {
     },
 
     async judgeListForAHearingDecision(decision, caseNumber) {
-      eventName = events.JUDGE_MAKES_DECISION.name;
+      eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
@@ -823,7 +840,7 @@ module.exports = function () {
     },
 
     async judgeWrittenRepresentationsDecision(decision, representationsType, caseNumber) {
-      eventName = events.JUDGE_MAKES_DECISION.name;
+      eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),

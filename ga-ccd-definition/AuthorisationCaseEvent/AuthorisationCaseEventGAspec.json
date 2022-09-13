@@ -1,23 +1,13 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "LINK_GENERAL_APPLICATION_CASE_TO_PARENT_CASE",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "civil-administrator-standard",
+          "civil-administrator-basic"
         ],
         "CRUD": "R"
       },
@@ -35,7 +25,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "civil-administrator-standard",
+          "civil-administrator-basic"
         ],
         "CRUD": "R"
       },
@@ -53,7 +45,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "civil-administrator-standard",
+          "civil-administrator-basic"
         ],
         "CRUD": "R"
       },
@@ -71,7 +65,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "civil-administrator-standard",
+          "civil-administrator-basic"
         ],
         "CRUD": "R"
       },
@@ -89,14 +85,21 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "civil-administrator-standard",
+          "civil-administrator-basic"
         ],
         "CRUD": "R"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-judge"
+          "judge-profile"
+        ],
+        "CRUD": "RU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
@@ -105,6 +108,26 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "NOTIFY_GENERAL_APPLICATION_RESPONDENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_PAYMENT_SERVICE_REQ_GASPEC",
     "AccessControl": [
       {
         "UserRoles": [
@@ -126,6 +149,26 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-solicitor",
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "PBA_PAYMENT_FAILED",
+    "AccessControl": [
+      {
+        "UserRoles": [
           "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
@@ -140,11 +183,103 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "VALIDATE_FEE_GASPEC",
+    "CaseEventID": "ADDITIONAL_PAYMENT_SUCCESS_CALLBACK",
     "AccessControl": [
       {
         "UserRoles": [
           "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "OBTAIN_ADDITIONAL_FEE_VALUE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "OBTAIN_ADDITIONAL_PAYMENT_REF",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+  "CaseTypeID": "GENERALAPPLICATION",
+  "CaseEventID": "START_MAKE_ADDITIONAL_PAYMENT_REF",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "caseworker-civil-solicitor"
+      ],
+      "CRUD": "R"
+    },
+    {
+      "UserRoles": [
+        "caseworker-civil-admin"
+      ],
+      "CRUD": "CRU"
+    }
+  ]
+},
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "VALIDATE_FEE_GASPEC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "civil-administrator-standard",
+          "civil-administrator-basic"
         ],
         "CRUD": "R"
       },
@@ -162,7 +297,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "civil-administrator-standard",
+          "civil-administrator-basic"
         ],
         "CRUD": "R"
       },
@@ -186,12 +323,19 @@
           "[RESPONDENTSOLICITORTWOSPEC]"
         ],
 	    	"CRUD": "CRU"
-		      },
+      },
       {
         "UserRoles": [
           "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -201,16 +345,22 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-judge"
+          "civil-administrator-standard",
+          "civil-administrator-basic"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   },
@@ -220,16 +370,22 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-judge"
+          "civil-administrator-standard",
+          "civil-administrator-basic"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   },
@@ -239,35 +395,43 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile",
           "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-judge"
+          "civil-administrator-standard",
+          "civil-administrator-basic"
         ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-	    	"CRUD": "CRU"
-		      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-judge"
-        ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   },
@@ -277,7 +441,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "civil-administrator-standard",
+          "civil-administrator-basic"
         ],
         "CRUD": "R"
       },
@@ -295,9 +461,16 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "basic-access"
+          "caseworker-civil-solicitor",
+          "civil-administrator-standard"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -307,9 +480,16 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "basic-access"
+          "caseworker-civil-solicitor",
+          "civil-administrator-standard"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
       }
     ]
   }

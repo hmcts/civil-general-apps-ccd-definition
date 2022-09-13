@@ -18,6 +18,11 @@ module.exports = {
     microservice: 'civil_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
+  judgeUser: {
+    password: defaultPassword,
+    email: 'judge-civil-02@example.com',
+    type: 'judge'
+  },
   applicantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
@@ -46,7 +51,7 @@ module.exports = {
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
   runningEnv: process.env.ENVIRONMENT,
-  claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
-  defendant1SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU',
-  defendant2SolicitorOrgId: process.env.ENVIRONMENT ==='demo' ? 'LCVTI1I' : 'H2156A0',
+  claimantSolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'B04IXE4' : 'Q1KOKP2',
+  defendant1SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'DAWY9LJ' : '79ZRSOU',
+  defendant2SolicitorOrgId: process.env.ENVIRONMENT =='demo' ? 'LCVTI1I' : 'H2156A0',
 };

@@ -50,8 +50,9 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDecisionStatus);
   await I.judgeListForAHearingDecision('listForAHearing', childCaseNum());
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+  await I.verifyJudgesSummaryPage('Hearing order');
   await I.verifyApplicationDocument(childCaseNum(), 'Hearing order');
   await I.dontSee('Go');
   await I.dontSee('Next step');

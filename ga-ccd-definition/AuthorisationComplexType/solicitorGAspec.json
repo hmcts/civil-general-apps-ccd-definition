@@ -191,7 +191,28 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppPBADetails",
+    "ListElementCode": "additionalPaymentDetails",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppPBADetails",
     "ListElementCode": "paymentSuccessfulDate",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppPBADetails",
+    "ListElementCode": "additionalPaymentServiceRef",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppPBADetails",
+    "ListElementCode": "serviceRequestReference",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },
@@ -405,7 +426,7 @@
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDetails.vulnerabilityQuestionsYesOrNo",
     "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRR"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -733,6 +754,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
+    "ListElementCode": "judgeRecitalText",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
     "ListElementCode": "makeAnOrderForWrittenRepresentations",
     "UserRole": "caseworker-civil-solicitor",
@@ -770,6 +798,34 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "writtenRepresentationsDrawGeneralOrder",
     "ListElementCode": "directionInRelationToHearingText",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "referToJudge",
+    "ListElementCode": "judgeReferEventDescription",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "referToJudge",
+    "ListElementCode": "judgeReferAdditionalInfo",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "referToLegalAdvisor",
+    "ListElementCode": "legalAdvisorEventDescription",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "referToLegalAdvisor",
+    "ListElementCode": "legalAdvisorAdditionalInfo",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   }

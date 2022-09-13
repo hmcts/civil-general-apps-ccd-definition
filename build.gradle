@@ -3,7 +3,7 @@ plugins {
   id 'checkstyle'
   id 'pmd'
   id 'jacoco'
-  id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+  id 'io.spring.dependency-management' version '1.0.13.RELEASE'
   id 'org.springframework.boot' version '2.5.14'
   id 'org.owasp.dependencycheck' version '7.1.1'
   id 'com.github.ben-manes.versions' version '0.42.0'
@@ -84,7 +84,6 @@ task lintUserInterfaceTests(type: Exec, description: 'Runs linting of E2E tests.
 
 task awaitApplicationReadiness(type: Exec, description: 'Awaits until application is ready.') {
   commandLine './bin/wait-for.sh', System.env.URL == null ?  'empty' : System.env.URL
-  commandLine './bin/wait-for.sh', System.env.CIVIL_GENERAL_APPLICATIONS_URL == null ?  'empty' : System.env.CIVIL_GENERAL_APPLICATIONS_URL
 }
 
 task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {

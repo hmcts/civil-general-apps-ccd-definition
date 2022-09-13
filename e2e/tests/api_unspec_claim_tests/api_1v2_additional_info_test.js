@@ -4,10 +4,10 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 Judge Make Decision Additional Information Required API tests');
+Feature('GA 1v2 Judge Make Decision Additional Information Required API tests @api-tests');
 
 Scenario('Judge makes decision 1V2 - AWAITING_ADDITIONAL_INFORMATION', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -15,7 +15,7 @@ Scenario('Judge makes decision 1V2 - AWAITING_ADDITIONAL_INFORMATION', async ({a
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
+  await api.respondentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');

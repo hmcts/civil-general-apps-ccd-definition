@@ -1,7 +1,7 @@
 [
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecision",
     "ListElementCode": "decision",
     "EventElementLabel": "  ",
@@ -11,7 +11,7 @@
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "judgeRecitalText",
     "EventElementLabel": " ",
@@ -20,7 +20,7 @@
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "makeAnOrder",
     "EventElementLabel": " ",
@@ -29,7 +29,7 @@
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "makeAppVisibleToRespondents",
     "ListElementCode": "makeAppAvailableCheck",
     "EventElementLabel": " ",
@@ -38,7 +38,7 @@
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "orderText",
     "EventElementLabel": " ",
@@ -47,7 +47,7 @@
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "judgeApproveEditOptionDoc",
     "EventElementLabel": " ",
@@ -56,7 +56,7 @@
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "judgeApproveEditOptionDate",
     "EventElementLabel": " ",
@@ -65,7 +65,7 @@
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "dismissalOrderText",
     "EventElementLabel": " ",
@@ -74,7 +74,7 @@
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "directionsText",
     "EventElementLabel": " ",
@@ -83,7 +83,7 @@
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "directionsResponseByDate",
     "EventElementLabel": " ",
@@ -92,7 +92,7 @@
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "reasonForDecisionText",
     "EventElementLabel": " ",
@@ -101,7 +101,7 @@
   },
   {
     "ID": "GAJudicialRequestMoreInfoScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "ListElementCode": "requestMoreInfoOption",
     "EventElementLabel": " ",
@@ -110,7 +110,7 @@
   },
   {
     "ID": "GAJudicialRequestMoreInfoScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "ListElementCode": "judgeRequestMoreInfoText",
     "EventElementLabel": " ",
@@ -119,16 +119,25 @@
   },
   {
     "ID": "GAJudicialRequestMoreInfoScreen",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
-    "ListElementCode": "judgeRequestMoreInfoByDate",
+    "ListElementCode": "judgeRecitalText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 13,
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "GAJudicialRequestMoreInfoScreen",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
+    "ListElementCode": "judgeRequestMoreInfoByDate",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 14,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "listForHearingLabel",
     "EventElementLabel": "  ",
@@ -138,7 +147,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "hearingPreferencesPreferredTypeLabel1",
     "EventElementLabel": " ",
@@ -148,7 +157,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "hearingPreferencesPreferredType",
     "EventElementLabel": "  ",
@@ -158,7 +167,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judgeHearingCourtLocationLabel",
     "EventElementLabel": " ",
@@ -168,7 +177,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judgeHearingCourtLocationText1",
     "EventElementLabel": " ",
@@ -178,7 +187,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "hearingPreferredLocation",
     "EventElementLabel": "  ",
@@ -188,7 +197,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judicialTimeEstimateLabel",
     "EventElementLabel": "  ",
@@ -198,7 +207,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judgeHearingTimeEstimateText1",
     "EventElementLabel": " ",
@@ -208,7 +217,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judicialTimeEstimate",
     "EventElementLabel": "  ",
@@ -218,7 +227,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judicialVulnerabilityLabel",
     "EventElementLabel": " ",
@@ -228,7 +237,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judicialVulnerabilityText",
     "EventElementLabel": " ",
@@ -238,7 +247,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judicialSupportRequirementLabel",
     "EventElementLabel": "  ",
@@ -248,7 +257,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judgeHearingSupportReqText1",
     "EventElementLabel": " ",
@@ -258,7 +267,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judicialSupportRequirement",
     "EventElementLabel": "  ",
@@ -268,7 +277,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judgeSignLanguage",
     "EventElementLabel": "  ",
@@ -278,7 +287,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judgeLanguageInterpreter",
     "EventElementLabel": "  ",
@@ -288,7 +297,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judgeOtherSupport",
     "EventElementLabel": "  ",
@@ -298,7 +307,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "addlnInfoCourtStaffLabel",
     "EventElementLabel": "  ",
@@ -308,7 +317,7 @@
   },
   {
     "ID": "GAJudicialDecision",
-    "CaseEventID": "JUDGE_MAKES_DECISION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "addlnInfoCourtStaff",
     "EventElementLabel": "  ",

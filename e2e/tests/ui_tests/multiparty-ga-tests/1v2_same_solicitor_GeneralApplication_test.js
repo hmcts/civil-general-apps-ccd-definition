@@ -4,6 +4,9 @@ const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
 const respondentStatus = 'Awaiting Respondent Response';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
 const writtenRepStatus = 'Awaiting Written Representations';
+const additionalPaymentStatus = 'Application Additional Payment';
+const additionalInfoStatus = 'Additional Information Required';
+const claimantType = 'Company';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
 
@@ -13,7 +16,7 @@ let parentCaseNum, caseId, childCaseNumber, childCaseId, gaCaseReference;
 Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests');
 
 Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey', async ({I, api}) => {
-  parentCaseNum = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  parentCaseNum = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNum);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNum);
   console.log('Case created for general application: ' + parentCaseNum);
@@ -35,7 +38,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.login(config.defendantSolicitorUser);
   await I.respondToApplication(childCaseNum(), 'yes', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter', getAppTypes().slice(0, 1));
-  console.log('Org1 solicitor responded to application: ' + childCaseNum());
+  console.log('Defendant Solicitor responded to application: ' + childCaseNum());
   childCaseId = await I.grabGACaseNumber();
   await I.respCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyResponseSummaryPage();
@@ -43,7 +46,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.see(judgeDecisionStatus);
   // We currently do not have JUDGE role in role assignment service. Hence, not log in as judge.
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'sequentialRep', childCaseNum());
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Sequential representations');
   await I.verifyApplicationDocument(childCaseNum(), 'Written representation sequential');
@@ -56,7 +59,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
 
 Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
   async ({I, api}) => {
-    parentCaseNum = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario);
+    parentCaseNum = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
     await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNum);
     await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNum);
     console.log('Case created for general application: ' + parentCaseNum);
@@ -78,9 +81,30 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     await I.navigateToCaseDetails(childCaseNum());
     childCaseId = await I.grabCaseNumber();
     await I.judgeRequestMoreInfo('requestMoreInfo', 'sendApplicationToOtherParty', childCaseNum(), 'no');
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
     await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+    await I.verifyJudgesSummaryPage('Send application to other party');
     console.log('Judges sent application to other party and requested hearing details on case: ' + childCaseNum());
+    await I.navigateToTab(parentCaseNum, 'Applications');
+    await I.see(additionalPaymentStatus);
+    await I.navigateToCaseDetails(childCaseNum());
+    await I.dontSee('Go');
+    await I.dontSee('Next step');
+    await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
+    await I.navigateToTab(parentCaseNum, 'Applications');
+    await I.see(respondentStatus);
+    await I.login(config.defendantSolicitorUser);
+    await I.respondToApplication(childCaseNum(), 'yes', 'yes', 'yes', 'yes', 'no',
+      'signLanguageInterpreter', getAppTypes().slice(0, 5));
+    console.log('Defendant Solicitor responded to application: ' + childCaseNum());
+    await I.navigateToTab(parentCaseNum, 'Applications');
+    await I.see(judgeDecisionStatus);
+    await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
+    await I.judgeCloseAndReturnToCaseDetails(childCaseId);
+    console.log('Judges requested more information on case: ' + childCaseNum());
+    await I.navigateToTab(parentCaseNum, 'Applications');
+    await I.see(additionalInfoStatus);
   }).retry(0);
 
 AfterSuite(async ({api}) => {
