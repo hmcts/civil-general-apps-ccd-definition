@@ -45,7 +45,8 @@ const data = {
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
   CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS: claimData.createClaimRespondentSolFirmNotInMyHmcts,
-  JUDGE_MAKES_ORDER_DISMISS_UNCLOAK: genAppJudgeMakeDecisionData.judgeMakeDecisionUncloakApplication(),
+  JUDGE_MAKES_ORDER_UNCLOAK: genAppJudgeMakeDecisionData.judgeMakeOrderUncloakApplication(),
+  JUDGE_REQUEST_MORE_INFO_UNCLOAK: genAppJudgeMakeDecisionData.judgeRequestMoreInfomationUncloakData(),
   RESUBMIT_CLAIM: require('../fixtures/events/resubmitClaim.js'),
   NOTIFY_DEFENDANT_OF_CLAIM: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol.js'),
   NOTIFY_DEFENDANT_OF_CLAIM_DETAILS: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol.js'),
@@ -334,13 +335,13 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_DISMISSED');
   },
 
-  judgeMakesDecisionApplicationUncloak: async (user, gaCaseId) => {
+  judgeMakesOrderDecisionUncloak: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
     eventName = events.MAKE_DECISION.id;
 
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
-    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_ORDER_DISMISS_UNCLOAK, gaCaseId);
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_ORDER_UNCLOAK, gaCaseId);
     const responseBody = await response.json();
 
     assert.equal(response.status, 201);
@@ -353,7 +354,26 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
   },
 
-  additionalPaymentSuccess: async (user, gaCaseId) => {
+  judgeRequestMoreInformationUncloak: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.MAKE_DECISION.id;
+
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_REQUEST_MORE_INFO_UNCLOAK, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'APPLICATION_ADD_PAYMENT');
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_ADD_PAYMENT');
+  },
+
+  additionalPaymentSuccess: async (user, gaCaseId, finalState) => {
     await apiRequest.setupTokens(user);
     eventName = events.MAKE_DECISION.id;
 
@@ -362,11 +382,11 @@ module.exports = {
 
     assert.equal(response.status, 200);
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, finalState);
 
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
-    assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
+    assert.equal(updatedGABusinessProcessData.ccdState, finalState);
   },
 
   additionalPaymentFailure: async (user, gaCaseId) => {
