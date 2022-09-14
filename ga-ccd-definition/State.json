@@ -103,5 +103,12 @@
     "Name": "Application Additional Payment",
     "Description": "Application Additional Payment",
     "DisplayOrder": 15
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "APPLICATION_PAYMENT_FAILED",
+    "Name": "Application Payment Failed",
+    "Description": "Application Payment Failed",
+    "DisplayOrder": 16
   }
 ]
