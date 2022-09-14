@@ -9,7 +9,7 @@ Feature('GA 1v1 Judge Make Order Written Rep API tests @api-tests');
 Scenario('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS- Respondent upload Directions Document'
   , async ({api}) => {
     civilCaseReference = await api.createUnspecifiedClaim(
-      config.applicantSolicitorUser, mpScenario);
+      config.applicantSolicitorUser, mpScenario, 'Company');
     await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
     await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
     console.log('Civil Case created for general application: ' + civilCaseReference);

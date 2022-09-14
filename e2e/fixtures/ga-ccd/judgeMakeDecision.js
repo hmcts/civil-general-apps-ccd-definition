@@ -37,6 +37,20 @@ module.exports = {
       }
     };
   },
+  judgeApprovesStrikeOutAppl: () => {
+    return {
+      judicialDecision : {
+        decision: 'MAKE_AN_ORDER'
+      },
+      judicialDecisionMakeOrder: {
+        makeAnOrder: 'APPROVE_OR_EDIT',
+        orderText: 'sample text',
+        judgeApproveEditOptionDoc: 'DEFENCE_FORM',
+        judgeApproveEditOptionDate: '2023-06-05',
+        reasonForDecisionText: 'sample text'
+      }
+    };
+  },
   listingForHearing: () => {
     return {
       judicialDecision : {
@@ -88,7 +102,7 @@ module.exports = {
     };
 
   },
-  judgeMakeDecisionUncloakApplication: () => {
+  judgeMakeOrderUncloakApplication: () => {
     return {
       judicialDecision : {
         decision: 'MAKE_AN_ORDER'
@@ -104,6 +118,18 @@ module.exports = {
         makeAppAvailableCheck: [
           'ConsentAgreementCheckBox'
         ]
+      }
+    };
+  },
+  judgeRequestMoreInfomationUncloakData: () => {
+    return {
+      judicialDecision : {
+        decision: 'REQUEST_MORE_INFO'
+      },
+      judicialDecisionRequestMoreInfo: {
+        requestMoreInfoOption: 'SEND_APP_TO_OTHER_PARTY',
+        judgeRequestMoreInfoText: 'sample data',
+        judgeRequestMoreInfoByDate: '2026-05-04'
       }
     };
   },

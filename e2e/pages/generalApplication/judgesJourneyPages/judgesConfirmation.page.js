@@ -10,12 +10,12 @@ module.exports = {
   },
 
   async verifyJudgesConfirmationPage() {
-    I.seeInCurrentUrl('JUDGE_MAKES_DECISION/confirm');
+    I.seeInCurrentUrl('MAKE_DECISION/confirm');
     I.seeTextEquals('Your order has been made', '#confirmation-header h1');
   },
 
   async verifyReqMoreInfoConfirmationPage(infoType) {
-    I.seeInCurrentUrl('JUDGE_MAKES_DECISION/confirm');
+    I.seeInCurrentUrl('MAKE_DECISION/confirm');
     switch (infoType) {
       case 'requestMoreInformation':
         I.seeTextEquals('You have requested more information', '#confirmation-header h1');
