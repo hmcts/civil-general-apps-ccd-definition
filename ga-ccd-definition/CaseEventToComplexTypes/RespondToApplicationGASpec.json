@@ -5,8 +5,7 @@
     "CaseFieldID": "generalAppUrgencyRequirement",
     "ListElementCode": "generalAppUrgency",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "Publish": "Y"
   },
   {
@@ -16,19 +15,15 @@
     "ListElementCode": "types",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "Publish": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "isCcmccLocation",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
-    "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }

@@ -23,8 +23,7 @@
     "CaseFieldID": "generalAppUrgencyRequirement",
     "ListElementCode": "generalAppUrgency",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "Publish": "Y"
   },
   {
@@ -34,20 +33,18 @@
     "ListElementCode": "types",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "GAJudicialDecision",
     "CaseEventID": "REFER_TO_JUDGE",
     "CaseFieldID": "judicialDecision",
-    "PageID": "GAJudicialDecision",
-    "PageFieldDisplayOrder": 1,
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y",
+    "ListElementCode": "decision",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
     "Publish": "Y"
   }
 ]

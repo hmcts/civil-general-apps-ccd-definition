@@ -325,11 +325,12 @@
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "generalAppUrgencyRequirement",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "GAUrgencyRecordPage",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "judicialDecision = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
 ]

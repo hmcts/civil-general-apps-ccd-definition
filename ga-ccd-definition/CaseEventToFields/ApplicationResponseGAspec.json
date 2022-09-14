@@ -22,5 +22,44 @@
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppType",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "GATypePage",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "PageShowCondition": "generalAppRespondent1Representative = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppUrgencyRequirement",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "GAUrgencyRecordPage",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "generalAppRespondent1Representative = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "isCcmccLocation",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "isMultiPartyPage",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "generalAppRespondent1Representative = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   }
 ]

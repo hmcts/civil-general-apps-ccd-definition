@@ -15,23 +15,25 @@
     "CaseEventID": "REFER_TO_LEGAL_ADVISOR",
     "CaseFieldID": "generalAppUrgencyRequirement",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "GAUrgencyRecordPage",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "referToLegalAdvisor = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "REFER_TO_LEGAL_ADVISOR",
     "CaseFieldID": "generalAppType",
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "GATypePage",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "referToLegalAdvisor = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
   {
@@ -42,8 +44,9 @@
     "PageFieldDisplayOrder": 1,
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "referToLegalAdvisor = \"DO_NOT_SHOW_IN_UI\"",
+    "DisplayContext": "OPTIONAL",
+    "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
 ]

@@ -4,23 +4,25 @@
     "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
     "CaseFieldID": "generalAppUrgencyRequirement",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "GAUrgencyRecordPage",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "generalAppType = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
     "CaseFieldID": "generalAppType",
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "GATypePage",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
   {
@@ -28,10 +30,11 @@
     "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
     "CaseFieldID": "isCcmccLocation",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",
     "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }

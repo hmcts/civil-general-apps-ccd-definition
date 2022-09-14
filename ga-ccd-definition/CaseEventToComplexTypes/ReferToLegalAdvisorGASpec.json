@@ -15,7 +15,7 @@
     "ListElementCode": "legalAdvisorAdditionalInfo",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "GAUrgencyRecordPage",
@@ -24,7 +24,7 @@
     "ListElementCode": "generalAppUrgency",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "Publish": "Y"
   },
   {
@@ -35,15 +35,18 @@
     "EventElementLabel": "  ",
     "EventHintText": "  ",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "GAJudicialDecision",
     "CaseEventID": "REFER_TO_LEGAL_ADVISOR",
     "CaseFieldID": "judicialDecision",
-    "PageID": "GAJudicialDecision",
-    "DisplayContext": "MANDATORY",
+    "ListElementCode": "decision",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
     "Publish": "Y"
   }
 ]
