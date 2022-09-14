@@ -19,7 +19,7 @@ postgresql:
     enabled: false
 
 java:
-  image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
+  image: 'hmctspublic.azurecr.io/civil/general-applications:pr-394'
   imagePullPolicy: Always
   ingressHost: ${SERVICE_FQDN}
   keyVaults:
@@ -70,7 +70,7 @@ civil-service:
   java:
     applicationPort: 4000
     releaseNameOverride: ${SERVICE_NAME}-civil-service
-    image: 'hmctspublic.azurecr.io/civil/service:latest'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-1218'
     imagePullPolicy: Always
     ingressHost: civil-service-${SERVICE_FQDN}
     keyVaults:
