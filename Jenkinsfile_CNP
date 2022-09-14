@@ -35,7 +35,6 @@ def secrets = [
                 secret('microservicekey-ccd-gw', 'CCD_API_GATEWAY_S2S_KEY'),
                 secret('definition-importer-username', 'DEFINITION_IMPORTER_USERNAME'),
                 secret('definition-importer-password', 'DEFINITION_IMPORTER_PASSWORD'),
-                secret('microservicekey-ccd-gw', 'CCD_API_GATEWAY_S2S_KEY'),
                 secret('idam-data-store-system-user-username','ROLE_ASSIGNMENT_USER_EMAIL')
         ],
         'civil-${env}': [
