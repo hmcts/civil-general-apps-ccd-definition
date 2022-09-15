@@ -610,7 +610,7 @@ module.exports = {
   },
 
   cleanUp: async () => {
-    //await unAssignAllUsers();
+    await unAssignAllUsers();
   }
 };
 

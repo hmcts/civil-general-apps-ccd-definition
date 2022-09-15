@@ -54,7 +54,3 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   await I.respondToJudgeAdditionalInfo(childCaseNum(), childCaseId);
   console.log('Responded to Judge Additional Information on case: ' + childCaseNum());
 }).retry(0);
-
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
