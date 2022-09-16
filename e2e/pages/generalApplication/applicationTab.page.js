@@ -3,7 +3,8 @@ const {I} = inject();
 module.exports = {
 
   async verifyApplicationDetails(applicationTypes, appCount) {
-    I.waitInUrl('#Applications', 1);
+    await I.waitInUrl('#Applications', 5);
+    I.waitForElement('table.Applications  a', 5);
     I.seeNumberOfElements('.collection-field-table .complex-panel-title', appCount);
     I.see('Application type');
     I.see('Application ID');
