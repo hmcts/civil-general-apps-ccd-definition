@@ -49,7 +49,7 @@ module.exports = {
     await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
     await I.wait(3);
     await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 10);
-    await I.refreshPage();
+    await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
     await I.wait(3);
     await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 10);
   },
