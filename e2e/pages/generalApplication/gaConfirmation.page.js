@@ -28,7 +28,7 @@ module.exports = {
   async closeAndReturnToCaseDetails(caseId) {
     await I.see(caseId);
     await I.click('Close and Return to case details');
-    await I.waitForInvisible(locate('.loading-spinner-in-action').withText('Loading'), 10);
+    await I.waitForInvisible(locate('.loading-spinner-in-action').withText('Loading'), 5);
     await I.see(`Case ${caseId} has been updated with event: Make an application`);
   }
 };
