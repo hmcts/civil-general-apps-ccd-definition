@@ -46,10 +46,12 @@ module.exports = {
 
   async navigateToTab(caseNumber, tabName) {
     const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-    await I.retryUntilExists(async () => {
-      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
-      await I.wait(3);
-    }, locate('table.collection-field-table'));
+    await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
+    await I.wait(3);
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 10);
+    await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
+    await I.wait(3);
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 10);
   },
 
   async navigateToAppTab(caseNumber) {
