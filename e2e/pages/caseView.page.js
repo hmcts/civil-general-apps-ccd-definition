@@ -50,7 +50,7 @@ module.exports = {
     await I.wait(2);
     await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'));
     await I.refreshPage();
-    await I.wait(2);
+    await I.wait(10);
     await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'));
   },
 
