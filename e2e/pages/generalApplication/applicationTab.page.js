@@ -4,7 +4,7 @@ module.exports = {
 
   async verifyApplicationDetails(applicationTypes, appCount) {
     I.waitInUrl('#Applications', 1);
-    await I.wait(2);
+    await I.wait(10);
     I.seeNumberOfElements('.collection-field-table .complex-panel-title', appCount);
     I.see('Application type');
     I.see('Application ID');
