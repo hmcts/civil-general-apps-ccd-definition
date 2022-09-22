@@ -20,6 +20,6 @@ Scenario('GA Smoke Tests', async ({I, api}) => {
   console.log('Verified General Applications: ' + parentCaseNumber);
 }).retry(0);
 
-// AfterSuite(async ({api}) => {
-//   await api.cleanUp();
-// });
+AfterSuite(async ({api}) => {
+  await api.cleanUp();
+});
