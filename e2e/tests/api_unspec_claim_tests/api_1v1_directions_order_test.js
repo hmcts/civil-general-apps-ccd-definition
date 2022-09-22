@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 Judge Make Order Directions Order API tests @api-tests1');
+Feature('GA 1v1 Judge Make Order Directions Order API tests @api-tests');
 
 Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER - Respondent upload Directions Document', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -28,4 +28,7 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER - Respondent upload Direct
   console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
+AfterSuite(async ({api}) => {
+  await api.cleanUp();
+});
 
