@@ -13,7 +13,7 @@ module.exports = {
   fields: {
     eventDropdown: '#next-step',
     tab: 'div.mat-tab-labels',
-    spinner: '.loading-spinner-in-action',
+    spinner: 'div.spinner-container',
   },
   goButton: 'Go',
 
@@ -48,10 +48,10 @@ module.exports = {
     const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
     await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
     await I.wait(2);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'));
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 10);
     await I.refreshPage();
     await I.wait(2);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'));
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 10);
   },
 
   async navigateToAppTab(caseNumber) {
