@@ -9,7 +9,7 @@ const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${t
 const getCcdDataStoreGABaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseTypeGA}`;
 
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
-const getPaymentCallbackUrl = () => `${config.url.generalApplication}/payment-request-update`;
+const getPaymentCallbackUrl = () => `${config.url.generalApplication}/service-request-update`;
 const getRequestHeaders = (userAuth) => {
   return {
     'Content-Type': 'application/json',
