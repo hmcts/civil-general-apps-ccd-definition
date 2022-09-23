@@ -21,7 +21,7 @@ postgresql:
     enabled: false
 
 java:
-  image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
+  image: 'hmctspublic.azurecr.io/civil/general-applications:pr-523'
   imagePullPolicy: Always
   ingressHost: ${SERVICE_FQDN}
   keyVaults:
@@ -70,7 +70,7 @@ civil-service:
   java:
     applicationPort: 4000
     releaseNameOverride: ${SERVICE_NAME}-civil-service
-    image: 'hmctspublic.azurecr.io/civil/service:latest'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-1417'
     imagePullPolicy: Always
     ingressHost: civil-service-${SERVICE_FQDN}
     keyVaults:
@@ -148,6 +148,18 @@ xui-webapp:
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: hmctspublic.azurecr.io/xui/webapp:pr-2330
     ingressHost: xui-${SERVICE_FQDN}
+    memoryRequests: 512Mi
+    cpuRequests: 1000m
+    memoryLimits: 1024Mi
+    cpuLimits: 2500m
+    devmemoryRequests: 512Mi
+    devcpuRequests: 1000m
+    devmemoryLimits: 1024Mi
+    devcpuLimits: 2500m
+    autoscaling: # Default is false
+      enabled: true
+      maxReplicas: 5    # Required setting
+      targetCPUUtilizationPercentage: 80 # Default is 80% target CPU utilization
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health
       HEALTH_CCD_DATA_API: http://${SERVICE_NAME}-ccd-data-store-api/health
