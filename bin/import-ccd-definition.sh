@@ -9,12 +9,12 @@ params="$@"
 params="$1"
 branchName="$2"
 
-#Checkout specific branch of civil ccd definition
+#Checkout specific branch pf  civil camunda bpmn definition
 git clone https://github.com/hmcts/civil-ccd-definition.git -b ${branchName}
 cd civil-ccd-definition
 
-#echo "Switch to ${branchName} branch on civil-ccd-definition"
-#git checkout ${branchName}
+echo "Switch to ${branchName} branch on civil-ccd-definition"
+git checkout ${branchName}
 
 
 definition_input_dir=$(realpath './ccd-definition')
