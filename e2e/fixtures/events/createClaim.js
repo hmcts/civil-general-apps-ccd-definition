@@ -147,7 +147,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
     ClaimantSolicitorOrganisation: {
       applicant1OrganisationPolicy: {
         OrgPolicyReference: 'Claimant policy reference',
-        OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
+        OrgPolicyCaseAssignedRole: 'APP-SOL-UNSPEC-PROFILE',
         Organisation: {
           OrganisationID: config.claimantSolicitorOrgId
         }
@@ -294,7 +294,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
           respondent2OrgRegistered: 'Yes',
           respondent2OrganisationPolicy: {
             OrgPolicyReference: 'Defendant policy reference 2',
-            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
+            OrgPolicyCaseAssignedRole: 'RES-SOL-TWO-UNSPEC-PROFILE',
             Organisation: {
               OrganisationID: config.defendant2SolicitorOrgId
             },

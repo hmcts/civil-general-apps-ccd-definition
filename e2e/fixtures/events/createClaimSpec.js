@@ -58,7 +58,7 @@ module.exports = {
         ClaimantSolicitorOrganisation: {
           applicant1OrganisationPolicy: {
             OrgPolicyReference: 'Claimant policy reference',
-            OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONESPEC]',
+            OrgPolicyCaseAssignedRole: 'APP-SOL-SPEC-PROFILE',
             Organisation: {
               OrganisationID: config.claimantSolicitorOrgId
             }
@@ -78,7 +78,7 @@ module.exports = {
           respondent1OrgRegistered: 'Yes',
           respondent1OrganisationPolicy: {
             OrgPolicyReference: 'Defendant policy reference',
-            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
+            OrgPolicyCaseAssignedRole: 'RES-SOL-ONE-SPEC-PROFILE',
             Organisation: {
               OrganisationID: config.defendant1SolicitorOrgId
             },
@@ -244,7 +244,7 @@ module.exports = {
           SecondDefendantSolicitorOrganisation: {
             respondent2OrgRegistered: 'Yes',
             respondent2OrganisationPolicy: {
-              OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWOSPEC]',
+              OrgPolicyCaseAssignedRole: 'RES-SOL-TWO-SPEC-PROFILE',
               Organisation: {
                 OrganisationID: config.defendant2SolicitorOrgId,
               }
@@ -322,7 +322,7 @@ module.exports = {
           SecondDefendantSolicitorOrganisation: {
             respondent2OrgRegistered: 'Yes',
             respondent2OrganisationPolicy: {
-              OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
+              OrgPolicyCaseAssignedRole: 'RES-SOL-ONE-SPEC-PROFILE',
               Organisation: {
                 OrganisationID: config.defendant1SolicitorOrgId,
               }

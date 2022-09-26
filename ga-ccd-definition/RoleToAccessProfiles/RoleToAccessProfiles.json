@@ -48,73 +48,73 @@
     "RoleName": "[APPLICANTSOLICITORTWO]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "[APPLICANTSOLICITORTWO]",
+    "AccessProfiles": "APP-SOL-UNSPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "UNSPEC_CLAIM"
   },
   {
     "RoleName": "[APPLICANTSOLICITORONE]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "[APPLICANTSOLICITORONE]",
+    "AccessProfiles": "APP-SOL-UNSPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "UNSPEC_CLAIM"
   },
   {
     "RoleName": "[RESPONDENTSOLICITORONE]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "[RESPONDENTSOLICITORONE]",
+    "AccessProfiles": "RES-SOL-ONE-UNSPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "UNSPEC_CLAIM"
   },
   {
     "RoleName": "[RESPONDENTSOLICITORTWO]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "[RESPONDENTSOLICITORTWO]",
+    "AccessProfiles": "RES-SOL-TWO-UNSPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "UNSPEC_CLAIM"
   },
   {
     "RoleName": "[APPLICANTSOLICITORONESPEC]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "[APPLICANTSOLICITORONESPEC]",
+    "AccessProfiles": "APP-SOL-SPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "SPEC_CLAIM"
   },
   {
     "RoleName": "[APPLICANTSOLICITORTWOSPEC]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "[APPLICANTSOLICITORTWOSPEC]",
+    "AccessProfiles": "APP-SOL-SPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "SPEC_CLAIM"
   },
   {
-    "RoleName": "[RESPONDENTSOLICITORONESPEC]",
+    "RoleName": "[RESPONDENTSOLICITORONE]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "[RESPONDENTSOLICITORONESPEC]",
+    "AccessProfiles": "RES-SOL-ONE-SPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "SPEC_CLAIM"
   },
   {
-    "RoleName": "[RESPONDENTSOLICITORTWOSPEC]",
+    "RoleName": "[RESPONDENTSOLICITORTWO]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "[RESPONDENTSOLICITORTWOSPEC]",
+    "AccessProfiles": "RES-SOL-TWO-SPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "SPEC_CLAIM"
   },
   {
     "RoleName": "[CREATOR]",
