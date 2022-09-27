@@ -9,7 +9,7 @@ def product = "civil"
 def component = "ga-ccd"
 def camundaBranch = "master"
 
-def ccddefbranch = "feature/CIV-3427"
+def ccddefbranch = "gaintegration"
 AppPipelineConfig pipelineConf
 
 static Map<String, Object> secret(String secretName, String envVariable) {
@@ -142,7 +142,7 @@ withPipeline(type, product, component) {
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-general-apps-ccd-definition civil-general-apps-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
-          ./bin/import-ccd-definition.sh "-e *-prod.json"
+          ./bin/import-ccd-definition.sh "-e *-prod.json" ${ccddefbranch}
           ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
           ./bin/pull-latest-camunda-files.sh ${camundaBranch}
         """

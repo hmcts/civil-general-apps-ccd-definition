@@ -34,7 +34,8 @@
     "ListElementCode": "generalAppUrgency",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
   },
   {
     "ID": "GAUrgencyRecordPage",
