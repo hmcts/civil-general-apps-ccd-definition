@@ -464,7 +464,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "civil-administrator-standard"
+          "civil-administrator-standard",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       },
@@ -483,7 +484,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "civil-administrator-standard"
+          "civil-administrator-standard",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       },
