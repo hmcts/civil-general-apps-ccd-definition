@@ -157,7 +157,7 @@ module.exports = {
           totalClaimAmount: claimAmount / 100
         },
         ClaimAmountDetails: {
-          superClaimType: 'SPEC_CLAIM'
+          superClaimType: 'SPEC_CLAIM',
         },
         InterestSummary: {
           totalInterest: 0,

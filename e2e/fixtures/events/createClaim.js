@@ -110,6 +110,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
+      CaseAccessCategory: 'UNSPEC_CLAIM',
       solicitorReferences: {
         applicantSolicitor1Reference: 'Applicant reference',
         respondentSolicitor1Reference: 'Respondent reference'
@@ -147,7 +148,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
     ClaimantSolicitorOrganisation: {
       applicant1OrganisationPolicy: {
         OrgPolicyReference: 'Claimant policy reference',
-        OrgPolicyCaseAssignedRole: 'APP-SOL-UNSPEC-PROFILE',
+        OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
         Organisation: {
           OrganisationID: config.claimantSolicitorOrgId
         }
@@ -294,7 +295,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
           respondent2OrgRegistered: 'Yes',
           respondent2OrganisationPolicy: {
             OrgPolicyReference: 'Defendant policy reference 2',
-            OrgPolicyCaseAssignedRole: 'RES-SOL-TWO-UNSPEC-PROFILE',
+            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
             Organisation: {
               OrganisationID: config.defendant2SolicitorOrgId
             },
