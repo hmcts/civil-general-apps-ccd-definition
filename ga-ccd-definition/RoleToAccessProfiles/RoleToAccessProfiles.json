@@ -81,7 +81,7 @@
     "CaseAccessCategories": "UNSPEC_CLAIM"
   },
   {
-    "RoleName": "[APPLICANTSOLICITORONESPEC]",
+    "RoleName": "[APPLICANTSOLICITORONE]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "APP-SOL-SPEC-PROFILE",
