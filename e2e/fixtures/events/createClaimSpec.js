@@ -35,10 +35,20 @@ module.exports = {
     const userData = {
       userInput: {
         References: {
-          superClaimType: 'SPEC_CLAIM',
+          CaseAccessCategory: 'SPEC_CLAIM',
           solicitorReferences: {
             applicantSolicitor1Reference: 'Applicant reference',
             respondentSolicitor1Reference: 'Respondent reference'
+          }
+        },
+        Court: {
+          courtLocation: {
+            applicantPreferredCourtLocationList: {
+              list_items: [
+                listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+              ],
+              value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+            }
           }
         },
         Claimant: {
@@ -58,7 +68,7 @@ module.exports = {
         ClaimantSolicitorOrganisation: {
           applicant1OrganisationPolicy: {
             OrgPolicyReference: 'Claimant policy reference',
-            OrgPolicyCaseAssignedRole: 'APP-SOL-SPEC-PROFILE',
+            OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
             Organisation: {
               OrganisationID: config.claimantSolicitorOrgId
             }
@@ -78,7 +88,7 @@ module.exports = {
           respondent1OrgRegistered: 'Yes',
           respondent1OrganisationPolicy: {
             OrgPolicyReference: 'Defendant policy reference',
-            OrgPolicyCaseAssignedRole: 'RES-SOL-ONE-SPEC-PROFILE',
+            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
             Organisation: {
               OrganisationID: config.defendant1SolicitorOrgId
             },
@@ -157,7 +167,7 @@ module.exports = {
           totalClaimAmount: claimAmount / 100
         },
         ClaimAmountDetails: {
-          superClaimType: 'SPEC_CLAIM',
+          CaseAccessCategory: 'SPEC_CLAIM',
         },
         InterestSummary: {
           totalInterest: 0,
@@ -244,9 +254,10 @@ module.exports = {
           SecondDefendantSolicitorOrganisation: {
             respondent2OrgRegistered: 'Yes',
             respondent2OrganisationPolicy: {
-              OrgPolicyCaseAssignedRole: 'RES-SOL-TWO-SPEC-PROFILE',
+              OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
               Organisation: {
                 OrganisationID: config.defendant2SolicitorOrgId,
+                OrganisationName: 'Civil - Organisation 2'
               }
             }
           },
@@ -322,7 +333,7 @@ module.exports = {
           SecondDefendantSolicitorOrganisation: {
             respondent2OrgRegistered: 'Yes',
             respondent2OrganisationPolicy: {
-              OrgPolicyCaseAssignedRole: 'RES-SOL-ONE-SPEC-PROFILE',
+              OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
               Organisation: {
                 OrganisationID: config.defendant1SolicitorOrgId,
               }
