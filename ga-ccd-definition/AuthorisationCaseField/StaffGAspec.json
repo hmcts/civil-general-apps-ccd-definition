@@ -49,6 +49,12 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "locationName",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaDetailsRespondentSol",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

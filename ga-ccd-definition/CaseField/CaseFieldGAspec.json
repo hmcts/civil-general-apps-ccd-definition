@@ -448,6 +448,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "locationName",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialDecisionMakeOrder",
     "Label": " ",
     "FieldType": "GAJudicialMakeAnOrderGAspec",
