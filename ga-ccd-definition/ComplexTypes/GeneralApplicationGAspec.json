@@ -176,7 +176,7 @@
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "caseManagementCategory",
-    "FieldType": "DynamicList",
+    "FieldType": "GACaseManagementCategory",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },

@@ -316,7 +316,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "caseManagementCategory",
     "Label": " ",
-    "FieldType": "DynamicList",
+    "FieldType": "GACaseManagementCategory",
     "SecurityClassification": "Public"
   },
   {
@@ -347,17 +347,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "gaDetailsRespondentSol",
-    "Label": " ",
-    "ElementLabel": "Application Type",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
-    "SecurityClassification": "Public",
-    "_Definition":  "The details of the child application on the case",
-    "_Category":  "COMMON"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "gaDetailsRespondentSolTwo",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",

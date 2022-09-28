@@ -559,34 +559,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
-    "ListElementCode": "generalAppSubmittedDateGAspec",
-    "UserRole": "civil-administrator-standard",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
-    "ListElementCode": "caseLink",
-    "UserRole": "civil-administrator-standard",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
-    "ListElementCode": "caseState",
-    "UserRole": "civil-administrator-standard",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
-    "ListElementCode": "generalApplicationType",
-    "UserRole": "civil-administrator-standard",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppDateDeadline",
     "UserRole": "civil-administrator-standard",
@@ -1363,34 +1335,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaDetailsRespondentSol",
-    "ListElementCode": "generalApplicationType",
-    "UserRole": "civil-administrator-basic",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
-    "ListElementCode": "generalAppSubmittedDateGAspec",
-    "UserRole": "civil-administrator-basic",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
-    "ListElementCode": "caseLink",
-    "UserRole": "civil-administrator-basic",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
-    "ListElementCode": "caseState",
-    "UserRole": "civil-administrator-basic",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
     "ListElementCode": "generalApplicationType",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
