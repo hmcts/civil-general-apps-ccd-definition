@@ -622,34 +622,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
-    "ListElementCode": "generalAppSubmittedDateGAspec",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
-    "ListElementCode": "caseLink",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
-    "ListElementCode": "caseState",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
-    "ListElementCode": "generalApplicationType",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppDateDeadline",
     "UserRole": "caseworker-civil-systemupdate",

@@ -1,6 +1,8 @@
 postgresql:
   enabled: true
   image:
+    registry: hmctspublic.azurecr.io
+    repository: imported/bitnami/postgresql
     tag: '11.6.0'
   resources:
     requests:
@@ -56,9 +58,7 @@ java:
     FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
     LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
     GENAPP_LRD_URL: http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-
-    PAY_CALLBACK_URL: http://${SERVICE_NAME}-java/payment-request-update
-
+    PAY_CALLBACK_URL: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
     TESTING_SUPPORT_ENABLED: true
     POLLING_EVENT_EMITTER_ENABLED: false
     CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-aat.service.core-compute-aat.internal
@@ -70,7 +70,7 @@ civil-service:
   java:
     applicationPort: 4000
     releaseNameOverride: ${SERVICE_NAME}-civil-service
-    image: 'hmctspublic.azurecr.io/civil/service:latest'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-1482'
     imagePullPolicy: Always
     ingressHost: civil-service-${SERVICE_FQDN}
     keyVaults:
@@ -146,8 +146,20 @@ xui-webapp:
   nodejs:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
-    image: hmctspublic.azurecr.io/xui/webapp:pr-2311
+    image: hmctspublic.azurecr.io/xui/webapp:pr-2330
     ingressHost: xui-${SERVICE_FQDN}
+    memoryRequests: 512Mi
+    cpuRequests: 1000m
+    memoryLimits: 1024Mi
+    cpuLimits: 2500m
+    devmemoryRequests: 512Mi
+    devcpuRequests: 1000m
+    devmemoryLimits: 1024Mi
+    devcpuLimits: 2500m
+    autoscaling: # Default is false
+      enabled: true
+      maxReplicas: 5    # Required setting
+      targetCPUUtilizationPercentage: 80 # Default is 80% target CPU utilization
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health
       HEALTH_CCD_DATA_API: http://${SERVICE_NAME}-ccd-data-store-api/health
