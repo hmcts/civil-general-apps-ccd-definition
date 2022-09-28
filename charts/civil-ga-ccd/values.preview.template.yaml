@@ -23,7 +23,7 @@ postgresql:
 java:
   image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
   imagePullPolicy: Always
-  ingressHost: ${SERVICE_FQDN}
+  ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
   keyVaults:
     civil:
       resourceGroup: civil
