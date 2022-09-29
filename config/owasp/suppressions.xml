@@ -50,7 +50,7 @@
     <cve>CVE-2013-7315</cve>
     <cve>CVE-2014-0054</cve>
   </suppress>
-  <suppress until="2022-09-29">
+  <suppress until="2022-10-29">
     <notes>CVE-2016-1000027 cant be fixed since spring has conveyed its a known warning in their documentation
       details are available to it from here https://nvd.nist.gov/vuln/detail/CVE-2016-1000027</notes>
     <cve>CVE-2016-1000027</cve>
@@ -75,7 +75,7 @@
     <cve>CVE-2022-22970</cve>
     <cve>CVE-2022-22971</cve>
   </suppress>
-  <suppress until="2022-09-29">
+  <suppress until="2022-10-29">
     <notes>
       snakeyaml-1.28.jar vulnerability coming through the launchdarkly-java-server-sdk-5.9.0.jar
     </notes>
@@ -114,7 +114,7 @@
     </notes>
     <cve>CVE-2018-11039</cve>
   </suppress>
-  <suppress until="2022-09-29">
+  <suppress until="2022-10-29">
     <notes>
       Upgrading to tomcat embed core to 1.10.x has got startup issues which requires investigation
     </notes>
@@ -154,5 +154,8 @@
     <cve>CVE-2022-38749</cve>
     <cve>CVE-2022-38751</cve>
     <cve>CVE-2022-38750</cve>
+  </suppress>
+  <suppress until="2022-09-29">
+    <cve>CVE-2022-38752</cve>
   </suppress>
 </suppressions>
