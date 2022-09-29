@@ -13,22 +13,23 @@ module.exports = {
   fields: {
     eventDropdown: '#next-step',
     tab: 'div.mat-tab-labels',
-    spinner: '.loading-spinner-in-action',
+    spinner: 'div.spinner-container',
   },
-  goButton: 'Go',
+  goButton: '.event-trigger .button',
 
   start: function (event) {
     switch (event) {
       case 'Make decision':
       case 'Make an application':
         I.selectOption(this.fields.eventDropdown, event);
-        I.click(this.goButton);
+        I.waitForClickable(this.goButton, 10);
+        I.forceClick(this.goButton);
         break;
       default:
-        I.waitForClickable('.event-trigger .button', 3);
-        I.click(this.goButton);
+        I.waitForClickable(this.goButton, 10);
+        I.forceClick(this.goButton);
     }
-    I.waitForElement(EVENT_TRIGGER_LOCATOR);
+    I.waitForElement(EVENT_TRIGGER_LOCATOR, 15);
   },
 
   async startEvent(event, caseId) {
@@ -48,16 +49,15 @@ module.exports = {
     const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
     await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
     await I.wait(2);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'));
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 15);
     await I.refreshPage();
-    await I.wait(8);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'));
+    await I.wait(2);
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 15);
   },
 
   async navigateToAppTab(caseNumber) {
     await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
-    await I.wait(8);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'));
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 15);
   },
 
   async clickOnFirstChildCaseId() {
