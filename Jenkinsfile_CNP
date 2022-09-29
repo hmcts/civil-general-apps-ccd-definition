@@ -9,7 +9,7 @@ def product = "civil"
 def component = "ga-ccd"
 def camundaBranch = "master"
 
-def ccddefbranch = "feature/CIV-3306_CIV-3307"
+def ccddefbranch = "gaintegration"
 
 AppPipelineConfig pipelineConf
 
