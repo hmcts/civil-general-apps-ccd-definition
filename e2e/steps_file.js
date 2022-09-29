@@ -695,7 +695,7 @@ module.exports = function () {
         this.waitForFunction(() => document.readyState === 'complete', 10);
       }, SIGNED_IN_SELECTOR);
 
-      await this.waitForElement('.ccd-dropdown', 15);
+      await this.waitForSelector('ccd-case-header > h1', 15);
     },
 
     async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber) {
