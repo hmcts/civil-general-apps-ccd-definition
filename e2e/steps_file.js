@@ -678,13 +678,16 @@ module.exports = function () {
     },
 
     async navigateToTab(caseNumber, tabName) {
-      await this.retryUntilExists(async () => {
+      let urlBefore = await this.grabCurrentUrl();
+      await this.retryUntilUrlChanges(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         console.log(`Navigating to tab: ${tabName}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
+        await this.wait(2);
         await this.waitForInvisible(locate('div.spinner-container').withText('Loading'), 15);
+        await this.refreshPage();
         this.waitForFunction(() => document.readyState === 'complete', 10);
-      }, SIGNED_IN_SELECTOR);
+      }, urlBefore);
       await this.waitForSelector('ccd-case-header > h1', 15);
     },
 
