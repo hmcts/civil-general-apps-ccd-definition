@@ -211,10 +211,6 @@ const verifyGAConfirmationPage = (appType, parentCaseId) => [
   () => confirmationPage.verifyApplicationType(appType, parentCaseId)
 ];
 
-const navigateToTab = (caseNumber, tabName) => [
-  () => caseViewPage.navigateToTab(caseNumber, tabName)
-];
-
 module.exports = function () {
   return actor({
     // Define custom steps here, use 'this' to access default methods of I.
@@ -458,12 +454,6 @@ module.exports = function () {
       await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
     },
 
-    async navigateToTab(caseNumber, tabName) {
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.navigateToTab(caseNumber, tabName)
-    ]);
-    },
-
     /**
      * Retries defined action util element described by the locator is invisible. If element is not invisible
      * after 4 tries (run + 3 retries) this step throws an error. Use cases include checking no error present on page.
@@ -687,6 +677,17 @@ module.exports = function () {
       ]);
     },
 
+    async navigateToTab(caseNumber, tabName) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to tab: ${tabName}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
+        await this.waitForInvisible(locate('div.spinner-container').withText('Loading'), 15);
+        this.waitForFunction(() => document.readyState === 'complete', 10);
+      }, SIGNED_IN_SELECTOR);
+      await this.waitForSelector('ccd-case-header > h1', 15);
+    },
+
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
@@ -773,21 +774,21 @@ module.exports = function () {
         () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_ADDITIONAL_INFO.id,
           childCaseId, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
-        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
+        () => this.navigateToTab(caseNumber, 'Application Documents'),
         () => applicationDocumentPage.verifyUploadedFile('Additional Information Documents', 'examplePDF.pdf'),
       ]);
     },
 
     async verifyApplicationDocument(childCaseNumber, docType) {
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.navigateToTab(childCaseNumber, 'Application Documents'),
+        () => this.navigateToTab(childCaseNumber, 'Application Documents'),
         () => applicationDocumentPage.verifyUploadedDocumentPDF(docType, childCaseNumber),
       ]);
     },
 
     async payAndVerifyAdditionalPayment(childCaseNumber) {
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.navigateToTab(childCaseNumber, 'Service Request'),
+        () => this.navigateToTab(childCaseNumber, 'Service Request'),
         () => serviceRequestPage.payAdditionalAmount(childCaseNumber),
         () => serviceRequestPage.verifyAdditionalPayment(childCaseNumber),
       ]);
@@ -795,7 +796,7 @@ module.exports = function () {
 
     async verifyClaimDocument(parentCaseNumber, childCaseNumber, docType) {
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.navigateToTab(parentCaseNumber, 'Claim documents'),
+        () => this.navigateToTab(parentCaseNumber, 'Claim documents'),
         () => claimDocumentPage.verifyUploadedDocument(childCaseNumber, docType),
       ]);
     },
@@ -807,7 +808,7 @@ module.exports = function () {
         () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_DIRECTIONS.id,
           childCaseId, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
-        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
+        () => this.navigateToTab(caseNumber, 'Application Documents'),
         () => applicationDocumentPage.verifyUploadedFile('Directions Order Documents', 'examplePDF.pdf'),
       ]);
     },
@@ -819,7 +820,7 @@ module.exports = function () {
         () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.id,
           childCaseId, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
-        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
+        () => this.navigateToTab(caseNumber, 'Application Documents'),
         () => applicationDocumentPage.verifyUploadedFile('Written Representation Documents', 'examplePDF.pdf'),
       ]);
     },
@@ -873,7 +874,7 @@ module.exports = function () {
 
     async clickAndVerifyTab(caseNumber, tabName, appType, appCount) {
       await this.triggerStepsWithScreenshot([
-        ...navigateToTab(caseNumber, tabName),
+        () => this.navigateToTab(caseNumber, tabName),
         () => applicationTab.verifyApplicationDetails(appType, appCount),
       ]);
     },

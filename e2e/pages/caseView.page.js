@@ -45,16 +45,6 @@ module.exports = {
     }
   },
 
-  async navigateToTab(caseNumber, tabName) {
-    const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-    await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
-    await I.wait(2);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 15);
-    await I.refreshPage();
-    await I.wait(2);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 15);
-  },
-
   async navigateToAppTab(caseNumber) {
     await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
     await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 15);
