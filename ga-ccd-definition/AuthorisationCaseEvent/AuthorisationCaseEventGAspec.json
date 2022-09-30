@@ -421,8 +421,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile",
-          "caseworker-civil-solicitor"
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },
