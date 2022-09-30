@@ -86,7 +86,7 @@
   </suppress>
   <suppress until="2022-11-29">
     <notes>
-      Still using Spring Framework versions 5.3.0 - 5.3.16 which has got vulnerability.
+    Still using Spring Framework versions 5.3.0 - 5.3.16 which has got vulnerability.
     </notes>
     <cve>CVE-2022-22950</cve>
   </suppress>
@@ -140,13 +140,13 @@
     <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
     <vulnerabilityName>1081522</vulnerabilityName>
   </suppress>
-  <suppress until="2022-11-29">
-    <notes><![CDATA[
+    <suppress until="2022-11-29">
+      <notes><![CDATA[
       file name: file-type:7.7.1
       ]]></notes>
-    <packageUrl regex="true">^pkg:npm/file\-type@.*$</packageUrl>
-    <vulnerabilityName>1081704</vulnerabilityName>
-  </suppress>
+      <packageUrl regex="true">^pkg:npm/file\-type@.*$</packageUrl>
+      <vulnerabilityName>1081704</vulnerabilityName>
+    </suppress>
   <suppress>
     <notes>
       stable spring boot 2.5.14 still got the vulnerable snakeyaml 1.28 jar. This would be fixed once its upgraded
