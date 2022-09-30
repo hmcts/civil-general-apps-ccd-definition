@@ -51,64 +51,71 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "LISTING_FOR_A_HEARING",
+    "Name": "Listing for a Hearing",
+    "Description": "Listing for a Hearing",
+    "DisplayOrder": 8
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "LISTED_FOR_A_HEARING",
     "Name": "Listed for a Hearing",
     "Description": "Listed for a Hearing",
-    "DisplayOrder": 8
+    "DisplayOrder": 9
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "AWAITING_WRITTEN_REPRESENTATIONS",
     "Name": "Awaiting Written Representations",
     "Description": "Awaiting Written Representations",
-    "DisplayOrder": 9
+    "DisplayOrder": 10
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "AWAITING_ADDITIONAL_INFORMATION",
     "Name": "Additional Information Required",
     "Description": "Additional Information Required",
-    "DisplayOrder": 10
+    "DisplayOrder": 11
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "APPLICATION_DISMISSED",
     "Name": "Application Dismissed",
     "Description": "Application Dismissed",
-    "DisplayOrder": 11
+    "DisplayOrder": 12
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "APPLICATION_CLOSED",
     "Name": "Application Closed",
     "Description": "Application Closed",
-    "DisplayOrder": 12
+    "DisplayOrder": 13
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "PENDING_CASE_ISSUED",
     "Name": "Claim Issue Pending",
     "Description": "Holding state whilst payment is taken",
-    "DisplayOrder": 13
+    "DisplayOrder": 14
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "PROCEEDS_IN_HERITAGE",
     "Name": "Proceeds in Heritage",
     "Description": "Proceeds in Heritage",
-    "DisplayOrder": 14
+    "DisplayOrder": 15
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "APPLICATION_ADD_PAYMENT",
     "Name": "Application Additional Payment",
     "Description": "Application Additional Payment",
-    "DisplayOrder": 15
+    "DisplayOrder": 16
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "APPLICATION_PAYMENT_FAILED",
     "Name": "Application Payment Failed",
     "Description": "Application Payment Failed",
-    "DisplayOrder": 16
+    "DisplayOrder": 17
   }
 ]

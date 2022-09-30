@@ -422,6 +422,29 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_AN_ORDER",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
           "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"

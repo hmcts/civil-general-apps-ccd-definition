@@ -1,0 +1,50 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_AN_ORDER",
+    "CaseFieldID": "applicationIsCloaked",
+    "PageID": "GAJudicialMakeADecisionScreen",
+    "PageFieldDisplayOrder": 1,
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y",
+    "Comment": "Hidden field to show applicationIsCloakedLabel and makeAppVisibleToRespondents when application is without notice",
+    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/validate-make-decision-screen"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_AN_ORDER",
+    "CaseFieldID": "applicationIsCloakedLabel",
+    "PageID": "GAJudicialMakeADecisionScreen",
+    "PageFieldDisplayOrder": 2,
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "applicationIsCloaked=\"Yes\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_AN_ORDER",
+    "CaseFieldID": "makeAppVisibleToRespondents",
+    "PageID": "GAJudicialMakeADecisionScreen",
+    "PageFieldDisplayOrder": 3,
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "applicationIsCloaked=\"Yes\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_AN_ORDER",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "PageID": "GAJudicialMakeADecisionScreen",
+    "PageFieldDisplayOrder": 4,
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  }
+]

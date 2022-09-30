@@ -231,6 +231,33 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "LISTED_FOR_A_HEARING",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "RU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseStateID": "PROCEEDS_IN_HERITAGE",
     "AccessControl": [
       {
