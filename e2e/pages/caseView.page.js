@@ -1,6 +1,5 @@
 const config = require('../config');
 const {I} = inject();
-const EVENT_TRIGGER_LOCATOR = 'ccd-case-event-trigger';
 
 module.exports = {
 
@@ -15,28 +14,28 @@ module.exports = {
     tab: 'div.mat-tab-labels',
     spinner: 'div.spinner-container',
   },
-  goButton: '.event-trigger .button',
+  goButton: 'Go',
 
   start: function (event) {
     switch (event) {
       case 'Make decision':
       case 'Make an application':
         I.selectOption(this.fields.eventDropdown, event);
-        I.waitForClickable(this.goButton, 10);
-        I.forceClick(this.goButton);
+        I.waitForClickable('.event-trigger .button', 10);
+        I.click(this.goButton);
         break;
       default:
-        I.waitForClickable(this.goButton, 10);
-        I.forceClick(this.goButton);
+        I.waitForClickable('.event-trigger .button', 10);
+        I.click(this.goButton);
     }
-    I.waitForElement(EVENT_TRIGGER_LOCATOR, 15);
   },
 
   async startEvent(event, caseId) {
-    await I.retryUntilExists(async () => {
+    let urlBefore = await I.grabCurrentUrl();
+    await I.retryUntilUrlChanges(async () => {
       await I.navigateToCaseDetails(caseId);
       this.start(event);
-    }, locate('h1.govuk-heading-l'));
+    }, urlBefore);
   },
 
   async assertNoEventsAvailable() {
