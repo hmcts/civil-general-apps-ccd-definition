@@ -20,7 +20,7 @@ Scenario('Judge makes decision 1V1 - Order Made', async ({api}) => {
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge makes decision order made: ' + gaCaseReference + ' ***');
-  await api.judgeMakesDecisionOrderMade(config.applicantSolicitorUser, gaCaseReference);
+  await api.judgeMakesDecisionOrderMade(config.judgeUser, gaCaseReference);
   console.log('*** End Judge makes decision order made - GA Case Reference: ' + gaCaseReference + ' ***');
 });
 

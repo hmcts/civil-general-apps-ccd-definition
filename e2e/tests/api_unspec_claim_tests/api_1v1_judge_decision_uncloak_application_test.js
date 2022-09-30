@@ -19,7 +19,7 @@ Scenario('Judge makes decision 1V1 - ORDER_MADE - Uncloak and Application Approv
 
   console.log('*** Start Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
     + gaCaseReference + ' ***');
-  await api.judgeMakesOrderDecisionUncloak(config.applicantSolicitorUser, gaCaseReference);
+  await api.judgeMakesOrderDecisionUncloak(config.judgeUser, gaCaseReference);
   console.log('*** End Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
     + gaCaseReference + ' ***');
 
@@ -38,7 +38,7 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
 
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
-  await api.judgeRequestMoreInformationUncloak(config.applicantSolicitorUser, gaCaseReference);
+  await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference);
   console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
 
@@ -61,7 +61,7 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Payment fails', 
 
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
-  await api.judgeRequestMoreInformationUncloak(config.applicantSolicitorUser, gaCaseReference);
+  await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference);
   console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
 

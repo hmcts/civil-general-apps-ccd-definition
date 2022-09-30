@@ -20,7 +20,7 @@ Scenario('Judge makes decision 1V1 - LIST FOR HEARING', async ({api}) => {
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.judgeListApplicationForHearing(config.applicantSolicitorUser, gaCaseReference);
+  await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
   console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
