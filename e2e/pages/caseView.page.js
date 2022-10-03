@@ -62,10 +62,7 @@ module.exports = {
 
   async navigateToAppTab(caseNumber) {
       await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
-      await I.wait(2);
-      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
-      await I.refreshPage();
-      await I.wait(8);
+      await I.wait(10);
       await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
   },
 
