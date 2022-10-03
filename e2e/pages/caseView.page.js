@@ -51,21 +51,20 @@ module.exports = {
   },
 
   async navigateToTab(caseNumber, tabName) {
-    let urlBefore = await I.grabCurrentUrl();
-    await I.retryUntilUrlChanges(async () => {
-      const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-      console.log(`Navigating to tab: ${tabName}`);
-      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
-      await I.wait(2);
-      await I.waitForInvisible(locate('div.spinner-container').withText('Loading'), 15);
-    }, urlBefore);
+    const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+    await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
+    await I.wait(2);
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
+    await I.refreshPage();
+    await I.wait(10);
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
   },
 
   async navigateToAppTab(caseNumber) {
     await I.retryUntilExists(async () => {
       await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
       await I.wait(3);
-      await I.waitForInvisible(locate('div.spinner-container').withText('Loading'), 20);
+      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
       await I.waitForElement(this.fields.caseHeader, 15);
     }, this.fields.caseHeader);
   },

@@ -692,8 +692,9 @@ module.exports = function () {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         console.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-        await this.waitForElement('ccd-case-header > h1', 15);
-      }, CASE_HEADER);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('.ccd-dropdown');
     },
 
     async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber) {
