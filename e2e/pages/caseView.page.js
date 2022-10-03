@@ -61,12 +61,12 @@ module.exports = {
   },
 
   async navigateToAppTab(caseNumber) {
-    await I.retryUntilExists(async () => {
       await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
-      await I.wait(3);
+      await I.wait(2);
       await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
-      await I.waitForElement(this.fields.caseHeader, 15);
-    }, this.fields.caseHeader);
+      await I.refreshPage();
+      await I.wait(8);
+      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
   },
 
   async clickOnFirstChildCaseId() {
