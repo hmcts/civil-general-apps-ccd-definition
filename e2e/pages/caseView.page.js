@@ -51,14 +51,14 @@ module.exports = {
   },
 
   async navigateToTab(caseNumber, tabName) {
-    await I.retryUntilExists(async () => {
+    let urlBefore = await I.grabCurrentUrl();
+    await I.retryUntilUrlChanges(async () => {
       const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
       console.log(`Navigating to tab: ${tabName}`);
       await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
       await I.wait(2);
       await I.waitForInvisible(locate('div.spinner-container').withText('Loading'), 15);
-      await I.waitForElement(this.fields.caseHeader, 15);
-    }, this.fields.caseHeader);
+    }, urlBefore);
   },
 
   async navigateToAppTab(caseNumber) {
