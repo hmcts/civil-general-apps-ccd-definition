@@ -1,4 +1,5 @@
 const defaultPassword = 'Password12!';
+const judgeDefaultPassword = 'Hmcts1234';
 
 module.exports = {
   idamStub: {
@@ -19,8 +20,8 @@ module.exports = {
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
   judgeUser: {
-    password: defaultPassword,
-    email: 'judge-civil-02@example.com',
+    password: judgeDefaultPassword,
+    email: '4925359EMP-@ejudiciary.net',
     type: 'judge'
   },
   applicantSolicitorUser: {
