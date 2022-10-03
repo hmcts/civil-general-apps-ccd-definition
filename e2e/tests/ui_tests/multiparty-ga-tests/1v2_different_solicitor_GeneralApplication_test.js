@@ -71,12 +71,15 @@ Scenario('Without Notice application for a hearing @multiparty-e2e-tests1', asyn
   await api.judgeListApplicationForHearing(config.applicantSolicitorUser, gaCaseReference);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToAppTab(civilCaseReference);
+  await I.waitForInvisible(locate('div.spinner-container').withText('Loading'), 15);
   await I.see(listForHearingStatus);
   await I.login(config.defendantSolicitorUser);
   await I.navigateToAppTab(civilCaseReference);
+  await I.waitForInvisible(locate('div.spinner-container').withText('Loading'), 15);
   await I.see(listForHearingStatus);
   await I.login(config.secondDefendantSolicitorUser);
   await I.navigateToAppTab(civilCaseReference);
+  await I.waitForInvisible(locate('div.spinner-container').withText('Loading'), 15);
   await I.see(listForHearingStatus);
 });
 

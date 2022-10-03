@@ -57,20 +57,15 @@ module.exports = {
       await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
       await I.wait(2);
       await I.waitForInvisible(locate('div.spinner-container').withText('Loading'), 15);
-      await I.refreshPage();
-      await I.wait(2);
-      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
       await I.waitForElement(this.fields.caseHeader, 15);
     }, this.fields.caseHeader);
   },
 
   async navigateToAppTab(caseNumber) {
     await I.retryUntilExists(async () => {
-      const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-      console.log(`Navigating to Application tab: ${normalizedCaseId}`);
       await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
-      await I.wait(2);
-      await I.refreshPage();
+      await I.wait(3);
+      await I.waitForInvisible(locate('div.spinner-container').withText('Loading'), 20);
       await I.waitForElement(this.fields.caseHeader, 15);
     }, this.fields.caseHeader);
   },
