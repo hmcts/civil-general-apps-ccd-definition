@@ -61,7 +61,7 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
   await I.see(listForHearingStatus);
 }).retry(0);
 
-Scenario('Without Notice application for a hearing @multiparty-e2e-tests1', async ({api, I}) => {
+Scenario('Without Notice application for a hearing @multiparty-e2e-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
