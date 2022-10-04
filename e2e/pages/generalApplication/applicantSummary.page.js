@@ -10,10 +10,8 @@ module.exports = {
   },
 
   async verifySummaryPage() {
-    I.seeInCurrentUrl('cases/case-details/');
-    let urlBefore = await I.grabCurrentUrl();
-    await I.retryUntilUrlChanges(() => I.click(locate(this.fields.tab).withText('Summary')), urlBefore);
     await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
+    I.seeInCurrentUrl('cases/case-details/');
     I.see('Summary');
     I.see('Parent Case ID');
     I.see('Hearing details');
