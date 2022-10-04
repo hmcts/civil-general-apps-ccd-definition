@@ -13,20 +13,26 @@ module.exports = {
     eventDropdown: '#next-step',
     tab: 'div.mat-tab-labels',
     spinner: 'div.spinner-container',
+    caseHeader: 'ccd-case-header > h1',
+    generalApps: 'h1.govuk-heading-l',
   },
   goButton: 'Go',
 
-  start: function (event) {
+  async start(event) {
     switch (event) {
       case 'Make decision':
       case 'Make an application':
-        I.selectOption(this.fields.eventDropdown, event);
-        I.waitForClickable('.event-trigger .button', 10);
-        I.click(this.goButton);
+        await I.waitForElement(this.fields.eventDropdown, 10);
+        await I.selectOption(this.fields.eventDropdown, event);
+        await I.retryUntilExists(async () => {
+          await I.click(this.goButton);
+        }, this.fields.generalApps);
         break;
       default:
-        I.waitForClickable('.event-trigger .button', 10);
-        I.click(this.goButton);
+        await I.waitForClickable('.event-trigger .button', 10);
+        await I.retryUntilExists(async () => {
+          await I.click(this.goButton);
+        }, this.fields.generalApps);
     }
   },
 
@@ -34,7 +40,7 @@ module.exports = {
     let urlBefore = await I.grabCurrentUrl();
     await I.retryUntilUrlChanges(async () => {
       await I.navigateToCaseDetails(caseId);
-      this.start(event);
+      await this.start(event);
     }, urlBefore);
   },
 
@@ -44,9 +50,20 @@ module.exports = {
     }
   },
 
+  async navigateToTab(caseNumber, tabName) {
+    const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+    await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
+    await I.wait(2);
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
+    await I.refreshPage();
+    await I.wait(10);
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
+  },
+
   async navigateToAppTab(caseNumber) {
-    await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 15);
+      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
+      await I.wait(10);
+      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
   },
 
   async clickOnFirstChildCaseId() {
