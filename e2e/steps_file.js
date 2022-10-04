@@ -877,10 +877,6 @@ module.exports = function () {
       ]);
     },
 
-    async navigateToAppTab(caseNumber) {
-        await caseViewPage.navigateToAppTab(caseNumber);
-    },
-
     async closeAndReturnToCaseDetails(caseId) {
       await this.triggerStepsWithScreenshot([
         () => confirmationPage.closeAndReturnToCaseDetails(caseId),

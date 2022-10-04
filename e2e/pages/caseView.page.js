@@ -1,4 +1,3 @@
-const config = require('../config');
 const {I} = inject();
 
 module.exports = {
@@ -11,7 +10,7 @@ module.exports = {
   },
   fields: {
     eventDropdown: '#next-step',
-    tab: 'div.mat-tab-labels',
+    tab: 'div.mat-tab-label-content',
     spinner: 'div.spinner-container',
     caseHeader: 'ccd-case-header > h1',
     generalApps: 'h1.govuk-heading-l',
@@ -51,19 +50,10 @@ module.exports = {
   },
 
   async navigateToTab(caseNumber, tabName) {
-    const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-    await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
-    await I.wait(2);
+    await I.navigateToCaseDetails(caseNumber);
+    let urlBefore = await I.grabCurrentUrl();
+    await I.retryUntilUrlChanges(() => I.click(locate(this.fields.tab).withText(tabName)), urlBefore);
     await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
-    await I.refreshPage();
-    await I.wait(10);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
-  },
-
-  async navigateToAppTab(caseNumber) {
-      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
-      await I.wait(10);
-      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
   },
 
   async clickOnFirstChildCaseId() {
