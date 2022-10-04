@@ -713,6 +713,15 @@
     "Label": "Application Proceeds in Heritage state change date",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "CaseAccessCategory",
+    "Label": "Case Access Category",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_Definition":  "Case Access Category",
+    "_Category":  "GENERALAPPLICATION"
   }
 ]
 

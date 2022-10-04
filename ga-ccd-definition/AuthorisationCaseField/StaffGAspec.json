@@ -106,5 +106,11 @@
     "CaseFieldID": "applicationTakenOfflineDate",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "CaseAccessCategory",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
