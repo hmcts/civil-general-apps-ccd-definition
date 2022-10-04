@@ -855,14 +855,15 @@ function addMidEventFields(pageId, responseBody) {
     midEventData = data[eventName].midEventData[pageId];
   }
 
-  if (midEventField.dynamicList === true) {
+  /*if (midEventField.dynamicList === true) {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
-  }
+  }*/
 
   caseData = {...caseData, ...midEventData};
   responseBody.data[midEventField.id] = caseData[midEventField.id];
 }
 
+// eslint-disable-next-line no-unused-vars
 function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListFieldName, midEventData) {
   const actualDynamicElementLabels = removeUuidsFromDynamicList(responseBody.data, dynamicListFieldName);
   const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
