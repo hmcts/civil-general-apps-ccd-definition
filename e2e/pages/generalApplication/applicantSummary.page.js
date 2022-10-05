@@ -6,7 +6,6 @@ module.exports = {
   fields: {
     summaryTab: 'div.mat-tab-label-content',
     nextStep: '#next-step option',
-    tab: 'div.mat-tab-label-content',
   },
 
   async verifySummaryPage() {
