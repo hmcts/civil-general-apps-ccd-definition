@@ -855,14 +855,15 @@ function addMidEventFields(pageId, responseBody) {
     midEventData = data[eventName].midEventData[pageId];
   }
 
-  if (midEventField.dynamicList === true) {
+  /*if (midEventField.dynamicList === true) {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
-  }
+  }*/
 
   caseData = {...caseData, ...midEventData};
   responseBody.data[midEventField.id] = caseData[midEventField.id];
 }
 
+// eslint-disable-next-line no-unused-vars
 function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListFieldName, midEventData) {
   const actualDynamicElementLabels = removeUuidsFromDynamicList(responseBody.data, dynamicListFieldName);
   const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
@@ -903,14 +904,14 @@ const assignCase = async (caseId, mpScenario) => {
 };
 
 const assignSpecCase = async (caseId, mpScenario) => {
-  await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
+  await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   switch (mpScenario) {
     case 'ONE_V_TWO_TWO_LEGAL_REP': {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
       break;
     }
     case 'ONE_V_TWO_ONE_LEGAL_REP': {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
       break;
     }
   }

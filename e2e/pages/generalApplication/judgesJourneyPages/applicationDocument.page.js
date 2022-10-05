@@ -9,6 +9,7 @@ module.exports = {
   },
 
   async verifyUploadedFile(expectedLabel, uploadedDoc) {
+    await I.waitForInvisible(locate('div.spinner-container').withText('Loading'), 15);
     I.seeInCurrentUrl('Documents');
     I.see(uploadedDoc);
     I.see(expectedLabel);
@@ -16,6 +17,7 @@ module.exports = {
   },
 
   async verifyUploadedDocumentPDF(documentType, childCaseNumber) {
+    await I.waitForInvisible(locate('div.spinner-container').withText('Loading'), 15);
     await I.seeInCurrentUrl('Documents');
     await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 1);
     let docURL = await I.grabTextFrom(locate(this.fields.links).first());
