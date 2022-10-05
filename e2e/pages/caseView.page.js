@@ -52,8 +52,20 @@ module.exports = {
   async navigateToTab(caseNumber, tabName) {
     await I.navigateToCaseDetails(caseNumber);
     let urlBefore = await I.grabCurrentUrl();
-    await I.retryUntilUrlChanges(() => I.click(locate(this.fields.tab).withText(tabName)), urlBefore);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
+    await I.retryUntilUrlChanges(async () => {
+      await I.click(locate(this.fields.tab).withText(tabName));
+      await I.wait(5);
+      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
+    }, urlBefore);
+  },
+
+  async clickOnTab(tabName) {
+    let urlBefore = await I.grabCurrentUrl();
+    await I.retryUntilUrlChanges(async () => {
+      await I.click(locate(this.fields.tab).withText(tabName));
+      await I.wait(5);
+      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
+    }, urlBefore);
   },
 
   async clickOnFirstChildCaseId() {

@@ -1,5 +1,4 @@
 // in this file you can append custom step methods to 'I' object
-
 const output = require('codeceptjs').output;
 
 const config = require('./config.js');
@@ -464,6 +463,12 @@ module.exports = function () {
     ]);
     },
 
+    async clickOnTab(tabName) {
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.clickOnTab(tabName)
+      ]);
+    },
+
     /**
      * Retries defined action util element described by the locator is invisible. If element is not invisible
      * after 4 tries (run + 3 retries) this step throws an error. Use cases include checking no error present on page.
@@ -772,29 +777,29 @@ module.exports = function () {
         () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_ADDITIONAL_INFO.id,
           childCaseId, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
-        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
+        () => caseViewPage.clickOnTab('Application Documents'),
         () => applicationDocumentPage.verifyUploadedFile('Additional Information Documents', 'examplePDF.pdf'),
       ]);
     },
 
     async verifyApplicationDocument(childCaseNumber, docType) {
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.navigateToTab(childCaseNumber, 'Application Documents'),
+        () => caseViewPage.clickOnTab('Application Documents'),
         () => applicationDocumentPage.verifyUploadedDocumentPDF(docType, childCaseNumber),
       ]);
     },
 
     async payAndVerifyAdditionalPayment(childCaseNumber) {
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.navigateToTab(childCaseNumber, 'Service Request'),
+        () => caseViewPage.clickOnTab('Service Request'),
         () => serviceRequestPage.payAdditionalAmount(childCaseNumber),
         () => serviceRequestPage.verifyAdditionalPayment(childCaseNumber),
       ]);
     },
 
-    async verifyClaimDocument(parentCaseNumber, childCaseNumber, docType) {
+    async verifyClaimDocument(childCaseNumber, docType) {
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.navigateToTab(parentCaseNumber, 'Claim documents'),
+        () => caseViewPage.clickOnTab('Claim documents'),
         () => claimDocumentPage.verifyUploadedDocument(childCaseNumber, docType),
       ]);
     },
@@ -806,7 +811,7 @@ module.exports = function () {
         () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_DIRECTIONS.id,
           childCaseId, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
-        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
+        () => caseViewPage.clickOnTab('Application Documents'),
         () => applicationDocumentPage.verifyUploadedFile('Directions Order Documents', 'examplePDF.pdf'),
       ]);
     },
@@ -818,7 +823,7 @@ module.exports = function () {
         () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.id,
           childCaseId, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
-        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
+        () => caseViewPage.clickOnTab('Application Documents'),
         () => applicationDocumentPage.verifyUploadedFile('Written Representation Documents', 'examplePDF.pdf'),
       ]);
     },
