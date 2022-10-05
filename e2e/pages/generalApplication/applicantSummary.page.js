@@ -5,10 +5,12 @@ module.exports = {
 
   fields: {
     summaryTab: 'div.mat-tab-label-content',
-    nextStep: '#next-step option'
+    nextStep: '#next-step option',
+    tab: 'div.mat-tab-label-content',
   },
 
   async verifySummaryPage() {
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
     I.seeInCurrentUrl('cases/case-details/');
     I.see('Summary');
     I.see('Parent Case ID');
