@@ -41,7 +41,8 @@
     "PageID": "GAUrgencyRecordPage",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",

@@ -55,12 +55,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalOrderDocument",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
@@ -100,5 +94,11 @@
     "CaseFieldID": "writtenRepConcurrentDocument",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "CaseAccessCategory",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

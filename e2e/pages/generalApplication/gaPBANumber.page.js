@@ -7,8 +7,8 @@ module.exports = {
     pbaNumber: {
       id: '#generalAppPBADetails_applicantsPbaAccounts',
       options: {
-        activeAccount1: 'PBA0088192',
-        activeAccount2: 'PBA0078095',
+        activeAccount2: 'PBA0088192',
+        activeAccount1: 'PBA0078095',
         activeAccount3: 'PBA0079005',
       }
     },

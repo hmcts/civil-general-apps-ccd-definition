@@ -65,28 +65,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin",
-          "caseworker-civil-systemupdate",
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "civil-administrator-standard",
-          "civil-administrator-basic"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppTypeLabel",
     "AccessControl": [
       {
@@ -555,6 +533,26 @@
           "judge-profile"
         ],
         "CRUD": "RU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "CaseAccessCategory",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [

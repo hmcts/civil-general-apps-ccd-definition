@@ -1,6 +1,5 @@
 const config = require('../config');
 const {I} = inject();
-const EVENT_TRIGGER_LOCATOR = 'ccd-case-event-trigger';
 
 module.exports = {
 
@@ -13,29 +12,36 @@ module.exports = {
   fields: {
     eventDropdown: '#next-step',
     tab: 'div.mat-tab-labels',
-    spinner: '.loading-spinner-in-action',
+    spinner: 'div.spinner-container',
+    caseHeader: 'ccd-case-header > h1',
+    generalApps: 'h1.govuk-heading-l',
   },
   goButton: 'Go',
 
-  start: function (event) {
+  async start(event) {
     switch (event) {
       case 'Make decision':
       case 'Make an application':
-        I.selectOption(this.fields.eventDropdown, event);
-        I.click(this.goButton);
+        await I.waitForElement(this.fields.eventDropdown, 10);
+        await I.selectOption(this.fields.eventDropdown, event);
+        await I.retryUntilExists(async () => {
+          await I.click(this.goButton);
+        }, this.fields.generalApps);
         break;
       default:
-        I.waitForClickable('.event-trigger .button', 3);
-        I.click(this.goButton);
+        await I.waitForClickable('.event-trigger .button', 10);
+        await I.retryUntilExists(async () => {
+          await I.click(this.goButton);
+        }, this.fields.generalApps);
     }
-    I.waitForElement(EVENT_TRIGGER_LOCATOR);
   },
 
   async startEvent(event, caseId) {
-    await I.retryUntilExists(async () => {
+    let urlBefore = await I.grabCurrentUrl();
+    await I.retryUntilUrlChanges(async () => {
       await I.navigateToCaseDetails(caseId);
-      this.start(event);
-    }, locate('h1.govuk-heading-l'));
+      await this.start(event);
+    }, urlBefore);
   },
 
   async assertNoEventsAvailable() {
@@ -48,16 +54,16 @@ module.exports = {
     const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
     await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
     await I.wait(2);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'));
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
     await I.refreshPage();
-    await I.wait(2);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'));
+    await I.wait(10);
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
   },
 
   async navigateToAppTab(caseNumber) {
-    await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
-    await I.wait(2);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'));
+      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
+      await I.wait(10);
+      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
   },
 
   async clickOnFirstChildCaseId() {
