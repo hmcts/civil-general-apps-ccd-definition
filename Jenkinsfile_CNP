@@ -7,9 +7,9 @@ import uk.gov.hmcts.contino.AppPipelineDsl
 def type = "java"
 def product = "civil"
 def component = "ga-ccd"
-def camundaBranch = "master"
+def camundaBranch = "feature/CIV-2801_2"
 
-def ccddefbranch = "master"
+def ccddefbranch = "feature/2801-2"
 AppPipelineConfig pipelineConf
 
 static Map<String, Object> secret(String secretName, String envVariable) {
