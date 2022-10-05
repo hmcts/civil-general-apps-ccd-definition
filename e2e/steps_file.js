@@ -784,7 +784,7 @@ module.exports = function () {
 
     async verifyApplicationDocument(childCaseNumber, docType) {
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.clickOnTab('Application Documents'),
+        () => caseViewPage.navigateToTab(childCaseNumber, 'Application Documents'),
         () => applicationDocumentPage.verifyUploadedDocumentPDF(docType, childCaseNumber),
       ]);
     },

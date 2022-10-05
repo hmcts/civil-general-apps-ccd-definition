@@ -11,8 +11,6 @@ module.exports = {
   },
 
   async verifyUploadedFile(expectedLabel, uploadedDoc) {
-    await I.click(locate(this.fields.tab).withText('Application Documents'));
-    await I.wait(3);
     await I.waitForElement(this.fields.appDocTable);
     I.seeInCurrentUrl('Documents');
     I.see(uploadedDoc);
@@ -21,8 +19,6 @@ module.exports = {
   },
 
   async verifyUploadedDocumentPDF(documentType, childCaseNumber) {
-    await I.click(locate(this.fields.tab).withText('Application Documents'));
-    await I.wait(3);
     await I.waitForElement(this.fields.appDocTable);
     await I.seeInCurrentUrl('Documents');
     await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 1);
