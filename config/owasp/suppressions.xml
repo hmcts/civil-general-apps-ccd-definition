@@ -41,6 +41,7 @@
    ]]></notes>
     <packageUrl regex="true">^pkg:npm/faker@.*$</packageUrl>
     <vulnerabilityName>1067281</vulnerabilityName>
+    <vulnerabilityName>1067355</vulnerabilityName>
   </suppress>
   <suppress until="2022-11-29">
     <notes>
