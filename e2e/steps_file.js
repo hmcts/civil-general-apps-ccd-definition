@@ -461,7 +461,7 @@ module.exports = function () {
     async navigateToTab(caseNumber, tabName) {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.navigateToTab(caseNumber, tabName)
-      ]);
+    ]);
     },
 
     /**
@@ -875,10 +875,6 @@ module.exports = function () {
         ...navigateToTab(caseNumber, tabName),
         () => applicationTab.verifyApplicationDetails(appType, appCount),
       ]);
-    },
-
-    async navigateToAppTab(caseNumber) {
-      await caseViewPage.navigateToAppTab(caseNumber);
     },
 
     async closeAndReturnToCaseDetails(caseId) {
