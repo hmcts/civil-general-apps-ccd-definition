@@ -1297,7 +1297,8 @@
       },
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "caseworker-ras-validation"
         ],
         "CRUD": "R"
       }
