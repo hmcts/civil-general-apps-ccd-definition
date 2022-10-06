@@ -1,5 +1,5 @@
 const defaultPassword = 'Password12!';
-const judgeDefaultPassword = 'Hmcts1234';
+const judgePassword = 'Hmcts1234';
 
 module.exports = {
   idamStub: {
@@ -20,7 +20,7 @@ module.exports = {
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
   judgeUser: {
-    password: judgeDefaultPassword,
+    password: (['preview', 'demo', 'aat'].includes(process.env.ENVIRONMENT)?judgePassword:defaultPassword),
     email: '4924246EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
