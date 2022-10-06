@@ -142,7 +142,7 @@ const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 let caseId, screenshotNumber, eventName, currentEventName;
 let eventNumber = 0;
 
-const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
+const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
 
 const selectApplicationType = (eventName, applicationType) => [
@@ -555,7 +555,7 @@ module.exports = function () {
     async retryUntilUrlChanges(action, urlBefore, maxNumberOfTries = 6) {
       let urlAfter;
       for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
-        output.log(`Checking if URL has changed, starting try #${tryNumber}`);
+        console.log(`Checking if URL has changed, starting try #${tryNumber}`);
         await action();
         await this.sleep(3000 * tryNumber);
         urlAfter = await this.grabCurrentUrl();
