@@ -36,11 +36,10 @@ module.exports = {
   },
 
   async startEvent(event, caseId) {
-    let urlBefore = await I.grabCurrentUrl();
-    await I.retryUntilUrlChanges(async () => {
+    await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
       await this.start(event);
-    }, urlBefore);
+    }, locate('.govuk-heading-l'));
   },
 
   async assertNoEventsAvailable() {
