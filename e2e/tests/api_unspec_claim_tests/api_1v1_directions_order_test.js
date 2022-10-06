@@ -20,7 +20,11 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER - Respondent upload Direct
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.judgeMakesDecisionDirectionsOrder(config.judgeUser, gaCaseReference);
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeMakesDecisionDirectionsOrder(config.judgeUser, gaCaseReference);
+  }else {
+    await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
+  }
   console.log('*** End Judge Directions Order GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Respondent respond to Judge Directions on GA Case Reference: ' + gaCaseReference + ' ***');

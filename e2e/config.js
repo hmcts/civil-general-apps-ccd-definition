@@ -19,8 +19,15 @@ module.exports = {
     microservice: 'civil_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
+  judgeLocalUser: {
+    password: defaultPassword,
+    email: '4924246EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '4'
+  },
   judgeUser: {
-    password: (['preview', 'demo', 'aat'].includes(process.env.ENVIRONMENT)?judgePassword:defaultPassword),
+    password: judgePassword,
     email: '4924246EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
