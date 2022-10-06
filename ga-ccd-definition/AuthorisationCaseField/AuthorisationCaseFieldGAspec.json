@@ -1853,7 +1853,6 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-judge",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
@@ -1873,7 +1872,6 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-judge",
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
           "basic-access"
@@ -1889,7 +1887,6 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-judge",
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
           "basic-access"
