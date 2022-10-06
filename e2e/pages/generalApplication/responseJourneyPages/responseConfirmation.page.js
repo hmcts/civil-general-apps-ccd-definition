@@ -37,3 +37,4 @@ module.exports = {
     expect(actualErrorMsg).to.equals('The application has already been responded to.');
   }
 };
+

@@ -35,3 +35,4 @@ module.exports = {
     await I.see(`Case ${childCaseId} has been updated with event: Make decision`);
   }
 };
+

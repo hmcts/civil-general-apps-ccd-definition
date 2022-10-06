@@ -32,3 +32,4 @@ module.exports = {
     await I.see(`Case ${caseId} has been updated with event: Make an application`);
   }
 };
+
