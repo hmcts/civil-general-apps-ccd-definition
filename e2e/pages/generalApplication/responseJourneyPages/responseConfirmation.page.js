@@ -32,7 +32,9 @@ module.exports = {
 
   async verifyAlreadyRespondedErrorMessage() {
     I.waitForClickable('.event-trigger .button', 3);
-    I.click(this.fields.goButton);
+    await I.retryUntilExists(async () => {
+      await I.click(this.fields.goButton);
+    }, this.fields.errorMessage);
     let actualErrorMsg = await I.grabTextFrom(this.fields.errorMessage);
     expect(actualErrorMsg).to.equals('The application has already been responded to.');
   }

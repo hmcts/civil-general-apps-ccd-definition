@@ -248,5 +248,12 @@
     "SecurityClassification": "Public",
     "_Definition":  "Case Access Category",
     "_Category":  "GENERALAPPLICATION"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "locationName",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
   }
 ]
