@@ -4,7 +4,7 @@ const {verifyJudgeRecitalText, verifyHearingDetailsJudgeRecitalText} = require('
 module.exports = {
 
   fields: {
-    summaryLabels: 'ccd-field-read-label ng-component span',
+    summaryLabels: 'ccd-field-read-label ng-component span'
   },
 
   async verifyJudgesSummaryPage(decisionType) {
