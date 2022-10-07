@@ -31,8 +31,8 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
     console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
-// AfterSuite(async ({api}) => {
-//   await api.cleanUp();
-// });
+AfterSuite(async ({api}) => {
+  await api.cleanUp();
+});
 
 
