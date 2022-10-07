@@ -70,13 +70,13 @@ Scenario('Without Notice application for a hearing @multiparty-e2e-tests', async
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
   await api.judgeListApplicationForHearing(config.applicantSolicitorUser, gaCaseReference);
   await I.login(config.applicantSolicitorUser);
-  await I.navigateToAppTab(civilCaseReference);
+  await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(listForHearingStatus);
   await I.login(config.defendantSolicitorUser);
-  await I.navigateToAppTab(civilCaseReference);
+  await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(listForHearingStatus);
   await I.login(config.secondDefendantSolicitorUser);
-  await I.navigateToAppTab(civilCaseReference);
+  await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(listForHearingStatus);
 });
 

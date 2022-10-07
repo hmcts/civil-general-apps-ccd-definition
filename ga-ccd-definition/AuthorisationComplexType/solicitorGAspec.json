@@ -564,6 +564,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "locationName",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplicationsDetails",
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "UserRole": "caseworker-civil-solicitor",
@@ -828,6 +835,13 @@
     "ListElementCode": "legalAdvisorAdditionalInfo",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "CaseAccessCategory",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
   }
 ]
 

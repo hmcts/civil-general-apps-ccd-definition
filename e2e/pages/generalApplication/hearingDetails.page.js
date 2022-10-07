@@ -99,7 +99,7 @@ module.exports = {
     if ('yes' === hearingScheduledCheck) {
       await I.fillField(this.fields.hearingDateDay, 1);
       await I.fillField(this.fields.hearingDateMonth, 10);
-      await I.fillField(this.fields.hearingDateYear, 2022);
+      await I.fillField(this.fields.hearingDateYear, 2023);
     }
   },
 
@@ -121,9 +121,9 @@ module.exports = {
     if ('yes' === trialRequired) {
       await I.fillField(this.fields.trialDateFromDay, 1);
       await I.fillField(this.fields.trialDateFromMonth, 10);
-      await I.fillField(this.fields.trialDateFromYear, 2022);
+      await I.fillField(this.fields.trialDateFromYear, 2023);
       await I.fillField(this.fields.trialDateToDay, 1);
-      await I.fillField(this.fields.trialDateToMonth, 10);
+      await I.fillField(this.fields.trialDateToMonth, 12);
       await I.fillField(this.fields.trialDateToYear, 2023);
     }
   },
@@ -157,9 +157,9 @@ module.exports = {
       I.waitForVisible(this.fields.unavailableDateFromDay);
       I.fillField(this.fields.unavailableDateFromDay, 1);
       I.fillField(this.fields.unavailableDateFromMonth, 10);
-      I.fillField(this.fields.unavailableDateFromYear, 2022);
+      I.fillField(this.fields.unavailableDateFromYear, 2023);
       I.fillField(this.fields.unavailableDateToDay, 1);
-      I.fillField(this.fields.unavailableDateToMonth, 10);
+      I.fillField(this.fields.unavailableDateToMonth, 12);
       I.fillField(this.fields.unavailableDateToYear, 2023);
     }
   },

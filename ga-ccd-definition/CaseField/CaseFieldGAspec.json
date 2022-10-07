@@ -437,6 +437,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "locationName",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialDecisionMakeOrder",
     "Label": " ",
     "FieldType": "GAJudicialMakeAnOrderGAspec",
@@ -699,6 +706,15 @@
     "Label": "Refer to Legal Advisor",
     "FieldType": "GAReferToLegalAdvisorGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "CaseAccessCategory",
+    "Label": "Case Access Category",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_Definition":  "Case Access Category",
+    "_Category":  "GENERALAPPLICATION"
   }
 ]
 
