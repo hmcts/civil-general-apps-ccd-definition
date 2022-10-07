@@ -60,14 +60,17 @@ withPipeline(type, product, component) {
     enableAksStagingDeployment()
 
     onPR {
+        env.ENVIRONMENT = "preview"
         loadVaultSecrets(secrets);
         enableCleanupOfHelmReleaseOnSuccess();
     }
     onMaster {
         loadVaultSecrets(secrets)
+        env.ENVIRONMENT = "aat"
     }
     onDemo {
         loadVaultSecrets(secrets)
+        env.ENVIRONMENT = "demo"
     }
 
     after('checkout') {
