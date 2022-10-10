@@ -708,6 +708,20 @@
     "SecurityClassification": "Public",
     "_Definition":  "Case Access Category",
     "_Category":  "GENERALAPPLICATION"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppVaryJudgementType",
+    "Label": "Vary Judgement GA Type",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaUploadN245FormUpload",
+    "Label": "Upload your completed N245 form",
+    "FieldType": "GAN245FormUpload",
+    "SecurityClassification": "Public"
   }
 ]
 

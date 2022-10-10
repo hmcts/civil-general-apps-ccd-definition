@@ -19,7 +19,33 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ga-validate-type"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseFieldID": "generalAppVaryJudgementType",
+    "DisplayContext": "READONLY",
+    "PageID": "GAUploadN245Form",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "generalAppType.types = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERAL_APPLICATION_CREATION",
+    "CaseFieldID": "gaUploadN245FormUpload",
+    "DisplayContext": "COMPLEX",
+    "PageID": "GAUploadN245Form",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "PageShowCondition": "generalAppVaryJudgementType=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ga-validate-n245form-name",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -27,7 +53,7 @@
     "CaseFieldID": "generalAppRespondentAgreement",
     "DisplayContext": "COMPLEX",
     "PageID": "GARespondentAgreementPage",
-    "PageDisplayOrder": 2,
+    "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
@@ -39,7 +65,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "GAUrgencyRecordPage",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "Publish": "Y"
@@ -51,7 +77,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "GAWithOrWithoutNoticePage",
-    "PageDisplayOrder": 4,
+    "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\""
@@ -63,7 +89,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -74,7 +100,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -85,7 +111,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   },
@@ -96,7 +122,7 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -107,7 +133,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   },
@@ -118,7 +144,7 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   },
@@ -129,7 +155,7 @@
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "COMPLEX",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   },
@@ -140,7 +166,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "HearingDetails",
-    "PageDisplayOrder": 6,
+    "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -150,7 +176,7 @@
     "CaseFieldID": "generalAppPBADetails",
     "DisplayContext": "COMPLEX",
     "PageID": "GAPBADetailsGAspec",
-    "PageDisplayOrder": 7,
+    "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
@@ -162,7 +188,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
+    "PageDisplayOrder": 9,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -173,7 +199,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
+    "PageDisplayOrder": 9,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -184,7 +210,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
+    "PageDisplayOrder": 9,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -195,7 +221,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
+    "PageDisplayOrder": 9,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -206,7 +232,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
+    "PageDisplayOrder": 9,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -217,7 +243,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
+    "PageDisplayOrder": 9,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -228,7 +254,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
+    "PageDisplayOrder": 9,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   },
@@ -239,7 +265,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
+    "PageDisplayOrder": 9,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   },
@@ -250,7 +276,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
+    "PageDisplayOrder": 9,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   },

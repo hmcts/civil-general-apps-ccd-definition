@@ -815,5 +815,26 @@
     "ListElementCode": "caseManagementCategory",
     "UserRole": "judge-profile",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppVaryJudgementType",
+    "UserRole": "judge-profile",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "gaUploadN245FormUpload",
+    "UserRole": "judge-profile",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "gaUploadN245FormUpload.generalAppN245FormUpload",
+    "UserRole": "judge-profile",
+    "CRUD": "CRU"
   }
 ]
