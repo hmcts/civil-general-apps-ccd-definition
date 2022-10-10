@@ -1930,7 +1930,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaUploadN245FormUpload",
+    "CaseFieldID": "gaUploadN245FormUploadLabel",
     "AccessControl": [
       {
         "UserRoles": [

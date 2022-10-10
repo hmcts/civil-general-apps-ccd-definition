@@ -403,7 +403,7 @@
   {
     "ID": "GAUploadN245Form",
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "gaUploadN245FormUpload",
+    "CaseFieldID": "gaUploadN245FormUploadLabel",
     "ListElementCode": "generalAppN245Download",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
@@ -412,7 +412,7 @@
   {
     "ID": "GAUploadN245Form",
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "gaUploadN245FormUpload",
+    "CaseFieldID": "gaUploadN245FormUploadLabel",
     "ListElementCode": "generalAppN245Label",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",

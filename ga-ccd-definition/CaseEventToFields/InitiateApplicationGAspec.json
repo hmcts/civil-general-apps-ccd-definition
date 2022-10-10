@@ -38,7 +38,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "gaUploadN245FormUpload",
+    "CaseFieldID": "gaUploadN245FormUploadLabel",
     "DisplayContext": "COMPLEX",
     "PageID": "GAUploadN245Form",
     "PageDisplayOrder": 2,

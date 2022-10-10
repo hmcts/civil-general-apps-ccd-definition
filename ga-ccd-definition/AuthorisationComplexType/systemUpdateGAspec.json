@@ -37,13 +37,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "gaUploadN245FormUpload",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppN245FormUpload",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

@@ -37,13 +37,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "gaUploadN245FormUpload",
-    "UserRole": "civil-administrator-standard",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppN245FormUpload",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
@@ -834,13 +827,6 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppVaryJudgementType",
-    "UserRole": "civil-administrator-basic",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
-    "ListElementCode": "gaUploadN245FormUpload",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },

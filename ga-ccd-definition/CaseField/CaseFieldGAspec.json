@@ -718,7 +718,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "gaUploadN245FormUpload",
+    "ID": "gaUploadN245FormUploadLabel",
     "Label": "Upload your completed N245 form",
     "FieldType": "GAN245FormUpload",
     "SecurityClassification": "Public"
@@ -726,7 +726,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppN245FormUpload",
-    "Label": "Upload your completed N245 form",
+    "Label": "N254 Form",
     "FieldType": "Document",
     "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
     "SecurityClassification": "Public"

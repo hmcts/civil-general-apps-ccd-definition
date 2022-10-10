@@ -109,12 +109,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaUploadN245FormUpload",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppN245FormUpload",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
