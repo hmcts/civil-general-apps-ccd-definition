@@ -5,13 +5,13 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
       },
       {
         "UserRoles": [
+          "caseworker-civil-solicitor",
           "judge-profile",
           "civil-administrator-standard",
           "civil-administrator-basic"
@@ -26,10 +26,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "RU"
       },
       {
         "UserRoles": [
@@ -47,10 +52,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "RU"
       },
       {
         "UserRoles": [
@@ -68,10 +78,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "RU"
       },
       {
         "UserRoles": [
@@ -89,10 +104,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "RU"
       },
       {
         "UserRoles": [
@@ -110,20 +130,20 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
           "judge-profile"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "RU"
       },
       {
         "UserRoles": [
+          "civil-administrator-basic",
           "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
-          "civil-administrator-basic"
         ],
         "CRUD": "R"
       },
@@ -141,14 +161,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
       },
       {
         "UserRoles": [
           "judge-profile",
+          "caseworker-civil-solicitor",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -162,20 +182,20 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
           "judge-profile"
         ],
         "CRUD": "CRUD"
       },
       {
         "UserRoles": [
+          "civil-administrator-basic",
           "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
-          "civil-administrator-basic"
         ],
         "CRUD": "R"
       },
@@ -193,7 +213,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
@@ -201,6 +220,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "caseworker-civil-solicitor",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -214,10 +234,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "RU"
       },
       {
         "UserRoles": [
@@ -235,7 +260,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
@@ -243,6 +267,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "caseworker-civil-solicitor",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -256,7 +281,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
@@ -264,6 +288,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "caseworker-civil-solicitor",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -277,11 +302,16 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-judge"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
+        ],
+        "CRUD": "RU"
       }
     ]
   },
@@ -291,11 +321,16 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-judge"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
+        ],
+        "CRUD": "RU"
       }
     ]
   }
