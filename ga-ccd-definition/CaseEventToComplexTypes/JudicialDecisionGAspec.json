@@ -332,7 +332,6 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "isMultiPartyPage",
-    "ShowSummaryChangeOption": "N",
-    "Publish": "Y"
+    "ShowSummaryChangeOption": "N"
   }
 ]

@@ -330,8 +330,7 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "PageShowCondition": "judicialDecision = \"DO_NOT_SHOW_IN_UI\"",
-    "ShowSummaryChangeOption": "N",
-    "Publish": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -343,7 +342,6 @@
     "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
     "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
-    "ShowSummaryChangeOption": "N",
-    "Publish": "Y"
+    "ShowSummaryChangeOption": "N"
   }
 ]
