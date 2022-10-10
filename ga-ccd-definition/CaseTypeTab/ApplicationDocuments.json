@@ -99,7 +99,7 @@
     "TabID": "Application Documents",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
-    "CaseFieldID": "gaUploadN245FormUpload.generalAppN245FormUpload",
+    "CaseFieldID": "generalAppN245FormUpload",
     "TabFieldDisplayOrder": 12
   }
 ]

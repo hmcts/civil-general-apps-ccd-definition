@@ -417,14 +417,5 @@
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "ShowSummaryContentOption": "N"
-  },
-  {
-    "ID": "GAUploadN245Form",
-    "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "gaUploadN245FormUpload",
-    "ListElementCode": "generalAppN245FormUpload",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "ShowSummaryContentOption": "Y"
   }
 ]

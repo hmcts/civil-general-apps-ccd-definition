@@ -833,7 +833,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "gaUploadN245FormUpload.generalAppN245FormUpload",
+    "ListElementCode": "generalAppN245FormUpload",
     "UserRole": "judge-profile",
     "CRUD": "CRU"
   }
