@@ -41,6 +41,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
     'signLanguageInterpreter', getAppTypes().slice(0, 5));
   console.log('Org1 solicitor Responded to application: ' + childCaseNum());
   await I.respCloseAndReturnToCaseDetails(childCaseId);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDecisionStatus);
   await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes');
