@@ -5,7 +5,7 @@ module.exports = {
 
   fields: {
     summaryTab: 'div.mat-tab-label-content',
-    nextStep: '#next-step option'
+    nextStep: '#next-step option',
   },
 
   async verifySummaryPageAfterResponding() {

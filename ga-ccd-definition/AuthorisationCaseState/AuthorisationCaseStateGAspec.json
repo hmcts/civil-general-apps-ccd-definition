@@ -13,6 +13,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "legal-adviser",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -34,6 +35,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "legal-adviser",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -55,6 +57,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "legal-adviser",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -76,6 +79,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "legal-adviser",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -97,6 +101,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "legal-adviser",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -111,7 +116,8 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRUD"
       },
@@ -149,6 +155,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "legal-adviser",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -163,7 +170,8 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRUD"
       },
@@ -201,10 +209,25 @@
       {
         "UserRoles": [
           "judge-profile",
+          "legal-adviser",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "APPLICATION_CLOSED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
+        ],
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -222,6 +245,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "legal-adviser",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -243,6 +267,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "legal-adviser",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -264,6 +289,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "legal-adviser",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],

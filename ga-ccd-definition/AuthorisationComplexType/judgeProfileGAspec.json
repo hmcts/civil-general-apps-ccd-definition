@@ -805,6 +805,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
+    "ListElementCode": "caseManagementLocation.siteName",
+    "UserRole": "judge-profile",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
     "ListElementCode": "isCcmccLocation",
     "UserRole": "judge-profile",
     "CRUD": "R"
