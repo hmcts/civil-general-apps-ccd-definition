@@ -4,14 +4,16 @@
     "ListElementCode": "gaHearingDetails",
     "FieldType": "GAHearingDetailsRespGAspec",
     "ElementLabel": "Respondent hearing details ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAResondentResponseGAspec",
     "ListElementCode": "generalAppRespondent1Representative",
     "FieldType": "YesOrNo",
     "ElementLabel": "Respondent has agreed",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAResondentResponseGAspec",
@@ -19,6 +21,7 @@
     "FieldType": "Text",
     "ElementLabel": "Respondent id",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "gaRespondentDetails=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "gaRespondentDetails=\"DO_NOT_SHOW_IN_UI\"",
+    "Searchable": "N"
   }
 ]
