@@ -324,5 +324,14 @@
     "EventHintText": " ",
     "FieldDisplayOrder": 19,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "isCcmccLocation",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "isMultiPartyPage",
+    "ShowSummaryChangeOption": "N"
   }
 ]
