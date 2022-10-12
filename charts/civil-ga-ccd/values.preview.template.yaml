@@ -254,7 +254,7 @@ ccd:
 camunda-bpm:
   enabled: true
   java:
-    disableKeyVaults: false
+    disableKeyVaults: true
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-camunda
     ingressHost: camunda-${SERVICE_FQDN}
