@@ -94,14 +94,14 @@ task runFunctionalTests(type: Exec, description: 'Runs 1v1 e2e and api tests.') 
   onlyIf {
     return System.env.PR_BUILD == 'true'
   }
-  commandLine '/usr/bin/yarn', '--silent', 'test:functional',
+  commandLine '/usr/bin/yarn', '--silent', 'test:functional'
 }
 
 task runNightlyFunctionalTests(type: Exec, description: 'Runs full (1v1 and multiparty) functional tests.') {
   onlyIf {
     return System.env.NIGHTLY_BUILD == 'true'
   }
-  commandLine '/usr/bin/yarn', '--silent', 'test:fullfunctional',
+  commandLine '/usr/bin/yarn', '--silent', 'test:fullfunctional'
 }
 
 task smoke(description: 'Runs the smoke tests.') {
