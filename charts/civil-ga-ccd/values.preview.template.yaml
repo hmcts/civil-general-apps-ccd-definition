@@ -243,7 +243,6 @@ ccd:
       imagePullPolicy: Always
       enviroment:
         USER_PROFILE_DB_HOST: ${SERVICE_NAME}-postgresql
-        RELEASE_REVISION: "{{ .Release.Revision }}"
       keyVaults: []
       ingressHost: ccd-user-profile-api-${SERVICE_FQDN}
 
