@@ -155,7 +155,7 @@ xui-webapp:
     devmemoryRequests: 512Mi
     devcpuRequests: 1000m
     devmemoryLimits: 1024Mi
-    devcpuLimits: 2500m
+    devcpuLimits: 1
     autoscaling: # Default is false
       enabled: true
       maxReplicas: 5    # Required setting
@@ -212,6 +212,10 @@ ccd:
   ccd-data-store-api:
     java:
       imagePullPolicy: Always
+      devcpuRequests: 500m
+      devmemoryRequests: 512Mi
+      devcpuLimits: 2
+      devmemoryLimits: 1Gi
       environment:
         CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: false
         DATA_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
@@ -226,11 +230,16 @@ ccd:
         IDAM_DATA_STORE_SYSTEM_USER_USERNAME: ${IDAM_DATA_STORE_SYSTEM_USER_USERNAME}
         IDAM_DATA_STORE_SYSTEM_USER_PASSWORD: ${IDAM_DATA_STORE_SYSTEM_USER_PASSWORD}
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
+        RELEASE_REVISION: "{{ .Release.Revision }}"
       keyVaults: []
       ingressHost: civil-ga-ccd-data-store-staging-aat.service.core-compute-aat.internal
   ccd-definition-store-api:
     java:
       imagePullPolicy: Always
+      devcpuRequests: 500m
+      devmemoryRequests: 512Mi
+      devcpuLimits: 2
+      devmemoryLimits: 1Gi
       environment:
         DEFINITION_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
         DEFINITION_STORE_IDAM_KEY: ${CCD_DEFINITION_STORE_S2S_SECRET}
@@ -242,6 +251,7 @@ ccd:
       imagePullPolicy: Always
       enviroment:
         USER_PROFILE_DB_HOST: ${SERVICE_NAME}-postgresql
+        RELEASE_REVISION: "{{ .Release.Revision }}"
       keyVaults: []
       ingressHost: civil-ga-ccd-xui-staging-aat.service.core-compute-aat.internal
 
@@ -252,9 +262,14 @@ ccd:
 camunda-bpm:
   enabled: true
   java:
-    disableKeyVaults: true
+    disableKeyVaults: false
+    imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-camunda
     ingressHost: civil-ga-ccd-camunda-staging-aat.service.core-compute-aat.internal
+    devcpuRequests: 500m
+    devmemoryRequests: 512Mi
+    devcpuLimits: 1
+    devmemoryLimits: 1Gi
     environment:
       CAMUNDA_API_AUTH_ENABLED: false
       CAMUNDA_DB_HOST: ${SERVICE_NAME}-postgresql
@@ -264,3 +279,4 @@ camunda-bpm:
       CAMUNDA_BPM_DATABASE_SCHEMA_UPDATE: true
       S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
       CAMUNDA_DB_CONN_OPTIONS: ""
+      RELEASE_REVISION: "{{ .Release.Revision }}"
