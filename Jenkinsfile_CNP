@@ -55,6 +55,7 @@ def createGithubRelease() {
 }
 
 withPipeline(type, product, component) {
+    env.PR_BUILD = true
     pipelineConf = config
     disableLegacyDeployment()
     enableAksStagingDeployment()
