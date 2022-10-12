@@ -44,7 +44,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDecisionStatus);
-  await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes');
+  /*await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Request more information');
@@ -53,9 +53,9 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(additionalInfoStatus);
   await I.respondToJudgeAdditionalInfo(childCaseNum(), childCaseId);
-  console.log('Responded to Judge Additional Information on case: ' + childCaseNum());
+  console.log('Responded to Judge Additional Information on case: ' + childCaseNum());*/
 }).retry(0);
 
-AfterSuite(async ({api}) => {
+/*AfterSuite(async ({api}) => {
   await api.cleanUp();
-});
+});*/
