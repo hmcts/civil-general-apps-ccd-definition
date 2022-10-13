@@ -19,7 +19,7 @@ Scenario('Case offline 1V2 AWAITING_RESPONDENT_RESPONSE', async ({api}) => {
     console.log('Case offline');
     await api.partialNotifyClaimDetails(config.applicantSolicitorUser, mpScenario, civilCaseReference);
     console.log('Verify');
-    await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
+    //await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
 Scenario('Case offline 1V2 APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api}) => {
