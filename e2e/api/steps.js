@@ -657,6 +657,8 @@ module.exports = {
     await waitForGAFinishedBusinessProcess(gaCaseId);
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    console.log('ccd state '+updatedGABusinessProcessData.ccdState);
+    console.log('expectedState '+expectedState);
     assert.equal(updatedGABusinessProcessData.ccdState, expectedState);
   },
 
