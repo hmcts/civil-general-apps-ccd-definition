@@ -13,7 +13,7 @@ let parentCaseNumber, caseId, childCaseNumber, childCaseId, gaCaseReference, civ
 Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests');
 
 Scenario('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey', async ({I, api}) => {
-  parentCaseNumber = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  parentCaseNumber = await api.createSpecifiedClaim(config.applicantSolicitorUser, 'ONE_V_TWO');
   console.log('Case created for general application: ' + parentCaseNumber);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(parentCaseNumber);

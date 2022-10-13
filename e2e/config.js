@@ -6,17 +6,30 @@ module.exports = {
     url: 'http://localhost:5555'
   },
   url: {
-    manageCase: process.env.URL || 'http://localhost:3333',
+ /*   manageCase: process.env.URL || 'http://localhost:3333',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
     ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
     dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
     idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
     civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
-    generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
+    generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',*/
+
+    manageCase:  'https://manage-case-wa-int.demo.platform.hmcts.net/',
+    authProviderApi: 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
+    ccdDataStore: 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
+    dmStore:'http://dm-store-demo.service.core-compute-demo.internal',
+    idamApi: 'https://idam-api.demo.platform.hmcts.net',
+    civilService: 'http://civil-service-demo.service.core-compute-demo.internal',
+    waTaskMgmtApi: 'http://wa-task-management-api-demo.service.core-compute-demo.internal',
+    generalApplication: 'http://civil-general-applications-demo.service.core-compute-demo.internal'
   },
   s2s: {
     microservice: 'civil_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
+  },
+  s2sForXUI: {
+    microservice: 'xui_webapp',
+    secret: process.env.XUI_S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
   judgeUser: {
     password: defaultPassword,
@@ -54,4 +67,6 @@ module.exports = {
   claimantSolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'DAWY9LJ' : '79ZRSOU',
   defendant2SolicitorOrgId: process.env.ENVIRONMENT =='demo' ? 'LCVTI1I' : 'H2156A0',
+  claimantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
+  defendantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
 };

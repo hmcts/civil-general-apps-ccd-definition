@@ -10,17 +10,23 @@ const {expect, assert} = chai;
 const {
   waitForFinishedBusinessProcess,
   waitForGAFinishedBusinessProcess,
-  waitForGACamundaEventsFinishedBusinessProcess
+  waitForGACamundaEventsFinishedBusinessProcess,
+  checkCourtLocationDynamicListIsEnabled,
+  checkAccessProfilesIsEnabled
 } = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
+const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
+const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const claimSpecData = require('../fixtures/events/createClaimSpec.js');
 const genAppData = require('../fixtures/ga-ccd/createGeneralApplication.js');
 const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentResponse.js');
 const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
+const {cloneDeep} = require('lodash');
+const {listElement} = require('./dataHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
@@ -41,6 +47,7 @@ const data = {
   APPLICATION_DISMISSED: genAppJudgeMakeDecisionData.applicationsDismiss(),
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
   CREATE_CLAIM: (mpScenario, claimantType) => claimData.createClaim(mpScenario, claimantType),
+  CREATE_CLAIM_AP: (scenario) => claimSpecData.createClaimForAccessProfiles(scenario),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
@@ -94,20 +101,22 @@ const midEventFieldForPage = {
   }
 };
 
-let caseId, eventName;
+let caseId, eventName, legacyCaseReference;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
   createUnspecifiedClaim: async (user, multipartyScenario, claimantType) => {
-
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
 
-    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType);
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimantType);
+    // Remove after court location toggle is removed
+    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -116,10 +125,10 @@ module.exports = {
     let i;
     for (i = 0; i < createClaimData.invalid.Court.courtLocation.applicantPreferredCourt.length; i++) {
       await assertError('Court', createClaimData.invalid.Court.courtLocation.applicantPreferredCourt[i],
-        null, 'Case data validation failed');
+          null, 'Case data validation failed');
     }
     await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
-      null, 'Case data validation failed');
+        null, 'Case data validation failed');
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
@@ -128,6 +137,8 @@ module.exports = {
 
     await assignCase(caseId, multipartyScenario);
     await waitForFinishedBusinessProcess(caseId);
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -139,7 +150,14 @@ module.exports = {
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
-    const createClaimSpecData = data.CREATE_SPEC_CLAIM(multipartyScenario);
+    let createClaimSpecData  = {};
+    let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
+
+    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
+      createClaimSpecData = data.CREATE_CLAIM_AP(multipartyScenario);
+    } else {
+      createClaimSpecData = data.CREATE_SPEC_CLAIM(multipartyScenario);
+    }
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -149,8 +167,25 @@ module.exports = {
 
     await assertSubmittedSpecEvent('PENDING_CASE_ISSUED');
 
-    await assignSpecCase(caseId, multipartyScenario);
+    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+    } else {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
+    }
+
+    if (multipartyScenario === 'ONE_V_TWO'
+        && createClaimSpecData.userInput.SameLegalRepresentative
+        && createClaimSpecData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
+      if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
+        await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+      } else {
+        await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
+      }
+    }
+
     await waitForFinishedBusinessProcess(caseId);
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -581,7 +616,9 @@ module.exports = {
     mpScenario = multipartyScenario;
 
     await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName, caseId);
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    legacyCaseReference = returnedCaseData['legacyCaseReference'];
+    assertContainsPopulatedFields(returnedCaseData);
 
     await validateEventPages(data[eventName]);
 
@@ -591,13 +628,20 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
+    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
   },
 
   notifyClaimDetails: async (user, caseId) => {
     await apiRequest.setupTokens(user);
 
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
-    await apiRequest.startEvent(eventName, caseId);
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    assertContainsPopulatedFields(returnedCaseData);
+    caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
+        value: listElement('Both')
+      }};
 
     await validateEventPages(data[eventName]);
 
@@ -607,6 +651,18 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+  },
+
+  getCaseId: async () => {
+    console.log (`case created: ${caseId}`);
+    return caseId;
+  },
+
+  getLegacyCaseReference: async () => {
+    return legacyCaseReference;
   },
 
   cleanUp: async () => {
@@ -831,11 +887,40 @@ const assertSubmittedSpecEvent = async (expectedState, submittedCallbackResponse
     console.log('Case created: ' + caseId);
   }
 };
+
+const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
+  const  fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
+  for (let populatedCaseField of Object.keys(fixture)) {
+    assert.property(returnedCaseData, populatedCaseField);
+  }
+};
+
+const adjustDataForSolicitor = (user, data) => {
+  let fixtureClone = cloneDeep(data);
+  if(user === 'solicitorOne') {
+    delete fixtureClone['respondent2ResponseDeadline'];
+  }
+  else if (user === 'solicitorTwo') {
+    delete fixtureClone['respondent1ResponseDeadline'];
+  }
+  return fixtureClone;
+};
+
 // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
 // This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
 // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
 const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
+};
+
+const assertCorrectEventsAreAvailableToUser = async (user, state) => {
+  console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
+  const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state]);
+  } else {
+    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
+  }
 };
 
 // const assertCaseNotAvailableToUser = async (user) => {
@@ -889,21 +974,49 @@ async function updateCaseDataWithPlaceholders(data, document) {
   return JSON.parse(data);
 }
 
-const assignCase = async (caseId, mpScenario) => {
-  await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-  switch (mpScenario) {
-    case 'ONE_V_TWO_TWO_LEGAL_REP': {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
-      break;
-    }
-    case 'ONE_V_TWO_ONE_LEGAL_REP': {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-      break;
-    }
+// CIV-3521: remove when access profiles is live
+async function removeCaseAccessCateogryIfAatEnv(createClaimData) {
+  let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
+  // work around for the api  tests
+  console.log(`Access Profiles Enabled in Env: ${config.runningEnv}`);
+  if (!isAccessProfilesEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+    createClaimData = {
+      ...createClaimData,
+      valid: {
+        ...createClaimData.valid,
+        References: {
+          solicitorReferences: {
+            ...createClaimData.valid.References.solicitorReferences
+          }
+        }
+      }
+    };
   }
-};
+  return createClaimData;
+}
 
-const assignSpecCase = async (caseId, mpScenario) => {
+// CIV-4959: needs to be removed when court location goes live
+async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData) {
+  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
+  // work around for the api  tests
+  console.log(`Court location selected in Env: ${config.runningEnv}`);
+  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+    createClaimData = {
+      ...createClaimData,
+      valid: {
+        ...createClaimData.valid,
+        Court: {
+          courtLocation: {
+            applicantPreferredCourt: '344'
+          }
+        }
+      }
+    };
+  }
+  return createClaimData;
+}
+
+const assignCase = async (caseId, mpScenario) => {
   await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   switch (mpScenario) {
     case 'ONE_V_TWO_TWO_LEGAL_REP': {

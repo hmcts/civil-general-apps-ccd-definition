@@ -120,9 +120,9 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
       courtLocation: {
         applicantPreferredCourtLocationList: {
           list_items: [
-            listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+            listElement(config.claimantSelectedCourt)
           ],
-          value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+          value: listElement(config.claimantSelectedCourt)
         }
       }
     },
@@ -155,6 +155,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
       }
     },
     ClaimantSolicitorServiceAddress: {
+      applicantSolicitor1ServiceAddressRequired: 'Yes',
       applicantSolicitor1ServiceAddress:  buildAddress('service')
     },
     AddAnotherClaimant: {
@@ -174,22 +175,24 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
     LegalRepresentation: {
       respondent1Represented: `${legalRepresentation}`
     },
-    DefendantSolicitorOrganisation: {
-      respondent1OrgRegistered: 'Yes',
-      respondent1OrganisationPolicy: {
-        OrgPolicyReference: 'Defendant policy reference',
-        OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
-        Organisation: {
-          OrganisationID: config.defendant1SolicitorOrgId
+    ...(legalRepresentation === 'Yes') ? {
+      DefendantSolicitorOrganisation: {
+        respondent1OrgRegistered: 'Yes',
+        respondent1OrganisationPolicy: {
+          OrgPolicyReference: 'Defendant policy reference',
+          OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
+          Organisation: {
+            OrganisationID: config.defendant1SolicitorOrgId
+          },
         },
       },
-    },
-    DefendantSolicitorServiceAddress: {
-      respondentSolicitor1ServiceAddress: buildAddress('service')
-    },
-    DefendantSolicitorEmail: {
-      respondentSolicitor1EmailAddress: 'hmcts.civil+organisation.2.solicitor.1@gmail.com'
-    },
+      DefendantSolicitorServiceAddress: {
+        respondentSolicitor1ServiceAddress: buildAddress('service')
+      },
+      DefendantSolicitorEmail: {
+        respondentSolicitor1EmailAddress: 'hmcts.civil+organisation.2.solicitor.1@gmail.com'
+      },
+    }: {},
     AddAnotherDefendant: {
       addRespondent2: 'No'
     },
