@@ -35,7 +35,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "RU"
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
@@ -62,7 +62,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "RU"
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
@@ -89,7 +89,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "RU"
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
@@ -116,7 +116,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "RU"
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
@@ -142,14 +142,14 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-solicitor"
         ],
-        "CRUD": "RU"
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "civil-administrator-basic",
-          "caseworker-civil-solicitor"
+          "civil-administrator-basic"
         ],
         "CRUD": "R"
       },
@@ -197,9 +197,8 @@
         "UserRoles": [
           "judge-profile",
           "legal-adviser"
-
         ],
-        "CRUD": "RU"
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
@@ -266,7 +265,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "RU"
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
