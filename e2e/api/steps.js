@@ -655,8 +655,13 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await waitForFinishedBusinessProcess(parentCaseId);
     await waitForGAFinishedBusinessProcess(gaCaseId);
+    console.log('fetchUpdatedGABusinessProcessData start');
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    console.log('fetchUpdatedGABusinessProcessData done');
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    console.log('json done');
+    console.log('ccd state '+updatedGABusinessProcessData.ccdState);
+    console.log('expectedState '+expectedState);
     assert.equal(updatedGABusinessProcessData.ccdState, expectedState);
   },
 
