@@ -48,5 +48,15 @@
     "FieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "REFER_TO_LEGAL_ADVISOR",
+    "CaseFieldID": "isCcmccLocation",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "isMultiPartyPage",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   }
 ]
