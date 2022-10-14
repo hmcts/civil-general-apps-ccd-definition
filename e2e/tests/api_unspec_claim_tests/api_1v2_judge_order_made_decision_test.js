@@ -8,7 +8,7 @@ Feature('GA 1v2 Judge make decision order made API tests @api-tests');
 
 Scenario('Judge makes decision 1V2 - Order Made', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Individual');
+  config.applicantSolicitorUser, mpScenario, 'Individual');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -20,7 +20,11 @@ Scenario('Judge makes decision 1V2 - Order Made', async ({api}) => {
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge makes decision order made: ' + gaCaseReference + ' ***');
-  await api.judgeMakesDecisionOrderMade(config.applicantSolicitorUser, gaCaseReference);
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeMakesDecisionOrderMade(config.judgeUser, gaCaseReference);
+  }else {
+    await api.judgeMakesDecisionOrderMade(config.judgeLocalUser, gaCaseReference);
+  }
   console.log('*** End Judge makes decision order made - GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
