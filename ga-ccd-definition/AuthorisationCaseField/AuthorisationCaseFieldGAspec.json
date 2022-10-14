@@ -1245,7 +1245,7 @@
       "UserRoles": [
         "caseworker-civil-systemupdate",
         "judge-profile",
-          "legal-adviser"
+        "legal-adviser"
       ],
       "CRUD": "CRUD"
       },
@@ -1699,7 +1699,8 @@
         "UserRoles": [
           "civil-administrator-standard",
           "civil-administrator-basic",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
