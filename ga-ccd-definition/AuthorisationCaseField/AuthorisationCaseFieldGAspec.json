@@ -321,12 +321,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -347,12 +342,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -475,12 +465,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
@@ -504,7 +489,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
@@ -531,7 +516,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
@@ -558,7 +543,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
@@ -603,12 +588,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
@@ -630,12 +610,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
@@ -657,12 +632,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
@@ -684,12 +654,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
@@ -711,12 +676,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
@@ -738,12 +698,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
@@ -765,12 +720,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
@@ -1232,12 +1182,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -1257,13 +1202,8 @@
     "CaseFieldID": "applicantPartyName",
     "AccessControl": [
       {
-      "UserRoles": [
-        "caseworker-civil-systemupdate"
-      ],
-      "CRUD": "CRUD"
-      },
-      {
         "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -1284,12 +1224,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -1310,12 +1245,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -1336,12 +1266,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -1362,12 +1287,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -1388,12 +1308,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -1409,7 +1324,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
@@ -1426,12 +1341,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -1445,12 +1355,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -1471,12 +1376,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
@@ -1498,12 +1398,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
@@ -1525,12 +1420,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
@@ -1552,12 +1442,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
@@ -1579,12 +1464,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -1651,12 +1531,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -1677,12 +1552,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -1790,12 +1660,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -1816,12 +1681,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],
@@ -1842,12 +1702,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],

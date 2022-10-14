@@ -244,10 +244,9 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate",
           "caseworker-civil-judge"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "CRU"
       }
     ]
   },
