@@ -836,5 +836,12 @@
     "ListElementCode": "generalAppN245FormUpload",
     "UserRole": "judge-profile",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppHearingDate",
+    "UserRole": "judge-profile",
+    "CRUD": "CRU"
   }
 ]

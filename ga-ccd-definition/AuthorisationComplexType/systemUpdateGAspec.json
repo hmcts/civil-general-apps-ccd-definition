@@ -878,5 +878,19 @@
     "ListElementCode": "judgeRecitalText",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppHearingDate",
+    "ListElementCode": "hearingScheduledPreferenceYesNo",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppHearingDate",
+    "ListElementCode": "hearingScheduledDate",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
