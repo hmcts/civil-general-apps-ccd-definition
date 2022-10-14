@@ -35,12 +35,18 @@ Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, a
   childCaseNumber = await I.grabChildCaseNumber();
   await I.navigateToCaseDetails(childCaseNum());
   childCaseId = await I.grabCaseNumber();
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await I.login(config.judgeUser);
+  } else {
+    await I.login(config.judgeLocalUser);
+  }
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'concurrentRep', childCaseNum());
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Concurrent representations');
   await I.verifyApplicationDocument(childCaseNum(), 'Written representation concurrent');
   console.log('Judges made an order for Concurrent written representations on case: ' + childCaseNum());
+  await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(writtenRepStatus);
   await I.respondToJudgesWrittenRep(childCaseNum(), childCaseId);
