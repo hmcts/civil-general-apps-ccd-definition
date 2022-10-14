@@ -299,9 +299,10 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
           respondent2OrganisationPolicy: {
             OrgPolicyReference: 'Defendant policy reference 2',
             OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
-            Organisation: {
-              OrganisationID: config.defendant2SolicitorOrgId
-            },
+            Organisation:
+
+              {OrganisationID: config.defendant2SolicitorOrgId}
+            ,
           },
         },
         SecondDefendantSolicitorServiceAddress: {

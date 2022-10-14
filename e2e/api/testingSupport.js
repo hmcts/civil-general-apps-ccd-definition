@@ -6,7 +6,7 @@ const {retry} = require('./retryHelper');
 let incidentMessage;
 
 const MAX_RETRIES = 50;
-const RETRY_TIMEOUT_MS = 1000;
+const RETRY_TIMEOUT_MS = 5000;
 
 module.exports = {
   waitForFinishedBusinessProcess: async caseId => {
@@ -161,6 +161,46 @@ module.exports = {
     return await response.json();
   },
 
+  checkToggleEnabled: async (toggle) => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    return await restHelper.request(
+      `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      }, null, 'GET')
+      .then(async response =>  {
+          if (response.status === 200) {
+            const json = await response.json();
+            return json.toggleEnabled;
+          } else {
+            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+          }
+        }
+      );
+  },
+
+  checkNoCToggleEnabled: async () => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    return await restHelper.request(
+      `${config.url.civilService}/testing-support/feature-toggle/noc`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      }, null, 'GET')
+      .then(async response =>  {
+          if (response.status === 200) {
+            const json = await response.json();
+            return json.toggleEnabled;
+          } else {
+            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+          }
+        }
+      );
+  },
+
   checkCourtLocationDynamicListIsEnabled: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
@@ -200,6 +240,5 @@ module.exports = {
         }
       );
   },
-
 
 };
