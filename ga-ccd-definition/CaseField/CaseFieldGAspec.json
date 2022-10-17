@@ -114,7 +114,6 @@
     "SecurityClassification": "Public",
     "_Definition":  "This fields holds whether or not the application is urgent, and if it is then the further details and reasons",
     "_Category":  "COMMON",
-    "Searchable": "N",
     "Searchable": "N"
   },
   {
