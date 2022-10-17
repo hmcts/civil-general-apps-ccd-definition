@@ -1355,6 +1355,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "caseworker-ras-validation",
           "legal-adviser"
         ],
         "CRUD": "R"
