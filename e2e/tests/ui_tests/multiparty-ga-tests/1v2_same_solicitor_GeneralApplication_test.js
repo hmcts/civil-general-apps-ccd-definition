@@ -44,13 +44,18 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.verifyResponseSummaryPage();
   await I.navigateToTab(parentCaseNum, 'Applications');
   await I.see(judgeDecisionStatus);
-  // We currently do not have JUDGE role in role assignment service. Hence, not log in as judge.
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await I.login(config.judgeUser);
+  } else {
+    await I.login(config.judgeLocalUser);
+  }
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'sequentialRep', childCaseNum());
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Sequential representations');
   await I.verifyApplicationDocument(childCaseNum(), 'Written representation sequential');
   console.log('Judges made an order for Sequential written representations on case: ' + childCaseNum());
+  await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(parentCaseNum, 'Applications');
   await I.see(writtenRepStatus);
   await I.respondToJudgesWrittenRep(childCaseNum(), childCaseId);
@@ -80,11 +85,17 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     childCaseNumber = await I.grabChildCaseNumber();
     await I.navigateToCaseDetails(childCaseNum());
     childCaseId = await I.grabCaseNumber();
+    if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+      await I.login(config.judgeUser);
+    } else {
+      await I.login(config.judgeLocalUser);
+    }
     await I.judgeRequestMoreInfo('requestMoreInfo', 'sendApplicationToOtherParty', childCaseNum(), 'no');
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
     await I.judgeCloseAndReturnToCaseDetails(childCaseId);
     await I.verifyJudgesSummaryPage('Send application to other party');
     console.log('Judges sent application to other party and requested hearing details on case: ' + childCaseNum());
+    await I.login(config.applicantSolicitorUser);
     await I.navigateToTab(parentCaseNum, 'Applications');
     await I.see(additionalPaymentStatus);
     await I.navigateToCaseDetails(childCaseNum());
@@ -99,10 +110,16 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     console.log('Defendant Solicitor responded to application: ' + childCaseNum());
     await I.navigateToTab(parentCaseNum, 'Applications');
     await I.see(judgeDecisionStatus);
+    if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+      await I.login(config.judgeUser);
+    } else {
+      await I.login(config.judgeLocalUser);
+    }
     await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes');
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
     await I.judgeCloseAndReturnToCaseDetails(childCaseId);
     console.log('Judges requested more information on case: ' + childCaseNum());
+    await I.login(config.applicantSolicitorUser);
     await I.navigateToTab(parentCaseNum, 'Applications');
     await I.see(additionalInfoStatus);
   }).retry(0);

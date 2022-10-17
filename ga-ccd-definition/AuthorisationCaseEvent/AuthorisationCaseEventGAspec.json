@@ -317,8 +317,7 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser",
-          "caseworker-civil-solicitor"
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       },

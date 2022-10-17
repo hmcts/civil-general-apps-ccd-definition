@@ -55,19 +55,23 @@ def createGithubRelease() {
 }
 
 withPipeline(type, product, component) {
+    env.PR_BUILD = true
     pipelineConf = config
     disableLegacyDeployment()
     enableAksStagingDeployment()
 
     onPR {
+        env.ENVIRONMENT = "preview"
         loadVaultSecrets(secrets);
         enableCleanupOfHelmReleaseOnSuccess();
     }
     onMaster {
         loadVaultSecrets(secrets)
+        env.ENVIRONMENT = "aat"
     }
     onDemo {
         loadVaultSecrets(secrets)
+        env.ENVIRONMENT = "demo"
     }
 
     after('checkout') {

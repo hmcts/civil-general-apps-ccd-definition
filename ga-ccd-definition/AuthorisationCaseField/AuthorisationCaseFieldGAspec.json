@@ -1243,7 +1243,7 @@
       "UserRoles": [
         "caseworker-civil-systemupdate",
         "judge-profile",
-          "legal-adviser"
+        "legal-adviser"
       ],
       "CRUD": "CRUD"
       },
@@ -1353,6 +1353,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "caseworker-ras-validation",
           "legal-adviser"
         ],
         "CRUD": "R"
@@ -1694,7 +1695,8 @@
         "UserRoles": [
           "civil-administrator-standard",
           "civil-administrator-basic",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -1946,7 +1948,6 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-judge",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
@@ -1960,7 +1961,6 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-judge",
           "caseworker-civil-systemupdate",
           "basic-access"
         ],
@@ -1975,7 +1975,6 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-judge",
           "caseworker-civil-systemupdate",
           "basic-access"
         ],
