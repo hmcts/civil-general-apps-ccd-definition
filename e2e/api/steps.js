@@ -159,33 +159,11 @@ module.exports = {
   },
 
   initiateGeneralApplicationWithState: async (user, parentCaseId, expectState) => {
-    eventName = events.INITIATE_GENERAL_APPLICATION.id;
-
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName, parentCaseId);
-    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION, parentCaseId);
-    const responseBody = await response.json();
-    assert.equal(response.status, 201);
-    assert.equal(responseBody.state, expectState);
-    console.log('General application case state : ' + expectState);
-    assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
-    await waitForFinishedBusinessProcess(parentCaseId);
-    await waitForGAFinishedBusinessProcess(parentCaseId);
-
-    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
-    const updatedCivilCaseData = await updatedResponse.json();
-    let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
-    console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
-    //comment out next line to see race condition
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-                                                        'AWAITING_RESPONDENT_RESPONSE');
-    return gaCaseReference;
+    return await iniGaWithState(user, parentCaseId, expectState);
   },
 
   initiateGeneralApplication: async (user, parentCaseId) => {
-    return await this.initiateGeneralApplicationWithState(user, parentCaseId,
-                                                          'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    return await iniGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 
   initiateGeneralApplicationWithOutNotice: async (user, parentCaseId) => {
@@ -871,6 +849,31 @@ const assertSubmittedSpecEvent = async (expectedState, submittedCallbackResponse
 // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
 const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
+};
+
+const iniGaWithState = async (user, parentCaseId, expectState) => {
+  eventName = events.INITIATE_GENERAL_APPLICATION.id;
+
+  await apiRequest.setupTokens(user);
+  await apiRequest.startEvent(eventName, parentCaseId);
+  const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION, parentCaseId);
+  const responseBody = await response.json();
+  assert.equal(response.status, 201);
+  assert.equal(responseBody.state, expectState);
+  console.log('General application case state : ' + expectState);
+  assert.equal(responseBody.callback_response_status_code, 200);
+  assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+  await waitForFinishedBusinessProcess(parentCaseId);
+  await waitForGAFinishedBusinessProcess(parentCaseId);
+
+  const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
+  const updatedCivilCaseData = await updatedResponse.json();
+  let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+  console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
+  //comment out next line to see race condition
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
+                                                      'AWAITING_RESPONDENT_RESPONSE');
+  return gaCaseReference;
 };
 
 // const assertCaseNotAvailableToUser = async (user) => {
