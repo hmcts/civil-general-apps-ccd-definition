@@ -93,5 +93,13 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "generalAppEvidenceDocument",
     "TabFieldDisplayOrder": 11
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application Documents",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "generalAppN245FormUpload",
+    "TabFieldDisplayOrder": 12
   }
 ]

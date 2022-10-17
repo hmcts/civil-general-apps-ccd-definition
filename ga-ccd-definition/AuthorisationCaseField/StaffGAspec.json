@@ -118,5 +118,17 @@
     "CaseFieldID": "CaseAccessCategory",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppVaryJudgementType",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppN245FormUpload",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
