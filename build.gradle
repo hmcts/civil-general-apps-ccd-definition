@@ -95,8 +95,18 @@ task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
   commandLine '/usr/bin/yarn', '--silent', 'test:smoke'
 }
 
-task runFunctionalTests(type: Exec, description: 'Runs functional tests.') {
+task runFunctionalTests(type: Exec, description: 'Runs 1v1 e2e and api tests.') {
+  onlyIf {
+    return System.env.PR_BUILD == 'true'
+  }
   commandLine '/usr/bin/yarn', '--silent', 'test:functional'
+}
+
+task runNightlyFunctionalTests(type: Exec, description: 'Runs full (1v1 and multiparty) functional tests.') {
+  onlyIf {
+    return System.env.NIGHTLY_BUILD == 'true'
+  }
+  commandLine '/usr/bin/yarn', '--silent', 'test:fullfunctional'
 }
 
 task smoke(description: 'Runs the smoke tests.') {
@@ -104,7 +114,7 @@ task smoke(description: 'Runs the smoke tests.') {
 }
 
 task functional(description: 'Runs the functional tests.') {
-  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runFunctionalTests))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runFunctionalTests, runNightlyFunctionalTests))
 }
 
 def inStrictOrder(Task... tasks) {

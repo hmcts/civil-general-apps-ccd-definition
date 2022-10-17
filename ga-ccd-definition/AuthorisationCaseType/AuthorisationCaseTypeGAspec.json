@@ -11,7 +11,8 @@
     "UserRoles": [
       "caseworker-civil-solicitor",
       "judge-profile",
-      "civil-administrator-standard"
+      "civil-administrator-standard",
+      "legal-adviser"
     ],
     "CRUD": "RU"
   },

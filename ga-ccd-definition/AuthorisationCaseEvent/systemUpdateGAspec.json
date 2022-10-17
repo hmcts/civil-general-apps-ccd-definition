@@ -79,6 +79,18 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAIN_CASE_CLOSED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "APPLICATION_PROCEEDS_IN_HERITAGE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "CHANGE_STATE_TO_ADDITIONAL_RESPONSE_TIME_EXPIRED",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
