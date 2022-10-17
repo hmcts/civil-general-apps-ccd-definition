@@ -21,12 +21,11 @@ github_dir=${root_dir}/build/github-release
 release_definition_output_file=${build_dir}/civil-ccd-${environment}.xlsx
 github_file=${github_dir}/civil-ccd-${environment}.xlsx
 
-if [ ${environment} != prod ]; then
-  mkdir -p ${build_dir}
-  mkdir -p ${github_dir}
+mkdir -p ${build_dir}
+mkdir -p ${github_dir}
 
-  # build the ccd definition file
-  ${root_dir}/bin/utils/process-definition.sh ${config_dir} ${release_definition_output_file} "${excludedFilenamePatterns}"
+# build the ccd definition file
+${root_dir}/bin/utils/process-definition.sh ${config_dir} ${release_definition_output_file} "${excludedFilenamePatterns}"
 
-  cp ${release_definition_output_file} ${github_file}
-fi
+cp ${release_definition_output_file} ${github_file}
+
