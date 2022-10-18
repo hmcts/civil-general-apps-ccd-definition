@@ -159,11 +159,11 @@ module.exports = {
   },
 
   initiateGeneralApplicationWithState: async (user, parentCaseId, expectState) => {
-    return await iniGaWithState(user, parentCaseId, expectState);
+    return await initiateGaWithState(user, parentCaseId, expectState);
   },
 
   initiateGeneralApplication: async (user, parentCaseId) => {
-    return await iniGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 
   initiateGeneralApplicationWithOutNotice: async (user, parentCaseId) => {
@@ -851,7 +851,7 @@ const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
 
-const iniGaWithState = async (user, parentCaseId, expectState) => {
+const initiateGaWithState = async (user, parentCaseId, expectState) => {
   eventName = events.INITIATE_GENERAL_APPLICATION.id;
 
   await apiRequest.setupTokens(user);
