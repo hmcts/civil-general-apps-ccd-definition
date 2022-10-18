@@ -32,7 +32,7 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER - Respondent upload Direct
   console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
+// AfterSuite(async ({api}) => {
+//   await api.cleanUp();
+// });
 
