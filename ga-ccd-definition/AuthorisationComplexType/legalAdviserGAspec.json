@@ -815,5 +815,12 @@
     "ListElementCode": "caseManagementCategory",
     "UserRole": "legal-adviser",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppHearingDate",
+    "UserRole": "legal-adviser",
+    "CRUD": "R"
   }
 ]
