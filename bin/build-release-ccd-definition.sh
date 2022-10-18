@@ -5,18 +5,18 @@ set -eu
 environment=${1:-prod}
 excludeNonProdFiles=${2:-true}
 
-
-if [ ${excludeNonProdFiles} == true ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*LRspec.json"
-elif [ ${environment} == preview ]; then
+if [ ${environment} == preview ]; then
   excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
 elif [ ${environment} == demo ]; then
   excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
 elif [ ${environment} == local ]; then
   excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
+elif [ ${excludeNonProdFiles} == true ]; then
+    excludedFilenamePatterns="e UserProfile.json,*-nonprod.json,*LRspec.json"
 else
-  excludedFilenamePatterns="e UserProfile.json,*-nonprod.json,*LRspec.json"
+   excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
 fi
+
 
 root_dir=$(realpath $(dirname ${0})/..)
 config_dir=${root_dir}/ga-ccd-definition
