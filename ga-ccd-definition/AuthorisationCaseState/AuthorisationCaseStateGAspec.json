@@ -15,7 +15,9 @@
           "judge-profile",
           "legal-adviser",
           "civil-administrator-standard",
-          "civil-administrator-basic"
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }
@@ -37,7 +39,9 @@
           "judge-profile",
           "legal-adviser",
           "civil-administrator-standard",
-          "civil-administrator-basic"
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }
@@ -59,7 +63,9 @@
           "judge-profile",
           "legal-adviser",
           "civil-administrator-standard",
-          "civil-administrator-basic"
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }
@@ -81,7 +87,9 @@
           "judge-profile",
           "legal-adviser",
           "civil-administrator-standard",
-          "civil-administrator-basic"
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }
@@ -103,7 +111,9 @@
           "judge-profile",
           "legal-adviser",
           "civil-administrator-standard",
-          "civil-administrator-basic"
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }
@@ -123,7 +133,9 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-ras-validation",
+          "ga-basic-access"
         ],
         "CRUD": "R"
       },
@@ -157,7 +169,9 @@
           "judge-profile",
           "legal-adviser",
           "civil-administrator-standard",
-          "civil-administrator-basic"
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }
@@ -177,7 +191,9 @@
       },
       {
         "UserRoles": [
-          "civil-administrator-basic"
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
         ],
         "CRUD": "R"
       },
@@ -205,7 +221,9 @@
           "legal-adviser",
           "civil-administrator-standard",
           "civil-administrator-basic",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-ras-validation",
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }
@@ -221,6 +239,13 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -240,7 +265,9 @@
           "legal-adviser",
           "civil-administrator-standard",
           "civil-administrator-basic",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-ras-validation",
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }
@@ -262,7 +289,9 @@
           "legal-adviser",
           "civil-administrator-standard",
           "caseworker-civil-solicitor",
-          "civil-administrator-basic"
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }
@@ -284,7 +313,9 @@
           "legal-adviser",
           "civil-administrator-standard",
           "caseworker-civil-solicitor",
-          "civil-administrator-basic"
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }
@@ -300,6 +331,13 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -313,6 +351,13 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
       }
     ]
   }

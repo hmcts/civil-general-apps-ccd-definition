@@ -9,6 +9,15 @@
     "CaseAccessCategories": ""
   },
   {
+    "RoleName": "idam:caseworker-ras-validation",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "caseworker-ras-validation",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName": "idam:caseworker-civil-admin",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
@@ -282,7 +291,7 @@
     "RoleName" : "specific-access-judiciary",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "judge-profile",
+    "AccessProfiles": "judge-profile,ga-basic-access",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -291,7 +300,7 @@
     "RoleName" : "specific-access-legal-ops",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "legal-adviser",
+    "AccessProfiles": "legal-adviser,ga-basic-access",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -300,7 +309,7 @@
     "RoleName" : "specific-access-admin",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "caseworker-civil",
+    "AccessProfiles": "caseworker-civil,ga-basic-access",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -309,7 +318,7 @@
     "RoleName" : "challenged-access-judiciary",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "judge-profile",
+    "AccessProfiles": "judge-profile,ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -318,7 +327,7 @@
     "RoleName" : "challenged-access-legal-operations",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "legal-adviser",
+    "AccessProfiles": "legal-adviser,ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -327,7 +336,7 @@
     "RoleName" : "challenged-access-admin",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "caseworker-civil",
+    "AccessProfiles": "caseworker-civil,ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
