@@ -1,0 +1,26 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "judge-profile",
+      "civil-administrator-standard",
+      "legal-adviser"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "UserRoles": [
+      "civil-administrator-basic"
+    ],
+    "CRUD": "R"
+  }
+]
