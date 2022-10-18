@@ -1695,7 +1695,8 @@
         "UserRoles": [
           "civil-administrator-standard",
           "civil-administrator-basic",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
