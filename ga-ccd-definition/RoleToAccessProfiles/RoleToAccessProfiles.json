@@ -300,7 +300,7 @@
     "RoleName" : "specific-access-admin",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "caseworker-civil,ga-basic-access",
+    "AccessProfiles": "caseworker-civil,ga-basic-access,legal-adviser",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -327,7 +327,7 @@
     "RoleName" : "challenged-access-admin",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "caseworker-civil,ga-basic-access",
+    "AccessProfiles": "caseworker-civil,ga-basic-access,legal-adviser",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
