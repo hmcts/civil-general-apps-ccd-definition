@@ -2308,8 +2308,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate",
-          "basic-access"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -2329,8 +2328,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate",
-          "basic-access"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
