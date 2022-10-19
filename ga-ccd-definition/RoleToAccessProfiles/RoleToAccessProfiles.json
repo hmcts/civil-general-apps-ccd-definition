@@ -129,7 +129,7 @@
     "RoleName": "circuit-judge",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "judge-profile",
+    "AccessProfiles": "judge-profile,ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -147,7 +147,7 @@
     "RoleName": "leadership-judge",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "judge-profile",
+    "AccessProfiles": "judge-profile,ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -156,7 +156,7 @@
     "RoleName": "judge",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "judge-profile",
+    "AccessProfiles": "judge-profile,ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -174,7 +174,7 @@
     "RoleName": "task-supervisor",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "civil-administrator-standard",
+    "AccessProfiles": "ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -183,7 +183,7 @@
     "RoleName": "hmcts-legal-operations",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "civil-administrator-basic",
+    "AccessProfiles": "ga-basic-access",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -192,7 +192,7 @@
     "RoleName": "hmcts-admin",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "civil-administrator-basic",
+    "AccessProfiles": "ga-basic-access",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -201,7 +201,7 @@
     "RoleName": "case-allocator",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "civil-administrator-standard",
+    "AccessProfiles": "ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -210,7 +210,7 @@
     "RoleName": "ctsc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "civil-administrator-standard",
+    "AccessProfiles": "ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -219,7 +219,7 @@
     "RoleName": "ctsc",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "civil-administrator-standard",
+    "AccessProfiles": "ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -228,7 +228,7 @@
     "RoleName": "nbc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "civil-administrator-standard",
+    "AccessProfiles": "ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -237,7 +237,7 @@
     "RoleName": "national-business-centre",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "civil-administrator-standard",
+    "AccessProfiles": "ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -246,7 +246,7 @@
     "RoleName": "hearing-centre-team-leader",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "civil-administrator-standard",
+    "AccessProfiles": "ga-basic-access,civil-administrator-standard,hearing-schedule-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -255,7 +255,7 @@
     "RoleName": "hearing-centre-admin",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "civil-administrator-standard",
+    "AccessProfiles": "civil-administrator-standard,ga-basic-access,hearing-schedule-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -264,7 +264,7 @@
     "RoleName": "tribunal-caseworker",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "legal-adviser",
+    "AccessProfiles": "legal-adviser,ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -273,7 +273,7 @@
     "RoleName": "senior-tribunal-caseworker",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "legal-adviser",
+    "AccessProfiles": "legal-adviser,ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
