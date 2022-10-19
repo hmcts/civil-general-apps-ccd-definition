@@ -50,7 +50,6 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-admin",
           "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
@@ -145,7 +144,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -1545,7 +1543,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -1568,7 +1565,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -1784,7 +1780,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -1807,7 +1802,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -1830,7 +1824,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -1853,7 +1846,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -1876,7 +1868,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -1899,7 +1890,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -1922,7 +1912,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -1945,7 +1934,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "civil-administrator-standard",
           "civil-administrator-basic"
         ],
@@ -1963,12 +1951,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRU"
       }
     ]
   },
@@ -1980,7 +1962,6 @@
         "UserRoles": [
           "caseworker-civil-solicitor",
           "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
           "basic-access"
         ],
         "CRUD": "CRU"
@@ -1995,7 +1976,6 @@
         "UserRoles": [
           "caseworker-civil-solicitor",
           "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
           "basic-access"
         ],
         "CRUD": "CRU"
