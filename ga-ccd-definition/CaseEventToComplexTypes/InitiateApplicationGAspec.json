@@ -399,59 +399,5 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "GAUploadN245Form",
-    "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "gaUploadN245FormUploadLabel",
-    "ListElementCode": "generalAppN245Download",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "ShowSummaryContentOption": "N"
-  },
-  {
-    "ID": "GAUploadN245Form",
-    "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "gaUploadN245FormUploadLabel",
-    "ListElementCode": "generalAppN245Label",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "ShowSummaryContentOption": "N"
-  },
-  {
-    "ID": "GAHearingDate",
-    "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "generalAppHearingDate",
-    "ListElementCode": "hearingScheduledPreferenceYesNoLabel",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL",
-    "ShowSummaryContentOption": "Y"
-  },
-  {
-    "ID": "GAHearingDate",
-    "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "generalAppHearingDate",
-    "ListElementCode": "hearingScheduledPreferenceYesNo",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL",
-    "ShowSummaryContentOption": "Y"
-  },
-  {
-    "ID": "GAHearingDate",
-    "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "generalAppHearingDate",
-    "ListElementCode": "hearingScheduledDateLabel",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL",
-    "ShowSummaryContentOption": "Y"
-  },
-  {
-    "ID": "GAHearingDate",
-    "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "generalAppHearingDate",
-    "ListElementCode": "hearingScheduledDate",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL",
-    "ShowSummaryContentOption": "Y"
   }
 ]
