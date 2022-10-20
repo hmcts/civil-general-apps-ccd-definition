@@ -237,7 +237,7 @@
     "RoleName": "national-business-centre",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "ga-basic-access",
+    "AccessProfiles": "civil-administrator-standard,ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
