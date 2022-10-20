@@ -2308,6 +2308,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
+          "civil-administrator-standard",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
@@ -2328,13 +2329,13 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
+          "civil-administrator-standard",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "civil-administrator-standard",
           "civil-administrator-basic",
           "caseworker-ras-validation",
           "ga-basic-access"
