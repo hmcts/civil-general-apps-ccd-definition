@@ -916,7 +916,7 @@ function removeUuidsFromDynamicList(data, dynamicListField) {
 }
 
 function padStr(i) {
-  return (i < 10) ? "0" + i : "" + i;
+  return (i < 10) ? '0' + i : '' + i;
 }
 async function updateCaseDataWithPlaceholders(data, document) {
   const placeholders = {
