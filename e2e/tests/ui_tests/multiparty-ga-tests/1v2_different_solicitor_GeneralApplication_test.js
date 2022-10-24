@@ -49,6 +49,11 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
   await I.respCloseAndReturnToCaseDetails(childCaseId);
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDecisionStatus);
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await I.login(config.judgeUser);
+  } else {
+    await I.login(config.judgeLocalUser);
+  }
   await I.judgeListForAHearingDecision('listForAHearing', childCaseNum());
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
@@ -57,26 +62,31 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
   await I.dontSee('Go');
   await I.dontSee('Next step');
   console.log('Judges list for a hearing on case: ' + childCaseNum());
+  await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(listForHearingStatus);
 }).retry(0);
 
-Scenario('Without Notice application for a hearing @multiparty-e2e-tests1', async ({api, I}) => {
+Scenario('Without Notice application for a hearing @multiparty-e2e-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
-  await api.judgeListApplicationForHearing(config.applicantSolicitorUser, gaCaseReference);
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
+  }else {
+    await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
+  }
   await I.login(config.applicantSolicitorUser);
-  await I.navigateToAppTab(civilCaseReference);
+  await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(listForHearingStatus);
   await I.login(config.defendantSolicitorUser);
-  await I.navigateToAppTab(civilCaseReference);
+  await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(listForHearingStatus);
   await I.login(config.secondDefendantSolicitorUser);
-  await I.navigateToAppTab(civilCaseReference);
+  await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(listForHearingStatus);
 });
 

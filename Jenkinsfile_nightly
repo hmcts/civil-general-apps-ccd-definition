@@ -48,6 +48,7 @@ def secrets = [
 ]
 
 withNightlyPipeline(type, product, component) {
+  env.NIGHTLY_BUILD = true
   env.URL = params.FRONTEND_URL
   env.DM_STORE_URL=params.DM_STORE_URL
   env.IDAM_API_URL=params.IDAM_API_URL
@@ -63,8 +64,8 @@ withNightlyPipeline(type, product, component) {
   ])
   loadVaultSecrets(secrets)
 
-  //enableFullFunctionalTest(200)
-  // demo environment broken so commenting of test unless its fixed
+   //enableFullFunctionalTest(200)
+
   after('fullFunctionalTest') {
     archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }

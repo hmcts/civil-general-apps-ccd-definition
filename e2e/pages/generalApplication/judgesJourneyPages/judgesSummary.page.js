@@ -4,11 +4,11 @@ const {verifyJudgeRecitalText, verifyHearingDetailsJudgeRecitalText} = require('
 module.exports = {
 
   fields: {
-    summaryLabels: 'ccd-field-read-label ng-component span',
+    summaryLabels: 'ccd-field-read-label ng-component span'
   },
 
   async verifyJudgesSummaryPage(decisionType) {
-    I.seeInCurrentUrl('cases/case-details/');
+    I.waitInUrl('#Summary');
     I.see('Summary');
     I.see('Parent Case ID');
     I.see('Hearing details');
