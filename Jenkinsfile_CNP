@@ -55,23 +55,19 @@ def createGithubRelease() {
 }
 
 withPipeline(type, product, component) {
-    env.PR_BUILD = true
     pipelineConf = config
     disableLegacyDeployment()
     enableAksStagingDeployment()
 
     onPR {
-        env.ENVIRONMENT = "preview"
         loadVaultSecrets(secrets);
         enableCleanupOfHelmReleaseOnSuccess();
     }
     onMaster {
         loadVaultSecrets(secrets)
-        env.ENVIRONMENT = "aat"
     }
     onDemo {
         loadVaultSecrets(secrets)
-        env.ENVIRONMENT = "demo"
     }
 
     after('checkout') {
@@ -99,7 +95,7 @@ withPipeline(type, product, component) {
           ./bin/add-roles.sh
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
-          ./bin/import-ccd-definition.sh "-e *-prod.json,*-GAR2GAspec-nonprod,*HNL-nonprod.json" ${ccddefbranch}
+          ./bin/import-ccd-definition.sh "-e *-prod.json,*-GAR2GAspec-nonprod,*-SDO-HNL-nonprod.json" ${ccddefbranch}
           ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
           ./bin/pull-latest-camunda-files.sh ${camundaBranch}
         """
@@ -146,7 +142,7 @@ withPipeline(type, product, component) {
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-general-apps-ccd-definition civil-general-apps-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
-          ./bin/import-ccd-definition.sh "-e *-prod.json,*HNL-nonprod.json" ${ccddefbranch}
+          ./bin/import-ccd-definition.sh "-e *-prod.json,*-SDO-HNL-nonprod.json" ${ccddefbranch}
           ./bin/import-general-apps-ccd-definition.sh "-e *-prod.json,*-nonprod.json"
           ./bin/pull-latest-camunda-files.sh ${camundaBranch}
         """
