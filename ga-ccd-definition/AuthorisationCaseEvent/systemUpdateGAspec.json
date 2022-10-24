@@ -154,6 +154,11 @@
     "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "CHECK_ORDER_MADE_END_DATE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
-
 ]
