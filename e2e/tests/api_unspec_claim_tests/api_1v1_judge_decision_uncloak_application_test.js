@@ -96,7 +96,11 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
 
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
               + gaCaseReference + ' ***');
-  await api.judgeRequestMoreInformationUncloak(config.applicantSolicitorUser, gaCaseReference);
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference);
+  }else {
+    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference);
+  }
   console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
               + gaCaseReference + ' ***');
 
@@ -111,7 +115,11 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
               + gaCaseReference + ' ***');
 
   console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.judgeMakesDecisionDirectionsOrder(config.applicantSolicitorUser, gaCaseReference);
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeMakesDecisionDirectionsOrder(config.judgeUser, gaCaseReference);
+  }else {
+    await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
+  }
   console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
 
 });
