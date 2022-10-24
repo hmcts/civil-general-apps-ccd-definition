@@ -10,7 +10,7 @@ module.exports = {
 
   async verifySummaryPage() {
     await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
-    I.seeInCurrentUrl('cases/case-details/');
+    I.waitInUrl('#Summary');
     I.see('Summary');
     I.see('Parent Case ID');
     I.see('Hearing details');
