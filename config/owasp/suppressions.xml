@@ -166,11 +166,4 @@
     <cve>CVE-2022-42003</cve>
     <cve>CVE-2022-42004</cve>
   </suppress>
-  <suppress>
-    <notes><![CDATA[
-   file name: minimatch:3.0.4
-   ]]></notes>
-    <packageUrl regex="true">^pkg:npm/minimatch@.*$</packageUrl>
-    <vulnerabilityName>1084765</vulnerabilityName>
-  </suppress>
 </suppressions>
