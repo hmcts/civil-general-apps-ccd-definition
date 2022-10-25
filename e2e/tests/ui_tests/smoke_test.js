@@ -42,14 +42,22 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   console.log('Org1 solicitor Responded to application: ' + childCaseNum());
   await I.respCloseAndReturnToCaseDetails(childCaseId);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+  await I.dontSee('Go');
+  await I.dontSee('Next step');
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDecisionStatus);
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await I.login(config.judgeUser);
+  } else {
+    await I.login(config.judgeLocalUser);
+  }
   await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Request more information');
   await I.verifyApplicationDocument(childCaseNum(), 'Request for information');
   console.log('Judges requested more information on case: ' + childCaseNum());
+  await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(additionalInfoStatus);
   await I.respondToJudgeAdditionalInfo(childCaseNum(), childCaseId);
