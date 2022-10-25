@@ -53,7 +53,7 @@ module.exports = {
     let urlBefore = await I.grabCurrentUrl();
     await I.retryUntilUrlChanges(async () => {
       await I.click(locate(this.fields.tab).withText(tabName));
-      await I.wait(3);
+      await I.wait(10);
       await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
     }, urlBefore);
   },
@@ -62,7 +62,7 @@ module.exports = {
     let urlBefore = await I.grabCurrentUrl();
     await I.retryUntilUrlChanges(async () => {
       await I.click(locate(this.fields.tab).withText(tabName));
-      await I.wait(3);
+      await I.wait(10);
       await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
     }, urlBefore);
   },
