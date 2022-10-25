@@ -1,4 +1,5 @@
 const defaultPassword = 'Password12!';
+const judgePassword = 'Hmcts1234';
 
 module.exports = {
   idamStub: {
@@ -18,10 +19,19 @@ module.exports = {
     microservice: 'civil_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
-  judgeUser: {
+  judgeLocalUser: {
     password: defaultPassword,
-    email: 'judge-civil-02@example.com',
-    type: 'judge'
+    email: '4924246EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '4'
+  },
+  judgeUser: {
+    password: judgePassword,
+    email: '4924246EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '4'
   },
   applicantSolicitorUser: {
     password: defaultPassword,

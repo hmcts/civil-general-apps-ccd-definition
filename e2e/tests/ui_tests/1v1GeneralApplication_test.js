@@ -37,18 +37,23 @@ Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
   childCaseNumber = await I.grabChildCaseNumber();
   await I.navigateToCaseDetails(childCaseNum());
   childCaseId = await I.grabCaseNumber();
+  await I.dontSee('Go');
+  await I.dontSee('Next step');
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await I.login(config.judgeUser);
+  } else {
+    await I.login(config.judgeLocalUser);
+  }
   await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'yes', childCaseNum());
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Approve order');
   await I.verifyApplicationDocument(childCaseNum(), 'General order');
   console.log('Judges made a decision on case: ' + childCaseNum());
+  await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeApproveOrderStatus);
   await I.verifyClaimDocument(childCaseNum(), 'General order document');
-  await I.navigateToCaseDetails(childCaseNum());
-  await I.dontSee('Go');
-  await I.dontSee('Next step');
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(parentCaseNumber);
   I.dontSee('Applications', 'div.mat-tab-label-content');
@@ -76,12 +81,18 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   childCaseNumber = await I.grabChildCaseNumber();
   await I.navigateToCaseDetails(childCaseNum());
   childCaseId = await I.grabCaseNumber();
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await I.login(config.judgeUser);
+  } else {
+    await I.login(config.judgeLocalUser);
+  }
   await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', childCaseNum());
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Judges Directions');
   await I.verifyApplicationDocument(childCaseNum(), 'Directions order');
   console.log('Judges Directions Order Made on case: ' + childCaseNum());
+  await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDirectionsOrderStatus);
   await I.verifyClaimDocument(childCaseNum(), 'Directions order document');
@@ -113,6 +124,11 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
   childCaseNumber = await I.grabChildCaseNumber();
   await I.navigateToCaseDetails(childCaseNum());
   childCaseId = await I.grabCaseNumber();
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await I.login(config.judgeUser);
+  } else {
+    await I.login(config.judgeLocalUser);
+  }
   await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'no', childCaseNum());
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
@@ -121,6 +137,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
   await I.dontSee('Go');
   await I.dontSee('Next step');
   console.log('Judges Dismissed this order: ' + childCaseNum());
+  await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDismissOrderStatus);
   await I.verifyClaimDocument(childCaseNum(), 'Dismissal order document');
