@@ -135,12 +135,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor",
           "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      },
-      {
-        "UserRoles": [
+          "ga-basic-access",
           "civil-administrator-basic"
         ],
         "CRUD": "R"

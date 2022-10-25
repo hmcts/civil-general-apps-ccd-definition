@@ -19,13 +19,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "UserRoles": [
-      "civil-administrator-basic"
-    ],
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "UserRoles": [
+      "civil-administrator-basic",
       "ga-basic-access",
       "caseworker-ras-validation"
     ],
