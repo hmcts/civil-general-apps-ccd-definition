@@ -1,0 +1,16 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "CHECK_ORDER_MADE_END_DATE",
+    "Name": "Order Made End Date Scheduler",
+    "Description": "Trigger Order Made End Date Scheduler",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "ORDER_MADE",
+    "SecurityClassification": "Public",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "Publish": "Y"
+  }
+]
