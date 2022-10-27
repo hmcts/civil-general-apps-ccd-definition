@@ -555,7 +555,7 @@ module.exports = function () {
     async retryUntilUrlChanges(action, urlBefore, maxNumberOfTries = 6) {
       let urlAfter;
       for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
-        console.log(`Checking if URL has changed, starting try #${tryNumber}`);
+        output.log(`Checking if URL has changed, starting try #${tryNumber}`);
         await action();
         await this.sleep(3000 * tryNumber);
         urlAfter = await this.grabCurrentUrl();
@@ -777,7 +777,7 @@ module.exports = function () {
         () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_ADDITIONAL_INFO.id,
           childCaseId, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
-        () => caseViewPage.clickOnTab('Application Documents'),
+        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
         () => applicationDocumentPage.verifyUploadedFile('Additional Information Documents', 'examplePDF.pdf'),
       ]);
     },
@@ -791,15 +791,15 @@ module.exports = function () {
 
     async payAndVerifyAdditionalPayment(childCaseNumber) {
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.clickOnTab('Service Request'),
+        () => caseViewPage.navigateToTab(childCaseNumber, 'Service Request'),
         () => serviceRequestPage.payAdditionalAmount(childCaseNumber),
         () => serviceRequestPage.verifyAdditionalPayment(childCaseNumber),
       ]);
     },
 
-    async verifyClaimDocument(childCaseNumber, docType) {
+    async verifyClaimDocument(parentCaseNumber, childCaseNumber, docType) {
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.clickOnTab('Claim documents'),
+        () => caseViewPage.navigateToTab(parentCaseNumber, 'Claim documents'),
         () => claimDocumentPage.verifyUploadedDocument(childCaseNumber, docType),
       ]);
     },
@@ -811,7 +811,7 @@ module.exports = function () {
         () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_DIRECTIONS.id,
           childCaseId, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
-        () => caseViewPage.clickOnTab('Application Documents'),
+        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
         () => applicationDocumentPage.verifyUploadedFile('Directions Order Documents', 'examplePDF.pdf'),
       ]);
     },
@@ -823,7 +823,7 @@ module.exports = function () {
         () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.id,
           childCaseId, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
-        () => caseViewPage.clickOnTab('Application Documents'),
+        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
         () => applicationDocumentPage.verifyUploadedFile('Written Representation Documents', 'examplePDF.pdf'),
       ]);
     },
