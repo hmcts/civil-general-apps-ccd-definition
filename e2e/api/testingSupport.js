@@ -5,8 +5,8 @@ const {retry} = require('./retryHelper');
 
 let incidentMessage;
 
-const MAX_RETRIES = 50;
-const RETRY_TIMEOUT_MS = 1000;
+const MAX_RETRIES = 60;
+const RETRY_TIMEOUT_MS = 5000;
 
 module.exports = {
   waitForFinishedBusinessProcess: async caseId => {
