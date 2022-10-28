@@ -2398,7 +2398,7 @@
           "caseworker-civil-admin",
           "judge-profile",
           "legal-adviser",
-          "basic-access"
+          "ga-basic-access"
         ],
         "CRUD": "CRU"
       },
@@ -2423,7 +2423,7 @@
           "caseworker-civil-admin",
           "judge-profile",
           "legal-adviser",
-          "basic-access"
+          "ga-basic-access"
         ],
         "CRUD": "CRU"
       },
@@ -2448,7 +2448,7 @@
           "caseworker-civil-admin",
           "judge-profile",
           "legal-adviser",
-          "basic-access"
+          "ga-basic-access"
         ],
         "CRUD": "CRU"
       },
@@ -2473,7 +2473,7 @@
           "caseworker-civil-admin",
           "judge-profile",
           "legal-adviser",
-          "basic-access"
+          "ga-basic-access"
         ],
         "CRUD": "CRU"
       },
