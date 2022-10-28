@@ -4,7 +4,7 @@
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],
-    "CRUD": "CRUD"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -19,7 +19,9 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "UserRoles": [
-      "civil-administrator-basic"
+      "civil-administrator-basic",
+      "ga-basic-access",
+      "caseworker-ras-validation"
     ],
     "CRUD": "R"
   }
