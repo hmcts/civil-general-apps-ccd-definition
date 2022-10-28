@@ -1376,41 +1376,41 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
 };
 
 async function replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
-  let isCourtListEnabled = false;
-  // work around for the api  tests
-  //console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (false) {
-    responseData = {
-      ...responseData,
-      userInput: {
-        ...responseData.userInput,
-        RequestedCourtLocationLRspec: {
-          responseClaimCourtLocationRequired: 'No'
-        }
-      }
-    };
-  }
+  // let isCourtListEnabled = false;
+  // // work around for the api  tests
+  // //console.log(`Court location selected in Env: ${config.runningEnv}`);
+  // if (false) {
+  //   responseData = {
+  //     ...responseData,
+  //     userInput: {
+  //       ...responseData.userInput,
+  //       RequestedCourtLocationLRspec: {
+  //         responseClaimCourtLocationRequired: 'No'
+  //       }
+  //     }
+  //   };
+  // }
   return responseData;
-};
+}
 
 async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
-  let isCourtListEnabled = false;
-  // work around for the api  tests
-  //console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (false) {
-    responseData = {
-      ...responseData,
-      userInput: {
-        ...responseData.userInput,
-        ApplicantCourtLocationLRspec: {
-          applicant1DQRequestedCourt: {
-            reasonForHearingAtSpecificCourt: 'reasons',
-            responseCourtCode: '123'
-          }
-        },
-      }
-    };
-  }
+  // let isCourtListEnabled = false;
+  // // work around for the api  tests
+  // //console.log(`Court location selected in Env: ${config.runningEnv}`);
+  // if (false) {
+  //   responseData = {
+  //     ...responseData,
+  //     userInput: {
+  //       ...responseData.userInput,
+  //       ApplicantCourtLocationLRspec: {
+  //         applicant1DQRequestedCourt: {
+  //           reasonForHearingAtSpecificCourt: 'reasons',
+  //           responseCourtCode: '123'
+  //         }
+  //       },
+  //     }
+  //   };
+  // }
   return responseData;
 }
 
@@ -1461,41 +1461,41 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDe
   //let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api tests
   //console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (false) {
-    if (solicitor === 'solicitorTwo') {
-      defendantResponseData = {
-        ...defendantResponseData,
-        valid: {
-          ...defendantResponseData.valid,
-          RequestedCourt: {
-            respondent2DQRequestedCourt: {
-              responseCourtCode: '343'
-            }
-          }
-        }
-      };
-    } else {
-      defendantResponseData = {
-        ...defendantResponseData,
-        valid: {
-          ...defendantResponseData.valid,
-          RequestedCourt: {
-            respondent1DQRequestedCourt: {
-              responseCourtCode: '343'
-            }
-          }
-        }
-      };
-    }
-  }
+  // if (false) {
+  //   if (solicitor === 'solicitorTwo') {
+  //     defendantResponseData = {
+  //       ...defendantResponseData,
+  //       valid: {
+  //         ...defendantResponseData.valid,
+  //         RequestedCourt: {
+  //           respondent2DQRequestedCourt: {
+  //             responseCourtCode: '343'
+  //           }
+  //         }
+  //       }
+  //     };
+  //   } else {
+  //     defendantResponseData = {
+  //       ...defendantResponseData,
+  //       valid: {
+  //         ...defendantResponseData.valid,
+  //         RequestedCourt: {
+  //           respondent1DQRequestedCourt: {
+  //             responseCourtCode: '343'
+  //           }
+  //         }
+  //       }
+  //     };
+  //   }
+  // }
   return defendantResponseData;
 }
 
 const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
-  const  fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
-  for (let populatedCaseField of Object.keys(fixture)) {
-    //assert.property(returnedCaseData, populatedCaseField);
-  }
+  //const  fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
+  // for (let populatedCaseField of Object.keys(fixture)) {
+  //   //assert.property(returnedCaseData, populatedCaseField);
+  // }
 };
 
 const adjustDataForSolicitor = (user, data) => {
