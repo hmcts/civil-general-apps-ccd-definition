@@ -23,7 +23,7 @@ const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecisio
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
 
-const {cloneDeep} = require('lodash');
+// const {cloneDeep} = require('lodash');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
