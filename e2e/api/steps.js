@@ -948,9 +948,9 @@ module.exports = {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor];
     }
     // Remove after court location toggle is removed
-    defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
-        defendantResponseData, solicitor);
-    assertContainsPopulatedFields(returnedCaseData, solicitor);
+    // defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
+    //     defendantResponseData, solicitor);
+    //assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
     deleteCaseFields('isRespondent1');
@@ -1456,8 +1456,8 @@ const solicitorSetup = (isFirst) => {
 };
 
 // CIV-4959: needs to be removed when court location goes live
-async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
-    defendantResponseData, solicitor) {
+// async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
+//     defendantResponseData, solicitor) {
   //let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api tests
   //console.log(`Court location selected in Env: ${config.runningEnv}`);
@@ -1488,23 +1488,23 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDe
   //     };
   //   }
   // }
-  return defendantResponseData;
-}
+//   return defendantResponseData;
+// }
 
-const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
+//const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
   //const  fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
   // for (let populatedCaseField of Object.keys(fixture)) {
   //   //assert.property(returnedCaseData, populatedCaseField);
   // }
-};
+// };
 
-const adjustDataForSolicitor = (user, data) => {
-  let fixtureClone = cloneDeep(data);
-  if(user === 'solicitorOne') {
-    delete fixtureClone['respondent2ResponseDeadline'];
-  }
-  else if (user === 'solicitorTwo') {
-    delete fixtureClone['respondent1ResponseDeadline'];
-  }
-  return fixtureClone;
-};
+// const adjustDataForSolicitor = (user, data) => {
+//   let fixtureClone = cloneDeep(data);
+//   if(user === 'solicitorOne') {
+//     delete fixtureClone['respondent2ResponseDeadline'];
+//   }
+//   else if (user === 'solicitorTwo') {
+//     delete fixtureClone['respondent1ResponseDeadline'];
+//   }
+//   return fixtureClone;
+// };
