@@ -447,19 +447,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "UPDATE_GA_CASE_DATA",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "civil-administrator-standard",
-          "civil-administrator-basic"
-        ],
-        "CRUD": "R"
-      }
-    ]
   }
 ]
