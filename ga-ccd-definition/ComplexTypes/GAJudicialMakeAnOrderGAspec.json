@@ -89,5 +89,13 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 400
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "esOrderProcessedByStayScheduler",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "makeAnOrder=\"DO_NOT_SHOW_IN_UI\""
   }
 ]
