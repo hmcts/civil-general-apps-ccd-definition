@@ -12,7 +12,7 @@
 ./bin/utils/ccd-add-role.sh "RES-SOL-ONE-SPEC-PROFILE"
 ./bin/utils/ccd-add-role.sh "RES-SOL-TWO-UNSPEC-PROFILE"
 ./bin/utils/ccd-add-role.sh "RES-SOL-TWO-SPEC-PROFILE"
-./bin/utils/ccd-add-role.sh "basic-access"
+./bin/utils/ccd-add-role.sh "ga-basic-access"
 ./bin/utils/ccd-add-role.sh "legal-adviser"
 ./bin/utils/ccd-add-role.sh "GS_profile"
 ./bin/utils/ccd-add-role.sh "civil-administrator-standard"
@@ -21,6 +21,7 @@
 ./bin/utils/ccd-add-role.sh "admin-access"
 ./bin/utils/ccd-add-role.sh "full-access"
 ./bin/utils/ccd-add-role.sh "hearing-schedule-access"
+./bin/utils/ccd-add-role.sh "payment-access"
 
 roles=("solicitor" "systemupdate" "admin" "staff" "judge")
 for role in "${roles[@]}"
