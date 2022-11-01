@@ -157,7 +157,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CHECK_ORDER_MADE_END_DATE",
+    "CaseEventID": "END_SCHEDULER_CHECK_STAY_ORDER_DEADLINE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "UPDATE_GA_CASE_DATA",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }

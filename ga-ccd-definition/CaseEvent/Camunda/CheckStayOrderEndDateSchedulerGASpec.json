@@ -1,13 +1,13 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "CHECK_ORDER_MADE_END_DATE",
+    "ID": "END_SCHEDULER_CHECK_STAY_ORDER_DEADLINE",
     "Name": "Order Made End Date Scheduler",
     "Description": "Trigger Order Made End Date Scheduler",
     "PreConditionState(s)": "*",
     "PostConditionState": "ORDER_MADE",
     "SecurityClassification": "Public",
-    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,

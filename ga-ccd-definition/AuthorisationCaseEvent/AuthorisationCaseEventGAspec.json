@@ -386,7 +386,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CHECK_ORDER_MADE_END_DATE",
+    "CaseEventID": "END_SCHEDULER_CHECK_STAY_ORDER_DEADLINE",
     "AccessControl": [
       {
         "UserRoles": [
@@ -395,6 +395,20 @@
           "civil-administrator-basic",
           "caseworker-ras-validation",
           "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "UPDATE_GA_CASE_DATA",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "civil-administrator-standard",
+          "civil-administrator-basic"
         ],
         "CRUD": "R"
       }
