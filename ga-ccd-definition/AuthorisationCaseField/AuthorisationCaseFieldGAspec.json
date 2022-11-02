@@ -2291,13 +2291,6 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
       }
     ]
   },
