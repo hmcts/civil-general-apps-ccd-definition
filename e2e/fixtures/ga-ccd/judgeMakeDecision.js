@@ -34,7 +34,7 @@ module.exports = {
         directionsResponseByDate: '2023-06-05',
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No',
-        esOrderProcessedByStayScheduler: 'No'
+        isOrderProcessedByStayScheduler: 'No'
       }
     };
   },
@@ -49,7 +49,7 @@ module.exports = {
         judgeApproveEditOptionDoc: 'DEFENCE_FORM',
         judgeApproveEditOptionDate: '2023-06-05',
         reasonForDecisionText: 'sample text',
-        esOrderProcessedByStayScheduler: 'No'
+        isOrderProcessedByStayScheduler: 'No'
       }
     };
   },
@@ -84,7 +84,7 @@ module.exports = {
         directionsResponseByDate: '2023-06-05',
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No',
-        esOrderProcessedByStayScheduler: 'No'
+        isOrderProcessedByStayScheduler: 'No'
       }
     };
   },
@@ -101,7 +101,7 @@ module.exports = {
         reasonForDecisionText:'sample text',
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No',
-        esOrderProcessedByStayScheduler: 'No'
+        isOrderProcessedByStayScheduler: 'No'
       }
     };
 
@@ -117,7 +117,7 @@ module.exports = {
         judgeRecitalText:'sample text',
         orderText: 'order sample text',
         reasonForDecisionText: 'sample text',
-        esOrderProcessedByStayScheduler: 'No'
+        isOrderProcessedByStayScheduler: 'No'
       },
       makeAppVisibleToRespondents: {
         makeAppAvailableCheck: [

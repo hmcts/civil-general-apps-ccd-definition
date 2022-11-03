@@ -658,7 +658,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "esOrderProcessedByStayScheduler",
+    "ListElementCode": "isOrderProcessedByStayScheduler",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
   },
@@ -1447,7 +1447,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "esOrderProcessedByStayScheduler",
+    "ListElementCode": "isOrderProcessedByStayScheduler",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },

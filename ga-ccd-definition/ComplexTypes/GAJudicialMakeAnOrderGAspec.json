@@ -92,7 +92,7 @@
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
-    "ListElementCode": "esOrderProcessedByStayScheduler",
+    "ListElementCode": "isOrderProcessedByStayScheduler",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",

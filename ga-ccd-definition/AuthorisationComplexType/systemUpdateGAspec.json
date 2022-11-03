@@ -700,7 +700,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "esOrderProcessedByStayScheduler",
+    "ListElementCode": "isOrderProcessedByStayScheduler",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
