@@ -4,7 +4,7 @@
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],
-    "CRUD": "CRUD"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
