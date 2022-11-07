@@ -33,7 +33,8 @@ module.exports = {
         reasonForDecisionText: 'sample text',
         directionsResponseByDate: '2023-06-05',
         displayjudgeApproveEditOptionDoc: 'No',
-        displayjudgeApproveEditOptionDate: 'No'
+        displayjudgeApproveEditOptionDate: 'No',
+        isOrderProcessedByStayScheduler: 'No'
       }
     };
   },
@@ -47,7 +48,8 @@ module.exports = {
         orderText: 'sample text',
         judgeApproveEditOptionDoc: 'DEFENCE_FORM',
         judgeApproveEditOptionDate: '2023-06-05',
-        reasonForDecisionText: 'sample text'
+        reasonForDecisionText: 'sample text',
+        isOrderProcessedByStayScheduler: 'No'
       }
     };
   },
@@ -81,7 +83,8 @@ module.exports = {
         reasonForDecisionText: 'sample text',
         directionsResponseByDate: '2023-06-05',
         displayjudgeApproveEditOptionDoc: 'No',
-        displayjudgeApproveEditOptionDate: 'No'
+        displayjudgeApproveEditOptionDate: 'No',
+        isOrderProcessedByStayScheduler: 'No'
       }
     };
   },
@@ -97,7 +100,8 @@ module.exports = {
         dismissalOrderText:'sample text',
         reasonForDecisionText:'sample text',
         displayjudgeApproveEditOptionDoc: 'No',
-        displayjudgeApproveEditOptionDate: 'No'
+        displayjudgeApproveEditOptionDate: 'No',
+        isOrderProcessedByStayScheduler: 'No'
       }
     };
 
@@ -112,7 +116,8 @@ module.exports = {
         judgeApproveEditOptionDate : '2023-06-05',
         judgeRecitalText:'sample text',
         orderText: 'order sample text',
-        reasonForDecisionText: 'sample text'
+        reasonForDecisionText: 'sample text',
+        isOrderProcessedByStayScheduler: 'No'
       },
       makeAppVisibleToRespondents: {
         makeAppAvailableCheck: [
