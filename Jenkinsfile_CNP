@@ -7,7 +7,7 @@ import uk.gov.hmcts.contino.AppPipelineDsl
 def type = "java"
 def product = "civil"
 def component = "ga-ccd"
-def camundaBranch = "master"
+def camundaBranch = "CIV-5093"
 
 def ccddefbranch = "gaEnhancement"
 AppPipelineConfig pipelineConf
@@ -63,7 +63,7 @@ withPipeline(type, product, component) {
     onPR {
         env.ENVIRONMENT = "preview"
         loadVaultSecrets(secrets);
-        enableCleanupOfHelmReleaseOnSuccess();
+       // enableCleanupOfHelmReleaseOnSuccess();
     }
     onMaster {
         loadVaultSecrets(secrets)
