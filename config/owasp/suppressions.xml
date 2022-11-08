@@ -129,6 +129,7 @@
       Upgrading to tomcat embed core to 1.10.x has got startup issues which requires investigation
     </notes>
     <cve>CVE-2022-34305</cve>
+    <cve>CVE-2022-42252</cve>
   </suppress>
   <suppress until="2022-11-29">
     <notes>
