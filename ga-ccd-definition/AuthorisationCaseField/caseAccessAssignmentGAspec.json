@@ -16,5 +16,11 @@
     "CaseFieldID": "gaDetailsRespondentSol",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
   }
 ]

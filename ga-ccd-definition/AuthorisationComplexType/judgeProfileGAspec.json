@@ -559,6 +559,34 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "ListElementCode": "generalAppSubmittedDateGAspec",
+    "UserRole": "judge-profile",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "ListElementCode": "caseLink",
+    "UserRole": "judge-profile",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "ListElementCode": "caseState",
+    "UserRole": "judge-profile",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "ListElementCode": "generalApplicationType",
+    "UserRole": "judge-profile",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppDateDeadline",
     "UserRole": "judge-profile",
