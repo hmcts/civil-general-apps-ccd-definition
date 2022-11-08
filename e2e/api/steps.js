@@ -31,6 +31,7 @@ const data = {
   INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE: genAppData.createGADataWithoutNotice('No','Test 123',
     '10800','FEE0443'),
   INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
+  INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
   RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
   MAKE_DECISION: genAppJudgeMakeDecisionData.judgeMakesDecisionData(),
   JUDGE_MAKES_ORDER_WRITTEN_REP: genAppJudgeMakeDecisionData.judgeMakeOrderWrittenRep(),
@@ -290,6 +291,34 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, parentCaseId);
     const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT, parentCaseId);
+    const responseBody = await response.json();
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+    await waitForFinishedBusinessProcess(parentCaseId);
+    await waitForGAFinishedBusinessProcess(parentCaseId);
+
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
+    const updatedCivilCaseData = await updatedResponse.json();
+    let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+    console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
+
+    return gaCaseReference;
+  },
+
+  initiateAdjournVacateGeneralApplication: async (user, parentCaseId,
+                                                    isWithNotice, isWithConsent, hearingDate,
+                                                    calculatedAmount, feeCode,
+                                                    feeVersion) => {
+    eventName = events.INITIATE_GENERAL_APPLICATION.id;
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName, parentCaseId);
+    const response = await apiRequest.submitEvent(eventName,
+         data.INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE(isWithNotice, isWithConsent, hearingDate, calculatedAmount, feeCode, feeVersion),
+         parentCaseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
     assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -996,6 +1025,15 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
     deleteCaseFields('respondent2Copy');
   },
+
+    createDateString: async (plusDays) => {
+      let temp = new Date(Date.now() + (3600 * 1000 * 24) * plusDays);
+      let dateStr = padStr(temp.getFullYear().toString()) + '-' +
+                padStr((temp.getMonth()+1).toString()) + '-' +
+                padStr(temp.getDate().toString());
+      return dateStr;
+    },
+
 };
 
 // Functions
@@ -1290,6 +1328,9 @@ function removeUuidsFromDynamicList(data, dynamicListField) {
   return dynamicElements.map(({code, ...item}) => item);
 }
 
+function padStr(i) {
+  return (i < 10) ? '0' + i : '' + i;
+}
 async function updateCaseDataWithPlaceholders(data, document) {
   const placeholders = {
     TEST_DOCUMENT_URL: document.document_url,
