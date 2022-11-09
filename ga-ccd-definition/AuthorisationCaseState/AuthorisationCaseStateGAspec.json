@@ -187,6 +187,7 @@
       {
         "UserRoles": [
           "civil-administrator-basic",
+          "caseworker-civil-solicitor",
           "caseworker-ras-validation",
           "ga-basic-access"
         ],
