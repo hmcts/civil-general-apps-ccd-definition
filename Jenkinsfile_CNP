@@ -9,7 +9,7 @@ def product = "civil"
 def component = "ga-ccd"
 def camundaBranch = "master"
 
-def ccddefbranch = "gaEnhancement"
+def ccddefbranch = "CIV-5678_Fix_Collection"
 AppPipelineConfig pipelineConf
 
 static Map<String, Object> secret(String secretName, String envVariable) {
