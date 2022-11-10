@@ -346,6 +346,17 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaDetailsMasterCollection",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case for Judge",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "gaDetailsRespondentSol",
     "Label": " ",
     "ElementLabel": "Application Type",
