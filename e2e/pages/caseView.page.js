@@ -22,6 +22,11 @@ module.exports = {
     switch (event) {
       case 'Make decision':
       case 'Make an application':
+      case 'Respond to application':
+      case 'Respond to judges written rep':
+      case 'Respond to judges directions':
+      case 'Respond to judges addn info':
+      case 'Respond to judges list for hearing':
         await I.waitForElement(this.fields.eventDropdown, 10);
         await I.selectOption(this.fields.eventDropdown, event);
         await I.retryUntilExists(async () => {
