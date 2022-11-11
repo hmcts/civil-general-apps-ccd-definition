@@ -109,14 +109,14 @@ module.exports = {
       respondent2OrganisationPolicy: {
         OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
         Organisation: {
-          OrganisationID: "OrdId1",
+          OrganisationID: 'OrdId1',
           OrganisationName: 'Civil - Organisation 2'
         }
       },
       respondent1OrganisationPolicy: {
         OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
         Organisation: {
-          OrganisationID: "OrdId2",
+          OrganisationID: 'OrdId2',
           OrganisationName: 'Civil - Organisation 1'
         }
       },
