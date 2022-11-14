@@ -623,7 +623,7 @@ module.exports = {
     const updatedGaCaseData = await updatedResponse.json();
     let isOrderProcessedByScheduler = updatedGaCaseData.judicialDecisionMakeOrder.isOrderProcessedByStayScheduler;
     assert.equal(isOrderProcessedByScheduler,'Yes');
-    console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
+    console.log('*** GA Case Reference: ' + gaCaseId + ' ***');
   },
 
   judgeListApplicationForHearing: async (user, gaCaseId) => {
