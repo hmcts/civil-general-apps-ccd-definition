@@ -707,6 +707,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "isOrderProcessedByStayScheduler",
+    "UserRole": "civil-administrator-standard",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "displayjudgeApproveEditOptionDoc",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
@@ -1497,6 +1504,13 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "displayjudgeApproveEditOptionDate",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "isOrderProcessedByStayScheduler",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },
