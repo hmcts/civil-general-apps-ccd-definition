@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-const apiRequest = require("../../api/apiRequest");
+const apiRequest = require('../../api/apiRequest');
 const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
