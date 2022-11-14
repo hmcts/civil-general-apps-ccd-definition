@@ -21,7 +21,7 @@ Scenario('Case offline 1V2 AWAITING_RESPONDENT_RESPONSE', async ({api}) => {
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
     await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
     await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'AWAITING_RESPONDENT_RESPONSE');
+                                    'AWAITING_APPLICANT_INTENTION');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
