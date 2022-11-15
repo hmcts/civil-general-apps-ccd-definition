@@ -16,7 +16,7 @@ Scenario('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS- Respondent upload 
     console.log('Make a General Application');
     gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
 
-    /*console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
+    console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
     await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
     console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
@@ -30,9 +30,9 @@ Scenario('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS- Respondent upload 
 
     console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');
     await api.respondentResponseToWrittenRepresentations(config.applicantSolicitorUser, gaCaseReference);
-    console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');*/
+    console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
   });
 
 AfterSuite(async ({api}) => {
-  // await api.cleanUp();
+  await api.cleanUp();
 });
