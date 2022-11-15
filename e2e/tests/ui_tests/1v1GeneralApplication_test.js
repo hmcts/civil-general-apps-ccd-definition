@@ -56,7 +56,7 @@ Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
   await I.verifyClaimDocument(parentCaseNumber, childCaseNum(), 'General order document');
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(parentCaseNumber);
-  I.dontSee('Applications', 'div.mat-tab-label-content');
+  I.see('Applications', 'div.mat-tab-label-content');
 }).retry(0);
 
 Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
