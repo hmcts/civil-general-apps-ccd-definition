@@ -5,9 +5,9 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 Judge make decision order made API tests @api-tests');
+Feature('GA 1v1 Judge make decision order made API tests');
 
-Scenario('Judge makes decision 1V1 - Order Made', async ({api}) => {
+Scenario('Judge makes decision 1V1 - Order Made  @api-tests', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -29,7 +29,7 @@ Scenario('Judge makes decision 1V1 - Order Made', async ({api}) => {
   console.log('*** End Judge makes decision order made - GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
-Scenario('Judge Revisit 1V1 - Order Made End Date Scheduler', async ({api}) => {
+Scenario('Judge Revisit 1V1 - Order Made End Date Scheduler @multiparty-e2e-tests', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
