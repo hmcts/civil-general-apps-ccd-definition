@@ -29,7 +29,7 @@ Scenario('Judge makes decision 1V1 - Order Made  @api-tests', async ({api}) => {
   console.log('*** End Judge makes decision order made - GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
-Scenario('Judge Revisit 1V1 - Order Made End Date Scheduler @multiparty-e2e-tests', async ({api}) => {
+Scenario('Judge Revisit 1V1 - Order Made End Date Scheduler @api-scheduler-test', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
