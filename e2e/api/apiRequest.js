@@ -10,6 +10,9 @@ const getCcdDataStoreGABaseUrl = () => `${config.url.ccdDataStore}/caseworkers/$
 
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getPaymentCallbackUrl = () => `${config.url.generalApplication}/service-request-update`;
+const getJudgeRevisitTaskHandlerUrl =() => `${config.url.generalApplication}/testing-support/trigger-judge-revisit-process-event`;
+const getGaCaseDataUrl =(caseId) => `${config.url.generalApplication}/testing-support/case/${caseId}`;
+
 const getRequestHeaders = (userAuth) => {
   return {
     'Content-Type': 'application/json',
@@ -48,6 +51,33 @@ module.exports = {
       serviceRequestUpdateDto,'PUT');
     return response || {};
   },
+
+  gaOrderMadeSchedulerTaskHandler: async () => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    let url = getJudgeRevisitTaskHandlerUrl();
+    let response_msg =  await restHelper.retriedRequest(url, {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null,
+      'GET');
+    return response_msg|| {};
+  },
+
+
+  fetchGaCaseData: async (caseId) => {
+
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    let url = getGaCaseDataUrl(caseId);
+    console.log('*** GA Case Reference: '  + caseId + ' ***');
+
+    return await restHelper.retriedRequest(url,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null, 'GET');
+  },
+
 
   startEvent: async (eventName, caseId) => {
     let url = getCcdDataStoreBaseUrl();
