@@ -1,17 +1,13 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference,
     gaCaseReference;
 
-Feature('GA Claim 1v1 Claimant Response Case Close API tests @api-offline-nightly');
+Feature('GA SPEC Claim 1v2 Defendant Response Case Close API tests @api-offline-nightly');
 
 Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api}) => {
-    civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
-    await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-    await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-    await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+    civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
     console.log('Civil Case created for general application: ' + civilCaseReference);
 
     console.log('Make a General Application with state APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
@@ -19,19 +15,13 @@ Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async 
         = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
-    await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-    await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'JUDICIAL_REFERRAL');
+    await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'COUNTER_CLAIM', 'ONE_V_TWO');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
 Scenario('Case offline AWAITING_ADDITIONAL_INFORMATION', async ({api}) => {
-    civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
-    await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-    await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-    await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+    civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
     console.log('Civil Case created for general application: ' + civilCaseReference);
-
     gaCaseReference
         = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
     console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
@@ -51,17 +41,12 @@ Scenario('Case offline AWAITING_ADDITIONAL_INFORMATION', async ({api}) => {
                 + gaCaseReference + ' ***');
 
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
-    await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-    await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'JUDICIAL_REFERRAL');
+    await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'COUNTER_CLAIM', 'ONE_V_TWO');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
 Scenario('Case offline LISTING_FOR_A_HEARING', async ({api}) => {
-    civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
-    await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-    await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-    await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+    civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
     console.log('Civil Case created for general application: ' + civilCaseReference);
 
     gaCaseReference
@@ -80,17 +65,12 @@ Scenario('Case offline LISTING_FOR_A_HEARING', async ({api}) => {
 
 
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
-    await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-    await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'JUDICIAL_REFERRAL');
+    await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'COUNTER_CLAIM', 'ONE_V_TWO');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
 Scenario('Case offline AWAITING_WRITTEN_REPRESENTATIONS', async ({api}) => {
-    civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
-    await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-    await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-    await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+    civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
     console.log('Civil Case created for general application: ' + civilCaseReference);
 
     console.log('Make a General Application with state AWAITING_WRITTEN_REPRESENTATIONS');
@@ -106,17 +86,12 @@ Scenario('Case offline AWAITING_WRITTEN_REPRESENTATIONS', async ({api}) => {
 
 
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
-    await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-    await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'JUDICIAL_REFERRAL');
+    await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'COUNTER_CLAIM', 'ONE_V_TWO');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
 Scenario('Case offline APPLICATION_ADD_PAYMENT', async ({api}) => {
-    civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
-    await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-    await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-    await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+    civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
     console.log('Civil Case created for general application: ' + civilCaseReference);
 
     console.log('Make a General Application with state APPLICATION_ADD_PAYMENT');
@@ -133,17 +108,12 @@ Scenario('Case offline APPLICATION_ADD_PAYMENT', async ({api}) => {
                 + gaCaseReference + ' ***');
 
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
-    await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-    await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'JUDICIAL_REFERRAL');
+    await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'COUNTER_CLAIM', 'ONE_V_TWO');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
 Scenario('Case offline AWAITING_DIRECTIONS_ORDER_DOCS', async ({api}) => {
-    civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
-    await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-    await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-    await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+    civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
     console.log('Civil Case created for general application: ' + civilCaseReference);
 
     gaCaseReference
@@ -161,17 +131,12 @@ Scenario('Case offline AWAITING_DIRECTIONS_ORDER_DOCS', async ({api}) => {
     console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
 
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
-    await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-    await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'JUDICIAL_REFERRAL');
+    await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'COUNTER_CLAIM', 'ONE_V_TWO');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
 Scenario('Case offline ORDER_MADE', async ({api}) => {
-    civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
-    await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-    await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-    await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+    civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
     console.log('Civil Case created for general application: ' + civilCaseReference);
 
     console.log('Make a General Application with state ORDER_MADE');
@@ -188,17 +153,12 @@ Scenario('Case offline ORDER_MADE', async ({api}) => {
                 + gaCaseReference + ' ***');
 
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
-    await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-    await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'JUDICIAL_REFERRAL');
+    await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'COUNTER_CLAIM', 'ONE_V_TWO');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
 });
 
 Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
-    civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
-    await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-    await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-    await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+    civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
     console.log('Civil Case created for general application: ' + civilCaseReference);
 
     console.log('Make a General Application with state APPLICATION_DISMISSED');
@@ -215,9 +175,7 @@ Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
                 + gaCaseReference + ' ***');
 
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
-    await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-    await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'JUDICIAL_REFERRAL');
+    await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'COUNTER_CLAIM', 'ONE_V_TWO');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'APPLICATION_DISMISSED');
 });
 
