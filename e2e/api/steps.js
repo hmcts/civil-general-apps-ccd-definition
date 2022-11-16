@@ -1243,14 +1243,13 @@ const assertValidData = async (data, pageId, solicitor, check) => {
     addMidEventFields(pageId, responseBody);
     caseData = removeUiFields(pageId, caseData);
   }
-  if(check) {
-
-  }
   try {
     assert.deepEqual(responseBody.data, caseData);
   }
   catch(err) {
-    console.log('Valid data is failed with mismatch ..', err);
+    if(check) {
+      console.log('Valid data is failed with mismatch ..', err);
+    }
   }
 };
 
