@@ -2,6 +2,7 @@ const {listElement} = require('../../api/dataHelper');
 let selectedPba = listElement('PBA0088192');
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
+const config = require('../../config.js');
 
 module.exports = {
   createGAData: (isWithNotice, reasonWithoutNotice,calculatedAmount, code) => {
@@ -109,14 +110,14 @@ module.exports = {
       respondent2OrganisationPolicy: {
         OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
         Organisation: {
-          OrganisationID: 'OrdId1',
+          OrganisationID: config.defendant2SolicitorOrgId,
           OrganisationName: 'Civil - Organisation 2'
         }
       },
       respondent1OrganisationPolicy: {
         OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
         Organisation: {
-          OrganisationID: 'OrdId2',
+          OrganisationID: config.defendant1SolicitorOrgId,
           OrganisationName: 'Civil - Organisation 1'
         }
       },
