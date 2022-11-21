@@ -13,13 +13,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "respondentSolGaAppDetails",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   }

@@ -571,28 +571,28 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "caseLink",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "caseState",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "generalApplicationType",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"

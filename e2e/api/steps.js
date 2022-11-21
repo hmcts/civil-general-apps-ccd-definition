@@ -370,7 +370,7 @@ module.exports = {
     await apiRequest.startEvent(eventName, parentCaseId);
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
     const updatedCivilCaseData = await updatedResponse.json();
-    let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+    let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
 
     return gaCaseReference;
@@ -874,7 +874,7 @@ module.exports = {
     for (let pageId of Object.keys(defendantResponseData.userInput)) {
       await assertValidClaimData(defendantResponseData, pageId);
     }
-    deleteCaseFields('gaDetailsRespondentSol');
+    deleteCaseFields('respondentSolGaAppDetails');
     deleteCaseFields('generalApplications');
     switch (scenario) {
       case 'ONE_V_ONE_DIF_SOL':
@@ -914,7 +914,7 @@ module.exports = {
 
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
-    deleteCaseFields('gaDetailsRespondentSol');
+    deleteCaseFields('respondentSolGaAppDetails');
     deleteCaseFields('generalApplications');
     let claimantResponseData = eventData['claimantResponsesSpec'][scenario][response];
     claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
@@ -938,7 +938,7 @@ module.exports = {
 
     eventName = 'CLAIMANT_RESPONSE';
     caseData = await apiRequest.startEvent(eventName, caseId);
-    deleteCaseFields('gaDetailsRespondentSol');
+    deleteCaseFields('respondentSolGaAppDetails');
     deleteCaseFields('generalApplications');
     let claimantResponseData = eventData['claimantResponsesSpec'][scenario][response];
     claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
@@ -961,7 +961,7 @@ module.exports = {
     eventName = 'CASE_PROCEEDS_IN_CASEMAN';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
-    deleteCaseFields('gaDetailsRespondentSol');
+    deleteCaseFields('respondentSolGaAppDetails');
     deleteCaseFields('generalApplications');
     await validateEventPages(data.CASE_PROCEEDS_IN_CASEMAN);
 
@@ -1060,7 +1060,7 @@ module.exports = {
     await validateEventPagesWithCheck(defendantResponseData, false, solicitor);
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
-    deleteCaseFields('gaDetailsRespondentSol');
+    deleteCaseFields('respondentSolGaAppDetails');
     deleteCaseFields('generalApplications');
     if (solicitor === 'solicitorOne' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
       // when only one solicitor has responded in a 1v2 different solicitor case

@@ -552,28 +552,28 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "caseLink",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "caseState",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "generalApplicationType",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
@@ -608,56 +608,56 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "respondentSolGaAppDetails",
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "respondentSolGaAppDetails",
     "ListElementCode": "caseLink",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "respondentSolGaAppDetails",
     "ListElementCode": "caseState",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "respondentSolGaAppDetails",
     "ListElementCode": "generalApplicationType",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "ListElementCode": "caseLink",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "ListElementCode": "caseState",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "ListElementCode": "generalApplicationType",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
@@ -1411,28 +1411,28 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "caseLink",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "caseState",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "generalApplicationType",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
@@ -1467,56 +1467,56 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "respondentSolGaAppDetails",
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "respondentSolGaAppDetails",
     "ListElementCode": "caseLink",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "respondentSolGaAppDetails",
     "ListElementCode": "caseState",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "respondentSolGaAppDetails",
     "ListElementCode": "generalApplicationType",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "ListElementCode": "caseLink",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "ListElementCode": "caseState",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "ListElementCode": "generalApplicationType",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"

@@ -25,7 +25,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "AccessControl": [
       {
         "UserRoles": [
@@ -83,7 +83,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "respondentSolGaAppDetails",
     "AccessControl": [
       {
         "UserRoles": [
@@ -112,7 +112,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "AccessControl": [
       {
         "UserRoles": [
