@@ -28,7 +28,7 @@ Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, a
     'signLanguageInterpreter');
   console.log('General Application created: ' + parentCaseNumber);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(judgeDecisionStatus);
@@ -41,7 +41,7 @@ Scenario('GA for 2v1 - Concurrent written representations journey', async ({I, a
     await I.login(config.judgeLocalUser);
   }
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'concurrentRep', childCaseNum());
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Concurrent representations');
   await I.verifyApplicationDocument(childCaseNum(), 'Written representation concurrent');

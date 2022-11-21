@@ -27,7 +27,7 @@ Scenario('GA Applicant and Respondent Journey', async ({I, api}) => {
     'signLanguageInterpreter');
   console.log('General Application created: ' + parentCaseNumber);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.defendantSolicitorUser);
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 5), 1);
   await I.see(respondentStatus);
@@ -50,7 +50,7 @@ Scenario('GA Applicant and Judges Journey', async ({I, api}) => {
     'signLanguageInterpreter');
   console.log('General Application created: ' + parentCaseNumber);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.defendantSolicitorUser);
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(judgeDecisionStatus);
