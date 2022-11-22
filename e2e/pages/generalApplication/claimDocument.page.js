@@ -10,15 +10,14 @@ module.exports = {
 
   async verifyUploadedDocument(childCaseNumber, documentType) {
     await I.seeInCurrentUrl('documents');
+    await I.seeNumberOfVisibleElements('ccd-read-complex-field-collection-table .complex-panel .complex-panel-title', 2);
     switch (documentType) {
       case 'General order document':
       case 'Directions order document':
-        await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 3);
         I.see('Upload documents');
         I.seeNumberOfVisibleElements(this.fields.links, 3);
         break;
       case 'Dismissal order document':
-        await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 2);
         I.seeNumberOfVisibleElements(this.fields.links, 2);
         break;
     }
