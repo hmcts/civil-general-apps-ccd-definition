@@ -145,7 +145,7 @@ Scenario('Without Notice application to With Notice application - Directions Ord
   await I.see(judgeDirectionsOrderStatus);
 });
 
-Scenario.only('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations @multiparty-e2e-tests', async ({api, I}) => {
+Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations @multiparty-e2e-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
