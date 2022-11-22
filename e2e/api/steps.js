@@ -5,7 +5,7 @@ const chai = require('chai');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
-const {expect, assert} = chai;
+const {assert} = chai;
 const date = new Date();
 const twoDigitDate = ((date.getDate()) >= 10) ? (date.getDate()) : '0' + (date.getDate());
 let current_date = date.getFullYear().toString()+ '-' + (date.getMonth()+1).toString()+ '-' + twoDigitDate;
@@ -24,8 +24,6 @@ const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentRespo
 const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
-
-// const {cloneDeep} = require('lodash');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
@@ -78,15 +76,12 @@ const data = {
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
 
-  //CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
   CLAIM_CREATE_CLAIM_AP_SPEC: (scenario) => claimDataSpec.createClaimForAccessProfiles(scenario),
   CLAIM_DEFENDANT_RESPONSE_SPEC: (response) => require('../fixtures/events/claim/defendantResponseSpec.js').respondToClaim(response),
   CLAIM_DEFENDANT_RESPONSE2_SPEC: (response) => require('../fixtures/events/claim/defendantResponseSpec.js').respondToClaim2(response),
   CLAIM_DEFENDANT_RESPONSE_1v2_SPEC: (response) => require('../fixtures/events/claim/defendantResponseSpec1v2.js').respondToClaim(response),
-  CLAIM_DEFENDANT_RESPONSE_2v1_SPEC: (response) => require('../fixtures/events/claim/defendantResponseSpec2v1.js').respondToClaim(response),
   CLAIM_CLAIMANT_RESPONSE_SPEC: (mpScenario) => require('../fixtures/events/claim/claimantResponseSpec.js').claimantResponse(mpScenario),
   CLAIM_CLAIMANT_RESPONSE_1v2_SPEC: (response) => require('../fixtures/events/claim/claimantResponseSpec1v2.js').claimantResponse(response),
-  CLAIM_CLAIMANT_RESPONSE_2v1_SPEC: (response) => require('../fixtures/events/claim/claimantResponseSpec2v1.js').claimantResponse(response),
   CLAIM_INFORM_AGREED_EXTENSION_DATE_SPEC: () => require('../fixtures/events/claim/informAgreeExtensionDateSpec.js'),
   CLAIM_DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/claim/defaultJudgmentSpec.js'),
   CLAIM_DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/claim/defaultJudgment1v2Spec.js'),
@@ -239,7 +234,7 @@ module.exports = {
     await assertSubmittedSpecEvent('PENDING_CASE_ISSUED');
 
     await assignSpecCase(caseId, multipartyScenario);
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -255,6 +250,7 @@ module.exports = {
   },
 
   initiateGeneralApplicationWithOutNotice: async (user, parentCaseId) => {
+    let gaCaseReference;
     eventName = events.INITIATE_GENERAL_APPLICATION.id;
 
     await apiRequest.setupTokens(user);
@@ -269,17 +265,28 @@ module.exports = {
     assert.include(responseBody.after_submit_callback_response.confirmation_header,
       '# You have made an application');
 
-    await waitForFinishedBusinessProcess(parentCaseId);
-    await waitForGAFinishedBusinessProcess(parentCaseId);
+    await waitForFinishedBusinessProcess(parentCaseId, user);
+    await waitForGAFinishedBusinessProcess(parentCaseId, user);
 
-    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
-    let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+
+    switch (user.email) {
+      case config.applicantSolicitorUser.email:
+        gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+        break;
+      case config.defendantSolicitorUser.email:
+        gaCaseReference = updatedCivilCaseData.gaDetailsRespondentSol[0].value.caseLink.CaseReference;
+        break;
+      case config.secondDefendantSolicitorUser.email:
+        gaCaseReference = updatedCivilCaseData.gaDetailsRespondentSolTwo[0].value.caseLink.CaseReference;
+        break;
+    }
 
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-      'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+      'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', user);
 
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseReference);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseReference, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
 
@@ -301,10 +308,10 @@ module.exports = {
     console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
-    await waitForFinishedBusinessProcess(parentCaseId);
-    await waitForGAFinishedBusinessProcess(parentCaseId);
+    await waitForFinishedBusinessProcess(parentCaseId, user);
+    await waitForGAFinishedBusinessProcess(parentCaseId, user);
 
-    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
     let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
@@ -324,10 +331,10 @@ module.exports = {
     console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
-    await waitForFinishedBusinessProcess(parentCaseId);
-    await waitForGAFinishedBusinessProcess(parentCaseId);
+    await waitForFinishedBusinessProcess(parentCaseId, user);
+    await waitForGAFinishedBusinessProcess(parentCaseId, user);
 
-    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
     let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
@@ -352,10 +359,10 @@ module.exports = {
     console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
-    await waitForFinishedBusinessProcess(parentCaseId);
-    await waitForGAFinishedBusinessProcess(parentCaseId);
+    await waitForFinishedBusinessProcess(parentCaseId, user);
+    await waitForGAFinishedBusinessProcess(parentCaseId, user);
 
-    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
     let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
@@ -368,16 +375,16 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, parentCaseId);
-    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
-    let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+    let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
 
     return gaCaseReference;
   },
 
   respondentResponse: async (user, gaCaseId) => {
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
 
     await apiRequest.setupTokens(user);
     eventName = events.RESPOND_TO_APPLICATION.id;
@@ -393,7 +400,7 @@ module.exports = {
   },
 
  respondentResponse1v2: async (user, user2, gaCaseId) => {
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
 
     await apiRequest.setupTokens(user);
     eventName = events.RESPOND_TO_APPLICATION.id;
@@ -406,7 +413,7 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
 
-   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE');
+   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
 
    await apiRequest.setupTokens(user2);
    eventName = events.RESPOND_TO_APPLICATION.id;
@@ -433,9 +440,9 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have requested more information');
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION', user);
 
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'AWAITING_ADDITIONAL_INFORMATION');
   },
@@ -452,9 +459,9 @@ module.exports = {
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION', user);
 
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_DISMISSED');
   },
@@ -471,9 +478,9 @@ module.exports = {
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE', user);
 
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
   },
@@ -490,9 +497,9 @@ module.exports = {
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'APPLICATION_ADD_PAYMENT');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'APPLICATION_ADD_PAYMENT', user);
 
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_ADD_PAYMENT');
   },
@@ -506,9 +513,9 @@ module.exports = {
 
     assert.equal(response.status, 200);
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, finalState);
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, finalState, user);
 
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, finalState);
   },
@@ -522,9 +529,9 @@ module.exports = {
 
     assert.equal(response.status, 200);
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE', user);
 
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_ADD_PAYMENT');
   },
@@ -598,9 +605,9 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION', user);
 
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'AWAITING_WRITTEN_REPRESENTATIONS');
   },
@@ -617,9 +624,9 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION', user);
 
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'AWAITING_DIRECTIONS_ORDER_DOCS');
   },
@@ -636,9 +643,9 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION', user);
 
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'PROCEEDS_IN_HERITAGE');
   },
@@ -655,9 +662,9 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION', user);
 
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
   },
@@ -676,9 +683,9 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION', user);
 
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
   },
@@ -706,9 +713,9 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION', user);
 
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'LISTING_FOR_A_HEARING');
   },
@@ -746,7 +753,7 @@ module.exports = {
       body: 'The defendant legal representative\'s organisation has been notified and granted access to this claim.'
     });
 
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
   partialNotifyClaim: async (user, multipartyScenario, caseId) => {
@@ -763,7 +770,7 @@ module.exports = {
       body: ''
     }, true);
 
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
   notifyClaimDetails: async (user, caseId) => {
@@ -779,7 +786,7 @@ module.exports = {
       body: 'The defendant legal representative\'s organisation has been notified of the claim details.'
     });
 
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
   partialNotifyClaimDetails: async (user, multipartyScenario, caseId) => {
@@ -795,7 +802,7 @@ module.exports = {
       body: 'Notification of claim details sent to 1 Defendant legal representative only'
     });
 
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
   defendantResponse: async (user, multipartyScenario, caseId, isFirst) => {
@@ -815,14 +822,14 @@ module.exports = {
         body: 'The Claimant legal representative will get a notification'
       });
     }
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
   verifyGAState: async (user, parentCaseId, gaCaseId, expectedState) => {
     await apiRequest.setupTokens(user);
-    await waitForFinishedBusinessProcess(parentCaseId);
-    await waitForGAFinishedBusinessProcess(gaCaseId);
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
+    await waitForFinishedBusinessProcess(parentCaseId, user);
+    await waitForGAFinishedBusinessProcess(gaCaseId, user);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     console.log('ccd state '+updatedGABusinessProcessData.ccdState);
     console.log('expectedState '+expectedState);
@@ -838,7 +845,7 @@ module.exports = {
     caseId = null;
     caseData = {};
 
-    let createClaimData  = {};
+    let createClaimData;
 
     createClaimData = data.CLAIM_CREATE_CLAIM_AP_SPEC(scenario);
 
@@ -855,7 +862,7 @@ module.exports = {
         && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
       await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
     }
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -898,9 +905,7 @@ module.exports = {
         }
         break;
     }
-
-    await waitForFinishedBusinessProcess(caseId);
-
+    await waitForFinishedBusinessProcess(caseId, user);
     deleteCaseFields('respondent1Copy');
   },
 
@@ -925,7 +930,7 @@ module.exports = {
 
     await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
   claimantResponseClaim: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
@@ -949,7 +954,7 @@ module.exports = {
 
     await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
   moveCaseToCaseman: async (user) => {
@@ -962,19 +967,20 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
     deleteCaseFields('respondentSolGaAppDetails');
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    deleteCaseFields('gaDetailsRespondentSol');
     deleteCaseFields('generalApplications');
     await validateEventPages(data.CASE_PROCEEDS_IN_CASEMAN);
 
     await assertError('CaseProceedsInCaseman', data[eventName].invalid.CaseProceedsInCaseman,
                       'The date entered cannot be in the future');
 
-    //TODO CMC-1245 confirmation page for event
     await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
       header: '',
       body: ''
     }, false);
 
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
   acknowledgeClaim: async (user, multipartyScenario, isFirst) => {
@@ -1013,7 +1019,7 @@ module.exports = {
       body: ''
     });
 
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
   defendantResponseClaim: async (user, multipartyScenario, solicitor) => {
@@ -1070,7 +1076,7 @@ module.exports = {
               + 'claimant\'s legal representative a notification.'
       });
 
-      await waitForFinishedBusinessProcess(caseId);
+      await waitForFinishedBusinessProcess(caseId, user);
     } else {
       // when all solicitors responded
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
@@ -1078,7 +1084,7 @@ module.exports = {
         body: 'The Claimant legal representative will get a notification'
       });
 
-      await waitForFinishedBusinessProcess(caseId);
+      await waitForFinishedBusinessProcess(caseId, user);
     }
 
     deleteCaseFields('respondent1Copy');
@@ -1087,10 +1093,9 @@ module.exports = {
 
     createDateString: async (plusDays) => {
       let temp = new Date(Date.now() + (3600 * 1000 * 24) * plusDays);
-      let dateStr = padStr(temp.getFullYear().toString()) + '-' +
-                padStr((temp.getMonth()+1).toString()) + '-' +
-                padStr(temp.getDate().toString());
-      return dateStr;
+      return padStr(temp.getFullYear().toString()) + '-' +
+        padStr((temp.getMonth() + 1).toString()) + '-' +
+        padStr(temp.getDate().toString());
     },
 
 };
@@ -1340,10 +1345,10 @@ const initiateGaWithState = async (user, parentCaseId, expectState) => {
   assert.equal(responseBody.state, expectState);
   assert.equal(responseBody.callback_response_status_code, 200);
   assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
-  await waitForFinishedBusinessProcess(parentCaseId);
-  await waitForGAFinishedBusinessProcess(parentCaseId);
+  await waitForFinishedBusinessProcess(parentCaseId, user);
+  await waitForGAFinishedBusinessProcess(parentCaseId, user);
 
-  const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
+  const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
   const updatedCivilCaseData = await updatedResponse.json();
   let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
@@ -1352,12 +1357,6 @@ const initiateGaWithState = async (user, parentCaseId, expectState) => {
                                                       'AWAITING_RESPONDENT_RESPONSE');
   return gaCaseReference;
 };
-
-// const assertCaseNotAvailableToUser = async (user) => {
-//   console.log(`Asserting user ${user.type} does not have permission to case`);
-//   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId, 404);
-//   assert.equal(caseForDisplay.message, `No case found for reference: ${caseId}`);
-// };
 
 function addMidEventFields(pageId, responseBody) {
   console.log(`Adding mid event fields for pageId: ${pageId}`);
@@ -1376,20 +1375,6 @@ function addMidEventFields(pageId, responseBody) {
 
   caseData = {...caseData, ...midEventData};
   responseBody.data[midEventField.id] = caseData[midEventField.id];
-}
-
-// eslint-disable-next-line no-unused-vars
-function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListFieldName, midEventData) {
-  const actualDynamicElementLabels = removeUuidsFromDynamicList(responseBody.data, dynamicListFieldName);
-  const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
-
-  expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
-}
-
-function removeUuidsFromDynamicList(data, dynamicListField) {
-  const dynamicElements = data[dynamicListField].list_items;
-  // eslint-disable-next-line no-unused-vars
-  return dynamicElements.map(({code, ...item}) => item);
 }
 
 function padStr(i) {

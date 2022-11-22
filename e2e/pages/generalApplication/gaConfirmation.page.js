@@ -1,5 +1,6 @@
 const {I} = inject();
 const {waitForFinishedBusinessProcess, waitForGAFinishedBusinessProcess} = require('../../api/testingSupport');
+const config = require('../../config');
 
 module.exports = {
 
@@ -21,8 +22,8 @@ module.exports = {
     appTypes.forEach(type => {
       return I.see(type);
     });
-    await waitForFinishedBusinessProcess(parentCaseId);
-    await waitForGAFinishedBusinessProcess(parentCaseId);
+    await waitForFinishedBusinessProcess(parentCaseId, config.applicantSolicitorUser);
+    await waitForGAFinishedBusinessProcess(parentCaseId, config.applicantSolicitorUser);
   },
 
   async closeAndReturnToCaseDetails(caseId) {

@@ -702,6 +702,12 @@ module.exports = function () {
       await this.waitForSelector('.ccd-dropdown');
     },
 
+    async navigateToApplicationsTab(caseNumber) {
+      await this.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
+      await this.refreshPage();
+      await this.wait(5);
+    },
+
     async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber) {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
