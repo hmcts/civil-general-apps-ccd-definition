@@ -5,7 +5,7 @@ const chai = require('chai');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
-const {expect, assert} = chai;
+const {assert} = chai;
 const date = new Date();
 const twoDigitDate = ((date.getDate()) >= 10) ? (date.getDate()) : '0' + (date.getDate());
 let current_date = date.getFullYear().toString()+ '-' + (date.getMonth()+1).toString()+ '-' + twoDigitDate;
@@ -17,6 +17,7 @@ const {
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
+const claimDataSpec = require('../fixtures/events/claim/createClaimSpec.js');
 const claimSpecData = require('../fixtures/events/createClaimSpec.js');
 const genAppData = require('../fixtures/ga-ccd/createGeneralApplication.js');
 const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentResponse.js');
@@ -54,7 +55,9 @@ const data = {
   JUDGE_REQUEST_MORE_INFO_UNCLOAK: genAppJudgeMakeDecisionData.judgeRequestMoreInfomationUncloakData(),
   RESUBMIT_CLAIM: require('../fixtures/events/resubmitClaim.js'),
   NOTIFY_DEFENDANT_OF_CLAIM: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol.js'),
+  PARTIAL_DEFENDANT_OF_CLAIM: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol_partial.js'),
   NOTIFY_DEFENDANT_OF_CLAIM_DETAILS: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol.js'),
+  PARTIAL_NOTIFY_DEFENDANT_OF_CLAIM_DETAILS: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaimDetails_1v2DiffSol_partial.js'),
   ADD_OR_AMEND_CLAIM_DOCUMENTS: require('../fixtures/events/addOrAmendClaimDocuments.js'),
   ACKNOWLEDGE_CLAIM: require('../fixtures/events/acknowledgeClaim.js'),
   ACKNOWLEDGE_CLAIM_SAME_SOLICITOR: require('../fixtures/events/1v2SameSolicitorEvents/acknowledgeClaim_sameSolicitor.js'),
@@ -71,7 +74,83 @@ const data = {
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
-  ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js')
+  ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
+
+  CLAIM_CREATE_CLAIM_AP_SPEC: (scenario) => claimDataSpec.createClaimForAccessProfiles(scenario),
+  CLAIM_DEFENDANT_RESPONSE_SPEC: (response) => require('../fixtures/events/claim/defendantResponseSpec.js').respondToClaim(response),
+  CLAIM_DEFENDANT_RESPONSE2_SPEC: (response) => require('../fixtures/events/claim/defendantResponseSpec.js').respondToClaim2(response),
+  CLAIM_DEFENDANT_RESPONSE_1v2_SPEC: (response) => require('../fixtures/events/claim/defendantResponseSpec1v2.js').respondToClaim(response),
+  CLAIM_CLAIMANT_RESPONSE_SPEC: (mpScenario) => require('../fixtures/events/claim/claimantResponseSpec.js').claimantResponse(mpScenario),
+  CLAIM_CLAIMANT_RESPONSE_1v2_SPEC: (response) => require('../fixtures/events/claim/claimantResponseSpec1v2.js').claimantResponse(response),
+  CLAIM_INFORM_AGREED_EXTENSION_DATE_SPEC: () => require('../fixtures/events/claim/informAgreeExtensionDateSpec.js'),
+  CLAIM_DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/claim/defaultJudgmentSpec.js'),
+  CLAIM_DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/claim/defaultJudgment1v2Spec.js'),
+  CLAIM_DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/claim/defaultJudgment2v1Spec.js')
+};
+
+const eventData = {
+  defendantResponsesSpec: {
+    ONE_V_ONE: {
+      FULL_DEFENCE: data.CLAIM_DEFENDANT_RESPONSE_SPEC('FULL_DEFENCE'),
+      FULL_ADMISSION: data.CLAIM_DEFENDANT_RESPONSE_SPEC('FULL_ADMISSION'),
+      PART_ADMISSION: data.CLAIM_DEFENDANT_RESPONSE_SPEC('PART_ADMISSION'),
+      COUNTER_CLAIM: data.CLAIM_DEFENDANT_RESPONSE_SPEC('COUNTER_CLAIM')
+    },
+    ONE_V_TWO: {
+      FULL_DEFENCE: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('FULL_DEFENCE'),
+      FULL_ADMISSION: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('FULL_ADMISSION'),
+      PART_ADMISSION: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('PART_ADMISSION'),
+      COUNTER_CLAIM: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('COUNTER_CLAIM'),
+      DIFF_FULL_DEFENCE: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('DIFF_FULL_DEFENCE'),
+      DIFF_NOT_FULL_DEFENCE: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('DIFF_NOT_FULL_DEFENCE')
+    },
+    ONE_V_ONE_DIF_SOL: {
+      FULL_DEFENCE1: data.CLAIM_DEFENDANT_RESPONSE_SPEC('FULL_DEFENCE'),
+      FULL_ADMISSION1: data.CLAIM_DEFENDANT_RESPONSE_SPEC('FULL_ADMISSION'),
+      PART_ADMISSION1: data.CLAIM_DEFENDANT_RESPONSE_SPEC('PART_ADMISSION'),
+      COUNTER_CLAIM1: data.CLAIM_DEFENDANT_RESPONSE_SPEC('COUNTER_CLAIM'),
+
+      FULL_DEFENCE2: data.CLAIM_DEFENDANT_RESPONSE2_SPEC('FULL_DEFENCE'),
+      FULL_ADMISSION2: data.CLAIM_DEFENDANT_RESPONSE2_SPEC('FULL_ADMISSION'),
+      PART_ADMISSION2: data.CLAIM_DEFENDANT_RESPONSE2_SPEC('PART_ADMISSION'),
+      // COUNTER_CLAIM2: data.DEFENDANT_RESPONSE2('COUNTER_CLAIM')
+    },
+    TWO_V_ONE: {
+      // FULL_DEFENCE: data.CLAIM_DEFENDANT_RESPONSE_2v1('FULL_DEFENCE'),
+      // FULL_ADMISSION: data.CLAIM_DEFENDANT_RESPONSE_2v1('FULL_ADMISSION'),
+      // PART_ADMISSION: data.CLAIM_DEFENDANT_RESPONSE_2v1('PART_ADMISSION'),
+      // COUNTER_CLAIM: data.CLAIM_DEFENDANT_RESPONSE_2v1('COUNTER_CLAIM'),
+      // DIFF_FULL_DEFENCE: data.CLAIM_DEFENDANT_RESPONSE_2v1('DIFF_FULL_DEFENCE'),
+      // DIFF_NOT_FULL_DEFENCE: data.CLAIM_DEFENDANT_RESPONSE_2v1('DIFF_NOT_FULL_DEFENCE')
+    }
+  },
+  defendantResponses:{
+    ONE_V_ONE: data.DEFENDANT_RESPONSE,
+    ONE_V_TWO_TWO_LEGAL_REP: {
+      solicitorOne: data.DEFENDANT_RESPONSE_SOLICITOR_ONE,
+      solicitorTwo: data.DEFENDANT_RESPONSE_SOLICITOR_TWO
+    },
+  },
+  claimantResponsesSpec: {
+    // ONE_V_ONE: {
+    //   FULL_DEFENCE: data.CLAIMANT_RESPONSE_SPEC('FULL_DEFENCE'),
+    //   FULL_ADMISSION: data.CLAIMANT_RESPONSE_SPEC('FULL_ADMISSION'),
+    //   PART_ADMISSION: data.CLAIMANT_RESPONSE_SPEC('PART_ADMISSION'),
+    //   COUNTER_CLAIM: data.CLAIMANT_RESPONSE_SPEC('COUNTER_CLAIM')
+    // },
+    ONE_V_TWO: {
+      FULL_DEFENCE: data.CLAIM_CLAIMANT_RESPONSE_1v2_SPEC('FULL_DEFENCE'),
+      FULL_ADMISSION: data.CLAIM_CLAIMANT_RESPONSE_1v2_SPEC('FULL_ADMISSION'),
+      PART_ADMISSION: data.CLAIM_CLAIMANT_RESPONSE_1v2_SPEC('PART_ADMISSION'),
+      NOT_PROCEED: data.CLAIM_CLAIMANT_RESPONSE_1v2_SPEC('NOT_PROCEED'),
+    },
+    // TWO_V_ONE: {
+    //   FULL_DEFENCE: data.CLAIMANT_RESPONSE_2v1_SPEC('FULL_DEFENCE'),
+    //   FULL_ADMISSION: data.CLAIMANT_RESPONSE_2v1_SPEC('FULL_ADMISSION'),
+    //   PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1_SPEC('PART_ADMISSION'),
+    //   NOT_PROCEED: data.CLAIMANT_RESPONSE_2v1_SPEC('NOT_PROCEED')
+    // }
+  }
 };
 
 const midEventFieldForPage = {
@@ -162,27 +241,12 @@ module.exports = {
     return caseId;
   },
 
+  initiateGeneralApplicationWithState: async (user, parentCaseId, expectState) => {
+    return await initiateGaWithState(user, parentCaseId, expectState);
+  },
+
   initiateGeneralApplication: async (user, parentCaseId) => {
-    eventName = events.INITIATE_GENERAL_APPLICATION.id;
-
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName, parentCaseId);
-    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION, parentCaseId);
-    const responseBody = await response.json();
-    assert.equal(response.status, 201);
-    assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
-    assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
-    await waitForFinishedBusinessProcess(parentCaseId, user);
-    await waitForGAFinishedBusinessProcess(parentCaseId, user);
-
-    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
-    const updatedCivilCaseData = await updatedResponse.json();
-    let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
-    console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
-
-    return gaCaseReference;
+    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 
   initiateGeneralApplicationWithOutNotice: async (user, parentCaseId) => {
@@ -344,7 +408,6 @@ module.exports = {
 
     const response = await apiRequest.submitGAEvent(eventName, data.RESPOND_TO_APPLICATION, gaCaseId);
     const responseBody = await response.json();
-
     assert.equal(response.status, 201);
     assert.equal(responseBody.state, 'AWAITING_RESPONDENT_RESPONSE');
     assert.equal(responseBody.callback_response_status_code, 200);
@@ -693,6 +756,23 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId, user);
   },
 
+  partialNotifyClaim: async (user, multipartyScenario, caseId) => {
+    eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
+    mpScenario = multipartyScenario;
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName, caseId);
+
+    await validateEventPages(data['PARTIAL_DEFENDANT_OF_CLAIM']);
+
+    await assertSubmittedEvent('AWAITING_CASE_DETAILS_NOTIFICATION', {
+      header: '',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
   notifyClaimDetails: async (user, caseId) => {
     await apiRequest.setupTokens(user);
 
@@ -709,22 +789,320 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId, user);
   },
 
+  partialNotifyClaimDetails: async (user, multipartyScenario, caseId) => {
+    await apiRequest.setupTokens(user);
+
+    eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
+    await apiRequest.startEvent(eventName, caseId);
+
+    await validateEventPages(data['PARTIAL_NOTIFY_DEFENDANT_OF_CLAIM_DETAILS']);
+
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: 'Defendant notified',
+      body: 'Notification of claim details sent to 1 Defendant legal representative only'
+    });
+
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
+  defendantResponse: async (user, multipartyScenario, caseId, isFirst) => {
+    await apiRequest.setupTokens(user);
+    eventName = 'DEFENDANT_RESPONSE';
+    await apiRequest.startEvent(eventName, caseId);
+    if (isFirst) {
+      await validateEventPagesWithCheck(data['DEFENDANT_RESPONSE_SOLICITOR_ONE'], false, user);
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: 'You have submitted the Defendant\'s defence',
+        body: 'You will receive a copy of this notification'
+      });
+    } else {
+      await validateEventPagesWithCheck(data['DEFENDANT_RESPONSE_SOLICITOR_TWO'], false, user);
+      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
+        header: 'You have submitted the Defendant\'s defence',
+        body: 'The Claimant legal representative will get a notification'
+      });
+    }
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
+  verifyGAState: async (user, parentCaseId, gaCaseId, expectedState) => {
+    await apiRequest.setupTokens(user);
+    await waitForFinishedBusinessProcess(parentCaseId, user);
+    await waitForGAFinishedBusinessProcess(gaCaseId, user);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    console.log('ccd state '+updatedGABusinessProcessData.ccdState);
+    console.log('expectedState '+expectedState);
+    assert.equal(updatedGABusinessProcessData.ccdState, expectedState);
+  },
+
   cleanUp: async () => {
     await unAssignAllUsers();
   },
+  //below is claim functions
+  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE') => {
+    eventName = 'CREATE_CLAIM_SPEC';
+    caseId = null;
+    caseData = {};
 
-  createDateString: async (plusDays) => {
-    let temp = new Date(Date.now() + (3600 * 1000 * 24) * plusDays);
-    let dateStr = padStr(temp.getFullYear().toString()) + '-' +
-                  padStr((temp.getMonth()+1).toString()) + '-' +
-                  padStr(temp.getDate().toString());
-    return dateStr;
+    let createClaimData;
+
+    createClaimData = data.CLAIM_CREATE_CLAIM_AP_SPEC(scenario);
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName);
+    for (let pageId of Object.keys(createClaimData.userInput)) {
+      await assertValidClaimData(createClaimData, pageId);
+    }
+    await assertSubmittedEvent('PENDING_CASE_ISSUED', null, false);
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+
+    if (scenario === 'ONE_V_TWO'
+        && createClaimData.userInput.SameLegalRepresentative
+        && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+    }
+    await waitForFinishedBusinessProcess(caseId, user);
+
+    //field is deleted in about to submit callback
+    deleteCaseFields('applicantSolicitor1CheckEmail');
+    return caseId;
   },
+
+  defendantResponseSpecClaim: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
+                            expectedEvent = 'AWAITING_APPLICANT_INTENTION') => {
+    await apiRequest.setupTokens(user);
+    eventName = 'DEFENDANT_RESPONSE_SPEC';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    let defendantResponseData = eventData['defendantResponsesSpec'][scenario][response];
+    defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
+
+    caseData = returnedCaseData;
+    for (let pageId of Object.keys(defendantResponseData.userInput)) {
+      await assertValidClaimData(defendantResponseData, pageId);
+    }
+    deleteCaseFields('gaDetailsRespondentSol');
+    deleteCaseFields('generalApplications');
+    switch (scenario) {
+      case 'ONE_V_ONE_DIF_SOL':
+        /* when camunda process is done, when both respondents have answered
+        this should be AWAITING_APPLICANT_INTENTION; while only one has answered
+        this will be AWAITING_RESPONDENT_ACKNOWLEDGEMENT
+         */
+        await assertSubmittedEvent(expectedEvent);
+        break;
+      case 'ONE_V_ONE':
+        await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+        break;
+      case 'ONE_V_TWO':
+        await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+        break;
+      case 'TWO_V_ONE':
+        if (response === 'DIFF_FULL_DEFENCE') {
+          await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+        } else {
+          await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+        }
+        break;
+    }
+    await waitForFinishedBusinessProcess(caseId, user);
+    deleteCaseFields('respondent1Copy');
+  },
+
+  claimantResponseClaimSpec: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
+                           expectedEndState) => {
+    // workaround
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+    deleteCaseFields('respondentResponseIsSame');
+
+    await apiRequest.setupTokens(user);
+
+    eventName = 'CLAIMANT_RESPONSE_SPEC';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    deleteCaseFields('gaDetailsRespondentSol');
+    deleteCaseFields('generalApplications');
+    let claimantResponseData = eventData['claimantResponsesSpec'][scenario][response];
+    claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
+
+    for (let pageId of Object.keys(claimantResponseData.userInput)) {
+      await assertValidClaimData(claimantResponseData, pageId);
+    }
+
+    await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
+
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
+  claimantResponseClaim: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
+                                    expectedEndState) => {
+    // workaround
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+    deleteCaseFields('respondentResponseIsSame');
+
+    await apiRequest.setupTokens(user);
+
+    eventName = 'CLAIMANT_RESPONSE';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    deleteCaseFields('gaDetailsRespondentSol');
+    deleteCaseFields('generalApplications');
+    let claimantResponseData = eventData['claimantResponsesSpec'][scenario][response];
+    claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
+
+    for (let pageId of Object.keys(claimantResponseData.userInput)) {
+      await assertValidClaimData(claimantResponseData, pageId);
+    }
+
+    await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
+
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
+  moveCaseToCaseman: async (user) => {
+    // workaround
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+
+    await apiRequest.setupTokens(user);
+
+    eventName = 'CASE_PROCEEDS_IN_CASEMAN';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    deleteCaseFields('gaDetailsRespondentSol');
+    deleteCaseFields('generalApplications');
+    await validateEventPages(data.CASE_PROCEEDS_IN_CASEMAN);
+
+    await assertError('CaseProceedsInCaseman', data[eventName].invalid.CaseProceedsInCaseman,
+                      'The date entered cannot be in the future');
+
+    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
+      header: '',
+      body: ''
+    }, false);
+
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
+  acknowledgeClaim: async (user, multipartyScenario, isFirst) => {
+    mpScenario = multipartyScenario;
+    await apiRequest.setupTokens(user);
+
+    eventName = 'ACKNOWLEDGE_CLAIM';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+
+    solicitorSetup(isFirst);
+
+    caseData = returnedCaseData;
+
+    deleteCaseFields('systemGeneratedCaseDocuments');
+    deleteCaseFields('solicitorReferences');
+    deleteCaseFields('solicitorReferencesCopy');
+    deleteCaseFields('respondentSolicitor2Reference');
+
+    // solicitor 2 should not be able to see respondent 1 details
+    if (!isFirst) {
+      deleteCaseFields('respondent1ClaimResponseIntentionType');
+      deleteCaseFields('respondent1ResponseDeadline');
+    }
+
+    if (isFirst) {
+      await validateEventPages(data['ACKNOWLEDGE_CLAIM_SOLICITOR_ONE']);
+    } else {
+      await validateEventPages(data['ACKNOWLEDGE_CLAIM_SOLICITOR_TWO']);
+    }
+
+    await assertError('ConfirmNameAddress', data[eventName].invalid.ConfirmDetails.futureDateOfBirth,
+                      'The date entered cannot be in the future');
+
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: '',
+      body: ''
+    });
+
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
+  defendantResponseClaim: async (user, multipartyScenario, solicitor) => {
+    await apiRequest.setupTokens(user);
+    mpScenario = multipartyScenario;
+    eventName = 'DEFENDANT_RESPONSE';
+    // solicitor 2 should not see respondent 1 data but because respondent 1 has replied before this, we need
+    // to clear a big chunk of defendant response (respondent 1) data hence its cleaner to have a clean slate
+    // and start off from there.
+    if (solicitor === 'solicitorTwo') {
+      caseData = {};
+    }
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    solicitorSetup(solicitor === 'solicitorOne');
+    let defendantResponseData;
+    if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
+      defendantResponseData = eventData['defendantResponses'][mpScenario];
+    } else {
+      defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor];
+    }
+    // Remove after court location toggle is removed
+    // defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
+    //     defendantResponseData, solicitor);
+    //assertContainsPopulatedFields(returnedCaseData, solicitor);
+    caseData = returnedCaseData;
+
+    deleteCaseFields('isRespondent1');
+    deleteCaseFields('respondent1', 'solicitorReferences');
+    deleteCaseFields('systemGeneratedCaseDocuments');
+    //this is for 1v2 diff sol 1
+    deleteCaseFields('respondentSolicitor2Reference');
+    deleteCaseFields('respondent1DQRequestedCourt', 'respondent2DQRequestedCourt');
+
+    if (solicitor === 'solicitorTwo'){
+      deleteCaseFields('respondent1DQHearing');
+      deleteCaseFields('respondent1DQLanguage');
+      deleteCaseFields('respondent1DQRequestedCourt');
+      deleteCaseFields('respondent2DQRequestedCourt');
+      deleteCaseFields('respondent1ClaimResponseType');
+      deleteCaseFields('respondent1DQExperts');
+      deleteCaseFields('respondent1DQWitnesses');
+    }
+    await validateEventPagesWithCheck(defendantResponseData, false, solicitor);
+    // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
+    // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
+    deleteCaseFields('gaDetailsRespondentSol');
+    deleteCaseFields('generalApplications');
+    if (solicitor === 'solicitorOne' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
+      // when only one solicitor has responded in a 1v2 different solicitor case
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: 'You have submitted the Defendant\'s defence',
+        body: 'Once the other defendant\'s legal representative has submitted their defence, we will send the '
+              + 'claimant\'s legal representative a notification.'
+      });
+
+      await waitForFinishedBusinessProcess(caseId, user);
+    } else {
+      // when all solicitors responded
+      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
+        header: 'You have submitted the Defendant\'s defence',
+        body: 'The Claimant legal representative will get a notification'
+      });
+
+      await waitForFinishedBusinessProcess(caseId, user);
+    }
+
+    deleteCaseFields('respondent1Copy');
+    deleteCaseFields('respondent2Copy');
+  },
+
+    createDateString: async (plusDays) => {
+      let temp = new Date(Date.now() + (3600 * 1000 * 24) * plusDays);
+      return padStr(temp.getFullYear().toString()) + '-' +
+        padStr((temp.getMonth() + 1).toString()) + '-' +
+        padStr(temp.getDate().toString());
+    },
 
 };
 
 // Functions
 const validateEventPages = async (data, solicitor) => {
+  return await validateEventPagesWithCheck(data, true, solicitor);
+};
+
+const validateEventPagesWithCheck = async (data, check, solicitor) => {
   //transform the data
   console.log('validateEventPages');
   for (let pageId of Object.keys(data.valid)) {
@@ -733,7 +1111,7 @@ const validateEventPages = async (data, solicitor) => {
       data = await updateCaseDataWithPlaceholders(data, document);
     }
     // data = await updateCaseDataWithPlaceholders(data);
-    await assertValidData(data, pageId, solicitor);
+    await assertValidData(data, pageId, solicitor, check);
   }
 };
 
@@ -840,7 +1218,7 @@ function checkGenerated(responseBodyData, generated, prefix = '') {
   }
 }
 
-const assertValidData = async (data, pageId, solicitor) => {
+const assertValidData = async (data, pageId, solicitor, check) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
   const validDataForPage = data.valid[pageId];
@@ -868,12 +1246,13 @@ const assertValidData = async (data, pageId, solicitor) => {
     addMidEventFields(pageId, responseBody);
     caseData = removeUiFields(pageId, caseData);
   }
-
   try {
     assert.deepEqual(responseBody.data, caseData);
   }
   catch(err) {
-    console.log('Valid data is failed with mismatch ..', err);
+    if(check) {
+      console.log('Valid data is failed with mismatch ..', err);
+    }
   }
 };
 
@@ -913,13 +1292,13 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   const responseBody = await response.json();
   assert.equal(response.status, 201);
   assert.equal(responseBody.state, expectedState);
-  if (hasSubmittedCallback) {
+  if (hasSubmittedCallback && submittedCallbackResponseContains) {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
     assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
   }
 
-  if (eventName === 'CREATE_CLAIM') {
+  if (eventName === 'CREATE_CLAIM' || eventName === 'CREATE_CLAIM_SPEC') {
     caseId = responseBody.id;
     await addUserCaseMapping(caseId, config.applicantSolicitorUser);
     console.log('Case created: ' + caseId);
@@ -952,11 +1331,29 @@ const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
 
-// const assertCaseNotAvailableToUser = async (user) => {
-//   console.log(`Asserting user ${user.type} does not have permission to case`);
-//   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId, 404);
-//   assert.equal(caseForDisplay.message, `No case found for reference: ${caseId}`);
-// };
+const initiateGaWithState = async (user, parentCaseId, expectState) => {
+  eventName = events.INITIATE_GENERAL_APPLICATION.id;
+  await apiRequest.setupTokens(user);
+  await apiRequest.startEvent(eventName, parentCaseId);
+  const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION, parentCaseId);
+  const responseBody = await response.json();
+  assert.equal(response.status, 201);
+  console.log('General application case state : ' + responseBody.state);
+  assert.equal(responseBody.state, expectState);
+  assert.equal(responseBody.callback_response_status_code, 200);
+  assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+  await waitForFinishedBusinessProcess(parentCaseId, user);
+  await waitForGAFinishedBusinessProcess(parentCaseId, user);
+
+  const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+  const updatedCivilCaseData = await updatedResponse.json();
+  let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+  console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
+  //comment out next line to see race condition
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
+                                                      'AWAITING_RESPONDENT_RESPONSE');
+  return gaCaseReference;
+};
 
 function addMidEventFields(pageId, responseBody) {
   console.log(`Adding mid event fields for pageId: ${pageId}`);
@@ -975,20 +1372,6 @@ function addMidEventFields(pageId, responseBody) {
 
   caseData = {...caseData, ...midEventData};
   responseBody.data[midEventField.id] = caseData[midEventField.id];
-}
-
-// eslint-disable-next-line no-unused-vars
-function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListFieldName, midEventData) {
-  const actualDynamicElementLabels = removeUuidsFromDynamicList(responseBody.data, dynamicListFieldName);
-  const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
-
-  expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
-}
-
-function removeUuidsFromDynamicList(data, dynamicListField) {
-  const dynamicElements = data[dynamicListField].list_items;
-  // eslint-disable-next-line no-unused-vars
-  return dynamicElements.map(({code, ...item}) => item);
 }
 
 function padStr(i) {
@@ -1077,4 +1460,84 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
 
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
   return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
+};
+
+async function replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
+  // let isCourtListEnabled = false;
+  // // work around for the api  tests
+  // //console.log(`Court location selected in Env: ${config.runningEnv}`);
+  // if (false) {
+  //   responseData = {
+  //     ...responseData,
+  //     userInput: {
+  //       ...responseData.userInput,
+  //       RequestedCourtLocationLRspec: {
+  //         responseClaimCourtLocationRequired: 'No'
+  //       }
+  //     }
+  //   };
+  // }
+  return responseData;
+}
+
+async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
+  // let isCourtListEnabled = false;
+  // // work around for the api  tests
+  // //console.log(`Court location selected in Env: ${config.runningEnv}`);
+  // if (false) {
+  //   responseData = {
+  //     ...responseData,
+  //     userInput: {
+  //       ...responseData.userInput,
+  //       ApplicantCourtLocationLRspec: {
+  //         applicant1DQRequestedCourt: {
+  //           reasonForHearingAtSpecificCourt: 'reasons',
+  //           responseCourtCode: '123'
+  //         }
+  //       },
+  //     }
+  //   };
+  // }
+  return responseData;
+}
+
+const assertValidClaimData = async (data, pageId) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+
+  const userData = data.userInput[pageId];
+  caseData = update(caseData, userData);
+  const response = await apiRequest.validatePage(
+      eventName,
+      pageId,
+      caseData,
+      caseId
+  );
+  let responseBody = await response.json();
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+  assert.equal(response.status, 200);
+
+  if (data.midEventData && data.midEventData[pageId]) {
+    checkExpected(responseBody.data, data.midEventData[pageId]);
+  }
+
+  if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
+    checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
+  }
+
+  caseData = update(caseData, responseBody.data);
+};
+
+const clearDataForSearchCriteria = (responseBody) => {
+  delete responseBody.data['SearchCriteria'];
+  return responseBody;
+};
+
+// solicitor 1 should not see details for respondent 2
+// solicitor 2 should not see details for respondent 1
+const solicitorSetup = (isFirst) => {
+  if(isFirst){
+    deleteCaseFields('respondent2');
+  } else {
+    deleteCaseFields('respondent1');
+  }
 };

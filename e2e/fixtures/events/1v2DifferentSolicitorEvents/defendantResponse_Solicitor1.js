@@ -13,10 +13,19 @@ module.exports = {
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',
       },
+      respondent1Copy: {
+        type: 'INDIVIDUAL',
+        individualFirstName: 'John',
+        individualLastName: 'Doe',
+        individualTitle: 'Sir',
+        individualDateOfBirth: date(-1),
+        primaryAddress: buildAddress('respondent'),
+        partyName: 'Sir John Doe',
+        partyTypeDisplayValue: 'Individual',
+      },
     },
     RespondentResponseType: {
-      respondent1ClaimResponseType: 'FULL_DEFENCE',
-      multiPartyResponseTypeFlags: 'FULL_DEFENCE'
+      respondent1ClaimResponseType: 'PART_ADMISSION',
     },
     SolicitorReferences: {
       solicitorReferences:{
