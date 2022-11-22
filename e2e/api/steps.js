@@ -273,13 +273,13 @@ module.exports = {
 
     switch (user.email) {
       case config.applicantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
         break;
       case config.defendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.gaDetailsRespondentSol[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
         break;
       case config.secondDefendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.gaDetailsRespondentSolTwo[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
         break;
     }
 
@@ -317,13 +317,13 @@ module.exports = {
 
     switch (user.email) {
       case config.applicantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
         break;
       case config.defendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.gaDetailsRespondentSol[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
         break;
       case config.secondDefendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.gaDetailsRespondentSolTwo[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
         break;
     }
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
@@ -349,7 +349,7 @@ module.exports = {
 
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
-    let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+    let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
 
     return gaCaseReference;
@@ -377,7 +377,7 @@ module.exports = {
 
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
-    let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+    let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
 
     return gaCaseReference;
@@ -390,7 +390,7 @@ module.exports = {
     await apiRequest.startEvent(eventName, parentCaseId);
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
-    let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+    let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
 
     return gaCaseReference;
@@ -981,7 +981,7 @@ module.exports = {
     caseData = returnedCaseData;
     deleteCaseFields('respondentSolGaAppDetails');
     caseData = await apiRequest.startEvent(eventName, caseId);
-    deleteCaseFields('gaDetailsRespondentSol');
+    deleteCaseFields('respondentSolGaAppDetails');
     deleteCaseFields('generalApplications');
     await validateEventPages(data.CASE_PROCEEDS_IN_CASEMAN);
 
@@ -1363,7 +1363,7 @@ const initiateGaWithState = async (user, parentCaseId, expectState) => {
 
   const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
   const updatedCivilCaseData = await updatedResponse.json();
-  let gaCaseReference = updatedCivilCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
+  let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   //comment out next line to see race condition
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
