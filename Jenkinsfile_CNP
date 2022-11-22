@@ -96,6 +96,16 @@ def archiveCoreCaseDataDefinitions() {
   }
 }
 
+def uploadCoreCaseDataDefinitions(env) {
+  dir("${WORKSPACE}/bin"){
+    ccdDefinitionFilePath="${WORKSPACE}/build/ccd-release-config/civil-ccd-${env}.xlsx"
+    sh """
+      eval \$(./variables/load-${env}-environment-variables.sh)
+      ./utils/ccd-import-definition.sh ${ccdDefinitionFilePath}
+    """
+  }
+}
+
 withPipeline(type, product, component) {
     env.PR_BUILD = true
     enableHighLevelDataSetup()
@@ -117,6 +127,9 @@ withPipeline(type, product, component) {
         loadVaultSecrets(secrets)
     }
 
+    onPerftest{
+        env.ENVIRONMENT = "perftest"
+    }
 
     after('checkout') {
         onMaster {
@@ -181,15 +194,14 @@ withPipeline(type, product, component) {
   }
 
   after('functionalTest:aat') {
-    createGithubRelease()
+    //createGithubRelease()
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 
   before('smoketest:aat') {
     sh """
           eval \$(./bin/variables/load-staging-environment-variables.sh)
-          ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
-          ./bin/pull-latest-release-asset.sh civil-general-apps-ccd-definition civil-general-apps-ccd-definition.zip
+          ./bin/add-roles.sh
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
           ./bin/import-ccd-definition.sh "-e *-prod.json,*-GAR2GAspec-nonprod.json,*HNL-nonprod.json" ${ccddefbranch}
           ./bin/pull-latest-camunda-files.sh ${camundaBranch}
@@ -202,10 +214,12 @@ withPipeline(type, product, component) {
     env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
     env.CCD_DATA_STORE_URL = "https://civil-ga-ccd-data-store-staging-aat.service.core-compute-aat.internal"
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
+
+    dir("${WORKSPACE}/build") {
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-staging.xlsx"
+    }
+    uploadCoreCaseDataDefinitions('staging')
   }
 
 
-
-    onMaster() {
-    }
 }

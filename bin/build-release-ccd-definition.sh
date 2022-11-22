@@ -9,6 +9,8 @@ if [ ${environment} == preview ]; then
   excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
 elif [ ${environment} == demo ]; then
   excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
+elif [ ${environment} == staging ]; then
+  excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
 elif [ ${environment} == local ]; then
   excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
 elif [ ${excludeNonProdFiles} == true ]; then
