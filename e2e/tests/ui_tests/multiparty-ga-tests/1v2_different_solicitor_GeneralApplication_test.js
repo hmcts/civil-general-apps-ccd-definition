@@ -12,9 +12,9 @@ const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/te
 let {getAppTypes} = require('../../../pages/generalApplication/generalApplicationTypes');
 let caseId, childCaseNumber, childCaseId, gaCaseReference, civilCaseReference;
 
-Feature('1v2 Different Solicitor - General Application Journey @mmm');
+Feature('1v2 Different Solicitor - General Application Journey');
 
-Scenario('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey', async ({I, api}) => {
+Scenario('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey @multiparty-e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
@@ -145,7 +145,7 @@ Scenario('Without Notice application to With Notice application - Directions Ord
   await I.see(judgeDirectionsOrderStatus);
 });
 
-Scenario.only('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations @multiparty-e2e-tests', async ({api, I}) => {
+Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations @e2e-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
