@@ -5,14 +5,18 @@ set -eu
 environment=${1:-prod}
 excludeNonProdFiles=${2:-true}
 
-
-if [ ${excludeNonProdFiles} == true ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*LRspec.json"
-elif [ ${environment} == preview ]; then
-  excludedFilenamePatterns="-e *-nonprod.json,*LRspec.json"
+if [ ${environment} == preview ]; then
+  excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
+elif [ ${environment} == demo ]; then
+  excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
+elif [ ${environment} == local ]; then
+  excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
+elif [ ${excludeNonProdFiles} == true ]; then
+    excludedFilenamePatterns="e UserProfile.json,*-nonprod.json,*LRspec.json"
 else
-  excludedFilenamePatterns="-e UserProfile.json,*LRspec.json"
+   excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
 fi
+
 
 root_dir=$(realpath $(dirname ${0})/..)
 config_dir=${root_dir}/ga-ccd-definition
@@ -28,3 +32,4 @@ mkdir -p ${github_dir}
 ${root_dir}/bin/utils/process-definition.sh ${config_dir} ${release_definition_output_file} "${excludedFilenamePatterns}"
 
 cp ${release_definition_output_file} ${github_file}
+
