@@ -211,7 +211,7 @@ module.exports = {
     });
 
     await assignCase(caseId, multipartyScenario);
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId,user);
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -279,7 +279,7 @@ module.exports = {
         gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
         break;
       case config.secondDefendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
         break;
     }
 
@@ -977,9 +977,6 @@ module.exports = {
     await apiRequest.setupTokens(user);
 
     eventName = 'CASE_PROCEEDS_IN_CASEMAN';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    caseData = returnedCaseData;
-    deleteCaseFields('respondentSolGaAppDetails');
     caseData = await apiRequest.startEvent(eventName, caseId);
     deleteCaseFields('respondentSolGaAppDetails');
     deleteCaseFields('generalApplications');
