@@ -188,7 +188,8 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
   },
 
-  claimantResponseSPEC: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
+  claimantResponseSPEC:  async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
+                                expectedEndState) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -203,13 +204,12 @@ module.exports = {
       await assertValidData(claimantResponseData, pageId);
     }
 
-    await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-    await waitForFinishedBusinessProcess(caseId);
+    let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    if (['preview', 'demo'].includes(config.runningEnv) && (response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
+      validState = 'JUDICIAL_REFERRAL';
+    }
 
-    //Check camunda has brought it to Judicial Referral
-    const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-    assert.equal(caseForDisplay.state.id, 'JUDICIAL_REFERRAL');
-    await waitForFinishedBusinessProcess(caseId);
+    await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -244,6 +244,7 @@ module.exports = {
 };
 
 // Functions
+
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
 

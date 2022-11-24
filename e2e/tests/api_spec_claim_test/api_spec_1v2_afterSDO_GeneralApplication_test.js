@@ -6,11 +6,11 @@ let civilCaseReference, gaCaseReference;
 
 Feature('Spec 1v2 - General Application after SDO Journey @api-nightly');
 
-Scenario.skip('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api, I}) => {
+Scenario.skip('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api_sdo, api, I}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
-  await api.claimantResponseClaimSpec(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
+  await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
+  await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
     'AWAITING_APPLICANT_INTENTION');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
@@ -29,8 +29,8 @@ Scenario.skip('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api, 
 Scenario.skip('Spec Claimant create GA - CASE_PROGRESSION state', async ({api_sdo, api, I}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
-  await api.claimantResponseClaimSpec(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
+  await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
+  await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
     'AWAITING_APPLICANT_INTENTION');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
