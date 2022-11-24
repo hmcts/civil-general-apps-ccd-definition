@@ -144,7 +144,7 @@ module.exports = {
   },
 
   defendantResponseSPEC: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                                expectedEvent = 'AWAITING_APPLICANT_INTENTION') => {
+                                expectedEvent = 'AWAITING_APPLICANT_INTENTION',caseId) => {
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
@@ -189,7 +189,7 @@ module.exports = {
   },
 
   claimantResponseSPEC:  async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                                expectedEndState) => {
+                                expectedEndState, caseId) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
