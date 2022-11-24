@@ -261,6 +261,7 @@ module.exports = {
 
     const responseBody = await response.json();
     assert.equal(response.status, 201);
+    console.log('General application case state : ' + responseBody.state);
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header,
       '# You have made an application');
@@ -307,7 +308,7 @@ module.exports = {
     assert.equal(response.status, 201);
     assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
-    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.equal(responseBody.state, expectState);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
     await waitForFinishedBusinessProcess(parentCaseId, user);
     await waitForGAFinishedBusinessProcess(parentCaseId, user);
@@ -458,6 +459,7 @@ module.exports = {
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'AWAITING_ADDITIONAL_INFORMATION');
+    console.log('General application updated case state : ' + updatedGABusinessProcessData.ccdState);
   },
 
   judgeMakesDecisionApplicationDismiss: async (user, gaCaseId) => {
@@ -468,7 +470,6 @@ module.exports = {
 
     const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_ORDER_DISMISS, gaCaseId);
     const responseBody = await response.json();
-
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
 
@@ -477,6 +478,7 @@ module.exports = {
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_DISMISSED');
+    console.log('General application updated case state : ' + updatedGABusinessProcessData.ccdState);
   },
 
   judgeMakesOrderDecisionUncloak: async (user, gaCaseId) => {
