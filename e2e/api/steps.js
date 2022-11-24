@@ -269,7 +269,7 @@ module.exports = {
     assert.include(responseBody.after_submit_callback_response.confirmation_header,
       '# You have made an application');
 
-    await waitForFinishedBusinessProcess(parentCaseId);
+    // await waitForFinishedBusinessProcess(parentCaseId);
     await waitForGAFinishedBusinessProcess(parentCaseId);
 
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId);
@@ -820,7 +820,7 @@ module.exports = {
 
   verifyGAState: async (user, parentCaseId, gaCaseId, expectedState) => {
     await apiRequest.setupTokens(user);
-    await waitForFinishedBusinessProcess(parentCaseId);
+    // await waitForFinishedBusinessProcess(parentCaseId);
     await waitForGAFinishedBusinessProcess(gaCaseId);
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
@@ -923,7 +923,12 @@ module.exports = {
       await assertValidClaimData(claimantResponseData, pageId);
     }
 
-    await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    if (['preview', 'demo'].includes(config.runningEnv) && (response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
+      validState = 'JUDICIAL_REFERRAL';
+    }
+
+    await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -949,7 +954,7 @@ module.exports = {
 
     await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
-    await waitForFinishedBusinessProcess(caseId);
+    // await waitForFinishedBusinessProcess(caseId);
   },
 
   moveCaseToCaseman: async (user) => {

@@ -48,6 +48,28 @@ module.exports = {
     email: 'hmcts.civil+organisation.3.solicitor.1@gmail.com',
     type: 'defendant_solicitor'
   },
+  judgeUserWithRegionId1:
+  // local env does not have the same users than preview/demo/etc
+    process.env.ENVIRONMENT ? {
+      password: judgePassword,
+      email: '4917924EMP-@ejudiciary.net',
+      type: 'judge',
+      roleCategory: 'JUDICIAL',
+      regionId: '1'
+    } : {
+      password: defaultPassword,
+      email: 'judge-civil-02@example.com',
+      type: 'judge',
+      roleCategory: 'JUDICIAL',
+      regionId: '1'
+    },
+  judgeUserWithRegionId2: {
+    password: judgePassword,
+    email: '4915631EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '2'
+  },
   adminUser: {
     password: defaultPassword,
     email: 'civil-admin@mailnesia.com',
@@ -64,4 +86,7 @@ module.exports = {
   claimantSolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'DAWY9LJ' : '79ZRSOU',
   defendant2SolicitorOrgId: process.env.ENVIRONMENT =='demo' ? 'LCVTI1I' : 'H2156A0',
+  claimantSelectedCourt: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
+  defendantSelectedCourt: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
+  defendant2SelectedCourt: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ',
 };
