@@ -122,4 +122,7 @@ Scenario('GA 1v2  - With Notice Application Collection after Creation of GA Case
   console.log('*** End of Validating  GA Case Visibility in all Collections: ' + gaCaseReference + ' ***');
 });
 
+AfterSuite(async ({api}) => {
+  await api.cleanUp();
+});
 
