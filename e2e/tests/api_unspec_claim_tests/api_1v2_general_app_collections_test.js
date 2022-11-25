@@ -37,7 +37,7 @@ Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Deci
 
 });
 
-Scenario.only('GA 1v2  - Without Notice Application Collection after Creation of GA Case Test', async ({api}) => {
+Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case Test', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
