@@ -306,9 +306,6 @@ module.exports = {
     const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT, parentCaseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
-    assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
-    assert.equal(responseBody.state, expectState);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
     await waitForFinishedBusinessProcess(parentCaseId, user);
     await waitForGAFinishedBusinessProcess(parentCaseId, user);
@@ -324,7 +321,7 @@ module.exports = {
         gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
         break;
       case config.secondDefendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
         break;
     }
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
@@ -663,6 +660,29 @@ module.exports = {
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'PROCEEDS_IN_HERITAGE');
+  },
+
+  assertGaAppCollectionVisiblityToUser: async ( user, parentCaseId, gaCaseId, isVisibleToUser) => {
+    const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+    const civilCaseData = await response.json();
+    if(user.email == config.applicantSolicitorUser.email && isVisibleToUser){
+      gaCaseReference = civilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+      assert.equal(gaCaseId, gaCaseReference);
+    }
+    else if(user.email == config.defendantSolicitorUser.email && isVisibleToUser) {
+      gaCaseReference = civilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+      assert.equal(gaCaseId, gaCaseReference);
+    }
+    else if(user.email == config.defendantSolicitorUser.email && isVisibleToUser) {
+      gaCaseReference = civilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
+      assert.equal(gaCaseId, gaCaseReference);
+    }
+    else{
+      gaCaseReference = civilCaseData.gaDetailsMasterCollection[0].value.caseLink.CaseReference;
+      assert.equal(gaCaseId, gaCaseReference);
+    }
+    console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
+
   },
 
   judgeMakesDecisionOrderMade: async (user, gaCaseId) => {
