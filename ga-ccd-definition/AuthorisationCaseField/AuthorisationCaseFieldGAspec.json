@@ -628,6 +628,7 @@
       },
       {
         "UserRoles": [
+          "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
         ],
