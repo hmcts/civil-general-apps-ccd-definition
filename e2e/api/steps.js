@@ -665,23 +665,24 @@ module.exports = {
   assertGaAppCollectionVisiblityToUser: async ( user, parentCaseId, gaCaseId, isVisibleToUser) => {
     const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const civilCaseData = await response.json();
+    let gaReference;
     if(user.email == config.applicantSolicitorUser.email && isVisibleToUser){
-      gaCaseReference = civilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
-      assert.equal(gaCaseId, gaCaseReference);
+      gaReference = civilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+      assert.equal(gaCaseId, gaReference);
     }
     else if(user.email == config.defendantSolicitorUser.email && isVisibleToUser) {
-      gaCaseReference = civilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
-      assert.equal(gaCaseId, gaCaseReference);
+      gaReference = civilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+      assert.equal(gaCaseId, gaReference);
     }
-    else if(user.email == config.defendantSolicitorUser.email && isVisibleToUser) {
-      gaCaseReference = civilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
-      assert.equal(gaCaseId, gaCaseReference);
+    else if(user.email == config.secondDefendantSolicitorUser.email && isVisibleToUser) {
+      gaReference = civilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
+      assert.equal(gaCaseId, gaReference);
     }
     else{
-      gaCaseReference = civilCaseData.gaDetailsMasterCollection[0].value.caseLink.CaseReference;
-      assert.equal(gaCaseId, gaCaseReference);
+      gaReference = civilCaseData.gaDetailsMasterCollection[0].value.caseLink.CaseReference;
+      assert.equal(gaCaseId, gaReference);
     }
-    console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
+    console.log('*** GA Case Reference: ' + gaReference + ' ***');
 
   },
 
