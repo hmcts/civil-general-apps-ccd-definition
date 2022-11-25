@@ -13,8 +13,12 @@ elif [ ${environment} == staging ]; then
   excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
 elif [ ${environment} == local ]; then
   excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
+elif [ ${environment} == perftest ]; then
+  excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
+elif [ ${environment} == ithc ]; then
+  excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
 elif [ ${excludeNonProdFiles} == true ]; then
-    excludedFilenamePatterns="e UserProfile.json,*-nonprod.json,*LRspec.json"
+    excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*LRspec.json"
 else
    excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
 fi
