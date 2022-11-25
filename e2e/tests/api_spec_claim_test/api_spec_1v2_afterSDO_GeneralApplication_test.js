@@ -7,12 +7,12 @@ let civilCaseReference, gaCaseReference;
 Feature('Spec 1v2 - General Application after SDO Journey @api-nightly');
 
 
-Scenario.skip('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api_sdo, api, I}) => {
+Scenario.skip('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
  civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',null, civilCaseReference);
-  await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
-    'AWAITING_APPLICANT_INTENTION',civilCaseReference);
+  await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
+  await api.claimantResponseClaimSpec(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
+    'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
@@ -30,9 +30,9 @@ Scenario.skip('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api_s
 Scenario.skip('Spec Claimant create GA - CASE_PROGRESSION state', async ({api_sdo, api, I}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
-  await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
-    'AWAITING_APPLICANT_INTENTION');
+  await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
+  await api.claimantResponseClaimSpec(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
+    'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Create SDO');
