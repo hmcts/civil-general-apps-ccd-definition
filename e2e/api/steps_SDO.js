@@ -15,7 +15,6 @@ const {
   acknowledgeClaim,
   defendantResponse
 } = require('../api/steps.js');
-const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {addUserCaseMapping} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimDataSpec = require('../fixtures/events/createClaimSpec.js');
@@ -29,12 +28,7 @@ let caseData = {};
 const data = {
   CREATE_CLAIM_SPEC: (scenario) => claimDataSpec.createClaim(scenario),
   DEFENDANT_RESPONSE_SPEC: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
-  DEFENDANT_RESPONSE2_SPEC: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response),
-  DEFENDANT_RESPONSE_1v2_SPEC: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
-  DEFENDANT_RESPONSE_2v1_SPEC: (response) => require('../fixtures/events/defendantResponseSpec2v1.js').respondToClaim(response),
   CLAIMANT_RESPONSE_SPEC: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
-  CLAIMANT_RESPONSE_1v2_SPEC: (response) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response),
-  CLAIMANT_RESPONSE_2v1_SPEC: (response) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response),
 
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
   NOTIFY_DEFENDANT_OF_CLAIM: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol.js'),
@@ -60,67 +54,9 @@ const data = {
 };
 
 const eventData = {
-  defendantResponses: {
-    ONE_V_ONE: {
-      FULL_DEFENCE: data.DEFENDANT_RESPONSE_SPEC('FULL_DEFENCE'),
-      FULL_ADMISSION: data.DEFENDANT_RESPONSE_SPEC('FULL_ADMISSION'),
-      PART_ADMISSION: data.DEFENDANT_RESPONSE_SPEC('PART_ADMISSION'),
-      COUNTER_CLAIM: data.DEFENDANT_RESPONSE_SPEC('COUNTER_CLAIM')
-    },
-    ONE_V_TWO: {
-      FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2_SPEC('FULL_DEFENCE'),
-      FULL_ADMISSION: data.DEFENDANT_RESPONSE_1v2_SPEC('FULL_ADMISSION'),
-      PART_ADMISSION: data.DEFENDANT_RESPONSE_1v2_SPEC('PART_ADMISSION'),
-      COUNTER_CLAIM: data.DEFENDANT_RESPONSE_1v2_SPEC('COUNTER_CLAIM'),
-      DIFF_FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2_SPEC('DIFF_FULL_DEFENCE'),
-      DIFF_NOT_FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2_SPEC('DIFF_NOT_FULL_DEFENCE')
-    },
-    ONE_V_ONE_DIF_SOL: {
-      FULL_DEFENCE1: data.DEFENDANT_RESPONSE_SPEC('FULL_DEFENCE'),
-      FULL_ADMISSION1: data.DEFENDANT_RESPONSE_SPEC('FULL_ADMISSION'),
-      PART_ADMISSION1: data.DEFENDANT_RESPONSE_SPEC('PART_ADMISSION'),
-      COUNTER_CLAIM1: data.DEFENDANT_RESPONSE_SPEC('COUNTER_CLAIM'),
-
-      FULL_DEFENCE2: data.DEFENDANT_RESPONSE2_SPEC('FULL_DEFENCE'),
-      FULL_ADMISSION2: data.DEFENDANT_RESPONSE2_SPEC('FULL_ADMISSION'),
-      PART_ADMISSION2: data.DEFENDANT_RESPONSE2_SPEC('PART_ADMISSION'),
-      COUNTER_CLAIM2: data.DEFENDANT_RESPONSE2_SPEC('COUNTER_CLAIM')
-    },
-    TWO_V_ONE: {
-      FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1_SPEC('FULL_DEFENCE'),
-      FULL_ADMISSION: data.DEFENDANT_RESPONSE_2v1_SPEC('FULL_ADMISSION'),
-      PART_ADMISSION: data.DEFENDANT_RESPONSE_2v1_SPEC('PART_ADMISSION'),
-      COUNTER_CLAIM: data.DEFENDANT_RESPONSE_2v1_SPEC('COUNTER_CLAIM'),
-      DIFF_FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1_SPEC('DIFF_FULL_DEFENCE'),
-      DIFF_NOT_FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1_SPEC('DIFF_NOT_FULL_DEFENCE')
-    }
-  },
-  claimantResponses: {
-    ONE_V_ONE: {
-      FULL_DEFENCE: data.CLAIMANT_RESPONSE_SPEC('FULL_DEFENCE'),
-      FULL_ADMISSION: data.CLAIMANT_RESPONSE_SPEC('FULL_ADMISSION'),
-      PART_ADMISSION: data.CLAIMANT_RESPONSE_SPEC('PART_ADMISSION'),
-      COUNTER_CLAIM: data.CLAIMANT_RESPONSE_SPEC('COUNTER_CLAIM')
-    },
-    ONE_V_TWO: {
-      FULL_DEFENCE: data.CLAIMANT_RESPONSE_1v2_SPEC('FULL_DEFENCE'),
-      FULL_ADMISSION: data.CLAIMANT_RESPONSE_1v2_SPEC('FULL_ADMISSION'),
-      PART_ADMISSION: data.CLAIMANT_RESPONSE_1v2_SPEC('PART_ADMISSION'),
-      NOT_PROCEED: data.CLAIMANT_RESPONSE_1v2_SPEC('NOT_PROCEED'),
-    },
-    TWO_V_ONE: {
-      FULL_DEFENCE: data.CLAIMANT_RESPONSE_2v1_SPEC('FULL_DEFENCE'),
-      FULL_ADMISSION: data.CLAIMANT_RESPONSE_2v1_SPEC('FULL_ADMISSION'),
-      PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1_SPEC('PART_ADMISSION'),
-      NOT_PROCEED: data.CLAIMANT_RESPONSE_2v1_SPEC('NOT_PROCEED')
-    }
-  },
   sdoTracks: {
     CREATE_DISPOSAL: data.CREATE_DISPOSAL(responseData),
     CREATE_SMALL: data.CREATE_SMALL(responseData),
-    CREATE_FAST: data.CREATE_FAST(responseData),
-    CREATE_SMALL_NO_SUM: data.CREATE_SMALL_NO_SUM(responseData),
-    CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(responseData),
     UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO(responseData)
   }
 };
@@ -141,77 +77,6 @@ module.exports = {
     await acknowledgeClaim(user2, scenario);
     caseId = await defendantResponse(user2, scenario);
     await claimantResponse(user1, scenario, 'AWAITING_APPLICANT_INTENTION', 'JUDICIAL_REFERRAL');
-  },
-
-  defendantResponseSPEC: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                                expectedEvent = 'AWAITING_APPLICANT_INTENTION',caseId) => {
-    await apiRequest.setupTokens(user);
-    eventName = 'DEFENDANT_RESPONSE_SPEC';
-
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-
-    let defendantResponseData = eventData['defendantResponses'][scenario][response];
-
-    caseData = returnedCaseData;
-
-    console.log(`${response} ${scenario}`);
-
-    for (let pageId of Object.keys(defendantResponseData.userInput)) {
-      await assertValidData(defendantResponseData, pageId);
-    }
-
-    switch (scenario) {
-      case 'ONE_V_ONE_DIF_SOL':
-        /* when camunda process is done, when both respondents have answered
-        this should be AWAITING_APPLICANT_INTENTION; while only one has answered
-        this will be AWAITING_RESPONDENT_ACKNOWLEDGEMENT
-         */
-        await assertSubmittedEvent(expectedEvent);
-        break;
-      case 'ONE_V_ONE':
-        await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-        break;
-      case 'ONE_V_TWO':
-        await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-        break;
-      case 'TWO_V_ONE':
-        if (response === 'DIFF_FULL_DEFENCE') {
-          await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
-        } else {
-          await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-        }
-        break;
-    }
-
-    await waitForFinishedBusinessProcess(caseId);
-
-    deleteCaseFields('respondent1Copy');
-  },
-
-  claimantResponseSPEC:  async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                                expectedEndState, caseId) => {
-    // workaround
-    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
-    deleteCaseFields('respondentResponseIsSame');
-
-    await apiRequest.setupTokens(user);
-
-    eventName = 'CLAIMANT_RESPONSE_SPEC';
-    caseData = await apiRequest.startEvent(eventName, caseId);
-    let claimantResponseData = eventData['claimantResponses'][scenario][response];
-
-    for (let pageId of Object.keys(claimantResponseData.userInput)) {
-      await assertValidData(claimantResponseData, pageId);
-    }
-
-    let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if (['preview', 'demo'].includes(config.runningEnv) && (response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
-      validState = 'JUDICIAL_REFERRAL';
-    }
-
-    await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
-
-    await waitForFinishedBusinessProcess(caseId);
   },
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -375,11 +240,4 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
     await addUserCaseMapping(caseId, config.applicantSolicitorUser);
     console.log('Case created: ' + caseId);
   }
-};
-
-// Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
-// This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
-// Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
-const deleteCaseFields = (...caseFields) => {
-  caseFields.forEach(caseField => delete caseData[caseField]);
 };

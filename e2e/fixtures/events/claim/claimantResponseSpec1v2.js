@@ -38,9 +38,9 @@ module.exports = {
             applicant1DQRequestedCourt: {
               responseCourtLocations: {
                 list_items: [
-                  listElement(config.claimantSelectedCourt)
+                  listElement(config.defendant2SelectedCourt)
                 ],
-                value:  listElement(config.claimantSelectedCourt)
+                value:  listElement(config.defendant2SelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }

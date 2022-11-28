@@ -21,7 +21,7 @@ Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async 
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
     await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
     await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'AWAITING_APPLICANT_INTENTION');
+                                    'PROCEEDS_IN_HERITAGE_SYSTEM');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
@@ -53,7 +53,7 @@ Scenario('Case offline AWAITING_ADDITIONAL_INFORMATION', async ({api}) => {
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
     await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
     await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'AWAITING_APPLICANT_INTENTION');
+                                    'PROCEEDS_IN_HERITAGE_SYSTEM');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
@@ -82,7 +82,7 @@ Scenario('Case offline LISTING_FOR_A_HEARING', async ({api}) => {
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
     await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
     await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'AWAITING_APPLICANT_INTENTION');
+                                    'PROCEEDS_IN_HERITAGE_SYSTEM');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
@@ -108,7 +108,7 @@ Scenario('Case offline AWAITING_WRITTEN_REPRESENTATIONS', async ({api}) => {
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
     await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
     await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'AWAITING_APPLICANT_INTENTION');
+                                    'PROCEEDS_IN_HERITAGE_SYSTEM');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
@@ -135,7 +135,7 @@ Scenario('Case offline APPLICATION_ADD_PAYMENT', async ({api}) => {
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
     await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
     await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'AWAITING_APPLICANT_INTENTION');
+                                    'PROCEEDS_IN_HERITAGE_SYSTEM');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
@@ -163,7 +163,7 @@ Scenario('Case offline AWAITING_DIRECTIONS_ORDER_DOCS', async ({api}) => {
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
     await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
     await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'AWAITING_APPLICANT_INTENTION');
+                                    'PROCEEDS_IN_HERITAGE_SYSTEM');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
@@ -190,7 +190,7 @@ Scenario('Case offline ORDER_MADE', async ({api}) => {
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
     await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
     await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'AWAITING_APPLICANT_INTENTION');
+                                    'PROCEEDS_IN_HERITAGE_SYSTEM');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
 });
 
@@ -217,7 +217,7 @@ Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
     await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
     await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-                                    'AWAITING_APPLICANT_INTENTION');
+                                    'PROCEEDS_IN_HERITAGE_SYSTEM');
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'APPLICATION_DISMISSED');
 });
 

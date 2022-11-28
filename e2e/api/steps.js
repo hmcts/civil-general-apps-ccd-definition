@@ -938,14 +938,14 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     deleteCaseFields('gaDetailsRespondentSol');
     deleteCaseFields('generalApplications');
-    let claimantResponseData = eventData['claimantResponses'][scenario][response];
+    let claimantResponseData = eventData['claimantResponsesSpec'][scenario][response];
     claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidClaimData(claimantResponseData, pageId);
     }
 
-    await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertSubmittedEvent(expectedEndState);
 
     await waitForFinishedBusinessProcess(caseId);
   },
