@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 Judge list the application for hearing  API tests @api-tests');
+Feature('GA 1v2 Judge list the application for hearing  API tests @api-nightly');
 
 Scenario('Judge makes decision 1V1 - LIST FOR HEARING', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(

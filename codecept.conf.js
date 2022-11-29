@@ -22,7 +22,8 @@ exports.config = {
   },
   include: {
     I: './e2e/steps_file.js',
-    api: './e2e/api/steps.js'
+    api: './e2e/api/steps.js',
+    api_sdo: './e2e/api/steps_SDO.js'
   },
   plugins: {
     autoDelay: {

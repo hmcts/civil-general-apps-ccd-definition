@@ -12,9 +12,9 @@ const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testi
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference;
 
-Feature('GA CCD 1v1 - General Application Journey @e2e-tests');
+Feature('GA CCD 1v1 - General Application Journey');
 
-Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
+Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   parentCaseNumber = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
@@ -59,7 +59,7 @@ Scenario('GA for 1v1 - Make an order journey', async ({I, api}) => {
   I.dontSee('Applications', 'div.mat-tab-label-content');
 }).retry(0);
 
-Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
+Scenario('GA for 1v1 - Direction order journey @multiparty-e2e-tests @ui-nightly', async ({I, api}) => {
   parentCaseNumber = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
@@ -104,7 +104,7 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await I.see(childCaseNumber);
 }).retry(0);
 
-Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api}) => {
+Scenario('GA for 1v1 Specified Claim- Dismissal order journey @multiparty-e2e-tests @ui-nightly', async ({I, api}) => {
   parentCaseNumber = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   console.log('Case created for general application: ' + parentCaseNumber);
   await I.login(config.applicantSolicitorUser);

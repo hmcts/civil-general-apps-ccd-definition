@@ -23,7 +23,8 @@
     "test:crossbrowser": "./e2e/run-crossbrowser-tests.sh",
     "prepare": "husky install",
     "highLevelDataSetup": "echo './aat/gradlew -p aat highLevelDataSetup --args=$1' > ./temp.sh && sh ./temp.sh",
-    "test:fullfunctional": "MOCHAWESOME_REPORTFILENAME=fullFunctional npx codeceptjs run --grep '@e2e-tests|@multiparty-e2e-tests|@api-scheduler-test|@api-offline-nightly' --reporter mocha-multi --verbose",
+    "test:fullRegression": "MOCHAWESOME_REPORTFILENAME=fullFunctional npx codeceptjs run --grep '@e2e-tests|@ui-nightly|@api-scheduler-test|@api-nightly' --reporter mocha-multi --verbose",
+    "test:fullfunctional": "MOCHAWESOME_REPORTFILENAME=fullFunctional npx codeceptjs run --grep @api-nightly --reporter mocha-multi --verbose",
     "prepare": "husky install"
   },
   "license": "MIT",

@@ -70,7 +70,7 @@ const data = {
   DEFENDANT_RESPONSE_SOLICITOR_ONE: require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor1'),
   DEFENDANT_RESPONSE_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor2'),
   DEFENDANT_RESPONSE_TWO_APPLICANTS: require('../fixtures/events/2v1Events/defendantResponse_2v1'),
-  CLAIMANT_RESPONSE: require('../fixtures/events/claimantResponse.js'),
+  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario),
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
@@ -983,6 +983,30 @@ module.exports = {
     deleteCaseFields('generalApplications');
     let claimantResponseData = eventData['claimantResponsesSpec'][scenario][response];
     claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
+
+    for (let pageId of Object.keys(claimantResponseData.userInput)) {
+      await assertValidClaimData(claimantResponseData, pageId);
+    }
+
+    await assertSubmittedEvent(expectedEndState);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  claimantResponseUnSpec: async (user, multipartyScenario, expectedEndState) => {
+    // workaround
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+    deleteCaseFields('respondentResponseIsSame');
+
+    await apiRequest.setupTokens(user);
+
+    eventName = 'CLAIMANT_RESPONSE';
+    mpScenario = multipartyScenario;
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    deleteCaseFields('gaDetailsRespondentSol');
+    deleteCaseFields('generalApplications');
+
+    const claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidClaimData(claimantResponseData, pageId);
