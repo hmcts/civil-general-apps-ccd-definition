@@ -12,7 +12,7 @@ let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference;
 
 Feature('General Application end to end journey @smoke-tests');
 
-Scenario('GA for 1v1- respond to application - Request more information', async ({I, api}) => {
+Scenario.only('GA for 1v1- respond to application - Request more information', async ({I, api}) => {
   parentCaseNumber = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
@@ -46,26 +46,10 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   await I.dontSee('Next step');
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDecisionStatus);
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await I.login(config.judgeUser);
-  } else {
-    await I.login(config.judgeLocalUser);
-  }
-  await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
-  await I.judgeCloseAndReturnToCaseDetails(childCaseId);
-  await I.verifyJudgesSummaryPage('Request more information');
-  await I.verifyApplicationDocument(childCaseNum(), 'Request for information');
-  console.log('Judges requested more information on case: ' + childCaseNum());
-  await I.login(config.applicantSolicitorUser);
-  await I.navigateToTab(parentCaseNumber, 'Applications');
-  await I.see(additionalInfoStatus);
-  await I.respondToJudgeAdditionalInfo(childCaseNum(), childCaseId);
-  console.log('Responded to Judge Additional Information on case: ' + childCaseNum());
 }).retry(0);
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
 
 

@@ -23,6 +23,10 @@ dependencies:
     version: ~0.2.16
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: xui-webapp.enabled
+  - name: aac-manage-case-assignment
+    version: ~0.2.0
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: aac-manage-case-assignment.enabled
   - name: idam-pr
     version: ~2.3.0
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
