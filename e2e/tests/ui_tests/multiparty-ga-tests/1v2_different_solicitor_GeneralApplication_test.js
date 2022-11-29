@@ -13,11 +13,10 @@ let {getAppTypes} = require('../../../pages/generalApplication/generalApplicatio
 let caseId, childCaseNumber, childCaseId, gaCaseReference, civilCaseReference;
 
 Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly');
-Feature('1v2 Different Solicitor - General Application Journey');
 
 Scenario('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey', async ({I, api}) => {
-  parentCaseNumber = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
-  console.log('Case created for general application: ' + parentCaseNumber);
+  civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
   caseId = await I.grabCaseNumber();
