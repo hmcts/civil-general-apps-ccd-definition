@@ -705,7 +705,7 @@ module.exports = function () {
     async navigateToApplicationsTab(caseNumber) {
       await this.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
       await this.refreshPage();
-      await this.wait(5);
+      await this.wait(10);
     },
 
     async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber) {
