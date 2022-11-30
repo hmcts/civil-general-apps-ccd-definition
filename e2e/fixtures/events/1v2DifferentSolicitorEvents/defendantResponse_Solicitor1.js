@@ -1,4 +1,5 @@
-const {date, element, buildAddress} = require('../../../api/dataHelper');
+const {date, element, buildAddress, listElement} = require('../../../api/dataHelper');
+const config = require('../../../config');
 
 module.exports = {
   valid: {
@@ -13,19 +14,10 @@ module.exports = {
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',
       },
-      respondent1Copy: {
-        type: 'INDIVIDUAL',
-        individualFirstName: 'John',
-        individualLastName: 'Doe',
-        individualTitle: 'Sir',
-        individualDateOfBirth: date(-1),
-        primaryAddress: buildAddress('respondent'),
-        partyName: 'Sir John Doe',
-        partyTypeDisplayValue: 'Individual',
-      },
     },
     RespondentResponseType: {
-      respondent1ClaimResponseType: 'PART_ADMISSION',
+      respondent1ClaimResponseType: 'FULL_DEFENCE',
+      multiPartyResponseTypeFlags: 'FULL_DEFENCE'
     },
     SolicitorReferences: {
       solicitorReferences:{
@@ -121,12 +113,23 @@ module.exports = {
     },
     RequestedCourt: {
       respondent1DQRequestedCourt: {
-        responseCourtCode: '343',
+        responseCourtLocations: {
+          list_items: [
+            listElement(config.defendantSelectedCourt)
+          ],
+          value: listElement(config.defendantSelectedCourt)
+        },
         reasonForHearingAtSpecificCourt: 'No reasons',
         requestHearingAtSpecificCourt: 'Yes'
       }
     },
     HearingSupport: {},
+    VulnerabilityQuestions: {
+      respondent1DQVulnerabilityQuestions: {
+        vulnerabilityAdjustmentsRequired: 'Yes',
+        vulnerabilityAdjustments: 'Defendant 1 reasons'
+      }
+    },
     FurtherInformation: {
       respondent1DQFurtherInformation: {
         futureApplications: 'Yes',

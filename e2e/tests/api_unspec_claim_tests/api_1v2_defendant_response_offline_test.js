@@ -5,7 +5,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference,
     gaCaseReference;
 
-Feature('GA 1v2 Defendant Response Case Close API tests @api-tests @api-offline');
+Feature('GA 1v2 Defendant Response Case Close API tests');
 
 Scenario('Case offline AWAITING_RESPONDENT_RESPONSE', async ({api}) => {
     civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');

@@ -5,7 +5,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference,
     gaCaseReference;
 
-Feature('GA Claim 1v2 Notify Claim Case Close API tests @api-tests @api-offline');
+Feature('GA Claim 1v2 Notify Claim Case Close API tests @api-nightly @api-offline');
 
 Scenario('Case offline 1V2 notify_claim AWAITING_RESPONDENT_RESPONSE', async ({api}) => {
     civilCaseReference = await api.createUnspecifiedClaim(

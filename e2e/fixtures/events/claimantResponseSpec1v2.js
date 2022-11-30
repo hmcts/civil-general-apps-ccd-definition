@@ -1,5 +1,5 @@
-const {listElement} = require('../../../api/dataHelper');
-const config = require('../../../config');
+const {listElement} = require('../../api/dataHelper');
+const config = require('../../config');
 module.exports = {
   claimantResponse: (response = 'FULL_DEFENCE') => {
     const responseData = {
@@ -40,7 +40,7 @@ module.exports = {
                 list_items: [
                   listElement(config.defendant2SelectedCourt)
                 ],
-                value:  listElement(config.defendant2SelectedCourt)
+                value: listElement(config.defendant2SelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }

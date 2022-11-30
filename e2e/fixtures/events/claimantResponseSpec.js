@@ -1,5 +1,4 @@
-const {listElement} = require('../../../api/dataHelper');
-const config = require('../../../config');
+const {listElement} = require('../../api/dataHelper');
 module.exports = {
   claimantResponse: (response = 'FULL_DEFENCE') => {
     const responseData = {
@@ -12,7 +11,7 @@ module.exports = {
             applicant1ProceedWithClaim: 'Yes',
           },
           Mediation: {
-            applicantMPClaimMediationSpecRequired: {
+            applicant1ClaimMediationSpecRequired: {
               hasAgreedFreeMediation: 'Yes'
             }
           },
@@ -38,9 +37,9 @@ module.exports = {
             applicant1DQRequestedCourt: {
               responseCourtLocations: {
                 list_items: [
-                  listElement(config.defendant2SelectedCourt)
+                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
                 ],
-                value:  listElement(config.defendant2SelectedCourt)
+                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
@@ -60,9 +59,6 @@ module.exports = {
         responseData.midEventData = {
           ...responseData.midEventData,
           Hearing: {
-            sameSolicitorSameResponse: 'Yes',
-            respondent2SameLegalRepresentative: 'Yes',
-            respondentResponseIsSame: 'Yes',
             respondent1DQVulnerabilityQuestions: {
               vulnerabilityAdjustmentsRequired: 'Yes',
               vulnerabilityAdjustments: 'test'
