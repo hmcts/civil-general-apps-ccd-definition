@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-const apiRequest = require('../../api/apiRequest');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 let civilCaseReference, gaCaseReference;
@@ -8,7 +7,7 @@ let civilCaseReference, gaCaseReference;
 Feature('GA 1v2 application collection for different solicitor API tests @api-tests');
 
 
-Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Decision List for Hearing  ', async ({api}) => {
+Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Decision List for Hearing', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
