@@ -8,7 +8,7 @@ def product = "civil"
 def component = "ga-ccd"
 def camundaBranch = "master"
 
-def ccddefbranch = "master"
+def ccddefbranch = "feature/CIV-5443"
 
 static Map<String, Object> secret(String secretName, String envVariable) {
     [$class     : 'AzureKeyVaultSecret',
@@ -159,7 +159,7 @@ withPipeline(type, product, component) {
           eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
           ./bin/pull-latest-release-asset.sh civil-ccd-definition civil-ccd-definition.zip
           ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
-          ./bin/import-ccd-definition.sh "-e *-prod.json,*-GAR2GAspec-nonprod.json,*HNL-nonprod.json" ${ccddefbranch}
+          ./bin/import-ccd-definition.sh "-e *-prod.json,*HNL-nonprod.json" ${ccddefbranch}
           ./bin/pull-latest-camunda-files.sh ${camundaBranch}
         """
         env.URL="https://xui-civil-ga-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
