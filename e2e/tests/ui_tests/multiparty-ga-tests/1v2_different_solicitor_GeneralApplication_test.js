@@ -12,7 +12,7 @@ const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/te
 let {getAppTypes} = require('../../../pages/generalApplication/generalApplicationTypes');
 let caseId, childCaseNumber, childCaseId, gaCaseReference, civilCaseReference;
 
-Feature('1v2 Different Solicitor - General Application Journey');
+Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly');
 
 Scenario('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey @multiparty-e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);

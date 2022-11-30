@@ -1,5 +1,4 @@
-const {listElement} = require('../../../api/dataHelper');
-const config = require('../../../config');
+const {listElement} = require('../../api/dataHelper');
 module.exports = {
   claimantResponse: (response = 'FULL_DEFENCE') => {
     const responseData = {
@@ -9,7 +8,7 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1ProceedWithClaim: 'Yes',
+            applicant1ProceedWithClaimSpec2v1: 'Yes',
           },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
@@ -38,9 +37,9 @@ module.exports = {
             applicant1DQRequestedCourt: {
               responseCourtLocations: {
                 list_items: [
-                  listElement(config.defendant2SelectedCourt)
+                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
                 ],
-                value:  listElement(config.defendant2SelectedCourt)
+                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
@@ -60,9 +59,9 @@ module.exports = {
         responseData.midEventData = {
           ...responseData.midEventData,
           Hearing: {
-            sameSolicitorSameResponse: 'Yes',
-            respondent2SameLegalRepresentative: 'Yes',
-            respondentResponseIsSame: 'Yes',
+            claimant1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            claimant2ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            defendantSingleResponseToBothClaimants: 'Yes',
             respondent1DQVulnerabilityQuestions: {
               vulnerabilityAdjustmentsRequired: 'Yes',
               vulnerabilityAdjustments: 'test'
@@ -82,7 +81,7 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1ProceedWithClaim: 'Yes',
+            applicant1ProceedWithClaimSpec2v1: 'Yes',
           },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
@@ -99,7 +98,7 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1ProceedWithClaim: 'Yes',
+            applicant1ProceedWithClaimSpec2v1: 'Yes',
           },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
@@ -116,7 +115,7 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1ProceedWithClaim: 'No',
+            applicant1ProceedWithClaimSpec2v1: 'No',
           },
         };
         responseData.midEventData = {
@@ -127,3 +126,5 @@ module.exports = {
     return responseData;
   }
 };
+
+
