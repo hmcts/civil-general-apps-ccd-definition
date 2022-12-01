@@ -974,6 +974,10 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
+  retrieveTaskDetails:  async(user, caseNumber, taskId) => {
+    return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
+  },
+
   moveCaseToCaseman: async (user) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');

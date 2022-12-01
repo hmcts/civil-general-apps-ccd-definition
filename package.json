@@ -21,7 +21,7 @@
     "test:functional:darwin:linux": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep '@e2e-tests|@api-tests' --reporter mocha-multi --verbose",
     "test:crossbrowser-e2e": "MOCHAWESOME_REPORTFILENAME=crossbrowser codeceptjs run-multiple --grep @cross-browser-tests ${BROWSER_GROUP:-'--all'} -c saucelabs.conf.js --reporter mocha-multi",
     "test:crossbrowser": "./e2e/run-crossbrowser-tests.sh",
-    "prepare": "husky install",
+    "test:e2e-wa": "MOCHAWESOME_REPORTFILENAME=wa-e2e npx codeceptjs run --grep @e2e-wa --reporter mocha-multi --verbose",
     "highLevelDataSetup": "echo './aat/gradlew -p aat highLevelDataSetup --args=$1' > ./temp.sh && sh ./temp.sh",
     "test:fullRegression": "MOCHAWESOME_REPORTFILENAME=fullFunctional npx codeceptjs run --grep '@e2e-tests|@ui-nightly|@api-scheduler-test|@api-nightly' --reporter mocha-multi --verbose",
     "test:fullfunctional": "MOCHAWESOME_REPORTFILENAME=fullFunctional npx codeceptjs run --grep @api-nightly --reporter mocha-multi --verbose",
