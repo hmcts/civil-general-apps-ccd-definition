@@ -967,7 +967,7 @@ module.exports = {
 
     await assertSubmittedEvent(expectedEndState);
 
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
   claimantResponseUnSpec: async (user, multipartyScenario, expectedEndState) => {
