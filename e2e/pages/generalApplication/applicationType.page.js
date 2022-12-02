@@ -7,7 +7,7 @@ module.exports = {
       id: '#generalAppType_types',
       options: {
         strikeOut: 'Strike out',
-        summaryJudgement: 'Summary judgement',
+        summaryJudgement: 'Summary judgment',
         stayTheClaim: 'Stay the claim',
         extendTime: 'Extend time',
         amendTheStatementOfCase: 'Amend a statement of case',
