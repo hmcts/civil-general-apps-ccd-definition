@@ -753,6 +753,17 @@ module.exports = function () {
       ]);
     },
 
+    async judgeApproveAnOrderWA(decision, order, consentCheck, caseNumber) {
+      eventName = events.MAKE_DECISION.name;
+      await this.triggerStepsWithScreenshot([
+        () => judgeDecisionPage.selectJudgeDecision(decision),
+        () => makeAnOrderPage.selectAnOrder(order, consentCheck),
+        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
+        ...submitApplication('Your order has been made'),
+        () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
+      ]);
+    },
+
     async judgeRequestMoreInfo(decision, infoType, caseNumber, withoutNotice) {
       eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
@@ -832,6 +843,20 @@ module.exports = function () {
       eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
+        () => judgeDecisionPage.selectJudgeDecision(decision),
+        () => listForHearingPage.selectJudicialHearingPreferences('inPerson'),
+        () => listForHearingPage.selectJudicialTimeEstimate('fifteenMin'),
+        () => listForHearingPage.verifyVulnerabilityQuestions(),
+        () => listForHearingPage.selectJudicialSupportRequirement('disabledAccess'),
+        () => drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('Video', '15 minutes'),
+        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
+        ...submitApplication('Your order has been made'),
+        () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
+      ]);
+    },
+
+    async judgeListForAHearingDecisionWA(decision, caseNumber) {
+      await this.triggerStepsWithScreenshot([
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => listForHearingPage.selectJudicialHearingPreferences('inPerson'),
         () => listForHearingPage.selectJudicialTimeEstimate('fifteenMin'),

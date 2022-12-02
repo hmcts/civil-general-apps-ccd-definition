@@ -1,6 +1,6 @@
 // in this file you can append custom step methods to 'I' object
 
-const { assert} = require('chai');
+const {assert} = require('chai');
 const config = require('../e2e/config');
 const caseViewPage = require('./pages/caseView.page');
 
@@ -31,30 +31,42 @@ const taskFieldsToBeValidated = {
 };
 
 
-module.exports = function (){
+module.exports = function () {
   return actor({
-    goToTask: async function(caseId, taskName) {
+    goToTask: async function (caseId, taskName) {
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
       await this.waitForElement('#event');
       await this.click('#action_claim');
       await this.waitForElement('#action_reassign');
       await this.waitForText(taskName);
       await this.click(taskName);
-      await this.waitInUrl('Summary', 5);
+      if (taskName === 'JudgeDecideOnApplication') {
+        await this.waitInUrl('MAKE_DECISIONGAJudicialDecision', 5);
+      } else if (taskName === 'LegalAdvisorDecideOnApplication') {
+        await this.waitInUrl('', 5);
+      } else {
+        await this.waitInUrl('Summary', 5);
+      }
     },
 
-    verifyNoActiveTask: async function(caseId, eventName) {
+    goToAdminTask: async function (caseId, taskName) {
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
+      await this.waitForElement('#event');
+      await this.click('#action_claim');
+      await this.waitForElement('#action_reassign');
+      await this.waitForText(taskName);
+    },
+
+    verifyNoActiveTask: async function (caseId) {
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
       await this.dontSeeElement('#action_claim');
-      await this.goToEvent(eventName);
-      await this.see('No task available');
     },
 
-    goToEvent: async function(eventName) {
+    goToEvent: async function (eventName) {
       await caseViewPage.start(eventName);
     },
 
-    referToJudge: async function() {
+    referToJudge: async function () {
       await this.waitInUrl('REFER_TO_JUDGE');
       await this.fillField('#referToJudge_judgeReferEventDescription', 'Test test');
       await this.fillField('#referToJudge_judgeReferAdditionalInfo', 'Test additional Info');
@@ -63,7 +75,7 @@ module.exports = function (){
       await this.click('Submit');
     },
 
-    referToLA: async function() {
+    referToLA: async function () {
       await this.waitInUrl('REFER_TO_LEGAL_ADVISOR');
       await this.fillField('#referToLegalAdvisor_legalAdvisorEventDescription', 'Test test');
       await this.fillField('#referToLegalAdvisor_legalAdvisorAdditionalInfo', 'Test additional Info');
@@ -73,14 +85,14 @@ module.exports = function (){
     },
 
     validateTaskInfo(createdTask, expectedTaskInfo) {
-      if(expectedTaskInfo && createdTask) {
+      if (expectedTaskInfo && createdTask) {
         for (let taskDMN of Object.keys(taskFieldsToBeValidated)) {
-            console.log(`asserting dmn info: ${taskDMN} has valid data`);
-            taskFieldsToBeValidated[taskDMN].forEach(
-              fieldsToBeValidated  => {
-                assert.deepEqual(createdTask[fieldsToBeValidated], expectedTaskInfo[fieldsToBeValidated]);
-              }
-            );
+          console.log(`asserting dmn info: ${taskDMN} has valid data`);
+          taskFieldsToBeValidated[taskDMN].forEach(
+            fieldsToBeValidated => {
+              assert.deepEqual(createdTask[fieldsToBeValidated], expectedTaskInfo[fieldsToBeValidated]);
+            }
+          );
         }
       }
     }

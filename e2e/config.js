@@ -75,12 +75,12 @@ module.exports = {
     roleCategory: 'JUDICIAL',
     regionId: '4'
   },
-  hearingCenterAdminWithRegionId4: {
-    email: 'hearing_center_admin_region4@justice.gov.uk',
+  hearingCenterAdminWithRegionId1: {
+    email: 'ga_hearing_centre_admin_r1@justice.gov.uk',
     password: defaultPassword,
     type: 'hearing-center-admin',
     roleCategory: 'ADMIN',
-    regionId: '4'
+    regionId: '1'
   },
   tribunalCaseworkerWithRegionId4: {
     email: 'tribunal_caseworker_region4@justice.gov.uk',
@@ -108,7 +108,10 @@ module.exports = {
   },
   waTaskIds: {
     nbcUserReviewGA :'ReviewApplication',
-    listingOfficerCaseProgressionTask: 'transferCaseOffline',
+    judgeDecideOnApplication: 'JudgeDecideOnApplication',
+    legalAdvisorDecideOnApplication: 'LegalAdvisorDecideOnApplication',
+    scheduleApplicationHearing: 'ScheduleApplicationHearing',
+    reviewApplicationOrder: 'ReviewApplicationOrder'
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
