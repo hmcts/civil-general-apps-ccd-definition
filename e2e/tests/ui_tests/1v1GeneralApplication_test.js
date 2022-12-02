@@ -30,7 +30,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
     'disabledAccess');
   console.log('1v1 General Application created: ' + parentCaseNumber);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(3, 4), 1);
   await I.see(judgeDecisionStatus);
@@ -45,7 +45,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
     await I.login(config.judgeLocalUser);
   }
   await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'yes', childCaseNum());
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Approve order');
   await I.verifyApplicationDocument(childCaseNum(), 'General order');
@@ -74,7 +74,7 @@ Scenario('GA for 1v1 - Direction order journey @multiparty-e2e-tests @ui-nightly
     'signLanguageInterpreter');
   console.log('General Application created: ' + parentCaseNumber);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(judgeDecisionStatus);
@@ -87,7 +87,7 @@ Scenario('GA for 1v1 - Direction order journey @multiparty-e2e-tests @ui-nightly
     await I.login(config.judgeLocalUser);
   }
   await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', childCaseNum());
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Judges Directions');
   await I.verifyApplicationDocument(childCaseNum(), 'Directions order');
@@ -117,7 +117,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @multiparty-e2e-te
     'signLanguageInterpreter');
   console.log('General Application created: ' + parentCaseNumber);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(judgeDecisionStatus);
@@ -130,7 +130,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @multiparty-e2e-te
     await I.login(config.judgeLocalUser);
   }
   await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'no', childCaseNum());
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Dismissal order');
   await I.verifyApplicationDocument(childCaseNum(), 'Dismissal order');
