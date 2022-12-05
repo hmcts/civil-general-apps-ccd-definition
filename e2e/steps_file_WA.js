@@ -40,21 +40,25 @@ module.exports = function () {
       await this.waitForElement('#action_reassign');
       await this.waitForText(taskName);
       await this.click(taskName);
+      await this.wait(3);
       if (taskName === 'JudgeDecideOnApplication') {
-        await this.waitInUrl('MAKE_DECISIONGAJudicialDecision', 5);
+        await this.waitInUrl('MAKE_DECISIONGAJudicialDecision', 10);
       } else if (taskName === 'LegalAdvisorDecideOnApplication') {
-        await this.waitInUrl('', 5);
+        await this.waitInUrl('MAKE_DECISIONGAJudicialDecision', 10);
       } else {
         await this.waitInUrl('Summary', 5);
       }
     },
 
-    goToAdminTask: async function (caseId, taskName) {
+    goToAdminTask: async function (caseId) {
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
       await this.waitForElement('#event');
       await this.click('#action_claim');
       await this.waitForElement('#action_reassign');
-      await this.waitForText(taskName);
+      // Enable this after implementation
+      // await this.waitForText(taskName);
+      await this.see('Active tasks');
+      await this.see('Next steps');
     },
 
     verifyNoActiveTask: async function (caseId) {
@@ -73,6 +77,7 @@ module.exports = function () {
       await this.click('Continue');
       await this.waitInUrl('REFER_TO_JUDGE/submit', 5);
       await this.click('Submit');
+      await this.wait(5);
     },
 
     referToLA: async function () {
@@ -85,11 +90,11 @@ module.exports = function () {
     },
 
     validateTaskInfo(createdTask, expectedTaskInfo) {
-      if (expectedTaskInfo && createdTask) {
+      if(expectedTaskInfo && createdTask) {
         for (let taskDMN of Object.keys(taskFieldsToBeValidated)) {
           console.log(`asserting dmn info: ${taskDMN} has valid data`);
           taskFieldsToBeValidated[taskDMN].forEach(
-            fieldsToBeValidated => {
+            fieldsToBeValidated  => {
               assert.deepEqual(createdTask[fieldsToBeValidated], expectedTaskInfo[fieldsToBeValidated]);
             }
           );

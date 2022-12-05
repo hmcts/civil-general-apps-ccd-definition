@@ -1,12 +1,12 @@
 module.exports = {
   name: 'Review Application Order',
   type: 'ReviewApplicationOrder',
-  task_title: 'Application for multiple types',
-  location_name: '???',
-  location: '???',
+  task_title: 'Review Application Order',
+  location_name: 'County Court Money Claims Centre',
+  location: '192280',
   execution_type: 'Case Management Task',
   jurisdiction: 'CIVIL',
-  region: '???',
+  region: '4',
   case_type_id: 'GENERALAPPLICATION',
   case_category: 'Civil',
   auto_assigned: false,
@@ -14,6 +14,5 @@ module.exports = {
   work_type_id: 'routine_work',
   work_type_label: 'Routine work',
   permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel' ] },
-  description: '???',
   role_category: 'ADMIN'
 };

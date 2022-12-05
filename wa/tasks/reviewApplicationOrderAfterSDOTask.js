@@ -1,7 +1,7 @@
 module.exports = {
   name: 'Application Hearing Scheduled',
   type: 'ScheduleApplicationHearing',
-  task_title: 'Application for multiple types',
+  task_title: 'Review Application Order',
   location_name: '???',
   location: '???',
   execution_type: 'Case Management Task',
@@ -14,6 +14,5 @@ module.exports = {
   work_type_id: 'hearing_work',
   work_type_label: 'Hearing work',
   permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel' ] },
-  description: '???',
   role_category: 'ADMIN'
 };

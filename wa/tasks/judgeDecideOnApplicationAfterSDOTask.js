@@ -12,7 +12,7 @@ module.exports = {
   auto_assigned: false,
   case_management_category: 'Civil',
   work_type_id: 'decision_making_work',
-  work_type_label: '???',
+  work_type_label: 'Decision-making work',
   permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel' ] },
   description: '[JudgeDecideOnApplication](/cases/case-details/${[CASE_REFERENCE]}/trigger/MAKE_DECISION/MAKE_DECISIONGAJudicialDecision)',
   role_category: 'JUDICIAL'

@@ -49,7 +49,7 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin review application ord
   await I.login(config.judgeUserWithRegionId4);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
   await I.judgeApproveAnOrderWA('makeAnOrder', 'approveOrEditTheOrder', 'yes', gaCaseReference);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.judgeUserWithRegionId4);
   await wa.verifyNoActiveTask(gaCaseReference);
 
   console.log('Region 4 NBC user review application order');
@@ -60,10 +60,10 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin review application ord
     wa.validateTaskInfo(actualReviewApplicationOrderTask, expectedReviewApplicationOrderBeforeSDOTask);
   }
   await I.login(config.nbcAdminWithRegionId4);
-  await wa.goToAdminTask(gaCaseReference, config.waTaskIds.scheduleApplicationHearing);
+  await wa.goToAdminTask(gaCaseReference);
 }).retry(0);
 
-Scenario('After SDO GA - Judge Make decision - HC admin review application order', async ({I, api, wa}) => {
+Scenario.skip('After SDO GA - Judge Make decision - HC admin review application order', async ({I, api, wa}) => {
   civilCaseReference = await api.createSpecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -80,23 +80,23 @@ Scenario('After SDO GA - Judge Make decision - HC admin review application order
   await I.login(config.judgeUserWithRegionId1);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
   await I.judgeApproveAnOrderWA('makeAnOrder', 'approveOrEditTheOrder', 'yes', gaCaseReference);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.judgeUserWithRegionId1);
   await wa.verifyNoActiveTask(gaCaseReference);
 
-    console.log('Region 1 review application order');
-    if (config.runWAApiTest) {
-      const actualReviewApplicationOrder = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1,
-        gaCaseReference, config.waTaskIds.reviewApplicationOrder);
-      console.log('actualReviewApplicationOrder...', actualReviewApplicationOrder);
-      wa.validateTaskInfo(actualReviewApplicationOrder, expectedReviewApplicationOrderAfterSDOTask);
-    }
-    await I.login(config.hearingCenterAdminWithRegionId1);
-    await wa.goToAdminTask(gaCaseReference, config.waTaskIds.reviewApplicationOrder);
+  console.log('Region 1 review application order');
+  if (config.runWAApiTest) {
+    const actualReviewApplicationOrder = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1,
+      gaCaseReference, config.waTaskIds.reviewApplicationOrder);
+    console.log('actualReviewApplicationOrder...', actualReviewApplicationOrder);
+    wa.validateTaskInfo(actualReviewApplicationOrder, expectedReviewApplicationOrderAfterSDOTask);
+  }
+  await I.login(config.hearingCenterAdminWithRegionId1);
+  await wa.goToAdminTask(gaCaseReference);
 }).retry(0);
 
-/*AfterSuite(async ({api}) => {
+AfterSuite(async ({api}) => {
   await api.cleanUp();
-});*/
+});
 
 
 

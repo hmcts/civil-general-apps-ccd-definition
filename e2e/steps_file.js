@@ -759,17 +759,6 @@ module.exports = function () {
       ]);
     },
 
-    async judgeApproveAnOrderWA(decision, order, consentCheck, caseNumber) {
-      eventName = events.MAKE_DECISION.name;
-      await this.triggerStepsWithScreenshot([
-        () => judgeDecisionPage.selectJudgeDecision(decision),
-        () => makeAnOrderPage.selectAnOrder(order, consentCheck),
-        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
-        ...submitApplication('Your order has been made'),
-        () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
-      ]);
-    },
-
     async judgeRequestMoreInfo(decision, infoType, caseNumber, withoutNotice) {
       eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
@@ -861,18 +850,24 @@ module.exports = function () {
       ]);
     },
 
-    async judgeListForAHearingDecisionWA(decision, caseNumber) {
-      await this.triggerStepsWithScreenshot([
-        () => judgeDecisionPage.selectJudgeDecision(decision),
-        () => listForHearingPage.selectJudicialHearingPreferences('inPerson'),
-        () => listForHearingPage.selectJudicialTimeEstimate('fifteenMin'),
-        () => listForHearingPage.verifyVulnerabilityQuestions(),
-        () => listForHearingPage.selectJudicialSupportRequirement('disabledAccess'),
-        () => drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('Video', '15 minutes'),
-        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
-        ...submitApplication('Your order has been made'),
-        () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
-      ]);
+    judgeListForAHearingDecisionWA: async function (decision, caseNumber) {
+      await judgeDecisionPage.selectJudgeDecision(decision);
+      await listForHearingPage.selectJudicialHearingPreferences('inPerson');
+      await listForHearingPage.selectJudicialTimeEstimate('fifteenMin');
+      await listForHearingPage.verifyVulnerabilityQuestions();
+      await listForHearingPage.selectJudicialSupportRequirement('disabledAccess');
+      await drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('Video', '15 minutes');
+      await judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber);
+      await event.submit('Submit', 'Your order has been made');
+      await judgesConfirmationPage.verifyJudgesConfirmationPage();
+    },
+
+    async judgeApproveAnOrderWA(decision, order, consentCheck, caseNumber) {
+      await judgeDecisionPage.selectJudgeDecision(decision);
+      await makeAnOrderPage.selectAnOrder(order, consentCheck);
+      await judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber);
+      await event.submit('Submit', 'Your order has been made');
+      await judgesConfirmationPage.verifyJudgesConfirmationPage();
     },
 
     async judgeWrittenRepresentationsDecision(decision, representationsType, caseNumber) {
