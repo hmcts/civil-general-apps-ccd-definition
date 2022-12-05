@@ -28,7 +28,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
     'signLanguageInterpreter');
   console.log('General Application created: ' + parentCaseNumber);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 5), 1);
   await I.see(respondentStatus);
@@ -41,7 +41,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
     'signLanguageInterpreter', getAppTypes().slice(0, 5));
   console.log('Org1 solicitor Responded to application: ' + childCaseNum());
   await I.respCloseAndReturnToCaseDetails(childCaseId);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.defendantSolicitorUser);
   await I.dontSee('Go');
   await I.dontSee('Next step');
   await I.navigateToTab(parentCaseNumber, 'Applications');
@@ -52,7 +52,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
     await I.login(config.judgeLocalUser);
   }
   await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.defendantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Request more information');
   await I.verifyApplicationDocument(childCaseNum(), 'Request for information');

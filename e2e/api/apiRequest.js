@@ -151,9 +151,9 @@ module.exports = {
       }, 'POST', 201);
   },
 
-  fetchUpdatedCaseData: async (caseId) => {
+  fetchUpdatedCaseData: async (caseId, user) => {
 
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    const authToken = await idamHelper.accessToken(user);
 
     let url = getGeneralApplicationBaseUrl();
     console.log('*** Civil Case Reference: '  + caseId + ' ***');
@@ -168,9 +168,9 @@ module.exports = {
       },null, 'GET');
   },
 
-  fetchUpdatedGABusinessProcessData: async (caseId) => {
+  fetchUpdatedGABusinessProcessData: async (caseId, user) => {
 
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    const authToken = await idamHelper.accessToken(user);
 
     let url = getGeneralApplicationBaseUrl();
     console.log('*** GA Case Reference: '  + caseId + ' ***');

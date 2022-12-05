@@ -503,56 +503,112 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "UserRole": "legal-adviser",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "caseLink",
     "UserRole": "legal-adviser",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "caseState",
     "UserRole": "legal-adviser",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "ListElementCode": "generalApplicationType",
     "UserRole": "legal-adviser",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "gaDetailsMasterCollection",
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "UserRole": "legal-adviser",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "gaDetailsMasterCollection",
     "ListElementCode": "caseLink",
     "UserRole": "legal-adviser",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "gaDetailsMasterCollection",
     "ListElementCode": "caseState",
     "UserRole": "legal-adviser",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "gaDetailsMasterCollection",
+    "ListElementCode": "generalApplicationType",
+    "UserRole": "legal-adviser",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentSolGaAppDetails",
+    "ListElementCode": "generalAppSubmittedDateGAspec",
+    "UserRole": "legal-adviser",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentSolGaAppDetails",
+    "ListElementCode": "caseLink",
+    "UserRole": "legal-adviser",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentSolGaAppDetails",
+    "ListElementCode": "caseState",
+    "UserRole": "legal-adviser",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentSolGaAppDetails",
+    "ListElementCode": "generalApplicationType",
+    "UserRole": "legal-adviser",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
+    "ListElementCode": "generalAppSubmittedDateGAspec",
+    "UserRole": "legal-adviser",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
+    "ListElementCode": "caseLink",
+    "UserRole": "legal-adviser",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
+    "ListElementCode": "caseState",
+    "UserRole": "legal-adviser",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "ListElementCode": "generalApplicationType",
     "UserRole": "legal-adviser",
     "CRUD": "CRU"
