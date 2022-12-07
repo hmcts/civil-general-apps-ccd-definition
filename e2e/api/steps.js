@@ -22,6 +22,8 @@ const claimSpecData = require('../fixtures/events/createClaimSpec.js');
 const genAppData = require('../fixtures/ga-ccd/createGeneralApplication.js');
 const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentResponse.js');
 const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
+const genAppNbcAdminReferToJudgeData = require('../fixtures/ga-ccd/nbcAdminTask.js');
+const  genAppNbcAdminReferToLegalAdvisorData = require('../fixtures/ga-ccd/nbcAdminTask.js');
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
 
@@ -35,11 +37,13 @@ const data = {
   INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
   RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
   MAKE_DECISION: genAppJudgeMakeDecisionData.judgeMakesDecisionData(),
-  JUDGE_MAKES_ORDER_WRITTEN_REP: genAppJudgeMakeDecisionData.judgeMakeOrderWrittenRep(),
+  REFER_TO_JUDGE: genAppNbcAdminReferToJudgeData.nbcAdminReferToJudgeData(),
+  REFER_TO_LEGAL_ADVISOR: genAppNbcAdminReferToLegalAdvisorData.nbcAdminReferToLegalAdvisorData(),
+  JUDGE_MAKES_ORDER_WRITTEN_REP: (current_date) => genAppJudgeMakeDecisionData.judgeMakeOrderWrittenRep(current_date),
   RESPOND_TO_JUDGE_ADDITIONAL_INFO: genAppRespondentResponseData.toJudgeAdditionalInfo(),
   RESPOND_TO_JUDGE_DIRECTIONS: genAppRespondentResponseData.toJudgeDirectionsOrders(),
   RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION: genAppRespondentResponseData.toJudgeWrittenRepresentation(),
-  JUDGE_MAKES_ORDER_DIRECTIONS_REP: genAppJudgeMakeDecisionData.judgeMakeDecisionDirectionOrder(),
+  JUDGE_MAKES_ORDER_DIRECTIONS_REP:(current_date) => genAppJudgeMakeDecisionData.judgeMakeDecisionDirectionOrder(current_date),
   JUDGE_APPROVES_STRIKEOUT_APPLN: genAppJudgeMakeDecisionData.judgeApprovesStrikeOutAppl(),
   JUDGE_APPROVES_STAYCLAIM_APPLN: (current_date) => genAppJudgeMakeDecisionData.judgeApprovesStayClaimAppl(current_date),
   PAYMENT_SERVICE_REQUEST_UPDATED: genAppJudgeMakeDecisionData.serviceUpdateDto(),
@@ -439,6 +443,30 @@ module.exports = {
    assert.include(responseBody2.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
   },
 
+  nbcAdminReferToJudge: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.REFER_TO_JUDGE.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.REFER_TO_JUDGE, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+  },
+
+  nbcAdminReferToLegalAdvisor: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.REFER_TO_LEGAL_ADVISOR.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.REFER_TO_LEGAL_ADVISOR, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+  },
+
   judgeMakesDecisionAdditionalInformation: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
     eventName = events.MAKE_DECISION.id;
@@ -610,7 +638,8 @@ module.exports = {
     eventName = events.MAKE_DECISION.id;
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
-    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_ORDER_WRITTEN_REP, gaCaseId);
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_ORDER_WRITTEN_REP(current_date),gaCaseId);
+
     const responseBody = await response.json();
 
     assert.equal(response.status, 201);
@@ -621,7 +650,9 @@ module.exports = {
 
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    let ccd_state= updatedGABusinessProcessData.ccdState;
     assert.equal(updatedGABusinessProcessData.ccdState, 'AWAITING_WRITTEN_REPRESENTATIONS');
+    return ccd_state;
   },
 
   judgeMakesDecisionDirectionsOrder: async (user, gaCaseId) => {
@@ -629,7 +660,7 @@ module.exports = {
     eventName = events.MAKE_DECISION.id;
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
-    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_ORDER_DIRECTIONS_REP, gaCaseId);
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_ORDER_DIRECTIONS_REP(current_date), gaCaseId);
     const responseBody = await response.json();
 
     assert.equal(response.status, 201);
@@ -640,7 +671,9 @@ module.exports = {
 
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    let ccd_state = updatedGABusinessProcessData.ccdState;
     assert.equal(updatedGABusinessProcessData.ccdState, 'AWAITING_DIRECTIONS_ORDER_DOCS');
+    return ccd_state;
   },
 
   judgeApprovesStrikeOutApplication: async (user, gaCaseId) => {
@@ -724,17 +757,22 @@ module.exports = {
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
+    let ccdState = updatedGABusinessProcessData.ccdState;
+    return ccdState;
   },
 
-  judgeRevisitStayScheduler: async (gaCaseId) => {
-    const response_msg = await apiRequest.gaOrderMadeSchedulerTaskHandler();
+  judgeRevisitStayScheduler: async (gaCaseId,state,user) => {
+    const response_msg = await apiRequest.gaOrderMadeSchedulerTaskHandler(state);
     assert.equal(response_msg.status, 200);
     // retrive the dcase data for the ga reference  and assert that the flag is true
     const updatedResponse = await apiRequest.fetchGaCaseData(gaCaseId);
     const updatedGaCaseData = await updatedResponse.json();
     let isOrderProcessedByScheduler = updatedGaCaseData.judicialDecisionMakeOrder.isOrderProcessedByStayScheduler;
-    assert.equal(isOrderProcessedByScheduler,'Yes');
+   // assert.equal(isOrderProcessedByScheduler,'Yes');
     console.log('*** GA Case Reference: ' + gaCaseId + ' ***');
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'AWAITING_DIRECTIONS_ORDER_DOCS');
   },
 
   judgeListApplicationForHearing: async (user, gaCaseId) => {

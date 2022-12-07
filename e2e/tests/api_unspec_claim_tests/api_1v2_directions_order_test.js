@@ -18,13 +18,14 @@ Scenario('Judge makes decision 1V2 - DIRECTIONS ORDER', async ({api}) => {
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
-
+  let state;
   console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionDirectionsOrder(config.judgeUser, gaCaseReference);
+   state = await api.judgeMakesDecisionDirectionsOrder(config.judgeUser, gaCaseReference);
   }else {
-    await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
+   state = await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
   }
+  await api.judgeRevisitStayScheduler(gaCaseReference,state,config.applicantSolicitorUser);
   console.log('*** End Judge Directions Order GA Case Reference: ' + gaCaseReference + ' ***');
 });
 

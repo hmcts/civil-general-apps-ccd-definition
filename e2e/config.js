@@ -121,7 +121,10 @@ module.exports = {
     judgeDecideOnApplication: 'JudgeDecideOnApplication',
     legalAdvisorDecideOnApplication: 'LegalAdvisorDecideOnApplication',
     scheduleApplicationHearing: 'ScheduleApplicationHearing',
-    reviewApplicationOrder: 'ReviewApplicationOrder'
+    reviewApplicationOrder: 'ReviewApplicationOrder',
+    judgeRevisitApplication: 'JudgeRevisitApplication',
+    reviewRevisitedApplication: 'ReviewRevisitedApplication',
+    legalAdvisorRevisitApplication: 'LegalAdvisorRevisitApplication'
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
