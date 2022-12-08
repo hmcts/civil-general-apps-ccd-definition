@@ -1008,10 +1008,10 @@ module.exports = {
 
     const claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
 
-    for (let pageId of Object.keys(claimantResponseData.userInput)) {
-      await assertValidClaimData(claimantResponseData, pageId);
-    }
-
+    // for (let pageId of Object.keys(claimantResponseData.userInput)) {
+    //   await assertValidClaimData(claimantResponseData, pageId);
+    // }
+    await validateEventPagesWithCheck(claimantResponseData, false, user);
     await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId, user);
@@ -1351,7 +1351,6 @@ const assertError = async (pageId, eventData, expectedErrorMessage, responseBody
 
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
-
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);
@@ -1424,6 +1423,8 @@ function addMidEventFields(pageId, responseBody) {
   let midEventData;
 
   if (eventName === 'CREATE_CLAIM') {
+    midEventData = data[eventName](mpScenario).midEventData[pageId];
+  } else if (eventName === 'CLAIMANT_RESPONSE') {
     midEventData = data[eventName](mpScenario).midEventData[pageId];
   } else {
     midEventData = data[eventName].midEventData[pageId];
