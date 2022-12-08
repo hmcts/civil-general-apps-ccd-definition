@@ -11,7 +11,7 @@
     "ListElementCode": "isWithNotice",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GARadioYesOrNo",
-    "ElementLabel": "Without notice",
+    "ElementLabel": "With notice",
     "SecurityClassification": "Public"
   },
   {
