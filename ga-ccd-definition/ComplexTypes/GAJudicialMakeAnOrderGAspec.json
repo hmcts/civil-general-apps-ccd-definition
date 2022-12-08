@@ -29,16 +29,15 @@
     "ElementLabel": "For which document?",
     "FieldType": "FixedList",
     "FieldTypeParameter": "GAJudgeOrderClaimantOrDefenseFixedList",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\" AND displayjudgeApproveEditOptionDoc=\"Yes\""
+    "SecurityClassification": "Public"
+
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "judgeApproveEditOptionDate",
     "ElementLabel": "Date for Order to end",
     "FieldType": "Date",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\" AND displayjudgeApproveEditOptionDate=\"Yes\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
