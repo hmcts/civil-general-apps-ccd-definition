@@ -780,6 +780,27 @@
     "Label": " ",
     "FieldType": "GAHearingDateGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialMakeOrderDocPreview",
+    "Label": "Order Draft",
+    "FieldType": "Document",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialListHearingDocPreview",
+    "Label": "Draft Draft",
+    "FieldType": "Document",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialWrittenRepDocPreview",
+    "Label": "Draft Draft",
+    "FieldType": "Document",
+    "SecurityClassification": "Public"
   }
 ]
 

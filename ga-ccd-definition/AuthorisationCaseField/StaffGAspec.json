@@ -148,5 +148,11 @@
     "CaseFieldID": "generalAppHearingDate",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialMakeOrderDocPreview",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
   }
 ]

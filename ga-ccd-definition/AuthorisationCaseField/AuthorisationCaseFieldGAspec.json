@@ -2536,5 +2536,77 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialMakeOrderDocPreview",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-judge",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
+          "ga-basic-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialListHearingDocPreview",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-judge",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
+          "ga-basic-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialWrittenRepDocPreview",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-judge",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
+          "ga-basic-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
