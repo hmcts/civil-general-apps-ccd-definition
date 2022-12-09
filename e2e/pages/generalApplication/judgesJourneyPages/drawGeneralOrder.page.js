@@ -1,6 +1,7 @@
 const {I} = inject();
 const expect = require('chai').expect;
 const {verifyJudgeRecitalText, verifyHearingDetailsJudgeRecitalText} = require('../../generalAppCommons');
+const config = require('../../../config');
 
 module.exports = {
 
@@ -14,7 +15,9 @@ module.exports = {
   async verifyHearingDetailsGeneralOrderScreen(hearingPreferences, timeEstimate) {
     await I.waitForElement(this.fields.hearingDetailsJudgeRecitalTextArea);
     I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialHearingDetailsGeneralOrderScreen');
-    I.see('Draw a General Order');
+    if (!config.runWAApiTest) {
+      I.see('Draw a General Order');
+    }
     I.see('Judge’s recital');
     await verifyHearingDetailsJudgeRecitalText(await I.grabValueFrom(this.fields.hearingDetailsJudgeRecitalTextArea));
     await I.see(`Hearing type is ${hearingPreferences}`);
