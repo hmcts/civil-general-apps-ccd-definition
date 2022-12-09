@@ -188,4 +188,8 @@
     <cve>CVE-2022-42003</cve>
     <cve>CVE-2022-42004</cve>
   </suppress>
+  <suppress>
+    <notes>Temporariy suppressing it as the latest camunda connector 1.5.6 seem to have the vulnerability.</notes>
+    <cve>CVE-2021-37533</cve>
+  </suppress>
 </suppressions>
