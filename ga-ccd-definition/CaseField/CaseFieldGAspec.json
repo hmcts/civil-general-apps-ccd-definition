@@ -801,6 +801,13 @@
     "Label": "Draft Draft",
     "FieldType": "Document",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialRequestMoreInfoDocPreview",
+    "Label": "Draft Draft",
+    "FieldType": "Document",
+    "SecurityClassification": "Public"
   }
 ]
 

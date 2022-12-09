@@ -65,6 +65,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
+    "ListElementCode": "judicialRequestMoreInfoDocPreview",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppUrgencyRequirement",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

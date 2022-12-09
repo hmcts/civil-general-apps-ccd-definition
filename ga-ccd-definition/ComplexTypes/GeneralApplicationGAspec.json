@@ -304,5 +304,12 @@
     "FieldType": "Document",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "judicialRequestMoreInfoDocPreview",
+    "FieldType": "Document",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
   }
 ]
