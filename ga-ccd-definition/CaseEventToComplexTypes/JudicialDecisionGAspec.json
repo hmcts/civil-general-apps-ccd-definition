@@ -53,7 +53,7 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\" AND displayjudgeApproveEditOptionDoc=\"Yes\""
+    "FieldShowCondition": "judicialDecisionMakeOrder.makeAnOrder=\"APPROVE_OR_EDIT\" AND judicialDecisionMakeOrder.displayjudgeApproveEditOptionDoc=\"Yes\""
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
@@ -63,7 +63,7 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\" AND displayjudgeApproveEditOptionDate=\"Yes\""
+    "FieldShowCondition": "judicialDecisionMakeOrder.makeAnOrder=\"APPROVE_OR_EDIT\" AND judicialDecisionMakeOrder.displayjudgeApproveEditOptionDate=\"Yes\""
 
   },
   {
