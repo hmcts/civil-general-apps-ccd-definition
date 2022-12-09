@@ -89,6 +89,23 @@ module.exports = function () {
       await this.click('Submit');
     },
 
+    runChallengedAccessSteps: async function(userId, caseId) {
+      await I.login(userId);
+      await this.click('Search');
+      await this.waitForElement('#caseRef');
+      await this.fillField('#caseRef', caseId);
+      await this.click('//button[@type=\'submit\']');
+      await this.waitForText(caseId);
+      await this.waitForClickable('//a[contains(text(), \'Challenged access\')]', 60);
+      await this.click('Challenged access');
+      await this.waitForText('To determine if the case needs to be consolidated');
+      await this.click('#reason-1');
+      await this.click('Submit');
+      await this.waitForText('Access successful');
+      await this.see(caseId);
+      await this.click('View case file');
+    },
+
     validateTaskInfo(createdTask, expectedTaskInfo) {
       if(expectedTaskInfo && createdTask) {
         for (let taskDMN of Object.keys(taskFieldsToBeValidated)) {

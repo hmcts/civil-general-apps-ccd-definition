@@ -106,6 +106,13 @@ module.exports = {
     roleCategory: 'ADMIN',
     regionId: '4'
   },
+  nbcAdminWithRegionId1: {
+    email: 'ga_nbc_admin_national@justice.gov.uk',
+    password: defaultPassword,
+    type: 'national-business-centre',
+    roleCategory: 'ADMIN',
+    regionId: '1'
+  },
   adminUser: {
     password: defaultPassword,
     email: 'civil-admin@mailnesia.com',
