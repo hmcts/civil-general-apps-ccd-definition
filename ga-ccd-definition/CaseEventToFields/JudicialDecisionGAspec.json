@@ -58,7 +58,7 @@
     "PageFieldDisplayOrder": 4,
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y"
   },
   {
