@@ -65,7 +65,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
 }).retry(0);
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
 
 

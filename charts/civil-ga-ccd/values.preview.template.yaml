@@ -20,7 +20,7 @@ postgresql:
     enabled: false
 
 java:
-  image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
+  image: 'hmctspublic.azurecr.io/civil/general-applications:pr-718'
   imagePullPolicy: Always
   ingressHost: ${SERVICE_FQDN}
   keyVaults:
@@ -147,7 +147,7 @@ xui-webapp:
   nodejs:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
-    image: hmctspublic.azurecr.io/xui/webapp:pr-2330
+    image: hmctspublic.azurecr.io/xui/webapp:latest
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health

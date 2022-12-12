@@ -2358,7 +2358,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
           "civil-administrator-standard",
           "caseworker-civil-systemupdate"
         ],
@@ -2379,7 +2378,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
           "civil-administrator-standard",
           "caseworker-civil-systemupdate"
         ],
