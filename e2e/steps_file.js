@@ -458,9 +458,7 @@ module.exports = function () {
     },
 
     async navigateToTab(caseNumber, tabName) {
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.navigateToTab(caseNumber, tabName)
-    ]);
+      await caseViewPage.navigateToTab(caseNumber, tabName);
     },
 
     async clickOnTab(tabName) {
@@ -703,9 +701,7 @@ module.exports = function () {
     },
 
     async navigateToApplicationsTab(caseNumber) {
-      await this.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
-      await this.refreshPage();
-      await this.wait(10);
+      await caseViewPage.navigateToTab(caseNumber, 'Applications');
     },
 
     async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber) {
