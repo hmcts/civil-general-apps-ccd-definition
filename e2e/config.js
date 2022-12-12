@@ -1,5 +1,6 @@
 const defaultPassword = 'Password12!';
 const judgePassword = 'Hmcts1234';
+const iacDefaultPassword = 'AldgateT0wer';
 
 module.exports = {
   idamStub: {
@@ -7,24 +8,24 @@ module.exports = {
     url: 'http://localhost:5555'
   },
   url: {
-    manageCase: process.env.URL || 'http://localhost:3333',
+  /*  manageCase: process.env.URL || 'http://localhost:3333',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
     ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
     dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
     idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
     civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
     generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
-    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
+    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'*/
 
     // wa demo url's
-/*    manageCase:  'https://manage-case-wa-int.demo.platform.hmcts.net/',
+    manageCase:  'https://manage-case-wa-int.demo.platform.hmcts.net/',
     authProviderApi: 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
     ccdDataStore: 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
     dmStore:'http://dm-store-demo.service.core-compute-demo.internal',
     idamApi: 'https://idam-api.demo.platform.hmcts.net',
     civilService: 'http://civil-service-demo.service.core-compute-demo.internal',
     waTaskMgmtApi: 'http://wa-task-management-api-demo.service.core-compute-demo.internal',
-    generalApplication: 'http://civil-general-applications-demo.service.core-compute-demo.internal'*/
+    generalApplication: 'http://civil-general-applications-demo.service.core-compute-demo.internal'
   },
   s2s: {
     microservice: 'civil_service',
@@ -99,6 +100,13 @@ module.exports = {
     roleCategory: 'LEGAL_OPERATIONS',
     regionId: '4'
   },
+  tribunalCaseworkerWithRegionId: {
+    email: 'ga_tribunal_legal_caseworker_national@justice.gov.uk',
+    password: defaultPassword,
+    type: 'tribunal-caseworker',
+    roleCategory: 'LEGAL_OPERATIONS',
+    regionId: '1'
+  },
   nbcAdminWithRegionId4: {
     email: 'CIVIL_WA_func_test_demo_user10@justice.gov.uk',
     password: defaultPassword,
@@ -123,16 +131,36 @@ module.exports = {
     caseType: 'CIVIL',
     caseTypeGA: 'GENERALAPPLICATION'
   },
+  iacLeadershipJudge: {
+    password: judgeDefaultPassword,
+    email: '330127EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL'
+  },
+  iacLegalOpsUser: {
+    password: iacDefaultPassword,
+    email: 'CRD_func_test_demo_stcwuser1@justice.gov.uk',
+    type: 'legalOps',
+    roleCategory: 'LEGAL_OPERATIONS'
+  },
+  iacAdminUser: {
+    password: iacDefaultPassword,
+    email: 'CRD_func_test_demo_adm21@justice.gov.uk',
+    type: 'admin',
+    roleCategory: 'ADMIN'
+  },
   waTaskIds: {
     nbcUserReviewGA :'ReviewApplication',
     judgeDecideOnApplication: 'JudgeDecideOnApplication',
     legalAdvisorDecideOnApplication: 'LegalAdvisorDecideOnApplication',
     scheduleApplicationHearing: 'ScheduleApplicationHearing',
-
     reviewApplicationOrder: 'ReviewApplicationOrder',
     judgeRevisitApplication: 'JudgeRevisitApplication',
     reviewRevisitedApplication: 'ReviewRevisitedApplication',
-    legalAdvisorRevisitApplication: 'LegalAdvisorRevisitApplication'
+    legalAdvisorRevisitApplication: 'LegalAdvisorRevisitApplication',
+    reviewSpecificAccessRequestJudiciary: 'reviewSpecificAccessRequestJudiciary',
+    reviewSpecificAccessRequestLegalOps: 'reviewSpecificAccessRequestLegalOps',
+    reviewSpecificAccessRequestAdmin: 'reviewSpecificAccessRequestAdmin',
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',

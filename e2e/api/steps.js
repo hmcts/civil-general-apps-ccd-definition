@@ -775,6 +775,13 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'AWAITING_DIRECTIONS_ORDER_DOCS');
   },
 
+  verifySpecificAccessForGaCaseData: async (user, gaCaseId) => {
+    const response = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
+    const responseBody = await response.json();
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+  },
+
   judgeListApplicationForHearing: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
     eventName = events.MAKE_DECISION.id;
