@@ -128,6 +128,7 @@ module.exports = {
     judgeDecideOnApplication: 'JudgeDecideOnApplication',
     legalAdvisorDecideOnApplication: 'LegalAdvisorDecideOnApplication',
     scheduleApplicationHearing: 'ScheduleApplicationHearing',
+
     reviewApplicationOrder: 'ReviewApplicationOrder',
     judgeRevisitApplication: 'JudgeRevisitApplication',
     reviewRevisitedApplication: 'ReviewRevisitedApplication',
