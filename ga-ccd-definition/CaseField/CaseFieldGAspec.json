@@ -784,28 +784,28 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialMakeOrderDocPreview",
-    "Label": "Order Draft",
+    "Label": "Draft Order",
     "FieldType": "Document",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialListHearingDocPreview",
-    "Label": "Draft Draft",
+    "Label": "Draft Order",
     "FieldType": "Document",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialWrittenRepDocPreview",
-    "Label": "Draft Draft",
+    "Label": "Draft Order",
     "FieldType": "Document",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialRequestMoreInfoDocPreview",
-    "Label": "Draft Draft",
+    "Label": "Draft Order",
     "FieldType": "Document",
     "SecurityClassification": "Public"
   }
