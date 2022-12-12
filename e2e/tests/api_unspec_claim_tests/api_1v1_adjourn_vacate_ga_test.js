@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v1 Make Adjourn Vacate API tests @ignore-api-tests');
 
-Scenario.only('AC 4 - 15 Days with consent', async ({api}) => {
+Scenario('AC 4 - 15 Days with consent', async ({api}) => {
   let hearingDate = await api.createDateString(15);
   civilCaseReference = await api.createUnspecifiedClaim(
       config.applicantSolicitorUser, mpScenario, 'Company');
