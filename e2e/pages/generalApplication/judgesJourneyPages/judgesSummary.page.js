@@ -1,5 +1,5 @@
 const {I} = inject();
-const {verifyJudgeRecitalText, verifyHearingDetailsJudgeRecitalText} = require('../../generalAppCommons');
+const apiRequest = require('../../../api/apiRequest.js');
 
 module.exports = {
 
@@ -7,30 +7,30 @@ module.exports = {
     summaryLabels: 'ccd-field-read-label ng-component span'
   },
 
-  async verifyJudgesSummaryPage(decisionType) {
+  async verifyJudgesSummaryPage(decisionType, user) {
+    let fullName = await apiRequest.getUserFullName(user);
     I.waitInUrl('#Summary');
     I.see('Summary');
     I.see('Parent Case ID');
     I.see('Hearing details');
     I.see('Preferred location');
     I.see('Vulnerability questions');
+    await I.see(fullName);
     switch (decisionType) {
       case 'Judges Directions':
-        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()));
+        await I.see('Judge’s recital');
         await I.see('Reasons for decision');
         await I.see('Directions');
         await I.see('When should this application be referred to a Judge again?');
         break;
       case 'Concurrent representations':
         await I.see('Judge’s recital');
-        await I.see('<Title> <Name>');
         await I.see('Make an order for written representations');
         await I.see('Concurrent representations');
         await I.see('Directions in relation to hearing');
         break;
       case 'Sequential representations':
         await I.see('Judge’s recital');
-        await I.see('<Title> <Name>');
         await I.see('Make an order for written representations');
         await I.see('Sequential representations');
         await I.see('Directions in relation to hearing');
@@ -46,20 +46,17 @@ module.exports = {
         break;
       case 'Dismissal order':
         await I.see('Judge’s recital');
-        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()));
         await I.see('Judges dismissed the order');
         await I.see('Dismissal order');
         await I.see('Reasons for decision');
         break;
       case 'Approve order':
-        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()));
         await I.see('Judge’s recital');
         await I.see('Date for Order to end');
         await I.see('For which document?');
         await I.see('Reasons for decision');
         break;
       case 'Hearing order':
-        await verifyHearingDetailsJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()));
         await I.see('Judge’s recital');
         await I.see('Directions in relation to hearing');
         break;

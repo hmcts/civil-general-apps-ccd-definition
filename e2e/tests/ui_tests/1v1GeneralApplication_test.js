@@ -16,7 +16,7 @@ Feature('GA CCD 1v1 - General Application Journey');
 
 Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   parentCaseNumber = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, claimantType);
+    config.judgeUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
   console.log('Case created for general application: ' + parentCaseNumber);
@@ -148,5 +148,5 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @multiparty-e2e-te
 }).retry(0);
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

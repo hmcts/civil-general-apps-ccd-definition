@@ -890,9 +890,11 @@ module.exports = function () {
     },
 
     async verifyJudgesSummaryPage(decisionType) {
-      await this.triggerStepsWithScreenshot([
-        () => judgesSummary.verifyJudgesSummaryPage(decisionType),
-      ]);
+      if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+        await judgesSummary.verifyJudgesSummaryPage(decisionType, config.judgeUser);
+      } else {
+        await judgesSummary.verifyJudgesSummaryPage(decisionType, config.judgeLocalUser);
+      }
     },
 
     async verifyApplicantSummaryPage() {

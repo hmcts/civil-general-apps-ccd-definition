@@ -33,7 +33,7 @@ module.exports = {
     await I.waitForElement(this.fields.makeAnOrder.id);
     I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialMakeADecisionScreen');
     I.see('Judge’s recital');
-    await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.judgeRecitalTextArea));
+    await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.judgeRecitalTextArea), consentCheck);
     I.see('Reasons for decision');
     if (consentCheck === 'no') {
       I.seeTextEquals('This application is cloaked', '#applicationIsCloakedLabel h2');
