@@ -131,7 +131,7 @@ withPipeline(type, product, component) {
         env.ENVIRONMENT = "perftest"
     }
 
-    after('checkout') {
+    afterAlways('checkout') {
         onMaster {
             withCredentials([usernamePassword(credentialsId: 'jenkins-github-hmcts-api-token', usernameVariable: 'USERNAME', passwordVariable: 'BEARER_TOKEN')]) {
                 try {
@@ -172,7 +172,7 @@ withPipeline(type, product, component) {
         env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     }
 
-    after('smoketest:preview') {
+    afterAlways('smoketest:preview') {
         steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
     }
 
@@ -185,15 +185,15 @@ withPipeline(type, product, component) {
         env.CIVIL_GENERAL_APPLICATIONS_URL="https://civil-ga-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
     }
 
-    after('functionalTest:preview') {
+    afterAlways('functionalTest:preview') {
         steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
     }
 
-  after('smoketest:aat') {
+    afterAlways('smoketest:aat') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
   }
 
-  after('functionalTest:aat') {
+    afterAlways('functionalTest:aat') {
     //createGithubRelease()
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
