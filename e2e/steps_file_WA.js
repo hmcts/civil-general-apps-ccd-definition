@@ -92,8 +92,9 @@ module.exports = function () {
     runChallengedAccessSteps: async function(caseId) {
       await this.fillField('#caseReference',caseId);
       await this.click('Find');
+      I.retry(5).waitForElement('Request access');
       await this.click('Request access');
-      await this.waitForText('To determine if the case needs to be consolidated');
+      await this.see('To determine if the case needs to be consolidated');
       await this.click('#reason-1');
       await this.click('Submit');
       await this.waitForText('Access successful');
@@ -105,7 +106,7 @@ module.exports = function () {
     runSpecificAccessRequestSteps: async function(caseId) {
       await this.fillField('#caseReference',caseId);
       await this.click('Find');
-      await this.click('Specific access');
+      await this.click('Request access');
       await this.waitForText('Why do you need to access this case');
       await this.fillField('#specific-reason', 'Req for iac user');
       await this.click('Submit');

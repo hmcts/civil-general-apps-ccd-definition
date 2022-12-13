@@ -56,7 +56,7 @@ Scenario('GA - Challenged Access test - NBCAdmin & judge', async ({I, api, wa}) 
 
 }).retry(0);
 
-Scenario.only('GA - Challenged Access test - LegalAdvisor', async ({I, api, wa}) => {
+Scenario('GA - Challenged Access test - LegalAdvisor', async ({I, api, wa}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
