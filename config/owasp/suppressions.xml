@@ -57,6 +57,7 @@
     </notes>
     <cve>CVE-2013-7315</cve>
     <cve>CVE-2014-0054</cve>
+    <cve>CVE-2021-37533</cve>
   </suppress>
   <suppress until="2023-11-29">
     <notes>CVE-2016-1000027 cant be fixed since spring has conveyed its a known warning in their documentation
