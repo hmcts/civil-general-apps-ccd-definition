@@ -25,8 +25,8 @@ Scenario('Case offline AWAITING_WRITTEN_REPRESENTATIONS', async ({api}) => {
 
 
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
-    await api.defendantResponse(config.defendantSolicitorUser, mpScenario, civilCaseReference, true);
-    await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, civilCaseReference, false);
+    await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+    await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
@@ -50,8 +50,8 @@ Scenario('Case offline APPLICATION_ADD_PAYMENT', async ({api}) => {
                 + gaCaseReference + ' ***');
 
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
-    await api.defendantResponse(config.defendantSolicitorUser, mpScenario, civilCaseReference, true);
-    await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, civilCaseReference, false);
+    await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+    await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
@@ -75,8 +75,8 @@ Scenario('Case offline ORDER_MADE', async ({api}) => {
                 + gaCaseReference + ' ***');
 
     console.log('*** Case offline: ' + civilCaseReference + ' ***');
-    await api.defendantResponse(config.defendantSolicitorUser, mpScenario, civilCaseReference, true);
-    await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, civilCaseReference, false);
+    await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+    await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
 });
@@ -90,10 +90,10 @@ Scenario('Case offline AWAITING_RESPONDENT_RESPONSE', async ({api}) => {
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
 
   console.log('*** Case offline: ' + civilCaseReference + ' ***');
-  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, civilCaseReference, true);
-  await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, civilCaseReference, false);
+    await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+    await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
+    await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
 AfterSuite(async ({api}) => {

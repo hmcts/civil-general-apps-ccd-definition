@@ -1,3 +1,4 @@
+const config = require('../../../config');
 const {I} = inject();
 
 module.exports = {
@@ -45,9 +46,11 @@ module.exports = {
     if ('inPerson' === hearingPreferences) {
       await I.see('Select an option from the dropdown');
     }
-    await I.see('Applicant prefers In person. ' +
-      'Respondent1 prefers In person. ' +
-      'Respondent2 prefers In person.');
+    if (!config.runWAApiTest) {
+      await I.see('Applicant prefers In person. ' +
+        'Respondent1 prefers In person. ' +
+        'Respondent2 prefers In person.');
+    }
   },
 
   async selectJudicialTimeEstimate(timeEstimate) {
@@ -55,16 +58,20 @@ module.exports = {
     await within(this.fields.judicialTimeEstimate.id, () => {
       I.click(this.fields.judicialTimeEstimate.options[timeEstimate]);
     });
-    await I.see('Applicant estimates 45 minutes. ' +
-      'Respondent1 estimates 45 minutes. ' +
-      'Respondent2 estimates 45 minutes.');
+    if (!config.runWAApiTest) {
+      await I.see('Applicant estimates 45 minutes. ' +
+        'Respondent1 estimates 45 minutes. ' +
+        'Respondent2 estimates 45 minutes.');
+    }
   },
 
   async selectJudicialSupportRequirement(supportRequirement) {
     I.waitForElement(this.fields.judicialSupportRequirement.id);
-    await I.see('Applicant require Sign language interpreter. ' +
-      'Respondent1 require Sign language interpreter. ' +
-      'Respondent2 require Sign language interpreter.');
+    if (!config.runWAApiTest) {
+      await I.see('Applicant require Sign language interpreter. ' +
+        'Respondent1 require Sign language interpreter. ' +
+        'Respondent2 require Sign language interpreter.');
+    }
     await within(this.fields.judicialSupportRequirement.id, () => {
       I.click(this.fields.judicialSupportRequirement.options[supportRequirement]);
     });
