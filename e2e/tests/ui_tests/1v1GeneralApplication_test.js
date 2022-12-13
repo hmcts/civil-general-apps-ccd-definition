@@ -16,7 +16,7 @@ let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference;
 
 Feature('GA CCD 1v1 - General Application Journey');
 
-Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
+Scenario.only('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   parentCaseNumber = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
@@ -202,5 +202,5 @@ Scenario('GA for 1v1- respond to application - Request more information @ui-nigh
 }).retry(0);
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
