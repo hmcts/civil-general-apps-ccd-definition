@@ -99,7 +99,7 @@
     "ListElementCode": "reasonForDecisionText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 10,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "GAJudicialRequestMoreInfoScreen",

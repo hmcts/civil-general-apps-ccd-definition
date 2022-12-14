@@ -40,6 +40,11 @@ module.exports = {
       .then(response => response.text());
   },
 
+  getUserFullName: async (user) => {
+    let authToken = await idamHelper.accessToken(user);
+    return await idamHelper.getGivenName(authToken) + ' ' + await idamHelper.getFamilyName(authToken);
+  },
+
   fetchCaseForDisplay: async(user, caseId, response = 200) => {
     let eventUserAuth = await idamHelper.accessToken(user);
     let eventUserId = await idamHelper.userId(eventUserAuth);
