@@ -222,6 +222,13 @@ module.exports = {
     return caseId;
   },
 
+  amendclaimDismissedDeadline: async (user) => {
+    await apiRequest.setupTokens(user);
+    let claimDismissedDeadline ={};
+    claimDismissedDeadline = {'claimDismissedDeadline':'2022-01-10T15:59:50'};
+    testingSupport.updateCaseData(caseId, claimDismissedDeadline);
+  },
+
   createSpecifiedClaim: async (user, multipartyScenario) => {
 
     eventName = 'CREATE_CLAIM_SPEC';
@@ -759,6 +766,14 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
     let ccdState = updatedGABusinessProcessData.ccdState;
     return ccdState;
+  },
+  caseDismisalScheduler: async(caseId, gaCaseId, user ) => {
+    const response_msg = await apiRequest.civilCaseDismissalHandler();
+    assert.equal(response_msg.status, 200);
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_CLOSED');
   },
 
   judgeRevisitStayScheduler: async (gaCaseId,state,user) => {

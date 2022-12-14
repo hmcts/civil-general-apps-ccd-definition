@@ -92,7 +92,7 @@ module.exports = function () {
     runChallengedAccessSteps: async function(caseId) {
       await this.fillField('#caseReference',caseId);
       await this.click('Find');
-      I.retry(5).waitForElement('Request access');
+      I.retry(5).waitForText('Request access');
       await this.click('Request access');
       await this.see('To determine if the case needs to be consolidated');
       await this.click('#reason-1');
