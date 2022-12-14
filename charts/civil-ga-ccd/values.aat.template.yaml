@@ -149,7 +149,7 @@ xui-webapp:
   nodejs:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
-    image: hmctspublic.azurecr.io/xui/webapp:pr-2330
+    image: hmctspublic.azurecr.io/xui/webapp:latest
     ingressHost: civil-ga-ccd-xui-staging.aat.platform.hmcts.net
     memoryRequests: 512Mi
     cpuRequests: 1000m
