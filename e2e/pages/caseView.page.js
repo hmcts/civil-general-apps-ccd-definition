@@ -73,15 +73,19 @@ module.exports = {
     let urlBefore = await I.grabCurrentUrl();
 
     await I.retryUntilUrlChanges(async () => {
-      await I.click(locate(this.fields.tab).withText(tabName));
-        if (tabName === 'Application Documents') {
-          await I.refreshPage();
-          await I.wait(5);
+      if (tabName === 'Application Documents') {
+        await I.refreshPage();
+        if(['preview'].includes(config.runningEnv)) {
+          await I.wait(8);
+        } else {
+          await I.wait(2);
         }
+      }
+      await I.click(locate(this.fields.tab).withText(tabName));
       if(['preview'].includes(config.runningEnv)) {
-        await I.wait(5);
+        await I.wait(8);
       } else {
-        await I.wait(3);
+        await I.wait(2);
       }
       await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
     }, urlBefore);
