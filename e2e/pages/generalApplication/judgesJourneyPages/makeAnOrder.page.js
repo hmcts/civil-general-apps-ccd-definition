@@ -29,13 +29,13 @@ module.exports = {
     judgeApproveEditOptionDateYear: '#judgeApproveEditOptionDate-year',
   },
 
-  async selectAnOrder(order, consentCheck) {
+  async selectAnOrder(order, notice) {
     await I.waitForElement(this.fields.makeAnOrder.id);
     I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialMakeADecisionScreen');
     I.see('Judge’s recital');
-    await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.judgeRecitalTextArea));
+    await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.judgeRecitalTextArea), notice);
     I.see('Reasons for decision');
-    if (consentCheck === 'no') {
+    if (notice === 'no') {
       I.seeTextEquals('This application is cloaked', '#applicationIsCloakedLabel h2');
       I.see('Make application visible to all parties');
       I.click(this.fields.consentAgreementCheckBox);

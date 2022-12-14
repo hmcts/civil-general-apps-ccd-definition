@@ -44,7 +44,7 @@ module.exports = {
   },
 
   async startEvent(event, caseId) {
-    await I.retryUntilExists(async() => {
+    await I.retryUntilExists(async () => {
       await I.navigateToCaseDetails(caseId);
       await this.start(event);
     }, locate('.govuk-heading-l'));
@@ -57,13 +57,38 @@ module.exports = {
   },
 
   async navigateToTab(caseNumber, tabName) {
-    const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-    await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
-    await I.wait(3);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
-    await I.refreshPage();
-    await I.wait(12);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
+    if (tabName !== 'Application Documents') {
+      await I.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        if(['preview'].includes(config.runningEnv)) {
+          await I.wait(10);
+        } else {
+          await I.wait(3);
+        }
+      }, 'exui-header');
+    }
+
+    let urlBefore = await I.grabCurrentUrl();
+
+    await I.retryUntilUrlChanges(async () => {
+      if (tabName === 'Application Documents') {
+        await I.refreshPage();
+        if(['preview'].includes(config.runningEnv)) {
+          await I.wait(8);
+        } else {
+          await I.wait(2);
+        }
+      }
+      await I.click(locate(this.fields.tab).withText(tabName));
+      if(['preview'].includes(config.runningEnv)) {
+        await I.wait(8);
+      } else {
+        await I.wait(2);
+      }
+      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
+    }, urlBefore);
   },
 
   async clickOnTab(tabName) {
