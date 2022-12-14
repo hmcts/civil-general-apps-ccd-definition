@@ -49,7 +49,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'sequentialRep', childCaseNum(), 'yes');
+  await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'sequentialRep', childCaseNum(), 'yes', 'Order_Written_Representation_Sequential');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Sequential representations', 'yes');
@@ -90,7 +90,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     } else {
       await I.login(config.judgeLocalUser);
     }
-    await I.judgeRequestMoreInfo('requestMoreInfo', 'sendApplicationToOtherParty', childCaseNum(), 'no');
+    await I.judgeRequestMoreInfo('requestMoreInfo', 'sendApplicationToOtherParty', childCaseNum(), 'no', 'Request_for_information');
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
     await I.judgeCloseAndReturnToCaseDetails(childCaseId);
     await I.verifyJudgesSummaryPage('Send application to other party', 'no');
@@ -115,7 +115,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     } else {
       await I.login(config.judgeLocalUser);
     }
-    await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes');
+    await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes', 'Request_for_information');
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
     await I.judgeCloseAndReturnToCaseDetails(childCaseId);
     console.log('Judges requested more information on case: ' + childCaseNum());
