@@ -10,15 +10,15 @@ const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testi
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference;
 
-Feature('General Application end to end journey @smoke-tests1');
+Feature('General Application end to end journey @smoke-tests');
 
 Scenario('GA for 1v1- respond to application - Request more information', async ({I, api}) => {
-  parentCaseNumber = await api.createClaimWithRepresentedRespondent(
-    config.applicantSolicitorUser, mpScenario);
+  parentCaseNumber = await api.createUnspecifiedClaim(
+    config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
   console.log('Case created for general application: ' + parentCaseNumber);
- /* await I.login(config.applicantSolicitorUser);
+  await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(parentCaseNumber);
   caseId = await I.grabCaseNumber();
   await I.createGeneralApplication(
@@ -28,7 +28,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
     'signLanguageInterpreter');
   console.log('General Application created: ' + parentCaseNumber);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, parentCaseNumber);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
   await I.closeAndReturnToCaseDetails(caseId);
   await I.clickAndVerifyTab(parentCaseNumber, 'Applications', getAppTypes().slice(0, 5), 1);
   await I.see(respondentStatus);
@@ -41,20 +41,31 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
     'signLanguageInterpreter', getAppTypes().slice(0, 5));
   console.log('Org1 solicitor Responded to application: ' + childCaseNum());
   await I.respCloseAndReturnToCaseDetails(childCaseId);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.defendantSolicitorUser);
+  await I.dontSee('Go');
+  await I.dontSee('Next step');
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDecisionStatus);
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await I.login(config.judgeUser);
+  } else {
+    await I.login(config.judgeLocalUser);
+  }
   await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'JUDGE_MAKES_DECISION');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.defendantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Request more information');
   await I.verifyApplicationDocument(childCaseNum(), 'Request for information');
   console.log('Judges requested more information on case: ' + childCaseNum());
+  await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(additionalInfoStatus);
   await I.respondToJudgeAdditionalInfo(childCaseNum(), childCaseId);
-  console.log('Responded to Judge Additional Information on case: ' + childCaseNum());*/
+  console.log('Responded to Judge Additional Information on case: ' + childCaseNum());
 }).retry(0);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
+
+

@@ -1,6 +1,7 @@
 const {I} = inject();
 const expect = require('chai').expect;
 const {verifyJudgeRecitalText, verifyHearingDetailsJudgeRecitalText} = require('../../generalAppCommons');
+const config = require('../../../config');
 
 module.exports = {
 
@@ -13,8 +14,10 @@ module.exports = {
 
   async verifyHearingDetailsGeneralOrderScreen(hearingPreferences, timeEstimate) {
     await I.waitForElement(this.fields.hearingDetailsJudgeRecitalTextArea);
-    I.seeInCurrentUrl('/JUDGE_MAKES_DECISIONGAJudicialHearingDetailsGeneralOrderScreen');
-    I.see('Draw a General Order');
+    I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialHearingDetailsGeneralOrderScreen');
+    if (!config.runWAApiTest) {
+      I.see('Draw a General Order');
+    }
     I.see('Judge’s recital');
     await verifyHearingDetailsJudgeRecitalText(await I.grabValueFrom(this.fields.hearingDetailsJudgeRecitalTextArea));
     await I.see(`Hearing type is ${hearingPreferences}`);
@@ -27,7 +30,7 @@ module.exports = {
 
   async verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType) {
     await I.waitForElement(this.fields.writtenRepresentationsJudgeRecitalTextArea);
-    I.seeInCurrentUrl('/JUDGE_MAKES_DECISIONGAJudicialWrittenRepresentationsDrawGeneralOrder');
+    I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialWrittenRepresentationsDrawGeneralOrder');
     I.see('Draw a General Order');
     I.see('Judge’s recital');
     await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.writtenRepresentationsJudgeRecitalTextArea));

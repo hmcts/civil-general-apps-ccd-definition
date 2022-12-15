@@ -11,6 +11,7 @@ module.exports = {
       }
     },
     judgeRequestMoreInfoTextArea: '#judicialDecisionRequestMoreInfo_judgeRequestMoreInfoText',
+    judgeRequestMoreInfoRecitalTextArea: '#judicialDecisionRequestMoreInfo_judgeRecitalText',
     judgeRequestMoreInfoDay: '#judgeRequestMoreInfoByDate-day',
     judgeRequestMoreInfoMonth: '#judgeRequestMoreInfoByDate-month',
     judgeRequestMoreInfoYear: '#judgeRequestMoreInfoByDate-year',
@@ -19,7 +20,7 @@ module.exports = {
 
   async requestMoreInfoOrder(info, withoutNotice) {
     await I.waitForElement(this.fields.requestMoreInfo.id);
-    I.seeInCurrentUrl('JUDGE_MAKES_DECISIONGAJudicialRequestMoreInfoScreen');
+    I.seeInCurrentUrl('MAKE_DECISIONGAJudicialRequestMoreInfoScreen');
     if (withoutNotice === 'no') {
       I.seeNumberOfVisibleElements(this.fields.requestInfoRadioButton, 2);
       await within(this.fields.requestMoreInfo.id, () => {
@@ -34,6 +35,10 @@ module.exports = {
       I.fillField(this.fields.judgeRequestMoreInfoDay, '01');
       I.fillField(this.fields.judgeRequestMoreInfoMonth, '01');
       I.fillField(this.fields.judgeRequestMoreInfoYear, '2024');
+      I.fillField(this.fields.judgeRequestMoreInfoRecitalTextArea, 'Request more Info - Judge recital text');
+    }
+    if ('sendApplicationToOtherParty' === info) {
+      I.fillField(this.fields.judgeRequestMoreInfoRecitalTextArea, 'Send Application - Judge recital text');
     }
     await I.clickContinue();
   }

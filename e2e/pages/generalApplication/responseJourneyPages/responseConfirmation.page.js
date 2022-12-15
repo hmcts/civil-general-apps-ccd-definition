@@ -26,13 +26,15 @@ module.exports = {
 
   async closeAndReturnToCaseDetails(childCaseId) {
     await I.click('Close and Return to case details');
-    await I.waitForInvisible(locate('.loading-spinner-in-action').withText('Loading'), 5);
+    await I.waitForInvisible(locate('div.spinner-container').withText('Loading'), 15);
     await I.see(`Case ${childCaseId} has been updated with event: Respond to application`);
   },
 
   async verifyAlreadyRespondedErrorMessage() {
     I.waitForClickable('.event-trigger .button', 3);
-    I.click(this.fields.goButton);
+    await I.retryUntilExists(async () => {
+      await I.click(this.fields.goButton);
+    }, this.fields.errorMessage);
     let actualErrorMsg = await I.grabTextFrom(this.fields.errorMessage);
     expect(actualErrorMsg).to.equals('The application has already been responded to.');
   }

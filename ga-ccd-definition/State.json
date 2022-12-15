@@ -89,5 +89,26 @@
     "Name": "Claim Issue Pending",
     "Description": "Holding state whilst payment is taken",
     "DisplayOrder": 13
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "PROCEEDS_IN_HERITAGE",
+    "Name": "Proceeds in Heritage",
+    "Description": "Proceeds in Heritage",
+    "DisplayOrder": 14
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "APPLICATION_ADD_PAYMENT",
+    "Name": "Application Additional Payment",
+    "Description": "Application Additional Payment",
+    "DisplayOrder": 15
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "APPLICATION_PAYMENT_FAILED",
+    "Name": "Application Payment Failed",
+    "Description": "Application Payment Failed",
+    "DisplayOrder": 16
   }
 ]

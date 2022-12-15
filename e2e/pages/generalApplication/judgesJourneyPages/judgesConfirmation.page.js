@@ -10,12 +10,12 @@ module.exports = {
   },
 
   async verifyJudgesConfirmationPage() {
-    I.seeInCurrentUrl('JUDGE_MAKES_DECISION/confirm');
+    I.seeInCurrentUrl('MAKE_DECISION/confirm');
     I.seeTextEquals('Your order has been made', '#confirmation-header h1');
   },
 
   async verifyReqMoreInfoConfirmationPage(infoType) {
-    I.seeInCurrentUrl('JUDGE_MAKES_DECISION/confirm');
+    I.seeInCurrentUrl('MAKE_DECISION/confirm');
     switch (infoType) {
       case 'requestMoreInformation':
         I.seeTextEquals('You have requested more information', '#confirmation-header h1');
@@ -31,8 +31,7 @@ module.exports = {
   async closeAndReturnToCaseDetails(childCaseId) {
     await I.see(childCaseId);
     await I.click('Close and Return to case details');
-    await I.waitForInvisible(locate('.loading-spinner-in-action').withText('Loading'), 5);
-    await I.see(`Case ${childCaseId} has been updated with event: Make decision`);
+    await I.waitForInvisible(locate('div.spinner-container').withText('Loading'), 15);
   }
 };
 

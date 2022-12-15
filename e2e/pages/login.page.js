@@ -12,7 +12,6 @@ module.exports = {
     I.retry(5).waitForElement(this.fields.username);
     I.fillField(this.fields.username, user.email);
     I.fillField(this.fields.password, user.password);
-
     I.retry(5).waitForElement(this.submitButton);
     I.click(this.submitButton);
   },

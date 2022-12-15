@@ -1,8 +1,10 @@
+const config = require('../../../config');
 const {I} = inject();
 
 module.exports = {
 
   fields: {
+    judgeHearingLocation: '#judicialListForHearing_hearingPreferredLocation',
     hearingPreferences: {
       id: '#judicialListForHearing_hearingPreferencesPreferredType',
       options: {
@@ -36,7 +38,7 @@ module.exports = {
 
 
   async selectJudicialHearingPreferences(hearingPreferences) {
-    I.seeInCurrentUrl('JUDGE_MAKES_DECISION/JUDGE_MAKES_DECISIONGAJudicialHearingDetailsScreen');
+    I.seeInCurrentUrl('MAKE_DECISION/MAKE_DECISIONGAJudicialHearingDetailsScreen');
     I.waitForElement(this.fields.hearingPreferences.id);
     await within(this.fields.hearingPreferences.id, () => {
       I.click(this.fields.hearingPreferences.options[hearingPreferences]);
@@ -44,9 +46,11 @@ module.exports = {
     if ('inPerson' === hearingPreferences) {
       await I.see('Select an option from the dropdown');
     }
-    await I.see('Applicant prefers In person. ' +
-      'Respondent1 prefers In person. ' +
-      'Respondent2 prefers In person.');
+    if (!config.runWAApiTest) {
+      await I.see('Applicant prefers In person. ' +
+        'Respondent1 prefers In person. ' +
+        'Respondent2 prefers In person.');
+    }
   },
 
   async selectJudicialTimeEstimate(timeEstimate) {
@@ -54,20 +58,30 @@ module.exports = {
     await within(this.fields.judicialTimeEstimate.id, () => {
       I.click(this.fields.judicialTimeEstimate.options[timeEstimate]);
     });
-    await I.see('Applicant estimates 45 minutes. ' +
-      'Respondent1 estimates 45 minutes. ' +
-      'Respondent2 estimates 45 minutes.');
+    if (!config.runWAApiTest) {
+      await I.see('Applicant estimates 45 minutes. ' +
+        'Respondent1 estimates 45 minutes. ' +
+        'Respondent2 estimates 45 minutes.');
+    }
   },
 
   async selectJudicialSupportRequirement(supportRequirement) {
     I.waitForElement(this.fields.judicialSupportRequirement.id);
-    await I.see('Applicant require Sign language interpreter. ' +
-      'Respondent1 require Sign language interpreter. ' +
-      'Respondent2 require Sign language interpreter.');
+    if (!config.runWAApiTest) {
+      await I.see('Applicant require Sign language interpreter. ' +
+        'Respondent1 require Sign language interpreter. ' +
+        'Respondent2 require Sign language interpreter.');
+    }
     await within(this.fields.judicialSupportRequirement.id, () => {
       I.click(this.fields.judicialSupportRequirement.options[supportRequirement]);
     });
     await I.fillField(this.fields.additionalInfoForCourtStaffTextArea, 'Information for court staff');
+    await I.click('Continue');
+    await I.see('Select your preferred hearing location.');
+    await I.seeNumberOfVisibleElements(this.fields.judgeHearingLocation, 1);
+    await within(this.fields.hearingPreferences.id, () => {
+      I.click(this.fields.hearingPreferences.options['videoConferenceHearing']);
+    });
     await I.clickContinue();
   },
 

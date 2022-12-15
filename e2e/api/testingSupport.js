@@ -5,12 +5,12 @@ const {retry} = require('./retryHelper');
 
 let incidentMessage;
 
-const MAX_RETRIES = 50;
-const RETRY_TIMEOUT_MS = 1000;
+const MAX_RETRIES = 60;
+const RETRY_TIMEOUT_MS = 5000;
 
 module.exports = {
-  waitForFinishedBusinessProcess: async caseId => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+  waitForFinishedBusinessProcess: async (caseId, user) => {
+    const authToken = await idamHelper.accessToken(user);
 
     await retry(() => {
       return restHelper.request(
@@ -38,9 +38,10 @@ module.exports = {
    * waits for General Application Camunda tasks to finish
    *
    * @param caseId - Civil Case Reference
+   * @param user
    */
-  waitForGAFinishedBusinessProcess: async caseId => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+  waitForGAFinishedBusinessProcess: async (caseId, user) => {
+    const authToken = await idamHelper.accessToken(user);
     console.log('** Start waitForGAFinishedBusinessProcess to wait for GA Camunda Tasks to Start and Finish **');
 
     await retry(() => {
@@ -70,9 +71,11 @@ module.exports = {
    * Waits for General Application Camunda tasks to finish
    *
    * @param caseId - GA Case Reference
+   * @param ccdState
+   * @param user
    */
-  waitForGACamundaEventsFinishedBusinessProcess: async (caseId, ccdState) => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+  waitForGACamundaEventsFinishedBusinessProcess: async (caseId, ccdState, user) => {
+    const authToken = await idamHelper.accessToken(user);
     console.log('** Start waitForGACamundaEventsFinishedBusinessProcess to wait for GA Camunda Tasks to Start and Finish **');
 
     await retry(() => {
@@ -98,7 +101,7 @@ module.exports = {
       throw new Error(`Business process failed for case: ${caseId}, incident message: ${incidentMessage}`);
   },
 
-  assignCaseToDefendant: async (caseId, caseRole, user = config.defendantSolicitorUser) => {
+  assignCaseToDefendant: async (caseId, caseRole, user) => {
     const authToken = await idamHelper.accessToken(user);
 
     await retry(() => {

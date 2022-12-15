@@ -2,13 +2,21 @@ const config = require('../config.js');
 
 const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper.js');
+const {retry} = require('./retryHelper');
 const totp = require('totp-generator');
+
+const TASK_MAX_RETRIES = 40;
+const TASK_RETRY_TIMEOUT_MS = 10000;
 
 const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
 const getCcdDataStoreGABaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseTypeGA}`;
 
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
+const getPaymentCallbackUrl = () => `${config.url.generalApplication}/service-request-update`;
+const getJudgeRevisitTaskHandlerUrl =() => `${config.url.generalApplication}/testing-support/trigger-judge-revisit-process-event`;
+const getGaCaseDataUrl =(caseId) => `${config.url.generalApplication}/testing-support/case/${caseId}`;
+
 const getRequestHeaders = (userAuth) => {
   return {
     'Content-Type': 'application/json',
@@ -40,6 +48,40 @@ module.exports = {
     return await restHelper.retriedRequest(url, getRequestHeaders(eventUserAuth), null, 'GET', response)
       .then(response => response.json());
   },
+
+  paymentApiRequestUpdateServiceCallback: async (serviceRequestUpdateDto) => {
+    let url = getPaymentCallbackUrl();
+    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth),
+      serviceRequestUpdateDto,'PUT');
+    return response || {};
+  },
+
+  gaOrderMadeSchedulerTaskHandler: async () => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    let url = getJudgeRevisitTaskHandlerUrl();
+    let response_msg =  await restHelper.retriedRequest(url, {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null,
+      'GET');
+    return response_msg|| {};
+  },
+
+
+  fetchGaCaseData: async (caseId) => {
+
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    let url = getGaCaseDataUrl(caseId);
+    console.log('*** GA Case Reference: '  + caseId + ' ***');
+
+    return await restHelper.retriedRequest(url,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null, 'GET');
+  },
+
 
   startEvent: async (eventName, caseId) => {
     let url = getCcdDataStoreBaseUrl();
@@ -109,9 +151,9 @@ module.exports = {
       }, 'POST', 201);
   },
 
-  fetchUpdatedCaseData: async (caseId) => {
+  fetchUpdatedCaseData: async (caseId, user) => {
 
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    const authToken = await idamHelper.accessToken(user);
 
     let url = getGeneralApplicationBaseUrl();
     console.log('*** Civil Case Reference: '  + caseId + ' ***');
@@ -126,9 +168,9 @@ module.exports = {
       },null, 'GET');
   },
 
-  fetchUpdatedGABusinessProcessData: async (caseId) => {
+  fetchUpdatedGABusinessProcessData: async (caseId, user) => {
 
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    const authToken = await idamHelper.accessToken(user);
 
     let url = getGeneralApplicationBaseUrl();
     console.log('*** GA Case Reference: '  + caseId + ' ***');
@@ -142,4 +184,51 @@ module.exports = {
         'Authorization': `Bearer ${authToken}`,
       },null, 'GET');
   },
+
+  fetchTaskDetails: async (user, caseNumber, taskId, expectedStatus = 200) => {
+    let taskDetails;
+    const userToken =  await idamHelper.accessToken(user);
+    const s2sToken = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2sForXUI.microservice,
+        oneTimePassword: totp(config.s2sForXUI.secret)
+      })
+      .then(response => response.text());
+
+    const inputData = {
+      'search_parameters': [
+        {'key': 'jurisdiction','operator': 'IN','values': ['CIVIL']},
+        {'key': 'caseId','operator': 'IN','values': [caseNumber]},
+        {'key':'state','operator':'IN','values':['assigned','unassigned']}
+      ],
+      'sorting_parameters': [{'sort_by': 'dueDate', 'sort_order': 'asc'}]
+    };
+
+
+    return retry(() => {
+      return restHelper.request(`${config.url.waTaskMgmtApi}/task`,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userToken}`,
+          'ServiceAuthorization': `Bearer ${s2sToken}`
+        }, inputData, 'POST', expectedStatus)
+        .then(async response => await response.json())
+        .then(jsonResponse => {
+          let availableTaskDetails = jsonResponse['tasks'];
+          availableTaskDetails.forEach((taskInfo) => {
+            if(taskInfo['type'] == taskId) {
+              console.log('Found taskInfo with id ...', taskId);
+              taskDetails = taskInfo;
+            }
+          });
+          if (!taskDetails) {
+            throw new Error(`Ongoing task retrieval process for case id: ${caseNumber}`);
+          } else {
+            return taskDetails;
+          }
+        });
+    }, TASK_MAX_RETRIES, TASK_RETRY_TIMEOUT_MS);
+  }
 };

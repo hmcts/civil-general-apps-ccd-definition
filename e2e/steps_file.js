@@ -1,5 +1,4 @@
 // in this file you can append custom step methods to 'I' object
-
 const output = require('codeceptjs').output;
 
 const config = require('./config.js');
@@ -82,6 +81,8 @@ const writtenRepresentationsPage = require('./pages/generalApplication/judgesJou
 const uploadScreenPage = require('./pages/generalApplication/judgesJourneyPages/uploadScreen.page');
 const applicationDocumentPage = require('./pages/generalApplication/judgesJourneyPages/applicationDocument.page');
 const judgesSummary = require('./pages/generalApplication/judgesJourneyPages/judgesSummary.page');
+const claimDocumentPage = require('./pages/generalApplication/claimDocument.page');
+const serviceRequestPage = require('./pages/generalApplication/serviceRequest.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -141,7 +142,7 @@ const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 let caseId, screenshotNumber, eventName, currentEventName;
 let eventNumber = 0;
 
-const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
+const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
 
 const selectApplicationType = (eventName, applicationType) => [
@@ -223,7 +224,7 @@ module.exports = function () {
       }
 
       await this.retryUntilExists(async () => {
-        this.amOnPage(config.url.manageCase, 60);
+        this.amOnPage(config.url.manageCase, 90);
 
         if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
           output.log(`Signing in user: ${user.type}`);
@@ -462,6 +463,12 @@ module.exports = function () {
     ]);
     },
 
+    async clickOnTab(tabName) {
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.clickOnTab(tabName)
+      ]);
+    },
+
     /**
      * Retries defined action util element described by the locator is invisible. If element is not invisible
      * after 4 tries (run + 3 retries) this step throws an error. Use cases include checking no error present on page.
@@ -695,6 +702,12 @@ module.exports = function () {
       await this.waitForSelector('.ccd-dropdown');
     },
 
+    async navigateToApplicationsTab(caseNumber) {
+      await this.amOnPage(`${config.url.manageCase}/cases/case-details/${caseNumber}#Applications`);
+      await this.refreshPage();
+      await this.wait(10);
+    },
+
     async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber) {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
@@ -735,7 +748,7 @@ module.exports = function () {
     },
 
     async judgeMakeDecision(decision, order, consentCheck, caseNumber) {
-      eventName = events.JUDGE_MAKES_DECISION.name;
+      eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
@@ -747,7 +760,7 @@ module.exports = function () {
     },
 
     async judgeRequestMoreInfo(decision, infoType, caseNumber, withoutNotice) {
-      eventName = events.JUDGE_MAKES_DECISION.name;
+      eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
@@ -782,6 +795,21 @@ module.exports = function () {
       ]);
     },
 
+    async payAndVerifyAdditionalPayment(childCaseNumber) {
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.navigateToTab(childCaseNumber, 'Service Request'),
+        () => serviceRequestPage.payAdditionalAmount(childCaseNumber),
+        () => serviceRequestPage.verifyAdditionalPayment(childCaseNumber),
+      ]);
+    },
+
+    async verifyClaimDocument(parentCaseNumber, childCaseNumber, docType) {
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.navigateToTab(parentCaseNumber, 'Claim documents'),
+        () => claimDocumentPage.verifyUploadedDocument(childCaseNumber, docType),
+      ]);
+    },
+
     async respondToJudgesDirections(caseNumber, childCaseId) {
       eventName = events.RESPOND_TO_JUDGE_DIRECTIONS.name;
       await this.triggerStepsWithScreenshot([
@@ -807,11 +835,11 @@ module.exports = function () {
     },
 
     async judgeListForAHearingDecision(decision, caseNumber) {
-      eventName = events.JUDGE_MAKES_DECISION.name;
+      eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
-        () => listForHearingPage.selectJudicialHearingPreferences('videoConferenceHearing'),
+        () => listForHearingPage.selectJudicialHearingPreferences('inPerson'),
         () => listForHearingPage.selectJudicialTimeEstimate('fifteenMin'),
         () => listForHearingPage.verifyVulnerabilityQuestions(),
         () => listForHearingPage.selectJudicialSupportRequirement('disabledAccess'),
@@ -822,8 +850,28 @@ module.exports = function () {
       ]);
     },
 
+    judgeListForAHearingDecisionWA: async function (decision, caseNumber) {
+      await judgeDecisionPage.selectJudgeDecision(decision);
+      await listForHearingPage.selectJudicialHearingPreferences('inPerson');
+      await listForHearingPage.selectJudicialTimeEstimate('fifteenMin');
+      await listForHearingPage.verifyVulnerabilityQuestions();
+      await listForHearingPage.selectJudicialSupportRequirement('disabledAccess');
+      await drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('Video', '15 minutes');
+      await judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber);
+      await event.submit('Submit', 'Your order has been made');
+      await judgesConfirmationPage.verifyJudgesConfirmationPage();
+    },
+
+    async judgeApproveAnOrderWA(decision, order, consentCheck, caseNumber) {
+      await judgeDecisionPage.selectJudgeDecision(decision);
+      await makeAnOrderPage.selectAnOrder(order, consentCheck);
+      await judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber);
+      await event.submit('Submit', 'Your order has been made');
+      await judgesConfirmationPage.verifyJudgesConfirmationPage();
+    },
+
     async judgeWrittenRepresentationsDecision(decision, representationsType, caseNumber) {
-      eventName = events.JUDGE_MAKES_DECISION.name;
+      eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),

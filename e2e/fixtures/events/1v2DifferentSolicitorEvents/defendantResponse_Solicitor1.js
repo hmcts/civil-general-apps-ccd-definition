@@ -1,4 +1,5 @@
-const {date, element, buildAddress} = require('../../../api/dataHelper');
+const {date, element, buildAddress, listElement} = require('../../../api/dataHelper');
+const config = require('../../../config');
 
 module.exports = {
   valid: {
@@ -15,7 +16,7 @@ module.exports = {
       },
     },
     RespondentResponseType: {
-      respondent1ClaimResponseType: 'FULL_DEFENCE',
+      respondent1ClaimResponseType: 'PART_ADMISSION',
       multiPartyResponseTypeFlags: 'FULL_DEFENCE'
     },
     SolicitorReferences: {
@@ -112,12 +113,23 @@ module.exports = {
     },
     RequestedCourt: {
       respondent1DQRequestedCourt: {
-        responseCourtCode: '343',
+        responseCourtLocations: {
+          list_items: [
+            listElement(config.defendantSelectedCourt)
+          ],
+          value: listElement(config.defendantSelectedCourt)
+        },
         reasonForHearingAtSpecificCourt: 'No reasons',
         requestHearingAtSpecificCourt: 'Yes'
       }
     },
     HearingSupport: {},
+    VulnerabilityQuestions: {
+      respondent1DQVulnerabilityQuestions: {
+        vulnerabilityAdjustmentsRequired: 'Yes',
+        vulnerabilityAdjustments: 'Defendant 1 reasons'
+      }
+    },
     FurtherInformation: {
       respondent1DQFurtherInformation: {
         futureApplications: 'Yes',
