@@ -57,7 +57,7 @@ Scenario('Verify Specific access check for judge @e2e-wa', async ({I, wa, api}) 
   await api.verifySpecificAccessForGaCaseData(config.iacLeadershipJudge,gaCaseReference)
 });
 
-Scenario.only('Verify Specific access check for Legal Ops @e2e-wa', async ({I, wa, api}) => {
+Scenario('Verify Specific access check for Legal Ops @e2e-wa', async ({I, wa, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
