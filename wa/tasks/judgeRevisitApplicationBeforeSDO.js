@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'Review Application for multiple types',
+  name: 'Application for multiple types - revisited make an order',
   type: 'JudgeRevisitApplication',
-  task_title: 'Review Application for multiple types',
+  task_title: 'Application for multiple types - revisited make an order',
   location_name: 'County Court Money Claims Centre',
   location: '192280',
   execution_type: 'Case Management Task',

@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'Application for multiple types',
+  name: 'Application for multiple types - revisited make order for written representations',
   type: 'LegalAdvisorRevisitApplication',
-  task_title: 'Application for multiple types',
+  task_title: 'Application for multiple types - revisited make order for written representations',
   location_name: 'County Court Money Claims Centre',
   location: '192280',
   execution_type: 'Case Management Task',
@@ -11,9 +11,7 @@ module.exports = {
   case_category: 'Civil',
   auto_assigned: false,
   case_management_category: 'Civil',
-  work_type_id: 'decision_making_work',
-  work_type_label: 'Decision-making work',
   permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel' ] },
-  description: '[LegalAdvisorRevisitApplication](/cases/case-details/${[CASE_REFERENCE]})',
+  description: '[LegalAdvisorRevisitApplication](/cases/case-details/${[CASE_REFERENCE]}/trigger/MAKE_DECISION/MAKE_DECISIONGAJudicialDecision)',
   role_category: 'LEGAL_OPERATIONS'
 };

@@ -92,7 +92,8 @@ module.exports = function () {
     runChallengedAccessSteps: async function(caseId) {
       await this.fillField('#caseReference',caseId);
       await this.click('Find');
-      I.retry(5).waitForText('Request access');
+      await this.wait(5);
+      await this.waitForText('Request access');
       await this.click('Request access');
       await this.see('To determine if the case needs to be consolidated');
       await this.click('#reason-1');
@@ -106,6 +107,7 @@ module.exports = function () {
     runSpecificAccessRequestSteps: async function(caseId) {
       await this.fillField('#caseReference',caseId);
       await this.click('Find');
+      await this.wait(5);
       await this.click('Request access');
       await this.waitForText('Why do you need to access this case');
       await this.fillField('#specific-reason', 'Req for iac user');
@@ -118,25 +120,46 @@ module.exports = function () {
       console.log('Specific access requested successfully');
     },
 
-    runSpecificAccessApprovalSteps: async function(caseId, approveType = '7 days') {
+    runSpecificAccessApprovalSteps: async function(caseId, approveType) {
       console.log('config.url.manageCase...', config.url.manageCase);
       await this.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/tasks');
-      await this.waitForText('Assign to me');
+      await this.waitForElement('#action_claim');
       await this.click('Assign to me');
-      await this.waitForText('Review Access Request');
+      await this.waitForElement('#action_reassign');
+      await this.see('Next steps');
       await this.click('Review Access Request');
-      await this.waitForText('Approve request');
-      await this.click('#APPROVE_REQUEST');
-      await this.clickContinue();
-      await this.waitForText('How long do you want to give access to this case for');
+      await this.waitForElement('#APPROVE_REQUEST');
+      await this.click('Approve request');
+      await this.click('Continue');
+      await this.waitForElement('#specific-access-1');
       if (approveType == '7 days') {
-        await this.click('specific-access-1');
+        await this.click('7 days');
       } else if (approveType == 'Indefinite'){
-        await this.click('specific-access-2');
+        await this.click('Indefinite');
       } else if (approveType == 'Another period'){
-        await this.click('specific-access-3');
+        await this.click('Another period');
       }
+      await this.click('Submit');
       await this.see('Access approved');
+      await this.click('Return to My tasks');
+      await this.see('My tasks');
+    },
+
+    runJudgeSpecificAccessApprovalSteps: async function(caseId) {
+      console.log('config.url.manageCase...', config.url.manageCase);
+      await this.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/tasks');
+      await this.waitForElement('#action_assign');
+      await this.click('Assign task');
+      await this.waitForElement('#JUDICIAL');
+      await this.click('Judicial');
+      await this.click('Continue');
+      await this.wait(5);
+      await this.waitForElement('#sub-title-hint');
+      await this.fillField('#inputSelectPerson','Joe Bloggs (4925721EMP-@ejudiciary.net)');
+      await this.click('Continue');
+      await this.waitForElement('#reassign-confirm-hint');
+      await this.see('Check you are assigning work to the right person.');
+      await this.click('Assign');
       await this.click('Return to My tasks');
       await this.see('My tasks');
     },

@@ -58,7 +58,7 @@ module.exports = {
   },
 
   gaOrderMadeSchedulerTaskHandler: async (state) => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    const authToken = await idamHelper.accessToken(config.systemupdate);
     let url = getJudgeRevisitTaskHandlerUrl(state);
     let response_msg =  await restHelper.retriedRequest(url, {
         'Content-Type': 'application/json',

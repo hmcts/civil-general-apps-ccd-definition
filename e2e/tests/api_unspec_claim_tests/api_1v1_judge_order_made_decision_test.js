@@ -41,17 +41,17 @@ Scenario('Judge Revisit 1V1 - Order Made End Date Scheduler @api-scheduler-test'
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
-
+  let state;
   console.log('*** Start Judge makes decision order made and : ' + gaCaseReference + ' ***');
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionOrderMadeStayClaimAppln(config.judgeUser, gaCaseReference);
+    state = await api.judgeMakesDecisionOrderMadeStayClaimAppln(config.judgeUser, gaCaseReference);
   }else {
-    await api.judgeMakesDecisionOrderMadeStayClaimAppln(config.judgeLocalUser, gaCaseReference);
+    state = await api.judgeMakesDecisionOrderMadeStayClaimAppln(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge makes decision order made - GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Triggering Judge Revisit Order Made Scheduler ***');
-  await api.judgeRevisitStayScheduler(gaCaseReference);
+  await api.judgeRevisitStayScheduler(gaCaseReference,state,config.systemupdate );
   console.log('*** End of Judge Revisit Order Made Scheduler ***');
 
 });

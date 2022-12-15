@@ -782,19 +782,17 @@ module.exports = {
     // retrive the dcase data for the ga reference  and assert that the flag is true
     const updatedResponse = await apiRequest.fetchGaCaseData(gaCaseId);
     const updatedGaCaseData = await updatedResponse.json();
-    let isOrderProcessedByScheduler = updatedGaCaseData.judicialDecisionMakeOrder.isOrderProcessedByStayScheduler;
-   // assert.equal(isOrderProcessedByScheduler,'Yes');
-    console.log('*** GA Case Reference: ' + gaCaseId + ' ***');
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
-    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
-    assert.equal(updatedGABusinessProcessData.ccdState, 'AWAITING_DIRECTIONS_ORDER_DOCS');
+    if(state == 'ORDER_MADE') {
+      let isOrderProcessedByScheduler = updatedGaCaseData.judicialDecisionMakeOrder.isOrderProcessedByStayScheduler;
+      assert.equal(isOrderProcessedByScheduler,'Yes');
+    }
+    console.log('*** Judge Revisit Scheduler ran successfully: ');
   },
 
   verifySpecificAccessForGaCaseData: async (user, gaCaseId) => {
     const response = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const responseBody = await response.json();
-    assert.equal(response.status, 201);
-    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.equal(response.status, 200);
   },
 
   judgeListApplicationForHearing: async (user, gaCaseId) => {

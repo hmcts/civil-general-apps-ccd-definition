@@ -4,14 +4,7 @@ const apiRequest = require("../../../api/apiRequest");
 const {systemupdate} = require("../../../config");
 const mpScenario = 'ONE_V_ONE';
 
-let civilCaseReference, gaCaseReference, expectedSpecificAccessRequestJudiciary, expectedSpecificAccessRequestAdmin,
-  expectedSpecificAccessRequestLegalOps;
-/*if (config.runWAApiTest) {
-
-  expectedSpecificAccessRequestJudiciary = require('../../../../wa/tasks/reviewSpecifiAccessRequestJudiciary.js');
-  expectedSpecificAccessRequestAdmin = require('../../../../wa/tasks/reviewSpecifiAccessRequestAdmin.js');
-  expectedSpecificAccessRequestLegalOps = require('../../../../wa/tasks/reviewSpecifiAccessRequestLegalOps.js');
-}*/
+let civilCaseReference, gaCaseReference;
 
 Feature(' GA - WA Application Closed @e2e-wa');
 
@@ -29,3 +22,9 @@ Scenario('1v1 Unspec GA-WA Application closed test @e2e-wa', async ({I, wa, api}
   await api.caseDismisalScheduler(civilCaseReference,gaCaseReference,systemupdate);
 
 }).retry(0);
+
+AfterSuite(async ({api}) => {
+  await api.cleanUp();
+});
+
+

@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'Review Application for multiple types - revisited make an order',
+  name: 'Review Application for multiple types - revisited make order for written representations',
   type: 'ReviewRevisitedApplication',
-  task_title: 'Review Application for multiple types - revisited make an order',
+  task_title: 'Review Application for multiple types - revisited make order for written representations',
   location_name: 'County Court Money Claims Centre',
   location: '192280',
   execution_type: 'Case Management Task',

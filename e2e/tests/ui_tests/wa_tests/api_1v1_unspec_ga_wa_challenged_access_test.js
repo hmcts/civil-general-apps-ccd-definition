@@ -11,7 +11,7 @@ if (config.runWAApiTest) {
 
 Feature(' GA - WA Challenged Access @e2e-wa');
 
-Scenario('GA - Challenged Access test - NBCAdmin & judge', async ({I, api, wa}) => {
+Scenario('GA - Challenged Access test - NBCAdmin & judge @e2e-wa', async ({I, api, wa}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -56,7 +56,7 @@ Scenario('GA - Challenged Access test - NBCAdmin & judge', async ({I, api, wa}) 
 
 }).retry(0);
 
-Scenario('GA - Challenged Access test - LegalAdvisor', async ({I, api, wa}) => {
+Scenario('GA - Challenged Access test - LegalAdvisor @e2e-wa', async ({I, api, wa}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
@@ -97,7 +97,7 @@ Scenario('GA - Challenged Access test - LegalAdvisor', async ({I, api, wa}) => {
 }).retry(0);
 
 
-/*AfterSuite(async ({api}) => {
+AfterSuite(async ({api}) => {
   await api.cleanUp();
-});*/
+});
 
