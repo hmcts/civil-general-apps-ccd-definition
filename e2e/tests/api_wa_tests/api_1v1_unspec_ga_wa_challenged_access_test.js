@@ -1,17 +1,16 @@
-const config = require('../../../config.js');
-const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
+const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference, expectedReviewApplicationTask,expectedJudgeDecideOnApplicationBeforeSDOTask,expectedLADecideOnApplicationBeforeSDOTask;
 if (config.runWAApiTest) {
-  expectedReviewApplicationTask = require('../../../../wa/tasks/reviewApplicationTask.js');
-  expectedJudgeDecideOnApplicationBeforeSDOTask = require('../../../../wa/tasks/judgeDecideOnApplicationBeforeSDOTask.js');
-  expectedLADecideOnApplicationBeforeSDOTask = require('../../../../wa/tasks/laDecideOnApplicationBeforeSDOTask.js');
+  expectedReviewApplicationTask = require('../../../wa/tasks/reviewApplicationTask.js');
+  expectedJudgeDecideOnApplicationBeforeSDOTask = require('../../../wa/tasks/judgeDecideOnApplicationBeforeSDOTask.js');
+  expectedLADecideOnApplicationBeforeSDOTask = require('../../../wa/tasks/laDecideOnApplicationBeforeSDOTask.js');
 }
 
-Feature(' GA - WA Challenged Access @e2e-wa');
+Feature('GA - WA Challenged Access @api-wa');
 
-Scenario('GA - Challenged Access test - NBCAdmin & judge @e2e-wa', async ({I, api, wa}) => {
+Scenario('GA - Challenged Access test - NBCAdmin & judge', async ({I, api, wa}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -37,7 +36,7 @@ Scenario('GA - Challenged Access test - NBCAdmin & judge @e2e-wa', async ({I, ap
   console.log('*** Challenged Access steps for nbcAdmin - End ***');
 
   console.log('*** NBC Admin Region4 Refer to Judge Process Start ***');
-  await api.nbcAdminReferToJudge(config.nbcAdminWithRegionId4, gaCaseReference)
+  await api.nbcAdminReferToJudge(config.nbcAdminWithRegionId4, gaCaseReference);
   console.log('*** NBC Admin Region4 Refer to Judge Process End ***');
 
   console.log('*** Validate Task Initiation for Judge Decide On Application - Start ***');
@@ -56,13 +55,13 @@ Scenario('GA - Challenged Access test - NBCAdmin & judge @e2e-wa', async ({I, ap
 
 }).retry(0);
 
-Scenario('GA - Challenged Access test - LegalAdvisor @e2e-wa', async ({I, api, wa}) => {
+Scenario('GA - Challenged Access test - LegalAdvisor', async ({I, api, wa}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
-  console.log('General Application Created Successfully')
+  console.log('General Application Created Successfully');
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');

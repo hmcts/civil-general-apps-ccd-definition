@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-const apiRequest = require('../../api/apiRequest');
 const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
@@ -51,7 +50,7 @@ Scenario('Judge Revisit 1V1 - Order Made End Date Scheduler @api-scheduler-test'
   console.log('*** End Judge makes decision order made - GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Triggering Judge Revisit Order Made Scheduler ***');
-  await api.judgeRevisitStayScheduler(gaCaseReference,state,config.systemupdate );
+  await api.judgeRevisitStayScheduler(gaCaseReference,state );
   console.log('*** End of Judge Revisit Order Made Scheduler ***');
 
 });

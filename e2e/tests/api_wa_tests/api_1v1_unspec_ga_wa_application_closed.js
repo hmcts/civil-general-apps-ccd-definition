@@ -1,14 +1,12 @@
-const config = require('../../../config.js');
-const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
-const apiRequest = require("../../../api/apiRequest");
-const {systemupdate} = require("../../../config");
+const config = require('../../config.js');
+const {systemUpdate} = require('../../config');
 const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature(' GA - WA Application Closed @e2e-wa');
+Feature(' GA - WA Application Closed @api-wa');
 
-Scenario('1v1 Unspec GA-WA Application closed test @e2e-wa', async ({I, wa, api}) => {
+Scenario('1v1 Unspec GA-WA Application closed test', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -18,9 +16,8 @@ Scenario('1v1 Unspec GA-WA Application closed test @e2e-wa', async ({I, wa, api}
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
   console.log('*** General Application case created ***' + gaCaseReference);
-  await api.amendclaimDismissedDeadline(config.systemupdate);
-  await api.caseDismisalScheduler(civilCaseReference,gaCaseReference,systemupdate);
-
+  await api.amendclaimDismissedDeadline(config.systemUpdate);
+  await api.caseDismisalScheduler(civilCaseReference, gaCaseReference, systemUpdate);
 }).retry(0);
 
 AfterSuite(async ({api}) => {

@@ -224,7 +224,7 @@ module.exports = {
 
   amendclaimDismissedDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let claimDismissedDeadline ={};
+    let claimDismissedDeadline;
     claimDismissedDeadline = {'claimDismissedDeadline':'2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, claimDismissedDeadline);
   },
@@ -706,15 +706,15 @@ module.exports = {
     const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const civilCaseData = await response.json();
     let gaReference;
-    if(user.email == config.applicantSolicitorUser.email && isVisibleToUser){
+    if(user.email === config.applicantSolicitorUser.email && isVisibleToUser){
       gaReference = civilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
       assert.equal(gaCaseId, gaReference);
     }
-    else if(user.email == config.defendantSolicitorUser.email && isVisibleToUser) {
+    else if(user.email === config.defendantSolicitorUser.email && isVisibleToUser) {
       gaReference = civilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
       assert.equal(gaCaseId, gaReference);
     }
-    else if(user.email == config.secondDefendantSolicitorUser.email && isVisibleToUser) {
+    else if(user.email === config.secondDefendantSolicitorUser.email && isVisibleToUser) {
       gaReference = civilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
       assert.equal(gaCaseId, gaReference);
     }
@@ -764,8 +764,7 @@ module.exports = {
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
-    let ccdState = updatedGABusinessProcessData.ccdState;
-    return ccdState;
+    return updatedGABusinessProcessData.ccdState;
   },
   caseDismisalScheduler: async(caseId, gaCaseId, user ) => {
     const response_msg = await apiRequest.civilCaseDismissalHandler();
@@ -776,13 +775,13 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_CLOSED');
   },
 
-  judgeRevisitStayScheduler: async (gaCaseId,state,user) => {
+  judgeRevisitStayScheduler: async (gaCaseId,state) => {
     const response_msg = await apiRequest.gaOrderMadeSchedulerTaskHandler(state);
     assert.equal(response_msg.status, 200);
     // retrive the dcase data for the ga reference  and assert that the flag is true
     const updatedResponse = await apiRequest.fetchGaCaseData(gaCaseId);
     const updatedGaCaseData = await updatedResponse.json();
-    if(state == 'ORDER_MADE') {
+    if(state === 'ORDER_MADE') {
       let isOrderProcessedByScheduler = updatedGaCaseData.judicialDecisionMakeOrder.isOrderProcessedByStayScheduler;
       assert.equal(isOrderProcessedByScheduler,'Yes');
     }
@@ -791,7 +790,6 @@ module.exports = {
 
   verifySpecificAccessForGaCaseData: async (user, gaCaseId) => {
     const response = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
-    const responseBody = await response.json();
     assert.equal(response.status, 200);
   },
 

@@ -1,5 +1,4 @@
-const config = require('../../../config.js');
-const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
+const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference, expectedReviewApplicationTask, expectedJudgeDecideOnApplicationBeforeSDOTask,
@@ -7,21 +6,21 @@ let civilCaseReference, gaCaseReference, expectedReviewApplicationTask, expected
   expectedJudgeDecideOnApplicationAfterSDOTask, expectedJudgeRevisitApplicationBeforeSDOTask, expectedLARevisitApplicationBeforeSDOTask,
   expectedReviewRevisitedTask, expectedJudgeRevisitApplicationAfterSDOTask;
 if (config.runWAApiTest) {
-  expectedReviewApplicationTask = require('../../../../wa/tasks/reviewApplicationTask.js');
-  expectedJudgeDecideOnApplicationBeforeSDOTask = require('../../../../wa/tasks/judgeDecideOnApplicationBeforeSDOTask.js');
-  expectedJudgeDecideOnApplicationAfterSDOTask = require('../../../../wa/tasks/judgeDecideOnApplicationAfterSDOTask.js');
-  expectedLADecideOnApplicationBeforeSDOTask = require('../../../../wa/tasks/laDecideOnApplicationBeforeSDOTask.js');
-  expectedJudgeRevisitApplicationBeforeSDOTask = require('../../../../wa/tasks/judgeRevisitApplicationBeforeSDO.js');
-  expectedLARevisitApplicationBeforeSDOTask = require('../../../../wa/tasks/legalAdvisorRevisitApplication.js');
-  expectedReviewRevisitedTask = require('../../../../wa/tasks/reviewRevisitedApplication.js');
-  expectedJudgeRevisitApplicationAfterSDOTask = require('../../../../wa/tasks/judgeRevisitApplicationAfterSDO.js');
-  expectedReviewResivistedForWrittenRep = require('../../../../wa/tasks/reviewRevisitedApplicationWrittenRep.js');
+  expectedReviewApplicationTask = require('../../../wa/tasks/reviewApplicationTask.js');
+  expectedJudgeDecideOnApplicationBeforeSDOTask = require('../../../wa/tasks/judgeDecideOnApplicationBeforeSDOTask.js');
+  expectedJudgeDecideOnApplicationAfterSDOTask = require('../../../wa/tasks/judgeDecideOnApplicationAfterSDOTask.js');
+  expectedLADecideOnApplicationBeforeSDOTask = require('../../../wa/tasks/laDecideOnApplicationBeforeSDOTask.js');
+  expectedJudgeRevisitApplicationBeforeSDOTask = require('../../../wa/tasks/judgeRevisitApplicationBeforeSDO.js');
+  expectedLARevisitApplicationBeforeSDOTask = require('../../../wa/tasks/legalAdvisorRevisitApplication.js');
+  expectedReviewRevisitedTask = require('../../../wa/tasks/reviewRevisitedApplication.js');
+  expectedJudgeRevisitApplicationAfterSDOTask = require('../../../wa/tasks/judgeRevisitApplicationAfterSDO.js');
+  expectedReviewResivistedForWrittenRep = require('../../../wa/tasks/reviewRevisitedApplicationWrittenRep.js');
 }
 
-Feature(' GA - WA Judge Revisit Applications @e2e-wa');
+Feature(' GA - WA Judge Revisit Applications @api-wa');
 
-Scenario('Before SDO GA - Directions Order Additional Response time Expired @e2e-wa', async ({I, api, wa}) => {
- civilCaseReference = await api.createUnspecifiedClaim(
+Scenario('Before SDO GA - Directions Order Additional Response time Expired', async ({api, wa}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -41,7 +40,7 @@ Scenario('Before SDO GA - Directions Order Additional Response time Expired @e2e
   console.log('*** Validate Task Initiation for Review Application - End ***');
 
   console.log('*** NBC Admin Region4 Refer to Judge Process Start ***');
-  await api.nbcAdminReferToJudge(config.nbcAdminWithRegionId4, gaCaseReference)
+  await api.nbcAdminReferToJudge(config.nbcAdminWithRegionId4, gaCaseReference);
   console.log('*** NBC Admin Region4 Refer to Judge Process End ***');
 
   console.log('*** Validate Task Initiation for Judge Decide On Application - Start ***');
@@ -53,13 +52,12 @@ Scenario('Before SDO GA - Directions Order Additional Response time Expired @e2e
   }
   console.log('*** Validate Task Initiation for Judge Decide On Application- End ***');
 
-  let state;
   console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
-    state = await api.judgeMakesDecisionDirectionsOrder(config.judgeUserWithRegionId4, gaCaseReference);
+  await api.judgeMakesDecisionDirectionsOrder(config.judgeUserWithRegionId4, gaCaseReference);
   console.log('*** End Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Triggering Judge Revisit Directions Order Scheduler ***');
-  await api.judgeRevisitStayScheduler(gaCaseReference,'AWAITING_DIRECTIONS_ORDER_DOCS',config.systemupdate);
+  await api.judgeRevisitStayScheduler(gaCaseReference, 'AWAITING_DIRECTIONS_ORDER_DOCS');
   console.log('*** End of Judge Revisit Directions Order Scheduler ***');
 
  console.log('*** Validate Task Initiation for Review Revisited Application - Start ***');
@@ -72,7 +70,7 @@ Scenario('Before SDO GA - Directions Order Additional Response time Expired @e2e
   console.log('*** Validate Task Initiation for Review Revisited Application - End ***');
 
   console.log('*** NBC Admin Region4 Refer to Judge Process Start ***');
-  await api.nbcAdminReferToJudge(config.nbcAdminWithRegionId4, gaCaseReference)
+  await api.nbcAdminReferToJudge(config.nbcAdminWithRegionId4, gaCaseReference);
   console.log('*** NBC Admin Region4 Refer to Judge Process End ***');
 
   console.log('*** Validate Task Initiation for Judge Revisit Application- Start ***');
@@ -86,13 +84,13 @@ Scenario('Before SDO GA - Directions Order Additional Response time Expired @e2e
 
 }).retry(0);
 
-Scenario('Before SDO GA 1v1 spec - Written Representations Additional Response time Expired @e2e-wa', async ({I, api, wa}) => {
+Scenario('Before SDO GA 1v1 spec - Written Representations Additional Response time Expired', async ({api, wa}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
-  console.log('General Application Created Successfully')
+  console.log('General Application Created Successfully');
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
@@ -107,7 +105,7 @@ Scenario('Before SDO GA 1v1 spec - Written Representations Additional Response t
   console.log('*** Validate Task Initiation for Review Application - End ***');
 
   console.log('*** NBC Admin Region4 Refer to Legal Advisor Process Start ***');
-  await api.nbcAdminReferToLegalAdvisor(config.nbcAdminWithRegionId4, gaCaseReference)
+  await api.nbcAdminReferToLegalAdvisor(config.nbcAdminWithRegionId4, gaCaseReference);
   console.log('*** NBC Admin Region4 Refer to Legal Advisor Process End ***');
 
   console.log('*** Validate Task Initiation for Legal Advisor Decide On Application - Start ***');
@@ -124,7 +122,7 @@ Scenario('Before SDO GA 1v1 spec - Written Representations Additional Response t
   console.log('*** End Judge Make Order GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
 
   console.log('*** Triggering Legal Advisor Revisit Written Representations Scheduler ***');
-  await api.judgeRevisitStayScheduler(gaCaseReference,state,config.systemupdate);
+  await api.judgeRevisitStayScheduler(gaCaseReference, state);
   console.log('*** End of Legal Advisor Revisit Written Representations Scheduler ***');
 
   console.log('*** Validate Task Initiation for Review Revisited Application - Start ***');
@@ -137,7 +135,7 @@ Scenario('Before SDO GA 1v1 spec - Written Representations Additional Response t
   console.log('*** Validate Task Initiation for Review Revisited Application - End ***');
 
   console.log('*** NBC Admin Region4 Refer to Legal Advisor Process Start ***');
-  await api.nbcAdminReferToLegalAdvisor(config.nbcAdminWithRegionId4, gaCaseReference)
+  await api.nbcAdminReferToLegalAdvisor(config.nbcAdminWithRegionId4, gaCaseReference);
   console.log('*** NBC Admin Region4 Refer to Legal Advisor Process End ***');
   console.log('*** Validate Task Initiation for Legal Advisor Revisit Application- Start ***');
   if (config.runWAApiTest) {
@@ -151,7 +149,10 @@ Scenario('Before SDO GA 1v1 spec - Written Representations Additional Response t
 
 }).retry(0);
 
-Scenario.skip('1V2 Unspec After SDO - Judge Revist Application- Request More Information Additional Response time Expired @e2e-wa', async ({I, api, wa}) => {
+Scenario.skip('1V2 Unspec After SDO - Judge Revist Application- Request More Information Additional Response time Expired', async ({
+                                                                                                                                     api,
+                                                                                                                                     wa
+                                                                                                                                   }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -181,7 +182,7 @@ Scenario.skip('1V2 Unspec After SDO - Judge Revist Application- Request More Inf
   console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Triggering Legal Advisor Revisit Directions Order Scheduler ***');
-  await api.judgeRevisitStayScheduler(gaCaseReference,state,config.systemupdate);
+  // await api.judgeRevisitStayScheduler(gaCaseReference,'state');
   console.log('*** End of Legal Advisor Revisit Directions Order Scheduler ***');
 
   console.log('*** Validate Task Initiation for Judge Revisit Application- Start ***');
