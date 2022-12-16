@@ -46,7 +46,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'no', childCaseNum());
+  await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'no', childCaseNum(), 'General_order');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Approve order', 'no');
@@ -88,7 +88,7 @@ Scenario('GA for 1v1 - Direction order journey @multiparty-e2e-tests @ui-nightly
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', childCaseNum());
+  await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', childCaseNum(), 'Directions_order');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Judges Directions', 'no');
@@ -131,7 +131,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @multiparty-e2e-te
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'no', childCaseNum());
+  await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'no', childCaseNum(), 'Dismissal_order');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Dismissal order', 'no');
@@ -188,7 +188,7 @@ Scenario('GA for 1v1- respond to application - Request more information @ui-nigh
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes');
+  await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', childCaseNum(), 'yes', 'Request_for_information');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.defendantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
   await I.verifyJudgesSummaryPage('Request more information', 'yes');
