@@ -11,18 +11,18 @@ module.exports = {
       }
     };
   },
-  judgeMakeOrderWrittenRep: () => {
+  judgeMakeOrderWrittenRep: (current_date) => {
     return {
       judicialDecision : {
         decision: 'MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS'
       },
       judicialDecisionMakeAnOrderForWrittenRepresentations: {
-        writtenConcurrentRepresentationsBy: '2026-05-04',
+        writtenConcurrentRepresentationsBy: current_date,
         makeAnOrderForWrittenRepresentations: 'CONCURRENT_REPRESENTATIONS'
       }
     };
   },
-  judgeMakeDecisionDirectionOrder: () => {
+  judgeMakeDecisionDirectionOrder: (current_date) => {
     return {
       judicialDecision : {
         decision: 'MAKE_AN_ORDER'
@@ -31,7 +31,7 @@ module.exports = {
         makeAnOrder: 'GIVE_DIRECTIONS_WITHOUT_HEARING',
         directionsText: 'sample text',
         reasonForDecisionText: 'sample text',
-        directionsResponseByDate: '2023-06-05',
+        directionsResponseByDate: current_date,
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No',
         isOrderProcessedByStayScheduler: 'No'

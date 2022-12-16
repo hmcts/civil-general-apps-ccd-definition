@@ -14,7 +14,8 @@ const getCcdDataStoreGABaseUrl = () => `${config.url.ccdDataStore}/caseworkers/$
 
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getPaymentCallbackUrl = () => `${config.url.generalApplication}/service-request-update`;
-const getJudgeRevisitTaskHandlerUrl =() => `${config.url.generalApplication}/testing-support/trigger-judge-revisit-process-event`;
+const getJudgeRevisitTaskHandlerUrl =(state) => `${config.url.generalApplication}/testing-support/trigger-judge-revisit-process-event/${state}`;
+const getCaseDismissalTaskHandlerUrl =() => `${config.url.civilService}/testing-support/trigger-case-dismissal-scheduler`;
 const getGaCaseDataUrl =(caseId) => `${config.url.generalApplication}/testing-support/case/${caseId}`;
 
 const getRequestHeaders = (userAuth) => {
@@ -61,9 +62,9 @@ module.exports = {
     return response || {};
   },
 
-  gaOrderMadeSchedulerTaskHandler: async () => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
-    let url = getJudgeRevisitTaskHandlerUrl();
+  gaOrderMadeSchedulerTaskHandler: async (state) => {
+    const authToken = await idamHelper.accessToken(config.systemUpdate);
+    let url = getJudgeRevisitTaskHandlerUrl(state);
     let response_msg =  await restHelper.retriedRequest(url, {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
@@ -72,6 +73,16 @@ module.exports = {
     return response_msg|| {};
   },
 
+  civilCaseDismissalHandler: async() => {
+    const authToken = await idamHelper.accessToken(config.systemUpdate);
+    let url = getCaseDismissalTaskHandlerUrl();
+    let response_msg =  await restHelper.retriedRequest(url, {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null,
+      'GET');
+    return response_msg|| {};
+  },
 
   fetchGaCaseData: async (caseId) => {
 
@@ -223,7 +234,7 @@ module.exports = {
         .then(jsonResponse => {
           let availableTaskDetails = jsonResponse['tasks'];
           availableTaskDetails.forEach((taskInfo) => {
-            if(taskInfo['type'] == taskId) {
+            if(taskInfo['type'] === taskId) {
               console.log('Found taskInfo with id ...', taskId);
               taskDetails = taskInfo;
             }
