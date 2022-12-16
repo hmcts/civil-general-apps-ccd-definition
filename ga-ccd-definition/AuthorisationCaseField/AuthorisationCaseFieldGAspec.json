@@ -2358,7 +2358,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
           "civil-administrator-standard",
           "caseworker-civil-systemupdate"
         ],
@@ -2379,7 +2378,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
           "civil-administrator-standard",
           "caseworker-civil-systemupdate"
         ],
@@ -2522,6 +2520,94 @@
           "caseworker-civil-judge",
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
+          "ga-basic-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialMakeOrderDocPreview",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "judge-profile",
+          "legal-adviser",
+          "ga-basic-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialListHearingDocPreview",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "judge-profile",
+          "legal-adviser",
+          "ga-basic-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialWrittenRepDocPreview",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "judge-profile",
+          "legal-adviser",
+          "ga-basic-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialRequestMoreInfoDocPreview",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser",
           "ga-basic-access"
