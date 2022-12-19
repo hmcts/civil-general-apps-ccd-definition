@@ -26,7 +26,7 @@
   {
     "ID": "GAJudicialWrittenRepresentationsGAspec",
     "ListElementCode": "writtenConcurrentRepresentationsBy",
-    "ElementLabel": "Any written representations and any further witness statements may be uploaded by 4pm on",
+    "ElementLabel": "Any written representations may be uploaded by 4pm on",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "FieldShowCondition": "makeAnOrderForWrittenRepresentations = \"CONCURRENT_REPRESENTATIONS\""

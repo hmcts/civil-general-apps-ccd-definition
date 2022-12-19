@@ -35,7 +35,7 @@ module.exports = {
       await I.see('The respondent may upload any written representations by 4pm on');
       await I.see('The applicant may upload any written representations by 4pm on');
     } else {
-      await I.see('The applicant and respondent must respond with written representations by 4pm on');
+      await I.see('The applicant and respondent may respond with written representations by 4pm on');
     }
     await I.clickContinue();
   },
