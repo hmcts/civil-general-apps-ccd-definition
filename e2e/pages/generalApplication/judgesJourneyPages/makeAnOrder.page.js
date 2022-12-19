@@ -51,7 +51,7 @@ module.exports = {
         let documentDropdownValues = await I.grabTextFromAll(this.fields.documentDropdown);
         expect(documentDropdownValues.toString().replace(/(\r\n|\n|\r)/gm, ', ').trim()).to.equals('--Select a value--, Claim Form, Defence Form');
         I.selectOption(this.fields.documentDropdown, 'Claim Form');
-        I.see('Date for Order to end');
+        I.see('Order for Stay to End');
         I.fillField(this.fields.judgeApproveEditOptionDateDay, '01');
         I.fillField(this.fields.judgeApproveEditOptionDateMonth, '01');
         I.fillField(this.fields.judgeApproveEditOptionDateYear, '2024');
