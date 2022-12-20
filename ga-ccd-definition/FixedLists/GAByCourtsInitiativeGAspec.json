@@ -1,0 +1,20 @@
+[
+  {
+    "ID": "GAByCourtsInitiativeGAspec",
+    "ListElementCode": "OPTION_1",
+    "ListElement": "If you were not notified of the application and provided with a copy of the application notice before the order was made, you may apply to set aside, vary or stay the order.  Such application must not be made more than 7 days after the date on which the order was notified to the party.",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "GAByCourtsInitiativeGAspec",
+    "ListElementCode": "OPTION_2",
+    "ListElement": "As this order was made on the court's own initiative, any party affected by the order may apply to set aside, vary or stay the order. Such application must not be made more than 7 days after the date on which the order was notified to the party making the application.",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "GAByCourtsInitiativeGAspec",
+    "ListElementCode": "OPTION_3",
+    "ListElement": "No paragraph required",
+    "DisplayOrder": 3
+  }
+]

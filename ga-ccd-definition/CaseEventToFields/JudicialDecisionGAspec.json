@@ -217,9 +217,20 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAKE_DECISION",
-    "CaseFieldID": "judicialGOHearingDirections",
+    "CaseFieldID": "judicialByCourtsInitiativeListForHearing",
     "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
     "PageFieldDisplayOrder": 9,
+    "PageDisplayOrder": 7,
+    "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialGOHearingDirections",
+    "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
+    "PageFieldDisplayOrder": 10,
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
@@ -351,9 +362,20 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAKE_DECISION",
-    "CaseFieldID": "directionInRelationToHearingText",
+    "CaseFieldID": "judicialByCourtsInitiativeForWrittenRep",
     "PageID": "GAJudicialWrittenRepresentationsDrawGeneralOrder",
     "PageFieldDisplayOrder": 9,
+    "PageDisplayOrder": 10,
+    "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "directionInRelationToHearingText",
+    "PageID": "GAJudicialWrittenRepresentationsDrawGeneralOrder",
+    "PageFieldDisplayOrder": 10,
     "PageDisplayOrder": 10,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
