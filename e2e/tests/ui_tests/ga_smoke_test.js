@@ -46,5 +46,5 @@ Scenario('GA 1v2  - Judge Makes Decision Order Made @smoke-tests', async ({api, 
 });
 
 AfterSuite(async ({api}) => {
-  // await api.cleanUp();
+  await api.cleanUp();
 });
