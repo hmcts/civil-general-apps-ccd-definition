@@ -56,10 +56,10 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeListForAHearingDecision('listForAHearing', childCaseNum());
+  await I.judgeListForAHearingDecision('listForAHearing', childCaseNum(), 'yes', 'Hearing_order');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails(childCaseId);
-  await I.verifyJudgesSummaryPage('Hearing order');
+  await I.verifyJudgesSummaryPage('Hearing order', 'yes');
   await I.verifyApplicationDocument(childCaseNum(), 'Hearing order');
   await I.dontSee('Go');
   await I.dontSee('Next step');

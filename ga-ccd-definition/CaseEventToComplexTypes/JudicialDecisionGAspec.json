@@ -52,7 +52,8 @@
     "ListElementCode": "judgeApproveEditOptionDoc",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "judicialDecisionMakeOrder.makeAnOrder=\"APPROVE_OR_EDIT\" AND judicialDecisionMakeOrder.displayjudgeApproveEditOptionDoc=\"Yes\""
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
@@ -61,7 +62,8 @@
     "ListElementCode": "judgeApproveEditOptionDate",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "judicialDecisionMakeOrder.makeAnOrder=\"APPROVE_OR_EDIT\" AND judicialDecisionMakeOrder.displayjudgeApproveEditOptionDate=\"Yes\""
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
@@ -97,7 +99,7 @@
     "ListElementCode": "reasonForDecisionText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 10,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "GAJudicialRequestMoreInfoScreen",
