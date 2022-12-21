@@ -1,7 +1,7 @@
 /* eslint-disable  no-case-declarations */
 const {I} = inject();
 const expect = require('chai').expect;
-const {verifyJudgeRecitalText} = require('../../generalAppCommons');
+const {verifyJudgeRecitalText, selectJudicialByCourtsInitiativeOption} = require('../../generalAppCommons');
 
 module.exports = {
 
@@ -51,10 +51,6 @@ module.exports = {
         let documentDropdownValues = await I.grabTextFromAll(this.fields.documentDropdown);
         expect(documentDropdownValues.toString().replace(/(\r\n|\n|\r)/gm, ', ').trim()).to.equals('--Select a value--, Claim Form, Defence Form');
         I.selectOption(this.fields.documentDropdown, 'Claim Form');
-        I.see('Order for Stay to End');
-        I.fillField(this.fields.judgeApproveEditOptionDateDay, '01');
-        I.fillField(this.fields.judgeApproveEditOptionDateMonth, '01');
-        I.fillField(this.fields.judgeApproveEditOptionDateYear, '2024');
         break;
       case 'dismissTheApplication':
         I.fillField(this.fields.dismissalOrderTextArea, 'Judges dismissed the order');
@@ -67,6 +63,7 @@ module.exports = {
         I.fillField(this.fields.directionsResponseYear, '2024');
         break;
     }
+    await selectJudicialByCourtsInitiativeOption();
     await I.fillField(this.fields.reasonForDecisionTextArea, 'Judges Decision');
     await I.clickContinue();
   }
