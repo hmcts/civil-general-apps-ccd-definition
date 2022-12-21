@@ -125,7 +125,8 @@
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
     "Comment": "Draw a General Order",
-    "PageShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\""
+    "PageShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\"",
+    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/populate-hearing-order-doc"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -274,7 +275,8 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\""
+    "PageShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\"",
+    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/populate-written-rep-preview-doc"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
