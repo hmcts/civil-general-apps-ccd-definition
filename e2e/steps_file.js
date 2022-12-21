@@ -750,7 +750,7 @@ module.exports = function () {
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => makeAnOrderPage.selectAnOrder(order, notice),
-        () => reviewOrderDocumentPage.reviewOrderDocument(documentType, caseNumber),
+        () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
         () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
         ...submitApplication('Your order has been made'),
         () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
@@ -763,7 +763,7 @@ module.exports = function () {
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => requestMoreInfoPage.requestMoreInfoOrder(infoType, withoutNotice),
-        () => reviewOrderDocumentPage.reviewOrderDocument(documentType, caseNumber),
+        () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
         () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
         ...conditionalSteps(infoType === 'requestMoreInformation', [
           ...submitApplication('You have requested more information'),
@@ -790,7 +790,7 @@ module.exports = function () {
     async verifyApplicationDocument(childCaseNumber, docType) {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.navigateToTab(childCaseNumber, 'Application Documents'),
-        () => applicationDocumentPage.verifyUploadedDocumentPDF(docType, childCaseNumber),
+        () => applicationDocumentPage.verifyUploadedDocumentPDF(docType),
       ]);
     },
 
@@ -843,7 +843,7 @@ module.exports = function () {
         () => listForHearingPage.verifyVulnerabilityQuestions(),
         () => listForHearingPage.selectJudicialSupportRequirement('disabledAccess'),
         () => drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('Video', '15 minutes', notice),
-        () => reviewOrderDocumentPage.reviewOrderDocument(documentType, caseNumber),
+        () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
         () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
         ...submitApplication('Your order has been made'),
         () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
@@ -857,7 +857,7 @@ module.exports = function () {
       await listForHearingPage.verifyVulnerabilityQuestions();
       await listForHearingPage.selectJudicialSupportRequirement('disabledAccess');
       await drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('Video', '15 minutes', notice);
-      await reviewOrderDocumentPage.reviewOrderDocument(documentType, caseNumber);
+      await reviewOrderDocumentPage.reviewOrderDocument(documentType);
       await judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber);
       await event.submit('Submit', 'Your order has been made');
       await judgesConfirmationPage.verifyJudgesConfirmationPage();
@@ -866,7 +866,7 @@ module.exports = function () {
     async judgeApproveAnOrderWA(decision, order, consentCheck, caseNumber, documentType) {
       await judgeDecisionPage.selectJudgeDecision(decision);
       await makeAnOrderPage.selectAnOrder(order, consentCheck);
-      await reviewOrderDocumentPage.reviewOrderDocument(documentType, caseNumber);
+      await reviewOrderDocumentPage.reviewOrderDocument(documentType);
       await judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber);
       await event.submit('Submit', 'Your order has been made');
       await judgesConfirmationPage.verifyJudgesConfirmationPage();
@@ -879,7 +879,7 @@ module.exports = function () {
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => writtenRepresentationsPage.selectWrittenRepresentations(representationsType),
         () => drawGeneralOrderPage.verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType, notice),
-        () => reviewOrderDocumentPage.reviewOrderDocument(documentType, caseNumber),
+        () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
         () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
         ...submitApplication('Your order has been made'),
         () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
