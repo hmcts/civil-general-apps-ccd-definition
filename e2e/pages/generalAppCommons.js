@@ -18,8 +18,8 @@ module.exports = {
   },
 
   async selectJudicialByCourtsInitiativeOption() {
-    I.waitForElement(this.fields.judicialByCourtsInitiative);
-    I.click(this.fields.judicialByCourtsInitiativeOption1);
+    await I.waitForElement(this.fields.judicialByCourtsInitiative);
+    await I.click(this.fields.judicialByCourtsInitiativeOption1);
   },
 
   verifyJudgeRecitalText: async (actualJudgeRecitalText, notice) => {
