@@ -32,13 +32,13 @@ module.exports = {
         await I.waitForElement(this.fields.eventDropdown, 10);
         await I.selectOption(this.fields.eventDropdown, event);
         await I.retryUntilExists(async () => {
-          await I.click(this.goButton);
+          await I.forceClick(this.goButton);
         }, this.fields.generalApps);
         break;
       default:
         await I.waitForClickable('.event-trigger .button', 10);
         await I.retryUntilExists(async () => {
-          await I.click(this.goButton);
+          await I.forceClick(this.goButton);
         }, this.fields.generalApps);
     }
   },
@@ -62,7 +62,7 @@ module.exports = {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         console.log(`Navigating to case: ${normalizedCaseId}`);
         await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-        if(['preview'].includes(config.runningEnv)) {
+        if (['preview'].includes(config.runningEnv)) {
           await I.wait(10);
         } else {
           await I.wait(3);
@@ -75,14 +75,14 @@ module.exports = {
     await I.retryUntilUrlChanges(async () => {
       if (tabName === 'Application Documents') {
         await I.refreshPage();
-        if(['preview'].includes(config.runningEnv)) {
+        if (['preview'].includes(config.runningEnv)) {
           await I.wait(8);
         } else {
           await I.wait(2);
         }
       }
       await I.click(locate(this.fields.tab).withText(tabName));
-      if(['preview'].includes(config.runningEnv)) {
+      if (['preview'].includes(config.runningEnv)) {
         await I.wait(8);
       } else {
         await I.wait(2);

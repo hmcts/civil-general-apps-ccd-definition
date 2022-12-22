@@ -12,14 +12,9 @@ let docFullDate = date.getFullYear().toString() + '-' + docMonth + '-' + twoDigi
 
 module.exports = {
 
-  fields: {
-    judicialByCourtsInitiative: 'div[id*="judicialByCourtsInitiative"]',
-    judicialByCourtsInitiativeOption1: 'input[id*="OPTION_1"]',
-  },
-
   async selectJudicialByCourtsInitiativeOption() {
-    await I.waitForElement(this.fields.judicialByCourtsInitiative);
-    await I.click(this.fields.judicialByCourtsInitiativeOption1);
+    await I.waitForElement('div[id*="judicialByCourtsInitiative"]');
+    await I.forceClick('input[id*="OPTION_1"]');
   },
 
   verifyJudgeRecitalText: async (actualJudgeRecitalText, notice) => {
