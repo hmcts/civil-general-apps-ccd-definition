@@ -151,22 +151,29 @@ xui-webapp:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: hmctspublic.azurecr.io/xui/webapp:latest
-    devcpuRequests: 500m
-    devmemoryRequests: 1Gi
-    devcpuLimits: 1
+    ingressHost: civil-ga-ccd-xui-staging.aat.platform.hmcts.net
+    memoryRequests: 512Mi
+    cpuRequests: 1000m
+    memoryLimits: 1024Mi
+    cpuLimits: 2500m
+    devmemoryRequests: 512Mi
+    devcpuRequests: 1Gi
     devmemoryLimits: 2Gi
-    ingressHost: xui-${SERVICE_FQDN}
+    devcpuLimits: 2500m
+    autoscaling: # Default is false
+      enabled: true
+      maxReplicas: 5    # Required setting
+      targetCPUUtilizationPercentage: 80 # Default is 80% target CPU utilization
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health
       HEALTH_CCD_DATA_API: http://${SERVICE_NAME}-ccd-data-store-api/health
-      HEALTH_TERMS_AND_CONDITIONS_API: http://xui-terms-and-conditions-${SERVICE_FQDN}.service.core-compute-preview.internal/health
+      HEALTH_TERMS_AND_CONDITIONS_API: http://xui-terms-and-conditions-aat.service.core-compute-aat.internal/health
       SERVICES_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw
       SERVICES_CCD_DATA_STORE_API: http://${SERVICE_NAME}-ccd-data-store-api
-      SERVICES_TERMS_AND_CONDITIONS: http://xui-terms-and-conditions-${SERVICE_FQDN}.service.core-compute-preview.internal
-      JURISDICTIONS: CIVIL
-      LAUNCH_DARKLY_CLIENT_ID: ~
-      SERVICES_IDAM_ISS_URL: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
-      SERVICES_CCD_CASE_ASSIGNMENT_API: http://${SERVICE_NAME}-aac-manage-case-assignment
+      SERVICES_TERMS_AND_CONDITIONS: http://xui-terms-and-conditions-aat.service.core-compute-aat.internal
+      JURISDICTIONS: DIVORCE,PROBATE,FR,PUBLICLAW,IA,SSCS,EMPLOYMENT,CIVIL
+      SERVICES_IDAM_ISS_URL: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/hmcts
+      RELEASE_REVISION: "{{ .Release.Revision }}"
 
 ccd:
   enabled: true
