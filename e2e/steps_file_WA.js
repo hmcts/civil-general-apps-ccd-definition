@@ -140,9 +140,9 @@ module.exports = function () {
         await this.click('Another period');
       }
       await this.click('Submit');
-      await this.see('Access approved');
+      await this.waitForText('Access approved');
       await this.click('Return to My tasks');
-      await this.see('My tasks');
+      await this.waitForText('My tasks');
     },
 
     runJudgeSpecificAccessApprovalSteps: async function(caseId) {
