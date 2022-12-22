@@ -34,7 +34,7 @@
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "judgeApproveEditOptionDate",
-    "ElementLabel": "Date for Order to end",
+    "ElementLabel": "Order for Stay to End",
     "FieldType": "Date",
     "SecurityClassification": "Public"
   },

@@ -62,7 +62,7 @@
     "ListElementCode": "judgeApproveEditOptionDate",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "judicialDecisionMakeOrder.makeAnOrder=\"APPROVE_OR_EDIT\" AND judicialDecisionMakeOrder.displayjudgeApproveEditOptionDate=\"Yes\""
   },
   {
