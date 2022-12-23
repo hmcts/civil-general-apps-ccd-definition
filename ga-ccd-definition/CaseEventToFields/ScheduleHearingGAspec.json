@@ -1,10 +1,34 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "SCHEDULE_HEARING",
-    "CaseFieldID": "hearingNoticeGADetail",
+    "CaseEventID": "GA_HEARING_SCHEDULED",
+    "CaseFieldID": "hearingNoticeApplicationDetail",
     "PageID": "HearingNoticeGADetail",
     "PageFieldDisplayOrder": 1,
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y",
+    "_CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/validate-make-an-order"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GA_HEARING_SCHEDULED",
+    "CaseFieldID": "hearingNoticeApplicationType",
+    "PageID": "HearingNoticeGADetail",
+    "PageFieldDisplayOrder": 2,
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y",
+    "_CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/validate-make-an-order"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GA_HEARING_SCHEDULED",
+    "CaseFieldID": "hearingNoticeApplicationDate",
+    "PageID": "HearingNoticeGADetail",
+    "PageFieldDisplayOrder": 3,
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",

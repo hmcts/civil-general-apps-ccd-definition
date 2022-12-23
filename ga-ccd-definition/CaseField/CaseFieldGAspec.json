@@ -811,9 +811,25 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "hearingNoticeGADetail",
-    "Label": " ",
-    "FieldType": "HearingNoticeDetailGAspec",
+    "ID": "hearingNoticeApplicationDetail",
+    "Label": "Application details",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "ApplicationDetailsOption",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingNoticeApplicationType",
+    "FieldType": "Text",
+    "Label": "Type of application",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingNoticeApplicationDate",
+    "Label": "Date of application",
+    "HintText": "For example, 27 3 2022",
+    "FieldType": "Date",
     "SecurityClassification": "Public"
   }
 ]
