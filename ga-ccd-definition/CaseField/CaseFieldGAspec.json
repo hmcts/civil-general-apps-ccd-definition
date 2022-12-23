@@ -808,6 +808,13 @@
     "Label": "Draft Order",
     "FieldType": "Document",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingNoticeGADetail",
+    "Label": " ",
+    "FieldType": "HearingNoticeDetailGAspec",
+    "SecurityClassification": "Public"
   }
 ]
 
