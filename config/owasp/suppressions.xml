@@ -181,6 +181,13 @@
     <cve>CVE-2022-38750</cve>
     <cve>CVE-2022-38752</cve>
   </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: flat:4.1.1
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/flat@.*$</packageUrl>
+    <vulnerabilityName>1085297</vulnerabilityName>
+  </suppress>
   <suppress until="2023-11-29">
     <notes>
       FasterXML jackson-databind
