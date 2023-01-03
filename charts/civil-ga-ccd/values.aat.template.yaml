@@ -157,8 +157,8 @@ xui-webapp:
     memoryLimits: 1024Mi
     cpuLimits: 2500m
     devmemoryRequests: 512Mi
-    devcpuRequests: 1Gi
-    devmemoryLimits: 2Gi
+    devcpuRequests: 1000m
+    devmemoryLimits: 1024Mi
     devcpuLimits: 2500m
     autoscaling: # Default is false
       enabled: true
