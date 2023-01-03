@@ -7,7 +7,7 @@ const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', '
 const date = new Date();
 const twoDigitDate = ((date.getDate()) >= 10) ? (date.getDate()) : '0' + (date.getDate());
 let fullDate = twoDigitDate + ' ' + month[date.getMonth()] + ' ' + date.getFullYear().toString().substr(-2);
-let docMonth = date.getMonth() + 1;
+let docMonth = ((date.getMonth()+1) >= 10) ? (date.getMonth()+1) : '0' + (date.getMonth()+1);
 let docFullDate = date.getFullYear().toString() + '-' + docMonth + '-' + twoDigitDate;
 
 module.exports = {
