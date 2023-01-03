@@ -77,7 +77,7 @@ module.exports = {
       judicialDecisionMakeOrder: {
         directionsText: 'sample text',
         reasonForDecisionText: 'sample text',
-        directionsResponseByDate: '2023-06-05',
+        directionsResponseByDate: new Date('2023-06-05'),
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No'
       },
@@ -97,7 +97,7 @@ module.exports = {
       judicialDecisionMakeOrder: {
         makeAnOrder: 'DISMISS_THE_APPLICATION',
         reasonForDecisionText: 'sample text',
-        directionsResponseByDate: '2023-06-05',
+        directionsResponseByDate: new Date('2023-06-05'),
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No',
         isOrderProcessedByStayScheduler: 'No'

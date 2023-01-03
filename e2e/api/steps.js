@@ -645,7 +645,7 @@ module.exports = {
     eventName = events.MAKE_DECISION.id;
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
-    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_ORDER_WRITTEN_REP(current_date),gaCaseId);
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_ORDER_WRITTEN_REP(new Date(current_date)),gaCaseId);
 
     const responseBody = await response.json();
 
@@ -667,7 +667,7 @@ module.exports = {
     eventName = events.MAKE_DECISION.id;
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
-    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_ORDER_DIRECTIONS_REP(current_date), gaCaseId);
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_MAKES_ORDER_DIRECTIONS_REP(new Date(current_date)), gaCaseId);
     const responseBody = await response.json();
 
     assert.equal(response.status, 201);
@@ -751,7 +751,7 @@ module.exports = {
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
 
-    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_APPROVES_STAYCLAIM_APPLN(current_date), gaCaseId);
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_APPROVES_STAYCLAIM_APPLN(new Date(current_date)), gaCaseId);
     date.getDate();
     const responseBody = await response.json();
 
