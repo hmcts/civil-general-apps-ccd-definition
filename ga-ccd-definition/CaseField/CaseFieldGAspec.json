@@ -811,6 +811,22 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialByCourtsInitiativeListForHearing",
+    "Label": "Optional paragraph to follow Judges' order",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "GAByCourtsInitiativeGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialByCourtsInitiativeForWrittenRep",
+    "Label": "Optional paragraph to follow Judges' order",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "GAByCourtsInitiativeGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "hearingNoticeApplicationDetail",
     "Label": "Application details",
     "FieldType": "FixedList",

@@ -125,7 +125,8 @@
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
     "Comment": "Draw a General Order",
-    "PageShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\""
+    "PageShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\"",
+    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/populate-hearing-order-doc"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -217,9 +218,20 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAKE_DECISION",
-    "CaseFieldID": "judicialGOHearingDirections",
+    "CaseFieldID": "judicialByCourtsInitiativeListForHearing",
     "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
     "PageFieldDisplayOrder": 9,
+    "PageDisplayOrder": 7,
+    "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialGOHearingDirections",
+    "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
+    "PageFieldDisplayOrder": 10,
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
@@ -263,7 +275,8 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\""
+    "PageShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\"",
+    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/populate-written-rep-preview-doc"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -351,9 +364,20 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAKE_DECISION",
-    "CaseFieldID": "directionInRelationToHearingText",
+    "CaseFieldID": "judicialByCourtsInitiativeForWrittenRep",
     "PageID": "GAJudicialWrittenRepresentationsDrawGeneralOrder",
     "PageFieldDisplayOrder": 9,
+    "PageDisplayOrder": 10,
+    "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "directionInRelationToHearingText",
+    "PageID": "GAJudicialWrittenRepresentationsDrawGeneralOrder",
+    "PageFieldDisplayOrder": 10,
     "PageDisplayOrder": 10,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
