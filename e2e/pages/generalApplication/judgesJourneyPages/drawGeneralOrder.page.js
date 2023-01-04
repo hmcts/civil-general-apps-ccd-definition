@@ -1,5 +1,5 @@
 const {I} = inject();
-const {verifyJudgeRecitalText} = require('../../generalAppCommons');
+const {verifyJudgeRecitalText, selectJudicialByCourtsInitiativeOption} = require('../../generalAppCommons');
 const config = require('../../../config');
 
 module.exports = {
@@ -22,6 +22,8 @@ module.exports = {
     await I.see(`Hearing type is ${hearingPreferences}`);
     await I.see(`Estimated length of hearing is ${timeEstimate}`);
     await I.see('Directions in relation to hearing');
+    await selectJudicialByCourtsInitiativeOption();
+    await I.fillField(this.fields.hearingDetailsDirectionsTextArea, 'Test Directions');
     await I.clickContinue();
   },
 
@@ -35,8 +37,10 @@ module.exports = {
       await I.see('The respondent may upload any written representations by 4pm on');
       await I.see('The applicant may upload any written representations by 4pm on');
     } else {
-      await I.see('The applicant and respondent must respond with written representations by 4pm on');
+      await I.see('The applicant and respondent may respond with written representations by 4pm on');
     }
+    await selectJudicialByCourtsInitiativeOption();
+    await I.fillField(this.fields.writtenRepresentationsDirectionsTextArea, 'Test Directions');
     await I.clickContinue();
   },
 };
