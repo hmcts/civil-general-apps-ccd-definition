@@ -2630,7 +2630,7 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "ga-basic-access"
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       },
@@ -2650,7 +2650,7 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "ga-basic-access"
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       },
@@ -2670,7 +2670,7 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "ga-basic-access"
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       },

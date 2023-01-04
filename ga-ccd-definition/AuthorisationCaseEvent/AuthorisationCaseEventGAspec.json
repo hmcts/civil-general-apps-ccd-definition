@@ -454,8 +454,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "hearing-schedule-access",
-          "ga-basic-access"
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       },

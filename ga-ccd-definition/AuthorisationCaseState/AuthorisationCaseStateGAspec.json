@@ -252,8 +252,7 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "hearing-schedule-access",
-          "ga-basic-access"
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       },
@@ -264,7 +263,8 @@
           "civil-administrator-standard",
           "civil-administrator-basic",
           "caseworker-civil-solicitor",
-          "caseworker-ras-validation"
+          "caseworker-ras-validation",
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }
