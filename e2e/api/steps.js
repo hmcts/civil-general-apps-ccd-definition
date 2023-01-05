@@ -8,7 +8,8 @@ chai.config.truncateThreshold = 0;
 const {assert} = chai;
 const date = new Date();
 const twoDigitDate = ((date.getDate()) >= 10) ? (date.getDate()) : '0' + (date.getDate());
-let current_date = date.getFullYear().toString()+ '-' + (date.getMonth()+1).toString()+ '-' + twoDigitDate;
+const twoDigitMonth = ((date.getMonth()+1) >= 10) ? (date.getMonth()+1) : '0' + (date.getMonth()+1);
+let current_date = date.getFullYear().toString()+ '-' + twoDigitMonth + '-' + twoDigitDate;
 const {
   waitForFinishedBusinessProcess,
   waitForGAFinishedBusinessProcess,
