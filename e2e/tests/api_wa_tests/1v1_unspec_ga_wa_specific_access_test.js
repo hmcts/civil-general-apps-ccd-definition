@@ -3,10 +3,10 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature(' GA - WA Specific Access @api-wa');
+Feature(' GA - WA Specific Access @api-ga-wa');
 
 Scenario('Verify Specific access check for NBC Admin', async ({I, wa, api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
+ civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -15,7 +15,6 @@ Scenario('Verify Specific access check for NBC Admin', async ({I, wa, api}) => {
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
   console.log('*** General Application case created ***' + gaCaseReference);
-
   await I.login(config.iacAdminUser);
   await wa.runSpecificAccessRequestSteps(gaCaseReference);
   if (config.runWAApiTest) {
