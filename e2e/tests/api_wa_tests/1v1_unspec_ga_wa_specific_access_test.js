@@ -3,7 +3,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature(' GA - WA Specific Access @api-ga-wa');
+Feature(' GA - WA Specific Access @api-wa');
 
 Scenario('Verify Specific access check for NBC Admin', async ({I, wa, api}) => {
  civilCaseReference = await api.createUnspecifiedClaim(
