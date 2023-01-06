@@ -206,4 +206,11 @@
     <packageUrl regex="true">^pkg:maven/org\.latencyutils/LatencyUtils@.*$</packageUrl>
     <cve>CVE-2021-4277</cve>
   </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: datatable-3.3.1.jar (shaded: com.googlecode.java-diff-utils:diffutils:1.3.0)
+   ]]></notes>
+    <packageUrl regex="true">^pkg:maven/com\.googlecode\.java\-diff\-utils/diffutils@.*$</packageUrl>
+    <cve>CVE-2021-4277</cve>
+  </suppress>
 </suppressions>
