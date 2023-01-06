@@ -447,24 +447,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GA_HEARING_SCHEDULED",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "hearing-schedule-access"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "civil-administrator-basic",
-          "caseworker-ras-validation"
-        ],
-        "CRUD": "R"
-      }
-    ]
   }
 ]

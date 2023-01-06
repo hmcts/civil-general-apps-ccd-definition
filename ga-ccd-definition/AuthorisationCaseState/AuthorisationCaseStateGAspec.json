@@ -251,8 +251,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "hearing-schedule-access"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },

@@ -1,0 +1,14 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "LISTING_FOR_A_HEARING",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "hearing-schedule-access"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]
