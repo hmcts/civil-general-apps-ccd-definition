@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "HEARING_SCHEDULED",
+    "ID": "HEARING_SCHEDULED_GA",
     "Name": "Hearing Scheduled",
     "Description": "listing officer notify hearing",
     "DisplayOrder": 11,
