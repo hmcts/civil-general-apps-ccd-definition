@@ -462,12 +462,6 @@ module.exports = function () {
       await caseViewPage.navigateToTab(caseNumber, tabName);
     },
 
-    async clickOnTab(tabName) {
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.clickOnTab(tabName)
-      ]);
-    },
-
     /**
      * Retries defined action util element described by the locator is invisible. If element is not invisible
      * after 4 tries (run + 3 retries) this step throws an error. Use cases include checking no error present on page.

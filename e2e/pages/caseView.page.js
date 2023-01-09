@@ -63,9 +63,9 @@ module.exports = {
         console.log(`Navigating to case: ${normalizedCaseId}`);
         await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
         if (['preview'].includes(config.runningEnv)) {
-          await I.wait(10);
+          await I.wait(5);
         } else {
-          await I.wait(3);
+          await I.wait(2);
         }
       }, 'exui-header');
     }
@@ -76,31 +76,18 @@ module.exports = {
       if (tabName === 'Application Documents') {
         await I.refreshPage();
         if (['preview'].includes(config.runningEnv)) {
-          await I.wait(8);
+          await I.wait(5);
         } else {
           await I.wait(2);
         }
       }
-      await I.click(locate(this.fields.tab).withText(tabName));
+      await I.forceClick(locate(this.fields.tab).withText(tabName));
       if (['preview'].includes(config.runningEnv)) {
-        await I.wait(8);
+        await I.wait(3);
       } else {
         await I.wait(2);
       }
       await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
     }, urlBefore);
   },
-
-  async clickOnTab(tabName) {
-    let urlBefore = await I.grabCurrentUrl();
-    await I.retryUntilUrlChanges(async () => {
-      await I.click(locate(this.fields.tab).withText(tabName));
-      await I.wait(10);
-      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
-    }, urlBefore);
-  },
-
-  async clickOnFirstChildCaseId() {
-    I.click({css: '.collection-field-table a'});
-  }
 };
