@@ -210,5 +210,6 @@
    ]]></notes>
   <packageUrl regex="true">^pkg:npm/flat@.*$</packageUrl>
   <vulnerabilityName>1085318</vulnerabilityName>
+  <vulnerabilityName>1085778</vulnerabilityName>
 </suppress>
 </suppressions>
