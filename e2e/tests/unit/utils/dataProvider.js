@@ -23,7 +23,6 @@ const ccdData = {
   CaseRoles: loadFile('CaseRoles'),
   CaseType: loadFile('CaseType'),
   Jurisdiction: loadFile('Jurisdiction'),
-  SearchCasesResultFields: loadFile('SearchCasesResultFields'),
   SearchInputFields: loadFile('SearchInputFields'),
   SearchResultFields: loadFile('SearchResultFields'),
   State: loadFile('State'),
