@@ -180,6 +180,8 @@
     <cve>CVE-2022-38751</cve>
     <cve>CVE-2022-38750</cve>
     <cve>CVE-2022-38752</cve>
+    <cve>CVE-2022-3064</cve>
+    <cve>CVE-2021-4235</cve>
   </suppress>
   <suppress>
     <notes><![CDATA[
