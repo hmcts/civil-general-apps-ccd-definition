@@ -1,10 +1,10 @@
 #!groovy
 
 properties([
-  pipelineTriggers([cron('H 05 * * *')]),
+  pipelineTriggers([cron('H 21 * * *')]),
   parameters([
     string(name: 'ENVIRONMENT', defaultValue: 'demo', description: 'Environment to test'),
-    string(name: 'FRONTEND_URL', defaultValue: 'https://manage-case.demo.platform.hmcts.net',
+    string(name: 'FRONTEND_URL', defaultValue: 'https://manage-case-wa-int.demo.platform.hmcts.net',
       description: 'The URL you want to run the full functional tests against'),
     string(name: 'IDAM_API_URL', defaultValue: 'https://idam-api.demo.platform.hmcts.net',
       description: 'The URL of idam api'),
