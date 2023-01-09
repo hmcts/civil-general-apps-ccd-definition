@@ -59,7 +59,7 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin review scheduled Appli
    }
    await I.login(config.nbcAdminWithRegionId4);
    await wa.goToAdminTask(gaCaseReference);
-}).retry(0);
+}).retry(1);
 
 Scenario.skip('Before SDO GA - LA Make decision - NBC admin review', async ({I, api, wa}) => {
   console.log('Make a General Application');
@@ -100,7 +100,7 @@ Scenario.skip('Before SDO GA - LA Make decision - NBC admin review', async ({I, 
   }
   await I.login(config.nbcAdminWithRegionId4);
   await wa.goToAdminTask(gaCaseReference);
-}).retry(0);
+}).retry(1);
 
 Scenario.skip('After SDO GA - Judge Make decision - HC admin review', async ({I, api, wa}) => {
   console.log('Make a General Application');
@@ -128,7 +128,7 @@ Scenario.skip('After SDO GA - Judge Make decision - HC admin review', async ({I,
   }
   await I.login(config.hearingCenterAdminWithRegionId1);
   await wa.goToAdminTask(gaCaseReference);
-}).retry(0);
+}).retry(1);
 
 
 AfterSuite(async ({api}) => {

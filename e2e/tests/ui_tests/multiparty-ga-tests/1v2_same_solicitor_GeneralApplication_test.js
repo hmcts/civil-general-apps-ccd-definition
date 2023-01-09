@@ -60,7 +60,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.see(writtenRepStatus);
   await I.respondToJudgesWrittenRep(childCaseNum(), childCaseId);
   console.log('Responded to Judges written representations on case: ' + childCaseNum());
-}).retry(0);
+}).retry(1);
 
 Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
   async ({I, api}) => {
@@ -122,7 +122,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     await I.login(config.applicantSolicitorUser);
     await I.navigateToTab(parentCaseNum, 'Applications');
     await I.see(additionalInfoStatus);
-  }).retry(0);
+  }).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();

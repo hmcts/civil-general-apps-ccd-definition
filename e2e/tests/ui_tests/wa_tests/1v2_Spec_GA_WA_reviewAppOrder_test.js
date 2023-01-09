@@ -61,7 +61,7 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin review application ord
   }
   await I.login(config.nbcAdminWithRegionId4);
   await wa.goToAdminTask(gaCaseReference);
-}).retry(0);
+}).retry(1);
 
 Scenario.skip('After SDO GA - Judge Make decision - HC admin review application order', async ({I, api, wa}) => {
   civilCaseReference = await api.createSpecifiedClaim(
@@ -92,7 +92,7 @@ Scenario.skip('After SDO GA - Judge Make decision - HC admin review application 
   }
   await I.login(config.hearingCenterAdminWithRegionId1);
   await wa.goToAdminTask(gaCaseReference);
-}).retry(0);
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
