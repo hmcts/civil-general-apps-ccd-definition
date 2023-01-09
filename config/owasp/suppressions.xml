@@ -210,6 +210,12 @@
    ]]></notes>
   <packageUrl regex="true">^pkg:npm/flat@.*$</packageUrl>
   <vulnerabilityName>1085318</vulnerabilityName>
-  <vulnerabilityName>1085778</vulnerabilityName>
-</suppress>
+ </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: minimatch:3.0.4
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/minimatch@.*$</packageUrl>
+    <vulnerabilityName>1085778</vulnerabilityName>
+  </suppress>
 </suppressions>
