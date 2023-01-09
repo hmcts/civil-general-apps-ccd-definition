@@ -16,29 +16,29 @@ function assertFieldDefinitionIsValid(row) {
 }
 
 dataProvider.exclusions.forEach((value, key) =>  {
-  describe('AuthorisationCaseEventGAspec'.concat(': ', key, ' config'), () => {
+  describe('AuthorisationCaseEvent'.concat(': ', key, ' config'), () => {
     context('should :', () => {
-      let authorisationCaseEventGAspecConfig = [];
+      let authorisationCaseEventConfig = [];
       let uniqResult = [];
       let errors = [];
 
       before(() => {
-        authorisationCaseEventGAspecConfig = dataProvider.getConfig('../../../../ga-ccd-definition/AuthorisationCaseEventGAspec', key);
-        uniqResult = uniqWith(authorisationCaseEventGAspecConfig, noDuplicateFoundEvent);
+        authorisationCaseEventConfig = dataProvider.getConfig('../../../../ga-ccd-definition/AuthorisationCaseEvent', key);
+        uniqResult = uniqWith(authorisationCaseEventConfig, noDuplicateFoundEvent);
       });
 
       it('not contain duplicated definitions of the same field', () => {
         try {
-          expect(uniqResult).to.eql(authorisationCaseEventGAspecConfig);
+          expect(uniqResult).to.eql(authorisationCaseEventConfig);
         } catch (error) {
-          authorisationCaseEventGAspecConfig.forEach(c => {
+          authorisationCaseEventConfig.forEach(c => {
             if (!uniqResult.includes(c)) {
               errors.push(c.CaseEventID);
             }
           });
         }
         if (errors.length) {
-          assert.fail(`Found duplicated AuthorisationCaseEventGAspec - ${errors}`);
+          assert.fail(`Found duplicated AuthorisationCaseEvent - ${errors}`);
         }
       });
 

@@ -24,28 +24,28 @@ function assertFieldDefinitionIsValid(row) {
 }
 
 dataProvider.exclusions.forEach((value, key) =>  {
-  describe('CaseFieldGAspec'.concat(': ', key, ' config'), () => {
+  describe('CaseField'.concat(': ', key, ' config'), () => {
     context('should :', () => {
       let uniqResult = [];
-      let caseFieldGAspecConfig = [];
+      let caseFieldConfig = [];
       let errors = [];
       before(() => {
-        caseFieldGAspecConfig = dataProvider.getConfig('../../../../ga-ccd-definition/CaseFieldGAspec', key);
-        uniqResult = uniqWith(caseFieldGAspecConfig, noDuplicateFound);
+        caseFieldConfig = dataProvider.getConfig('../../../../ga-ccd-definition/CaseField', key);
+        uniqResult = uniqWith(caseFieldConfig, noDuplicateFound);
       });
 
       it('not contain duplicated definitions of the same field', () => {
         try {
-          expect(uniqResult).to.eql(caseFieldGAspecConfig);
+          expect(uniqResult).to.eql(caseFieldConfig);
         } catch (error) {
-          caseFieldGAspecConfig.forEach(c => {
+          caseFieldConfig.forEach(c => {
             if (!uniqResult.includes(c)) {
               errors.push(c.ID);
             }
           });
         }
         if (errors.length) {
-          assert.fail(`Found duplicated CaseFieldGAspec IDs - ${errors}`);
+          assert.fail(`Found duplicated CaseField IDs - ${errors}`);
         }
       });
 

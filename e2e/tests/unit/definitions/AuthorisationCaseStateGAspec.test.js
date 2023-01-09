@@ -7,40 +7,40 @@ const dataProvider = require('../utils/dataProvider');
 const assertStateExists = createAssertExists('State');
 
 dataProvider.exclusions.forEach((value, key) =>  {
-  describe('AuthorisationCaseStateGAspec'.concat(': ', key, ' config'), () => {
+  describe('AuthorisationCaseState'.concat(': ', key, ' config'), () => {
     context('definitions:', () => {
-      let authorisationCaseStateGAspec = [];
+      let authorisationCaseState = [];
       let stateConfig = [];
       let errors = [];
 
       before(() => {
-        authorisationCaseStateGAspec = dataProvider.getConfig('../../../../ga-ccd-definition/AuthorisationCaseStateGAspec', key);
+        authorisationCaseState = dataProvider.getConfig('../../../../ga-ccd-definition/AuthorisationCaseState', key);
         stateConfig = dataProvider.ccdData.State;
       });
 
       it('should contain a unique case state, case type ID and role (no duplicates) for nonprod files', () => {
-        const uniqResult = uniqWith(authorisationCaseStateGAspec, isFieldDuplicated('CaseStateID'));
+        const uniqResult = uniqWith(authorisationCaseState, isFieldDuplicated('CaseStateID'));
         try {
-          expect(uniqResult).to.eql(authorisationCaseStateGAspec);
+          expect(uniqResult).to.eql(authorisationCaseState);
         } catch (error) {
-          authorisationCaseStateGAspec.forEach(c => {
+          authorisationCaseState.forEach(c => {
             if (!uniqResult.includes(c)) {
               errors.push(c.CaseStateID);
             }
           });
         }
         if (errors.length) {
-          assert.fail(`Found duplicated AuthorisationCaseStateGAspec - ${errors}`);
+          assert.fail(`Found duplicated AuthorisationCaseState - ${errors}`);
         }
       });
 
       it('should use existing states', () => {
-        assertStateExists(authorisationCaseStateGAspec, stateConfig);
+        assertStateExists(authorisationCaseState, stateConfig);
       });
 
       context('Solicitor has valid permissions', () => {
         it('CRU permissions for all states', () => {
-          authorisationCaseStateGAspec.forEach(authState => {
+          authorisationCaseState.forEach(authState => {
             if (authState.UserRole === 'caseworker-civil-solicitor') {
               try {
                 expect(('CRUD').includes(authState.CRUD)).to.eql(true);
@@ -53,7 +53,7 @@ dataProvider.exclusions.forEach((value, key) =>  {
       });
       context('caseworker-civil-systemupdate has valid permissions', () => {
         it('CRU permissions for all states', () => {
-          authorisationCaseStateGAspec.forEach(authState => {
+          authorisationCaseState.forEach(authState => {
             if (authState.UserRole === 'caseworker-civil-systemupdate') {
               try {
                 expect(('CRUD').includes(authState.CRUD)).to.eql(true);

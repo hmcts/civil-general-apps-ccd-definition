@@ -7,35 +7,35 @@ const dataProvider = require('../utils/dataProvider');
 const assertFieldExists = createAssertExists('Field');
 
 dataProvider.exclusions.forEach((value, key) =>  {
-  describe('AuthorisationCaseFieldGAspec'.concat(': ', key, ' config'), () => {
+  describe('AuthorisationCaseField'.concat(': ', key, ' config'), () => {
     context('should :', () => {
-      let authorisationCaseFieldGAspecConfig = [];
+      let authorisationCaseFieldConfig = [];
       let caseFieldConfig = [];
       let errors = [];
 
       before(() => {
-        authorisationCaseFieldGAspecConfig = dataProvider.getConfig('../../../../ga-ccd-definition/AuthorisationCaseFieldGAspec', key);
+        authorisationCaseFieldConfig = dataProvider.getConfig('../../../../ga-ccd-definition/AuthorisationCaseField', key);
         caseFieldConfig = dataProvider.getConfig('../../../../ga-ccd-definition/CaseField', key);
       });
 
       it('contain a unique case field ID, case type ID and role (no duplicates)', () => {
-        const uniqResult = uniqWith(authorisationCaseFieldGAspecConfig, isFieldDuplicated('CaseFieldID'));
+        const uniqResult = uniqWith(authorisationCaseFieldConfig, isFieldDuplicated('CaseFieldID'));
         try {
-          expect(uniqResult).to.eql(authorisationCaseFieldGAspecConfig);
+          expect(uniqResult).to.eql(authorisationCaseFieldConfig);
         } catch (error) {
-          authorisationCaseFieldGAspecConfig.forEach(c => {
+          authorisationCaseFieldConfig.forEach(c => {
             if (!uniqResult.includes(c)) {
               errors.push(c.CaseFieldID);
             }
           });
         }
         if (errors.length) {
-          assert.fail(`Found duplicated AuthorisationCaseFieldGAspec - ${errors}`);
+          assert.fail(`Found duplicated AuthorisationCaseField - ${errors}`);
         }
       });
 
       it('use existing fields', () => {
-        assertFieldExists(authorisationCaseFieldGAspecConfig, caseFieldConfig);
+        assertFieldExists(authorisationCaseFieldConfig, caseFieldConfig);
       });
     });
   });
