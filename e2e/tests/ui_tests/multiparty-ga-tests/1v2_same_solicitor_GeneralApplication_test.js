@@ -90,7 +90,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     } else {
       await I.login(config.judgeLocalUser);
     }
-    await I.judgeRequestMoreInfo('requestMoreInfo', 'sendApplicationToOtherParty', childCaseNum(), 'no', 'Request_for_information');
+    await I.judgeRequestMoreInfo('requestMoreInfo', 'sendApplicationToOtherParty', childCaseNum(), 'no', 'sendApplicationToOtherParty');
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
     await I.judgeCloseAndReturnToCaseDetails(childCaseId);
     await I.verifyJudgesSummaryPage('Send application to other party', 'no');
