@@ -25,13 +25,11 @@ task highLevelDataSetup(type: JavaExec) {
 }
 
 dependencies {
-  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
 
   implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.7.8'
   implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.3'
 
-  testImplementation(platform('org.junit:junit-bom:5.8.2'))
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
     exclude group: 'junit', module: 'junit'
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
