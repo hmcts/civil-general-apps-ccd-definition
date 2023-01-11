@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "CaseFieldID": "hearingNoticeApplicationDetail",
     "PageID": "HearingNoticeGADetail",
     "PageFieldDisplayOrder": 1,
@@ -13,7 +13,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "CaseFieldID": "hearingNoticeApplicationType",
     "PageID": "HearingNoticeGADetail",
     "PageFieldDisplayOrder": 2,
@@ -24,7 +24,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "CaseFieldID": "hearingNoticeApplicationDate",
     "PageID": "HearingNoticeGADetail",
     "PageFieldDisplayOrder": 3,
@@ -35,7 +35,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "CaseFieldID": "hearingLocationLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -46,7 +46,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "CaseFieldID": "hearingLocation",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
@@ -57,7 +57,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "CaseFieldID": "hearingChannelLabel",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
@@ -68,7 +68,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "CaseFieldID": "channel",
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
@@ -79,7 +79,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "CaseFieldID": "hearingDateLabel",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
@@ -90,7 +90,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "CaseFieldID": "hearingDate",
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY",
@@ -101,7 +101,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "CaseFieldID": "hearingTimeLabel",
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "READONLY",
@@ -112,7 +112,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "CaseFieldID": "hearingTimeHourMinute",
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY",
@@ -124,7 +124,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "CaseFieldID": "hearingDuration",
     "PageFieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY",
@@ -135,7 +135,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "CaseFieldID": "hearingDurationOther",
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY",
@@ -147,7 +147,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "CaseFieldID": "information",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",

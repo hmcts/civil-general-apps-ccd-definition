@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "AccessControl": [
       {
         "UserRoles": [
