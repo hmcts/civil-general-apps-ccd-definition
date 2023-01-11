@@ -2,8 +2,6 @@ plugins {
   id 'java'
   id 'java-library'
   id 'jacoco'
-  id 'io.spring.dependency-management' version '1.0.13.RELEASE'
-  id 'org.springframework.boot' version '2.5.14'
 }
 
 group 'com.github.hmcts'
@@ -25,13 +23,8 @@ task highLevelDataSetup(type: JavaExec) {
 }
 
 dependencies {
-  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
 
   implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.7.8'
   implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.3'
 
-  testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
-    exclude group: 'junit', module: 'junit'
-    exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-  }
 }
