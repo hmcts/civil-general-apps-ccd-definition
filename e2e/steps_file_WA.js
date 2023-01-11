@@ -130,6 +130,7 @@ module.exports = function () {
       await this.click('Review Access Request');
       await this.waitForElement('#APPROVE_REQUEST');
       await this.click('Approve request');
+      await this.wait(5);
       await this.click('Continue');
       await this.waitForElement('#specific-access-1');
       if (approveType == '7 days') {

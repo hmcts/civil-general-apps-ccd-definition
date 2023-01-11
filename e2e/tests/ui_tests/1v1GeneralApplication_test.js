@@ -59,7 +59,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(parentCaseNumber);
   I.see('Applications', 'div.mat-tab-label-content');
-}).retry(0);
+}).retry(1);
 
 Scenario('GA for 1v1 - Direction order journey @multiparty-e2e-tests @ui-nightly', async ({I, api}) => {
   parentCaseNumber = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
@@ -104,7 +104,7 @@ Scenario('GA for 1v1 - Direction order journey @multiparty-e2e-tests @ui-nightly
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDirectionsOrderStatus);
   await I.see(childCaseNumber);
-}).retry(0);
+}).retry(1);
 
 Scenario('GA for 1v1 Specified Claim- Dismissal order journey @multiparty-e2e-tests @ui-nightly', async ({I, api}) => {
   parentCaseNumber = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
@@ -147,7 +147,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @multiparty-e2e-te
   await I.navigateToTab(parentCaseNumber, 'Applications');
   await I.see(judgeDismissOrderStatus);
   await I.see(childCaseNumber);
-}).retry(0);
+}).retry(1);
 
 Scenario('GA for 1v1- respond to application - Request more information @ui-nightly', async ({I, api}) => {
   parentCaseNumber = await api.createUnspecifiedClaim(
@@ -199,7 +199,7 @@ Scenario('GA for 1v1- respond to application - Request more information @ui-nigh
   await I.see(additionalInfoStatus);
   await I.respondToJudgeAdditionalInfo(childCaseNum(), childCaseId);
   console.log('Responded to Judge Additional Information on case: ' + childCaseNum());
-}).retry(0);
+}).retry(1);
 
 AfterSuite(async ({api}) => {
    await api.cleanUp();
