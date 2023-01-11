@@ -46,7 +46,7 @@ module.exports = function () {
       } else if (taskName === 'LegalAdvisorDecideOnApplication') {
         await this.waitInUrl('MAKE_DECISIONGAJudicialDecision', 10);
       } else {
-        await this.waitInUrl('Summary', 5);
+        await this.waitInUrl('Application', 5);
       }
     },
 
