@@ -49,6 +49,7 @@
     <packageUrl regex="true">^pkg:npm/faker@.*$</packageUrl>
     <vulnerabilityName>1067281</vulnerabilityName>
     <vulnerabilityName>1067355</vulnerabilityName>
+    <vulnerabilityName>1088114</vulnerabilityName>
   </suppress>
   <suppress until="2023-11-29">
     <notes>
@@ -217,5 +218,19 @@
    ]]></notes>
     <packageUrl regex="true">^pkg:npm/minimatch@.*$</packageUrl>
     <vulnerabilityName>1085778</vulnerabilityName>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: debug:2.6.9
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/debug@.*$</packageUrl>
+    <vulnerabilityName>1087958</vulnerabilityName>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: tomcat-embed-core-9.0.63.jar,
+   file name: tomcat-embed-websocket-9.0.63.jar
+   ]]></notes>
+    <cve>CVE-2022-45143</cve>
   </suppress>
 </suppressions>

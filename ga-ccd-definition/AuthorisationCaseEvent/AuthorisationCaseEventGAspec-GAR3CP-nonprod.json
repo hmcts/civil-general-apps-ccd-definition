@@ -1,19 +1,21 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "hearingNoticeApplicationDetail",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "hearing-schedule-access"
+          "hearing-schedule-access",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
           "civil-administrator-standard",
-          "civil-administrator-basic"
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }
@@ -21,19 +23,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "hearingNoticeApplicationType",
+    "CaseEventID": "GENERATE_HEARING_NOTICE_DOCUMENT",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "hearing-schedule-access"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
           "civil-administrator-standard",
-          "civil-administrator-basic"
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }
@@ -41,19 +38,20 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "hearingNoticeApplicationDate",
+    "CaseEventID": "END_HEARING_SCHEDULED_PROCESS_GASPEC",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
           "hearing-schedule-access"
         ],
-        "CRUD": "CRU"
+        "CRUD": "RU"
       },
       {
         "UserRoles": [
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
           "civil-administrator-standard",
-          "civil-administrator-basic"
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }
