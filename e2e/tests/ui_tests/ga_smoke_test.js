@@ -44,7 +44,3 @@ Scenario('GA 1v2  - Judge Makes Decision Order Made @smoke-tests', async ({api, 
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeApproveOrderStatus);
 });
-
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
