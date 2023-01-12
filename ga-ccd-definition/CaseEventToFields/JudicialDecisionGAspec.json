@@ -97,7 +97,7 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "judicialDecision.decision = \"REQUEST_MORE_INFO\"",
+    "PageShowCondition": "judicialDecision.decision = \"REQUEST_MORE_INFO\" AND judicialRequestMoreInfoDocPreview !=\"\" ",
     "ShowSummaryChangeOption": "N"
   },
   {
