@@ -1,5 +1,5 @@
 const {date, listElement} = require('../../api/dataHelper');
-const config = require("../../config");
+const config = require('../../config');
 module.exports = {
     scheduleHearing: () => {
         return {
@@ -22,5 +22,5 @@ module.exports = {
             },
             gaHearingNoticeInformation: 'info'
         };
-    }
-}
+    },
+};
