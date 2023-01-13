@@ -6,9 +6,9 @@ import uk.gov.hmcts.contino.AppPipelineDsl
 def type = "java"
 def product = "civil"
 def component = "ga-ccd"
-def camundaBranch = "master"
+def camundaBranch = "CIV-6012"
 
-def ccddefbranch = "master"
+def ccddefbranch = "CIV-6011"
 
 static Map<String, Object> secret(String secretName, String envVariable) {
     [$class     : 'AzureKeyVaultSecret',
