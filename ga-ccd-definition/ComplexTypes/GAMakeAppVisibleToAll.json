@@ -5,7 +5,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "MakeAppAvailableCheckGAspec",
     "HintText": "  ",
-    "ElementLabel": " Application type",
+    "ElementLabel": "Do you wish to make the application visible to all parties?",
     "SecurityClassification": "Public"
   }
 ]
