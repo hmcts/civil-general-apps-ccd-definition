@@ -844,13 +844,13 @@ module.exports = {
 
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
-    // assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
-    //
-    // await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION',user);
-    //
-    // const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId,user);
-    // const updatedGABusinessProcessData = await updatedBusinessProcess.json();
-    // assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_DISMISSED');
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'HEARING_SCHEDULED_GA',user);
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId,user);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'HEARING_SCHEDULED');
   },
 
   notifyClaim: async (user, multipartyScenario, caseId) => {
