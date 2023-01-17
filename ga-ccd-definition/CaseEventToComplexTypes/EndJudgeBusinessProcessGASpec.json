@@ -8,18 +8,5 @@
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "END_JUDGE_BUSINESS_PROCESS_GASPEC",
-    "CaseFieldID": "isCcmccLocation",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "Publish": "Y"
   }
-
 ]

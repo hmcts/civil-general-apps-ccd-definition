@@ -4,9 +4,9 @@
     "CaseEventID": "END_SCHEDULER_CHECK_STAY_ORDER_DEADLINE",
     "CaseFieldID": "isCcmccLocation",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
+    "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
