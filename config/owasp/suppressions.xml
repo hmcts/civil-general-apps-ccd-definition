@@ -246,4 +246,11 @@
     <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-websocket@.*$</packageUrl>
     <cve>CVE-2022-45143</cve>
   </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: minimatch:3.0.4
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/minimatch@.*$</packageUrl>
+    <vulnerabilityName>1088613</vulnerabilityName>
+  </suppress>
 </suppressions>
