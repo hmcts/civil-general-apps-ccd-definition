@@ -46,15 +46,5 @@
     "FieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "REFER_TO_JUDGE",
-    "CaseFieldID": "isCcmccLocation",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "isMultiPartyPage",
-    "ShowSummaryChangeOption": "N",
-    "Publish": "Y"
   }
 ]
