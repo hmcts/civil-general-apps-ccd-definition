@@ -217,6 +217,7 @@
    ]]></notes>
     <packageUrl regex="true">^pkg:npm/minimatch@.*$</packageUrl>
     <vulnerabilityName>1085778</vulnerabilityName>
+    <vulnerabilityName>1088613</vulnerabilityName>
   </suppress>
   <suppress>
     <notes><![CDATA[
