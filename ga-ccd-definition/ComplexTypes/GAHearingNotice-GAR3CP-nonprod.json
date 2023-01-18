@@ -33,7 +33,7 @@
     "ListElementCode": "channel",
     "ElementLabel": "Channel",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "HearingChannel",
+    "FieldTypeParameter": "GAJudicialHearingListOptionsGAspec",
     "SecurityClassification": "Public"
   },
   {
@@ -63,7 +63,7 @@
     "ListElementCode": "hearingDuration",
     "ElementLabel": "Duration",
     "FieldType": "FixedList",
-    "FieldTypeParameter": "HearingLengthCasePro",
+    "FieldTypeParameter": "GAHearingDurationGAspec",
     "SecurityClassification": "Public"
   },
   {
