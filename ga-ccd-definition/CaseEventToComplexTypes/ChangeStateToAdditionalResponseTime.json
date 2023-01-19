@@ -19,26 +19,5 @@
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CHANGE_STATE_TO_ADDITIONAL_RESPONSE_TIME_EXPIRED",
-    "CaseFieldID": "isCcmccLocation",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CHANGE_STATE_TO_ADDITIONAL_RESPONSE_TIME_EXPIRED",
-    "CaseFieldID": "judicialDecision",
-    "PageID": "GAJudicialDecision",
-    "DisplayContext": "MANDATORY",
-    "Publish": "Y"
   }
-
 ]
