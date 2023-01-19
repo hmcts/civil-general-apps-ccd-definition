@@ -4,7 +4,7 @@ const {I} = inject();
 module.exports = {
 
   fields: {
-    summaryLabels: 'table.Summary ccd-read-text-area-field span'
+    summaryLabels: 'table.Application ccd-read-text-area-field span'
   },
 
   async verifyJudgesSummaryPage(decisionType, notice) {
