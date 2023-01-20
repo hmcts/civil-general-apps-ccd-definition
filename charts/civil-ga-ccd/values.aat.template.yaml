@@ -1,5 +1,5 @@
 java:
-  image: 'hmctspublic.azurecr.io/civil/general-applications:pr-803'
+  image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
   imagePullPolicy: Always
   ingressHost: ${SERVICE_FQDN}
   keyVaults:
