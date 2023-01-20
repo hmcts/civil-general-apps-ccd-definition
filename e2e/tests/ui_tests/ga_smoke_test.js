@@ -33,7 +33,7 @@ Scenario('GA 1v2  - Judge Makes Decision Order Made @smoke-tests', async ({api, 
   console.log('Without Notice General Application Initiated by Defendant2 : ' + gaCaseReference);
 
   console.log('*** Start Judge makes decision order made: ' + gaCaseReference + ' ***');
-  /*if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeMakesDecisionOrderMade(config.judgeUser, gaCaseReference);
   }else {
     await api.judgeMakesDecisionOrderMade(config.judgeLocalUser, gaCaseReference);
@@ -42,9 +42,9 @@ Scenario('GA 1v2  - Judge Makes Decision Order Made @smoke-tests', async ({api, 
 
   await I.login(config.secondDefendantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
-  await I.see(judgeApproveOrderStatus);*/
+  await I.see(judgeApproveOrderStatus);
 });
 
 AfterSuite(async ({api}) => {
-  // await api.cleanUp();
+  await api.cleanUp();
 });
