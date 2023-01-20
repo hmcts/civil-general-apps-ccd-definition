@@ -14,7 +14,7 @@ let caseId, childCaseNumber, childCaseId, gaCaseReference, civilCaseReference;
 
 Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly');
 
-Scenario('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey @e2e-tests', async ({I, api}) => {
+Scenario('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey', async ({I, api}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
