@@ -90,14 +90,27 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAKE_DECISION",
-    "CaseFieldID": "judicialRequestMoreInfoDocPreview",
+    "CaseFieldID": "showRequestInfoPreviewDoc",
     "PageID": "GAJudicialRequestMoreInfoDocPreview",
-    "PageLabel": "Preview Order Document",
     "PageFieldDisplayOrder": 1,
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\"",
+    "Comment": " "
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialRequestMoreInfoDocPreview",
+    "PageID": "GAJudicialRequestMoreInfoDocPreview",
+    "PageLabel": "Preview Order Document",
+    "PageFieldDisplayOrder": 2,
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "judicialDecisionRequestMoreInfo.requestMoreInfoOption = \"REQUEST_MORE_INFORMATION\"",
+    "PageShowCondition": "showRequestInfoPreviewDoc = \"Yes\"",
     "ShowSummaryChangeOption": "N"
   },
   {
