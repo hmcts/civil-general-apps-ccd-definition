@@ -82,7 +82,7 @@
     "PageFieldDisplayOrder": 1,
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "judicialDecision.decision = \"REQUEST_MORE_INFO\"",
     "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/validate-request-more-info-screen"
@@ -90,14 +90,27 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAKE_DECISION",
-    "CaseFieldID": "judicialRequestMoreInfoDocPreview",
+    "CaseFieldID": "showRequestInfoPreviewDoc",
     "PageID": "GAJudicialRequestMoreInfoDocPreview",
-    "PageLabel": "Preview Order Document",
     "PageFieldDisplayOrder": 1,
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\"",
+    "Comment": " "
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialRequestMoreInfoDocPreview",
+    "PageID": "GAJudicialRequestMoreInfoDocPreview",
+    "PageLabel": "Preview Order Document",
+    "PageFieldDisplayOrder": 2,
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "judicialDecision.decision = \"REQUEST_MORE_INFO\"",
+    "PageShowCondition": "showRequestInfoPreviewDoc = \"Yes\"",
     "ShowSummaryChangeOption": "N"
   },
   {
