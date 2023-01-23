@@ -2722,5 +2722,27 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "showRequestInfoPreviewDoc",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "judge-profile",
+          "legal-adviser",
+          "ga-basic-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

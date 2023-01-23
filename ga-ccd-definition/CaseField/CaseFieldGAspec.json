@@ -834,6 +834,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "showRequestInfoPreviewDoc",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Comment": " "
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "applicationIsUncloackedOnce",
     "Label": " ",
     "FieldType": "YesOrNo",
