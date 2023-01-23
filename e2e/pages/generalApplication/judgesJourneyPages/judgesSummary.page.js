@@ -4,12 +4,12 @@ const {I} = inject();
 module.exports = {
 
   fields: {
-    summaryLabels: 'ccd-field-read-label ng-component span'
+    summaryLabels: 'table.Application ccd-read-text-area-field span'
   },
 
   async verifyJudgesSummaryPage(decisionType, notice) {
-    I.waitInUrl('#Summary');
-    I.see('Summary');
+    I.waitInUrl('#Application');
+    I.see('Application');
     I.see('Parent Case ID');
     I.see('Hearing details');
     I.see('Preferred location');

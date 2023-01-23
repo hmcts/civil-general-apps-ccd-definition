@@ -48,8 +48,8 @@ module.exports = {
     }
     if (!config.runWAApiTest) {
       await I.see('Applicant prefers In person. ' +
-        'Respondent1 prefers In person. ' +
-        'Respondent2 prefers In person.');
+        'Respondent 1 prefers In person. ' +
+        'Respondent 2 prefers In person.');
     }
   },
 
@@ -60,17 +60,17 @@ module.exports = {
     });
     if (!config.runWAApiTest) {
       await I.see('Applicant estimates 45 minutes. ' +
-        'Respondent1 estimates 45 minutes. ' +
-        'Respondent2 estimates 45 minutes.');
+        'Respondent 1 estimates 45 minutes. ' +
+        'Respondent 2 estimates 45 minutes.');
     }
   },
 
   async selectJudicialSupportRequirement(supportRequirement) {
     I.waitForElement(this.fields.judicialSupportRequirement.id);
     if (!config.runWAApiTest) {
-      await I.see('Applicant require Sign language interpreter. ' +
-        'Respondent1 require Sign language interpreter. ' +
-        'Respondent2 require Sign language interpreter.');
+      await I.see('Applicant requires Sign language interpreter. ' +
+        'Respondent 1 requires Sign language interpreter. ' +
+        'Respondent 2 requires Sign language interpreter.');
     }
     await within(this.fields.judicialSupportRequirement.id, () => {
       I.click(this.fields.judicialSupportRequirement.options[supportRequirement]);
