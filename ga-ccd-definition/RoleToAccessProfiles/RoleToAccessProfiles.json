@@ -237,7 +237,7 @@
     "RoleName" : "specifc-access-ctsc",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "caseworker-civil,ga-basic-access",
+    "AccessProfiles": "ga-basic-access",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
