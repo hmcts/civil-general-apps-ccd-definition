@@ -1,0 +1,105 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingNoticeApplicationDetail",
+    "Label": "Application details",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "ApplicationDetailsOption",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingNoticeApplicationType",
+    "FieldType": "Text",
+    "Label": "Type of application",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingNoticeApplicationDate",
+    "Label": "Date of application",
+    "HintText": "For example, 27 3 2022",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingLocationLabel",
+    "Label": "Location",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingLocation",
+    "Label": " ",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingChannelLabel",
+    "Label": "Channel",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "channel",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "HearingChannel",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingDateLabel",
+    "Label": "Date",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingDate",
+    "Label": " ",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingTimeLabel",
+    "Label": "Time",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingTimeHourMinute",
+    "Label": "Start time",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "HearingTimeHourMinute",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingDuration",
+    "Label": "Duration",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "HearingLengthCasePro",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingDurationOther",
+    "Label": "Other duration",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "information",
+    "Label": "Is there more information you need to add to the Hearing Notification letter?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  }
+]
