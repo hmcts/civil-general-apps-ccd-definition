@@ -1,5 +1,5 @@
 java:
-  image: 'hmctspublic.azurecr.io/civil/general-applications:pr-823'
+  image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
   imagePullPolicy: Always
   ingressHost: ${SERVICE_FQDN}
   keyVaults:
@@ -150,8 +150,8 @@ xui-webapp:
     image: 'hmctspublic.azurecr.io/xui/webapp:latest'
     devcpuRequests: 500m
     devmemoryRequests: 1Gi
-    devcpuLimits: 2
-    devmemoryLimits: 3Gi
+    devcpuLimits: 1
+    devmemoryLimits: 2Gi
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health
