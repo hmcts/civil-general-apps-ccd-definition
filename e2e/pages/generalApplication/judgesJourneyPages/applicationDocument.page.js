@@ -60,6 +60,12 @@ module.exports = {
     await I.see('Type');
     await I.see('Uploaded on');
     await I.see('Document URL');
-    await I.seeTextEquals(documentType, this.fields.docLabel);
+    //  Concurrent written representations journey is now without notice to with notice hence added this logic
+    if (documentType === 'Written representation concurrent') {
+      await I.seeTextEquals('Request for information', locate(this.fields.docLabel).first());
+      await I.seeTextEquals(documentType, locate(this.fields.docLabel).last());
+    } else {
+      await I.seeTextEquals(documentType, this.fields.docLabel);
+    }
   }
 };
