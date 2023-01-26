@@ -234,6 +234,15 @@
     "CaseAccessCategories": ""
   },
   {
+    "RoleName" : "specifc-access-ctsc",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "ga-basic-access",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName": "nbc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",

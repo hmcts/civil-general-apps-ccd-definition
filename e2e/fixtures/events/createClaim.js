@@ -123,6 +123,10 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
             listElement(config.claimantSelectedCourt)
           ],
           value: listElement(config.claimantSelectedCourt)
+        },
+        caseLocation: {
+          region: '2',
+          baseLocation: '000000'
         }
       }
     },
