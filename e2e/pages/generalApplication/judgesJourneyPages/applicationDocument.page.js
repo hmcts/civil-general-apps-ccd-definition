@@ -16,13 +16,23 @@ module.exports = {
     I.seeInCurrentUrl('Documents');
     I.see(uploadedDoc);
     I.see(expectedLabel);
-    I.seeNumberOfVisibleElements(this.fields.links, 3);
+    //  Concurrent written representations journey is now without notice to with notice hence added this logic
+    if (expectedLabel !== 'Written representation concurrent document') {
+      I.seeNumberOfVisibleElements(this.fields.links, 3);
+    } else {
+      I.seeNumberOfVisibleElements(this.fields.links, 4);
+    }
   },
 
   async verifyUploadedDocumentPDF(documentType) {
     await I.waitForElement(this.fields.appDocTable);
     await I.seeInCurrentUrl('Documents');
-    await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 1);
+    //  Concurrent written representations journey is now without notice to with notice hence added this logic
+    if (documentType === 'Written representation concurrent') {
+      await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 2);
+    } else {
+      await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 1);
+    }
     let docURL = await I.grabTextFrom(locate(this.fields.links).first());
     switch (documentType) {
       case 'General order':
@@ -44,7 +54,7 @@ module.exports = {
         expect(docURL).to.contains(`Order_Written_Representation_Sequential_for_application_${docFullDate}`);
         break;
       case 'Written representation concurrent':
-        expect(docURL).to.contains(`Order_Written_Representation_Concurrent_for_application_${docFullDate}`);
+        await I.see(`Order_Written_Representation_Concurrent_for_application_${docFullDate}`);
         break;
     }
     await I.see('Type');

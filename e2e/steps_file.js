@@ -817,7 +817,7 @@ module.exports = function () {
       ]);
     },
 
-    async respondToJudgesWrittenRep(caseNumber, childCaseId) {
+    async respondToJudgesWrittenRep(caseNumber, childCaseId, documentType) {
       eventName = events.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
@@ -825,7 +825,7 @@ module.exports = function () {
           childCaseId, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
         () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
-        () => applicationDocumentPage.verifyUploadedFile('Written Representation Documents', 'examplePDF.pdf'),
+        () => applicationDocumentPage.verifyUploadedFile(documentType, 'examplePDF.pdf'),
       ]);
     },
 
@@ -872,13 +872,19 @@ module.exports = function () {
       eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
-        () => judgeDecisionPage.selectJudgeDecision(decision),
-        () => writtenRepresentationsPage.selectWrittenRepresentations(representationsType),
-        () => drawGeneralOrderPage.verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType, notice),
-        () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
-        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
-        ...submitApplication('Your order has been made'),
-        () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
+        ...conditionalSteps(notice !== 'withOutNotice', [
+          () => judgeDecisionPage.selectJudgeDecision(decision),
+          () => writtenRepresentationsPage.selectWrittenRepresentations(representationsType),
+          () => drawGeneralOrderPage.verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType, notice),
+          () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
+          () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
+          ...submitApplication('Your order has been made'),
+          () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
+        ]),
+        ...conditionalSteps(notice === 'withOutNotice', [
+          () => judgeDecisionPage.judgeMakeDecisionForWithoutNotice(decision),
+          () => judgeDecisionPage.verifyWrittenRepErrorMessage(),
+        ]),
       ]);
     },
 
