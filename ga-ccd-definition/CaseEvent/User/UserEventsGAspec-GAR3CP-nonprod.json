@@ -18,6 +18,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
     "Publish": "Y",
-    "EventEnablingCondition": "isCcmccLocation = \"Only available through tasks\""
+    "EventEnablingCondition": "isCaseProgressionEnabled = \"Only available through tasks\""
   }
 ]

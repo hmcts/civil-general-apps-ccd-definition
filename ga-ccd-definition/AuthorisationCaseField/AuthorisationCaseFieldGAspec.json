@@ -1730,6 +1730,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "judge-profile",
+          "hearing-schedule-access",
           "legal-adviser"
         ],
         "CRUD": "CRU"
