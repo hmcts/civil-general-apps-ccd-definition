@@ -151,7 +151,7 @@ xui-webapp:
     devcpuRequests: 1Gi
     devmemoryRequests: 2Gi
     devcpuLimits: 2
-    devmemoryLimits: 6Gi
+    devmemoryLimits: 4Gi
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health
