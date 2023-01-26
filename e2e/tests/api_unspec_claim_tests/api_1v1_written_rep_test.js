@@ -44,7 +44,11 @@ Scenario('Without Notice application: Judge makes decision 1V1 - WRITTEN_REPRESE
     gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
     console.log('*** Start Judge Make Order on GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
-    await api.judgeMakesDecisionWithoutNoticeWrittenRep(config.judgeLocalUser, gaCaseReference);
+    if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+      await api.judgeMakesDecisionWithoutNoticeWrittenRep(config.judgeUser, gaCaseReference);
+    }else {
+      await api.judgeMakesDecisionWithoutNoticeWrittenRep(config.judgeLocalUser, gaCaseReference);
+    }
     console.log('*** End Judge Make Order GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
   });
 
@@ -59,7 +63,11 @@ Scenario('Judge uncloaked the without notice application: Judge revisit makes de
     gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
     console.log('*** Start Judge Make Order on GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
-    await api.judgeRevisitMakesDecisionWrittenRepUncloakedAppln(config.judgeLocalUser, gaCaseReference);
+    if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+      await api.judgeRevisitMakesDecisionWrittenRepUncloakedAppln(config.judgeUser, gaCaseReference);
+    }else {
+      await api.judgeRevisitMakesDecisionWrittenRepUncloakedAppln(config.judgeLocalUser, gaCaseReference);
+    }
     console.log('*** End Judge Make Order GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
 
   });

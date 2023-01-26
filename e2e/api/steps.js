@@ -727,7 +727,7 @@ module.exports = {
     assert.equal(response.status, 422);
 
     if (responseBody.callbackErrors != null) {
-      assert.equal(responseBody.callbackErrors[0], "The application needs to be uncloaked before requesting written representations");
+      assert.equal(responseBody.callbackErrors[0], 'The application needs to be uncloaked before requesting written representations');
     }
   },
 
