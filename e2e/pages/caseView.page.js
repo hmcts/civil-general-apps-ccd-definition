@@ -87,7 +87,6 @@ module.exports = {
       } else {
         await I.wait(2);
       }
-      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
     }, urlBefore);
   },
 };

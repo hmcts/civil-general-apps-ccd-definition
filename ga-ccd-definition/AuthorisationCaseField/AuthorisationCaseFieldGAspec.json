@@ -1819,7 +1819,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "applicationIsUncloackedOnce",
+    "CaseFieldID": "applicationIsUncloakedOnce",
     "AccessControl": [
       {
         "UserRoles": [
