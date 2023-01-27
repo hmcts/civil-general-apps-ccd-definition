@@ -28,7 +28,7 @@ Scenario('Judge makes decision 1V1 - LIST FOR HEARING', async ({api}) => {
   console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
-Scenario.skip('Judge makes decision 1V1 - Hearing Scheduled', async ({api}) => {
+Scenario('Judge makes decision 1V1 - Hearing Scheduled @mm', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
       config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -48,9 +48,9 @@ Scenario.skip('Judge makes decision 1V1 - Hearing Scheduled', async ({api}) => {
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdmin, gaCaseReference);
+  // await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdmin, gaCaseReference);
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
