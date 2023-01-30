@@ -6,9 +6,9 @@ import uk.gov.hmcts.contino.AppPipelineDsl
 def type = "nodejs"
 def product = "civil"
 def component = "ga-ccd"
-def camundaBranch = "master"
+def camundaBranch = "CIV-6796"
 
-def ccddefbranch = "master"
+def ccddefbranch = "CIV-6796"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
