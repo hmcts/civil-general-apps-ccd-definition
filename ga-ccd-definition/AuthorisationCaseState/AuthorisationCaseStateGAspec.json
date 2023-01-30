@@ -251,7 +251,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "civil-administrator-standard",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -259,9 +261,7 @@
         "UserRoles": [
           "judge-profile",
           "legal-adviser",
-          "civil-administrator-standard",
           "civil-administrator-basic",
-          "caseworker-civil-solicitor",
           "caseworker-ras-validation",
           "ga-basic-access"
         ],
