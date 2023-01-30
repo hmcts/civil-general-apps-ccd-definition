@@ -58,7 +58,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(parentCaseNum, 'Applications');
   await I.see(writtenRepStatus);
-  await I.respondToJudgesWrittenRep(childCaseNum(), childCaseId);
+  await I.respondToJudgesWrittenRep(childCaseNum(), childCaseId, 'Written Representation Documents');
   console.log('Responded to Judges written representations on case: ' + childCaseNum());
 }).retry(1);
 
