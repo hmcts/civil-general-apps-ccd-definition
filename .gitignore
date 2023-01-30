@@ -27,9 +27,6 @@ bin/main/application.yaml
 package-lock.json
 node_modules/
 
-#yarn
-.yarn/*
-
 # test_output
 test-results/
 /e2e/reporters/
