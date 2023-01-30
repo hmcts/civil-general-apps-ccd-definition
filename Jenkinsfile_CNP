@@ -1,7 +1,7 @@
 #!groovy
 
 @Library("Infrastructure")
-import uk.gov.hmcts.contino.AppPipelineDsl
+import uk.gov.hmcts.contino.GithubAPI
 
 def type = "nodejs"
 def product = "civil"
@@ -108,6 +108,10 @@ def uploadCoreCaseDataDefinitions(env) {
   }
 }
 
+def checkForEnableHelmLabel(branch_name) {
+  return new GithubAPI(this).getLabelsbyPattern(branch_name, "enableHelm").contains("enableHelm")
+}
+
 withPipeline(type, product, component) {
     env.PR_BUILD = true
     enableHighLevelDataSetup()
@@ -118,7 +122,9 @@ withPipeline(type, product, component) {
         env.TEST_DATA_LOAD_SKIP_PERIOD = 3.0
         env.ENVIRONMENT = "preview"
         loadVaultSecrets(secrets);
-        //enableCleanupOfHelmReleaseOnSuccess();
+      if (!checkForEnableHelmLabel(env.BRANCH_NAME)) {
+        enableCleanupOfHelmReleaseAlways();
+      }
     }
     onMaster {
         env.ENVIRONMENT="aat"
