@@ -560,6 +560,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judicialDecisionRequestMoreInformation",
+    "Label": "Request for information",
+    "FieldType": "GAJudicialRequestMoreInfoGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicidalDecisionMakeAnOrderForWrittenRepresentationsLabel",
     "Label": "## Draw a General Order",
     "FieldType": "Label",

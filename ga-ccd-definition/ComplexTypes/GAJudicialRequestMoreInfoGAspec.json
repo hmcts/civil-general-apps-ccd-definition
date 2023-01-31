@@ -14,8 +14,7 @@
     "ElementLabel": "Enter the information required",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
-    "Max": 1000,
-    "FieldShowCondition": "requestMoreInfoOption=\"REQUEST_MORE_INFORMATION\" OR isWithNotice=\"Yes\""
+    "Max": 1000
   },
   {
     "ID": "GAJudicialRequestMoreInfoGAspec",
@@ -29,8 +28,7 @@
     "ListElementCode": "judgeRequestMoreInfoByDate",
     "ElementLabel": "When should this application be referred to a Judge again?",
     "FieldType": "Date",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "requestMoreInfoOption=\"REQUEST_MORE_INFORMATION\" OR isWithNotice=\"Yes\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "GAJudicialRequestMoreInfoGAspec",
