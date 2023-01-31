@@ -120,17 +120,16 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "GAJudicialRequestMoreInfoScreenTwo",
+    "ID": "GAJudicialRequestMoreInformationScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionRequestMoreInformation",
     "ListElementCode": "judgeRequestMoreInfoText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "judicialDecisionRequestMoreInfo.requestMoreInfoOption=\"REQUEST_MORE_INFORMATION\" OR judicialDecisionRequestMoreInfo.isWithNotice=\"Yes\""
+    "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "GAJudicialRequestMoreInfoScreenTwo",
+    "ID": "GAJudicialRequestMoreInformationScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionRequestMoreInformation",
     "ListElementCode": "judgeRecitalText",
@@ -139,14 +138,13 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "GAJudicialRequestMoreInfoScreenTwo",
+    "ID": "GAJudicialRequestMoreInformationScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionRequestMoreInformation",
     "ListElementCode": "judgeRequestMoreInfoByDate",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "judicialDecisionRequestMoreInfo.requestMoreInfoOption=\"REQUEST_MORE_INFORMATION\" OR judicialDecisionRequestMoreInfo.isWithNotice=\"Yes\""
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "GAJudicialDecision",
