@@ -8,8 +8,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/hearing-locations"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
