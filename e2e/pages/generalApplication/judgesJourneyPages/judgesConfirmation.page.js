@@ -31,7 +31,6 @@ module.exports = {
   async closeAndReturnToCaseDetails(childCaseId) {
     await I.see(childCaseId);
     await I.click('Close and Return to case details');
-    await I.waitForInvisible(locate('div.spinner-container').withText('Loading'), 15);
   }
 };
 

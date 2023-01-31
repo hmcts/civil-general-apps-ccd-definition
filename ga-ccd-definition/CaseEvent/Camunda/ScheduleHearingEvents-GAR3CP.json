@@ -1,0 +1,28 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "GENERATE_HEARING_NOTICE_DOCUMENT",
+    "Name": "Generate Hearing Document",
+    "Description": "Schedule Hearing - Generate Hearing Notice Document",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "NOTIFY_HEARING_NOTICE",
+    "Name": "Email: Hearing notice",
+    "Description": "Notify Hearing Notice",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  }
+]
