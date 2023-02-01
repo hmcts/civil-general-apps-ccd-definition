@@ -167,7 +167,7 @@ module.exports = {
   checkPBAv3ToggleEnabled: async () => {
     return true;
     //return checkToggleEnabled(PBAv3);
-  }
+  },
 
   checkToggleEnabled: async (toggle) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
