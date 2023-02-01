@@ -259,6 +259,16 @@ module.exports = {
 
     await assertSubmittedSpecEvent('PENDING_CASE_ISSUED');
 
+    var pbaV3 = await checkPBAv3ToggleEnabled();
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+                                      claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
     await assignSpecCase(caseId, multipartyScenario);
     await waitForFinishedBusinessProcess(caseId, user);
 
