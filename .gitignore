@@ -29,6 +29,7 @@ node_modules/
 
 #yarn
 .yarn/*
+!.yarn/releases
 
 # test_output
 test-results/
