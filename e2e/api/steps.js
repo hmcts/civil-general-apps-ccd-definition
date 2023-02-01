@@ -42,6 +42,7 @@ const data = {
   REFER_TO_JUDGE: genAppNbcAdminReferToJudgeData.nbcAdminReferToJudgeData(),
   REFER_TO_LEGAL_ADVISOR: genAppNbcAdminReferToLegalAdvisorData.nbcAdminReferToLegalAdvisorData(),
   JUDGE_MAKES_ORDER_WRITTEN_REP: (current_date) => genAppJudgeMakeDecisionData.judgeMakeOrderWrittenRep(current_date),
+  JUDGE_MAKES_ORDER_WRITTEN_REP_ON_UNCLOAKED_APPLN: (current_date) => genAppJudgeMakeDecisionData.judgeMakeOrderWrittenRep_On_Uncloaked_Appln(current_date),
   RESPOND_TO_JUDGE_ADDITIONAL_INFO: genAppRespondentResponseData.toJudgeAdditionalInfo(),
   RESPOND_TO_JUDGE_DIRECTIONS: genAppRespondentResponseData.toJudgeDirectionsOrders(),
   RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION: genAppRespondentResponseData.toJudgeWrittenRepresentation(),
@@ -271,6 +272,54 @@ module.exports = {
     await apiRequest.startEvent(eventName, parentCaseId);
 
     const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE,
+      parentCaseId);
+
+    const responseBody = await response.json();
+    assert.equal(response.status, 201);
+    console.log('General application case state : ' + responseBody.state);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header,
+      '# You have made an application');
+
+    await waitForFinishedBusinessProcess(parentCaseId, user);
+    await waitForGAFinishedBusinessProcess(parentCaseId, user);
+
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+    const updatedCivilCaseData = await updatedResponse.json();
+
+    switch (user.email) {
+      case config.applicantSolicitorUser.email:
+        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+        break;
+      case config.defendantSolicitorUser.email:
+        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+        break;
+      case config.secondDefendantSolicitorUser.email:
+        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
+        break;
+    }
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
+      'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', user);
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseReference, user);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+
+    console.log('General application case state : APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+    console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
+
+    return gaCaseReference;
+  },
+
+  initiateGeneralApplicationWithOutNoticeUncloaked: async (user, parentCaseId) => {
+    let gaCaseReference;
+    eventName = events.INITIATE_GENERAL_APPLICATION.id;
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName, parentCaseId);
+
+    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE_UNCLOAKED,
       parentCaseId);
 
     const responseBody = await response.json();
@@ -663,6 +712,41 @@ module.exports = {
     let ccd_state= updatedGABusinessProcessData.ccdState;
     assert.equal(updatedGABusinessProcessData.ccdState, 'AWAITING_WRITTEN_REPRESENTATIONS');
     return ccd_state;
+  },
+
+  judgeMakesDecisionWithoutNoticeWrittenRep: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.MAKE_DECISION.id;
+
+    const response = await apiRequest.validateGAPage(
+      'MAKE_DECISION',
+      'GAJudicialDecision',
+      data.JUDGE_MAKES_ORDER_WRITTEN_REP(current_date),
+      gaCaseId
+    );
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 422);
+
+    if (responseBody.callbackErrors != null) {
+      assert.equal(responseBody.callbackErrors[0], 'The application needs to be uncloaked before requesting written representations');
+    }
+  },
+
+  judgeRevisitMakesDecisionWrittenRepUncloakedAppln: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.MAKE_DECISION.id;
+
+    const response = await apiRequest.validateGAPage(
+      'MAKE_DECISION',
+      'GAJudicialDecision',
+      data.JUDGE_MAKES_ORDER_WRITTEN_REP_ON_UNCLOAKED_APPLN(current_date),
+      gaCaseId
+    );
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 200);
+    assert.equal(responseBody.callbackErrors, null);
   },
 
   judgeMakesDecisionDirectionsOrder: async (user, gaCaseId) => {
