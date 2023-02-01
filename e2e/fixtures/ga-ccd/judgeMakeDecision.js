@@ -23,6 +23,23 @@ module.exports = {
       judicialByCourtsInitiativeForWrittenRep: 'OPTION_1'
     };
   },
+  judgeMakeOrderWrittenRep_On_Uncloaked_Appln: (current_date) => {
+    return {
+      applicationIsUncloakedOnce: 'Yes',
+      generalAppInformOtherParty: {
+        isWithNotice: 'Yes',
+        reasonsForWithoutNotice: 'Test'
+      },
+      judicialDecision : {
+        decision: 'MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS'
+      },
+      judicialDecisionMakeAnOrderForWrittenRepresentations: {
+        writtenConcurrentRepresentationsBy: current_date,
+        makeAnOrderForWrittenRepresentations: 'CONCURRENT_REPRESENTATIONS'
+      },
+      judicialByCourtsInitiativeForWrittenRep: 'OPTION_1'
+    };
+  },
   judgeMakeDecisionDirectionOrder: (current_date) => {
     return {
       judicialDecision : {
