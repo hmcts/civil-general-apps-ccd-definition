@@ -29,6 +29,7 @@ const  genAppNbcAdminReferToLegalAdvisorData = require('../fixtures/ga-ccd/nbcAd
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
+const {checkToggleEnabled} = require('./testingSupport');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
