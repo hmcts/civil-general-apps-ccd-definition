@@ -220,8 +220,8 @@ module.exports = {
       body: 'Your claim will not be issued until payment'
     });
 
-    //const pbaV3 = await checkToggleEnabled(PBAv3);
-    const pbaV3 = true;
+    var pbaV3 = await checkToggleEnabled(PBAv3);
+    pbaV3 = true;
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
