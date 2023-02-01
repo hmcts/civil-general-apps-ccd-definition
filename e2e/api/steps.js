@@ -28,8 +28,7 @@ const genAppNbcAdminReferToJudgeData = require('../fixtures/ga-ccd/nbcAdminTask.
 const  genAppNbcAdminReferToLegalAdvisorData = require('../fixtures/ga-ccd/nbcAdminTask.js');
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
-const {PBAv3} = require('../fixtures/featureKeys');
-const {checkToggleEnabled} = require('./testingSupport');
+const {checkPBAv3ToggleEnabled} = require('./testingSupport');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
@@ -220,8 +219,7 @@ module.exports = {
       body: 'Your claim will not be issued until payment'
     });
 
-    var pbaV3 = await checkToggleEnabled(PBAv3);
-    pbaV3 = true;
+    var pbaV3 = await checkPBAv3ToggleEnabled();
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
