@@ -257,5 +257,14 @@ module.exports = {
           }
         });
     }, TASK_MAX_RETRIES, TASK_RETRY_TIMEOUT_MS);
+  },
+
+  paymentUpdate: async (caseId, endpoint, serviceRequestUpdateDto) => {
+    let endpointURL = getCivilServiceUrl() + endpoint;
+    let response = await restHelper.retriedRequest(endpointURL, getRequestHeaders(tokens.userAuth),
+      serviceRequestUpdateDto,'PUT');
+
+    return response || {};
   }
+
 };
