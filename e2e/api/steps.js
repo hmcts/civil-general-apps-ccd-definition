@@ -28,6 +28,7 @@ const genAppNbcAdminReferToJudgeData = require('../fixtures/ga-ccd/nbcAdminTask.
 const  genAppNbcAdminReferToLegalAdvisorData = require('../fixtures/ga-ccd/nbcAdminTask.js');
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
+const {PBAv3} = require('../fixtures/featureKeys');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
@@ -217,6 +218,14 @@ module.exports = {
       header: 'Your claim has been received',
       body: 'Your claim will not be issued until payment'
     });
+
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+                                      claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
 
     await assignCase(caseId, multipartyScenario);
     await waitForFinishedBusinessProcess(caseId,user);
