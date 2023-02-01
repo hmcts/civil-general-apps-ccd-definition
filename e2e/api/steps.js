@@ -215,7 +215,7 @@ module.exports = {
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
-      body: 'Your claim will not be issued until payment is confirmed.'
+      body: 'Your claim will not be issued until payment'
     });
 
     await assignCase(caseId, multipartyScenario);
