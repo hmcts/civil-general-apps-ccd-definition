@@ -234,7 +234,7 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "specifc-access-ctsc",
+    "RoleName" : "specific-access-ctsc",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "ga-basic-access",
