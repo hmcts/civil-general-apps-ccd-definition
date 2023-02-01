@@ -133,11 +133,13 @@ withPipeline(type, product, component) {
         loadVaultSecrets(secrets)
     }
     onDemo {
+        env.YARN_ENABLE_IMMUTABLE_INSTALLS = false
         env.ENVIRONMENT = "demo"
         loadVaultSecrets(secrets)
     }
 
     onPerftest{
+        env.YARN_ENABLE_IMMUTABLE_INSTALLS = false
         env.ENVIRONMENT = "perftest"
     }
 
