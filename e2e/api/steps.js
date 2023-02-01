@@ -222,6 +222,8 @@ module.exports = {
 
     const pbaV3 = await checkToggleEnabled(PBAv3);
 
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
     if (pbaV3) {
       await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
                                       claimData.serviceUpdateDto(caseId, 'paid'));
