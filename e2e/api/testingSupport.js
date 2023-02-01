@@ -2,7 +2,7 @@ const config = require('../config.js');
 const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
-const {PBAv3} = require('../fixtures/featureKeys');
+//const {PBAv3} = require('../fixtures/featureKeys');
 
 let incidentMessage;
 
