@@ -17,6 +17,8 @@ const getPaymentCallbackUrl = () => `${config.url.generalApplication}/service-re
 const getJudgeRevisitTaskHandlerUrl =(state) => `${config.url.generalApplication}/testing-support/trigger-judge-revisit-process-event/${state}`;
 const getCaseDismissalTaskHandlerUrl =() => `${config.url.civilService}/testing-support/trigger-case-dismissal-scheduler`;
 const getGaCaseDataUrl =(caseId) => `${config.url.generalApplication}/testing-support/case/${caseId}`;
+const getCivilServiceUrl = () => `${config.url.civilService}`;
+
 
 const getRequestHeaders = (userAuth) => {
   return {
