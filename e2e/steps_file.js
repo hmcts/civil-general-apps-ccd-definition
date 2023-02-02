@@ -55,6 +55,8 @@ const respondentDetails = require('./fragments/respondentDetails.page');
 const confirmDetailsPage = require('./fragments/confirmDetails.page');
 
 const applicationTypePage = require('./pages/generalApplication/applicationType.page');
+const hearingDatePage = require('./pages/generalApplication/hearingDate.page');
+const n245FormPage = require('./pages/generalApplication/n245Form.page');
 const consentCheckPage = require('./pages/generalApplication/consentCheck.page');
 const urgencyCheckPage = require('./pages/generalApplication/urgencyCheck.page');
 const withOutNoticePage = require('./pages/generalApplication/withOutNotice.page');
@@ -131,6 +133,7 @@ const claimResponseTimelineLRspecPage = require('./pages/respondToClaimLRspec/cl
 const hearingLRspecPage = require('./pages/respondToClaimLRspec/hearingLRspec.page');
 const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furtherInformationLRspec.page');
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
+const {getAppTypes} = require('./pages/generalApplication/generalApplicationTypes');
 
 
 const SIGNED_IN_SELECTOR = 'exui-header';
@@ -904,6 +907,12 @@ module.exports = function () {
       ]);
     },
 
+    async verifyN245FormElements() {
+      await this.triggerStepsWithScreenshot([
+        () => applicantSummaryPage.verifyN245FormElements(),
+      ]);
+    },
+
     async clickAndVerifyTab(caseNumber, tabName, appType, appCount) {
       await this.triggerStepsWithScreenshot([
         ...navigateToTab(caseNumber, tabName),
@@ -926,6 +935,29 @@ module.exports = function () {
     async respCloseAndReturnToCaseDetails(caseId) {
       await this.triggerStepsWithScreenshot([
         () => responseConfirmationPage.closeAndReturnToCaseDetails(caseId),
+      ]);
+    },
+
+    async initiateGA(caseId, appTypes, hearingScheduled, consentCheck, isUrgent, notice) {
+      eventName = events.INITIATE_GENERAL_APPLICATION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => applicationTypePage.chooseAppType(getAppTypes().slice(6, 11)),
+        ...selectApplicationType(eventName, appTypes),
+        () => hearingDatePage.selectHearingScheduled(hearingScheduled),
+        () => n245FormPage.uploadN245Form(TEST_FILE_PATH),
+        ...selectConsentCheck(consentCheck),
+        ...isUrgentApplication(isUrgent),
+        ...conditionalSteps(consentCheck === 'no', [
+          ...selectNotice(notice),
+        ]),
+        ...enterApplicationDetails(consentCheck),
+        ...fillHearingDetails(hearingScheduled, 'no', 'no', 'no', 'yes', 'disabledAccess'),
+        ...verifyApplicationFee(consentCheck, notice),
+        ...selectPbaNumber(),
+        ...verifyCheckAnswerForm(caseId, 'hearingScheduled'),
+        ...submitApplication('You have made an application'),
+        ...verifyGAConfirmationPage(appTypes, caseId),
       ]);
     },
 

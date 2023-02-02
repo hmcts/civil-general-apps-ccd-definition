@@ -15,8 +15,11 @@ module.exports = {
     I.seeNumberOfVisibleElements('.button', 2);
     if ('yes' === consentCheck) {
       I.seeNumberOfVisibleElements('.case-field-change a', 7);
-    } else {
+    } else if ('no' === consentCheck) {
       I.seeNumberOfVisibleElements('.case-field-change a', 9);
+      I.seeTextEquals('examplePDF.pdf', '.collection-field-table a');
+    } else {
+      I.seeNumberOfVisibleElements('.case-field-change a', 11);
       I.seeTextEquals('examplePDF.pdf', '.collection-field-table a');
     }
   },
