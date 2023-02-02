@@ -33,6 +33,45 @@ Scenario('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS- Respondent upload 
     console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
   });
 
+Scenario('Without Notice application: Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS- Respondent upload Directions Document'
+  , async ({api}) => {
+    civilCaseReference = await api.createUnspecifiedClaim(
+      config.applicantSolicitorUser, mpScenario, 'Company');
+    await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+    await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+    console.log('Civil Case created for general application: ' + civilCaseReference);
+    console.log('Make a General Application');
+    gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
+
+    console.log('*** Start Judge Make Order on GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
+    if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+      await api.judgeMakesDecisionWithoutNoticeWrittenRep(config.judgeUser, gaCaseReference);
+    }else {
+      await api.judgeMakesDecisionWithoutNoticeWrittenRep(config.judgeLocalUser, gaCaseReference);
+    }
+    console.log('*** End Judge Make Order GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
+  });
+
+Scenario('Judge uncloaked the without notice application: Judge revisit makes decision 1V1 - WRITTEN_REPRESENTATIONS- Respondent upload Directions Document'
+  , async ({api}) => {
+    civilCaseReference = await api.createUnspecifiedClaim(
+      config.applicantSolicitorUser, mpScenario, 'Company');
+    await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+    await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+    console.log('Civil Case created for general application: ' + civilCaseReference);
+    console.log('Make a General Application');
+    gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
+
+    console.log('*** Start Judge Make Order on GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
+    if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+      await api.judgeRevisitMakesDecisionWrittenRepUncloakedAppln(config.judgeUser, gaCaseReference);
+    }else {
+      await api.judgeRevisitMakesDecisionWrittenRepUncloakedAppln(config.judgeLocalUser, gaCaseReference);
+    }
+    console.log('*** End Judge Make Order GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
+
+  });
+
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
