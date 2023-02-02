@@ -214,14 +214,16 @@ module.exports = {
     await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
       null, 'Case data validation failed');
 
+    const pbaV3 = await checkPBAv3ToggleEnabled();
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
+      : 'Your claim will not be issued until payment is confirmed.';
+
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
-      body: 'Your claim will not be issued until payment'
+      body: bodyText
     });
-
-    var pbaV3 = await checkPBAv3ToggleEnabled();
-
-    console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
     if (pbaV3) {
       await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
