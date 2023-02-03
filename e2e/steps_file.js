@@ -135,7 +135,6 @@ const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furth
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 const {getAppTypes} = require('./pages/generalApplication/generalApplicationTypes');
 
-
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
@@ -920,6 +919,12 @@ module.exports = function () {
       ]);
     },
 
+    async clickOnTab(tabName) {
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.clickOnTab(tabName)
+      ]);
+    },
+
     async closeAndReturnToCaseDetails(caseId) {
       await this.triggerStepsWithScreenshot([
         () => confirmationPage.closeAndReturnToCaseDetails(caseId),
@@ -938,7 +943,7 @@ module.exports = function () {
       ]);
     },
 
-    async initiateGA(caseId, appTypes, hearingScheduled, consentCheck, isUrgent, notice) {
+    async initiateVaryJudgementGA(caseId, appTypes, hearingScheduled, consentCheck, isUrgent, notice) {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
@@ -965,6 +970,7 @@ module.exports = function () {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
         ...selectApplicationType(eventName, appTypes),
+        () => hearingDatePage.selectHearingScheduled(hearingScheduled),
         ...selectConsentCheck(consentCheck),
         ...isUrgentApplication(isUrgent),
         ...conditionalSteps(consentCheck === 'no', [

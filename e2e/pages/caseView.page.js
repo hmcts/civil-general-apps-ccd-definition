@@ -31,11 +31,12 @@ module.exports = {
       case 'Respond to judges list for hearing':
       case 'Refer to Judge':
       case 'Refer to Legal Advisor':
+        await I.waitForElement(this.fields.eventDropdown, 10);
         await I.selectOption(this.fields.eventDropdown, event);
-        await I.moveCursorTo(this.goButton);
-        await I.wait(3);
-        await I.forceClick(this.goButton);
-        await I.waitForElement(EVENT_TRIGGER_LOCATOR);
+        await I.retryUntilExists(async () => {
+          await I.forceClick(this.goButton);
+          await I.waitForElement(EVENT_TRIGGER_LOCATOR);
+        }, this.fields.generalApps);
         break;
       default:
         await I.waitForClickable('.event-trigger .button', 10);
@@ -56,6 +57,13 @@ module.exports = {
     if (await I.hasSelector(this.fields.eventDropdown)) {
       throw new Error('Expected to have no events available');
     }
+  },
+
+  async clickOnTab(tabName) {
+    let urlBefore = await I.grabCurrentUrl();
+    await I.retryUntilUrlChanges(async () => {
+      await I.forceClick(locate(this.fields.tab).withText(tabName));
+    }, urlBefore);
   },
 
   async navigateToTab(caseNumber, tabName) {

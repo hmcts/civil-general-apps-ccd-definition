@@ -3,6 +3,8 @@ const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
 const listForHearingStatus = 'Listed for a Hearing';
+const judgeApproveOrderStatus = 'Order Made';
+const respondentStatus = 'Awaiting Respondent Response';
 const claimantType = 'Company';
 const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
@@ -10,35 +12,65 @@ const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testi
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 let civilCaseReference, gaCaseReference, caseId, childCaseNumber;
 
-Feature('GA R2 1v1 - General Application Journey');
+Feature('GA R2 1v1 - General Application Journey @e2e-tests');
 
 Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey', async ({I, api}) => {
-/*  civilCaseReference = await api.createUnspecifiedClaim(
+  civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  console.log('Case created for general application: ' + civilCaseReference);*/
+  console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
-  await I.initiateGA('1675333090819134', getAppTypes().slice(10, 11), 'yes', 'no', 'no', 'no');
-  gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, '1675333090819134');
+  await I.initiateVaryJudgementGA(civilCaseReference, getAppTypes().slice(10, 11), 'yes', 'no', 'no', 'no');
+  gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
-  await I.clickAndVerifyTab('1675333090819134', 'Applications', getAppTypes().slice(10, 11), 5);
+  await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(10, 11), 1);
   await I.see(judgeDecisionStatus);
-  await I.navigateToTab(gaCaseReference, 'Application');
-  await I.verifyApplicantSummaryPage();
+  await I.navigateToCaseDetails(gaCaseReference);
   await I.verifyN245FormElements();
-  await I.navigateToTab(gaCaseReference, 'Application Documents');
+  await I.clickOnTab('Application Documents');
   await I.verifyN245FormElements();
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
-  }else {
+  } else {
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
   }
+
   await I.login(config.applicantSolicitorUser);
-  await I.navigateToTab(gaCaseReference, 'Applications');
+  await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(listForHearingStatus);
 }).retry(0);
 
+Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async ({I, api}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(
+    config.applicantSolicitorUser, mpScenario, claimantType);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  console.log('Case created for general application: ' + civilCaseReference);
+  await I.login(config.applicantSolicitorUser);
+  await I.createGeneralApplication(
+    getAppTypes().slice(9, 10),
+    civilCaseReference, '' +
+    'yes', 'no', 'no', 'no', 'no', 'no', 'no',
+    'disabledAccess');
+  gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
+  await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(9, 10), 1);
+  await I.see(respondentStatus);
+
+  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
+
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeMakesDecisionOrderMade(config.judgeUser, gaCaseReference);
+  } else {
+    await api.judgeMakesDecisionOrderMade(config.judgeLocalUser, gaCaseReference);
+  }
+
+  await I.login(config.applicantSolicitorUser);
+  await I.navigateToApplicationsTab(civilCaseReference);
+  await I.see(judgeApproveOrderStatus);
+}).retry(0);
 AfterSuite(async ({api}) => {
-   await api.cleanUp();
+  await api.cleanUp();
 });
