@@ -701,7 +701,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "hearingOrderDocument",
-    "Label": "Hearing order document",
+    "Label": "Hearing Notice",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"

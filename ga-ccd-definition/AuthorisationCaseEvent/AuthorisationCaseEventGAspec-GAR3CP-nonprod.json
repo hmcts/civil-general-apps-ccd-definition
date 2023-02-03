@@ -37,21 +37,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "ADD_PDF_TO_MAIN_CASE",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "civil-administrator-standard",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "END_HEARING_SCHEDULED_PROCESS_GASPEC",
     "AccessControl": [
       {

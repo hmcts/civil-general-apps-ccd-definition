@@ -38,15 +38,8 @@
   },
   {
     "ID": "GAHearingNoticeDetail",
-    "ListElementCode": "hearingDateLabel",
-    "ElementLabel": "Date",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAHearingNoticeDetail",
     "ListElementCode": "hearingDate",
-    "ElementLabel": "Date",
+    "ElementLabel": "Hearing Date",
     "FieldType": "Date",
     "SecurityClassification": "Public"
   },
