@@ -1,8 +1,6 @@
 const config = require('../config');
 const {I} = inject();
 
-const EVENT_TRIGGER_LOCATOR = 'ccd-case-event-trigger';
-
 module.exports = {
 
   tabs: {
@@ -18,7 +16,7 @@ module.exports = {
     caseHeader: 'ccd-case-header > h1',
     generalApps: 'h1.govuk-heading-l',
   },
-  goButton: '.button[type="submit"]',
+  goButton: 'Go',
 
   async start(event) {
     switch (event) {
@@ -35,7 +33,6 @@ module.exports = {
         await I.selectOption(this.fields.eventDropdown, event);
         await I.retryUntilExists(async () => {
           await I.forceClick(this.goButton);
-          await I.waitForElement(EVENT_TRIGGER_LOCATOR);
         }, this.fields.generalApps);
         break;
       default:
