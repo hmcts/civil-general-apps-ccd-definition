@@ -1,6 +1,8 @@
 const config = require('../config');
 const {I} = inject();
 
+const EVENT_TRIGGER_LOCATOR = 'ccd-case-event-trigger';
+
 module.exports = {
 
   tabs: {
@@ -16,7 +18,7 @@ module.exports = {
     caseHeader: 'ccd-case-header > h1',
     generalApps: 'h1.govuk-heading-l',
   },
-  goButton: 'Go',
+  goButton: '.button[type="submit"]',
 
   async start(event) {
     switch (event) {
@@ -29,11 +31,11 @@ module.exports = {
       case 'Respond to judges list for hearing':
       case 'Refer to Judge':
       case 'Refer to Legal Advisor':
-        await I.waitForElement(this.fields.eventDropdown, 10);
         await I.selectOption(this.fields.eventDropdown, event);
-        await I.retryUntilExists(async () => {
-          await I.forceClick(this.goButton);
-        }, this.fields.generalApps);
+        await I.moveCursorTo(this.goButton);
+        await I.wait(3);
+        await I.forceClick(this.goButton);
+        await I.waitForElement(EVENT_TRIGGER_LOCATOR);
         break;
       default:
         await I.waitForClickable('.event-trigger .button', 10);
