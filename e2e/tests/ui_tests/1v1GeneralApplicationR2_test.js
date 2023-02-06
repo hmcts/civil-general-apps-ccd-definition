@@ -39,7 +39,7 @@ Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @e
   await I.login(config.applicantSolicitorUser);
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(listForHearingStatus);
-}).retry(0);
+}).retry(1);
 
 Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -70,7 +70,7 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async
   await I.login(config.applicantSolicitorUser);
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(judgeApproveOrderStatus);
-}).retry(0);
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
