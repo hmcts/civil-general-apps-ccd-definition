@@ -33,5 +33,20 @@ module.exports = {
     description: 'Judge makes decision',
     id: 'LIST_FOR_A_HEARING',
     name: 'Respond to judges list for hearing'
+  },
+  HEARING_SCHEDULED_GA: {
+    description: 'Listing officer notify hearing',
+    id: 'HEARING_SCHEDULED_GA',
+    name: 'Hearing Scheduled'
+  },
+  REFER_TO_JUDGE: {
+    description: 'Caseworker assigns the application to Judge',
+    id: 'REFER_TO_JUDGE',
+    name: 'Refer to Judge'
+  },
+  REFER_TO_LEGAL_ADVISOR: {
+    description: 'Caseworker assigns the application to Legal Advisor',
+    id: 'REFER_TO_LEGAL_ADVISOR',
+    name: 'Refer to Legal Advisor'
   }
 };

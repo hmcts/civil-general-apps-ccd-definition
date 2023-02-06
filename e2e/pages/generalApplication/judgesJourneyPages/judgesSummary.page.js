@@ -1,36 +1,37 @@
+const {verifyJudgeRecitalText} = require('../../generalAppCommons');
 const {I} = inject();
-const {verifyJudgeRecitalText, verifyHearingDetailsJudgeRecitalText} = require('../../generalAppCommons');
 
 module.exports = {
 
   fields: {
-    summaryLabels: 'ccd-field-read-label ng-component span'
+    summaryLabels: 'table.Application ccd-read-text-area-field span'
   },
 
-  async verifyJudgesSummaryPage(decisionType) {
-    I.waitInUrl('#Summary');
-    I.see('Summary');
+  async verifyJudgesSummaryPage(decisionType, notice) {
+    I.waitInUrl('#Application');
+    I.see('Application');
     I.see('Parent Case ID');
     I.see('Hearing details');
     I.see('Preferred location');
     I.see('Vulnerability questions');
     switch (decisionType) {
       case 'Judges Directions':
-        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()));
+        await I.see('Judge’s recital');
+        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
         await I.see('Reasons for decision');
         await I.see('Directions');
         await I.see('When should this application be referred to a Judge again?');
         break;
       case 'Concurrent representations':
         await I.see('Judge’s recital');
-        await I.see('<Title> <Name>');
+        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
         await I.see('Make an order for written representations');
         await I.see('Concurrent representations');
         await I.see('Directions in relation to hearing');
         break;
       case 'Sequential representations':
         await I.see('Judge’s recital');
-        await I.see('<Title> <Name>');
+        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
         await I.see('Make an order for written representations');
         await I.see('Sequential representations');
         await I.see('Directions in relation to hearing');
@@ -46,21 +47,22 @@ module.exports = {
         break;
       case 'Dismissal order':
         await I.see('Judge’s recital');
-        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()));
+        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
         await I.see('Judges dismissed the order');
         await I.see('Dismissal order');
         await I.see('Reasons for decision');
         break;
       case 'Approve order':
-        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()));
         await I.see('Judge’s recital');
-        await I.see('Date for Order to end');
+        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
         await I.see('For which document?');
         await I.see('Reasons for decision');
+        await I.see('Test Order details');
+        await I.see('Optional paragraph to follow judges');
         break;
       case 'Hearing order':
-        await verifyHearingDetailsJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()));
         await I.see('Judge’s recital');
+        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
         await I.see('Directions in relation to hearing');
         break;
       case 'Send application to other party':

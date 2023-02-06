@@ -32,19 +32,19 @@ module.exports = {
         await I.waitForElement(this.fields.eventDropdown, 10);
         await I.selectOption(this.fields.eventDropdown, event);
         await I.retryUntilExists(async () => {
-          await I.click(this.goButton);
+          await I.forceClick(this.goButton);
         }, this.fields.generalApps);
         break;
       default:
         await I.waitForClickable('.event-trigger .button', 10);
         await I.retryUntilExists(async () => {
-          await I.click(this.goButton);
+          await I.forceClick(this.goButton);
         }, this.fields.generalApps);
     }
   },
 
   async startEvent(event, caseId) {
-    await I.retryUntilExists(async() => {
+    await I.retryUntilExists(async () => {
       await I.navigateToCaseDetails(caseId);
       await this.start(event);
     }, locate('.govuk-heading-l'));
@@ -57,25 +57,36 @@ module.exports = {
   },
 
   async navigateToTab(caseNumber, tabName) {
-    const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-    await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#${tabName}`);
-    await I.wait(3);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
-    await I.refreshPage();
-    await I.wait(12);
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
-  },
+    if (tabName !== 'Application Documents') {
+      await I.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        if (['preview'].includes(config.runningEnv)) {
+          await I.wait(5);
+        } else {
+          await I.wait(2);
+        }
+      }, 'exui-header');
+    }
 
-  async clickOnTab(tabName) {
     let urlBefore = await I.grabCurrentUrl();
+
     await I.retryUntilUrlChanges(async () => {
-      await I.click(locate(this.fields.tab).withText(tabName));
-      await I.wait(10);
-      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
+      if (tabName === 'Application Documents') {
+        await I.refreshPage();
+        if (['preview'].includes(config.runningEnv)) {
+          await I.wait(5);
+        } else {
+          await I.wait(2);
+        }
+      }
+      await I.forceClick(locate(this.fields.tab).withText(tabName));
+      if (['preview'].includes(config.runningEnv)) {
+        await I.wait(3);
+      } else {
+        await I.wait(2);
+      }
     }, urlBefore);
   },
-
-  async clickOnFirstChildCaseId() {
-    I.click({css: '.collection-field-table a'});
-  }
 };

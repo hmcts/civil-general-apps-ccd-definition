@@ -11,13 +11,13 @@ module.exports = {
   async verifySummaryPageAfterResponding() {
     I.seeInCurrentUrl('cases/case-details/');
     I.wait(1);
-    I.see('Summary');
+    I.see('Application');
     I.see('Parent Case ID');
     I.see('Hearing details');
     I.see('Preferred location');
     // I.dontSee(events.RESPOND_TO_APPLICATION.name);
-    I.seeTextEquals('examplePDF.pdf', '.Summary ccd-read-document-field > a');
-    I.seeNumberOfVisibleElements('.Summary a', 2);
+    I.seeTextEquals('examplePDF.pdf', '.Application ccd-read-document-field > a');
+    I.seeNumberOfVisibleElements('.Application a', 2);
     I.see('Respondent hearing details');
     I.see('Vulnerability questions');
   }

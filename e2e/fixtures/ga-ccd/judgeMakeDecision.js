@@ -11,27 +11,46 @@ module.exports = {
       }
     };
   },
-  judgeMakeOrderWrittenRep: () => {
+  judgeMakeOrderWrittenRep: (current_date) => {
     return {
       judicialDecision : {
         decision: 'MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS'
       },
       judicialDecisionMakeAnOrderForWrittenRepresentations: {
-        writtenConcurrentRepresentationsBy: '2026-05-04',
+        writtenConcurrentRepresentationsBy: current_date,
         makeAnOrderForWrittenRepresentations: 'CONCURRENT_REPRESENTATIONS'
-      }
+      },
+      judicialByCourtsInitiativeForWrittenRep: 'OPTION_1'
     };
   },
-  judgeMakeDecisionDirectionOrder: () => {
+  judgeMakeOrderWrittenRep_On_Uncloaked_Appln: (current_date) => {
+    return {
+      applicationIsUncloakedOnce: 'Yes',
+      generalAppInformOtherParty: {
+        isWithNotice: 'Yes',
+        reasonsForWithoutNotice: 'Test'
+      },
+      judicialDecision : {
+        decision: 'MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS'
+      },
+      judicialDecisionMakeAnOrderForWrittenRepresentations: {
+        writtenConcurrentRepresentationsBy: current_date,
+        makeAnOrderForWrittenRepresentations: 'CONCURRENT_REPRESENTATIONS'
+      },
+      judicialByCourtsInitiativeForWrittenRep: 'OPTION_1'
+    };
+  },
+  judgeMakeDecisionDirectionOrder: (current_date) => {
     return {
       judicialDecision : {
         decision: 'MAKE_AN_ORDER'
       },
       judicialDecisionMakeOrder: {
         makeAnOrder: 'GIVE_DIRECTIONS_WITHOUT_HEARING',
+        judicialByCourtsInitiative: 'OPTION_1',
         directionsText: 'sample text',
         reasonForDecisionText: 'sample text',
-        directionsResponseByDate: '2023-06-05',
+        directionsResponseByDate: current_date,
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No',
         isOrderProcessedByStayScheduler: 'No'
@@ -49,7 +68,8 @@ module.exports = {
         judgeApproveEditOptionDoc: 'DEFENCE_FORM',
         judgeApproveEditOptionDate: '2023-06-05',
         reasonForDecisionText: 'sample text',
-        isOrderProcessedByStayScheduler: 'No'
+        isOrderProcessedByStayScheduler: 'No',
+        judicialByCourtsInitiative: 'OPTION_1'
       }
     };
   },
@@ -64,7 +84,8 @@ module.exports = {
         judgeApproveEditOptionDoc: 'DEFENCE_FORM',
         judgeApproveEditOptionDate: current_date,
         reasonForDecisionText: 'sample text',
-        isOrderProcessedByStayScheduler: 'No'
+        isOrderProcessedByStayScheduler: 'No',
+        judicialByCourtsInitiative: 'OPTION_1'
       }
     };
   },
@@ -79,7 +100,8 @@ module.exports = {
         reasonForDecisionText: 'sample text',
         directionsResponseByDate: '2023-06-05',
         displayjudgeApproveEditOptionDoc: 'No',
-        displayjudgeApproveEditOptionDate: 'No'
+        displayjudgeApproveEditOptionDate: 'No',
+        judicialByCourtsInitiativeListForHearing: 'OPTION_1'
       },
       judicialListForHearing: {
         hearingPreferredLocation: null,
@@ -100,7 +122,8 @@ module.exports = {
         directionsResponseByDate: '2023-06-05',
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No',
-        isOrderProcessedByStayScheduler: 'No'
+        isOrderProcessedByStayScheduler: 'No',
+        judicialByCourtsInitiative: 'OPTION_1'
       }
     };
   },
@@ -117,7 +140,8 @@ module.exports = {
         reasonForDecisionText:'sample text',
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No',
-        isOrderProcessedByStayScheduler: 'No'
+        isOrderProcessedByStayScheduler: 'No',
+        judicialByCourtsInitiative: 'OPTION_1'
       }
     };
 
@@ -133,7 +157,8 @@ module.exports = {
         judgeRecitalText:'sample text',
         orderText: 'order sample text',
         reasonForDecisionText: 'sample text',
-        isOrderProcessedByStayScheduler: 'No'
+        isOrderProcessedByStayScheduler: 'No',
+        judicialByCourtsInitiative: 'OPTION_1'
       },
       makeAppVisibleToRespondents: {
         makeAppAvailableCheck: [

@@ -29,16 +29,14 @@
     "ElementLabel": "For which document?",
     "FieldType": "FixedList",
     "FieldTypeParameter": "GAJudgeOrderClaimantOrDefenseFixedList",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\" AND displayjudgeApproveEditOptionDoc=\"Yes\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "judgeApproveEditOptionDate",
-    "ElementLabel": "Date for Order to end",
+    "ElementLabel": "Order for Stay to End",
     "FieldType": "Date",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\" AND displayjudgeApproveEditOptionDate=\"Yes\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
@@ -97,5 +95,13 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "FieldShowCondition": "makeAnOrder=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "judicialByCourtsInitiative",
+    "ElementLabel": "Optional paragraph to follow judges' order",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "GAByCourtsInitiativeGAspec",
+    "SecurityClassification": "Public"
   }
 ]
