@@ -11,9 +11,9 @@ const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testi
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 let civilCaseReference, gaCaseReference, caseId, childCaseNumber;
 
-Feature('GA R2 1v1 - General Application Journey @e2e-tests');
+Feature('GA R2 1v1 - General Application Journey @ui-nightly');
 
-Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey', async ({I, api}) => {
+Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -71,6 +71,7 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(judgeApproveOrderStatus);
 }).retry(0);
+
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
