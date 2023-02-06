@@ -6,7 +6,6 @@ const listForHearingStatus = 'Listed for a Hearing';
 const judgeApproveOrderStatus = 'Order Made';
 const respondentStatus = 'Awaiting Respondent Response';
 const claimantType = 'Company';
-const childCaseNum = () => `${childCaseNumber.split('-').join('')}`;
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
@@ -49,10 +48,11 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
+  await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(
     getAppTypes().slice(9, 10),
     civilCaseReference, '' +
-    'yes', 'no', 'no', 'no', 'no', 'no', 'no',
+    'no', 'no', 'yes', 'no', 'no', 'no', 'no',
     'disabledAccess');
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
