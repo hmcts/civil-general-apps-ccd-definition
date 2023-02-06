@@ -40,5 +40,11 @@
     "ListElementCode": "WRITTEN_REPRESENTATION_CONCURRENT",
     "ListElement": "Written representation concurrent",
     "DisplayOrder": 7
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "HEARING_FORM",
+    "ListElement": "Hearing Form",
+    "DisplayOrder": 8
   }
 ]
