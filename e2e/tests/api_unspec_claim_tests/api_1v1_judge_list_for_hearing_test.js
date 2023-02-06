@@ -26,7 +26,9 @@ Scenario('Judge makes decision 1V1 - Hearing Scheduled', async ({api}) => {
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdmin, gaCaseReference);
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdmin, gaCaseReference);
+  }
 });
 
 AfterSuite(async ({api}) => {
