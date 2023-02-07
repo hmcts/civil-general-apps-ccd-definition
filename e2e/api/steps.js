@@ -225,13 +225,15 @@ module.exports = {
       body: bodyText
     });
 
+    await waitForFinishedBusinessProcess(caseId,user);
+    await assignCase(caseId, multipartyScenario);
+
     if (pbaV3) {
       await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
                                       claimData.serviceUpdateDto(caseId, 'paid'));
       console.log('Service request update sent to callback URL');
     }
 
-    await assignCase(caseId, multipartyScenario);
     await waitForFinishedBusinessProcess(caseId,user);
 
     //field is deleted in about to submit callback
