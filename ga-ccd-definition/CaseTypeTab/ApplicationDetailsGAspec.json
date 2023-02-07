@@ -105,7 +105,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppN245FormUpload",
+    "CaseFieldID": "generalAppHearingDate",
     "TabFieldDisplayOrder": 11
   },
   {
@@ -113,7 +113,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppDetailsOfOrder",
+    "CaseFieldID": "generalAppN245FormUpload",
     "TabFieldDisplayOrder": 12
   },
   {
@@ -121,7 +121,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppReasonsOfOrder",
+    "CaseFieldID": "generalAppDetailsOfOrder",
     "TabFieldDisplayOrder": 13
   },
   {
@@ -129,7 +129,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppEvidenceDocument",
+    "CaseFieldID": "generalAppReasonsOfOrder",
     "TabFieldDisplayOrder": 14
   },
   {
@@ -137,7 +137,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppHearingDetails",
+    "CaseFieldID": "generalAppEvidenceDocument",
     "TabFieldDisplayOrder": 15
   },
   {
@@ -145,8 +145,16 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppParentCaseLink",
+    "CaseFieldID": "generalAppHearingDetails",
     "TabFieldDisplayOrder": 16
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application",
+    "TabLabel": "Application",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppParentCaseLink",
+    "TabFieldDisplayOrder": 17
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -155,14 +163,6 @@
     "ElementLabel": "Respondend response",
     "TabDisplayOrder": 1,
     "CaseFieldID": "respondentsResponses",
-    "TabFieldDisplayOrder": 17
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application",
-    "TabLabel": "Application",
-    "TabDisplayOrder": 1,
-    "CaseFieldID": "referToJudge",
     "TabFieldDisplayOrder": 18
   },
   {
@@ -170,7 +170,15 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "referToLegalAdvisor",
+    "CaseFieldID": "referToJudge",
     "TabFieldDisplayOrder": 19
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application",
+    "TabLabel": "Application",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "referToLegalAdvisor",
+    "TabFieldDisplayOrder": 20
   }
 ]
