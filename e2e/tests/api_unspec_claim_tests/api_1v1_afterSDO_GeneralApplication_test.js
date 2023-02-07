@@ -7,7 +7,7 @@ let civilCaseReference, gaCaseReference;
 Feature('Unspec 1v1 - General Application after SDO Journey @api-nightly');
 
 // Test before enable this test
-Scenario.skip('Claimant create GA - JUDICIAL_REFERRAL state', async ({api, I}) => {
+Scenario('Claimant create GA - JUDICIAL_REFERRAL state', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);

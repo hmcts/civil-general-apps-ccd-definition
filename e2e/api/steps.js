@@ -28,6 +28,7 @@ const genAppNbcAdminReferToJudgeData = require('../fixtures/ga-ccd/nbcAdminTask.
 const  genAppNbcAdminReferToLegalAdvisorData = require('../fixtures/ga-ccd/nbcAdminTask.js');
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
+const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
@@ -1122,7 +1123,10 @@ module.exports = {
     let claimantResponseData = eventData['claimantResponsesSpec'][scenario][response];
     claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
 
-    for (let pageId of Object.keys(claimantResponseData.userInput)) {
+    const document = await testingSupport.uploadDocument();
+
+    for (let pageId of Object.keys(claimantResponseData.valid)) {
+      claimantResponseData = await updateCaseDataWithPlaceholders(claimantResponseData, document);
       await assertValidClaimData(claimantResponseData, pageId);
     }
 
@@ -1168,7 +1172,15 @@ module.exports = {
     deleteCaseFields('gaDetailsRespondentSol');
     deleteCaseFields('generalApplications');
 
-    const claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    delete claimantResponseData['midEventData'];
+    // CIV-5514: remove when hnl is live
+    claimantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(claimantResponseData, 'solicitorOne', false);
+    let hnlEnabled = false;
+    if (!hnlEnabled) {
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponse(
+          claimantResponseData);
+    }
 
     // for (let pageId of Object.keys(claimantResponseData.userInput)) {
     //   await assertValidClaimData(claimantResponseData, pageId);
@@ -1730,7 +1742,8 @@ async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListI
 const assertValidClaimData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
-  const userData = data.userInput[pageId];
+  //const userData = data.userInput[pageId];
+  const userData = data.valid[pageId];
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(
       eventName,
