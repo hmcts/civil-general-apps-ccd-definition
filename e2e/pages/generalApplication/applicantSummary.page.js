@@ -22,7 +22,7 @@ module.exports = {
 
   async verifyN245FormElements() {
     await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
-    await I.see('N245 Form');
+    await I.see('N254 Form');
     await I.seeNumberOfVisibleElements(this.fields.n245FormLink, 1);
   }
 };
