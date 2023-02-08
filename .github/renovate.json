@@ -4,13 +4,5 @@
   "labels": ["dependencies"],
   "helmv3": {
     "bumpVersion": "patch"
-  },
-  "regexManagers": [
-    {
-      "fileMatch": ["^Dockerfile$"],
-      "matchStrings": [
-        "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\sARG .*?_VERSION=(?<currentValue>.*)\\s"
-      ]
-    }
-  ]
+  }
 }
