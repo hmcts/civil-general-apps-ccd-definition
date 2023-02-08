@@ -8,7 +8,7 @@ def product = "civil"
 def component = "ga-ccd"
 def camundaBranch = "master"
 
-def ccddefbranch = "master"
+def ccddefbranch = "CIV-6796"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
@@ -124,7 +124,7 @@ withPipeline(type, product, component) {
         env.ENVIRONMENT = "preview"
         loadVaultSecrets(secrets);
       if (!checkForEnableHelmLabel(env.BRANCH_NAME)) {
-        enableCleanupOfHelmReleaseAlways();
+        // enableCleanupOfHelmReleaseAlways();
       }
     }
     onMaster {
