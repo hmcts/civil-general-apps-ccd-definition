@@ -13,7 +13,7 @@ module.exports = {
     case_management_category: 'Civil',
     work_type_id: 'routine_work',
     work_type_label: 'Routine work',
-    permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel' ] },
+    permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel', 'Complete', 'Claim', 'Assign', 'Unassign' ] },
     description: '[ReviewApplication](/cases/case-details/${[CASE_REFERENCE]})',
     role_category: 'ADMIN'
 };

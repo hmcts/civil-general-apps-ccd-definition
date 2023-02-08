@@ -11,7 +11,7 @@ module.exports = {
   case_category: 'Civil',
   auto_assigned: false,
   case_management_category: 'Civil',
-  permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel' ] },
+  permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel', 'Complete', 'Claim', 'Assign', 'Unassign' ] },
   description: '[LegalAdvisorRevisitApplication](/cases/case-details/${[CASE_REFERENCE]}/trigger/MAKE_DECISION/MAKE_DECISIONGAJudicialDecision)',
   role_category: 'LEGAL_OPERATIONS'
 };
