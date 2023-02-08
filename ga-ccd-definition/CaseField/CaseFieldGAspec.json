@@ -314,13 +314,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "isCaseProgressionEnabled",
-    "Label": " ",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "isCcmccLocation",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -581,6 +574,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "migrationId",
+    "Label": "Migration Id",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "sequentialWrittenRepresentationUploadyBy",
     "Label": "${judicialSequentialDateText}",
     "FieldType": "Label",
@@ -611,8 +611,8 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "directionInRelationToHearingText",
-    "Label": "Directions in relation to hearing",
-    "ElementLabel": "Directions in relation to hearing",
+    "Label": "Order in relation to written representations",
+    "ElementLabel": "Order in relation to written representations",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 1000
@@ -849,7 +849,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "applicationIsUncloakedOnce",
+    "ID": "applicationIsUncloackedOnce",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
