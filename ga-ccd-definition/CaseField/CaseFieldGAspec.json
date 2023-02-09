@@ -856,7 +856,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "applicationIsUncloackedOnce",
+    "ID": "applicationIsUncloakedOnce",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
