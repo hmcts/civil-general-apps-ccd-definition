@@ -14,22 +14,22 @@ Scenario('Claimant create GA - JUDICIAL_REFERRAL state', async ({api, I}) => {
   await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
   console.log('Civil Case created for general application: ' + civilCaseReference);
   await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-  // console.log('Civil Case created for general application: ' + civilCaseReference);
-  //
-  // console.log('Make a General Application');
-  // gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
-  //
-  // console.log('*** Start Judge makes decision order made: ' + gaCaseReference + ' ***');
-  // if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-  //   await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
-  // } else {
-  //   await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
-  // }
-  // await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+
+  console.log('Make a General Application');
+  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
+
+  console.log('*** Start Judge makes decision order made: ' + gaCaseReference + ' ***');
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
+  } else {
+    await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
+  }
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
+  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
 });
 
-Scenario.skip('Claimant create GA - CASE_PROGRESSION state', async ({api_sdo, api, I}) => {
+Scenario('Claimant create GA - CASE_PROGRESSION state', async ({api_sdo, api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -37,7 +37,7 @@ Scenario.skip('Claimant create GA - CASE_PROGRESSION state', async ({api_sdo, ap
   console.log('Civil Case created for general application: ' + civilCaseReference);
   await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
   await api.claimantResponseClaim(config.applicantSolicitorUser, 'FULL_ADMISSION', 'ONE_V_TWO',
-    'AWAITING_APPLICANT_INTENTION');
+    'JUDICIAL_REFERRAL');
   await I.wait(10);
   console.log('Civil Case created for general application: ' + civilCaseReference);
 

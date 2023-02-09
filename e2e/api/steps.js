@@ -1742,8 +1742,7 @@ async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListI
 const assertValidClaimData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
-  //const userData = data.userInput[pageId];
-  const userData = data.valid[pageId];
+  const userData = data.userInput[pageId];
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(
       eventName,

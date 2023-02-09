@@ -333,11 +333,12 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
 
 const hasRespondent2 = (mpScenario) => {
   return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
-    || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP';
+         || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP';
 };
 
 module.exports = {
   createClaim: (mpScenario = 'ONE_V_ONE', claimantType) => {
+    let claimAmount = '11000';
     return {
       midEventData: {
         ClaimValue: {
@@ -348,6 +349,9 @@ module.exports = {
             ]
           },
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
+          claimValue: {
+            statementOfValueInPennies:  JSON.stringify(claimAmount * 100)
+          },
           claimFee: {
             calculatedAmountInPence: '150000',
             code: 'FEE0209',
