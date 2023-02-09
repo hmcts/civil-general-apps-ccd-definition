@@ -160,5 +160,11 @@
     "CaseEventID": "END_SCHEDULER_CHECK_STAY_ORDER_DEADLINE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_SCHEDULER_CHECK_UNLESS_ORDER_DEADLINE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
