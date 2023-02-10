@@ -929,7 +929,7 @@ module.exports = {
 
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# Hearing notice created');
 
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'HEARING_SCHEDULED_GA',user);
 
