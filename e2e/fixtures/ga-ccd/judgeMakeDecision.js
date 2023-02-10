@@ -104,11 +104,14 @@ module.exports = {
         judicialByCourtsInitiativeListForHearing: 'OPTION_1'
       },
       judicialListForHearing: {
+        hearingPreferencesPreferredType: 'TELEPHONE',
         hearingPreferredLocation: null,
+        judicialTimeEstimate: 'MINUTES_30',
         judgeSignLanguage: 'sample text',
         judgeLanguageInterpreter: 'sample text',
         judgeOtherSupport: 'sample text'
-      }
+      },
+      judicialByCourtsInitiativeListForHearing: 'OPTION_1'
     };
   },
   applicationsDismiss: () => {
