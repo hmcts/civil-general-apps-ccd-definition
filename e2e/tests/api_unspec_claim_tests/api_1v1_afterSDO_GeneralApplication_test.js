@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
+const claimAmountJudge = '11000';
 
 let civilCaseReference, gaCaseReference;
 
@@ -8,7 +9,7 @@ Feature('Unspec 1v1 - General Application after SDO Journey @api-nightly');
 
 // Test before enable this test
 Scenario('Claimant create GA - JUDICIAL_REFERRAL state', async ({api, I}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', claimAmountJudge);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
@@ -30,7 +31,7 @@ Scenario('Claimant create GA - JUDICIAL_REFERRAL state', async ({api, I}) => {
 });
 
 Scenario('Claimant create GA - CASE_PROGRESSION state', async ({api_sdo, api, I}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'SoleTrader');
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'SoleTrader', claimAmountJudge);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
