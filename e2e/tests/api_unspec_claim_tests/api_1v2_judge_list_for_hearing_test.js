@@ -19,20 +19,6 @@ Scenario('Judge makes decision 1V1 - LIST FOR HEARING @mm', async ({api}) => {
   await api.respondentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-  console.log('Make a General Application2');
-  gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
-
-  console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
-  console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
-
-  console.log('Make a General Application3');
-  gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
-
-  console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
-  console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
-
 /*  console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
