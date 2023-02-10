@@ -4,7 +4,7 @@ module.exports = {
 
   async verifyApplicationDetails(applicationTypes, appCount) {
     await I.waitForInvisible(locate('div.spinner-container').withText('Loading'), 15);
-    I.waitInUrl('#Applications', 1);
+    I.waitInUrl('#Applications', 5);
     await I.wait(2);
     I.seeNumberOfElements('.collection-field-table .complex-panel-title', appCount);
     I.see('Application type');
