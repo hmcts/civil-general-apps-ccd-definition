@@ -338,7 +338,7 @@ const hasRespondent2 = (mpScenario) => {
 
 module.exports = {
   createClaim: (mpScenario = 'ONE_V_ONE', claimantType) => {
-    let claimAmount = '11000';
+    // let claimAmount = '11000';
     return {
       midEventData: {
         ClaimValue: {
@@ -349,9 +349,9 @@ module.exports = {
             ]
           },
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          claimValue: {
-            statementOfValueInPennies:  JSON.stringify(claimAmount * 100)
-          },
+          // claimValue: {
+          //   statementOfValueInPennies:  JSON.stringify(claimAmount * 100)
+          // },
           claimFee: {
             calculatedAmountInPence: '150000',
             code: 'FEE0209',
