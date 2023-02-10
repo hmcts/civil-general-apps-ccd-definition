@@ -1125,7 +1125,7 @@ module.exports = {
 
     const document = await testingSupport.uploadDocument();
 
-    for (let pageId of Object.keys(claimantResponseData.valid)) {
+    for (let pageId of Object.keys(claimantResponseData.userInput)) {
       claimantResponseData = await updateCaseDataWithPlaceholders(claimantResponseData, document);
       await assertValidClaimData(claimantResponseData, pageId);
     }
