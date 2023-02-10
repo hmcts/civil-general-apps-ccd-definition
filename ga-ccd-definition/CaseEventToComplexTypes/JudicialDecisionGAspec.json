@@ -69,6 +69,16 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "judgeApproveEditOptionDateForUnlessOrder",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "judicialDecisionMakeOrder.makeAnOrder=\"APPROVE_OR_EDIT\" AND judicialDecisionMakeOrder.displayjudgeApproveEditOptionDateForUnlessOrder=\"Yes\""
+  },
+  {
+    "ID": "GAJudicialMakeADecisionScreen",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "dismissalOrderText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 7,
