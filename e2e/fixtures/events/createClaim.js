@@ -107,7 +107,7 @@ const claimant = (claimantType) => {
   }
 };
 
-const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType) => {
+const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType, claimAmount) => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
@@ -232,8 +232,9 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
     },
     ClaimValue: {
       claimValue: {
-        statementOfValueInPennies: '3000000'
-      }
+        statementOfValueInPennies:  JSON.stringify(claimAmount * 100)
+      },
+      claimFee: getClaimFee(claimAmount)
     },
     PbaNumber: {
       applicantSolicitor1PbaAccounts: {
@@ -349,10 +350,6 @@ module.exports = {
             ]
           },
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          claimValue: {
-            statementOfValueInPennies:  JSON.stringify(claimAmount * 100)
-          },
-          claimFee: getClaimFee(claimAmount),
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
           },
@@ -375,7 +372,7 @@ module.exports = {
         },
       },
       valid: {
-        ...createClaimData('Yes', true, mpScenario, 'Company'),
+        ...createClaimData('Yes', true, mpScenario, 'Company', claimAmount),
       },
       invalid: {
         Upload: {
@@ -410,14 +407,14 @@ module.exports = {
   },
 
   createClaimLitigantInPerson: {
-    valid: createClaimData('No', true)
+    valid: createClaimData('No', true, 'ONE_V_ONE', 'Company')
   },
   createClaimWithTerminatedPBAAccount: {
-    valid: createClaimData('Yes', false)
+    valid: createClaimData('Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP', 'Company')
   },
   createClaimRespondentSolFirmNotInMyHmcts: {
     valid: {
-      ...createClaimData('Yes', true),
+      ...createClaimData('Yes', true,'ONE_V_ONE', 'Company'),
       DefendantSolicitorOrganisation: {
         respondent1OrgRegistered: 'No'
       },
