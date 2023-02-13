@@ -62,7 +62,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   console.log('Responded to Judges written representations on case: ' + childCaseNum());
 }).retry(1);
 
-Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
+Scenario('GA for 1v2 Same Solicitor - Send application to other party journey @e2e-tests',
   async ({I, api}) => {
     parentCaseNum = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
     await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNum);

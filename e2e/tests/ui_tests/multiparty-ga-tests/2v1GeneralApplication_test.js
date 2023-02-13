@@ -13,7 +13,7 @@ let parentCaseNumber, caseId, childCaseId, childCaseNumber, gaCaseReference;
 
 Feature('GA CCD 2v1 - General Application Journey @multiparty-e2e-tests @ui-nightly');
 
-Scenario('GA for 2v1 - Concurrent written representations - without notice to with notice journey', async ({I, api}) => {
+Scenario('GA for 2v1 - Concurrent written representations - without notice to with notice journey @e2e-tests', async ({I, api}) => {
   parentCaseNumber = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);

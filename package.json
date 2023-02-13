@@ -31,6 +31,8 @@
     "test:api-ga-wa": "MOCHAWESOME_REPORTFILENAME=wa-api npx codeceptjs run --grep @api-wa --reporter mocha-multi --verbose",
     "test:fullRegression": "MOCHAWESOME_REPORTFILENAME=fullFunctional npx codeceptjs run --grep '@e2e-tests|@ui-nightly|@api-scheduler-test|@api-nightly' --reporter mocha-multi --verbose",
     "test:fullfunctional": "MOCHAWESOME_REPORTFILENAME=fullFunctional npx codeceptjs run --grep '@ui-nightly|@api-scheduler-test|@api-tests' --reporter mocha-multi --verbose",
+    "test:non-prod-e2e-tests": "MOCHAWESOME_REPORTFILENAME=non-prod-e2e-ft npx codeceptjs run-workers --suites 4 --grep '@e2e-tests|@api-tests|@non-prod-e2e' --reporter mocha-multi --verbose",
+    "test:master-e2e-tests": "MOCHAWESOME_REPORTFILENAME=master-e2e-ft npx codeceptjs run-workers --suites 4 --grep '@e2e-tests|@api-tests' --reporter mocha-multi --verbose",
     "prepare": "husky install"
   },
   "license": "MIT",

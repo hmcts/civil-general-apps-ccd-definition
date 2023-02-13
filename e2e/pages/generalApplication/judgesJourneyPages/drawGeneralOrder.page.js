@@ -16,7 +16,7 @@ module.exports = {
     I.see('Draw a General Order');
     I.see('Judge’s recital');
     await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.hearingDetailsJudgeRecitalTextArea), notice);
-    await I.see(`Hearing type is ${hearingPreferences}`);
+    await I.see(`Hearing type is via ${hearingPreferences}`);
     await I.see(`Estimated length of hearing is ${timeEstimate}`);
     await I.see('Directions in relation to hearing');
     await selectJudicialByCourtsInitiativeOption();
