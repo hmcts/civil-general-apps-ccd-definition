@@ -20,9 +20,9 @@ Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
 
   console.log('*** Start Judge makes decision order made: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
+    await api.judgeMakesDecisionOrderMade(config.judgeUser, gaCaseReference);
   } else {
-    await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
+    await api.judgeMakesDecisionOrderMade(config.judgeLocalUser, gaCaseReference);
   }
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
 });
