@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_TWO_SAME_SOL';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('Spec 1v2 - General Application after SDO Journey @api-tests');
+Feature('Spec 1v2 - General Application after SDO Journey @api-nightly');
 
 
 Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
@@ -20,9 +20,9 @@ Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
 
   console.log('*** Start Judge makes decision order made: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionOrderMade(config.judgeUser, gaCaseReference);
+    await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
   } else {
-    await api.judgeMakesDecisionOrderMade(config.judgeLocalUser, gaCaseReference);
+    await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
   }
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
 });
