@@ -7,6 +7,7 @@ Feature('General Application Smoke tests @ga-smoke-tests');
 Scenario('GA Smoke Tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Case created for general application: ' + civilCaseReference);
