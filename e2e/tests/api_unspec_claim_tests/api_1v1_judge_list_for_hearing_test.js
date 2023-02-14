@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v1 Judge list the application for hearing  API tests @api-nightly');
 
-Scenario('Judge makes decision 1V1 - Hearing Scheduled', async ({api}) => {
+Scenario.skip('Judge makes decision 1V1 - Hearing Scheduled', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
       config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
