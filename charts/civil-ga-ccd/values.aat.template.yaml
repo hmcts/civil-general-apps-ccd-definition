@@ -75,7 +75,7 @@ civil-service:
     releaseNameOverride: ${SERVICE_NAME}-civil-service
     image: 'hmctspublic.azurecr.io/civil/service:latest'
     imagePullPolicy: Always
-    ingressHost: civil-ga-ccd-civil-service-staging-aat.service.core-compute-aat.internal
+    ingressHost: civil-ga-ccd-civil-service-staging-aat.aat.platform.hmcts.net
     keyVaults:
       civil:
         resourceGroup: civil
@@ -215,7 +215,7 @@ ccd:
         IDAM_SERVICE_KEY: ${CCD_API_GATEWAY_S2S_SECRET}
         IDAM_OAUTH2_CLIENT_SECRET: ${CCD_API_GATEWAY_IDAM_CLIENT_SECRET}
         PROXY_DOCUMENT_MANAGEMENT: http://dm-store-aat.service.core-compute-aat.internal
-      ingressHost: civil-ga-ccd-gateway-staging-aat.service.core-compute-aat.internal
+      ingressHost: civil-ga-ccd-gateway-staging-aat.aat.platform.hmcts.net
       ingressIP: ${INGRESS_IP}
       keyVaults: []
   ccd-data-store-api:
@@ -243,7 +243,7 @@ ccd:
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
         RELEASE_REVISION: "{{ .Release.Revision }}"
       keyVaults: []
-      ingressHost: civil-ga-ccd-data-store-staging-aat.service.core-compute-aat.internal
+      ingressHost: civil-ga-ccd-data-store-staging-aat.aat.platform.hmcts.net
   ccd-definition-store-api:
     java:
       imagePullPolicy: Always
@@ -254,7 +254,7 @@ ccd:
         IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
         RELEASE_REVISION: "{{ .Release.Revision }}"
       keyVaults: []
-      ingressHost: civil-ga-ccd-definition-store-staging-aat.service.core-compute-aat.internal
+      ingressHost: civil-ga-ccd-definition-store-staging-aat.aat.platform.hmcts.net
 
   postgresql:
     persistence:
@@ -265,7 +265,7 @@ camunda-bpm:
   java:
     disableKeyVaults: true
     releaseNameOverride: ${SERVICE_NAME}-camunda
-    ingressHost: civil-ga-ccd-camunda-staging-aat.service.core-compute-aat.internal
+    ingressHost: civil-ga-ccd-camunda-staging-aat.aat.platform.hmcts.net
     environment:
       CAMUNDA_API_AUTH_ENABLED: false
       CAMUNDA_DB_HOST: ${SERVICE_NAME}-postgresql
