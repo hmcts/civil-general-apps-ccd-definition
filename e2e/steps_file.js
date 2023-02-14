@@ -840,7 +840,7 @@ module.exports = function () {
         () => listForHearingPage.selectJudicialTimeEstimate('fifteenMin'),
         () => listForHearingPage.verifyVulnerabilityQuestions(),
         () => listForHearingPage.selectJudicialSupportRequirement('disabledAccess'),
-        () => drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('Video', '15 minutes', notice),
+        () => drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('video', '15 minutes', notice),
         () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
         () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
         ...submitApplication('Your order has been made'),
@@ -854,7 +854,7 @@ module.exports = function () {
       await listForHearingPage.selectJudicialTimeEstimate('fifteenMin');
       await listForHearingPage.verifyVulnerabilityQuestions();
       await listForHearingPage.selectJudicialSupportRequirement('disabledAccess');
-      await drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('Video', '15 minutes', notice);
+      await drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('video', '15 minutes', notice);
       await reviewOrderDocumentPage.reviewOrderDocument(documentType);
       await judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber);
       await event.submit('Submit', 'Your order has been made');
