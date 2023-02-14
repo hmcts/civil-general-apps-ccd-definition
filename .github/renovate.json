@@ -4,7 +4,5 @@
   "labels": ["dependencies"],
   "helmv3": {
     "bumpVersion": "patch"
-  },
-  "schedule": ["after 3pm on sunday"],
-  "prConcurrentLimit": 10
+  }
 }
