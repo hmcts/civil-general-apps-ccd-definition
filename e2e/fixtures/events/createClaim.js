@@ -1,6 +1,7 @@
 const {listElement, buildAddress, date } = require('../../api/dataHelper');
 const uuid = require('uuid');
 const config = require('../../config.js');
+const { getClaimFee } = require('../../claimAmountAndFee');
 
 const docUuid = uuid.v1();
 
@@ -106,7 +107,7 @@ const claimant = (claimantType) => {
   }
 };
 
-const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType) => {
+const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType, claimAmount) => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
@@ -237,8 +238,9 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
     },
     ClaimValue: {
       claimValue: {
-        statementOfValueInPennies: '3000000'
-      }
+        statementOfValueInPennies:  JSON.stringify(claimAmount * 100)
+      },
+      claimFee: getClaimFee(claimAmount)
     },
     PbaNumber: {
       applicantSolicitor1PbaAccounts: {
@@ -339,11 +341,11 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
 
 const hasRespondent2 = (mpScenario) => {
   return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
-    || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP';
+         || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP';
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE', claimantType) => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimantType, claimAmount = '30000') => {
     return {
       midEventData: {
         ClaimValue: {
@@ -354,11 +356,6 @@ module.exports = {
             ]
           },
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          claimFee: {
-            calculatedAmountInPence: '150000',
-            code: 'FEE0209',
-            version: '3'
-          },
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
           },
@@ -381,7 +378,7 @@ module.exports = {
         },
       },
       valid: {
-        ...createClaimData('Yes', true, mpScenario, 'Company'),
+        ...createClaimData('Yes', true, mpScenario, 'Company', claimAmount),
       },
       invalid: {
         Upload: {
@@ -416,14 +413,14 @@ module.exports = {
   },
 
   createClaimLitigantInPerson: {
-    valid: createClaimData('No', true)
+    valid: createClaimData('No', true, 'ONE_V_ONE', 'Company')
   },
   createClaimWithTerminatedPBAAccount: {
-    valid: createClaimData('Yes', false)
+    valid: createClaimData('Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP', 'Company')
   },
   createClaimRespondentSolFirmNotInMyHmcts: {
     valid: {
-      ...createClaimData('Yes', true),
+      ...createClaimData('Yes', true,'ONE_V_ONE', 'Company'),
       DefendantSolicitorOrganisation: {
         respondent1OrgRegistered: 'No'
       },

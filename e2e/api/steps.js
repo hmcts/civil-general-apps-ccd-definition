@@ -28,6 +28,7 @@ const genAppNbcAdminReferToJudgeData = require('../fixtures/ga-ccd/nbcAdminTask.
 const  genAppNbcAdminReferToLegalAdvisorData = require('../fixtures/ga-ccd/nbcAdminTask.js');
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
+const { replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
 const {checkPBAv3ToggleEnabled} = require('./testingSupport');
 
 const data = {
@@ -55,7 +56,7 @@ const data = {
   SCHEDULE_HEARING: genAppHearingData.scheduleHearing(),
   APPLICATION_DISMISSED: genAppJudgeMakeDecisionData.applicationsDismiss(),
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
-  CREATE_CLAIM: (mpScenario, claimantType) => claimData.createClaim(mpScenario, claimantType),
+  CREATE_CLAIM: (mpScenario, claimantType, claimAmount) => claimData.createClaim(mpScenario, claimantType, claimAmount),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
@@ -193,14 +194,14 @@ let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
-  createUnspecifiedClaim: async (user, multipartyScenario, claimantType) => {
+  createUnspecifiedClaim: async (user, multipartyScenario, claimantType, claimAmount= '30000') => {
 
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
 
-    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType);
+    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType, claimAmount);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -978,7 +979,7 @@ module.exports = {
 
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# Hearing notice created');
 
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'HEARING_SCHEDULED_GA',user);
 
@@ -1172,7 +1173,10 @@ module.exports = {
     let claimantResponseData = eventData['claimantResponsesSpec'][scenario][response];
     claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
 
+    const document = await testingSupport.uploadDocument();
+
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
+      claimantResponseData = await updateCaseDataWithPlaceholders(claimantResponseData, document);
       await assertValidClaimData(claimantResponseData, pageId);
     }
 
@@ -1218,12 +1222,20 @@ module.exports = {
     deleteCaseFields('gaDetailsRespondentSol');
     deleteCaseFields('generalApplications');
 
-    const claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
-
-    for (let pageId of Object.keys(claimantResponseData.userInput)) {
-      await assertValidClaimData(claimantResponseData, pageId);
+    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    delete claimantResponseData['midEventData'];
+    // CIV-5514: remove when hnl is live
+    claimantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(claimantResponseData, 'solicitorOne', false);
+    let hnlEnabled = false;
+    if (!hnlEnabled) {
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponse(
+          claimantResponseData);
     }
 
+    // for (let pageId of Object.keys(claimantResponseData.userInput)) {
+    //   await assertValidClaimData(claimantResponseData, pageId);
+    // }
+    await validateEventPagesWithCheck(claimantResponseData, false, user);
     await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId, user);
@@ -1563,7 +1575,6 @@ const assertError = async (pageId, eventData, expectedErrorMessage, responseBody
 
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
-
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);
@@ -1636,6 +1647,8 @@ function addMidEventFields(pageId, responseBody) {
   let midEventData;
 
   if (eventName === 'CREATE_CLAIM') {
+    midEventData = data[eventName](mpScenario).midEventData[pageId];
+  } else if (eventName === 'CLAIMANT_RESPONSE') {
     midEventData = data[eventName](mpScenario).midEventData[pageId];
   } else {
     midEventData = data[eventName].midEventData[pageId];

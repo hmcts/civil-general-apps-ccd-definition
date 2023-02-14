@@ -13,7 +13,7 @@
   },
   {
     "ID": "ApplicationDetailsOption",
-    "ListElementCode": "BOTH",
+    "ListElementCode": "CLAIMANT_AND_DEFENDANT",
     "ListElement": "Claimant and Defendant",
     "DisplayOrder": 3
   }

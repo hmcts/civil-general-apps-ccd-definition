@@ -1,11 +1,10 @@
 {
-  "enabledManagers": ["helm-requirements","gradle-wrapper"],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
   "labels": ["dependencies"],
-  "helm-requirements":
-  {
-    "fileMatch": ["\\Chart.yaml$"],
-    "aliases": {
-      "hmctspublic": "https://hmctspublic.azurecr.io/helm/v1/repo/"
-    }
-  }
+  "helmv3": {
+    "bumpVersion": "patch"
+  },
+  "schedule": ["after 9pm on sunday"],
+  "prConcurrentLimit": 10
 }

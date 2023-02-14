@@ -17,7 +17,7 @@ module.exports = {
                 },
                 hearingDate: date(1),
                 hearingTimeHourMinute: '0800',
-                channel: 'IN_PERSON',
+                channel: 'VIDEO',
                 hearingDuration: 'MINUTES_15',
             },
             gaHearingNoticeInformation: 'info'
