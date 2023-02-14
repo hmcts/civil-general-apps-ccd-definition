@@ -56,6 +56,13 @@ module.exports = {
     }
   },
 
+  async clickOnTab(tabName) {
+    let urlBefore = await I.grabCurrentUrl();
+    await I.retryUntilUrlChanges(async () => {
+      await I.forceClick(locate(this.fields.tab).withText(tabName));
+    }, urlBefore);
+  },
+
   async navigateToTab(caseNumber, tabName) {
     if (tabName !== 'Application Documents') {
       await I.retryUntilExists(async () => {
