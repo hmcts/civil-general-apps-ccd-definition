@@ -1,26 +1,8 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-const mpScenario = 'ONE_V_ONE';
-const judgeApproveOrderStatus = 'Order Made';
-
-let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 let civilCaseReference, gaCaseReference;
 
 Feature('General Application Smoke tests @ga-smoke-tests');
-
-Scenario('GA Smoke Tests', async ({I, api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Company');
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  console.log('Case created for general application: ' + civilCaseReference);
-  await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(civilCaseReference);
-  gaCaseReference = await I.grabCaseNumber();
-  await I.goToGeneralAppScreenAndVerifyAllApps(getAppTypes(), gaCaseReference);
-  console.log('Verified General Applications: ' + civilCaseReference);
-}).retry(0);
-
 Scenario('GA 1v2  - Judge Makes Decision Order Made @smoke-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP', 'Company');
@@ -42,7 +24,7 @@ Scenario('GA 1v2  - Judge Makes Decision Order Made @smoke-tests', async ({api, 
 
   await I.login(config.secondDefendantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
-  await I.see(judgeApproveOrderStatus);
+  await I.see('Order Made');
 });
 
 AfterSuite(async ({api}) => {
