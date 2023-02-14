@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "END_SCHEDULER_CHECK_STAY_ORDER_DEADLINE",
+    "ID": "END_SCHEDULER_CHECK_ORDER_MADE_DEADLINE",
     "Name": "Order Made End Date Scheduler",
     "Description": "Trigger Order Made End Date Scheduler",
     "PreConditionState(s)": "*",

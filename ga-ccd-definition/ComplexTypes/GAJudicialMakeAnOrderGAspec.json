@@ -103,5 +103,28 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAByCourtsInitiativeGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "isOrderProcessedByUnlessScheduler",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "makeAnOrder=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "judgeApproveEditOptionDateForUnlessOrder",
+    "ElementLabel": "Date for Unless Order to end",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "displayjudgeApproveEditOptionDateForUnlessOrder",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "makeAnOrder=\"DO_NOT_SHOW_IN_UI\""
   }
 ]

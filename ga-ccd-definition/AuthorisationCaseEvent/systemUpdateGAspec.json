@@ -163,7 +163,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "END_SCHEDULER_CHECK_STAY_ORDER_DEADLINE",
+    "CaseEventID": "END_SCHEDULER_CHECK_ORDER_MADE_DEADLINE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
