@@ -225,8 +225,7 @@ module.exports = {
       body: bodyText
     });
 
-    await waitForFinishedBusinessProcess(caseId,user);
-    await assignCase(caseId, multipartyScenario);
+    await waitForFinishedBusinessProcess(caseId, user);
 
     if (pbaV3) {
       await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
@@ -234,11 +233,37 @@ module.exports = {
       console.log('Service request update sent to callback URL');
     }
 
-    await waitForFinishedBusinessProcess(caseId,user);
+    await assignCase(caseId, multipartyScenario);
+    await waitForFinishedBusinessProcess(caseId, user);
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
     return caseId;
+  },
+
+  amendClaimDocuments: async (user) => {
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+
+    await apiRequest.setupTokens(user);
+
+    eventName = 'ADD_OR_AMEND_CLAIM_DOCUMENTS';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = returnedCaseData;
+
+    await validateEventPages(data[eventName]);
+
+    const document = await testingSupport.uploadDocument();
+    let errorData = await updateCaseDataWithPlaceholders(data[eventName], document);
+
+    await assertError('Upload', errorData.invalid.Upload.duplicateError,
+      'You need to either upload 1 Particulars of claim only or enter the Particulars of claim text in the field provided. You cannot do both.');
+
+    await assertSubmittedEvent('CASE_ISSUED', {
+      header: 'Documents uploaded successfully',
+      body: ''
+    });
+
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
   amendclaimDismissedDeadline: async (user) => {
