@@ -725,6 +725,7 @@ module.exports = function () {
       await hearingSchedulePage.verifyErrorMsg();
       await hearingSchedulePage.fillHearingDetails(location, channel);
       await hearingNoticeCYAPage.verifyNoticeCheckAnswerForm(caseNumber);
+      await event.submit('Submit', 'Hearing notice created');
     },
 
     async grabChildCaseNumber() {
@@ -801,11 +802,9 @@ module.exports = function () {
       ]);
     },
 
-    async verifyApplicationDocument(childCaseNumber, docType) {
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.navigateToTab(childCaseNumber, 'Application Documents'),
-        () => applicationDocumentPage.verifyUploadedDocumentPDF(docType),
-      ]);
+    async verifyApplicationDocument(docType) {
+      await caseViewPage.clickOnTab('Application Documents');
+      await applicationDocumentPage.verifyUploadedDocumentPDF(docType);
     },
 
     async payAndVerifyAdditionalPayment(childCaseNumber) {
@@ -816,11 +815,9 @@ module.exports = function () {
       ]);
     },
 
-    async verifyClaimDocument(parentCaseNumber, childCaseNumber, docType) {
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.navigateToTab(parentCaseNumber, 'Claim documents'),
-        () => claimDocumentPage.verifyUploadedDocument(childCaseNumber, docType),
-      ]);
+    async verifyClaimDocument(docType) {
+      await caseViewPage.clickOnTab('Claim documents');
+      await claimDocumentPage.verifyUploadedDocument(docType);
     },
 
     async respondToJudgesDirections(caseNumber, childCaseId) {
@@ -936,9 +933,7 @@ module.exports = function () {
     },
 
     async clickOnTab(tabName) {
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.clickOnTab(tabName)
-      ]);
+       await caseViewPage.clickOnTab(tabName);
     },
 
     async closeAndReturnToCaseDetails(caseId) {

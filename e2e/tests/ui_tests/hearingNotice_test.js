@@ -2,15 +2,15 @@
 const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 const listForHearingStatus = 'Listed for a Hearing';
+const hnStatus = 'Hearing Scheduled';
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 
-let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
-let civilCaseReference, gaCaseReference, caseId, childCaseNumber;
+let civilCaseReference, gaCaseReference;
 
 Feature('GA CP 1v1 - Hearing Notice document @ui-nightly');
 
-Scenario('Claimant and Defendant Hearing notice journey @mm', async ({I, api}) => {
-/*  civilCaseReference = await api.createUnspecifiedClaim(
+Scenario('Claimant and Defendant Hearing notice journey @non-prod-e2e', async ({I, api}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -23,19 +23,31 @@ Scenario('Claimant and Defendant Hearing notice journey @mm', async ({I, api}) =
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
-  }else {
+  } else {
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
-  }*/
+  }
 
-  await I.login(config.hearingCenterAdminRegion4);
-  await I.navigateToApplicationsTab('1676461313819984');
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await I.login(config.nbcAdminWithRegionId4);
+  } else {
+    await I.login(config.hearingCenterAdminLocal);
+  }
+
+  await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(listForHearingStatus);
-  await I.navigateToHearingNoticePage('1676461361711992');
-  await I.fillHearingNotice('1676461361711992', 'claimAndDef', 'basildon', 'VIDEO');
+  await I.navigateToHearingNoticePage(gaCaseReference);
+  await I.fillHearingNotice(gaCaseReference, 'claimAndDef', 'basildon', 'VIDEO');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'HEARING_SCHEDULED_GA', config.hearingCenterAdminRegion4);
+  console.log('Hearing Notice created for: ' + gaCaseReference);
+  await I.click('Close and Return to case details');
+  await I.verifyApplicationDocument('Hearing Notice');
+  await I.navigateToApplicationsTab(civilCaseReference);
+  await I.see(hnStatus);
+  await I.verifyClaimDocument('Hearing Notice');
 }).retry(0);
 
 AfterSuite(async ({api}) => {
-  //await api.cleanUp();
+  await api.cleanUp();
 });

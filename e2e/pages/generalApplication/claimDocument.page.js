@@ -9,7 +9,7 @@ module.exports = {
     links: '.collection-field-table ccd-read-document-field a'
   },
 
-  async verifyUploadedDocument(childCaseNumber, documentType) {
+  async verifyUploadedDocument(documentType) {
     await I.seeInCurrentUrl('documents');
     await I.seeNumberOfVisibleElements('ccd-read-complex-field-collection-table .complex-panel .complex-panel-title', 2);
     let docURL = await I.grabTextFrom(locate(this.fields.links).last());
@@ -27,6 +27,9 @@ module.exports = {
       case 'Dismissal order document':
         I.seeNumberOfVisibleElements(this.fields.links, 2);
         expect(docURL).to.contains(`Dismissal_order_for_application_${docFullDate}`);
+        break;
+      case 'Hearing Notice':
+        expect(docURL).to.contains(`Application_Hearing_Notice_${docFullDate}`);
         break;
     }
     I.see('System generated Case Documents');

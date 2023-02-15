@@ -27,7 +27,7 @@ Scenario('Judge makes decision 1V1 - Hearing Scheduled', async ({api}) => {
   }
   console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdmin, gaCaseReference);
+    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
   }
 });
 
