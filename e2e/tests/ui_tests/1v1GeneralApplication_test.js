@@ -19,6 +19,7 @@ Feature('GA CCD 1v1 - General Application Journey');
 Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   parentCaseNumber = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
   console.log('Case created for general application: ' + parentCaseNumber);
@@ -63,6 +64,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
 
 Scenario('GA for 1v1 - Direction order journey @multiparty-e2e-tests @ui-nightly', async ({I, api}) => {
   parentCaseNumber = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
   console.log('Case created for general application: ' + parentCaseNumber);
@@ -152,6 +154,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @multiparty-e2e-te
 Scenario('GA for 1v1- respond to application - Request more information @ui-nightly', async ({I, api}) => {
   parentCaseNumber = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
   console.log('Case created for general application: ' + parentCaseNumber);
