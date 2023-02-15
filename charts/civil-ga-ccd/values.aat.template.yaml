@@ -74,10 +74,6 @@ civil-service:
     applicationPort: 4000
     releaseNameOverride: ${SERVICE_NAME}-civil-service
     image: 'hmctspublic.azurecr.io/civil/service:latest'
-    devmemoryRequests: 2048Mi
-    devcpuRequests: 250m
-    devmemoryLimits: 4096Mi
-    devcpuLimits: 500m
     imagePullPolicy: Always
     ingressHost: civil-ga-ccd-civil-service-staging-aat.service.core-compute-aat.internal
     keyVaults:
@@ -226,12 +222,11 @@ ccd:
     java:
       imagePullPolicy: Always
       devmemoryRequests: 2048Mi
-      devcpuRequests: 1000m
+      devcpuRequests: 2000m
       devmemoryLimits: 4096Mi
-      devcpuLimits: 3000m
+      devcpuLimits: 4000m
       autoscaling:
-        enabled: true
-        maxReplicas: 3
+        enabled: false
       environment:
         CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: false
         DATA_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
