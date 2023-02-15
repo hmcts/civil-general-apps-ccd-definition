@@ -219,8 +219,10 @@ ccd:
       devcpuRequests: 1000m
       devmemoryLimits: 4096Mi
       devcpuLimits: 3000m
-      enabled: true
+      autoscaling:
+        enabled: true
         maxReplicas: 3
+        targetCPUUtilizationPercentage: 80
       environment:
         CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: false
         DATA_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
