@@ -67,7 +67,7 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
   await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(listForHearingStatus);
-}).retry(2);
+}).retry(1);
 
 Scenario('Without Notice application for a hearing @multiparty-e2e-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -90,9 +90,9 @@ Scenario('Without Notice application for a hearing @multiparty-e2e-tests', async
   await I.login(config.secondDefendantSolicitorUser);
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(listForHearingStatus);
-}).retry(2);
+}).retry(1);
 
-Scenario('Without Notice application to With Notice application - Directions Order @multiparty-e2e-tests', async ({api, I}) => {
+Scenario('Without Notice application to With Notice application - Directions Order @multiparty-e2e-tests @e2e-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -143,7 +143,7 @@ Scenario('Without Notice application to With Notice application - Directions Ord
   await I.login(config.secondDefendantSolicitorUser);
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(judgeDirectionsOrderStatus);
-}).retry(2);
+}).retry(1);
 
 Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations @multiparty-e2e-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -171,7 +171,7 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
   await I.dontSee('Applications', 'div.mat-tab-label-content');
-}).retry(2);
+}).retry(1);
 
 Scenario('With Notice application - Org3 Solicitor Initiate GA @e2e-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -189,7 +189,7 @@ Scenario('With Notice application - Org3 Solicitor Initiate GA @e2e-tests', asyn
   await I.login(config.applicantSolicitorUser);
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(respondentStatus);
-}).retry(2);
+}).retry(1);
 
 Scenario('With Notice application - Org2 Solicitor Initiate GA @multiparty-e2e-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -207,7 +207,7 @@ Scenario('With Notice application - Org2 Solicitor Initiate GA @multiparty-e2e-t
   await I.login(config.applicantSolicitorUser);
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(respondentStatus);
-}).retry(2);
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
