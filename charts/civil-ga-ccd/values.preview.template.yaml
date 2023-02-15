@@ -72,7 +72,7 @@ civil-service:
     releaseNameOverride: ${SERVICE_NAME}-civil-service
     image: 'hmctspublic.azurecr.io/civil/service:latest'
     imagePullPolicy: Always
-    ingressHost: civil-service-${SERVICE_FQDN}.preview.platform.hmcts.net
+    ingressHost: civil-service-${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
       civil:
         resourceGroup: civil
