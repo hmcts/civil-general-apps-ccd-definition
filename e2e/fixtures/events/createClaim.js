@@ -129,12 +129,6 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
           region: '2',
           baseLocation: '000000'
         }
-      },
-      applicant1OrganisationPolicy: {
-        OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
-        Organisation: {
-          OrganisationID: config.claimantSolicitorOrgId,
-        }
       }
     },
     Claimant: {
