@@ -66,9 +66,7 @@ module.exports = {
   async navigateToTab(caseNumber, tabName) {
     if (tabName !== 'Application Documents') {
       await I.retryUntilExists(async () => {
-        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        console.log(`Navigating to case: ${normalizedCaseId}`);
-        await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
         if (['preview'].includes(config.runningEnv)) {
           await I.wait(5);
         } else {

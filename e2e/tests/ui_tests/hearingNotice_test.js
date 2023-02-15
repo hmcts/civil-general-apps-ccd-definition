@@ -1,14 +1,17 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
+const listForHearingStatus = 'Listed for a Hearing';
+const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 
-let civilCaseReference, gaCaseReference;
+let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
+let civilCaseReference, gaCaseReference, caseId, childCaseNumber;
 
-Feature('GA 1v1 Judge list the application for hearing  API tests @api-nightly');
+Feature('GA CP 1v1 - Hearing Notice document @ui-nightly');
 
-Scenario('Judge makes decision 1V1 - Hearing Scheduled', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-      config.applicantSolicitorUser, mpScenario, 'Company');
+Scenario('Claimant and Defendant Hearing notice journey @mm', async ({I, api}) => {
+/*  civilCaseReference = await api.createUnspecifiedClaim(
+    config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -24,13 +27,15 @@ Scenario('Judge makes decision 1V1 - Hearing Scheduled', async ({api}) => {
     await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
   }else {
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
-  }
-  console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdmin, gaCaseReference);
-  }
-});
+  }*/
+
+  await I.login(config.hearingCenterAdminRegion4);
+  await I.navigateToApplicationsTab('1676461313819984');
+  await I.see(listForHearingStatus);
+  await I.navigateToHearingNoticePage('1676461361711992');
+  await I.fillHearingNotice('1676461361711992', 'claimAndDef', 'basildon', 'VIDEO');
+}).retry(0);
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });

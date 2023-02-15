@@ -86,6 +86,9 @@ const applicationDocumentPage = require('./pages/generalApplication/judgesJourne
 const judgesSummary = require('./pages/generalApplication/judgesJourneyPages/judgesSummary.page');
 const claimDocumentPage = require('./pages/generalApplication/claimDocument.page');
 const serviceRequestPage = require('./pages/generalApplication/serviceRequest.page');
+const appDetailsPage = require('./pages/generalApplication/hearingNoticePages/applicationDetails.page');
+const hearingSchedulePage = require('./pages/generalApplication/hearingNoticePages/hearingSchedule.page');
+const hearingNoticeCYAPage = require('./pages/generalApplication/hearingNoticePages/hnCheckYourAnswers.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -691,12 +694,17 @@ module.exports = function () {
 
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
-        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        console.log(`Navigating to case: ${normalizedCaseId}`);
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        console.log(`Navigating to case: ${caseNumber}`);
+        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
       }, SIGNED_IN_SELECTOR);
-
       await this.waitForSelector('.ccd-dropdown');
+    },
+
+    async navigateToHearingNoticePage(caseId) {
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+      await this.waitForText('Application');
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/HEARING_SCHEDULED_GA/HEARING_SCHEDULED_GAHearingNoticeGADetail');
+      await this.waitForText('Application details');
     },
 
     async navigateToApplicationsTab(caseNumber) {
@@ -709,6 +717,14 @@ module.exports = function () {
         () => caseViewPage.start(eventName),
         () => applicationTypePage.verifyAllApplicationTypes(appTypes, caseNumber),
       ]);
+    },
+
+    async fillHearingNotice(caseNumber, partyType, location, channel) {
+      await appDetailsPage.verifyErrorMsg();
+      await appDetailsPage.fillApplicationDetails(partyType);
+      await hearingSchedulePage.verifyErrorMsg();
+      await hearingSchedulePage.fillHearingDetails(location, channel);
+      await hearingNoticeCYAPage.verifyNoticeCheckAnswerForm(caseNumber);
     },
 
     async grabChildCaseNumber() {
