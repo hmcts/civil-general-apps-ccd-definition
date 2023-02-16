@@ -722,7 +722,7 @@ module.exports = function () {
     async fillHearingNotice(caseNumber, partyType, location, channel) {
       await appDetailsPage.verifyErrorMsg();
       await appDetailsPage.fillApplicationDetails(partyType);
-      await hearingSchedulePage.verifyErrorMsg();
+      await hearingSchedulePage.verifyErrorMsg(location);
       await hearingSchedulePage.fillHearingDetails(location, channel);
       await hearingNoticeCYAPage.verifyNoticeCheckAnswerForm(caseNumber);
       await event.submit('Submit', 'Hearing notice created');

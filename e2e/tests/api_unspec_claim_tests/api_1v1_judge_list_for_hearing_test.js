@@ -1,12 +1,14 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
+const events = require('../../fixtures/ga-ccd/events');
 const mpScenario = 'ONE_V_ONE';
+const hnStateStatus = events.HEARING_SCHEDULED_GA.state;
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 Judge list the application for hearing  API tests @api-nightly');
+Feature('Before SDO 1v1 - GA CP - Hearing Notice document API tests @api-tests');
 
-Scenario('Judge makes decision 1V1 - Hearing Scheduled', async ({api}) => {
+Scenario('Defendant Hearing notice journey', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
       config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -29,6 +31,9 @@ Scenario('Judge makes decision 1V1 - Hearing Scheduled', async ({api}) => {
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
   }
+
+  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
+  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
 });
 
 AfterSuite(async ({api}) => {

@@ -11,7 +11,11 @@ module.exports = {
 
   async verifyUploadedDocument(documentType) {
     await I.seeInCurrentUrl('documents');
-    await I.seeNumberOfVisibleElements('ccd-read-complex-field-collection-table .complex-panel .complex-panel-title', 2);
+    if (documentType !== 'After SDO - Hearing Notice') {
+      await I.seeNumberOfVisibleElements('ccd-read-complex-field-collection-table .complex-panel .complex-panel-title', 2);
+    } else {
+      await I.seeNumberOfVisibleElements('ccd-read-complex-field-collection-table .complex-panel .complex-panel-title', 4);
+    }
     let docURL = await I.grabTextFrom(locate(this.fields.links).last());
     switch (documentType) {
       case 'General order document':
@@ -37,6 +41,10 @@ module.exports = {
     await I.see('Uploaded on');
     await I.see('Document URL');
     let docType = await I.grabTextFrom(locate(this.fields.docLabel).last());
-    expect(docType).to.equals(documentType);
+    if (documentType !== 'After SDO - Hearing Notice') {
+      expect(docType).to.equals(documentType);
+    } else {
+      expect(docType).to.equals('Hearing Notice');
+    }
   }
 };

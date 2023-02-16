@@ -1,5 +1,7 @@
 const date = require('../../../fragments/date');
+const {expect} = require('chai');
 const {I} = inject();
+const config = require('../../../config.js');
 
 module.exports = {
 
@@ -37,12 +39,16 @@ module.exports = {
     };
   },
 
-  async verifyErrorMsg() {
+  async verifyErrorMsg(location) {
     await I.waitInUrl('HEARING_SCHEDULED_GAHearingDetails');
     I.waitForElement(this.fields('channel').hearingLocation.id);
     await I.click('Continue');
-    await I.seeNumberOfVisibleElements(this.fields('channel').errorMessage, 5);
-    I.see('Location is required');
+    if(location !== 'default') {
+      await I.seeNumberOfVisibleElements(this.fields('channel').errorMessage, 5);
+      I.see('Location is required');
+    } else {
+      await I.seeNumberOfVisibleElements(this.fields('channel').errorMessage, 4);
+    }
     I.see('Channel is required');
     I.see('Hearing Date is required');
   },
@@ -50,7 +56,14 @@ module.exports = {
   async fillHearingDetails(location, channel) {
     await I.waitInUrl('HEARING_SCHEDULED_GAHearingDetails');
     I.waitForElement(this.fields(channel).hearingLocation.id);
-    I.selectOption(this.fields(channel).hearingLocation.id, this.fields(channel).hearingLocation.options[location]);
+    if(location !== 'default') {
+      I.selectOption(this.fields(channel).hearingLocation.id, this.fields(channel).hearingLocation.options[location]);
+    } else {
+      // let actualLocation = await I.grabTextFrom(this.fields(channel).hearingLocation.id);
+      let expectedLocation = config.defendant2SelectedCourt.replace(/\//g, '');
+      // expect(actualLocation).to.equals(expectedLocation);
+      await I.see(expectedLocation, this.fields(channel).hearingLocation.id);
+    }
     I.forceClick(this.fields(channel).channelType.id);
     await date.enterDate(this.fields(channel).hearingDate, +2);
     I.selectOption(this.fields(channel).hearingTime.id, this.fields(channel).hearingTime.options['9']);
