@@ -581,6 +581,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "migrationId",
+    "Label": "Migration Id",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "sequentialWrittenRepresentationUploadyBy",
     "Label": "${judicialSequentialDateText}",
     "FieldType": "Label",
