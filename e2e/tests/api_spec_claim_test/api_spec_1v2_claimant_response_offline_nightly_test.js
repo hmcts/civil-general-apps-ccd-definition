@@ -9,7 +9,6 @@ Feature('GA SPEC Claim 1v2 Claimant Response Case Close API tests @api-offline-n
 Scenario('Case offline LISTING_FOR_A_HEARING', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
   gaCaseReference
     = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
@@ -35,7 +34,6 @@ Scenario('Case offline LISTING_FOR_A_HEARING', async ({api}) => {
 Scenario('Case offline ORDER_MADE', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
 
   console.log('Make a General Application with state ORDER_MADE');
   gaCaseReference
@@ -60,7 +58,6 @@ Scenario('Case offline ORDER_MADE', async ({api}) => {
 Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
   console.log('Make a General Application with state APPLICATION_DISMISSED');
   gaCaseReference
     = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
@@ -84,7 +81,6 @@ Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
 Scenario('Case offline AWAITING_RESPONDENT_RESPONSE', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
   console.log('Make a General Application');
   gaCaseReference
     = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);

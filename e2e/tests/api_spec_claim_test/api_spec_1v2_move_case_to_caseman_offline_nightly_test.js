@@ -9,7 +9,6 @@ Feature('GA SPEC Claim 1v2 Move to Case Man Case Close API tests @api-offline-ni
 Scenario.skip('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION @api-tests', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
 
   console.log('Make a General Application with state APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   gaCaseReference

@@ -9,7 +9,6 @@ Feature('GA SPEC Claim 1v2 Defendant Response Case Close API tests @api-offline-
 Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
 
   console.log('Make a General Application with state APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   gaCaseReference
@@ -23,7 +22,6 @@ Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async 
 Scenario('Case offline ORDER_MADE', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
 
   console.log('Make a General Application with state ORDER_MADE');
   gaCaseReference
@@ -46,7 +44,6 @@ Scenario('Case offline ORDER_MADE', async ({api}) => {
 Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
 
   console.log('Make a General Application with state APPLICATION_DISMISSED');
   gaCaseReference

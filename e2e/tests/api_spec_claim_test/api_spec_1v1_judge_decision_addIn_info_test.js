@@ -8,7 +8,6 @@ Feature('GA SPEC Claim 1v1 Judge Make Decision Additional Information Required A
 
 Scenario('Judge makes decision 1V1 - AWAITING_ADDITIONAL_INFORMATION', async ({api}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
