@@ -9,6 +9,7 @@ Feature('GA SPEC Claim 1v1 Judge Make Order Directions Order API tests @api-test
 Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
     civilCaseReference = await api.createSpecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
+    await api.amendClaimDocuments(config.applicantSolicitorUser);
     console.log('Civil Case created for general application: ' + civilCaseReference);
     console.log('Make a General Application');
     gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);

@@ -10,6 +10,7 @@ Feature('Spec 1v2 - General Application after SDO Journey @api-tests');
 Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
  civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api.claimantResponseClaimSpec(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
     'JUDICIAL_REFERRAL');
@@ -30,6 +31,7 @@ Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
 Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api_sdo, api, I}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api.claimantResponseClaimSpec(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
     'JUDICIAL_REFERRAL');
