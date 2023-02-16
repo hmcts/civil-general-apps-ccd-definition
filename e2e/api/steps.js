@@ -292,6 +292,7 @@ module.exports = {
     var pbaV3 = await checkPBAv3ToggleEnabled();
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
+    await waitForFinishedBusinessProcess(caseId, user);
 
     if (pbaV3) {
       await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
