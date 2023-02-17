@@ -1277,7 +1277,9 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId, user);
   },
 
-  defendantResponseClaim: async (user, multipartyScenario, solicitor) => {
+  defendantResponseClaim: async (user, multipartyScenario, solicitor,
+                                 respondentClaimResponseType = 'FULL_DEFENCE',
+                                 multiPartyResponseTypeFlags = 'FULL_DEFENCE') => {
     await apiRequest.setupTokens(user);
     mpScenario = multipartyScenario;
     eventName = 'DEFENDANT_RESPONSE';
@@ -1296,6 +1298,17 @@ module.exports = {
     } else {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor];
     }
+
+    if(respondentClaimResponseType !== 'FULL_DEFENCE'
+       && multiPartyResponseTypeFlags !== 'FULL_DEFENCE') {
+      defendantResponseData['valid']['RespondentResponseType']['multiPartyResponseTypeFlags'] = multiPartyResponseTypeFlags;
+      if (solicitor === 'solicitorOne') {
+        defendantResponseData['valid']['RespondentResponseType']['respondent1ClaimResponseType'] = respondentClaimResponseType;
+      } else {
+        defendantResponseData['valid']['RespondentResponseType']['respondent2ClaimResponseType'] = respondentClaimResponseType;
+      }
+    }
+
     // Remove after court location toggle is removed
     // defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
     //     defendantResponseData, solicitor);
