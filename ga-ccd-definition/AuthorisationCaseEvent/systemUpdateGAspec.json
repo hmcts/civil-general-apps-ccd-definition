@@ -169,7 +169,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "END_SCHEDULER_CHECK_UNLESS_ORDER_DEADLINE",
+    "CaseEventID": "migrateCase",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }

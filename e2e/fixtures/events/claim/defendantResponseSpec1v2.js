@@ -63,7 +63,7 @@ module.exports = {
                 ],
                 value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
               },
-              reasonForHearingAtSpecificCourt: 'Reasons'
+              //reasonForHearingAtSpecificCourt: 'Reasons'
             }
           },
           HearingSupport: {
@@ -325,7 +325,7 @@ module.exports = {
                 ],
                 value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
               },
-              reasonForHearingAtSpecificCourt: 'Reasons'
+              //reasonForHearingAtSpecificCourt: 'Reasons'
             }
           },
           HearingSupport: {
@@ -470,7 +470,7 @@ module.exports = {
                 ],
                 value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
               },
-              reasonForHearingAtSpecificCourt: 'Reasons'
+              //reasonForHearingAtSpecificCourt: 'Reasons'
             }
           },
           HearingSupport: {

@@ -75,7 +75,7 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
   await I.see(writtenRepStatus);
   await I.respondToJudgesWrittenRep(childCaseNum(), childCaseId, 'Written representation concurrent document');
   console.log('Responded to Judges written representations on case: ' + childCaseNum());
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
