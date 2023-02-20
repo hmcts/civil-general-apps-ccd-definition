@@ -8,7 +8,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('Before SDO 1v1 - GA CP - Hearing Notice document API tests @api-tests');
 
-Scenario('Defendant Hearing notice journey', async ({api}) => {
+Scenario('Defendant Hearing notice journey @mm', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
       config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -37,5 +37,5 @@ Scenario('Defendant Hearing notice journey', async ({api}) => {
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
