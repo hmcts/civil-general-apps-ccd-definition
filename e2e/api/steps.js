@@ -52,6 +52,7 @@ const data = {
   JUDGE_APPROVES_STAYCLAIM_APPLN: (current_date) => genAppJudgeMakeDecisionData.judgeApprovesStayClaimAppl(current_date),
   PAYMENT_SERVICE_REQUEST_UPDATED: genAppJudgeMakeDecisionData.serviceUpdateDto(),
   LIST_FOR_A_HEARING: genAppJudgeMakeDecisionData.listingForHearing(),
+  LIST_FOR_A_HEARING_InPerson: genAppJudgeMakeDecisionData.listingForHearingInPerson(),
   SCHEDULE_HEARING: genAppHearingData.scheduleHearing(),
   APPLICATION_DISMISSED: genAppJudgeMakeDecisionData.applicationsDismiss(),
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
@@ -927,6 +928,25 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'LISTING_FOR_A_HEARING');
   },
 
+  judgeListApplicationForHearingInPerson: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.MAKE_DECISION.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.LIST_FOR_A_HEARING_InPerson, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION', user);
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'LISTING_FOR_A_HEARING');
+  },
+
   judgeDismissApplication: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
     eventName = events.MAKE_DECISION.id;
@@ -1284,7 +1304,9 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId, user);
   },
 
-  defendantResponseClaim: async (user, multipartyScenario, solicitor) => {
+  defendantResponseClaim: async (user, multipartyScenario, solicitor,
+                                 respondentClaimResponseType = 'FULL_DEFENCE',
+                                 multiPartyResponseTypeFlags = 'FULL_DEFENCE') => {
     await apiRequest.setupTokens(user);
     mpScenario = multipartyScenario;
     eventName = 'DEFENDANT_RESPONSE';
@@ -1303,6 +1325,17 @@ module.exports = {
     } else {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor];
     }
+
+    if(respondentClaimResponseType !== 'FULL_DEFENCE'
+       && multiPartyResponseTypeFlags !== 'FULL_DEFENCE') {
+      defendantResponseData['valid']['RespondentResponseType']['multiPartyResponseTypeFlags'] = multiPartyResponseTypeFlags;
+      if (solicitor === 'solicitorOne') {
+        defendantResponseData['valid']['RespondentResponseType']['respondent1ClaimResponseType'] = respondentClaimResponseType;
+      } else {
+        defendantResponseData['valid']['RespondentResponseType']['respondent2ClaimResponseType'] = respondentClaimResponseType;
+      }
+    }
+
     // Remove after court location toggle is removed
     // defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
     //     defendantResponseData, solicitor);

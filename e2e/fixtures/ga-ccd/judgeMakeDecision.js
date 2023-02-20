@@ -1,3 +1,5 @@
+const {listElement} = require('../../api/dataHelper');
+const config = require('../../config');
 module.exports = {
   judgeMakesDecisionData: () => {
     return {
@@ -112,6 +114,36 @@ module.exports = {
         judgeOtherSupport: 'sample text'
       },
       judicialByCourtsInitiativeListForHearing: 'OPTION_1'
+    };
+  },
+  listingForHearingInPerson: () => {
+    return {
+      judicialDecision : {
+        decision: 'LIST_FOR_A_HEARING'
+      },
+      judicialDecisionMakeOrder: {
+        directionsText: 'sample text',
+        reasonForDecisionText: 'sample text',
+        directionsResponseByDate: '2023-06-05',
+        displayjudgeApproveEditOptionDoc: 'No',
+        displayjudgeApproveEditOptionDate: 'No',
+        judicialByCourtsInitiativeListForHearing: 'OPTION_1'
+      },
+      judicialListForHearing: {
+        hearingPreferencesPreferredType: 'IN_PERSON',
+        hearingPreferredLocation: {
+          list_items: [
+            listElement(config.defendant2SelectedCourt)
+          ],
+          value: listElement(config.defendant2SelectedCourt)
+        },
+        judicialTimeEstimate: 'MINUTES_30',
+        judgeSignLanguage: 'sample text',
+        judgeLanguageInterpreter: 'sample text',
+        judgeOtherSupport: 'sample text'
+      },
+      judicialByCourtsInitiativeListForHearing: 'OPTION_2',
+      judicialGOHearingDirections:'Test Hearing Directions'
     };
   },
   applicationsDismiss: () => {
