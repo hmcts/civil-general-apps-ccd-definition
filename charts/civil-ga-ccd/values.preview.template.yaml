@@ -27,6 +27,7 @@ civil-general-applications:
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
 civil-service:
   java:
+    ingressHost: civil-service-${SERVICE_FQDN}
     keyVaults:
       civil:
         resourceGroup: civil
@@ -73,6 +74,11 @@ ccd:
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
   ccd-definition-store-api:
     java:
+      devmemoryRequests: 2048Mi
+      devcpuRequests: 2000m
+      devmemoryLimits: 4096Mi
+      devcpuLimits: 4000m
+      disableKeyVaults: true
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
 camunda-bpm:
   java:
