@@ -299,6 +299,11 @@ module.exports = {
         gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
         break;
     }
+    //Payment callback handler response after the payment from service request tab
+    const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+      genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+
+    assert.equal(payment_response.status, 200);
 
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
       'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', user);
@@ -348,6 +353,12 @@ module.exports = {
         break;
     }
 
+    //Payment callback handler response after the payment from service request tab
+    const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+      genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+
+    assert.equal(response.status, 201);
+
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
       'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', user);
 
@@ -361,7 +372,7 @@ module.exports = {
     return gaCaseReference;
   },
 
-  initiateGeneralApplicationWithNoStrikeOut: async (user, parentCaseId) => {
+   initiateGeneralApplicationWithNoStrikeOut: async (user, parentCaseId) => {
     eventName = events.INITIATE_GENERAL_APPLICATION.id;
     let gaCaseReference;
 
@@ -388,6 +399,13 @@ module.exports = {
         gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
         break;
     }
+
+    //Payment callback handler response after the payment from service request tab
+    const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+      genAppJudgeMakeDecisionData.serviceUpdateDtoWithNotice(gaCaseReference,'Paid'));
+
+    assert.equal(payment_response.status, 200);
+
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
     console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
 
@@ -402,8 +420,7 @@ module.exports = {
     const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION_STAY_CLAIM, parentCaseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
-    assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
+
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
     await waitForFinishedBusinessProcess(parentCaseId, user);
@@ -414,6 +431,11 @@ module.exports = {
     let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
 
+    //Payment callback handler response after the payment from service request tab
+    const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+      genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+    assert.equal(payment_response.status, 200);
+    console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
     return gaCaseReference;
   },
 
@@ -431,7 +453,7 @@ module.exports = {
     const responseBody = await response.json();
     assert.equal(response.status, 201);
     assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
+
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
     await waitForFinishedBusinessProcess(parentCaseId, user);
@@ -441,6 +463,11 @@ module.exports = {
     const updatedCivilCaseData = await updatedResponse.json();
     let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
+    //Payment callback handler response after the payment from service request tab
+    const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+      genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+    assert.equal(payment_response.status, 200);
+    console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
 
     return gaCaseReference;
   },
@@ -1586,6 +1613,12 @@ const initiateGaWithState = async (user, parentCaseId, expectState) => {
   const updatedCivilCaseData = await updatedResponse.json();
   let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
+
+  //calling payment callback handler
+  const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+    genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+  assert.equal(response.status, 201);
+
   //comment out next line to see race condition
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
   return gaCaseReference;
