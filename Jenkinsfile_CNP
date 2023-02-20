@@ -123,9 +123,9 @@ withPipeline(type, product, component) {
         env.TEST_DATA_LOAD_SKIP_PERIOD = 3.0
         env.ENVIRONMENT = "preview"
         loadVaultSecrets(secrets);
-      if (!checkForEnableHelmLabel(env.BRANCH_NAME)) {
-        enableCleanupOfHelmReleaseAlways();
-      }
+//        if (!checkForEnableHelmLabel(env.BRANCH_NAME)) {
+//          enableCleanupOfHelmReleaseAlways();
+//        }
     }
     onMaster {
         env.YARN_ENABLE_IMMUTABLE_INSTALLS = false

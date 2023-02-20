@@ -47,6 +47,7 @@ civil-general-applications:
       RELEASE_REVISION: "{{ .Release.Revision }}"
   postgresql:
     enabled: true
+    releaseNameOverride: ${SERVICE_NAME}-postgresql
     image:
       registry: hmctspublic.azurecr.io
       repository: imported/bitnami/postgresql
@@ -69,6 +70,7 @@ civil-general-applications:
     auth:
       username: ${POSTGRES_USER}
       password: ${POSTGRES_PASSWORD}
+
 civil-service:
   enabled: true
   java:
@@ -254,7 +256,7 @@ ccd:
         DEFINITION_STORE_IDAM_KEY: ${CCD_DEFINITION_STORE_S2S_SECRET}
         IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
         RELEASE_REVISION: "{{ .Release.Revision }}"
-      keyVaults: []
+      disableKeyVaults: true
       ingressHost: civil-ga-ccd-definition-store-staging-aat.service.core-compute-aat.internal
 
   postgresql:
