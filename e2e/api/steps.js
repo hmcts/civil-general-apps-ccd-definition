@@ -23,10 +23,12 @@ const claimSpecData = require('../fixtures/events/createClaimSpec.js');
 const genAppData = require('../fixtures/ga-ccd/createGeneralApplication.js');
 const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentResponse.js');
 const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
+const genAppHearingData = require('../fixtures/ga-ccd/genAppHearing.js');
 const genAppNbcAdminReferToJudgeData = require('../fixtures/ga-ccd/nbcAdminTask.js');
 const  genAppNbcAdminReferToLegalAdvisorData = require('../fixtures/ga-ccd/nbcAdminTask.js');
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
+const { replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
@@ -41,6 +43,7 @@ const data = {
   REFER_TO_JUDGE: genAppNbcAdminReferToJudgeData.nbcAdminReferToJudgeData(),
   REFER_TO_LEGAL_ADVISOR: genAppNbcAdminReferToLegalAdvisorData.nbcAdminReferToLegalAdvisorData(),
   JUDGE_MAKES_ORDER_WRITTEN_REP: (current_date) => genAppJudgeMakeDecisionData.judgeMakeOrderWrittenRep(current_date),
+  JUDGE_MAKES_ORDER_WRITTEN_REP_ON_UNCLOAKED_APPLN: (current_date) => genAppJudgeMakeDecisionData.judgeMakeOrderWrittenRep_On_Uncloaked_Appln(current_date),
   RESPOND_TO_JUDGE_ADDITIONAL_INFO: genAppRespondentResponseData.toJudgeAdditionalInfo(),
   RESPOND_TO_JUDGE_DIRECTIONS: genAppRespondentResponseData.toJudgeDirectionsOrders(),
   RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION: genAppRespondentResponseData.toJudgeWrittenRepresentation(),
@@ -49,9 +52,11 @@ const data = {
   JUDGE_APPROVES_STAYCLAIM_APPLN: (current_date) => genAppJudgeMakeDecisionData.judgeApprovesStayClaimAppl(current_date),
   PAYMENT_SERVICE_REQUEST_UPDATED: genAppJudgeMakeDecisionData.serviceUpdateDto(),
   LIST_FOR_A_HEARING: genAppJudgeMakeDecisionData.listingForHearing(),
+  LIST_FOR_A_HEARING_InPerson: genAppJudgeMakeDecisionData.listingForHearingInPerson(),
+  SCHEDULE_HEARING: genAppHearingData.scheduleHearing(),
   APPLICATION_DISMISSED: genAppJudgeMakeDecisionData.applicationsDismiss(),
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
-  CREATE_CLAIM: (mpScenario, claimantType) => claimData.createClaim(mpScenario, claimantType),
+  CREATE_CLAIM: (mpScenario, claimantType, claimAmount) => claimData.createClaim(mpScenario, claimantType, claimAmount),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
@@ -189,14 +194,14 @@ let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
-  createUnspecifiedClaim: async (user, multipartyScenario, claimantType) => {
+  createUnspecifiedClaim: async (user, multipartyScenario, claimantType, claimAmount= '30000') => {
 
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
 
-    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType);
+    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType, claimAmount);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -269,6 +274,54 @@ module.exports = {
     await apiRequest.startEvent(eventName, parentCaseId);
 
     const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE,
+      parentCaseId);
+
+    const responseBody = await response.json();
+    assert.equal(response.status, 201);
+    console.log('General application case state : ' + responseBody.state);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header,
+      '# You have made an application');
+
+    await waitForFinishedBusinessProcess(parentCaseId, user);
+    await waitForGAFinishedBusinessProcess(parentCaseId, user);
+
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+    const updatedCivilCaseData = await updatedResponse.json();
+
+    switch (user.email) {
+      case config.applicantSolicitorUser.email:
+        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+        break;
+      case config.defendantSolicitorUser.email:
+        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+        break;
+      case config.secondDefendantSolicitorUser.email:
+        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
+        break;
+    }
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
+      'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', user);
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseReference, user);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+
+    console.log('General application case state : APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+    console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
+
+    return gaCaseReference;
+  },
+
+  initiateGeneralApplicationWithOutNoticeUncloaked: async (user, parentCaseId) => {
+    let gaCaseReference;
+    eventName = events.INITIATE_GENERAL_APPLICATION.id;
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName, parentCaseId);
+
+    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE_UNCLOAKED,
       parentCaseId);
 
     const responseBody = await response.json();
@@ -663,6 +716,41 @@ module.exports = {
     return ccd_state;
   },
 
+  judgeMakesDecisionWithoutNoticeWrittenRep: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.MAKE_DECISION.id;
+
+    const response = await apiRequest.validateGAPage(
+      'MAKE_DECISION',
+      'GAJudicialDecision',
+      data.JUDGE_MAKES_ORDER_WRITTEN_REP(current_date),
+      gaCaseId
+    );
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 422);
+
+    if (responseBody.callbackErrors != null) {
+      assert.equal(responseBody.callbackErrors[0], 'The application needs to be uncloaked before requesting written representations');
+    }
+  },
+
+  judgeRevisitMakesDecisionWrittenRepUncloakedAppln: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.MAKE_DECISION.id;
+
+    const response = await apiRequest.validateGAPage(
+      'MAKE_DECISION',
+      'GAJudicialDecision',
+      data.JUDGE_MAKES_ORDER_WRITTEN_REP_ON_UNCLOAKED_APPLN(current_date),
+      gaCaseId
+    );
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 200);
+    assert.equal(responseBody.callbackErrors, null);
+  },
+
   judgeMakesDecisionDirectionsOrder: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
     eventName = events.MAKE_DECISION.id;
@@ -813,6 +901,25 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'LISTING_FOR_A_HEARING');
   },
 
+  judgeListApplicationForHearingInPerson: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.MAKE_DECISION.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.LIST_FOR_A_HEARING_InPerson, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'MAKE_DECISION', user);
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'LISTING_FOR_A_HEARING');
+  },
+
   judgeDismissApplication: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
     eventName = events.MAKE_DECISION.id;
@@ -830,6 +937,25 @@ module.exports = {
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId,user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_DISMISSED');
+  },
+
+  hearingCenterAdminScheduleHearing: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.HEARING_SCHEDULED_GA.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.SCHEDULE_HEARING, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# Hearing notice created');
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'HEARING_SCHEDULED_GA',user);
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId,user);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'HEARING_SCHEDULED');
   },
 
   notifyClaim: async (user, multipartyScenario, caseId) => {
@@ -1017,7 +1143,10 @@ module.exports = {
     let claimantResponseData = eventData['claimantResponsesSpec'][scenario][response];
     claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
 
+    const document = await testingSupport.uploadDocument();
+
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
+      claimantResponseData = await updateCaseDataWithPlaceholders(claimantResponseData, document);
       await assertValidClaimData(claimantResponseData, pageId);
     }
 
@@ -1063,12 +1192,20 @@ module.exports = {
     deleteCaseFields('gaDetailsRespondentSol');
     deleteCaseFields('generalApplications');
 
-    const claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
-
-    for (let pageId of Object.keys(claimantResponseData.userInput)) {
-      await assertValidClaimData(claimantResponseData, pageId);
+    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    delete claimantResponseData['midEventData'];
+    // CIV-5514: remove when hnl is live
+    claimantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(claimantResponseData, 'solicitorOne', false);
+    let hnlEnabled = false;
+    if (!hnlEnabled) {
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponse(
+          claimantResponseData);
     }
 
+    // for (let pageId of Object.keys(claimantResponseData.userInput)) {
+    //   await assertValidClaimData(claimantResponseData, pageId);
+    // }
+    await validateEventPagesWithCheck(claimantResponseData, false, user);
     await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId, user);
@@ -1140,7 +1277,9 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId, user);
   },
 
-  defendantResponseClaim: async (user, multipartyScenario, solicitor) => {
+  defendantResponseClaim: async (user, multipartyScenario, solicitor,
+                                 respondentClaimResponseType = 'FULL_DEFENCE',
+                                 multiPartyResponseTypeFlags = 'FULL_DEFENCE') => {
     await apiRequest.setupTokens(user);
     mpScenario = multipartyScenario;
     eventName = 'DEFENDANT_RESPONSE';
@@ -1159,6 +1298,17 @@ module.exports = {
     } else {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor];
     }
+
+    if(respondentClaimResponseType !== 'FULL_DEFENCE'
+       && multiPartyResponseTypeFlags !== 'FULL_DEFENCE') {
+      defendantResponseData['valid']['RespondentResponseType']['multiPartyResponseTypeFlags'] = multiPartyResponseTypeFlags;
+      if (solicitor === 'solicitorOne') {
+        defendantResponseData['valid']['RespondentResponseType']['respondent1ClaimResponseType'] = respondentClaimResponseType;
+      } else {
+        defendantResponseData['valid']['RespondentResponseType']['respondent2ClaimResponseType'] = respondentClaimResponseType;
+      }
+    }
+
     // Remove after court location toggle is removed
     // defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
     //     defendantResponseData, solicitor);
@@ -1408,7 +1558,6 @@ const assertError = async (pageId, eventData, expectedErrorMessage, responseBody
 
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
-
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);
@@ -1481,6 +1630,8 @@ function addMidEventFields(pageId, responseBody) {
   let midEventData;
 
   if (eventName === 'CREATE_CLAIM') {
+    midEventData = data[eventName](mpScenario).midEventData[pageId];
+  } else if (eventName === 'CLAIMANT_RESPONSE') {
     midEventData = data[eventName](mpScenario).midEventData[pageId];
   } else {
     midEventData = data[eventName].midEventData[pageId];

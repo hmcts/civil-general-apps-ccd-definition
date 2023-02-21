@@ -234,7 +234,7 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "specifc-access-ctsc",
+    "RoleName" : "specific-access-ctsc",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "ga-basic-access",
@@ -246,7 +246,7 @@
     "RoleName": "nbc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "ga-basic-access",
+    "AccessProfiles": "ga-basic-access,hearing-schedule-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -255,7 +255,7 @@
     "RoleName": "national-business-centre",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "civil-administrator-standard,ga-basic-access",
+    "AccessProfiles": "civil-administrator-standard,ga-basic-access,hearing-schedule-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""

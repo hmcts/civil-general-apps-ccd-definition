@@ -110,5 +110,12 @@
     "Name": "Application Payment Failed",
     "Description": "Application Payment Failed",
     "DisplayOrder": 16
+  },
+  {
+      "CaseTypeID": "GENERALAPPLICATION",
+      "ID": "HEARING_SCHEDULED",
+      "Name": "Hearing Scheduled",
+      "Description": "Hearing Scheduled",
+      "DisplayOrder": 17
   }
 ]

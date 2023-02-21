@@ -152,6 +152,17 @@ module.exports = {
       }, 'POST', expectedStatus);
   },
 
+  validateGAPage: async (eventName, pageId, caseData, caseId) => {
+    return restHelper.request(`${getCcdDataStoreGABaseUrl()}/validate?pageId=${eventName}${pageId}`, getRequestHeaders(tokens.userAuth),
+      {
+        case_reference: caseId,
+        data: caseData,
+        event: {id: eventName},
+        event_data: caseData,
+        event_token: tokens.ccdEvent
+      }, 'POST');
+  },
+
   submitEvent: async (eventName, caseData, caseId) => {
     let url = `${getCcdDataStoreBaseUrl()}/cases`;
     if (caseId) {

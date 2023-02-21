@@ -1,3 +1,5 @@
+const {listElement} = require('../../api/dataHelper');
+const config = require('../../config');
 module.exports = {
   judgeMakesDecisionData: () => {
     return {
@@ -13,6 +15,23 @@ module.exports = {
   },
   judgeMakeOrderWrittenRep: (current_date) => {
     return {
+      judicialDecision : {
+        decision: 'MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS'
+      },
+      judicialDecisionMakeAnOrderForWrittenRepresentations: {
+        writtenConcurrentRepresentationsBy: current_date,
+        makeAnOrderForWrittenRepresentations: 'CONCURRENT_REPRESENTATIONS'
+      },
+      judicialByCourtsInitiativeForWrittenRep: 'OPTION_1'
+    };
+  },
+  judgeMakeOrderWrittenRep_On_Uncloaked_Appln: (current_date) => {
+    return {
+      applicationIsUncloakedOnce: 'Yes',
+      generalAppInformOtherParty: {
+        isWithNotice: 'Yes',
+        reasonsForWithoutNotice: 'Test'
+      },
       judicialDecision : {
         decision: 'MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS'
       },
@@ -87,11 +106,44 @@ module.exports = {
         judicialByCourtsInitiativeListForHearing: 'OPTION_1'
       },
       judicialListForHearing: {
+        hearingPreferencesPreferredType: 'TELEPHONE',
         hearingPreferredLocation: null,
+        judicialTimeEstimate: 'MINUTES_30',
         judgeSignLanguage: 'sample text',
         judgeLanguageInterpreter: 'sample text',
         judgeOtherSupport: 'sample text'
-      }
+      },
+      judicialByCourtsInitiativeListForHearing: 'OPTION_1'
+    };
+  },
+  listingForHearingInPerson: () => {
+    return {
+      judicialDecision : {
+        decision: 'LIST_FOR_A_HEARING'
+      },
+      judicialDecisionMakeOrder: {
+        directionsText: 'sample text',
+        reasonForDecisionText: 'sample text',
+        directionsResponseByDate: '2023-06-05',
+        displayjudgeApproveEditOptionDoc: 'No',
+        displayjudgeApproveEditOptionDate: 'No',
+        judicialByCourtsInitiativeListForHearing: 'OPTION_1'
+      },
+      judicialListForHearing: {
+        hearingPreferencesPreferredType: 'IN_PERSON',
+        hearingPreferredLocation: {
+          list_items: [
+            listElement(config.defendant2SelectedCourt)
+          ],
+          value: listElement(config.defendant2SelectedCourt)
+        },
+        judicialTimeEstimate: 'MINUTES_30',
+        judgeSignLanguage: 'sample text',
+        judgeLanguageInterpreter: 'sample text',
+        judgeOtherSupport: 'sample text'
+      },
+      judicialByCourtsInitiativeListForHearing: 'OPTION_2',
+      judicialGOHearingDirections:'Test Hearing Directions'
     };
   },
   applicationsDismiss: () => {

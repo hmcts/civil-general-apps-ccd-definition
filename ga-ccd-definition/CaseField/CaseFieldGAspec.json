@@ -314,6 +314,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "isCaseProgressionEnabled",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "isCcmccLocation",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -574,6 +581,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "migrationId",
+    "Label": "Migration Id",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "sequentialWrittenRepresentationUploadyBy",
     "Label": "${judicialSequentialDateText}",
     "FieldType": "Label",
@@ -776,7 +790,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppN245FormUpload",
-    "Label": "N254 Form",
+    "Label": "N245 Form",
     "FieldType": "Document",
     "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
     "SecurityClassification": "Public"
@@ -842,7 +856,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "applicationIsUncloackedOnce",
+    "ID": "applicationIsUncloakedOnce",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",

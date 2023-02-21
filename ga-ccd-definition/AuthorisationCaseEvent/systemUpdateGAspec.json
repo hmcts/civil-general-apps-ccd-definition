@@ -121,7 +121,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "START_NOTIFICATION_PROCESS_MAKE_DECISION",
+    "CaseEventID": "START_APPLICANT_NOTIFICATION_PROCESS_MAKE_DECISION",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "START_RESPONDENT_NOTIFICATION_PROCESS_MAKE_DECISION",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
@@ -158,6 +164,12 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "END_SCHEDULER_CHECK_STAY_ORDER_DEADLINE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "migrateCase",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }

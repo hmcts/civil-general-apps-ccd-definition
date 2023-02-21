@@ -16,13 +16,23 @@ module.exports = {
     I.seeInCurrentUrl('Documents');
     I.see(uploadedDoc);
     I.see(expectedLabel);
-    I.seeNumberOfVisibleElements(this.fields.links, 3);
+    //  Concurrent written representations journey is now without notice to with notice hence added this logic
+    if (expectedLabel !== 'Written representation concurrent document') {
+      I.seeNumberOfVisibleElements(this.fields.links, 3);
+    } else {
+      I.seeNumberOfVisibleElements(this.fields.links, 4);
+    }
   },
 
   async verifyUploadedDocumentPDF(documentType) {
     await I.waitForElement(this.fields.appDocTable);
     await I.seeInCurrentUrl('Documents');
-    await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 1);
+    //  Concurrent written representations journey is now without notice to with notice hence added this logic
+    if (documentType === 'Written representation concurrent' || documentType === 'Hearing Notice') {
+      await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 2);
+    } else {
+      await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 1);
+    }
     let docURL = await I.grabTextFrom(locate(this.fields.links).first());
     switch (documentType) {
       case 'General order':
@@ -44,12 +54,24 @@ module.exports = {
         expect(docURL).to.contains(`Order_Written_Representation_Sequential_for_application_${docFullDate}`);
         break;
       case 'Written representation concurrent':
-        expect(docURL).to.contains(`Order_Written_Representation_Concurrent_for_application_${docFullDate}`);
+        await I.see(`Order_Written_Representation_Concurrent_for_application_${docFullDate}`);
+        break;
+      case 'Hearing Notice':
+        await I.see(`Application_Hearing_Notice_${docFullDate}`);
         break;
     }
     await I.see('Type');
     await I.see('Uploaded on');
     await I.see('Document URL');
-    await I.seeTextEquals(documentType, this.fields.docLabel);
+    //  Concurrent written representations journey is now without notice to with notice hence added this logic
+    if (documentType === 'Written representation concurrent') {
+      await I.seeTextEquals('Request for information', locate(this.fields.docLabel).first());
+      await I.seeTextEquals(documentType, locate(this.fields.docLabel).last());
+    } else if (documentType === 'Hearing Notice') {
+      await I.seeTextEquals('Hearing order', locate(this.fields.docLabel).first());
+      await I.seeTextEquals(documentType, locate(this.fields.docLabel).last());
+    } else {
+      await I.seeTextEquals(documentType, this.fields.docLabel);
+    }
   }
 };

@@ -56,12 +56,24 @@ module.exports = {
     }
   },
 
+  async clickOnTab(tabName) {
+    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
+    await I.refreshPage();
+    if (['preview'].includes(config.runningEnv)) {
+      await I.wait(10);
+    } else {
+      await I.wait(2);
+    }
+    let urlBefore = await I.grabCurrentUrl();
+    await I.retryUntilUrlChanges(async () => {
+      await I.forceClick(locate(this.fields.tab).withText(tabName));
+    }, urlBefore);
+  },
+
   async navigateToTab(caseNumber, tabName) {
     if (tabName !== 'Application Documents') {
       await I.retryUntilExists(async () => {
-        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        console.log(`Navigating to case: ${normalizedCaseId}`);
-        await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
         if (['preview'].includes(config.runningEnv)) {
           await I.wait(5);
         } else {
@@ -87,7 +99,6 @@ module.exports = {
       } else {
         await I.wait(2);
       }
-      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
     }, urlBefore);
   },
 };
