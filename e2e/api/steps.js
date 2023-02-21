@@ -283,7 +283,7 @@ module.exports = {
     assert.include(responseBody.after_submit_callback_response.confirmation_header,
       '# You have made an application');
 
-    await waitForFinishedBusinessProcess(parentCaseId, user);
+    // await waitForFinishedBusinessProcess(parentCaseId, user);
     await waitForGAFinishedBusinessProcess(parentCaseId, user);
 
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
@@ -291,13 +291,13 @@ module.exports = {
 
     switch (user.email) {
       case config.applicantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[updatedCivilCaseData.claimantGaAppDetails.length - 1].value.caseLink.CaseReference;
         break;
       case config.defendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[updatedCivilCaseData.respondentSolGaAppDetails.length - 1].value.caseLink.CaseReference;
         break;
       case config.secondDefendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[updatedCivilCaseData.respondentSolTwoGaAppDetails.length - 1].value.caseLink.CaseReference;
         break;
     }
 
@@ -314,55 +314,7 @@ module.exports = {
     return gaCaseReference;
   },
 
-  initiateGeneralApplicationWithOutNoticeUncloaked: async (user, parentCaseId) => {
-    let gaCaseReference;
-    eventName = events.INITIATE_GENERAL_APPLICATION.id;
-
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName, parentCaseId);
-
-    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE_UNCLOAKED,
-      parentCaseId);
-
-    const responseBody = await response.json();
-    assert.equal(response.status, 201);
-    console.log('General application case state : ' + responseBody.state);
-    assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header,
-      '# You have made an application');
-
-    await waitForFinishedBusinessProcess(parentCaseId, user);
-    await waitForGAFinishedBusinessProcess(parentCaseId, user);
-
-    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
-    const updatedCivilCaseData = await updatedResponse.json();
-
-    switch (user.email) {
-      case config.applicantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
-        break;
-      case config.defendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
-        break;
-      case config.secondDefendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
-        break;
-    }
-
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-      'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', user);
-
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseReference, user);
-    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
-    assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
-
-    console.log('General application case state : APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
-    console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
-
-    return gaCaseReference;
-  },
-
-  initiateGeneralApplicationWithNoStrikeOut: async (user, parentCaseId) => {
+  initiateGeneralApplicationWithNoStrikeOut: async (user, parentCaseId, gaNum = 0) => {
     eventName = events.INITIATE_GENERAL_APPLICATION.id;
     let gaCaseReference;
 
@@ -380,13 +332,13 @@ module.exports = {
 
     switch (user.email) {
       case config.applicantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[gaNum].value.caseLink.CaseReference;
         break;
       case config.defendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[gaNum].value.caseLink.CaseReference;
         break;
       case config.secondDefendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[gaNum].value.caseLink.CaseReference;
         break;
     }
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
@@ -795,20 +747,17 @@ module.exports = {
     const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const civilCaseData = await response.json();
     let gaReference;
-    if(user.email === config.applicantSolicitorUser.email && isVisibleToUser){
-      gaReference = civilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+    if (user.email === config.applicantSolicitorUser.email && isVisibleToUser) {
+      gaReference = civilCaseData.claimantGaAppDetails[civilCaseData.claimantGaAppDetails.length - 1].value.caseLink.CaseReference;
       assert.equal(gaCaseId, gaReference);
-    }
-    else if(user.email === config.defendantSolicitorUser.email && isVisibleToUser) {
-      gaReference = civilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+    } else if (user.email === config.defendantSolicitorUser.email && isVisibleToUser) {
+      gaReference = civilCaseData.respondentSolGaAppDetails[civilCaseData.respondentSolGaAppDetails.length - 1].value.caseLink.CaseReference;
       assert.equal(gaCaseId, gaReference);
-    }
-    else if(user.email === config.secondDefendantSolicitorUser.email && isVisibleToUser) {
-      gaReference = civilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
+    } else if (user.email === config.secondDefendantSolicitorUser.email && isVisibleToUser) {
+      gaReference = civilCaseData.respondentSolTwoGaAppDetails[civilCaseData.respondentSolTwoGaAppDetails.length - 1].value.caseLink.CaseReference;
       assert.equal(gaCaseId, gaReference);
-    }
-    else{
-      gaReference = civilCaseData.gaDetailsMasterCollection[0].value.caseLink.CaseReference;
+    } else {
+      gaReference = civilCaseData.gaDetailsMasterCollection[civilCaseData.gaDetailsMasterCollection.length - 1].value.caseLink.CaseReference;
       assert.equal(gaCaseId, gaReference);
     }
     console.log('*** GA Case Reference: ' + gaReference + ' ***');

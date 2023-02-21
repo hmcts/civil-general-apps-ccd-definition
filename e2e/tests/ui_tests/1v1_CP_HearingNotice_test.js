@@ -1,11 +1,8 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-const events = require('../../fixtures/ga-ccd/events.js');
+const states = require('../../fixtures/ga-ccd/state.js');
 
-const listForHearingStatus = 'Listed for a Hearing';
-const hnStatus = 'Hearing Scheduled';
 const mpScenario = 'ONE_V_ONE';
-const hnStateStatus = events.HEARING_SCHEDULED_GA.state;
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 
 let civilCaseReference, gaCaseReference;
@@ -39,7 +36,7 @@ Scenario('Claimant and Defendant Hearing notice journey', async ({I, api}) => {
   }
 
   await I.navigateToApplicationsTab(civilCaseReference);
-  await I.see(listForHearingStatus);
+  await I.see(states.LISTING_FOR_A_HEARING.name);
   await I.navigateToHearingNoticePage(gaCaseReference);
   await I.fillHearingNotice(gaCaseReference, 'claimAndDef', 'basildon', 'VIDEO');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'HEARING_SCHEDULED_GA', config.hearingCenterAdminRegion4);
@@ -47,11 +44,11 @@ Scenario('Claimant and Defendant Hearing notice journey', async ({I, api}) => {
   await I.click('Close and Return to case details');
   await I.verifyApplicationDocument('Hearing Notice');
   await I.navigateToApplicationsTab(civilCaseReference);
-  await I.see(hnStatus);
+  await I.see(states.HEARING_SCHEDULED.name);
   await I.verifyClaimDocument('Hearing Notice');
 
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
-  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
+  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED_GA');
+  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED_GA');
 }).retry(0);
 
 AfterSuite(async ({api}) => {

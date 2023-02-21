@@ -1,30 +1,28 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-const mpScenario = 'ONE_V_ONE';
-const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
-const listForHearingStatus = 'Listed for a Hearing';
-const judgeApproveOrderStatus = 'Order Made';
-const respondentStatus = 'Awaiting Respondent Response';
-const claimantType = 'Company';
+const states = require('../../fixtures/ga-ccd/state.js');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 
 let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
-let civilCaseReference, gaCaseReference, caseId, childCaseNumber;
+let civilCaseReference, gaCaseReference;
 
 Feature('GA R2 1v1 - General Application Journey @ui-nightly');
 
-Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @non-prod-e2e', async ({I, api}) => {
+Before(async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, claimantType);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+    config.applicantSolicitorUser, 'ONE_V_ONE', 'Company');
+  await api.notifyClaim(config.applicantSolicitorUser, 'ONE_V_ONE', civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Case created for general application: ' + civilCaseReference);
+});
+
+Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @non-prod-e2e', async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.initiateVaryJudgementGA(civilCaseReference, getAppTypes().slice(10, 11), 'yes', 'no', 'no', 'no');
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(10, 11), 1);
-  await I.see(judgeDecisionStatus);
+  await I.see(states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.name);
   await I.navigateToCaseDetails(gaCaseReference);
   await I.verifyN245FormElements();
   await I.clickOnTab('Application Documents');
@@ -38,15 +36,10 @@ Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @n
 
   await I.login(config.applicantSolicitorUser);
   await I.navigateToApplicationsTab(civilCaseReference);
-  await I.see(listForHearingStatus);
+  await I.see(states.LISTING_FOR_A_HEARING.name);
 }).retry(1);
 
 Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async ({I, api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, claimantType);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(
@@ -57,7 +50,7 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(9, 10), 1);
-  await I.see(respondentStatus);
+  await I.see(states.AWAITING_RESPONDENT_RESPONSE.name);
 
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
 
@@ -69,7 +62,7 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async
 
   await I.login(config.applicantSolicitorUser);
   await I.navigateToApplicationsTab(civilCaseReference);
-  await I.see(judgeApproveOrderStatus);
+  await I.see(states.ORDER_MADE.name);
 }).retry(1);
 
 AfterSuite(async ({api}) => {

@@ -253,7 +253,9 @@ module.exports = function () {
 
     async signOut() {
       await this.retryUntilExists(() => {
-        this.click('Sign out');
+        if (this.hasSelector(SIGNED_IN_SELECTOR)) {
+          this.click('Sign out');
+        }
       }, SIGNED_OUT_SELECTOR);
     },
 

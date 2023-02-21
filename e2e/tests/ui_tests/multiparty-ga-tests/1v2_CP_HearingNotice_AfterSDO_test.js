@@ -1,12 +1,9 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../../config.js');
-const events = require('../../../fixtures/ga-ccd/events.js');
+const states = require('../../../fixtures/ga-ccd/state.js');
 
-const listForHearingStatus = 'Listed for a Hearing';
-const hnStatus = events.HEARING_SCHEDULED_GA.name;
-const hnStateStatus = events.HEARING_SCHEDULED_GA.state;
+const hnStateStatus = states.HEARING_SCHEDULED.id;
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
-const claimAmountJudge = '11000';
 
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
 
@@ -16,7 +13,7 @@ Feature('After SDO 1v2 - GA CP - Hearing Notice document @ui-nightly');
 
 Scenario('Claimant Hearing notice journey @non-prod-e2e', async ({api_sdo, api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
-    mpScenario, 'SoleTrader', claimAmountJudge);
+    mpScenario, 'SoleTrader', '11000');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
@@ -50,7 +47,7 @@ Scenario('Claimant Hearing notice journey @non-prod-e2e', async ({api_sdo, api, 
   }
 
   await I.navigateToApplicationsTab(civilCaseReference);
-  await I.see(listForHearingStatus);
+  await I.see(states.LISTING_FOR_A_HEARING.name);
   await I.navigateToHearingNoticePage(gaCaseReference);
   await I.fillHearingNotice(gaCaseReference, 'claimant', 'default', 'IN_PERSON');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, hnStateStatus, config.hearingCenterAdminWithRegionId1);
@@ -58,14 +55,13 @@ Scenario('Claimant Hearing notice journey @non-prod-e2e', async ({api_sdo, api, 
   await I.click('Close and Return to case details');
   await I.verifyApplicationDocument('Hearing Notice');
   await I.navigateToApplicationsTab(civilCaseReference);
-  await I.see(hnStatus);
+  await I.see(states.HEARING_SCHEDULED.name);
   await I.verifyClaimDocument('After SDO - Hearing Notice');
 
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
   await api.verifyGAState(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
 });
-
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
