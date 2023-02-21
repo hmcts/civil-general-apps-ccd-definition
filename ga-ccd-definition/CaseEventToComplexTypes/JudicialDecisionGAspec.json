@@ -71,7 +71,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "judgeApproveEditOptionDateForUnlessOrder",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "judicialDecisionMakeOrder.makeAnOrder=\"APPROVE_OR_EDIT\" AND judicialDecisionMakeOrder.displayjudgeApproveEditOptionDateForUnlessOrder=\"Yes\""
   },
@@ -81,7 +81,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "dismissalOrderText",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 7,
+    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -90,7 +90,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "directionsText",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -99,7 +99,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "directionsResponseByDate",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -108,7 +108,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "judicialByCourtsInitiative",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 10,
+    "FieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -117,7 +117,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "reasonForDecisionText",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 11,
+    "FieldDisplayOrder": 12,
     "DisplayContext": "OPTIONAL"
   },
   {
