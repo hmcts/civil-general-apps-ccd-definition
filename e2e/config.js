@@ -18,7 +18,7 @@ module.exports = {
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'*/
 
     // wa demo url's
-     manageCase:  'https://manage-case-wa-int.demo.platform.hmcts.net/',
+     manageCase:  'https://manage-case.demo.platform.hmcts.net/',
      authProviderApi: 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
      ccdDataStore: 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
      dmStore:'http://dm-store-demo.service.core-compute-demo.internal',

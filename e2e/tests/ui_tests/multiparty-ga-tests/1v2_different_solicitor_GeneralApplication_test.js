@@ -18,10 +18,6 @@ BeforeSuite(async ({api}) => {
   console.log('Case created for general application: ' + civilCaseReference);
 });
 
-Before(async ({I}) => {
- await I.wait(10);
-});
-
 Scenario.skip('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey',
   async ({api, I}) => {
     await I.login(config.applicantSolicitorUser);
@@ -74,7 +70,7 @@ Scenario.skip('GA for Specified Claim 1v2 different Solicitor - respond to appli
     await I.login(config.applicantSolicitorUser);
     await I.navigateToTab(civilCaseReference, 'Applications');
     await I.see(states.LISTING_FOR_A_HEARING.name);
-  }).retry(1);
+  });
 
 Scenario('Without Notice application for a hearing', async ({api, I}) => {
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
@@ -88,7 +84,7 @@ Scenario('Without Notice application for a hearing', async ({api, I}) => {
   await I.login(config.secondDefendantSolicitorUser);
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(states.LISTING_FOR_A_HEARING.name);
-}).retry(1);
+});
 
 Scenario('Without Notice application to With Notice application - Directions Order @e2e-tests',
   async ({api, I}) => {
@@ -125,7 +121,7 @@ Scenario('Without Notice application to With Notice application - Directions Ord
     await I.login(config.secondDefendantSolicitorUser);
     await I.navigateToApplicationsTab(civilCaseReference);
     await I.see(states.AWAITING_DIRECTIONS_ORDER_DOCS.name);
-  }).retry(1);
+  });
 
 Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations',
   async ({api, I}) => {
@@ -142,31 +138,29 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
 
     await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference,
       states.AWAITING_WRITTEN_REPRESENTATIONS.id);
-    await I.login(config.secondDefendantSolicitorUser);
-    await I.navigateToCaseDetails(civilCaseReference);
-    await I.dontSee('Applications', 'div.mat-tab-label-content');
-    await I.login(config.applicantSolicitorUser);
-    await I.navigateToCaseDetails(civilCaseReference);
-    await I.dontSee('Applications', 'div.mat-tab-label-content');
-  }).retry(1);
+    await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, null);
+    await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, null);
+  });
 
 Scenario('With Notice application - Org3 Solicitor Initiate GA @e2e-tests', async ({api, I}) => {
   await api.initiateGeneralApplicationWithNoStrikeOut(config.secondDefendantSolicitorUser, civilCaseReference);
-  await I.login(config.secondDefendantSolicitorUser);
-  await I.navigateToApplicationsTab(civilCaseReference);
-  await I.see(states.AWAITING_RESPONDENT_RESPONSE.name);
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_RESPONDENT_RESPONSE.id);
-  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_RESPONDENT_RESPONSE.id);
-}).retry(1);
 
-Scenario('With Notice application - Org2 Solicitor Initiate GA', async ({api, I}) => {
-  await api.initiateGeneralApplicationWithNoStrikeOut(config.defendantSolicitorUser, civilCaseReference);
   await I.login(config.defendantSolicitorUser);
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(states.AWAITING_RESPONDENT_RESPONSE.name);
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_RESPONDENT_RESPONSE.id);
-  await api.verifyGAState(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_RESPONDENT_RESPONSE.id);
-}).retry(1);
+  await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
+  await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
+});
+
+Scenario('With Notice application - Org2 Solicitor Initiate GA', async ({api, I}) => {
+  await api.initiateGeneralApplicationWithNoStrikeOut(config.defendantSolicitorUser, civilCaseReference);
+
+  await I.login(config.applicantSolicitorUser);
+  await I.navigateToApplicationsTab(civilCaseReference);
+  await I.see(states.AWAITING_RESPONDENT_RESPONSE.name);
+  await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
+  await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
+});
 
 AfterSuite(async ({api}) => {
   // await api.cleanUp();

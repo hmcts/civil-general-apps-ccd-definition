@@ -2,6 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
+const {I} = inject();
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -283,8 +284,10 @@ module.exports = {
     assert.include(responseBody.after_submit_callback_response.confirmation_header,
       '# You have made an application');
 
-    // await waitForFinishedBusinessProcess(parentCaseId, user);
+    await waitForFinishedBusinessProcess(parentCaseId, user);
+    await I.wait(2);
     await waitForGAFinishedBusinessProcess(parentCaseId, user);
+    await I.wait(10);
 
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
@@ -314,7 +317,7 @@ module.exports = {
     return gaCaseReference;
   },
 
-  initiateGeneralApplicationWithNoStrikeOut: async (user, parentCaseId, gaNum = 0) => {
+  initiateGeneralApplicationWithNoStrikeOut: async (user, parentCaseId) => {
     eventName = events.INITIATE_GENERAL_APPLICATION.id;
     let gaCaseReference;
 
@@ -324,21 +327,24 @@ module.exports = {
     const responseBody = await response.json();
     assert.equal(response.status, 201);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+
     await waitForFinishedBusinessProcess(parentCaseId, user);
+    await I.wait(2);
     await waitForGAFinishedBusinessProcess(parentCaseId, user);
+    await I.wait(10);
 
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
 
     switch (user.email) {
       case config.applicantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[gaNum].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[updatedCivilCaseData.claimantGaAppDetails.length - 1].value.caseLink.CaseReference;
         break;
       case config.defendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[gaNum].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[updatedCivilCaseData.respondentSolGaAppDetails.length - 1].value.caseLink.CaseReference;
         break;
       case config.secondDefendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[gaNum].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[updatedCivilCaseData.respondentSolTwoGaAppDetails.length - 1].value.caseLink.CaseReference;
         break;
     }
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
@@ -364,7 +370,7 @@ module.exports = {
 
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
-    let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+    let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[updatedCivilCaseData.claimantGaAppDetails.length - 1].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
 
     return gaCaseReference;
@@ -392,7 +398,7 @@ module.exports = {
 
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
-    let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+    let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[updatedCivilCaseData.claimantGaAppDetails.length - 1].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
 
     return gaCaseReference;
@@ -405,7 +411,7 @@ module.exports = {
     await apiRequest.startEvent(eventName, parentCaseId);
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
-    let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+    let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[updatedCivilCaseData.claimantGaAppDetails.length - 1].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
 
     return gaCaseReference;
@@ -744,6 +750,7 @@ module.exports = {
   },
 
   assertGaAppCollectionVisiblityToUser: async ( user, parentCaseId, gaCaseId, isVisibleToUser) => {
+    await I.wait(10);
     const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const civilCaseData = await response.json();
     let gaReference;
@@ -997,6 +1004,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await waitForFinishedBusinessProcess(parentCaseId, user);
     await waitForGAFinishedBusinessProcess(gaCaseId, user);
+    await I.wait(5);
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     console.log('ccd state '+updatedGABusinessProcessData.ccdState);
@@ -1566,7 +1574,7 @@ const initiateGaWithState = async (user, parentCaseId, expectState) => {
 
   const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
   const updatedCivilCaseData = await updatedResponse.json();
-  let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+  let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[updatedCivilCaseData.claimantGaAppDetails.length - 1].value.caseLink.CaseReference;
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   //comment out next line to see race condition
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
