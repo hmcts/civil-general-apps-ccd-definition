@@ -1,5 +1,6 @@
 // in this file you can append custom step methods to 'I' object
 const output = require('codeceptjs').output;
+const {I} = inject();
 
 const config = require('./config.js');
 const parties = require('./helpers/party.js');
@@ -185,10 +186,6 @@ const fillHearingDetails = (hearingScheduled, judgeRequired, trialRequired, unav
 
 const updateHearingDetails = () => [
   () => hearingAndTrialPage.updateHearingDetails(),
-];
-
-const selectPbaNumber = () => [
-  () => gaPBANumberPage.selectPbaNumber('activeAccount1'),
 ];
 
 const verifyApplicationFee = (consentCheck, notice) => [
@@ -467,6 +464,7 @@ module.exports = function () {
 
     async navigateToTab(caseNumber, tabName) {
       await caseViewPage.navigateToTab(caseNumber, tabName);
+      await this.acceptCookies();
     },
 
     /**
@@ -698,6 +696,7 @@ module.exports = function () {
         await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
       }, SIGNED_IN_SELECTOR);
       await this.waitForSelector('.ccd-dropdown');
+      await this.acceptCookies();
     },
 
     async navigateToHearingNoticePage(caseId) {
@@ -705,6 +704,12 @@ module.exports = function () {
       await this.waitForText('Application');
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/HEARING_SCHEDULED_GA/HEARING_SCHEDULED_GAHearingNoticeGADetail');
       await this.waitForText('Application details');
+      await this.acceptCookies();
+    },
+
+    async acceptCookies() {
+   /*   await this.tryTo(() => this.click('Accept additional cookies', '#cookie-accept-submit'));
+      await this.tryTo(() => this.click('Hide this', '#cookie-accept-all-success-banner-hide'));*/
     },
 
     async navigateToApplicationsTab(caseNumber) {
@@ -790,12 +795,11 @@ module.exports = function () {
       ]);
     },
 
-    async respondToJudgeAdditionalInfo(caseNumber, childCaseId) {
+    async respondToJudgeAdditionalInfo(caseNumber) {
       eventName = events.RESPOND_TO_JUDGE_ADDITIONAL_INFO.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
-        () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_ADDITIONAL_INFO.id,
-          childCaseId, TEST_FILE_PATH),
+        () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_ADDITIONAL_INFO.id, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
         () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
         () => applicationDocumentPage.verifyUploadedFile('Additional Information Documents', 'examplePDF.pdf'),
@@ -807,12 +811,10 @@ module.exports = function () {
       await applicationDocumentPage.verifyUploadedDocumentPDF(docType);
     },
 
-    async payAndVerifyAdditionalPayment(childCaseNumber) {
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.navigateToTab(childCaseNumber, 'Service Request'),
-        () => serviceRequestPage.payAdditionalAmount(childCaseNumber),
-        () => serviceRequestPage.verifyAdditionalPayment(childCaseNumber),
-      ]);
+    async payForGA(childCaseNumber) {
+       await caseViewPage.clickOnTab('Service Request');
+       await serviceRequestPage.payGAAmount(childCaseNumber);
+       await serviceRequestPage.verifyPaymentDetails(childCaseNumber);
     },
 
     async verifyClaimDocument(docType) {
@@ -820,24 +822,22 @@ module.exports = function () {
       await claimDocumentPage.verifyUploadedDocument(docType);
     },
 
-    async respondToJudgesDirections(caseNumber, childCaseId) {
+    async respondToJudgesDirections(caseNumber) {
       eventName = events.RESPOND_TO_JUDGE_DIRECTIONS.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
-        () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_DIRECTIONS.id,
-          childCaseId, TEST_FILE_PATH),
+        () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_DIRECTIONS.id, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
         () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
         () => applicationDocumentPage.verifyUploadedFile('Directions Order Documents', 'examplePDF.pdf'),
       ]);
     },
 
-    async respondToJudgesWrittenRep(caseNumber, childCaseId, documentType) {
+    async respondToJudgesWrittenRep(caseNumber, documentType) {
       eventName = events.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
-        () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.id,
-          childCaseId, TEST_FILE_PATH),
+        () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.id, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
         () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
         () => applicationDocumentPage.verifyUploadedFile(documentType, 'examplePDF.pdf'),
@@ -936,21 +936,21 @@ module.exports = function () {
        await caseViewPage.clickOnTab(tabName);
     },
 
-    async closeAndReturnToCaseDetails(caseId) {
+    async closeAndReturnToCaseDetails() {
       await this.triggerStepsWithScreenshot([
-        () => confirmationPage.closeAndReturnToCaseDetails(caseId),
+        () => confirmationPage.closeAndReturnToCaseDetails(),
       ]);
     },
 
-    async judgeCloseAndReturnToCaseDetails(caseId) {
+    async judgeCloseAndReturnToCaseDetails() {
       await this.triggerStepsWithScreenshot([
-        () => judgesConfirmationPage.closeAndReturnToCaseDetails(caseId),
+        () => judgesConfirmationPage.closeAndReturnToCaseDetails(),
       ]);
     },
 
-    async respCloseAndReturnToCaseDetails(caseId) {
+    async respCloseAndReturnToCaseDetails() {
       await this.triggerStepsWithScreenshot([
-        () => responseConfirmationPage.closeAndReturnToCaseDetails(caseId),
+        () => responseConfirmationPage.closeAndReturnToCaseDetails(),
       ]);
     },
 
@@ -970,7 +970,6 @@ module.exports = function () {
         ...enterApplicationDetails(consentCheck),
         ...fillHearingDetails(hearingScheduled, 'no', 'no', 'no', 'yes', 'disabledAccess'),
         ...verifyApplicationFee(consentCheck, notice),
-        ...selectPbaNumber(),
         ...verifyCheckAnswerForm(caseId, 'hearingScheduled'),
         ...submitApplication('You have made an application'),
         ...verifyGAConfirmationPage(appTypes, caseId),
@@ -990,7 +989,6 @@ module.exports = function () {
         ...enterApplicationDetails(consentCheck),
         ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, 'yes', supportRequirement),
         ...verifyApplicationFee(consentCheck, notice),
-        ...selectPbaNumber(),
         ...verifyCheckAnswerForm(caseId, consentCheck),
         ...clickOnHearingDetailsChangeLink(consentCheck),
         ...updateHearingDetails(),

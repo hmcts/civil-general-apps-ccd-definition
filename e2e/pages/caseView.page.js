@@ -60,7 +60,7 @@ module.exports = {
     await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
     await I.refreshPage();
     if (['preview'].includes(config.runningEnv)) {
-      await I.wait(10);
+      await I.wait(8);
     } else {
       await I.wait(2);
     }
