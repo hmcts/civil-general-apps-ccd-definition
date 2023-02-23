@@ -23,6 +23,8 @@
 ./bin/utils/ccd-add-role.sh "full-access"
 ./bin/utils/ccd-add-role.sh "hearing-schedule-access"
 ./bin/utils/ccd-add-role.sh "payment-access"
+./bin/utils/ccd-add-role.sh "caseflags-admin"
+./bin/utils/ccd-add-role.sh "caseflags-viewer"
 
 roles=("solicitor" "systemupdate" "admin" "staff" "judge")
 for role in "${roles[@]}"
