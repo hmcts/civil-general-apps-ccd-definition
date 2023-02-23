@@ -71,10 +71,6 @@ civil-service:
     applicationPort: 4000
     releaseNameOverride: ${SERVICE_NAME}-civil-service
     image: 'hmctspublic.azurecr.io/civil/service:latest'
-    devmemoryRequests: 2048Mi
-    devcpuRequests: 250m
-    devmemoryLimits: 4096Mi
-    devcpuLimits: 500m
     imagePullPolicy: Always
     ingressHost: civil-service-${SERVICE_FQDN}
     keyVaults:
@@ -152,10 +148,10 @@ xui-webapp:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: 'hmctspublic.azurecr.io/xui/webapp:latest'
-    devcpuRequests: 2000m
-    devmemoryRequests: 2048Mi
-    devcpuLimits: 4000m
-    devmemoryLimits: 4096Mi
+    devcpuRequests: 500m
+    devmemoryRequests: 4Gi
+    devcpuLimits: 1
+    devmemoryLimits: 4Gi
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health
