@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
+const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
+const {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
+
 const mpScenario = 'ONE_V_ONE';
 const awaitingPaymentStatus = 'Awaiting Application Payment';
 const respondentStatus = 'Awaiting Respondent Response';
@@ -9,14 +12,10 @@ const judgeApproveOrderStatus = 'Order Made';
 const judgeDismissOrderStatus = 'Application Dismissed';
 const additionalInfoStatus = 'Additional Information Required';
 const claimantType = 'Company';
-const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 
-let {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
-const apiRequest = require('../../api/apiRequest');
-const genAppJudgeMakeDecisionData = require('../../fixtures/ga-ccd/judgeMakeDecision');
 let civilCaseReference, gaCaseReference;
 
-Feature('GA CCD 1v1 - General Application Journey');
+Feature('GA CCD 1v1 - General Application Journey  @ui-nightly');
 
 Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -64,7 +63,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
-Scenario('GA for 1v1 - Direction order journey @multiparty-e2e-tests @ui-nightly', async ({I, api}) => {
+Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -83,14 +82,8 @@ Scenario('GA for 1v1 - Direction order journey @multiparty-e2e-tests @ui-nightly
   await I.closeAndReturnToCaseDetails();
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(awaitingPaymentStatus);
-
-  //Payment callback handler response after the payment from service request tab
-  await apiRequest.paymentApiRequestUpdateServiceCallback(
-    genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.applicantSolicitorUser);
-  await I.navigateToTab(civilCaseReference, 'Applications');
-  await I.see(judgeDecisionStatus);
+  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
+    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.applicantSolicitorUser, judgeDecisionStatus);
 
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);
@@ -113,7 +106,7 @@ Scenario('GA for 1v1 - Direction order journey @multiparty-e2e-tests @ui-nightly
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
-Scenario('GA for 1v1 Specified Claim- Dismissal order journey @multiparty-e2e-tests @ui-nightly', async ({I, api}) => {
+Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
@@ -130,14 +123,8 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @multiparty-e2e-te
   await I.closeAndReturnToCaseDetails();
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(awaitingPaymentStatus);
-
-  //Payment callback handler response after the payment from service request tab
-  await apiRequest.paymentApiRequestUpdateServiceCallback(
-    genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.applicantSolicitorUser);
-  await I.navigateToTab(civilCaseReference, 'Applications');
-  await I.see(judgeDecisionStatus);
+  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
+    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.applicantSolicitorUser, judgeDecisionStatus);
 
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);
@@ -160,7 +147,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @multiparty-e2e-te
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
-Scenario('GA for 1v1- respond to application - Request more information @ui-nightly', async ({I, api}) => {
+Scenario('GA for 1v1- respond to application - Request more information', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -180,14 +167,8 @@ Scenario('GA for 1v1- respond to application - Request more information @ui-nigh
   await I.closeAndReturnToCaseDetails();
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 5), 1);
   await I.see(awaitingPaymentStatus);
-
-  //Payment callback handler response after the payment from service request tab
-  await apiRequest.paymentApiRequestUpdateServiceCallback(
-    genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
-  await I.navigateToTab(civilCaseReference, 'Applications');
-  await I.see(respondentStatus);
+  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
+    'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser, respondentStatus);
 
   await I.login(config.defendantSolicitorUser);
   await I.respondToApplication(gaCaseReference, 'yes', 'yes', 'yes', 'yes', 'no',

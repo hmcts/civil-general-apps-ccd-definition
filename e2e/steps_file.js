@@ -1,7 +1,5 @@
 // in this file you can append custom step methods to 'I' object
 const output = require('codeceptjs').output;
-const {I} = inject();
-
 const config = require('./config.js');
 const parties = require('./helpers/party.js');
 const loginPage = require('./pages/login.page');
@@ -138,6 +136,9 @@ const hearingLRspecPage = require('./pages/respondToClaimLRspec/hearingLRspec.pa
 const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furtherInformationLRspec.page');
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 const {getAppTypes} = require('./pages/generalApplication/generalApplicationTypes');
+const apiRequest = require('./api/apiRequest');
+const genAppJudgeMakeDecisionData = require('./fixtures/ga-ccd/judgeMakeDecision');
+const {waitForGACamundaEventsFinishedBusinessProcess} = require('./api/testingSupport');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -696,20 +697,19 @@ module.exports = function () {
         await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
       }, SIGNED_IN_SELECTOR);
       await this.waitForSelector('.ccd-dropdown');
-      await this.acceptCookies();
     },
 
     async navigateToHearingNoticePage(caseId) {
+      console.log(`Navigating to Hearing notice screen: ${caseId}`);
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
       await this.waitForText('Application');
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/HEARING_SCHEDULED_GA/HEARING_SCHEDULED_GAHearingNoticeGADetail');
       await this.waitForText('Application details');
-      await this.acceptCookies();
     },
 
     async acceptCookies() {
-   /*   await this.tryTo(() => this.click('Accept additional cookies', '#cookie-accept-submit'));
-      await this.tryTo(() => this.click('Hide this', '#cookie-accept-all-success-banner-hide'));*/
+      await this.tryTo(() => this.click('Accept additional cookies', '#cookie-accept-submit'));
+      await this.tryTo(() => this.click('Hide this', '#cookie-accept-all-success-banner-hide'));
     },
 
     async navigateToApplicationsTab(caseNumber) {
@@ -809,6 +809,16 @@ module.exports = function () {
     async verifyApplicationDocument(docType) {
       await caseViewPage.clickOnTab('Application Documents');
       await applicationDocumentPage.verifyUploadedDocumentPDF(docType);
+    },
+
+    async payAndVerifyGAStatus(civilCaseReference, gaCaseReference, ccdState, user, gaStatus) {
+      console.log(`GA Payment using API: ${gaCaseReference}`);
+      await apiRequest.paymentApiRequestUpdateServiceCallback(
+        genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
+        ccdState, user);
+      await caseViewPage.navigateToTab(civilCaseReference, 'Applications');
+      await this.see(gaStatus);
     },
 
     async payForGA(childCaseNumber) {

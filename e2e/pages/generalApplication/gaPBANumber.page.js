@@ -1,5 +1,4 @@
 const {I} = inject();
-const expect = require('chai').expect;
 
 module.exports = {
 

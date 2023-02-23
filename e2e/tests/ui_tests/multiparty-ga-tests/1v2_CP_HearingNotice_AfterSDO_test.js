@@ -1,15 +1,13 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../../config.js');
 const events = require('../../../fixtures/ga-ccd/events.js');
+const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
 
 const listForHearingStatus = 'Listed for a Hearing';
 const hnStatus = events.HEARING_SCHEDULED_GA.name;
 const hnStateStatus = events.HEARING_SCHEDULED_GA.state;
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const claimAmountJudge = '11000';
-
-const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
-
 let civilCaseReference, gaCaseReference;
 
 Feature('After SDO 1v2 - GA CP - Hearing Notice document @ui-nightly');
@@ -43,6 +41,7 @@ Scenario('Claimant Hearing notice journey @non-prod-e2e', async ({api_sdo, api, 
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'LISTING_FOR_A_HEARING');
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'LISTING_FOR_A_HEARING');
 
+  console.log('Hearing Notice creation');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.hearingCenterAdminWithRegionId1);
   } else {
@@ -65,7 +64,6 @@ Scenario('Claimant Hearing notice journey @non-prod-e2e', async ({api_sdo, api, 
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
   await api.verifyGAState(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
 });
-
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();

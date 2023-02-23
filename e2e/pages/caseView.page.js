@@ -95,7 +95,7 @@ module.exports = {
       }
       await I.forceClick(locate(this.fields.tab).withText(tabName));
       if (['preview'].includes(config.runningEnv)) {
-        await I.wait(3);
+        await I.wait(5);
       } else {
         await I.wait(2);
       }
