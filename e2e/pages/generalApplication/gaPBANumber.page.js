@@ -11,7 +11,8 @@ module.exports = {
   async verifyApplicationFee(consentCheck, notice) {
     I.waitForElement(this.fields.pbaNumber.id);
     I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATIONGAPBADetailsGAspec');
-    I.see('Pay for application with PBA');
+    I.see('Paying for an application');
+    I.see('You will be able to pay for your application once it has been submitted.');
     I.see('Application fee to pay');
     if ('no' === consentCheck && 'yes' === notice) {
       I.see('£275');
