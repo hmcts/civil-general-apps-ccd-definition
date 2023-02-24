@@ -22,7 +22,8 @@
     "ListElementCode": "judgeRecitalText",
     "ElementLabel": "Judge’s recital",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "requestMoreInfoOption=\"REQUEST_MORE_INFORMATION\" OR isWithNotice=\"Yes\""
   },
   {
     "ID": "GAJudicialRequestMoreInfoGAspec",
