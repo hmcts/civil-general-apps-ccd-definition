@@ -37,14 +37,9 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.closeAndReturnToCaseDetails();
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(3, 4), 1);
   await I.see(awaitingPaymentStatus);
-  await I.navigateToCaseDetails(gaCaseReference);
-  await I.dontSee('Go');
-  await I.dontSee('Next step');
-  await I.payForGA(gaCaseReference);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.applicantSolicitorUser);
-  await I.navigateToTab(civilCaseReference, 'Applications');
-  await I.see(judgeDecisionStatus);
+  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
+    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.applicantSolicitorUser, judgeDecisionStatus);
+
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);
   } else {
@@ -82,8 +77,12 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await I.closeAndReturnToCaseDetails();
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(awaitingPaymentStatus);
-  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.applicantSolicitorUser, judgeDecisionStatus);
+  await I.navigateToCaseDetails(gaCaseReference);
+  await I.payForGA(gaCaseReference);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
+    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.applicantSolicitorUser);
+  await I.navigateToTab(civilCaseReference, 'Applications');
+  await I.see(judgeDecisionStatus);
 
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);

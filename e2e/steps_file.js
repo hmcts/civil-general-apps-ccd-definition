@@ -930,7 +930,7 @@ module.exports = function () {
     },
 
     async clickAndVerifyTab(caseNumber, tabName, appType, appCount) {
-      await this.clickOnTab(tabName);
+      await caseViewPage.navigateToTab(caseNumber, tabName);
       await applicationTab.verifyApplicationDetails(appType, appCount);
     },
 
