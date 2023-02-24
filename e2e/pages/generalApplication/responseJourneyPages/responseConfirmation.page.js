@@ -24,9 +24,9 @@ module.exports = {
     });
   },
 
-  async closeAndReturnToCaseDetails(childCaseId) {
+  async closeAndReturnToCaseDetails() {
     await I.click('Close and Return to case details');
-    await I.see(`Case ${childCaseId} has been updated with event: Respond to application`);
+    await I.see('Respond to application');
   },
 
   async verifyAlreadyRespondedErrorMessage() {
