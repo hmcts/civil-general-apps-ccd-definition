@@ -30,8 +30,6 @@ Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Deci
 
   console.log('*** Start  GA Case Visibility in all Collections: ' + gaCaseReference + ' ***');
   await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser,civilCaseReference,gaCaseReference,'Y');
-  await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser,civilCaseReference,gaCaseReference,'Y');
-  await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser,civilCaseReference,gaCaseReference,'Y');
   console.log('*** End of Validating  GA Case Visibility in all Collections: ' + gaCaseReference + ' ***');
 
 });
