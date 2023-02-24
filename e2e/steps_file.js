@@ -465,7 +465,6 @@ module.exports = function () {
 
     async navigateToTab(caseNumber, tabName) {
       await caseViewPage.navigateToTab(caseNumber, tabName);
-      await this.acceptCookies();
     },
 
     /**
