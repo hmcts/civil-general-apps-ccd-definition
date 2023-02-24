@@ -209,13 +209,8 @@ const submitSupportingDocument = (confMessage) => [
   () => event.submitSupportingDoc('Submit', confMessage)
 ];
 
-const verifyGAConfirmationPage = (appType, parentCaseId) => [
-  () => confirmationPage.verifyConfirmationPage(),
-  () => confirmationPage.verifyApplicationType(appType, parentCaseId)
-];
-
-const navigateToTab = (caseNumber, tabName) => [
-  () => caseViewPage.navigateToTab(caseNumber, tabName)
+const verifyGAConfirmationPage = (parentCaseId) => [
+  () => confirmationPage.verifyConfirmationPage(parentCaseId)
 ];
 
 module.exports = function () {
@@ -935,10 +930,8 @@ module.exports = function () {
     },
 
     async clickAndVerifyTab(caseNumber, tabName, appType, appCount) {
-      await this.triggerStepsWithScreenshot([
-        ...navigateToTab(caseNumber, tabName),
-        () => applicationTab.verifyApplicationDetails(appType, appCount),
-      ]);
+      await this.clickOnTab(tabName);
+      await applicationTab.verifyApplicationDetails(appType, appCount);
     },
 
     async clickOnTab(tabName) {
@@ -981,7 +974,7 @@ module.exports = function () {
         ...verifyApplicationFee(consentCheck, notice),
         ...verifyCheckAnswerForm(caseId, 'hearingScheduled'),
         ...submitApplication('You have made an application'),
-        ...verifyGAConfirmationPage(appTypes, caseId),
+        ...verifyGAConfirmationPage(caseId),
       ]);
     },
 
@@ -1002,7 +995,7 @@ module.exports = function () {
         ...clickOnHearingDetailsChangeLink(consentCheck),
         ...updateHearingDetails(),
         ...submitApplication('You have made an application'),
-        ...verifyGAConfirmationPage(appTypes, caseId),
+        ...verifyGAConfirmationPage(caseId),
       ]);
     }
   });
