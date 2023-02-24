@@ -44,6 +44,9 @@ exports.config = {
       enabled: true,
       fullPageScreenshots: true,
     },
+    tryTo: {
+      enabled: true
+    },
   },
   mocha: {
     bail: true,
