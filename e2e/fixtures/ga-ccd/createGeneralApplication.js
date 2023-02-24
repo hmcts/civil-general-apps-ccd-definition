@@ -1,7 +1,3 @@
-const {listElement} = require('../../api/dataHelper');
-let selectedPba = listElement('PBA0088192');
-const validPba = listElement('PBA0088192');
-const invalidPba = listElement('PBA0078095');
 const config = require('../../config.js');
 
 module.exports = {
@@ -65,14 +61,6 @@ module.exports = {
         SupportRequirement: []
       },
       generalAppPBADetails: {
-        applicantsPbaAccounts: {
-          list_items: [
-            validPba,
-            invalidPba
-          ],
-          value: selectedPba
-        },
-        pbaReference: 'Test PBA Reference',
         paymentSuccessfulDate: null,
         fee: {
           calculatedAmountInPence: calculatedAmount,
@@ -163,14 +151,6 @@ module.exports = {
         SupportRequirement: []
       },
       generalAppPBADetails: {
-        applicantsPbaAccounts: {
-          list_items: [
-            validPba,
-            invalidPba
-          ],
-          value: selectedPba
-        },
-        pbaReference: 'Test PBA Reference',
         paymentSuccessfulDate: null,
         fee: {
           calculatedAmountInPence: calculatedAmount,
@@ -246,14 +226,6 @@ module.exports = {
         SupportRequirement: []
       },
       generalAppPBADetails: {
-        applicantsPbaAccounts: {
-          list_items: [
-            validPba,
-            invalidPba
-          ],
-          value: selectedPba
-        },
-        pbaReference: 'Test PBA Reference',
         paymentSuccessfulDate: null,
         fee: {
           calculatedAmountInPence: '27500',
@@ -330,14 +302,6 @@ module.exports = {
         SupportRequirement: []
       },
       generalAppPBADetails: {
-        applicantsPbaAccounts: {
-          list_items: [
-            validPba,
-            invalidPba
-          ],
-          value: selectedPba
-        },
-        pbaReference: 'Test PBA Reference',
         paymentSuccessfulDate: null,
         fee: {
           calculatedAmountInPence: '27500',
@@ -417,14 +381,6 @@ module.exports = {
         SupportRequirement: []
       },
       generalAppPBADetails: {
-        applicantsPbaAccounts: {
-          list_items: [
-            validPba,
-            invalidPba
-          ],
-          value: selectedPba
-        },
-        pbaReference: 'Test PBA Reference',
         paymentSuccessfulDate: null,
         fee: {
           calculatedAmountInPence: calculatedAmount,

@@ -8,28 +8,21 @@ module.exports = {
     confirmation: {
       id: '#confirmation-body'
     },
-    applicationList: '#confirmation-body li'
+    applicationFeeLink: '#confirmation-body a'
   },
 
-  async verifyConfirmationPage() {
+  async verifyConfirmationPage(parentCaseId) {
     I.waitForElement(this.fields.confirmation.id);
     I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATION/confirm');
     I.seeTextEquals('You have made an application', '#confirmation-header h1');
-  },
-
-  async verifyApplicationType(appTypes, parentCaseId) {
-    I.waitForElement(this.fields.confirmation.id);
-    appTypes.forEach(type => {
-      return I.see(type);
-    });
+    I.seeTextEquals('Pay your application fee', this.fields.applicationFeeLink);
     await waitForFinishedBusinessProcess(parentCaseId, config.applicantSolicitorUser);
     await waitForGAFinishedBusinessProcess(parentCaseId, config.applicantSolicitorUser);
   },
 
-  async closeAndReturnToCaseDetails(caseId) {
-    await I.see(caseId);
+  async closeAndReturnToCaseDetails() {
     await I.click('Close and Return to case details');
-    await I.see(`Case ${caseId} has been updated with event: Make an application`);
+    await I.see('Make an application');
   }
 };
 
