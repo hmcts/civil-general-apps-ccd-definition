@@ -7,7 +7,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "START_BUSINESS_PROCESS_MAKE_DECISION",
+    "CaseEventID": "START_GA_BUSINESS_PROCESS",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
@@ -176,6 +176,12 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "migrateCase",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION_AFTER_PAYMENT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
