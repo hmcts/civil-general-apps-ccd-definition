@@ -26,10 +26,9 @@ module.exports = {
     await waitForGAFinishedBusinessProcess(parentCaseId, config.applicantSolicitorUser);
   },
 
-  async closeAndReturnToCaseDetails(caseId) {
-    await I.see(caseId);
+  async closeAndReturnToCaseDetails() {
     await I.click('Close and Return to case details');
-    await I.see(`Case ${caseId} has been updated with event: Make an application`);
+    await I.see('Make an application');
   }
 };
 

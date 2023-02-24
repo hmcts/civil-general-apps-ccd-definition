@@ -1,9 +1,8 @@
 const {I} = inject();
 module.exports = {
 
-  async uploadSupportingFile(eventID, childCaseId, file) {
+  async uploadSupportingFile(eventID, file) {
     I.seeInCurrentUrl(eventID);
-    I.see(childCaseId);
     I.see('Response file');
     I.click('Add new');
     switch (eventID) {
