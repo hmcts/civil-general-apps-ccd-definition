@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "START_BUSINESS_PROCESS_MAKE_DECISION",
+    "ID": "START_GA_BUSINESS_PROCESS",
     "Name": "Start md business process",
     "Description": "Start md business process",
     "PreConditionState(s)": "*",

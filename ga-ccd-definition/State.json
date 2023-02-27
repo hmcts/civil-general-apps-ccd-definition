@@ -117,5 +117,12 @@
       "Name": "Hearing Scheduled",
       "Description": "Hearing Scheduled",
       "DisplayOrder": 17
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "AWAITING_APPLICATION_PAYMENT",
+    "Name": "Awaiting Application Payment",
+    "Description": "Awaiting Application Payment",
+    "DisplayOrder": 18
   }
 ]

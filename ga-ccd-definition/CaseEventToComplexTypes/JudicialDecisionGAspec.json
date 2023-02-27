@@ -69,16 +69,17 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "dismissalOrderText",
+    "ListElementCode": "judgeApproveEditOptionDateForUnlessOrder",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "judicialDecisionMakeOrder.makeAnOrder=\"APPROVE_OR_EDIT\" AND judicialDecisionMakeOrder.displayjudgeApproveEditOptionDateForUnlessOrder=\"Yes\""
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "directionsText",
+    "ListElementCode": "dismissalOrderText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
@@ -87,7 +88,7 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "directionsResponseByDate",
+    "ListElementCode": "directionsText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
@@ -96,7 +97,7 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "judicialByCourtsInitiative",
+    "ListElementCode": "directionsResponseByDate",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
@@ -105,9 +106,18 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "reasonForDecisionText",
+    "ListElementCode": "judicialByCourtsInitiative",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialMakeADecisionScreen",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "reasonForDecisionText",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 12,
     "DisplayContext": "OPTIONAL"
   },
   {
