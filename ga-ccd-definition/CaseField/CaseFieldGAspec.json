@@ -618,8 +618,8 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "directionInRelationToHearingText",
-    "Label": "Directions in relation to hearing",
-    "ElementLabel": "Directions in relation to hearing",
+    "Label": "Order in relation to written representations",
+    "ElementLabel": "Order in relation to written representations",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 1000
