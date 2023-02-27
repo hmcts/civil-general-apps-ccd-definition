@@ -28,8 +28,7 @@ module.exports = {
     }
   },
 
-  async closeAndReturnToCaseDetails(childCaseId) {
-    await I.see(childCaseId);
+  async closeAndReturnToCaseDetails() {
     await I.click('Close and Return to case details');
   }
 };
