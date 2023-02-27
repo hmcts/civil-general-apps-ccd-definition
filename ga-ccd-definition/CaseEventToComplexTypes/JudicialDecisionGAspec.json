@@ -133,7 +133,7 @@
     "ID": "GAJudicialRequestMoreInfoScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
-    "ListElementCode": "judgeRequestMoreInfoText",
+    "ListElementCode": "judgeRecitalText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
@@ -142,7 +142,7 @@
     "ID": "GAJudicialRequestMoreInfoScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
-    "ListElementCode": "judgeRecitalText",
+    "ListElementCode": "judgeRequestMoreInfoText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 13,
     "DisplayContext": "MANDATORY"
