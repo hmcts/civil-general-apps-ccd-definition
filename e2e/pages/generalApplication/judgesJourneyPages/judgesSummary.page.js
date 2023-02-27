@@ -27,14 +27,14 @@ module.exports = {
         await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
         await I.see('Make an order for written representations');
         await I.see('Concurrent representations');
-        await I.see('Directions in relation to hearing');
+        await I.see('Order in relation to written representations');
         break;
       case 'Sequential representations':
         await I.see('Judge’s recital');
         await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
         await I.see('Make an order for written representations');
         await I.see('Sequential representations');
-        await I.see('Directions in relation to hearing');
+        await I.see('Order in relation to written representations');
         await I.see('The respondent may upload any written representations by 4pm');
         await I.see('The applicant may upload any written representations by 4pm');
         break;
@@ -66,8 +66,6 @@ module.exports = {
         await I.see('Directions in relation to hearing');
         break;
       case 'Send application to other party':
-        await I.see('Judge’s recital');
-        await I.see('Send Application - Judge recital text');
         await I.see('Request for information');
         await I.see('Send application to other party and request hearing details');
         break;

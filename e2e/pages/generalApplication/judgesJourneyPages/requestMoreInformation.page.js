@@ -37,9 +37,6 @@ module.exports = {
       I.fillField(this.fields.judgeRequestMoreInfoYear, '2024');
       I.fillField(this.fields.judgeRequestMoreInfoRecitalTextArea, 'Request more Info - Judge recital text');
     }
-    if ('sendApplicationToOtherParty' === info) {
-      I.fillField(this.fields.judgeRequestMoreInfoRecitalTextArea, 'Send Application - Judge recital text');
-    }
     await I.clickContinue();
   }
 };
