@@ -1,6 +1,6 @@
 civil-general-applications:
   java:
-    ingressHost: ${SERVICE_FQDN}
+    ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
       civil:
         resourceGroup: civil
@@ -58,7 +58,7 @@ civil-service:
 idam-pr:
   redirect_uris:
     XUI:
-      - https://xui-${SERVICE_FQDN}/oauth2/callback
+      - https://xui-${SERVICE_NAME}.preview.platform.hmcts.net/oauth2/callback
 xui-webapp:
   nodejs:
     ingressHost: xui-${SERVICE_FQDN}
