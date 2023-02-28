@@ -25,6 +25,7 @@ civil-general-applications:
           - robotics-notification-multipartyrecipient
     environment:
       LAUNCH_DARKLY_ENV: service-staging
+      PAY_CALLBACK_URL: https://civil-ga-ccd-staging.aat.platform.hmcts.net/service-request-update
 civil-service:
   java:
     ingressHost: civil-ga-ccd-civil-service-staging-aat.service.core-compute-aat.internal
