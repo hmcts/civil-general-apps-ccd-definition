@@ -209,8 +209,8 @@ const submitSupportingDocument = (confMessage) => [
   () => event.submitSupportingDoc('Submit', confMessage)
 ];
 
-const verifyGAConfirmationPage = (parentCaseId) => [
-  () => confirmationPage.verifyConfirmationPage(parentCaseId)
+const verifyGAConfirmationPage = (parentCaseId, consentCheck, notice) => [
+  () => confirmationPage.verifyConfirmationPage(parentCaseId, consentCheck, notice)
 ];
 
 module.exports = function () {
@@ -979,7 +979,7 @@ module.exports = function () {
         ...verifyApplicationFee(consentCheck, notice),
         ...verifyCheckAnswerForm(caseId, 'hearingScheduled'),
         ...submitApplication('You have made an application'),
-        ...verifyGAConfirmationPage(caseId),
+        ...verifyGAConfirmationPage(caseId, consentCheck, notice),
       ]);
     },
 
@@ -1000,7 +1000,7 @@ module.exports = function () {
         ...clickOnHearingDetailsChangeLink(consentCheck),
         ...updateHearingDetails(),
         ...submitApplication('You have made an application'),
-        ...verifyGAConfirmationPage(caseId),
+        ...verifyGAConfirmationPage(caseId, consentCheck, notice),
       ]);
     }
   });
