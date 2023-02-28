@@ -39,6 +39,9 @@ Scenario('Defendant Hearing notice journey', async ({api}) => {
 
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
+
+  await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
+  await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
   await api.assertGaDocumentVisibilityToUser( config.applicantSolicitorUser, civilCaseReference, gaCaseReference, doc);
   await api.assertGaDocumentVisibilityToUser( config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 });
