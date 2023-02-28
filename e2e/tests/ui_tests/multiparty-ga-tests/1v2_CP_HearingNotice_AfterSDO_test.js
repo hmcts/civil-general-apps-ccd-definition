@@ -60,9 +60,29 @@ Scenario('Claimant Hearing notice journey @non-prod-e2e', async ({api_sdo, api, 
   await I.see(hnStatus);
   await I.verifyClaimDocument('After SDO - Hearing Notice');
 
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
-  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
-  await api.verifyGAState(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
+  await I.login(config.applicantSolicitorUser);
+  await I.navigateToCaseDetails(civilCaseReference);
+  await I.verifyClaimDocument('After SDO - Hearing Notice');
+
+  await I.login(config.defendantSolicitorUser);
+  await I.navigateToCaseDetails(civilCaseReference);
+  await I.verifyHearingNoticeDocNotAvailable();
+
+  await I.login(config.secondDefendantSolicitorUser);
+  await I.navigateToCaseDetails(civilCaseReference);
+  await I.verifyHearingNoticeDocNotAvailable();
+
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.assertGaAppCollectionVisiblityToUser(config.hearingCenterAdminWithRegionId1, civilCaseReference, gaCaseReference, 'Y');
+    await api.assertGaAppCollectionVisiblityToUser(config.judgeUserWithRegionId1, civilCaseReference, gaCaseReference, 'Y');
+  } else {
+    await api.assertGaAppCollectionVisiblityToUser(config.hearingCenterAdminLocal, civilCaseReference, gaCaseReference, 'Y');
+    await api.assertGaAppCollectionVisiblityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, 'Y');
+  }
+
+  await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
+  await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, null);
+  await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, null);
 });
 
 AfterSuite(async ({api}) => {
