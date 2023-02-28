@@ -1,7 +1,6 @@
 const {I} = inject();
 const {waitForFinishedBusinessProcess, waitForGAFinishedBusinessProcess} = require('../../api/testingSupport');
 const config = require('../../config');
-const {expect} = require("chai");
 
 module.exports = {
 
@@ -22,8 +21,7 @@ module.exports = {
       fee = '£108.00';
     }
 
-    let confirmation_msg = `Your application fee of ${fee} is now due for payment. Your application will not be reviewed by the court until this fee has been paid.`
-
+    let confirmation_msg = `Your application fee of ${fee} is now due for payment. Your application will not be reviewed by the court until this fee has been paid.`;
     I.waitForElement(this.fields.confirmation.id);
     I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATION/confirm');
     await I.seeTextEquals(confirmation_msg, this.fields.feeTextInfo);
