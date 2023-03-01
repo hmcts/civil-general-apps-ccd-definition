@@ -236,4 +236,4 @@ withPipeline(type, product, component) {
   }
 
 
-}charts/civil-ga-ccd/values.template.yaml
+}
