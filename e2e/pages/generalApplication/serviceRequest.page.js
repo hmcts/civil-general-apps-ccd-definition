@@ -11,6 +11,7 @@ module.exports = {
       }
     },
     reviewLinks: '.govuk-table__body td a',
+    serviceRequestTable: '.ServiceRequestTab a',
   },
 
   async verifyPaymentDetails(childCaseNumber) {
@@ -24,6 +25,7 @@ module.exports = {
 
   async payGAAmount(childCaseNumber) {
     I.waitInUrl(childCaseNumber);
+    await I.waitForClickable(this.fields.serviceRequestTable, 10);
     await I.see('Not paid');
     I.click('Pay now');
     I.click({css: 'input#pbaAccount'});
@@ -33,7 +35,7 @@ module.exports = {
     I.click({css: 'div.govuk-form-group span'});
     I.click('Confirm payment');
     await I.waitForText('Payment successful');
-    I.wait(3);
+    I.wait(5);
     I.click('View service requests');
   }
 };

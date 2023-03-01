@@ -706,6 +706,10 @@ module.exports = function () {
       await this.tryTo(() => this.click('Hide this', '#cookie-accept-all-success-banner-hide'));
     },
 
+    async clickPayFeeLink() {
+      await confirmationPage.clickPayFeeLink();
+    },
+
     async navigateToApplicationsTab(caseNumber) {
       await caseViewPage.navigateToTab(caseNumber, 'Applications');
     },
@@ -935,12 +939,16 @@ module.exports = function () {
     },
 
     async clickAndVerifyTab(caseNumber, tabName, appType, appCount) {
-      await caseViewPage.navigateToTab(caseNumber, tabName);
-      await applicationTab.verifyApplicationDetails(appType, appCount);
+      await this.triggerStepsWithScreenshot([
+        () => confirmationPage.clickPayFeeLink(),
+        () => applicationTab.verifyApplicationDetails(appType, appCount),
+      ]);
     },
 
     async clickOnTab(tabName) {
-       await caseViewPage.clickOnTab(tabName);
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.clickOnTab(tabName),
+      ]);
     },
 
     async closeAndReturnToCaseDetails() {
@@ -1002,6 +1010,7 @@ module.exports = function () {
         ...submitApplication('You have made an application'),
         ...verifyGAConfirmationPage(caseId, consentCheck, notice),
       ]);
+      await this.takeScreenshot();
     }
   });
 };

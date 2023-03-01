@@ -15,6 +15,7 @@ module.exports = {
     spinner: 'div.spinner-container',
     caseHeader: 'ccd-case-header > h1',
     generalApps: 'h1.govuk-heading-l',
+    tabList: 'div.mat-tab-list',
   },
   goButton: 'Go',
 
@@ -57,12 +58,12 @@ module.exports = {
   },
 
   async clickOnTab(tabName) {
-    await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
+    await I.waitForElement(this.fields.tabList, 5);
     await I.refreshPage();
     if (['preview'].includes(config.runningEnv)) {
       await I.wait(8);
     } else {
-      await I.wait(2);
+      await I.wait(3);
     }
     let urlBefore = await I.grabCurrentUrl();
     await I.retryUntilUrlChanges(async () => {
@@ -77,7 +78,7 @@ module.exports = {
         if (['preview'].includes(config.runningEnv)) {
           await I.wait(5);
         } else {
-          await I.wait(2);
+          await I.wait(5);
         }
       }, 'exui-header');
     }
