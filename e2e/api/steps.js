@@ -1128,7 +1128,26 @@ module.exports = {
     for (let pageId of Object.keys(createClaimData.userInput)) {
       await assertValidClaimData(createClaimData, pageId);
     }
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', null, false);
+
+    const pbaV3 = await checkPBAv3ToggleEnabled();
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
+      : 'Your claim will not be issued until payment is confirmed.';
+
+    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
+      header: 'Your claim has been received',
+      body: bodyText
+    });
+
+    await waitForFinishedBusinessProcess(caseId, user);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 
     if (scenario === 'ONE_V_TWO'
