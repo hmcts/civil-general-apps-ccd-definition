@@ -1,6 +1,6 @@
 civil-general-applications:
   java:
-    image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
+    image: 'hmctspublic.azurecr.io/civil/general-applications:pr-915'
     imagePullPolicy: Always
     keyVaults:
       civil:
@@ -75,7 +75,7 @@ civil-service:
   java:
     applicationPort: 4000
     releaseNameOverride: ${SERVICE_NAME}-civil-service
-    image: 'hmctspublic.azurecr.io/civil/service:latest'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-2337'
     imagePullPolicy: Always
     keyVaults:
       civil:
@@ -152,13 +152,13 @@ xui-webapp:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: 'hmctspublic.azurecr.io/xui/webapp:pr-2780'
-    memoryRequests: 512Mi
+    memoryRequests: 2Gi
     cpuRequests: 1000m
-    memoryLimits: 1024Mi
+    memoryLimits: 4Gi
     cpuLimits: 2500m
-    devmemoryRequests: 512Mi
+    devmemoryRequests: 4Gi
     devcpuRequests: 1000m
-    devmemoryLimits: 1024Mi
+    devmemoryLimits: 4Gi
     devcpuLimits: 2500m
     autoscaling: # Default is false
       enabled: true
