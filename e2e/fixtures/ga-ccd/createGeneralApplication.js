@@ -78,6 +78,82 @@ module.exports = {
       }
     };
   },
+  createGADataVaryJudgement: (isWithNotice, reasonWithoutNotice,calculatedAmount, code, linkGAN245FormUpload) => {
+    return {
+      generalAppType: {
+        types: [
+          'VARY_JUDGEMENT'
+        ]
+      },
+      generalAppRespondentAgreement: {
+        hasAgreed: 'No'
+      },
+      generalAppUrgencyRequirement: {
+        generalAppUrgency: 'No',
+        urgentAppConsiderationDate: null,
+        reasonsForUrgency: null,
+        ConsentAgreementCheckBox: []
+      },
+      generalAppInformOtherParty: {
+        isWithNotice: isWithNotice,
+        reasonsForWithoutNotice: reasonWithoutNotice
+      },
+      generalAppDetailsOfOrder: 'Test Order details',
+      generalAppReasonsOfOrder: 'Test reason for order',
+      generalAppEvidenceDocument: [],
+      generalAppStatementOfTruthConsent: [
+        'ConsentAgreementCheckBox'
+      ],
+      generalAppStatementOfTruth: {
+        name: 'John Doe',
+        role: 'Test Solicitor'
+      },
+      generalAppHearingDetails: {
+        hearingYesorNo: 'No',
+        hearingDate: null,
+        judgeRequiredYesOrNo: 'No',
+        judgeName: null,
+        trialRequiredYesOrNo: 'No',
+        trialDateFrom: null,
+        trialDateTo: null,
+        HearingPreferencesPreferredType: 'IN_PERSON',
+        TelephoneHearingPreferredType: null,
+        ReasonForPreferredHearingType: 'sdsd',
+        HearingPreferredLocation: null,
+        HearingDetailsTelephoneNumber: '07446778166',
+        HearingDetailsEmailID: 'update@gh.com',
+        HearingDuration: 'MINUTES_15',
+        generalAppHearingDays: null,
+        generalAppHearingHours: null,
+        generalAppHearingMinutes: null,
+        unavailableTrialRequiredYesOrNo: 'No',
+        vulnerabilityQuestionsYesOrNo: 'Yes',
+        vulnerabilityQuestion: 'Test Answer',
+        SupportRequirementSignLanguage: null,
+        SupportRequirementLanguageInterpreter: null,
+        SupportRequirementOther: null,
+        generalAppUnavailableDates: [],
+        SupportRequirement: []
+      },
+      generalAppN245FormUpload: linkGAN245FormUpload,
+      generalAppPBADetails: {
+        paymentSuccessfulDate: null,
+        fee: {
+          calculatedAmountInPence: calculatedAmount,
+          code: code,
+          version: '2'
+        },
+        paymentDetails: {
+          status: null,
+          reference: null,
+          errorMessage: null,
+          errorCode: null,
+          customerReference: null
+        },
+        serviceRequestReference: null
+      }
+    };
+  },
   createGADataWithoutNotice: (isWithNotice, reasonWithoutNotice,calculatedAmount, code) => {
     return {
       generalAppType: {
@@ -396,6 +472,13 @@ module.exports = {
         },
         serviceRequestReference: null
       }
+    };
+  },
+  createGeneralAppN245FormUpload: () => {
+    return {
+      document_url: 'http://dm-store:8080/documents/5b6d9333-9dc9-4d42-b47c-0af8cdd8d56a',
+      document_filename: 'test.pdf.pdf',
+      document_binary_url: 'http://dm-store:8080/documents/5b6d9333-9dc9-4d42-b47c-0af8cdd8d56a/binary'
     };
   },
 };

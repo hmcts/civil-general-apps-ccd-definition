@@ -29,6 +29,7 @@ const  genAppNbcAdminReferToLegalAdvisorData = require('../fixtures/ga-ccd/nbcAd
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
 const { replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
+const {createGeneralAppN245FormUpload} = require("../fixtures/ga-ccd/createGeneralApplication");
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
@@ -37,6 +38,8 @@ const data = {
     '10800','FEE0443'),
   INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
   INITIATE_GENERAL_APPLICATION_STAY_CLAIM: genAppData.gaTypeWithStayClaim(),
+  INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT: (iwWithNotice, generalAppN245FormUpload) => genAppData.createGAData(iwWithNotice,null,
+    '27500','FEE0442', generalAppN245FormUpload),
   INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
   RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
   MAKE_DECISION: genAppJudgeMakeDecisionData.judgeMakesDecisionData(),
@@ -264,6 +267,10 @@ module.exports = {
 
   initiateGeneralApplication: async (user, parentCaseId) => {
     return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+  },
+
+  initiateGaWithVaryJudgement: async (user, parentCaseId, isClaimant) => {
+    return await initiateWithVaryJudgement(user, parentCaseId, isClaimant);
   },
 
   initiateGeneralApplicationWithOutNotice: async (user, parentCaseId) => {
@@ -1597,6 +1604,40 @@ const initiateGaWithState = async (user, parentCaseId, expectState) => {
   assert.equal(response.status, 201);
   console.log('General application case state : ' + responseBody.state);
   assert.equal(responseBody.state, expectState);
+  assert.equal(responseBody.callback_response_status_code, 200);
+  assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+  await waitForFinishedBusinessProcess(parentCaseId, user);
+  await waitForGAFinishedBusinessProcess(parentCaseId, user);
+
+  const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+  const updatedCivilCaseData = await updatedResponse.json();
+  let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+  console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
+
+  //calling payment callback handler
+  const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+    genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+  assert.equal(payment_response.status, 200);
+
+  //comment out next line to see race condition
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
+  await addUserCaseMapping(gaCaseReference, user);
+  return gaCaseReference;
+};
+
+const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant) => {
+  eventName = events.INITIATE_GENERAL_APPLICATION.id;
+  await apiRequest.setupTokens(user);
+  await apiRequest.startEvent(eventName, parentCaseId);
+  const response = await apiRequest.submitEvent(eventName,
+    data.INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT('Yes',isClaimant ?
+      null : createGeneralAppN245FormUpload()),
+    parentCaseId);
+  const responseBody = await response.json();
+  assert.equal(response.status, 201);
+  console.log('General application case state : ' + responseBody.state);
+  assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   assert.equal(responseBody.callback_response_status_code, 200);
   assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
   await waitForFinishedBusinessProcess(parentCaseId, user);
