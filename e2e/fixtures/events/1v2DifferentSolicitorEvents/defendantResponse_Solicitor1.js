@@ -16,7 +16,7 @@ module.exports = {
       },
     },
     RespondentResponseType: {
-      respondent1ClaimResponseType: 'PART_ADMISSION',
+      respondent1ClaimResponseType: 'FULL_DEFENCE',
       multiPartyResponseTypeFlags: 'FULL_DEFENCE'
     },
     SolicitorReferences: {
