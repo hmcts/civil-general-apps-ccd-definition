@@ -29,7 +29,7 @@ const  genAppNbcAdminReferToLegalAdvisorData = require('../fixtures/ga-ccd/nbcAd
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
 const { replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
-const {createGeneralAppN245FormUpload} = require("../fixtures/ga-ccd/createGeneralApplication");
+const {createGeneralAppN245FormUpload} = require('../fixtures/ga-ccd/createGeneralApplication');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
