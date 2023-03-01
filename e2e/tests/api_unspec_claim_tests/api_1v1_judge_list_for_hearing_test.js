@@ -31,10 +31,10 @@ Scenario('Defendant Hearing notice journey', async ({api}) => {
   console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
-    await api.assertGaDocumentVisibilityToUser( config.judgeUser, civilCaseReference, gaCaseReference, doc)
+    await api.assertGaDocumentVisibilityToUser( config.judgeUser, civilCaseReference, gaCaseReference, doc);
   } else {
     await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
-    await api.assertGaDocumentVisibilityToUser( config.judgeLocalUser, civilCaseReference, gaCaseReference, doc)
+    await api.assertGaDocumentVisibilityToUser( config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
   }
 
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
