@@ -458,6 +458,11 @@ module.exports = function () {
       await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
     },
 
+    async clickOnElement(element) {
+      let urlBefore = await this.grabCurrentUrl();
+      await this.retryUntilUrlChanges(() => this.click(element), urlBefore);
+    },
+
     async navigateToTab(caseNumber, tabName) {
       await caseViewPage.navigateToTab(caseNumber, tabName);
     },
@@ -714,6 +719,12 @@ module.exports = function () {
       await caseViewPage.navigateToTab(caseNumber, 'Applications');
     },
 
+    async navigateToMainCase(civilCaseNumber) {
+      await this.navigateToCaseDetails(civilCaseNumber);
+      await caseViewPage.clickOnTab('Applications');
+      await caseViewPage.navigateToTab(civilCaseNumber, 'Applications');
+    },
+
     async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber) {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
@@ -819,10 +830,10 @@ module.exports = function () {
       await this.see(gaStatus);
     },
 
-    async payForGA(childCaseNumber) {
+    async payForGA() {
        await caseViewPage.clickOnTab('Service Request');
-       await serviceRequestPage.payGAAmount(childCaseNumber);
-       await serviceRequestPage.verifyPaymentDetails(childCaseNumber);
+       await serviceRequestPage.payGAAmount();
+       await serviceRequestPage.verifyPaymentDetails();
     },
 
     async verifyClaimDocument(docType) {

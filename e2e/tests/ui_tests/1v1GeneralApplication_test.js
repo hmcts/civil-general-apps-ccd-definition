@@ -76,11 +76,11 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(awaitingPaymentStatus);
   await I.navigateToCaseDetails(gaCaseReference);
-  await I.payForGA(gaCaseReference);
+  await I.payForGA();
   await waitForGAFinishedBusinessProcess(civilCaseReference, config.applicantSolicitorUser);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
     'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.applicantSolicitorUser);
-  await I.navigateToApplicationsTab(civilCaseReference);
+  await I.navigateToMainCase(civilCaseReference);
   await I.see(judgeDecisionStatus);
 
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
@@ -197,5 +197,5 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
 });
 
 AfterSuite(async ({api}) => {
-   // await api.cleanUp();
+   await api.cleanUp();
 });
