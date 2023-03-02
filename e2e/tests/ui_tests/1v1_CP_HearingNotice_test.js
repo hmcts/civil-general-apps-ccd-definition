@@ -11,7 +11,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('Before SDO 1v1 - GA CP - Hearing Notice document @ui-nightly');
 
-Scenario('Claimant and Defendant Hearing notice journey', async ({I, api}) => {
+Scenario('Claimant and Defendant Hearing notice - With notice journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -53,10 +53,14 @@ Scenario('Claimant and Defendant Hearing notice journey', async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
   await I.verifyClaimDocument('Hearing Notice');
+  await I.navigateToCaseDetails(gaCaseReference);
+  await I.verifyApplicationDocument('Hearing Notice');
 
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
   await I.verifyClaimDocument('Hearing Notice');
+  await I.navigateToCaseDetails(gaCaseReference);
+  await I.verifyApplicationDocument('Hearing Notice');
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.assertGaAppCollectionVisiblityToUser(config.nbcAdminWithRegionId4, civilCaseReference, gaCaseReference, 'Y');
