@@ -153,13 +153,13 @@ xui-webapp:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: 'hmctspublic.azurecr.io/xui/webapp:pr-2780'
-    memoryRequests: 512Mi
+    memoryRequests: 2Gi
     cpuRequests: 1000m
-    memoryLimits: 1024Mi
+    memoryLimits: 4Gi
     cpuLimits: 2500m
-    devmemoryRequests: 512Mi
+    devmemoryRequests: 4Gi
     devcpuRequests: 1000m
-    devmemoryLimits: 1024Mi
+    devmemoryLimits: 4Gi
     devcpuLimits: 2500m
     autoscaling: # Default is false
       enabled: true
