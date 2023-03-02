@@ -37,7 +37,10 @@ module.exports = {
   },
 
   async clickPayFeeLink() {
-    await I.click(this.fields.applicationFeeLink);
+    await I.retryUntilExists(async () => {
+      await I.forceClick(this.fields.applicationFeeLink);
+      await I.switchToNextTab();
+    }, 'table.Applications');
   }
 };
 
