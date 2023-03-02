@@ -118,6 +118,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
     'AWAITING_APPLICATION_PAYMENT', config.applicantSolicitorUser);
+  await I.wait(15);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(awaitingPaymentStatus);
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
