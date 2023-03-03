@@ -1,4 +1,6 @@
 // in this file you can append custom step methods to 'I' object
+const {I} = inject();
+
 const output = require('codeceptjs').output;
 const config = require('./config.js');
 const parties = require('./helpers/party.js');
@@ -826,6 +828,8 @@ module.exports = function () {
         genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
       await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
         ccdState, user);
+      await I.wait(15);
+      console.log(`Waiting for GA payment to complete: ${gaCaseReference}`);
       await caseViewPage.navigateToTab(civilCaseReference, 'Applications');
       await this.see(gaStatus);
     },
