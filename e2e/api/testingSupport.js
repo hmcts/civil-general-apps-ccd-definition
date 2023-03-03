@@ -92,6 +92,9 @@ module.exports = {
           } else if (businessProcess && businessProcess.status !== 'FINISHED' && response.ccdState !== ccdState) {
             throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
               + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`);
+          } else if (businessProcess && businessProcess.status == 'FINISHED' && response.ccdState !== ccdState) {
+            throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
+              + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}, Expected State: ${ccdState}`);
           }
         });
     }, MAX_RETRIES, RETRY_TIMEOUT_MS);

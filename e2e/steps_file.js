@@ -1,5 +1,3 @@
-// in this file you can append custom step methods to 'I' object
-const {I} = inject();
 const output = require('codeceptjs').output;
 const config = require('./config.js');
 const parties = require('./helpers/party.js');
@@ -825,10 +823,10 @@ module.exports = function () {
       console.log(`GA Payment using API: ${gaCaseReference}`);
       await apiRequest.paymentApiRequestUpdateServiceCallback(
         genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+      console.log(`Waiting for GA payment to complete: ${gaCaseReference}, expected state: ${ccdState}`);
       await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
         ccdState, user);
-      await I.wait(10);
-      console.log(`Waiting for GA payment to complete: ${gaCaseReference}`);
+      console.log(`GA payment for ID: ${gaCaseReference} done successfully with expected state: ${ccdState}`);
       await caseViewPage.navigateToTab(civilCaseReference, 'Applications');
       await this.see(gaStatus);
     },
