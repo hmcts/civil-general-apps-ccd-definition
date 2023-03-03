@@ -3,7 +3,7 @@ const config = require('../../config.js');
 const {waitForGACamundaEventsFinishedBusinessProcess, waitForGAFinishedBusinessProcess} = require('../../api/testingSupport');
 const {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 
-const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
+const mpScenario = 'ONE_V_ONE';
 const awaitingPaymentStatus = 'Awaiting Application Payment';
 const respondentStatus = 'Awaiting Respondent Response';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
