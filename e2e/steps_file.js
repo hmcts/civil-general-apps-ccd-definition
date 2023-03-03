@@ -844,6 +844,11 @@ module.exports = function () {
       await claimDocumentPage.verifyUploadedDocument(docType);
     },
 
+    async verifyHearingNoticeDocNotAvailable() {
+      await caseViewPage.clickOnTab('Claim documents');
+      await claimDocumentPage.verifyHearingNoticeDocNotAvailable();
+    },
+
     async respondToJudgesDirections(caseNumber) {
       eventName = events.RESPOND_TO_JUDGE_DIRECTIONS.name;
       await this.triggerStepsWithScreenshot([
