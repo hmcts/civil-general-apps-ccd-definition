@@ -11,7 +11,7 @@ const respondentStatus = 'Awaiting Respondent Response';
 const claimantType = 'Company';
 let civilCaseReference, gaCaseReference;
 
-Feature('GA R2 1v1 - General Application Journey @ui-nightly');
+Feature('GA R2 1v1 - General Application Journey @ui-nightly @mmm');
 
 Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @non-prod-e2e', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(

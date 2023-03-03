@@ -15,7 +15,7 @@ const claimantType = 'Company';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA CCD 1v1 - General Application Journey  @ui-nightly');
+Feature('GA CCD 1v1 - General Application Journey  @ui-nightly @mmm');
 
 Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -104,7 +104,7 @@ Scenario.skip('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
-Scenario('GA for 1v1 Specified Claim- Dismissal order journey @mmm', async ({I, api}) => {
+Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
@@ -197,5 +197,5 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
 });
 
 AfterSuite(async ({api}) => {
-   // await api.cleanUp();
+   await api.cleanUp();
 });

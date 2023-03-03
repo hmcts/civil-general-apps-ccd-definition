@@ -1,9 +1,14 @@
+const config = require('../../config');
 const {I} = inject();
 
 module.exports = {
 
   async verifyApplicationDetails(applicationTypes, appCount) {
-    await I.wait(10);
+    if (['preview'].includes(config.runningEnv)) {
+      await I.wait(8);
+    } else {
+      await I.wait(3);
+    }
     await I.waitInUrl('#Applications', 5);
     await I.waitForElement('td[id*="GaAppDetails"]', 5);
     await I.seeNumberOfElements('.collection-field-table .complex-panel-title', appCount);
