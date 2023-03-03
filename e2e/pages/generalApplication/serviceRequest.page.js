@@ -11,19 +11,21 @@ module.exports = {
       }
     },
     reviewLinks: '.govuk-table__body td a',
+    serviceRequestTable: 'table.govuk-table',
   },
 
-  async verifyPaymentDetails(childCaseNumber) {
-    I.waitInUrl(childCaseNumber);
-    I.seeNumberOfVisibleElements(this.fields.reviewLinks, 1);
+  async verifyPaymentDetails() {
+    await I.waitInUrl('#Service', 5);
+    I.waitForVisible(this.fields.reviewLinks, 8);
     I.click(this.fields.reviewLinks);
     I.see('Paid');
     I.see('General application');
     I.see('Total fees to pay');
   },
 
-  async payGAAmount(childCaseNumber) {
-    I.waitInUrl(childCaseNumber);
+  async payGAAmount() {
+    await I.waitInUrl('#Service', 5);
+    await I.waitForVisible(this.fields.serviceRequestTable, 10);
     await I.see('Not paid');
     I.click('Pay now');
     I.click({css: 'input#pbaAccount'});
@@ -33,7 +35,7 @@ module.exports = {
     I.click({css: 'div.govuk-form-group span'});
     I.click('Confirm payment');
     await I.waitForText('Payment successful');
-    I.wait(3);
+    I.wait(5);
     I.click('View service requests');
   }
 };
