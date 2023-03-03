@@ -15,6 +15,7 @@ Feature('After SDO 1v2 - GA CP - Hearing Notice document @ui-nightly');
 Scenario('Claimant Hearing notice journey @non-prod-e2e', async ({api_sdo, api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', claimAmountJudge);
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
