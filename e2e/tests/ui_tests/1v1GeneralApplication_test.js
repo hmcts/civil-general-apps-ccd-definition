@@ -104,7 +104,7 @@ Scenario.skip('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
-Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api}) => {
+Scenario('GA for 1v1 Specified Claim- Dismissal order journey @mmm', async ({I, api}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
@@ -118,7 +118,6 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
     'AWAITING_APPLICATION_PAYMENT', config.applicantSolicitorUser);
-  await I.wait(15);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(awaitingPaymentStatus);
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
@@ -198,5 +197,5 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
 });
 
 AfterSuite(async ({api}) => {
-   await api.cleanUp();
+   // await api.cleanUp();
 });

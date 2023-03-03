@@ -827,7 +827,7 @@ module.exports = function () {
         genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
       await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
         ccdState, user);
-      await I.wait(15);
+      await I.wait(10);
       console.log(`Waiting for GA payment to complete: ${gaCaseReference}`);
       await caseViewPage.navigateToTab(civilCaseReference, 'Applications');
       await this.see(gaStatus);
