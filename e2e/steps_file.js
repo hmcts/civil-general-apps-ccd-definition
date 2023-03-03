@@ -1,6 +1,3 @@
-// in this file you can append custom step methods to 'I' object
-const {I} = inject();
-
 const output = require('codeceptjs').output;
 const config = require('./config.js');
 const parties = require('./helpers/party.js');
