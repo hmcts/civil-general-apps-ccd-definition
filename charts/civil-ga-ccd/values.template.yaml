@@ -138,6 +138,7 @@ civil-service:
       FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
       POLLING_EVENT_EMITTER_ENABLED: false
       DOCUMENT_MANAGEMENT_SECURED: true
+      PAYMENTS_CALLBACK_URL: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
       RELEASE_REVISION: "{{ .Release.Revision }}"
 
 idam-pr:
