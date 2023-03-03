@@ -1,4 +1,6 @@
 // in this file you can append custom step methods to 'I' object
+const {I} = inject();
+
 const output = require('codeceptjs').output;
 const config = require('./config.js');
 const parties = require('./helpers/party.js');
@@ -458,6 +460,11 @@ module.exports = function () {
       await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
     },
 
+    async clickOnElement(element) {
+      let urlBefore = await this.grabCurrentUrl();
+      await this.retryUntilUrlChanges(() => this.click(element), urlBefore);
+    },
+
     async navigateToTab(caseNumber, tabName) {
       await caseViewPage.navigateToTab(caseNumber, tabName);
     },
@@ -706,8 +713,18 @@ module.exports = function () {
       await this.tryTo(() => this.click('Hide this', '#cookie-accept-all-success-banner-hide'));
     },
 
+    async clickPayFeeLink() {
+      await confirmationPage.clickPayFeeLink();
+    },
+
     async navigateToApplicationsTab(caseNumber) {
       await caseViewPage.navigateToTab(caseNumber, 'Applications');
+    },
+
+    async navigateToMainCase(civilCaseNumber) {
+      await this.navigateToCaseDetails(civilCaseNumber);
+      await caseViewPage.clickOnTab('Applications');
+      await caseViewPage.navigateToTab(civilCaseNumber, 'Applications');
     },
 
     async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber) {
@@ -811,14 +828,16 @@ module.exports = function () {
         genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
       await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
         ccdState, user);
+      await I.wait(15);
+      console.log(`Waiting for GA payment to complete: ${gaCaseReference}`);
       await caseViewPage.navigateToTab(civilCaseReference, 'Applications');
       await this.see(gaStatus);
     },
 
-    async payForGA(childCaseNumber) {
+    async payForGA() {
        await caseViewPage.clickOnTab('Service Request');
-       await serviceRequestPage.payGAAmount(childCaseNumber);
-       await serviceRequestPage.verifyPaymentDetails(childCaseNumber);
+       await serviceRequestPage.payGAAmount();
+       await serviceRequestPage.verifyPaymentDetails();
     },
 
     async verifyClaimDocument(docType) {
@@ -935,12 +954,16 @@ module.exports = function () {
     },
 
     async clickAndVerifyTab(caseNumber, tabName, appType, appCount) {
-      await caseViewPage.navigateToTab(caseNumber, tabName);
-      await applicationTab.verifyApplicationDetails(appType, appCount);
+      await this.triggerStepsWithScreenshot([
+        () => confirmationPage.clickPayFeeLink(),
+        () => applicationTab.verifyApplicationDetails(appType, appCount),
+      ]);
     },
 
     async clickOnTab(tabName) {
-       await caseViewPage.clickOnTab(tabName);
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.clickOnTab(tabName),
+      ]);
     },
 
     async closeAndReturnToCaseDetails() {
@@ -1002,6 +1025,7 @@ module.exports = function () {
         ...submitApplication('You have made an application'),
         ...verifyGAConfirmationPage(caseId, consentCheck, notice),
       ]);
+      await this.takeScreenshot();
     }
   });
 };
