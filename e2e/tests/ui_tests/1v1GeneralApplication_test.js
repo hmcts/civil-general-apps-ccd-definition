@@ -3,7 +3,7 @@ const config = require('../../config.js');
 const {waitForGACamundaEventsFinishedBusinessProcess, waitForGAFinishedBusinessProcess} = require('../../api/testingSupport');
 const {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 
-const mpScenario = 'ONE_V_ONE';
+const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const awaitingPaymentStatus = 'Awaiting Application Payment';
 const respondentStatus = 'Awaiting Respondent Response';
 const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
@@ -17,7 +17,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA CCD 1v1 - General Application Journey  @ui-nightly');
 
-Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
+Scenario.only('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
