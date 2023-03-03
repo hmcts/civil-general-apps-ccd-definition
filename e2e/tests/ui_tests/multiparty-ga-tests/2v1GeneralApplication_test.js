@@ -62,7 +62,7 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
     await I.login(config.judgeLocalUser);
   }
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'concurrentRep', gaCaseReference, 'no', 'Order_Written_Representation_Concurrent');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_WRITTEN_REPRESENTATIONS', config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Concurrent representations', 'no');
   await I.verifyApplicationDocument('Written representation concurrent');
