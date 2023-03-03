@@ -802,6 +802,49 @@ module.exports = {
 
   },
 
+  assertGaDocumentVisibilityToUser: async ( user, parentCaseId, gaCaseId, doc) => {
+    let docGa = doc + 'Document';
+    let docCivil = '';
+    const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+    const civilCaseData = await response.json();
+    const updatedResponse = await apiRequest.fetchGaCaseData(gaCaseId);
+    const updatedGaCaseData = await updatedResponse.json();
+    docGa = updatedGaCaseData[docGa];
+    if(user.email === config.applicantSolicitorUser.email){
+      docCivil = civilCaseData[doc + 'DocClaimant'];
+    }
+    else if(user.email === config.defendantSolicitorUser.email) {
+      docCivil = civilCaseData[doc + 'DocRespondentSol'];
+    }
+    else if(user.email === config.secondDefendantSolicitorUser.email) {
+      docCivil = civilCaseData[doc + 'DocRespondentSolTwo'];
+    }
+    else{
+      docCivil = civilCaseData[doc + 'DocStaff'];
+    }
+    assert.equal(docGa['id'], docCivil['id']);
+
+  },
+
+  assertNullGaDocumentVisibilityToUser: async ( user, parentCaseId, doc) => {
+    let docCivil = '';
+    const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+    const civilCaseData = await response.json();
+    if(user.email === config.applicantSolicitorUser.email){
+      docCivil = civilCaseData[doc + 'DocClaimant'];
+    }
+    else if(user.email === config.defendantSolicitorUser.email) {
+      docCivil = civilCaseData[doc + 'DocRespondentSol'];
+    }
+    else if(user.email === config.secondDefendantSolicitorUser.email) {
+      docCivil = civilCaseData[doc + 'DocRespondentSolTwo'];
+    }
+    else{
+      docCivil = civilCaseData[doc + 'DocStaff'];
+    }
+    assert.isNull(docCivil);
+  },
+
   judgeMakesDecisionOrderMade: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
     eventName = events.MAKE_DECISION.id;
