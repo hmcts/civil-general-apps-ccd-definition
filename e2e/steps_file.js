@@ -826,6 +826,7 @@ module.exports = function () {
       console.log(`Waiting for GA payment to complete: ${gaCaseReference}, expected state: ${ccdState}`);
       await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
         ccdState, user);
+      console.log(`GA payment for ID: ${gaCaseReference} done successfully with expected state: ${ccdState}`);
       await caseViewPage.navigateToTab(civilCaseReference, 'Applications');
       await this.see(gaStatus);
     },
