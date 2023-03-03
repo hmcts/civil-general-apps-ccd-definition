@@ -6,7 +6,6 @@ const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testi
 const listForHearingStatus = 'Listed for a Hearing';
 const hnStatus = 'Hearing Scheduled';
 const mpScenario = 'ONE_V_ONE';
-const hnStateStatus = events.HEARING_SCHEDULED_GA.state;
 let civilCaseReference, gaCaseReference;
 
 Feature('Before SDO 1v1 - GA CP - Hearing Notice document @ui-nightly @mmm');
@@ -42,7 +41,7 @@ Scenario('Claimant and Defendant Hearing notice - With notice journey', async ({
   await I.see(listForHearingStatus);
   await I.navigateToHearingNoticePage(gaCaseReference);
   await I.fillHearingNotice(gaCaseReference, 'claimAndDef', 'basildon', 'VIDEO');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'HEARING_SCHEDULED_GA', config.nbcAdminWithRegionId4);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'HEARING_SCHEDULED', config.nbcAdminWithRegionId4);
   console.log('Hearing Notice created for: ' + gaCaseReference);
   await I.click('Close and Return to case details');
   await I.verifyApplicationDocument('Hearing Notice');
