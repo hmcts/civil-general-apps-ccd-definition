@@ -13,7 +13,7 @@ const writtenRepStatus = 'Awaiting Written Representations';
 const awaitingPaymentStatus = 'Awaiting Application Payment';
 let gaCaseReference, civilCaseReference;
 
-Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly');
+Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly @sss');
 
 Scenario('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey',
   async ({api, I}) => {
