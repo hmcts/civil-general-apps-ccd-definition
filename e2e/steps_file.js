@@ -834,6 +834,19 @@ module.exports = function () {
       await this.see(gaStatus);
     },
 
+    async payAndVerifyGAStatusWithNotice(civilCaseReference, gaCaseReference, ccdState, user, gaStatus) {
+      console.log(`GA Payment using API: ${gaCaseReference}`);
+      await apiRequest.paymentApiRequestUpdateServiceCallback(
+          genAppJudgeMakeDecisionData.serviceUpdateDtoWithNotice(gaCaseReference,'Paid'));
+      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
+                                                          ccdState, user);
+      await I.wait(15);
+      console.log(`Waiting for GA payment to complete: ${gaCaseReference}`);
+      await caseViewPage.navigateToTab(civilCaseReference, 'Applications');
+      await this.see(gaStatus);
+    },
+
+
     async payForGA() {
        await caseViewPage.clickOnTab('Service Request');
        await serviceRequestPage.payGAAmount();
@@ -984,8 +997,9 @@ module.exports = function () {
       ]);
     },
 
-    async initiateVaryJudgementGA(caseId, appTypes, hearingScheduled, consentCheck, isUrgent, notice) {
+    async initiateVaryJudgementGA(caseId, appTypes, hearingScheduled, consentCheck, isUrgent) {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
+      let notice = 'yes';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => applicationTypePage.chooseAppType(getAppTypes().slice(6, 11)),
@@ -994,13 +1008,10 @@ module.exports = function () {
         () => n245FormPage.uploadN245Form(TEST_FILE_PATH),
         ...selectConsentCheck(consentCheck),
         ...isUrgentApplication(isUrgent),
-        ...conditionalSteps(consentCheck === 'no', [
-          ...selectNotice(notice),
-        ]),
         ...enterApplicationDetails(consentCheck),
         ...fillHearingDetails(hearingScheduled, 'no', 'no', 'no', 'yes', 'disabledAccess'),
         ...verifyApplicationFee(consentCheck, notice),
-        ...verifyCheckAnswerForm(caseId, 'hearingScheduled'),
+        ...verifyCheckAnswerForm(caseId, 'no'),
         ...submitApplication('You have made an application'),
         ...verifyGAConfirmationPage(caseId, consentCheck, notice),
       ]);
