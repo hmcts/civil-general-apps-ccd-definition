@@ -139,6 +139,7 @@ civil-service:
       RELEASE_REVISION: "{{ .Release.Revision }}"
 
 idam-pr:
+  releaseNameOverride: ${SERVICE_NAME}-idam-pr
   enabled: true
   redirect_uris:
     XUI:
