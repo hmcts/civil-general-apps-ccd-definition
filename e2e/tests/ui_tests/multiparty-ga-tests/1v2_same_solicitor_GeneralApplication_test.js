@@ -29,7 +29,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
     'disabledAccess');
   console.log('General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', config.applicantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 1), 1);
   await I.see(awaitingPaymentStatus);
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
@@ -52,7 +52,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
     await I.login(config.judgeLocalUser);
   }
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'sequentialRep', gaCaseReference, 'yes', 'Order_Written_Representation_Sequential');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_WRITTEN_REPRESENTATIONS', config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Sequential representations', 'yes');
   await I.verifyApplicationDocument('Written representation sequential');
@@ -81,7 +81,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
       'signLanguageInterpreter');
     console.log('General Application created: ' + civilCaseReference);
     gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', config.applicantSolicitorUser);
     await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 5), 1);
     await I.see(awaitingPaymentStatus);
     await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
@@ -94,7 +94,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
       await I.login(config.judgeLocalUser);
     }
     await I.judgeRequestMoreInfo('requestMoreInfo', 'sendApplicationToOtherParty', gaCaseReference, 'no', 'sendApplicationToOtherParty');
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'APPLICATION_ADD_PAYMENT', config.applicantSolicitorUser);
     await I.judgeCloseAndReturnToCaseDetails();
     await I.verifyJudgesSummaryPage('Send application to other party', 'no');
     console.log('Judges sent application to other party and requested hearing details on case: ' + gaCaseReference);
@@ -119,7 +119,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
       await I.login(config.judgeLocalUser);
     }
     await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', gaCaseReference, 'yes', 'Request_for_information');
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_ADDITIONAL_INFORMATION ', config.applicantSolicitorUser);
     console.log('Judges requested more information on case: ' + gaCaseReference);
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'AWAITING_ADDITIONAL_INFORMATION');
     await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'AWAITING_ADDITIONAL_INFORMATION');

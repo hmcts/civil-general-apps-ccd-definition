@@ -17,24 +17,24 @@ Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-t
 
 Scenario('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey',
   async ({api, I}) => {
-    civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
-    console.log('Case created for general application: ' + civilCaseReference);
-    await I.login(config.applicantSolicitorUser);
-    await I.navigateToCaseDetails(civilCaseReference);
-    await I.createGeneralApplication(
-      getAppTypes().slice(0, 3),
-      civilCaseReference,
-      'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no',
-      'signLanguageInterpreter');
-    console.log('General Application created: ' + civilCaseReference);
-    gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
-    await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 3), 1);
-    await I.see(awaitingPaymentStatus);
-    await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-      'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser, respondentStatus);
-    await I.navigateToCaseDetails(gaCaseReference);
-    await I.verifyApplicantSummaryPage();
+  civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  console.log('Case created for general application: ' + civilCaseReference);
+  await I.login(config.applicantSolicitorUser);
+  await I.navigateToCaseDetails(civilCaseReference);
+  await I.createGeneralApplication(
+    getAppTypes().slice(0, 3),
+    civilCaseReference,
+    'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no',
+    'signLanguageInterpreter');
+  console.log('General Application created: ' + civilCaseReference);
+  gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', config.applicantSolicitorUser);
+  await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 3), 1);
+  await I.see(awaitingPaymentStatus);
+  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
+    'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser, respondentStatus);
+  await I.navigateToCaseDetails(gaCaseReference);
+  await I.verifyApplicantSummaryPage();
 
     console.log('Defendant 1 solicitor responding:' + gaCaseReference);
     await I.login(config.defendantSolicitorUser);
@@ -56,24 +56,24 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
     await I.navigateToTab(civilCaseReference, 'Applications');
     await I.see(judgeDecisionStatus);
 
-    console.log('Judge Making decision:' + gaCaseReference);
-    if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-      await I.login(config.judgeUser);
-    } else {
-      await I.login(config.judgeLocalUser);
-    }
-    await I.judgeListForAHearingDecision('listForAHearing', gaCaseReference, 'yes', 'Hearing_order');
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.applicantSolicitorUser);
-    await I.judgeCloseAndReturnToCaseDetails();
-    await I.verifyJudgesSummaryPage('Hearing order', 'yes');
-    await I.verifyApplicationDocument('Hearing order');
-    await I.dontSee('Go');
-    await I.dontSee('Next step');
-    console.log('Judges list for a hearing on case: ' + gaCaseReference);
-    await I.login(config.applicantSolicitorUser);
-    await I.navigateToTab(civilCaseReference, 'Applications');
-    await I.see(listForHearingStatus);
-  });
+  console.log('Judge Making decision:' + gaCaseReference);
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await I.login(config.judgeUser);
+  } else {
+    await I.login(config.judgeLocalUser);
+  }
+  await I.judgeListForAHearingDecision('listForAHearing', gaCaseReference, 'yes', 'Hearing_order');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'LISTING_FOR_A_HEARING', config.applicantSolicitorUser);
+  await I.judgeCloseAndReturnToCaseDetails();
+  await I.verifyJudgesSummaryPage('Hearing order', 'yes');
+  await I.verifyApplicationDocument('Hearing order');
+  await I.dontSee('Go');
+  await I.dontSee('Next step');
+  console.log('Judges list for a hearing on case: ' + gaCaseReference);
+  await I.login(config.applicantSolicitorUser);
+  await I.navigateToTab(civilCaseReference, 'Applications');
+  await I.see(listForHearingStatus);
+});
 
 Scenario('Without Notice application for a hearing', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
