@@ -19,6 +19,7 @@ Scenario('Judge makes decision 1V1 - ORDER_MADE - Uncloak and Application Approv
 
   console.log('*** Start Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
     + gaCaseReference + ' ***');
+  const doc = 'generalOrder';
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeMakesOrderDecisionUncloak(config.judgeUser, gaCaseReference);
   }else {
@@ -27,6 +28,8 @@ Scenario('Judge makes decision 1V1 - ORDER_MADE - Uncloak and Application Approv
   console.log('*** End Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
     + gaCaseReference + ' ***');
 
+  await api.assertGaDocumentVisibilityToUser( config.applicantSolicitorUser, civilCaseReference, gaCaseReference, doc);
+  await api.assertGaDocumentVisibilityToUser( config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 });
 
 Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Application', async ({api}) => {
@@ -122,6 +125,9 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
   }
   console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
 
+  const doc = 'directionOrder';
+  await api.assertGaDocumentVisibilityToUser( config.applicantSolicitorUser, civilCaseReference, gaCaseReference, doc);
+  await api.assertGaDocumentVisibilityToUser( config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 });
 
 AfterSuite(async ({api}) => {
