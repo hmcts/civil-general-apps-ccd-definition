@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure")
+@Library("Infrastructure@testlog")
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "nodejs"
