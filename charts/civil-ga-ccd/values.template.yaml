@@ -74,7 +74,7 @@ civil-service:
   enabled: true
   java:
     applicationPort: 4000
-    releaseNameOverride: ${SERVICE_NAME}-civil-service
+    releaseNameOverride: ${SERVICE_NAME}
     image: 'hmctspublic.azurecr.io/civil/service:latest'
     imagePullPolicy: Always
     devcpuRequests: 500m
