@@ -15,6 +15,7 @@ const getCcdDataStoreGABaseUrl = () => `${config.url.ccdDataStore}/caseworkers/$
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getPaymentCallbackUrl = () => `${config.url.generalApplication}/service-request-update`;
 const getJudgeRevisitTaskHandlerUrl =(state) => `${config.url.generalApplication}/testing-support/trigger-judge-revisit-process-event/${state}`;
+const getJudgeUnlessOrderRevisitTaskHandlerUrl =(state) => `${config.url.generalApplication}/testing-support/unless-order/trigger-judge-revisit-process-event/${state}`;
 const getCaseDismissalTaskHandlerUrl =() => `${config.url.civilService}/testing-support/trigger-case-dismissal-scheduler`;
 const getGaCaseDataUrl =(caseId) => `${config.url.generalApplication}/testing-support/case/${caseId}`;
 
@@ -65,6 +66,17 @@ module.exports = {
   gaOrderMadeSchedulerTaskHandler: async (state) => {
     const authToken = await idamHelper.accessToken(config.systemUpdate);
     let url = getJudgeRevisitTaskHandlerUrl(state);
+    let response_msg =  await restHelper.retriedRequest(url, {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null,
+      'GET');
+    return response_msg|| {};
+  },
+
+  gaUnlessOrderSchedulerTaskHandler: async (state) => {
+    const authToken = await idamHelper.accessToken(config.systemUpdate);
+    let url = getJudgeUnlessOrderRevisitTaskHandlerUrl(state);
     let response_msg =  await restHelper.retriedRequest(url, {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,

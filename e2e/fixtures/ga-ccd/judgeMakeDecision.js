@@ -91,6 +91,23 @@ module.exports = {
       }
     };
   },
+  judgeApprovesUnlessOrderAppl: (current_date) => {
+    return {
+      judicialDecision : {
+        decision: 'MAKE_AN_ORDER'
+      },
+      judicialDecisionMakeOrder: {
+        makeAnOrder: 'APPROVE_OR_EDIT',
+        orderText: 'sample text',
+        judgeApproveEditOptionDoc: 'DEFENCE_FORM',
+        displayjudgeApproveEditOptionDateForUnlessOrder: 'Yes',
+        judgeApproveEditOptionDateForUnlessOrder: current_date,
+        reasonForDecisionText: 'sample text',
+        isOrderProcessedByUnlessScheduler: 'No',
+        judicialByCourtsInitiative: 'OPTION_1'
+      }
+    };
+  },
 
   listingForHearing: () => {
     return {
