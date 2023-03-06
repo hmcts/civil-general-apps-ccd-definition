@@ -46,5 +46,11 @@
     "ListElementCode": "HEARING_FORM",
     "ListElement": "Hearing Form",
     "DisplayOrder": 8
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "HEARING_NOTICE",
+    "ListElement": "Hearing Notice",
+    "DisplayOrder": 9
   }
 ]
