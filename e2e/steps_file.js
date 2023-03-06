@@ -694,7 +694,6 @@ module.exports = function () {
         console.log(`Navigating to case: ${caseNumber}`);
         await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
       }, SIGNED_IN_SELECTOR);
-      await this.waitForSelector('.ccd-dropdown');
     },
 
     async navigateToHearingNoticePage(caseId) {

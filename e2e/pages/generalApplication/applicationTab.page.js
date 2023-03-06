@@ -9,8 +9,8 @@ module.exports = {
     } else {
       await I.wait(3);
     }
-    await I.waitInUrl('#Applications', 5);
-    await I.waitForElement('td[id*="GaAppDetails"]', 5);
+    await I.waitInUrl('#Applications', 10);
+    await I.waitForText('Application type', 10, locate('td[id*="GaAppDetails"] th span').first());
     await I.seeNumberOfElements('.collection-field-table .complex-panel-title', appCount);
     I.see('Application type');
     I.see('Application ID');
