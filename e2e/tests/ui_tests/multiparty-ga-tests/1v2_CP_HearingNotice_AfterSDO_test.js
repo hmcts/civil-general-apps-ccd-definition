@@ -9,7 +9,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const claimAmountJudge = '11000';
 let civilCaseReference, gaCaseReference;
 
-Feature('After SDO 1v2 - GA CP - Hearing Notice document @ui-nightly @mmm');
+Feature('After SDO 1v2 - GA CP - Hearing Notice document @ui-nightly');
 
 Scenario('Claimant Hearing notice - Without notice journey @non-prod-e2e', async ({api_sdo, api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,

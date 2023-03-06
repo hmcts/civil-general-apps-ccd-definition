@@ -10,7 +10,7 @@ const claimantType = 'Company';
 const awaitingPaymentStatus = 'Awaiting Application Payment';
 let civilCaseReference, gaCaseReference;
 
-Feature('GA CCD 2v1 - General Application Journey @multiparty-e2e-tests @ui-nightly @sss');
+Feature('GA CCD 2v1 - General Application Journey @multiparty-e2e-tests @ui-nightly');
 
 Scenario('GA for 2v1 - Concurrent written representations - without notice to with notice journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
