@@ -1,6 +1,6 @@
 civil-general-applications:
   java:
-    image: 'hmctspublic.azurecr.io/civil/general-applications:pr-922'
+    image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
     imagePullPolicy: Always
     keyVaults:
       civil:
@@ -75,7 +75,7 @@ civil-service:
   java:
     applicationPort: 4000
     releaseNameOverride: ${SERVICE_NAME}-civil-service
-    image: 'hmctspublic.azurecr.io/civil/service:pr-2357'
+    image: 'hmctspublic.azurecr.io/civil/service:latest'
     imagePullPolicy: Always
     devcpuRequests: 500m
     keyVaults:
