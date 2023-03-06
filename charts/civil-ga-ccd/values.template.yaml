@@ -74,7 +74,7 @@ civil-service:
   enabled: true
   java:
     applicationPort: 4000
-    releaseNameOverride: ${SERVICE_NAME}
+    releaseNameOverride: ${SERVICE_NAME}-civil-service
     image: 'hmctspublic.azurecr.io/civil/service:latest'
     imagePullPolicy: Always
     devcpuRequests: 500m
@@ -151,7 +151,7 @@ xui-webapp:
   enabled: true
   nodejs:
     imagePullPolicy: Always
-    releaseNameOverride: ${SERVICE_NAME}
+    releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: 'hmctspublic.azurecr.io/xui/webapp:pr-2780'
     memoryRequests: 2Gi
     cpuRequests: 1000m
@@ -262,7 +262,7 @@ camunda-bpm:
   enabled: true
   java:
     disableKeyVaults: true
-    releaseNameOverride: ${SERVICE_NAME}
+    releaseNameOverride: ${SERVICE_NAME}-camunda
     environment:
       CAMUNDA_API_AUTH_ENABLED: false
       CAMUNDA_DB_HOST: ${SERVICE_NAME}-postgresql

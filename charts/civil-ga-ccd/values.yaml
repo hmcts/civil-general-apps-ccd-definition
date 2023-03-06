@@ -10,3 +10,5 @@ camunda-bpm:
   enabled: false
 civil-service:
   enabled: false
+pdb:
+  enabled: false
