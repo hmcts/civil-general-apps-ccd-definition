@@ -28,7 +28,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
     'disabledAccess');
   console.log('General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', config.applicantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 1), 1);
   await I.see(awaitingPaymentStatus);
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
@@ -79,7 +79,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
       'signLanguageInterpreter');
     console.log('General Application created: ' + civilCaseReference);
     gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser);
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', config.applicantSolicitorUser);
     await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 5), 1);
     await I.see(awaitingPaymentStatus);
     await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,

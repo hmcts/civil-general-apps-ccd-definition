@@ -5,7 +5,7 @@ module.exports = {
 
   async verifyApplicationDetails(applicationTypes, appCount) {
     if (['preview'].includes(config.runningEnv)) {
-      await I.wait(8);
+      await I.wait(5);
     } else {
       await I.wait(3);
     }
