@@ -89,7 +89,7 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
     await I.login(config.judgeLocalUser);
   }
   await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', gaCaseReference, 'Directions_order');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'ORDER_MADE', config.applicantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_DIRECTIONS_ORDER_DOCS', config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Judges Directions', 'no');
   await I.verifyApplicationDocument('Directions order');
