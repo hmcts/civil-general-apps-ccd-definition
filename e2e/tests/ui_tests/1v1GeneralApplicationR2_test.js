@@ -60,7 +60,7 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async
     'AWAITING_APPLICATION_PAYMENT', config.applicantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(9, 10), 1);
   await I.see(awaitingPaymentStatus);
-  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
+  await I.payAndVerifyGAStatusWithNotice(civilCaseReference, gaCaseReference,
     'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser, respondentStatus);
 
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);

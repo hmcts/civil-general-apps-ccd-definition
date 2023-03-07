@@ -5,29 +5,32 @@ module.exports = {
   fields: {
     checkAnswerForm: {
       classname: '.check-your-answers',
-      changeLink: '.case-field-change a',
-      uploadEvidenceLink: '.collection-field-table a'
     }
   },
 
-  async verifyCheckAnswerForm(caseId, consentCheck) {
+  async verifyCheckAnswerForm(caseId, consentCheck, vary) {
     I.seeInCurrentUrl('/INITIATE_GENERAL_APPLICATION/submit');
-    await I.see('Check your answers');
+    I.see('Check your answers');
     I.seeInCurrentUrl(caseId);
     I.seeNumberOfVisibleElements('.button', 2);
     if ('yes' === consentCheck) {
-      I.seeNumberOfVisibleElements(this.fields.checkAnswerForm.changeLink, 9);
+      I.seeNumberOfVisibleElements('.case-field-change a', 8);
     } else if ('no' === consentCheck) {
-      I.seeNumberOfVisibleElements(this.fields.checkAnswerForm.changeLink, 10);
+      if ('yes' === vary) {
+        I.seeNumberOfVisibleElements('.case-field-change a', 9);
+      } else {
+        I.seeNumberOfVisibleElements('.case-field-change a', 10);
+      }
+      I.seeTextEquals('examplePDF.pdf', '.collection-field-table a');
     } else {
-      I.seeNumberOfVisibleElements(this.fields.checkAnswerForm.changeLink, 11);
+      I.seeNumberOfVisibleElements('.case-field-change a', 11);
+      I.seeTextEquals('examplePDF.pdf', '.collection-field-table a');
     }
-    I.seeTextEquals('examplePDF.pdf', this.fields.checkAnswerForm.uploadEvidenceLink);
   },
 
   async clickOnChangeLink(consentCheck) {
     if ('yes' === consentCheck) {
-      I.click({css: '.check-your-answers tr:nth-child(8) a'});
+      I.click({css: '.check-your-answers tr:nth-child(7) a'});
     } else {
       I.click({css: '.check-your-answers tr:nth-child(9) a'});
     }
