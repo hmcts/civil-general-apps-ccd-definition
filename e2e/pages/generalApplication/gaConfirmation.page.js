@@ -37,10 +37,9 @@ module.exports = {
   },
 
   async clickPayFeeLink() {
-    await I.retryUntilExists(async () => {
-      await I.forceClick(this.fields.applicationFeeLink);
-      await I.switchToNextTab();
-    }, 'table.Applications');
+    await I.forceClick(this.fields.applicationFeeLink);
+    await I.wait(5);
+    await I.switchToNextTab();
   }
 };
 

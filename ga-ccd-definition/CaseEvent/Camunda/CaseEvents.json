@@ -10,18 +10,5 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "PBA_PAYMENT_FAILED",
-    "Name": "Payment failed",
-    "Description": "Payment failed",
-    "PreConditionState(s)": "PENDING_APPLICATION_ISSUED",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit"
   }
 ]
