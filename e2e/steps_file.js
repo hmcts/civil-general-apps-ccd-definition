@@ -169,8 +169,8 @@ const selectNotice = (notice) => [
   () => withOutNoticePage.selectNotice(notice),
 ];
 
-const enterApplicationDetails = (consentCheck) => [
-  () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH, consentCheck),
+const enterApplicationDetails = () => [
+  () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH),
 ];
 
 const fillHearingDetails = (hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, vulnerabilityQuestions, supportRequirement) => [
@@ -994,7 +994,7 @@ module.exports = function () {
         ...conditionalSteps(consentCheck === 'no', [
           ...selectNotice(notice),
         ]),
-        ...enterApplicationDetails(consentCheck),
+        ...enterApplicationDetails(),
         ...fillHearingDetails(hearingScheduled, 'no', 'no', 'no', 'yes', 'disabledAccess'),
         ...verifyApplicationFee(consentCheck, notice),
         ...verifyCheckAnswerForm(caseId, 'hearingScheduled'),
@@ -1013,7 +1013,7 @@ module.exports = function () {
         ...conditionalSteps(consentCheck === 'no', [
           ...selectNotice(notice),
         ]),
-        ...enterApplicationDetails(consentCheck),
+        ...enterApplicationDetails(),
         ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, 'yes', supportRequirement),
         ...verifyApplicationFee(consentCheck, notice),
         ...verifyCheckAnswerForm(caseId, consentCheck),
