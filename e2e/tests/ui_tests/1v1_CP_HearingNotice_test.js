@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-const events = require('../../fixtures/ga-ccd/events.js');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 
 const listForHearingStatus = 'Listed for a Hearing';

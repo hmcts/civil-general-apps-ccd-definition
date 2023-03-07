@@ -37,8 +37,7 @@ module.exports = {
   HEARING_SCHEDULED_GA: {
     description: 'Listing officer notify hearing',
     id: 'HEARING_SCHEDULED_GA',
-    name: 'Hearing Scheduled',
-    state: 'HEARING_SCHEDULED'
+    name: 'Hearing Scheduled'
   },
   REFER_TO_JUDGE: {
     description: 'Caseworker assigns the application to Judge',
