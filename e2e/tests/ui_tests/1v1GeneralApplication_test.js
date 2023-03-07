@@ -61,7 +61,7 @@ Scenario.only('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) 
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
-Scenario.skip('GA for 1v1 - Direction order journey', async ({I, api}) => {
+Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -84,7 +84,7 @@ Scenario.skip('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await waitForGAFinishedBusinessProcess(civilCaseReference, config.applicantSolicitorUser);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
     'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.applicantSolicitorUser);
-  await I.navigateToMainCase(civilCaseReference);
+  await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(judgeDecisionStatus);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
@@ -93,7 +93,7 @@ Scenario.skip('GA for 1v1 - Direction order journey', async ({I, api}) => {
     await I.login(config.judgeLocalUser);
   }
   await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', gaCaseReference, 'Directions_order');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'ORDER_MADE', config.applicantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_DIRECTIONS_ORDER_DOCS', config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Judges Directions', 'no');
   await I.verifyApplicationDocument('Directions order');

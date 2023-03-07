@@ -93,7 +93,7 @@ module.exports = {
           } else if (businessProcess && businessProcess.status !== 'FINISHED' && response.ccdState !== ccdState) {
             throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
               + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`);
-          } else if (businessProcess && businessProcess.status == 'FINISHED' && response.ccdState !== ccdState) {
+          } else if (businessProcess && businessProcess.status === 'FINISHED' && response.ccdState !== ccdState) {
             throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
               + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId},`
               +` Present Case state: ${response.ccdState}, Expected State: ${ccdState}`);
