@@ -4,7 +4,7 @@ module.exports = {
 
   fields: {
     pbaNumber: {
-      id: '#generalAppPBADetails_applicantsPbaAccounts',
+      id: '#generalAppPBADetails_generalAppPBADetails',
     },
   },
 

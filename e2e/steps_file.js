@@ -195,8 +195,8 @@ const verifyApplicationFee = (consentCheck, notice) => [
   () => gaPBANumberPage.verifyApplicationFee(consentCheck, notice),
 ];
 
-const verifyCheckAnswerForm = (caseId, consentCheck) => [
-  () => answersPage.verifyCheckAnswerForm(caseId, consentCheck),
+const verifyCheckAnswerForm = (caseId, consentCheck, vary) => [
+  () => answersPage.verifyCheckAnswerForm(caseId, consentCheck, vary),
 ];
 
 const clickOnHearingDetailsChangeLink = (consentCheck) => [
@@ -1005,13 +1005,12 @@ module.exports = function () {
         () => applicationTypePage.chooseAppType(getAppTypes().slice(6, 11)),
         ...selectApplicationType(eventName, appTypes),
         () => hearingDatePage.selectHearingScheduled(hearingScheduled),
-        () => n245FormPage.uploadN245Form(TEST_FILE_PATH),
         ...selectConsentCheck(consentCheck),
         ...isUrgentApplication(isUrgent),
         ...enterApplicationDetails(consentCheck),
         ...fillHearingDetails(hearingScheduled, 'no', 'no', 'no', 'yes', 'disabledAccess'),
         ...verifyApplicationFee(consentCheck, notice),
-        ...verifyCheckAnswerForm(caseId, 'no'),
+        ...verifyCheckAnswerForm(caseId, 'no', 'yes'),
         ...submitApplication('You have made an application'),
         ...verifyGAConfirmationPage(caseId, consentCheck, notice),
       ]);
@@ -1030,7 +1029,7 @@ module.exports = function () {
         ...enterApplicationDetails(consentCheck),
         ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, 'yes', supportRequirement),
         ...verifyApplicationFee(consentCheck, notice),
-        ...verifyCheckAnswerForm(caseId, consentCheck),
+        ...verifyCheckAnswerForm(caseId, consentCheck, 'no'),
         ...clickOnHearingDetailsChangeLink(consentCheck),
         ...updateHearingDetails(),
         ...submitApplication('You have made an application'),

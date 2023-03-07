@@ -8,7 +8,7 @@ module.exports = {
     }
   },
 
-  async verifyCheckAnswerForm(caseId, consentCheck) {
+  async verifyCheckAnswerForm(caseId, consentCheck, vary) {
     I.seeInCurrentUrl('/INITIATE_GENERAL_APPLICATION/submit');
     I.see('Check your answers');
     I.seeInCurrentUrl(caseId);
@@ -16,7 +16,11 @@ module.exports = {
     if ('yes' === consentCheck) {
       I.seeNumberOfVisibleElements('.case-field-change a', 8);
     } else if ('no' === consentCheck) {
-      I.seeNumberOfVisibleElements('.case-field-change a', 10);
+      if ('yes' === vary) {
+        I.seeNumberOfVisibleElements('.case-field-change a', 9);
+      } else {
+        I.seeNumberOfVisibleElements('.case-field-change a', 10);
+      }
       I.seeTextEquals('examplePDF.pdf', '.collection-field-table a');
     } else {
       I.seeNumberOfVisibleElements('.case-field-change a', 11);

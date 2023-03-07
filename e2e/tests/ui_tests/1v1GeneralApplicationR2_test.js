@@ -27,9 +27,7 @@ Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @n
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(10, 11), 1);
   await I.see(awaitingPaymentStatus);
   await I.navigateToCaseDetails(gaCaseReference);
-  await I.verifyN245FormElements();
   await I.clickOnTab('Application Documents');
-  await I.verifyN245FormElements();
   await I.payAndVerifyGAStatusWithNotice(civilCaseReference, gaCaseReference,
     'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser, judgeDecisionStatus);
 
