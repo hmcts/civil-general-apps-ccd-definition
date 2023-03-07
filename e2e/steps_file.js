@@ -1,6 +1,3 @@
-// in this file you can append custom step methods to 'I' object
-const {I} = inject();
-
 const output = require('codeceptjs').output;
 const config = require('./config.js');
 const parties = require('./helpers/party.js');
@@ -172,8 +169,8 @@ const selectNotice = (notice) => [
   () => withOutNoticePage.selectNotice(notice),
 ];
 
-const enterApplicationDetails = (consentCheck) => [
-  () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH, consentCheck),
+const enterApplicationDetails = () => [
+  () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH),
 ];
 
 const fillHearingDetails = (hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, vulnerabilityQuestions, supportRequirement) => [
@@ -697,7 +694,6 @@ module.exports = function () {
         console.log(`Navigating to case: ${caseNumber}`);
         await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
       }, SIGNED_IN_SELECTOR);
-      await this.waitForSelector('.ccd-dropdown');
     },
 
     async navigateToHearingNoticePage(caseId) {
@@ -826,10 +822,10 @@ module.exports = function () {
       console.log(`GA Payment using API: ${gaCaseReference}`);
       await apiRequest.paymentApiRequestUpdateServiceCallback(
         genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+      console.log(`Waiting for GA payment to complete: ${gaCaseReference}, expected state: ${ccdState}`);
       await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
         ccdState, user);
-      await I.wait(15);
-      console.log(`Waiting for GA payment to complete: ${gaCaseReference}`);
+      console.log(`GA payment for ID: ${gaCaseReference} done successfully with expected state: ${ccdState}`);
       await caseViewPage.navigateToTab(civilCaseReference, 'Applications');
       await this.see(gaStatus);
     },
@@ -1026,7 +1022,7 @@ module.exports = function () {
         ...conditionalSteps(consentCheck === 'no', [
           ...selectNotice(notice),
         ]),
-        ...enterApplicationDetails(consentCheck),
+        ...enterApplicationDetails(),
         ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, 'yes', supportRequirement),
         ...verifyApplicationFee(consentCheck, notice),
         ...verifyCheckAnswerForm(caseId, consentCheck, 'no'),
