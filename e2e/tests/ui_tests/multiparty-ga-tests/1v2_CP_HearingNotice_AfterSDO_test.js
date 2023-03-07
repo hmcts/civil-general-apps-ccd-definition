@@ -5,7 +5,6 @@ const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/te
 
 const listForHearingStatus = 'Listed for a Hearing';
 const hnStatus = events.HEARING_SCHEDULED_GA.name;
-const hnStateStatus = events.HEARING_SCHEDULED_GA.state;
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const claimAmountJudge = '11000';
 let civilCaseReference, gaCaseReference;
@@ -52,7 +51,7 @@ Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({
   await I.see(listForHearingStatus);
   await I.navigateToHearingNoticePage(gaCaseReference);
   await I.fillHearingNotice(gaCaseReference, 'claimant', 'default', 'IN_PERSON');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, hnStateStatus, config.hearingCenterAdminWithRegionId1);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'HEARING_SCHEDULED', config.hearingCenterAdminWithRegionId1);
   console.log('After SDO Hearing Notice created for: ' + gaCaseReference);
   await I.click('Close and Return to case details');
   await I.verifyApplicationDocument('Hearing Notice');
