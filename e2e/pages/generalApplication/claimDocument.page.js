@@ -9,6 +9,10 @@ module.exports = {
     links: '.collection-field-table ccd-read-document-field a'
   },
 
+  async verifyHearingNoticeDocNotAvailable() {
+    await I.dontSee('Hearing Notice', locate(this.fields.docLabel).last());
+  },
+
   async verifyUploadedDocument(documentType) {
     await I.seeInCurrentUrl('documents');
     if (documentType !== 'After SDO - Hearing Notice') {

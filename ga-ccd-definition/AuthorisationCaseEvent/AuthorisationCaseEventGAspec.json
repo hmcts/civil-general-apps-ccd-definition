@@ -134,36 +134,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "MAKE_PBA_PAYMENT_GASPEC",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "civil-administrator-standard",
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "PBA_PAYMENT_FAILED",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "ADDITIONAL_PAYMENT_SUCCESS_CALLBACK",
     "AccessControl": [
       {

@@ -1,4 +1,3 @@
-// in this file you can append custom step methods to 'I' object
 const output = require('codeceptjs').output;
 const config = require('./config.js');
 const parties = require('./helpers/party.js');
@@ -170,8 +169,8 @@ const selectNotice = (notice) => [
   () => withOutNoticePage.selectNotice(notice),
 ];
 
-const enterApplicationDetails = (consentCheck) => [
-  () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH, consentCheck),
+const enterApplicationDetails = () => [
+  () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH),
 ];
 
 const fillHearingDetails = (hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, vulnerabilityQuestions, supportRequirement) => [
@@ -458,6 +457,11 @@ module.exports = function () {
       await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
     },
 
+    async clickOnElement(element) {
+      let urlBefore = await this.grabCurrentUrl();
+      await this.retryUntilUrlChanges(() => this.click(element), urlBefore);
+    },
+
     async navigateToTab(caseNumber, tabName) {
       await caseViewPage.navigateToTab(caseNumber, tabName);
     },
@@ -690,7 +694,6 @@ module.exports = function () {
         console.log(`Navigating to case: ${caseNumber}`);
         await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
       }, SIGNED_IN_SELECTOR);
-      await this.waitForSelector('.ccd-dropdown');
     },
 
     async navigateToHearingNoticePage(caseId) {
@@ -706,8 +709,18 @@ module.exports = function () {
       await this.tryTo(() => this.click('Hide this', '#cookie-accept-all-success-banner-hide'));
     },
 
+    async clickPayFeeLink() {
+      await confirmationPage.clickPayFeeLink();
+    },
+
     async navigateToApplicationsTab(caseNumber) {
       await caseViewPage.navigateToTab(caseNumber, 'Applications');
+    },
+
+    async navigateToMainCase(civilCaseNumber) {
+      await this.navigateToCaseDetails(civilCaseNumber);
+      await caseViewPage.clickOnTab('Applications');
+      await caseViewPage.navigateToTab(civilCaseNumber, 'Applications');
     },
 
     async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber) {
@@ -809,21 +822,28 @@ module.exports = function () {
       console.log(`GA Payment using API: ${gaCaseReference}`);
       await apiRequest.paymentApiRequestUpdateServiceCallback(
         genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+      console.log(`Waiting for GA payment to complete: ${gaCaseReference}, expected state: ${ccdState}`);
       await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
         ccdState, user);
+      console.log(`GA payment for ID: ${gaCaseReference} done successfully with expected state: ${ccdState}`);
       await caseViewPage.navigateToTab(civilCaseReference, 'Applications');
       await this.see(gaStatus);
     },
 
-    async payForGA(childCaseNumber) {
+    async payForGA() {
        await caseViewPage.clickOnTab('Service Request');
-       await serviceRequestPage.payGAAmount(childCaseNumber);
-       await serviceRequestPage.verifyPaymentDetails(childCaseNumber);
+       await serviceRequestPage.payGAAmount();
+       await serviceRequestPage.verifyPaymentDetails();
     },
 
     async verifyClaimDocument(docType) {
       await caseViewPage.clickOnTab('Claim documents');
       await claimDocumentPage.verifyUploadedDocument(docType);
+    },
+
+    async verifyHearingNoticeDocNotAvailable() {
+      await caseViewPage.clickOnTab('Claim documents');
+      await claimDocumentPage.verifyHearingNoticeDocNotAvailable();
     },
 
     async respondToJudgesDirections(caseNumber) {
@@ -930,12 +950,16 @@ module.exports = function () {
     },
 
     async clickAndVerifyTab(caseNumber, tabName, appType, appCount) {
-      await caseViewPage.navigateToTab(caseNumber, tabName);
-      await applicationTab.verifyApplicationDetails(appType, appCount);
+      await this.triggerStepsWithScreenshot([
+        () => confirmationPage.clickPayFeeLink(),
+        () => applicationTab.verifyApplicationDetails(appType, appCount),
+      ]);
     },
 
     async clickOnTab(tabName) {
-       await caseViewPage.clickOnTab(tabName);
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.clickOnTab(tabName),
+      ]);
     },
 
     async closeAndReturnToCaseDetails() {
@@ -969,7 +993,7 @@ module.exports = function () {
         ...conditionalSteps(consentCheck === 'no', [
           ...selectNotice(notice),
         ]),
-        ...enterApplicationDetails(consentCheck),
+        ...enterApplicationDetails(),
         ...fillHearingDetails(hearingScheduled, 'no', 'no', 'no', 'yes', 'disabledAccess'),
         ...verifyApplicationFee(consentCheck, notice),
         ...verifyCheckAnswerForm(caseId, 'hearingScheduled'),
@@ -988,7 +1012,7 @@ module.exports = function () {
         ...conditionalSteps(consentCheck === 'no', [
           ...selectNotice(notice),
         ]),
-        ...enterApplicationDetails(consentCheck),
+        ...enterApplicationDetails(),
         ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, 'yes', supportRequirement),
         ...verifyApplicationFee(consentCheck, notice),
         ...verifyCheckAnswerForm(caseId, consentCheck),
@@ -997,6 +1021,7 @@ module.exports = function () {
         ...submitApplication('You have made an application'),
         ...verifyGAConfirmationPage(caseId, consentCheck, notice),
       ]);
+      await this.takeScreenshot();
     }
   });
 };
