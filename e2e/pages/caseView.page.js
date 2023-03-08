@@ -56,6 +56,11 @@ module.exports = {
     }
   },
 
+  async verifySummaryPage() {
+    await I.seeInCurrentUrl('#Summary');
+    await I.see('Summary');
+  },
+
   async clickOnTab(tabName) {
     await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
     await I.refreshPage();
