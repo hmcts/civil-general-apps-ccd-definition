@@ -1,3 +1,4 @@
+const config = require('../../config');
 const {I} = inject();
 
 module.exports = {
@@ -24,9 +25,14 @@ module.exports = {
   },
 
   async payGAAmount() {
+    if (['preview'].includes(config.runningEnv)) {
+      await I.wait(8);
+    } else {
+      await I.wait(3);
+    }
     await I.waitInUrl('#Service', 5);
-    await I.waitForVisible(this.fields.serviceRequestTable, 10);
-    await I.see('Not paid');
+    await I.waitForText('Not paid', 10, locate('td.govuk-table__cell').first());
+    await I.seeTextEquals('Not paid', locate('td.govuk-table__cell').first());
     I.click('Pay now');
     I.click({css: 'input#pbaAccount'});
     I.waitForElement(this.fields.pbaNumber.id);

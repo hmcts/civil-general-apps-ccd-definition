@@ -205,27 +205,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "applicantsPbaAccounts",
-    "UserRole": "civil-administrator-standard",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "pbaReferenceLabel",
-    "UserRole": "civil-administrator-standard",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "pbaReference",
-    "UserRole": "civil-administrator-standard",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppPBADetails",
     "ListElementCode": "fee",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
@@ -1079,27 +1058,6 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppPBADetails",
     "ListElementCode": "generalAppFeeToPayLabel275",
-    "UserRole": "civil-administrator-basic",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "applicantsPbaAccounts",
-    "UserRole": "civil-administrator-basic",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "pbaReferenceLabel",
-    "UserRole": "civil-administrator-basic",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "pbaReference",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },
