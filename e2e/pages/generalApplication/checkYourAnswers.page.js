@@ -14,7 +14,7 @@ module.exports = {
     I.seeInCurrentUrl(caseId);
     I.seeNumberOfVisibleElements('.button', 2);
     if ('yes' === consentCheck) {
-      I.seeNumberOfVisibleElements('.case-field-change a', 8);
+      I.seeNumberOfVisibleElements('.case-field-change a', 9);
     } else if ('no' === consentCheck) {
       if ('yes' === vary) {
         I.seeNumberOfVisibleElements('.case-field-change a', 9);
