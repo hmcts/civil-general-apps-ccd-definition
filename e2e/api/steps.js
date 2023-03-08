@@ -950,26 +950,18 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_CLOSED');
   },
 
-  judgeRevisitStayScheduler: async (gaCaseId,state) => {
-    const response_msg = await apiRequest.gaOrderMadeSchedulerTaskHandler(state);
+  judgeRevisitStayScheduler: async (gaCaseId,state,genAppType) => {
+    const response_msg = await apiRequest.gaOrderMadeSchedulerTaskHandler(state, genAppType);
     assert.equal(response_msg.status, 200);
     // retrive the dcase data for the ga reference  and assert that the flag is true
     const updatedResponse = await apiRequest.fetchGaCaseData(gaCaseId);
     const updatedGaCaseData = await updatedResponse.json();
-    if(state === 'ORDER_MADE') {
+    if(state === 'ORDER_MADE' && genAppType === 'STAY_THE_CLAIM') {
       let isOrderProcessedByScheduler = updatedGaCaseData.judicialDecisionMakeOrder.isOrderProcessedByStayScheduler;
       assert.equal(isOrderProcessedByScheduler,'Yes');
     }
-    console.log('*** Judge Revisit Scheduler ran successfully: ');
-  },
 
-  judgeRevisitUnlessScheduler: async (gaCaseId,state) => {
-    const response_msg = await apiRequest.gaUnlessOrderSchedulerTaskHandler(state);
-    assert.equal(response_msg.status, 200);
-    // retrive the case data for the ga reference  and assert that the flag is true
-    const updatedResponse = await apiRequest.fetchGaCaseData(gaCaseId);
-    const updatedGaCaseData = await updatedResponse.json();
-    if(state === 'ORDER_MADE') {
+    if(state === 'ORDER_MADE' && genAppType === 'UNLESS_ORDER') {
       let isOrderProcessedByScheduler = updatedGaCaseData.judicialDecisionMakeOrder.isOrderProcessedByUnlessScheduler;
       assert.equal(isOrderProcessedByScheduler,'Yes');
     }
