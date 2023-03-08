@@ -444,7 +444,21 @@ module.exports = {
     await apiRequest.startEvent(eventName, parentCaseId);
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
-    let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+    let gaCaseReference;
+
+    if(user.email === config.applicantSolicitorUser.email){
+      gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+    }
+    else if(user.email === config.defendantSolicitorUser.email) {
+      gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+    }
+    else if(user.email === config.secondDefendantSolicitorUser.email) {
+      gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
+    }
+    else{
+      gaCaseReference = updatedCivilCaseData.gaDetailsMasterCollection[0].value.caseLink.CaseReference;
+    }
+
     console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
     await addUserCaseMapping(gaCaseReference, user);
     return gaCaseReference;
