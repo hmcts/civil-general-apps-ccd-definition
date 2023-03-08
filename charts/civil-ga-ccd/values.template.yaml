@@ -77,6 +77,7 @@ civil-service:
     releaseNameOverride: ${SERVICE_NAME}-civil-service
     image: 'hmctspublic.azurecr.io/civil/service:latest'
     imagePullPolicy: Always
+    devcpuRequests: 500m
     keyVaults:
       civil:
         resourceGroup: civil
@@ -137,6 +138,7 @@ civil-service:
       FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
       POLLING_EVENT_EMITTER_ENABLED: false
       DOCUMENT_MANAGEMENT_SECURED: true
+      RD_COMMONDATA_API_URL: http://rd-commondata-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
       RELEASE_REVISION: "{{ .Release.Revision }}"
 
 idam-pr:
@@ -152,13 +154,13 @@ xui-webapp:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: 'hmctspublic.azurecr.io/xui/webapp:pr-2780'
-    memoryRequests: 512Mi
+    memoryRequests: 2Gi
     cpuRequests: 1000m
-    memoryLimits: 1024Mi
+    memoryLimits: 4Gi
     cpuLimits: 2500m
-    devmemoryRequests: 512Mi
+    devmemoryRequests: 4Gi
     devcpuRequests: 1000m
-    devmemoryLimits: 1024Mi
+    devmemoryLimits: 4Gi
     devcpuLimits: 2500m
     autoscaling: # Default is false
       enabled: true
@@ -221,9 +223,9 @@ ccd:
     java:
       imagePullPolicy: Always
       devmemoryRequests: 2048Mi
-      devcpuRequests: 2000m
+      devcpuRequests: 1000m
       devmemoryLimits: 4096Mi
-      devcpuLimits: 4000m
+      devcpuLimits: 2000m
       autoscaling:
         enabled: false
       environment:

@@ -48,7 +48,7 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin review scheduled Appli
   await I.login(config.judgeUserWithRegionId4);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
   await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.judgeUserWithRegionId4);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'LISTING_FOR_A_HEARING', config.judgeUserWithRegionId4);
   await wa.verifyNoActiveTask(gaCaseReference);
 
    console.log('Region 4 NBC admin review scheduled Application Hearing');
@@ -88,7 +88,7 @@ Scenario.skip('Before SDO GA - LA Make decision - NBC admin review', async ({I, 
   await I.login(config.tribunalCaseworkerWithRegionId4);
   await wa.goToTask(gaCaseReference, config.waTaskIds.legalAdvisorDecideOnApplication);
   await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.tribunalCaseworkerWithRegionId4);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'LISTING_FOR_A_HEARING', config.tribunalCaseworkerWithRegionId4);
   await wa.verifyNoActiveTask(gaCaseReference);
 
   console.log('Region 4 NBC admin review scheduled Application Hearing');
@@ -116,7 +116,7 @@ Scenario.skip('After SDO GA - Judge Make decision - HC admin review', async ({I,
   await I.login(config.judgeUserWithRegionId1);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
   await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'MAKE_DECISION', config.judgeUserWithRegionId1);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'LISTING_FOR_A_HEARING', config.judgeUserWithRegionId1);
   await wa.verifyNoActiveTask(gaCaseReference);
 
   console.log('Region 4 HCA admin review scheduled Application Hearing');

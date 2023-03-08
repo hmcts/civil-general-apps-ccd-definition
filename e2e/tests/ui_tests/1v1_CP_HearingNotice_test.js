@@ -1,18 +1,16 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-const events = require('../../fixtures/ga-ccd/events.js');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 
 const listForHearingStatus = 'Listed for a Hearing';
 const hnStatus = 'Hearing Scheduled';
 const mpScenario = 'ONE_V_ONE';
-const hnStateStatus = events.HEARING_SCHEDULED_GA.state;
 let civilCaseReference, gaCaseReference;
 
 Feature('Before SDO 1v1 - GA CP - Hearing Notice document @ui-nightly');
 
-Scenario('Claimant and Defendant Hearing notice journey', async ({I, api}) => {
- civilCaseReference = await api.createUnspecifiedClaim(
+Scenario('Claimant and Defendant Hearing notice - With notice journey', async ({I, api}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -42,7 +40,7 @@ Scenario('Claimant and Defendant Hearing notice journey', async ({I, api}) => {
   await I.see(listForHearingStatus);
   await I.navigateToHearingNoticePage(gaCaseReference);
   await I.fillHearingNotice(gaCaseReference, 'claimAndDef', 'basildon', 'VIDEO');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'HEARING_SCHEDULED_GA', config.hearingCenterAdminRegion4);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'HEARING_SCHEDULED', config.nbcAdminWithRegionId4);
   console.log('Hearing Notice created for: ' + gaCaseReference);
   await I.click('Close and Return to case details');
   await I.verifyApplicationDocument('Hearing Notice');
@@ -50,8 +48,28 @@ Scenario('Claimant and Defendant Hearing notice journey', async ({I, api}) => {
   await I.see(hnStatus);
   await I.verifyClaimDocument('Hearing Notice');
 
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
-  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
+  await I.login(config.applicantSolicitorUser);
+  await I.navigateToCaseDetails(civilCaseReference);
+  await I.verifyClaimDocument('Hearing Notice');
+  await I.navigateToCaseDetails(gaCaseReference);
+  await I.verifyApplicationDocument('Hearing Notice');
+
+  await I.login(config.defendantSolicitorUser);
+  await I.navigateToCaseDetails(civilCaseReference);
+  await I.verifyClaimDocument('Hearing Notice');
+  await I.navigateToCaseDetails(gaCaseReference);
+  await I.verifyApplicationDocument('Hearing Notice');
+
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.assertGaAppCollectionVisiblityToUser(config.nbcAdminWithRegionId4, civilCaseReference, gaCaseReference, 'Y');
+    await api.assertGaAppCollectionVisiblityToUser(config.judgeUser, civilCaseReference, gaCaseReference, 'Y');
+  } else {
+    await api.assertGaAppCollectionVisiblityToUser(config.nbcAdminWithRegionId4, civilCaseReference, gaCaseReference, 'Y');
+    await api.assertGaAppCollectionVisiblityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, 'Y');
+  }
+
+  await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
+  await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
 AfterSuite(async ({api}) => {

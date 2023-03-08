@@ -34,6 +34,12 @@ module.exports = {
   async closeAndReturnToCaseDetails() {
     await I.click('Close and Return to case details');
     await I.see('Make an application');
+  },
+
+  async clickPayFeeLink() {
+    await I.forceClick(this.fields.applicationFeeLink);
+    await I.wait(5);
+    await I.switchToNextTab();
   }
 };
 
