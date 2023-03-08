@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
-const genAppType = 'UNLESS_ORDER'
+const genAppType = 'UNLESS_ORDER';
 
 let civilCaseReference, gaCaseReference;
 

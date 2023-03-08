@@ -1,6 +1,6 @@
 const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
-const genAppType = 'STAY_THE_CLAIM'
+const genAppType = 'STAY_THE_CLAIM';
 
 let civilCaseReference, gaCaseReference, expectedReviewApplicationTask, expectedJudgeDecideOnApplicationBeforeSDOTask,
   expectedLADecideOnApplicationBeforeSDOTask, expectedReviewResivistedForWrittenRep,
