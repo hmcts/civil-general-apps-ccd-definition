@@ -30,7 +30,7 @@ module.exports = {
 
   async clickOnChangeLink(consentCheck) {
     if ('yes' === consentCheck) {
-      I.click({css: '.check-your-answers tr:nth-child(7) a'});
+      I.click({css: '.check-your-answers tr:nth-child(8) a'});
     } else {
       I.click({css: '.check-your-answers tr:nth-child(9) a'});
     }
