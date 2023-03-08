@@ -38,7 +38,7 @@ const data = {
     '10800','FEE0443'),
   INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
   INITIATE_GENERAL_APPLICATION_STAY_CLAIM: genAppData.gaTypeWithStayClaim(),
-  INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT: (iwWithNotice, generalAppN245FormUpload) => genAppData.createGAData(iwWithNotice,null,
+  INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT: (isWithNotice, generalAppN245FormUpload) => genAppData.createGAData(isWithNotice,null,
     '27500','FEE0442', generalAppN245FormUpload),
   INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
   RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
