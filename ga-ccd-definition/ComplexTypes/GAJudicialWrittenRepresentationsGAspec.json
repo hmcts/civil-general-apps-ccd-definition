@@ -13,6 +13,7 @@
     "ElementLabel": "The respondent may upload any written representations by 4pm on",
     "FieldType": "Date",
     "SecurityClassification": "Public",
+    "DisplayContextParameter": "#DATETIMEDISPLAY(d LLLL yyyy)",
     "FieldShowCondition": "makeAnOrderForWrittenRepresentations=\"SEQUENTIAL_REPRESENTATIONS\""
   },
   {
@@ -21,6 +22,7 @@
     "ElementLabel": "The applicant may upload any written representations by 4pm on",
     "FieldType": "Date",
     "SecurityClassification": "Public",
+    "DisplayContextParameter": "#DATETIMEDISPLAY(d LLLL yyyy)",
     "FieldShowCondition": "makeAnOrderForWrittenRepresentations=\"SEQUENTIAL_REPRESENTATIONS\""
   },
   {
@@ -29,6 +31,7 @@
     "ElementLabel": "Any written representations may be uploaded by 4pm on",
     "FieldType": "Date",
     "SecurityClassification": "Public",
+    "DisplayContextParameter": "#DATETIMEDISPLAY(d LLLL yyyy)",
     "FieldShowCondition": "makeAnOrderForWrittenRepresentations = \"CONCURRENT_REPRESENTATIONS\""
   }
 ]
