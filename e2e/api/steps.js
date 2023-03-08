@@ -950,7 +950,7 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_CLOSED');
   },
 
-  judgeRevisitStayScheduler: async (gaCaseId,state,genAppType) => {
+  judgeRevisitScheduler: async (gaCaseId,state,genAppType) => {
     const response_msg = await apiRequest.gaOrderMadeSchedulerTaskHandler(state, genAppType);
     assert.equal(response_msg.status, 200);
     // retrive the dcase data for the ga reference  and assert that the flag is true

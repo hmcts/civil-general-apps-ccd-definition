@@ -58,7 +58,7 @@ Scenario('Before SDO GA - Directions Order Additional Response time Expired', as
   console.log('*** End Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Triggering Judge Revisit Directions Order Scheduler ***');
-  await api.judgeRevisitStayScheduler(gaCaseReference, 'AWAITING_DIRECTIONS_ORDER_DOCS', genAppType);
+  await api.judgeRevisitScheduler(gaCaseReference, 'AWAITING_DIRECTIONS_ORDER_DOCS', genAppType);
   console.log('*** End of Judge Revisit Directions Order Scheduler ***');
 
  console.log('*** Validate Task Initiation for Review Revisited Application - Start ***');
@@ -123,7 +123,7 @@ Scenario('Before SDO GA 1v1 spec - Written Representations Additional Response t
   console.log('*** End Judge Make Order GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
 
   console.log('*** Triggering Legal Advisor Revisit Written Representations Scheduler ***');
-  await api.judgeRevisitStayScheduler(gaCaseReference, state, genAppType);
+  await api.judgeRevisitScheduler(gaCaseReference, state, genAppType);
   console.log('*** End of Legal Advisor Revisit Written Representations Scheduler ***');
 
   console.log('*** Validate Task Initiation for Review Revisited Application - Start ***');
@@ -183,7 +183,7 @@ Scenario.skip('1V2 Unspec After SDO - Judge Revist Application- Request More Inf
   console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Triggering Legal Advisor Revisit Directions Order Scheduler ***');
-  // await api.judgeRevisitStayScheduler(gaCaseReference,'state');
+  // await api.judgeRevisitScheduler(gaCaseReference,'state');
   console.log('*** End of Legal Advisor Revisit Directions Order Scheduler ***');
 
   console.log('*** Validate Task Initiation for Judge Revisit Application- Start ***');

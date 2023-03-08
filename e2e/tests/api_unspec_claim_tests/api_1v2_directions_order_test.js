@@ -26,7 +26,7 @@ Scenario('Judge makes decision 1V2 - DIRECTIONS ORDER', async ({api}) => {
   }else {
    state = await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
   }
-  await api.judgeRevisitStayScheduler(gaCaseReference,state,genAppType);
+  await api.judgeRevisitScheduler(gaCaseReference,state,genAppType);
   console.log('*** End Judge Directions Order GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
