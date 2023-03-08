@@ -54,7 +54,7 @@ const confirmDetailsPage = require('./fragments/confirmDetails.page');
 
 const applicationTypePage = require('./pages/generalApplication/applicationType.page');
 const hearingDatePage = require('./pages/generalApplication/hearingDate.page');
-const n245FormPage = require('./pages/generalApplication/n245Form.page');
+//const n245FormPage = require('./pages/generalApplication/n245Form.page');
 const consentCheckPage = require('./pages/generalApplication/consentCheck.page');
 const urgencyCheckPage = require('./pages/generalApplication/urgencyCheck.page');
 const withOutNoticePage = require('./pages/generalApplication/withOutNotice.page');
