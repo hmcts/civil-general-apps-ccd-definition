@@ -49,6 +49,3 @@ Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api_sdo, ap
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'AWAITING_WRITTEN_REPRESENTATIONS');
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
