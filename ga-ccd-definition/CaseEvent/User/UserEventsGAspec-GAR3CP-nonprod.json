@@ -19,5 +19,26 @@
     "RetriesTimeoutURLSubmittedEvent": 0,
     "Publish": "Y",
     "EventEnablingCondition": "isCaseProgressionEnabled = \"Only available through tasks\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "GENERATE_DIRECTIONS_ORDER",
+    "Name": "Make an order",
+    "Description": "Make an order",
+    "DisplayOrder": 12,
+    "PreConditionState(s)": "HEARING_SCHEDULED",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Submit",
+    "CallBackURLAboutToStartEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "Publish": "Y",
+    "_EventEnablingCondition": "isCaseProgressionEnabled = \"Only available through tasks\""
   }
 ]
