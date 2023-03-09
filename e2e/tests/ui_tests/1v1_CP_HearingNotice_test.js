@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
+const states = require('../../fixtures/ga-ccd/state');
 
-const listForHearingStatus = 'Listed for a Hearing';
-const hnStatus = 'Hearing Scheduled';
+const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
+const hnStatus = states.HEARING_SCHEDULED.name;
 const mpScenario = 'ONE_V_ONE';
 let civilCaseReference, gaCaseReference;
 
@@ -40,7 +41,7 @@ Scenario.skip('Claimant and Defendant Hearing notice - With notice journey', asy
   await I.see(listForHearingStatus);
   await I.navigateToHearingNoticePage(gaCaseReference);
   await I.fillHearingNotice(gaCaseReference, 'claimAndDef', 'basildon', 'VIDEO');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'HEARING_SCHEDULED', config.nbcAdminWithRegionId4);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.HEARING_SCHEDULED.id, config.nbcAdminWithRegionId4);
   console.log('Hearing Notice created for: ' + gaCaseReference);
   await I.click('Close and Return to case details');
   await I.verifyApplicationDocument('Hearing Notice');
