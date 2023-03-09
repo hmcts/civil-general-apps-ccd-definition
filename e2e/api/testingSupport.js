@@ -34,6 +34,31 @@ module.exports = {
       throw new Error(`Business process failed for case: ${caseId}, incident message: ${incidentMessage}`);
   },
 
+  waitForFinishedBusinessProcessWithState: async (caseId, user, camundaEvent) => {
+    const authToken = await idamHelper.accessToken(user);
+
+    await retry(() => {
+      return restHelper.request(
+        `${config.url.civilService}/testing-support/case/${caseId}/business-process`,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,
+        }, null, 'GET')
+        .then(async response => await response.json()).then(response => {
+          let businessProcess = response.businessProcess;
+          if (response.incidentMessage) {
+            incidentMessage = response.incidentMessage;
+          } else if (businessProcess && businessProcess.status === 'FINISHED' && businessProcess.camundaEvent !== camundaEvent) {
+            throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
+              + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId},`
+              +`  Expected camundaEvent: ${camundaEvent} , Expected businessProcess: FINISHED`);
+          }
+        });
+    }, MAX_RETRIES, RETRY_TIMEOUT_MS);
+    if (incidentMessage)
+      throw new Error(`Business process failed for case: ${caseId}, incident message: ${incidentMessage}`);
+  },
+
   /**
    * This request call is the extract the GA from Civil Service and
    * waits for General Application Camunda tasks to finish
