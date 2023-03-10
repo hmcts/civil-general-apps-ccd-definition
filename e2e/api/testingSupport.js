@@ -2,7 +2,6 @@ const config = require('../config.js');
 const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
-const {PBAv3} = require('../fixtures/featureKeys');
 
 let incidentMessage;
 
@@ -168,7 +167,8 @@ module.exports = {
     return await response.json();
   },
 
-  checkToggleEnabled: async (toggle) => {
+
+  checkPBAv3ToggleEnabled: async (toggle) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
     return await restHelper.request(
@@ -186,10 +186,6 @@ module.exports = {
           }
         }
       );
-  },
-
-  checkPBAv3ToggleEnabled: async () => {
-    return checkToggleEnabled(PBAv3);
   }
 
 
