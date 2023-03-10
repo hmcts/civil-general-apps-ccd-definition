@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
-const {waitForFinishedBusinessProcessWithState} = require('../../api/testingSupport');
 const {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 
 
@@ -14,11 +13,10 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA R2 1v1 - General Application Journey @ui-nightly');
 
-Scenario.only('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @non-prod-e2e', async ({I, api}) => {
+Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @non-prod-e2e', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
-    await waitForFinishedBusinessProcessWithState(civilCaseReference,config.applicantSolicitorUser, 'CREATE_CLAIM_AFTER_PAYMENT');
-   await api.amendClaimDocuments(config.applicantSolicitorUser);
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Case created for general application: ' + civilCaseReference);
