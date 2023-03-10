@@ -2,7 +2,7 @@ const config = require('../config.js');
 const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
-//const {PBAv3} = require('../fixtures/featureKeys');
+const {PBAv3} = require('../fixtures/featureKeys');
 
 let incidentMessage;
 
@@ -168,28 +168,29 @@ module.exports = {
     return await response.json();
   },
 
-  checkPBAv3ToggleEnabled: async () => {
-    return true;
-    //return checkToggleEnabled(PBAv3);
-  },
-
   checkToggleEnabled: async (toggle) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
     return await restHelper.request(
-        `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
-        {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`,
-        }, null, 'GET')
-        .then(async response =>  {
+      `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      }, null, 'GET')
+      .then(async response =>  {
           if (response.status === 200) {
             const json = await response.json();
             return json.toggleEnabled;
           } else {
             throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
           }
-          }
-        );
+        }
+      );
+  },
+
+  checkPBAv3ToggleEnabled: async () => {
+    return checkToggleEnabled(PBAv3);
   }
+
+
 };
