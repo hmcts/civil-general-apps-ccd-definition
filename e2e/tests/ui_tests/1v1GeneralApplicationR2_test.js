@@ -38,8 +38,9 @@ Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @n
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
   }
 
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'LISTING_FOR_A_HEARING');
-  await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
+  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'LISTING_FOR_A_HEARING');
+  await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
+  await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, null);
 });
 
 Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async ({I, api}) => {
