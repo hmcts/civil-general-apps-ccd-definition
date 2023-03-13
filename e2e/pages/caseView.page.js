@@ -57,6 +57,11 @@ module.exports = {
     }
   },
 
+  async verifySummaryPage() {
+    await I.seeInCurrentUrl('#Summary');
+    await I.see('Summary');
+  },
+
   async clickOnTab(tabName) {
     await I.waitForElement(this.fields.tabList, 5);
     await I.refreshPage();
