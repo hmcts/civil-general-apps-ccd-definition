@@ -19,6 +19,13 @@ module.exports = {
       I.click(this.fields.respondentAgreementHasAgreed.options[consentCheck]);
     });
     await I.clickContinue();
+  },
+
+  async notInN245FormPage() {
+    await I.seeInCurrentUrl('/INITIATE_GENERAL_APPLICATIONGARespondentAgreementPage');
+    await I.see('A judge will still need to approve this order', '#generalAppRespondentAgreement_hasAgreed span');
+    await I.dontSeeInCurrentUrl('/INITIATE_GENERAL_APPLICATIONGAUploadN245Form');
+    await I.dontSee('Upload your completed N245 form');
   }
 };
 

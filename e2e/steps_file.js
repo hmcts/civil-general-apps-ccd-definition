@@ -1012,6 +1012,19 @@ module.exports = function () {
       ]);
     },
 
+    async verifyNoN245Form(caseId, appTypes, hearingScheduled) {
+      eventName = events.INITIATE_GENERAL_APPLICATION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => applicationTypePage.chooseAppType(getAppTypes().slice(6, 11)),
+        ...selectApplicationType(eventName, appTypes),
+        () => hearingDatePage.selectHearingScheduled(hearingScheduled),
+        () => consentCheckPage.notInN245FormPage(),
+        () => this.clickOnElement('Cancel'),
+        () => caseViewPage.verifySummaryPage()
+       ]);
+    },
+
     async createGeneralApplication(appTypes, caseId, consentCheck, isUrgent, notice, hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement) {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
