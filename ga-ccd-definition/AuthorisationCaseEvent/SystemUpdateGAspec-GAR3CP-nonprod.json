@@ -34,11 +34,5 @@
     "CaseEventID": "START_HEARING_SCHEDULED_BUSINESS_PROCESS",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
   }
 ]

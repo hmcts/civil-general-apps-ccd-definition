@@ -10,30 +10,5 @@
         "CRUD": "CRU"
       }
     ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseStateID": "HEARING_SCHEDULED",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "hearing-schedule-access",
-          "judge-profile",
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "legal-adviser",
-          "civil-administrator-standard",
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "ga-basic-access",
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "R"
-      }
-    ]
   }
 ]

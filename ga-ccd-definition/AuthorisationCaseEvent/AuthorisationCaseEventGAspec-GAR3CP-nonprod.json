@@ -55,26 +55,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "civil-administrator-standard",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
   }
 ]
