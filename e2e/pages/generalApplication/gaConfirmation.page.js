@@ -13,10 +13,13 @@ module.exports = {
     paymentNavigationInfo: '#confirmation-body p:nth-child(3)'
   },
 
-  async verifyConfirmationPage(parentCaseId, consentCheck, notice) {
+  async verifyConfirmationPage(parentCaseId, consentCheck, notice, type) {
+    let appType = type.toString();
     let fee;
-    if ('no' === consentCheck && 'yes' === notice) {
+    if (('no' === consentCheck && 'yes' === notice) && ('Vary judgment' !== appType || 'Vary order' !== appType)) {
       fee = '£275.00';
+    } else if ('Vary judgment' === appType || 'Vary order' === appType) {
+      fee = '£14.00';
     } else {
       fee = '£108.00';
     }

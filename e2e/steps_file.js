@@ -54,7 +54,7 @@ const confirmDetailsPage = require('./fragments/confirmDetails.page');
 
 const applicationTypePage = require('./pages/generalApplication/applicationType.page');
 const hearingDatePage = require('./pages/generalApplication/hearingDate.page');
-//const n245FormPage = require('./pages/generalApplication/n245Form.page');
+const n245FormPage = require('./pages/generalApplication/n245Form.page');
 const consentCheckPage = require('./pages/generalApplication/consentCheck.page');
 const urgencyCheckPage = require('./pages/generalApplication/urgencyCheck.page');
 const withOutNoticePage = require('./pages/generalApplication/withOutNotice.page');
@@ -188,12 +188,12 @@ const updateHearingDetails = () => [
   () => hearingAndTrialPage.updateHearingDetails(),
 ];
 
-const verifyApplicationFee = (consentCheck, notice) => [
-  () => gaPBANumberPage.verifyApplicationFee(consentCheck, notice),
+const verifyApplicationFee = (consentCheck, notice, appType) => [
+  () => gaPBANumberPage.verifyApplicationFee(consentCheck, notice, appType),
 ];
 
-const verifyCheckAnswerForm = (caseId, consentCheck, vary) => [
-  () => answersPage.verifyCheckAnswerForm(caseId, consentCheck, vary),
+const verifyCheckAnswerForm = (caseId, consentCheck) => [
+  () => answersPage.verifyCheckAnswerForm(caseId, consentCheck),
 ];
 
 const clickOnHearingDetailsChangeLink = (consentCheck) => [
@@ -208,8 +208,8 @@ const submitSupportingDocument = (confMessage) => [
   () => event.submitSupportingDoc('Submit', confMessage)
 ];
 
-const verifyGAConfirmationPage = (parentCaseId, consentCheck, notice) => [
-  () => confirmationPage.verifyConfirmationPage(parentCaseId, consentCheck, notice)
+const verifyGAConfirmationPage = (parentCaseId, consentCheck, notice, appTypes) => [
+  () => confirmationPage.verifyConfirmationPage(parentCaseId, consentCheck, notice, appTypes)
 ];
 
 module.exports = function () {
@@ -830,19 +830,6 @@ module.exports = function () {
       await this.see(gaStatus);
     },
 
-    async payAndVerifyGAStatusWithNotice(civilCaseReference, gaCaseReference, ccdState, user, gaStatus) {
-      console.log(`GA Payment using API: ${gaCaseReference}`);
-      await apiRequest.paymentApiRequestUpdateServiceCallback(
-          genAppJudgeMakeDecisionData.serviceUpdateDtoWithNotice(gaCaseReference,'Paid'));
-      console.log(`Waiting for GA payment to complete: ${gaCaseReference}, expected state: ${ccdState}`);
-      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-                                                          ccdState, user);
-      console.log(`GA payment for ID: ${gaCaseReference} done successfully with expected state: ${ccdState}`);
-      await caseViewPage.navigateToTab(civilCaseReference, 'Applications');
-      await this.see(gaStatus);
-    },
-
-
     async payForGA() {
        await caseViewPage.clickOnTab('Service Request');
        await serviceRequestPage.payGAAmount();
@@ -993,22 +980,25 @@ module.exports = function () {
       ]);
     },
 
-    async initiateVaryJudgementGA(caseId, appTypes, hearingScheduled, consentCheck, isUrgent) {
+    async initiateVaryJudgementGA(caseId, appTypes, hearingScheduled, consentCheck, isUrgent, notice) {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
-      let notice = 'yes';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => applicationTypePage.chooseAppType(getAppTypes().slice(6, 11)),
         ...selectApplicationType(eventName, appTypes),
         () => hearingDatePage.selectHearingScheduled(hearingScheduled),
+        () => n245FormPage.uploadN245Form(TEST_FILE_PATH),
         ...selectConsentCheck(consentCheck),
         ...isUrgentApplication(isUrgent),
-        ...enterApplicationDetails(consentCheck),
+        ...conditionalSteps(consentCheck === 'no', [
+          ...selectNotice(notice),
+        ]),
+        ...enterApplicationDetails(),
         ...fillHearingDetails(hearingScheduled, 'no', 'no', 'no', 'yes', 'disabledAccess'),
-        ...verifyApplicationFee(consentCheck, notice),
-        ...verifyCheckAnswerForm(caseId, 'no', 'yes'),
+        ...verifyApplicationFee(consentCheck, notice, appTypes),
+        ...verifyCheckAnswerForm(caseId, 'hearingScheduled'),
         ...submitApplication('You have made an application'),
-        ...verifyGAConfirmationPage(caseId, consentCheck, notice),
+        ...verifyGAConfirmationPage(caseId, consentCheck, notice, appTypes),
       ]);
     },
 
@@ -1037,12 +1027,12 @@ module.exports = function () {
         ]),
         ...enterApplicationDetails(),
         ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, 'yes', supportRequirement),
-        ...verifyApplicationFee(consentCheck, notice),
-        ...verifyCheckAnswerForm(caseId, consentCheck, 'no'),
+        ...verifyApplicationFee(consentCheck, notice, appTypes),
+        ...verifyCheckAnswerForm(caseId, consentCheck),
         ...clickOnHearingDetailsChangeLink(consentCheck),
         ...updateHearingDetails(),
         ...submitApplication('You have made an application'),
-        ...verifyGAConfirmationPage(caseId, consentCheck, notice),
+        ...verifyGAConfirmationPage(caseId, consentCheck, notice, appTypes),
       ]);
       await this.takeScreenshot();
     }
