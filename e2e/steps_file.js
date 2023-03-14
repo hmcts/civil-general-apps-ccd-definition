@@ -980,7 +980,7 @@ module.exports = function () {
       ]);
     },
 
-    async initiateVaryJudgementGA(caseId, appTypes, hearingScheduled, consentCheck, isUrgent, notice) {
+    async initiateVaryJudgementGA(caseId, appTypes, hearingScheduled, consentCheck, isUrgent) {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
@@ -990,15 +990,12 @@ module.exports = function () {
         () => n245FormPage.uploadN245Form(TEST_FILE_PATH),
         ...selectConsentCheck(consentCheck),
         ...isUrgentApplication(isUrgent),
-        ...conditionalSteps(consentCheck === 'no', [
-          ...selectNotice(notice),
-        ]),
         ...enterApplicationDetails(),
         ...fillHearingDetails(hearingScheduled, 'no', 'no', 'no', 'yes', 'disabledAccess'),
-        ...verifyApplicationFee(consentCheck, notice, appTypes),
-        ...verifyCheckAnswerForm(caseId, 'hearingScheduled'),
+        ...verifyApplicationFee(consentCheck, 'no', appTypes),
+        ...verifyCheckAnswerForm(caseId, consentCheck),
         ...submitApplication('You have made an application'),
-        ...verifyGAConfirmationPage(caseId, consentCheck, notice, appTypes),
+        ...verifyGAConfirmationPage(caseId, consentCheck, 'no', appTypes),
       ]);
     },
 
