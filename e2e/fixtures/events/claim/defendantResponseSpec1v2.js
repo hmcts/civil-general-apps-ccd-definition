@@ -1,4 +1,5 @@
 const {listElement, date} = require('../../../api/dataHelper');
+const config = require('../../config.js');
 module.exports = {
   respondToClaim: (response = 'FULL_DEFENCE') => {
     const responseData = {
