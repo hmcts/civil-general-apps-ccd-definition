@@ -188,8 +188,8 @@ const updateHearingDetails = () => [
   () => hearingAndTrialPage.updateHearingDetails(),
 ];
 
-const verifyApplicationFee = (consentCheck, notice) => [
-  () => gaPBANumberPage.verifyApplicationFee(consentCheck, notice),
+const verifyApplicationFee = (consentCheck, notice, appType) => [
+  () => gaPBANumberPage.verifyApplicationFee(consentCheck, notice, appType),
 ];
 
 const verifyCheckAnswerForm = (caseId, consentCheck) => [
@@ -208,8 +208,8 @@ const submitSupportingDocument = (confMessage) => [
   () => event.submitSupportingDoc('Submit', confMessage)
 ];
 
-const verifyGAConfirmationPage = (parentCaseId, consentCheck, notice) => [
-  () => confirmationPage.verifyConfirmationPage(parentCaseId, consentCheck, notice)
+const verifyGAConfirmationPage = (parentCaseId, consentCheck, notice, appTypes) => [
+  () => confirmationPage.verifyConfirmationPage(parentCaseId, consentCheck, notice, appTypes)
 ];
 
 module.exports = function () {
@@ -995,11 +995,24 @@ module.exports = function () {
         ]),
         ...enterApplicationDetails(),
         ...fillHearingDetails(hearingScheduled, 'no', 'no', 'no', 'yes', 'disabledAccess'),
-        ...verifyApplicationFee(consentCheck, notice),
+        ...verifyApplicationFee(consentCheck, notice, appTypes),
         ...verifyCheckAnswerForm(caseId, 'hearingScheduled'),
         ...submitApplication('You have made an application'),
-        ...verifyGAConfirmationPage(caseId, consentCheck, notice),
+        ...verifyGAConfirmationPage(caseId, consentCheck, notice, appTypes),
       ]);
+    },
+
+    async verifyNoN245Form(caseId, appTypes, hearingScheduled) {
+      eventName = events.INITIATE_GENERAL_APPLICATION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => applicationTypePage.chooseAppType(getAppTypes().slice(6, 11)),
+        ...selectApplicationType(eventName, appTypes),
+        () => hearingDatePage.selectHearingScheduled(hearingScheduled),
+        () => consentCheckPage.notInN245FormPage(),
+        () => this.clickOnElement('Cancel'),
+        () => caseViewPage.verifySummaryPage()
+       ]);
     },
 
     async createGeneralApplication(appTypes, caseId, consentCheck, isUrgent, notice, hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement) {
@@ -1014,12 +1027,12 @@ module.exports = function () {
         ]),
         ...enterApplicationDetails(),
         ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, 'yes', supportRequirement),
-        ...verifyApplicationFee(consentCheck, notice),
+        ...verifyApplicationFee(consentCheck, notice, appTypes),
         ...verifyCheckAnswerForm(caseId, consentCheck),
         ...clickOnHearingDetailsChangeLink(consentCheck),
         ...updateHearingDetails(),
         ...submitApplication('You have made an application'),
-        ...verifyGAConfirmationPage(caseId, consentCheck, notice),
+        ...verifyGAConfirmationPage(caseId, consentCheck, notice, appTypes),
       ]);
       await this.takeScreenshot();
     }
