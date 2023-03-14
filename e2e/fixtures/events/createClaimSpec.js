@@ -45,9 +45,9 @@ module.exports = {
           courtLocation: {
             applicantPreferredCourtLocationList: {
               list_items: [
-                listElement('Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ')
+                listElement(config.claimantSelectedCourt)
               ],
-              value: listElement('Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ')
+              value: listElement(config.claimantSelectedCourt)
             }
           }
         },
