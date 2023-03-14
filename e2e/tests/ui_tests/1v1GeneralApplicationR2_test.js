@@ -33,7 +33,7 @@ Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @n
   await I.clickOnTab('Application Documents');
   await I.verifyN245FormElements();
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    'AWAITING_RESPONDENT_RESPONSE', config.defendantSolicitorUser, respondentStatus);
+    states.AWAITING_RESPONDENT_RESPONSE.id, config.defendantSolicitorUser, respondentStatus);
 
   await api.respondentResponse(config.applicantSolicitorUser, gaCaseReference);
 
