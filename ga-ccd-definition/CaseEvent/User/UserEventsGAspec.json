@@ -209,8 +209,6 @@
     "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0,
-    "Publish": "Y",
-    "_EventEnablingCondition": "isCaseProgressionEnabled = \"Only available through tasks\""
+    "RetriesTimeoutURLSubmittedEvent": 0
   }
 ]
