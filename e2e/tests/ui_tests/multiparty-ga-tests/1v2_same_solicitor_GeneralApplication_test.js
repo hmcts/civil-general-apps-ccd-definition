@@ -117,7 +117,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
       await I.login(config.judgeLocalUser);
     }
     await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', gaCaseReference, 'yes', 'Request_for_information');
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_ADDITIONAL_INFORMATION ', config.applicantSolicitorUser);
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_ADDITIONAL_INFORMATION', config.applicantSolicitorUser);
     console.log('Judges requested more information on case: ' + gaCaseReference);
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'AWAITING_ADDITIONAL_INFORMATION');
     await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'AWAITING_ADDITIONAL_INFORMATION');
