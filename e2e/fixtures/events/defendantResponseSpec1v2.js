@@ -322,9 +322,9 @@ module.exports = {
             respondToCourtLocation: {
               responseCourtLocations: {
                 list_items: [
-                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                  listElement(config.defendant2SelectedCourt)
                 ],
-                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                value: listElement(config.defendant2SelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
@@ -467,9 +467,9 @@ module.exports = {
             respondToCourtLocation: {
               responseCourtLocations: {
                 list_items: [
-                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                  listElement(config.defendant2SelectedCourt)
                 ],
-                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                value: listElement(config.defendant2SelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
