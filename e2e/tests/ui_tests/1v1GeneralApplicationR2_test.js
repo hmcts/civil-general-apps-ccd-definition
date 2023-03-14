@@ -25,8 +25,7 @@ Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @n
   await I.initiateVaryJudgementGA(civilCaseReference, getAppTypes().slice(10, 11), 'yes', 'no', 'no', 'no');
   gaCaseReference = await api.getGACaseReference(config.defendantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
-    'AWAITING_APPLICATION_PAYMENT', config.defendantSolicitorUser);
+    states.AWAITING_APPLICATION_PAYMENT.id, config.defendantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(10, 11), 1);
   await I.see(awaitingPaymentStatus);
   await I.navigateToCaseDetails(gaCaseReference);
@@ -34,7 +33,7 @@ Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @n
   await I.clickOnTab('Application Documents');
   await I.verifyN245FormElements();
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.defendantSolicitorUser, judgeDecisionStatus);
+    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.defendantSolicitorUser, judgeDecisionStatus);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
