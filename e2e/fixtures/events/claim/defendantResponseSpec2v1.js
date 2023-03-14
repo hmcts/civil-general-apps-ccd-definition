@@ -60,9 +60,9 @@ module.exports = {
             respondToCourtLocation: {
               responseCourtLocations: {
                 list_items: [
-                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                  listElement('Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ')
                 ],
-                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                value: listElement('Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ')
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
@@ -204,9 +204,9 @@ module.exports = {
             respondToCourtLocation: {
               responseCourtLocations: {
                 list_items: [
-                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                  listElement('Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ')
                 ],
-                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                value: listElement('Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ')
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
@@ -338,9 +338,9 @@ module.exports = {
             respondToCourtLocation: {
               responseCourtLocations: {
                 list_items: [
-                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                  listElement('Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ')
                 ],
-                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                value: listElement('Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ')
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
