@@ -6,7 +6,6 @@ const {getAppTypes} = require('../../pages/generalApplication/generalApplication
 
 const mpScenario = 'ONE_V_ONE';
 const awaitingPaymentStatus = 'Awaiting Application Payment';
-const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
 const respondentStatus = 'Awaiting Respondent Response';
 const claimantType = 'Company';
 let civilCaseReference, gaCaseReference;
@@ -22,7 +21,7 @@ Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @n
   await I.login(config.applicantSolicitorUser);
   await I.verifyNoN245Form(civilCaseReference, getAppTypes().slice(10, 11), 'no');
   await I.login(config.defendantSolicitorUser);
-  await I.initiateVaryJudgementGA(civilCaseReference, getAppTypes().slice(10, 11), 'yes', 'no', 'no', 'no');
+  await I.initiateVaryJudgementGA(civilCaseReference, getAppTypes().slice(10, 11), 'yes', 'no', 'no');
   gaCaseReference = await api.getGACaseReference(config.defendantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
     'AWAITING_APPLICATION_PAYMENT', config.defendantSolicitorUser);
@@ -33,7 +32,9 @@ Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @n
   await I.clickOnTab('Application Documents');
   await I.verifyN245FormElements();
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.defendantSolicitorUser, judgeDecisionStatus);
+    'AWAITING_RESPONDENT_RESPONSE', config.defendantSolicitorUser, respondentStatus);
+
+  await api.respondentResponse(config.applicantSolicitorUser, gaCaseReference);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
@@ -42,8 +43,9 @@ Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @n
   }
 
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'LISTING_FOR_A_HEARING');
+  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'LISTING_FOR_A_HEARING');
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
-  await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, null);
+  await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
 Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async ({I, api}) => {
