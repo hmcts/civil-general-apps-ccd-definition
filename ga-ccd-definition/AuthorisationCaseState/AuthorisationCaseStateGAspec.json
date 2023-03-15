@@ -356,7 +356,18 @@
         "CRUD": "R"
       }
     ]
-  },
+  },  {
+  "CaseTypeID": "GENERALAPPLICATION",
+  "CaseStateID": "LISTING_FOR_A_HEARING",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "hearing-schedule-access"
+      ],
+      "CRUD": "CRU"
+    }
+  ]
+},
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseStateID": "HEARING_SCHEDULED",
@@ -364,8 +375,8 @@
       {
         "UserRoles": [
           "hearing-schedule-access",
-          "judge-profile",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },
