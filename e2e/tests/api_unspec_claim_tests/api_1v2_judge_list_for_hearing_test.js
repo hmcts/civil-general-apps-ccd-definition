@@ -30,7 +30,7 @@ Scenario('Judge makes decision 1V1 - LIST FOR HEARING', async ({api}) => {
   console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
-Scenario.skip('Without Notice Hearing notice journey', async ({api}) => {
+Scenario('Without Notice Hearing notice journey @mmm', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
       config.applicantSolicitorUser, mpScenario, 'Company');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -61,5 +61,5 @@ Scenario.skip('Without Notice Hearing notice journey', async ({api}) => {
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
