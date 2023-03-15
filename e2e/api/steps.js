@@ -1,4 +1,5 @@
 const config = require('../config.js');
+const {PBAv3} = require('../fixtures/featureKeys');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
