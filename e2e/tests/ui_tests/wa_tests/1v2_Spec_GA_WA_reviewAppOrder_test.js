@@ -25,6 +25,7 @@ Feature('1v2 Spec: GA - WA Review application order @e2e-wa');
 Scenario('Before SDO GA - Judge Make decision - NBC admin review application order', async ({I, api, wa}) => {
   civilCaseReference = await api.createSpecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);

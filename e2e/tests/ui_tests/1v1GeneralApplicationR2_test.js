@@ -16,6 +16,7 @@ Feature('GA R2 1v1 - General Application Journey @ui-nightly');
 Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @non-prod-e2e', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Case created for general application: ' + civilCaseReference);
@@ -52,6 +53,7 @@ Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @n
 Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Case created for general application: ' + civilCaseReference);

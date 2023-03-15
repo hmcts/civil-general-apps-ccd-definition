@@ -14,6 +14,7 @@ Feature('End-to-end General application journey @cross-browser-tests');
 Scenario('GA Applicant and Respondent Journey', async ({I, api}) => {
   parentCaseNumber = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
   console.log('Case created for general application: ' + parentCaseNumber);
@@ -36,6 +37,7 @@ Scenario('GA Applicant and Respondent Journey', async ({I, api}) => {
 
 Scenario('GA Applicant and Judges Journey', async ({I, api}) => {
   parentCaseNumber = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, parentCaseNumber);
   await api.notifyClaimDetails(config.applicantSolicitorUser, parentCaseNumber);
   console.log('Case created for general application: ' + parentCaseNumber);

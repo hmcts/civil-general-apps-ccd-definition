@@ -20,6 +20,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
                                                                                                                      api
                                                                                                                    }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Case created for general application: ' + civilCaseReference);
@@ -71,6 +72,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
 Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
   async ({I, api}) => {
     civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
+    await api.amendClaimDocuments(config.applicantSolicitorUser);
     await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
     await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
     console.log('Case created for general application: ' + civilCaseReference);
