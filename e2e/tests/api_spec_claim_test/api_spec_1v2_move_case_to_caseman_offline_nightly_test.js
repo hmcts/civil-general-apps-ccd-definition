@@ -7,16 +7,16 @@ let civilCaseReference,
 Feature('GA SPEC Claim 1v2 Move to Case Man Case Close API tests @api-offline-nightly @api-nightly');
 
 Scenario.skip('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION @api-tests', async ({api}) => {
-    civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
-    console.log('Civil Case created for general application: ' + civilCaseReference);
+  civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
+  console.log('Civil Case created for general application: ' + civilCaseReference);
 
-    console.log('Make a General Application with state APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
-    gaCaseReference
-        = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
+  console.log('Make a General Application with state APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+  gaCaseReference
+    = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
-    console.log('*** Case offline: ' + civilCaseReference + ' ***');
-    await api.moveCaseToCaseman(config.adminUser);
-    await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
+  console.log('*** Case offline: ' + civilCaseReference + ' ***');
+  await api.moveCaseToCaseman(config.adminUser);
+  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
 Scenario.skip('Case offline ORDER_MADE', async ({api}) => {
