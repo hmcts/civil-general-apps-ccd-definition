@@ -256,15 +256,49 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAKE_DECISION",
-    "CaseFieldID": "judicialByCourtsInitiativeListForHearing",
+    "CaseFieldID": "orderMadeCourtsInitiativeLabelForHearing",
     "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
     "PageFieldDisplayOrder": 10,
+    "PageDisplayOrder": 7,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialByCourtsInitiativeListForHearing",
+    "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
+    "PageFieldDisplayOrder": 11,
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y"
   },
-
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "orderCourtOwnInitiativeListForHearing",
+    "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
+    "PageFieldDisplayOrder": 12,
+    "FieldShowCondition": "judicialByCourtsInitiativeListForHearing=\"OPTION_1\"",
+    "PageDisplayOrder": 7,
+    "PageColumnNumber": 1,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "orderWithoutNoticeListForHearing",
+    "PageID": "GAJudicialHearingDetailsGeneralOrderScreen",
+    "PageFieldDisplayOrder": 13,
+    "FieldShowCondition": "judicialByCourtsInitiativeListForHearing=\"OPTION_2\"",
+    "PageDisplayOrder": 7,
+    "PageColumnNumber": 1,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y"
+  },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAKE_DECISION",
@@ -401,12 +435,47 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAKE_DECISION",
-    "CaseFieldID": "judicialByCourtsInitiativeForWrittenRep",
+    "CaseFieldID": "orderMadeCourtsInitiativeLabelForWrittenRep",
     "PageID": "GAJudicialWrittenRepresentationsDrawGeneralOrder",
     "PageFieldDisplayOrder": 10,
     "PageDisplayOrder": 10,
     "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialByCourtsInitiativeForWrittenRep",
+    "PageID": "GAJudicialWrittenRepresentationsDrawGeneralOrder",
+    "PageFieldDisplayOrder": 11,
+    "PageDisplayOrder": 10,
+    "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "orderCourtOwnInitiativeForWrittenRep",
+    "PageID": "GAJudicialWrittenRepresentationsDrawGeneralOrder",
+    "FieldShowCondition": "judicialByCourtsInitiativeForWrittenRep=\"OPTION_1\"",
+    "PageFieldDisplayOrder": 12,
+    "PageDisplayOrder": 10,
+    "PageColumnNumber": 1,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "orderWithoutNoticeForWrittenRep",
+    "PageID": "GAJudicialWrittenRepresentationsDrawGeneralOrder",
+    "FieldShowCondition": "judicialByCourtsInitiativeForWrittenRep=\"OPTION_2\"",
+    "PageFieldDisplayOrder": 13,
+    "PageDisplayOrder": 10,
+    "PageColumnNumber": 1,
+    "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y"
   },
   {
