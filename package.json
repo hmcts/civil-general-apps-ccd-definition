@@ -32,7 +32,7 @@
     "test:nightly-api-tests": "MOCHAWESOME_REPORTFILENAME=nightly-api-tests npx codeceptjs run-workers --suites 4 --grep '@api-nightly|@api-scheduler-test' --reporter mocha-multi --verbose",
     "test:nightly-e2e-tests": "MOCHAWESOME_REPORTFILENAME=nightly-e2e-tests npx codeceptjs run-workers --suites 2 --grep @ui-nightly --reporter mocha-multi --verbose",
     "test:non-prod-e2e-tests": "MOCHAWESOME_REPORTFILENAME=non-prod-e2e-tests npx codeceptjs run-workers --suites 2 --grep '@e2e-tests|@non-prod-e2e' --reporter mocha-multi --verbose",
-    "test:master-e2e-tests": "MOCHAWESOME_REPORTFILENAME=master-e2e-tests npx codeceptjs run-workers --suites 2 --grep '@e2e-tests' --reporter mocha-multi --verbose",
+    "test:master-e2e-tests": "MOCHAWESOME_REPORTFILENAME=master-e2e-tests npx codeceptjs run-workers --suites 2 --grep @e2e-tests --reporter mocha-multi --verbose",
     "test:fullfunctional": "./e2e/run-nightly-functional-tests.sh",
     "prepare": "husky install"
   },
