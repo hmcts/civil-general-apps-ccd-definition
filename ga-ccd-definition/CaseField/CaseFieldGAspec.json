@@ -314,13 +314,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "isCaseProgressionEnabled",
-    "Label": " ",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "isCcmccLocation",
     "Label": " ",
     "FieldType": "YesOrNo",

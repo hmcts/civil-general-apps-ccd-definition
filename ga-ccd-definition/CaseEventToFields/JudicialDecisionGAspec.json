@@ -29,18 +29,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAKE_DECISION",
-    "CaseFieldID": "isCaseProgressionEnabled",
-    "PageID": "GAJudicialMakeADecisionScreen",
-    "PageFieldDisplayOrder": 1,
-    "PageDisplayOrder": 12,
-    "PageColumnNumber": 1,
-    "DisplayContext": "OPTIONAL",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\""
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "applicationIsCloakedLabel",
     "PageID": "GAJudicialMakeADecisionScreen",
     "PageFieldDisplayOrder": 2,
