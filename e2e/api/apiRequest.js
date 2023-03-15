@@ -17,6 +17,8 @@ const getPaymentCallbackUrl = () => `${config.url.generalApplication}/service-re
 const getJudgeRevisitTaskHandlerUrl =(state, genAppType) => `${config.url.generalApplication}/testing-support/trigger-judge-revisit-process-event/${state}/${genAppType}`;
 const getCaseDismissalTaskHandlerUrl =() => `${config.url.civilService}/testing-support/trigger-case-dismissal-scheduler`;
 const getGaCaseDataUrl =(caseId) => `${config.url.generalApplication}/testing-support/case/${caseId}`;
+const getCivilServiceUrl = () => `${config.url.civilService}`;
+
 
 const getRequestHeaders = (userAuth) => {
   return {
@@ -257,5 +259,14 @@ module.exports = {
           }
         });
     }, TASK_MAX_RETRIES, TASK_RETRY_TIMEOUT_MS);
+  },
+
+  paymentUpdate: async (caseId, endpoint, serviceRequestUpdateDto) => {
+    let endpointURL = getCivilServiceUrl() + endpoint;
+    let response = await restHelper.retriedRequest(endpointURL, getRequestHeaders(tokens.userAuth),
+      serviceRequestUpdateDto,'PUT');
+
+    return response || {};
   }
+
 };

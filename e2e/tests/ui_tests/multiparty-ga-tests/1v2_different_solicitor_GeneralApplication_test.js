@@ -80,6 +80,7 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
 Scenario('Without Notice application for a hearing', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'SoleTrader');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -103,6 +104,7 @@ Scenario('Without Notice application to With Notice application - Directions Ord
   async ({api, I}) => {
     civilCaseReference = await api.createUnspecifiedClaim(
       config.applicantSolicitorUser, mpScenario, 'SoleTrader');
+    await api.amendClaimDocuments(config.applicantSolicitorUser);
     await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
     await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
     console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -152,6 +154,7 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
   async ({api, I}) => {
     civilCaseReference = await api.createUnspecifiedClaim(
       config.applicantSolicitorUser, mpScenario, 'SoleTrader');
+    await api.amendClaimDocuments(config.applicantSolicitorUser);
     await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
     await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
     console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -178,6 +181,7 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
 Scenario('With Notice application - Org3 Solicitor Initiate GA @e2e-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -199,6 +203,7 @@ Scenario('With Notice application - Org3 Solicitor Initiate GA @e2e-tests', asyn
 Scenario('With Notice application - Org2 Solicitor Initiate GA', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);

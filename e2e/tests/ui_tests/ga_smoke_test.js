@@ -2,11 +2,15 @@
 const config = require('../../config.js');
 let civilCaseReference, gaCaseReference;
 
+const mpScenario1v2 = 'ONE_V_TWO_TWO_LEGAL_REP';
+
 Feature('General Application Smoke tests @ga-smoke-tests');
+
 Scenario('GA 1v2  - Judge Makes Decision Order Made @smoke-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP', 'Company');
-  await api.notifyClaim(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP', civilCaseReference);
+    config.applicantSolicitorUser, mpScenario1v2, 'Company');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario1v2, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
 

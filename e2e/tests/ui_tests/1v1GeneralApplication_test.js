@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-const {waitForGACamundaEventsFinishedBusinessProcess, waitForGAFinishedBusinessProcess} = require('../../api/testingSupport');
+const {
+  waitForGACamundaEventsFinishedBusinessProcess,
+  waitForGAFinishedBusinessProcess
+} = require('../../api/testingSupport');
 const {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 const states = require('../../fixtures/ga-ccd/state.js');
 
@@ -21,6 +24,7 @@ Feature('GA CCD 1v1 - General Application Journey  @ui-nightly');
 Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Case created for general application: ' + civilCaseReference);
@@ -40,7 +44,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
     states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser, judgeDecisionStatus);
 
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);
   } else {
     await I.login(config.judgeLocalUser);
@@ -60,6 +64,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
 
 Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Case created for general application: ' + civilCaseReference);
@@ -84,7 +89,7 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(judgeDecisionStatus);
 
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);
   } else {
     await I.login(config.judgeLocalUser);
@@ -124,7 +129,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
     states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser, judgeDecisionStatus);
 
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);
   } else {
     await I.login(config.judgeLocalUser);
@@ -148,6 +153,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
 Scenario('GA for 1v1- respond to application - Request more information', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Case created for general application: ' + civilCaseReference);
@@ -179,7 +185,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeDecisionStatus);
 
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);
   } else {
     await I.login(config.judgeLocalUser);
@@ -198,5 +204,5 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
 });
 
 AfterSuite(async ({api}) => {
-   await api.cleanUp();
+  await api.cleanUp();
 });

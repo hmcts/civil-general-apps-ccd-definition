@@ -1,7 +1,7 @@
 const {listElement} = require('../../api/dataHelper');
 const config = require('../../config');
 module.exports = {
-  respondToClaim: (response = 'FULL_DEFENCE') => {
+  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC') => {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
@@ -110,7 +110,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             },
           }
         };
@@ -147,7 +147,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             }
           },
         };
@@ -253,7 +253,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             }
           },
 
@@ -287,7 +287,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             }
           }
         };
@@ -386,7 +386,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             },
           }
         };
@@ -414,7 +414,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             }
           }
         };
