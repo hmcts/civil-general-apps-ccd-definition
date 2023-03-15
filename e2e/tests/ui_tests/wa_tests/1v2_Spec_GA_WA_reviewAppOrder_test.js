@@ -1,7 +1,11 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../../config.js');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
+const states = require('../../../fixtures/ga-ccd/state.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
+
+const omStatus = states.ORDER_MADE.id;
+
 
 let civilCaseReference, gaCaseReference, expectedReviewApplicationTask,
   expectedJudgeDecideOnApplicationBeforeSDOTask,
@@ -49,7 +53,7 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin review application ord
   await I.login(config.judgeUserWithRegionId4);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
   await I.judgeApproveAnOrderWA('makeAnOrder', 'approveOrEditTheOrder', 'no', gaCaseReference, 'General_order');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'ORDER_MADE', config.judgeUserWithRegionId4);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, omStatus, config.judgeUserWithRegionId4);
   await wa.verifyNoActiveTask(gaCaseReference);
 
   console.log('Region 4 NBC user review application order');
@@ -80,7 +84,7 @@ Scenario.skip('After SDO GA - Judge Make decision - HC admin review application 
   await I.login(config.judgeUserWithRegionId1);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
   await I.judgeApproveAnOrderWA('makeAnOrder', 'approveOrEditTheOrder', 'no', gaCaseReference, 'General_order');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'ORDER_MADE', config.judgeUserWithRegionId1);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, omStatus, config.judgeUserWithRegionId1);
   await wa.verifyNoActiveTask(gaCaseReference);
 
   console.log('Region 1 review application order');
