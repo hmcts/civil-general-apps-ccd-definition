@@ -1,4 +1,5 @@
 const config = require('../config.js');
+const {PBAv3} = require('../fixtures/featureKeys');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
@@ -238,7 +239,7 @@ module.exports = {
     await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
       null, 'Case data validation failed');
 
-    const pbaV3 = await checkPBAv3ToggleEnabled();
+    const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
     let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
@@ -312,7 +313,7 @@ module.exports = {
 
     await assertSubmittedSpecEvent('PENDING_CASE_ISSUED');
 
-    var pbaV3 = await checkPBAv3ToggleEnabled();
+    var pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
     await waitForFinishedBusinessProcess(caseId, user);
@@ -1254,7 +1255,7 @@ module.exports = {
       await assertValidClaimData(createClaimData, pageId);
     }
 
-    const pbaV3 = await checkPBAv3ToggleEnabled();
+    const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
     let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
@@ -1292,7 +1293,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
-    const pbaV3 = await checkPBAv3ToggleEnabled();
+    const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
     if(pbaV3){
       response = response+'_PBAv3';
     }
