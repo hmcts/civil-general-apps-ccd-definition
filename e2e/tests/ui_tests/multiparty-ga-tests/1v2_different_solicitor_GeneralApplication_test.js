@@ -77,7 +77,7 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
     await I.see(listForHearingStatus);
   });
 
-Scenario('Without Notice application for a hearing', async ({api, I}) => {
+Scenario('Without Notice application for a hearing @mmm', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -219,5 +219,5 @@ Scenario('With Notice application - Org2 Solicitor Initiate GA', async ({api, I}
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
