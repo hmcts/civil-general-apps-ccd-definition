@@ -1,0 +1,19 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "dateLabel",
+    "ID": "DateHeardFinalOrders",
+    "ElementLabel": "### Date heard",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "date",
+    "ID": "DateHeardFinalOrders",
+    "ElementLabel": " ",
+    "HintText": "For example, 16 4 2021",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "label",
+    "ID": "FinalOrderRecitalsRecorded",
+    "ElementLabel": "### Is recorded that: (Optional)",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "text",
+    "ID": "FinalOrderRecitalsRecorded",
+    "ElementLabel": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  }
+]
