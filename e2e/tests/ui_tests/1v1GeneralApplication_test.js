@@ -5,15 +5,16 @@ const {
   waitForGAFinishedBusinessProcess
 } = require('../../api/testingSupport');
 const {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
+const states = require('../../fixtures/ga-ccd/state.js');
 
 const mpScenario = 'ONE_V_ONE';
-const awaitingPaymentStatus = 'Awaiting Application Payment';
-const respondentStatus = 'Awaiting Respondent Response';
-const judgeDecisionStatus = 'Application Submitted - Awaiting Judicial Decision';
-const judgeDirectionsOrderStatus = 'Directions Order Made';
-const judgeApproveOrderStatus = 'Order Made';
-const judgeDismissOrderStatus = 'Application Dismissed';
-const additionalInfoStatus = 'Additional Information Required';
+const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
+const respondentStatus = states.AWAITING_RESPONDENT_RESPONSE.name;
+const judgeDecisionStatus = states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.name;
+const judgeDirectionsOrderStatus = states.AWAITING_DIRECTIONS_ORDER_DOCS.name;
+const judgeApproveOrderStatus = states.ORDER_MADE.name;
+const judgeDismissOrderStatus = states.APPLICATION_DISMISSED.name;
+const additionalInfoStatus = states.AWAITING_ADDITIONAL_INFORMATION.name;
 const claimantType = 'Company';
 
 let civilCaseReference, gaCaseReference;
@@ -37,11 +38,11 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   console.log('1v1 General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    'AWAITING_APPLICATION_PAYMENT', config.applicantSolicitorUser);
+    states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(3, 4), 1);
   await I.see(awaitingPaymentStatus);
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.applicantSolicitorUser, judgeDecisionStatus);
+    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser, judgeDecisionStatus);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);
@@ -49,7 +50,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
     await I.login(config.judgeLocalUser);
   }
   await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'no', gaCaseReference, 'General_order');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'ORDER_MADE', config.applicantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.ORDER_MADE.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Approve order', 'no');
   await I.verifyApplicationDocument('General order');
@@ -77,14 +78,14 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   console.log('General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    'AWAITING_APPLICATION_PAYMENT', config.applicantSolicitorUser);
+    states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(awaitingPaymentStatus);
   await I.navigateToCaseDetails(gaCaseReference);
   await I.payForGA();
   await waitForGAFinishedBusinessProcess(civilCaseReference, config.applicantSolicitorUser);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.applicantSolicitorUser);
+    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser);
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(judgeDecisionStatus);
 
@@ -94,7 +95,7 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
     await I.login(config.judgeLocalUser);
   }
   await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', gaCaseReference, 'Directions_order');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_DIRECTIONS_ORDER_DOCS', config.applicantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Judges Directions', 'no');
   await I.verifyApplicationDocument('Directions order');
@@ -105,7 +106,7 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await I.verifyClaimDocument('Directions order document');
   await I.respondToJudgesDirections(gaCaseReference);
   console.log('Responded to Judges directions on case: ' + gaCaseReference);
-  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'AWAITING_DIRECTIONS_ORDER_DOCS');
+  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id);
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
@@ -122,11 +123,11 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
   console.log('General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    'AWAITING_APPLICATION_PAYMENT', config.applicantSolicitorUser);
+    states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(awaitingPaymentStatus);
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.applicantSolicitorUser, judgeDecisionStatus);
+    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser, judgeDecisionStatus);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);
@@ -134,7 +135,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
     await I.login(config.judgeLocalUser);
   }
   await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'no', gaCaseReference, 'Dismissal_order');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'APPLICATION_DISMISSED', config.applicantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.APPLICATION_DISMISSED.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Dismissal order', 'no');
   await I.verifyApplicationDocument('Dismissal order');
@@ -145,7 +146,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeDismissOrderStatus);
   await I.verifyClaimDocument('Dismissal order document');
-  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'APPLICATION_DISMISSED');
+  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.APPLICATION_DISMISSED.id);
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
@@ -166,11 +167,11 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   console.log('General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    'AWAITING_APPLICATION_PAYMENT', config.applicantSolicitorUser);
+    states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 5), 1);
   await I.see(awaitingPaymentStatus);
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser, respondentStatus);
+    states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);
 
   await I.login(config.defendantSolicitorUser);
   await I.respondToApplication(gaCaseReference, 'yes', 'yes', 'yes', 'yes', 'no',
@@ -178,7 +179,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   console.log('Org1 solicitor Responded to application: ' + gaCaseReference);
   await I.respCloseAndReturnToCaseDetails();
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', config.defendantSolicitorUser);
+    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.defendantSolicitorUser);
   await I.dontSee('Go');
   await I.dontSee('Next step');
   await I.navigateToTab(civilCaseReference, 'Applications');
@@ -190,7 +191,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
     await I.login(config.judgeLocalUser);
   }
   await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', gaCaseReference, 'yes', 'Request_for_information');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_ADDITIONAL_INFORMATION', config.defendantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id, config.defendantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Request more information', 'yes');
   await I.verifyApplicationDocument('Request for information');

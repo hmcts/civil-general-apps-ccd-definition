@@ -2,11 +2,12 @@
 const config = require('../../config.js');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 const {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
-
+const states = require('../../fixtures/ga-ccd/state.js');
 
 const mpScenario = 'ONE_V_ONE';
-const awaitingPaymentStatus = 'Awaiting Application Payment';
-const respondentStatus = 'Awaiting Respondent Response';
+const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
+const judgeDecisionStatus = states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.name;
+const respondentStatus = states.AWAITING_RESPONDENT_RESPONSE.name;
 const claimantType = 'Company';
 let civilCaseReference, gaCaseReference;
 
@@ -25,7 +26,7 @@ Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @n
   await I.initiateVaryJudgementGA(civilCaseReference, getAppTypes().slice(10, 11), 'yes', 'no', 'no');
   gaCaseReference = await api.getGACaseReference(config.defendantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    'AWAITING_APPLICATION_PAYMENT', config.defendantSolicitorUser);
+    states.AWAITING_APPLICATION_PAYMENT.id, config.defendantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(10, 11), 1);
   await I.see(awaitingPaymentStatus);
   await I.navigateToCaseDetails(gaCaseReference);
@@ -33,7 +34,7 @@ Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @n
   await I.clickOnTab('Application Documents');
   await I.verifyN245FormElements();
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    'AWAITING_RESPONDENT_RESPONSE', config.defendantSolicitorUser, respondentStatus);
+    states.AWAITING_RESPONDENT_RESPONSE.id, config.defendantSolicitorUser, respondentStatus);
 
   await api.respondentResponse(config.applicantSolicitorUser, gaCaseReference);
 
@@ -65,11 +66,11 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async
     'disabledAccess');
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    'AWAITING_APPLICATION_PAYMENT', config.applicantSolicitorUser);
+    states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(9, 10), 1);
   await I.see(awaitingPaymentStatus);
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    'AWAITING_RESPONDENT_RESPONSE', config.applicantSolicitorUser, respondentStatus);
+    states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);
 
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
 
@@ -79,7 +80,7 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async
     await api.judgeMakesDecisionOrderMade(config.judgeLocalUser, gaCaseReference);
   }
 
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
+  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.ORDER_MADE.id);
 });
 
 AfterSuite(async ({api}) => {
