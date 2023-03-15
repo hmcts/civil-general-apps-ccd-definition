@@ -1,14 +1,13 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-const events = require('../../fixtures/ga-ccd/events');
+const states = require('../../fixtures/ga-ccd/state.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
-const hnStateStatus = events.HEARING_SCHEDULED_GA.state;
 
 let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 Judge list the application for hearing  API tests @api-nightly');
 
-Scenario('Judge makes decision 1V1 - LIST FOR HEARING', async ({api}) => {
+Scenario('Judge makes decision 1V1 - LIST FOR HEARING @mmm', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -29,6 +28,13 @@ Scenario('Judge makes decision 1V1 - LIST FOR HEARING', async ({api}) => {
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
+
+  console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
+  } else {
+    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
+  }
 });
 
 Scenario('Without Notice Hearing notice journey @mmm', async ({api}) => {
@@ -57,7 +63,7 @@ Scenario('Without Notice Hearing notice journey @mmm', async ({api}) => {
     await api.assertGaDocumentVisibilityToUser( config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
   }
 
-  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
+  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.HEARING_SCHEDULED.id);
   await api.assertNullGaDocumentVisibilityToUser( config.applicantSolicitorUser, civilCaseReference, doc);
   await api.assertGaDocumentVisibilityToUser( config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 });

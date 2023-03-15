@@ -199,7 +199,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
       respondentSolicitor1ServiceAddress: buildAddress('service')
     },
     DefendantSolicitorEmail: {
-      respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
+      respondentSolicitor1EmailAddress: 'hmcts.civil+organisation.2.solicitor.1@gmail.com'
     },
     AddAnotherDefendant: {
       addRespondent2: 'No'
@@ -320,7 +320,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
           respondentSolicitor2Reference: 'sol2reference'
         },
         SecondDefendantSolicitorEmail: {
-          respondentSolicitor2EmailAddress: 'civilunspecified@gmail.com'
+          respondentSolicitor2EmailAddress: 'hmcts.civil+organisation.3.solicitor.1@gmail.com'
         }
       };
     }
