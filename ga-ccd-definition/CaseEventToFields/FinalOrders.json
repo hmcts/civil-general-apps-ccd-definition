@@ -53,7 +53,8 @@
     "DisplayContext": "READONLY",
     "PageID": "FreeFormOrder",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "finalOrderSelection = \"FREE_FORM_ORDER\""
+    "PageShowCondition": "finalOrderSelection = \"FREE_FORM_ORDER\"",
+    "_CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/populate-final-order-preview-doc"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
