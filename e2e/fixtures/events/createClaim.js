@@ -107,7 +107,7 @@ const claimant = (claimantType) => {
   }
 };
 
-const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType, claimAmount) => {
+const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType, claimAmount = '30000') => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
@@ -125,10 +125,6 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
           ],
           value: listElement(config.claimantSelectedCourt)
         },
-        caseLocation: {
-          region: '2',
-          baseLocation: '000000'
-        }
       },
       applicant1OrganisationPolicy: {
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
@@ -161,7 +157,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
         OrgPolicyReference: 'Claimant policy reference',
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
         Organisation: {
-          OrganisationID: config.claimantSolicitorOrgId
+          OrganisationID: config.applicantSolicitorUser.orgId,
         }
       }
     },
@@ -191,7 +187,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
         OrgPolicyReference: 'Defendant policy reference',
         OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
         Organisation: {
-          OrganisationID: config.defendant1SolicitorOrgId
+          OrganisationID: config.defendantSolicitorUser.orgId
         },
       },
     },
@@ -214,10 +210,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
       SameLegalRepresentative: {},
     } : {},
     ClaimType: {
-      claimType: 'PERSONAL_INJURY'
-    },
-    PersonalInjuryType: {
-      personalInjuryType: 'ROAD_ACCIDENT'
+      claimType: 'CONSUMER_CREDIT'
     },
     Details: {
       detailsOfClaim: 'Test details of claim'
@@ -308,9 +301,10 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
           respondent2OrganisationPolicy: {
             OrgPolicyReference: 'Defendant policy reference 2',
             OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
-            Organisation: {
-              OrganisationID: config.defendant2SolicitorOrgId
-            },
+            Organisation:
+
+              {OrganisationID: config.secondDefendantSolicitorUser.orgId}
+            ,
           },
         },
         SecondDefendantSolicitorServiceAddress: {
