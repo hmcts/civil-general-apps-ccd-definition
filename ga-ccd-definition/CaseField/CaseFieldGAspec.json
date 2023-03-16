@@ -991,6 +991,13 @@
     "Label": " ",
     "FieldType": "OrderWithoutNotice",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaFreeFormOrderDocPreview",
+    "Label": "Draft Order",
+    "FieldType": "Document",
+    "SecurityClassification": "Public"
   }
 ]
 

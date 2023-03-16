@@ -941,5 +941,12 @@
     "ListElementCode": "judicialByCourtsInitiativeForWrittenRep",
     "UserRole": "judge-profile",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "gaFreeFormOrderDocPreview",
+    "UserRole": "judge-profile",
+    "CRUD": "CRU"
   }
 ]

@@ -2968,5 +2968,13 @@
       "judge-profile"
     ],
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaFreeFormOrderDocPreview",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
   }
 ]
