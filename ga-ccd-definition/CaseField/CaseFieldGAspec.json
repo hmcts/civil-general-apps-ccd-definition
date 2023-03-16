@@ -857,6 +857,35 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaHearingNoticeApplication",
+    "Label": " ",
+    "FieldType": "GAHearingNoticeApplication",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaHearingNoticeDetail",
+    "FieldType": "GAHearingNoticeDetail",
+    "Label": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaHearingNoticeInformation",
+    "Label": "Is there more information you need to add to the Hearing Notification letter?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingNoticeDocument",
+    "Label": "Hearing Notice",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "orderCourtOwnInitiativeListForHearing",
     "Label": " ",
     "FieldType": "GAOrderCourtOwnInitiativeGAspec",
