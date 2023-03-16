@@ -2,6 +2,10 @@
 const config = require('../../../config.js');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_ONE';
+const states = require('../../../fixtures/ga-ccd/state.js');
+
+const listForHearingStatus = states.LISTING_FOR_A_HEARING.id;
+
 
 let civilCaseReference, gaCaseReference, expectedReviewApplicationTask, expectedJudgeDecideOnApplicationBeforeSDOTask,
   expectedLADecideOnApplicationBeforeSDOTask, expectedScheduleAppHearingBeforeSDOTask,
@@ -19,6 +23,7 @@ Feature('1v1 Unspec: GA - WA Schedule Application Hearing @e2e-wa');
 Scenario('Before SDO GA - Judge Make decision - NBC admin review scheduled Application Hearing', async ({I, api, wa}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -48,7 +53,7 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin review scheduled Appli
   await I.login(config.judgeUserWithRegionId4);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
   await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'LISTING_FOR_A_HEARING', config.judgeUserWithRegionId4);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, config.judgeUserWithRegionId4);
   await wa.verifyNoActiveTask(gaCaseReference);
 
    console.log('Region 4 NBC admin review scheduled Application Hearing');
@@ -88,7 +93,7 @@ Scenario.skip('Before SDO GA - LA Make decision - NBC admin review', async ({I, 
   await I.login(config.tribunalCaseworkerWithRegionId4);
   await wa.goToTask(gaCaseReference, config.waTaskIds.legalAdvisorDecideOnApplication);
   await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'LISTING_FOR_A_HEARING', config.tribunalCaseworkerWithRegionId4);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, config.tribunalCaseworkerWithRegionId4);
   await wa.verifyNoActiveTask(gaCaseReference);
 
   console.log('Region 4 NBC admin review scheduled Application Hearing');
@@ -116,7 +121,7 @@ Scenario.skip('After SDO GA - Judge Make decision - HC admin review', async ({I,
   await I.login(config.judgeUserWithRegionId1);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
   await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'LISTING_FOR_A_HEARING', config.judgeUserWithRegionId1);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, config.judgeUserWithRegionId1);
   await wa.verifyNoActiveTask(gaCaseReference);
 
   console.log('Region 4 HCA admin review scheduled Application Hearing');

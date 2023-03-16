@@ -45,9 +45,9 @@ module.exports = {
           courtLocation: {
             applicantPreferredCourtLocationList: {
               list_items: [
-                listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                listElement(config.claimantSelectedCourt)
               ],
-              value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+              value: listElement(config.claimantSelectedCourt)
             }
           }
         },
@@ -372,5 +372,19 @@ module.exports = {
     }
 
     return userData;
+  },
+  serviceUpdateDto: (caseId, paymentStatus) => {
+    return {
+      service_request_reference: '1324646546456',
+      ccd_case_number: caseId,
+      service_request_amount: '167.00',
+      service_request_status: paymentStatus,
+      payment: {
+        payment_amount: 167.00,
+        payment_reference: '13213223',
+        payment_method: 'by account',
+        case_reference: 'example of case ref'
+      }
+    };
   }
 };
