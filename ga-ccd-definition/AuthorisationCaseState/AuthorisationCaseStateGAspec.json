@@ -375,13 +375,13 @@
       {
         "UserRoles": [
           "hearing-schedule-access",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "judge-profile",
           "legal-adviser",
           "civil-administrator-standard",
           "civil-administrator-basic",
