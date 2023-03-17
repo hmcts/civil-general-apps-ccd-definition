@@ -71,6 +71,7 @@ const responseCheckYourAnswersPage = require('./pages/generalApplication/respons
 const responseConfirmationPage = require('./pages/generalApplication/responseJourneyPages/responseConfirmation.page');
 const responseSummaryPage = require('./pages/generalApplication/responseJourneyPages/responseSummary.page');
 const judgeDecisionPage = require('./pages/generalApplication/judgesJourneyPages/judgeDecision.page');
+const judgeOrderPage = require('./pages/generalApplication/applicationOrderPages/judgeOrder.page');
 const makeAnOrderPage = require('./pages/generalApplication/judgesJourneyPages/makeAnOrder.page');
 const reviewOrderDocumentPage = require('./pages/generalApplication/judgesJourneyPages/reviewOrderDocument.page');
 const requestMoreInfoPage = require('./pages/generalApplication/judgesJourneyPages/requestMoreInformation.page');
@@ -799,6 +800,25 @@ module.exports = function () {
           ...submitApplication('You have requested a response'),
         ]),
         () => judgesConfirmationPage.verifyReqMoreInfoConfirmationPage(),
+      ]);
+    },
+
+    async judgeMakeAppOrder(gaCaseNumber, orderType) {
+      eventName = events.GENERATE_DIRECTIONS_ORDER.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, gaCaseNumber),
+        () => judgeOrderPage.verifyErrorMessage(),
+        () => judgeOrderPage.selectOrderType(orderType)/*,
+        () => requestMoreInfoPage.requestMoreInfoOrder(infoType, withoutNotice),
+        () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
+        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
+        ...conditionalSteps(infoType === 'requestMoreInformation', [
+          ...submitApplication('You have requested more information'),
+        ]),
+        ...conditionalSteps(infoType === 'sendApplicationToOtherParty', [
+          ...submitApplication('You have requested a response'),
+        ]),
+        () => judgesConfirmationPage.verifyReqMoreInfoConfirmationPage(),*/
       ]);
     },
 
