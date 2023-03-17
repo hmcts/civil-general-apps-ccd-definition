@@ -210,10 +210,10 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderCostList",
+    "CaseFieldID": "assistedOrderCostDetails",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 17,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y"
   }

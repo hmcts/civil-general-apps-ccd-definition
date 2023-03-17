@@ -142,5 +142,12 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FinalOrderCostsSelection",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "assistedOrderCostDetails",
+    "Label": " ",
+    "FieldType": "AssistedOrderCostDetails",
+    "SecurityClassification": "Public"
   }
 ]
