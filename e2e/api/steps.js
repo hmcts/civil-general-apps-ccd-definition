@@ -1454,7 +1454,6 @@ module.exports = {
     } else {
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     }
-    // await waitForFinishedBusinessProcess(caseId, user);
   },
 
   retrieveTaskDetails:  async(user, caseNumber, taskId) => {
