@@ -886,6 +886,36 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseNameHmctsInternal",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_comment": "Used to populate title"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseNameLabel",
+    "Label": "## ${caseNameHmctsInternal}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "finalOrderSelectionLabel",
+    "Label": "**** \n ### What type of order do you wish to make?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "finalOrderSelection",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "FinalOrderSelection",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "orderCourtOwnInitiativeListForHearing",
     "Label": " ",
     "FieldType": "GAOrderCourtOwnInitiativeGAspec",
