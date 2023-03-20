@@ -59,7 +59,7 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
 
 });
 
-Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Payment fails', async ({api}) => {
+Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Payment fails @fail', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
