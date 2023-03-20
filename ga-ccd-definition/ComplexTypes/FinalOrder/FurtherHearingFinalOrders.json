@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "label",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Date of new hearing",
@@ -8,7 +8,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "listFromLabel",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### List from",
@@ -16,7 +16,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "listFromDate",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -25,7 +25,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "dateToLabel",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Date to (Optional)",
@@ -33,7 +33,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "dateToDate",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -42,7 +42,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "lengthLabel",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Length of new hearing",
@@ -50,7 +50,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "lengthList",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -59,7 +59,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "lengthListOther",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -68,7 +68,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "alternativeHearingLabel",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Alternative hearing location (Optional)",
@@ -76,7 +76,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "alternativeHearingList",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -84,7 +84,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "hearingMethodLabel",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Method of hearing",
@@ -92,7 +92,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "hearingMethodList",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -102,7 +102,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "hearingNotesLabel",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Hearing notes (Optional)",
@@ -110,7 +110,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "hearingNotesText",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",

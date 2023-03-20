@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "lengthListOtherLabel",
     "ID": "CaseHearingLengthElement",
     "ElementLabel": "### Length of hearing",
@@ -8,7 +8,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "lengthListOtherDays",
     "ID": "CaseHearingLengthElement",
     "ElementLabel": "Days",
@@ -17,7 +17,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "lengthListOtherHours",
     "ID": "CaseHearingLengthElement",
     "ElementLabel": "Hours",
@@ -28,7 +28,7 @@
     "Max": 23
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "lengthListOtherMinutes",
     "ID": "CaseHearingLengthElement",
     "ElementLabel": "Minutes",

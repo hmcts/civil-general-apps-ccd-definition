@@ -151,14 +151,14 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "finalOrderFurtherHearingLabel",
     "Label": "**** \n ## Further hearing (part heard or adjourned)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "finalOrderFurtherHearingToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -166,10 +166,31 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "finalOrderFurtherHearingComplex",
     "Label": " ",
     "FieldType": "FinalOrderFurtherHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderMadeOnDetailsPrimaryLabel",
+    "Label": "**** \n ## Order made on court's own initiative/without notice",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderMadeOnDetailsSecondaryLabel",
+    "Label": "### Select as appropriate",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderMadeOnDetails",
+    "Label": " ",
+    "FieldType": "OrderMadeOnDetails",
     "SecurityClassification": "Public"
   }
 ]
