@@ -72,6 +72,7 @@ const responseConfirmationPage = require('./pages/generalApplication/responseJou
 const responseSummaryPage = require('./pages/generalApplication/responseJourneyPages/responseSummary.page');
 const judgeDecisionPage = require('./pages/generalApplication/judgesJourneyPages/judgeDecision.page');
 const judgeOrderPage = require('./pages/generalApplication/applicationOrderPages/judgeOrder.page');
+const freeFormOrderPage = require('./pages/generalApplication/applicationOrderPages/freeFormOrder.page');
 const makeAnOrderPage = require('./pages/generalApplication/judgesJourneyPages/makeAnOrder.page');
 const reviewOrderDocumentPage = require('./pages/generalApplication/judgesJourneyPages/reviewOrderDocument.page');
 const requestMoreInfoPage = require('./pages/generalApplication/judgesJourneyPages/requestMoreInformation.page');
@@ -803,12 +804,15 @@ module.exports = function () {
       ]);
     },
 
-    async judgeMakeAppOrder(gaCaseNumber, orderType) {
+    async judgeMakeAppOrder(gaCaseNumber, orderType, formType) {
       eventName = events.GENERATE_DIRECTIONS_ORDER.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, gaCaseNumber),
         () => judgeOrderPage.verifyErrorMessage(),
-        () => judgeOrderPage.selectOrderType(orderType)/*,
+        () => judgeOrderPage.selectOrderType(orderType),
+        () => freeFormOrderPage.verifyFreeFromErrorMessage(),
+        () => freeFormOrderPage.fillFreeFormOrder(formType),
+        /*,
         () => requestMoreInfoPage.requestMoreInfoOrder(infoType, withoutNotice),
         () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
         () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
