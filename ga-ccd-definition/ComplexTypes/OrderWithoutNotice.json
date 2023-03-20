@@ -26,6 +26,7 @@
     "FieldType": "Date",
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "DisplayContextParameter": "#DATETIMEDISPLAY(d LLLL yyyy)"
   }
 ]

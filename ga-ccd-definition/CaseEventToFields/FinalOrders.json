@@ -69,7 +69,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "freeFormRecitalTextArea",
+    "CaseFieldID": "freeFormRecitalText",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
@@ -89,7 +89,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "freeFormRecordedTextArea",
+    "CaseFieldID": "freeFormRecordedText",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
@@ -109,7 +109,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "freeFormOrderedTextArea",
+    "CaseFieldID": "freeFormOrderedText",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",

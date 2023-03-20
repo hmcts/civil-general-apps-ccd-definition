@@ -917,20 +917,20 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "caseParticipantsFreeForm",
-    "Label": "${caseNameHmctsInternal}",
+    "Label": "## ${caseNameHmctsInternal}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "freeFormRecitalAndOrderLabel",
-    "Label": "**** \n ## Recital and order \n ### Insert any recitals and order you wish to make below",
+    "Label": "**** \n ## Recitals and order \n ### Insert any recitals and order you wish to make below",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "freeFormRecitalTextArea",
+    "ID": "freeFormRecitalText",
     "Label": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
@@ -938,13 +938,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "freeFormRecordedTextAreaLabel",
-    "Label": "### It is recorded that:",
+    "Label": "### It is recorded that (Optional):",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "freeFormRecordedTextArea",
+    "ID": "freeFormRecordedText",
     "Label": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
@@ -958,7 +958,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "freeFormOrderedTextArea",
+    "ID": "freeFormOrderedText",
     "Label": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
