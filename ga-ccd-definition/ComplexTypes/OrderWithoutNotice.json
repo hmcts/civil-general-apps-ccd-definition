@@ -27,6 +27,6 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "SecurityClassification": "Public",
-    "DisplayContextParameter": "#DATETIMEDISPLAY(d M yyyy)"
+    "DisplayContextParameter": "#DATETIMEDISPLAY(d LLLL yyyy)"
   }
 ]
