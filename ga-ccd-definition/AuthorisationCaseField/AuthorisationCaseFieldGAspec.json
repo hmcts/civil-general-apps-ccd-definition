@@ -2899,7 +2899,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "freeFormRecitalTextArea",
+    "CaseFieldID": "freeFormRecitalText",
     "UserRoles": [
       "judge-profile"
     ],
@@ -2915,7 +2915,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "freeFormRecordedTextArea",
+    "CaseFieldID": "freeFormRecordedText",
     "UserRoles": [
       "judge-profile"
     ],
@@ -2931,7 +2931,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "freeFormOrderedTextArea",
+    "CaseFieldID": "freeFormOrderedText",
     "UserRoles": [
       "judge-profile"
     ],
