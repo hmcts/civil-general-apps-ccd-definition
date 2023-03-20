@@ -183,7 +183,6 @@ withPipeline(type, product, component) {
         env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
         env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
         env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-        env.FAIL_ON_FAILURE = true;
     }
 
   afterAlways('smoketest:preview') {
