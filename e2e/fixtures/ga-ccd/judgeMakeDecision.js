@@ -22,7 +22,7 @@ module.exports = {
         writtenConcurrentRepresentationsBy: current_date,
         makeAnOrderForWrittenRepresentations: 'CONCURRENT_REPRESENTATIONS'
       },
-      judicialByCourtsInitiativeForWrittenRep: 'OPTION_1'
+      judicialByCourtsInitiativeForWrittenRep: 'OPTION_3'
     };
   },
   judgeMakeOrderWrittenRep_On_Uncloaked_Appln: (current_date) => {
@@ -39,7 +39,7 @@ module.exports = {
         writtenConcurrentRepresentationsBy: current_date,
         makeAnOrderForWrittenRepresentations: 'CONCURRENT_REPRESENTATIONS'
       },
-      judicialByCourtsInitiativeForWrittenRep: 'OPTION_1'
+      judicialByCourtsInitiativeForWrittenRep: 'OPTION_3'
     };
   },
   judgeMakeDecisionDirectionOrder: (current_date) => {
@@ -49,7 +49,7 @@ module.exports = {
       },
       judicialDecisionMakeOrder: {
         makeAnOrder: 'GIVE_DIRECTIONS_WITHOUT_HEARING',
-        judicialByCourtsInitiative: 'OPTION_1',
+        judicialByCourtsInitiative: 'OPTION_3',
         directionsText: 'sample text',
         reasonForDecisionText: 'sample text',
         directionsResponseByDate: current_date,
@@ -71,7 +71,7 @@ module.exports = {
         judgeApproveEditOptionDate: '2023-06-05',
         reasonForDecisionText: 'sample text',
         isOrderProcessedByStayScheduler: 'No',
-        judicialByCourtsInitiative: 'OPTION_1'
+        judicialByCourtsInitiative: 'OPTION_3'
       }
     };
   },
@@ -87,7 +87,7 @@ module.exports = {
         judgeApproveEditOptionDate: current_date,
         reasonForDecisionText: 'sample text',
         isOrderProcessedByStayScheduler: 'No',
-        judicialByCourtsInitiative: 'OPTION_1'
+        judicialByCourtsInitiative: 'OPTION_3'
       }
     };
   },
@@ -104,7 +104,7 @@ module.exports = {
         judgeApproveEditOptionDateForUnlessOrder: current_date,
         reasonForDecisionText: 'sample text',
         isOrderProcessedByUnlessScheduler: 'No',
-        judicialByCourtsInitiative: 'OPTION_1'
+        judicialByCourtsInitiative: 'OPTION_3'
       }
     };
   },
@@ -120,7 +120,7 @@ module.exports = {
         directionsResponseByDate: '2023-06-05',
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No',
-        judicialByCourtsInitiativeListForHearing: 'OPTION_1'
+        judicialByCourtsInitiativeListForHearing: 'OPTION_3'
       },
       judicialListForHearing: {
         hearingPreferencesPreferredType: 'TELEPHONE',
@@ -130,7 +130,7 @@ module.exports = {
         judgeLanguageInterpreter: 'sample text',
         judgeOtherSupport: 'sample text'
       },
-      judicialByCourtsInitiativeListForHearing: 'OPTION_1'
+      judicialByCourtsInitiativeListForHearing: 'OPTION_3'
     };
   },
   listingForHearingInPerson: () => {
@@ -144,7 +144,7 @@ module.exports = {
         directionsResponseByDate: '2023-06-05',
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No',
-        judicialByCourtsInitiativeListForHearing: 'OPTION_1'
+        judicialByCourtsInitiativeListForHearing: 'OPTION_3'
       },
       judicialListForHearing: {
         hearingPreferencesPreferredType: 'IN_PERSON',
@@ -159,7 +159,7 @@ module.exports = {
         judgeLanguageInterpreter: 'sample text',
         judgeOtherSupport: 'sample text'
       },
-      judicialByCourtsInitiativeListForHearing: 'OPTION_2',
+      judicialByCourtsInitiativeListForHearing: 'OPTION_3',
       judicialGOHearingDirections:'Test Hearing Directions'
     };
   },
@@ -175,7 +175,7 @@ module.exports = {
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No',
         isOrderProcessedByStayScheduler: 'No',
-        judicialByCourtsInitiative: 'OPTION_1'
+        judicialByCourtsInitiative: 'OPTION_3'
       }
     };
   },
@@ -193,7 +193,7 @@ module.exports = {
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No',
         isOrderProcessedByStayScheduler: 'No',
-        judicialByCourtsInitiative: 'OPTION_1'
+        judicialByCourtsInitiative: 'OPTION_3'
       }
     };
 
@@ -210,7 +210,7 @@ module.exports = {
         orderText: 'order sample text',
         reasonForDecisionText: 'sample text',
         isOrderProcessedByStayScheduler: 'No',
-        judicialByCourtsInitiative: 'OPTION_1'
+        judicialByCourtsInitiative: 'OPTION_3'
       },
       makeAppVisibleToRespondents: {
         makeAppAvailableCheck: [

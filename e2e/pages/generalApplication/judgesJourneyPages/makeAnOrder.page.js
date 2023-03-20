@@ -14,6 +14,14 @@ module.exports = {
         giveDirections: 'Give directions without listing for hearing'
       }
     },
+    courtInitiative: {
+      id: '#judicialDecisionMakeOrder_judicialByCourtsInitiative',
+      options: {
+        orderCourtInitiative: 'Order on court\'s own initiative',
+        orderWithoutNotice: 'Order without notice',
+        none: 'None'
+      }
+    },
     judgeRecitalTextArea: '#judicialDecisionMakeOrder_judgeRecitalText',
     orderTextArea: '#judicialDecisionMakeOrder_orderText',
     dismissalOrderTextArea: '#judicialDecisionMakeOrder_dismissalOrderText',
@@ -42,6 +50,9 @@ module.exports = {
     }
     await within(this.fields.makeAnOrder.id, () => {
       I.click(this.fields.makeAnOrder.options[order]);
+    });
+    await within(this.fields.courtInitiative.id, () => {
+      I.click(this.fields.courtInitiative.options['none']);
     });
     switch (order) {
       case 'approveOrEditTheOrder':

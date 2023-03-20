@@ -14,7 +14,7 @@ module.exports = {
 
   async selectJudicialByCourtsInitiativeOption() {
     await I.waitForElement('div[id*="judicialByCourtsInitiative"]');
-    await I.forceClick('input[id*="OPTION_1"]');
+    await I.forceClick('input[id*="OPTION_3"]');
   },
 
   verifyJudgeRecitalText: async (actualJudgeRecitalText, notice) => {
