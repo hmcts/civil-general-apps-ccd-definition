@@ -18,7 +18,7 @@ module.exports = {
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
 
     // wa demo url's
-    /* manageCase:  'https://manage-case-wa-int.demo.platform.hmcts.net/',
+    /* manageCase:  'https://manage-case-wa-int.demo.platform.hmcts.net',
      authProviderApi: 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
      ccdDataStore: 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
      dmStore:'http://dm-store-demo.service.core-compute-demo.internal',
@@ -52,17 +52,20 @@ module.exports = {
   applicantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
-    type: 'applicant_solicitor'
+    type: 'applicant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
   },
   defendantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.2.solicitor.1@gmail.com',
-    type: 'defendant_solicitor'
+    type: 'defendant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU'
   },
   secondDefendantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.3.solicitor.1@gmail.com',
-    type: 'defendant_solicitor'
+    type: 'defendant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0'
   },
   judgeUserWithRegionId1: {
     password: judgePassword,
@@ -197,7 +200,7 @@ module.exports = {
   claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU',
   defendant2SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0',
-  claimantSelectedCourt: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
-  defendantSelectedCourt: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
-  defendant2SelectedCourt: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ',
+  claimantSelectedCourt: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+  defendantSelectedCourt: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+  defendant2SelectedCourt: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
 };

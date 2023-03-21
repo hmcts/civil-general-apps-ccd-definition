@@ -1,13 +1,8 @@
 #!/bin/bash
 set -ex
 
-echo "Running FE and API tests on tests on ${ENVIRONMENT} env"
-# this requires update later on when we need different tests to run on each environment. .for example enhancements test only on preview
+echo "Running FE tests on tests on ${ENVIRONMENT} env"
+yarn test:master-e2e-tests
 
-if [ ${ENVIRONMENT} == preview ]; then
-  yarn test:non-prod-e2e-tests
-  yarn test:api
-else
-  yarn test:master-e2e-tests
-  yarn test:api
-fi
+echo "Running API tests on tests on ${ENVIRONMENT} env"
+yarn test:api

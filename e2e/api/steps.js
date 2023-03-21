@@ -1,7 +1,9 @@
 const config = require('../config.js');
+const {PBAv3} = require('../fixtures/featureKeys');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
+const { listElement } = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -29,7 +31,9 @@ const  genAppNbcAdminReferToLegalAdvisorData = require('../fixtures/ga-ccd/nbcAd
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
 const { replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
+const {checkPBAv3ToggleEnabled} = require('./testingSupport');
 const {createGeneralAppN245FormUpload} = require('../fixtures/ga-ccd/createGeneralApplication');
+const sdoTracks = require('../fixtures/events/createSDO.js');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
@@ -92,42 +96,63 @@ const data = {
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
 
   CLAIM_CREATE_CLAIM_AP_SPEC: (scenario) => claimDataSpec.createClaimForAccessProfiles(scenario),
-  CLAIM_DEFENDANT_RESPONSE_SPEC: (response) => require('../fixtures/events/claim/defendantResponseSpec.js').respondToClaim(response),
-  CLAIM_DEFENDANT_RESPONSE2_SPEC: (response) => require('../fixtures/events/claim/defendantResponseSpec.js').respondToClaim2(response),
-  CLAIM_DEFENDANT_RESPONSE_1v2_SPEC: (response) => require('../fixtures/events/claim/defendantResponseSpec1v2.js').respondToClaim(response),
+  CLAIM_DEFENDANT_RESPONSE_SPEC: (response, camundaEvent) => require('../fixtures/events/claim/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
+  CLAIM_DEFENDANT_RESPONSE2_SPEC: (response, camundaEvent) => require('../fixtures/events/claim/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
+  CLAIM_DEFENDANT_RESPONSE_1v2_SPEC: (response, camundaEvent) => require('../fixtures/events/claim/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   CLAIM_CLAIMANT_RESPONSE_SPEC: (mpScenario) => require('../fixtures/events/claim/claimantResponseSpec.js').claimantResponse(mpScenario),
   CLAIM_CLAIMANT_RESPONSE_1v2_SPEC: (response) => require('../fixtures/events/claim/claimantResponseSpec1v2.js').claimantResponse(response),
   CLAIM_INFORM_AGREED_EXTENSION_DATE_SPEC: () => require('../fixtures/events/claim/informAgreeExtensionDateSpec.js'),
   CLAIM_DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/claim/defaultJudgmentSpec.js'),
   CLAIM_DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/claim/defaultJudgment1v2Spec.js'),
-  CLAIM_DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/claim/defaultJudgment2v1Spec.js')
+  CLAIM_DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/claim/defaultJudgment2v1Spec.js'),
+
+  CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
+  CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
+  CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
 };
 
 const eventData = {
   defendantResponsesSpec: {
     ONE_V_ONE: {
       FULL_DEFENCE: data.CLAIM_DEFENDANT_RESPONSE_SPEC('FULL_DEFENCE'),
+      FULL_DEFENCE_PBAv3: data.CLAIM_DEFENDANT_RESPONSE_SPEC('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       FULL_ADMISSION: data.CLAIM_DEFENDANT_RESPONSE_SPEC('FULL_ADMISSION'),
+      FULL_ADMISSION_PBAv3: data.CLAIM_DEFENDANT_RESPONSE_SPEC('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION: data.CLAIM_DEFENDANT_RESPONSE_SPEC('PART_ADMISSION'),
-      COUNTER_CLAIM: data.CLAIM_DEFENDANT_RESPONSE_SPEC('COUNTER_CLAIM')
+      PART_ADMISSION_PBAv3: data.CLAIM_DEFENDANT_RESPONSE_SPEC('PART_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      COUNTER_CLAIM: data.CLAIM_DEFENDANT_RESPONSE_SPEC('COUNTER_CLAIM'),
+      COUNTER_CLAIM_PBAv3: data.CLAIM_DEFENDANT_RESPONSE_SPEC('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT')
     },
     ONE_V_TWO: {
       FULL_DEFENCE: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('FULL_DEFENCE'),
+      FULL_DEFENCE_PBAv3: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       FULL_ADMISSION: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('FULL_ADMISSION'),
+      FULL_ADMISSION_PBAv3: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('PART_ADMISSION'),
+      PART_ADMISSION_PBAv3: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('PART_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       COUNTER_CLAIM: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('COUNTER_CLAIM'),
+      COUNTER_CLAIM_PBAv3: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       DIFF_FULL_DEFENCE: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('DIFF_FULL_DEFENCE'),
-      DIFF_NOT_FULL_DEFENCE: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('DIFF_NOT_FULL_DEFENCE')
+      DIFF_FULL_DEFENCE_PBAv3: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('DIFF_FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      DIFF_NOT_FULL_DEFENCE: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('DIFF_NOT_FULL_DEFENCE'),
+      DIFF_NOT_FULL_DEFENCE_PBAv3: data.CLAIM_DEFENDANT_RESPONSE_1v2_SPEC('DIFF_NOT_FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT')
     },
     ONE_V_ONE_DIF_SOL: {
       FULL_DEFENCE1: data.CLAIM_DEFENDANT_RESPONSE_SPEC('FULL_DEFENCE'),
+      FULL_DEFENCE1_PBAv3: data.CLAIM_DEFENDANT_RESPONSE_SPEC('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       FULL_ADMISSION1: data.CLAIM_DEFENDANT_RESPONSE_SPEC('FULL_ADMISSION'),
+      FULL_ADMISSION1_PBAv3: data.CLAIM_DEFENDANT_RESPONSE_SPEC('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION1: data.CLAIM_DEFENDANT_RESPONSE_SPEC('PART_ADMISSION'),
+      PART_ADMISSION1_PBAv3: data.CLAIM_DEFENDANT_RESPONSE_SPEC('PART_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       COUNTER_CLAIM1: data.CLAIM_DEFENDANT_RESPONSE_SPEC('COUNTER_CLAIM'),
+      COUNTER_CLAIM1_PBAv3: data.CLAIM_DEFENDANT_RESPONSE_SPEC('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
 
       FULL_DEFENCE2: data.CLAIM_DEFENDANT_RESPONSE2_SPEC('FULL_DEFENCE'),
+      FULL_DEFENCE2_PBAv3: data.CLAIM_DEFENDANT_RESPONSE2_SPEC('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       FULL_ADMISSION2: data.CLAIM_DEFENDANT_RESPONSE2_SPEC('FULL_ADMISSION'),
+      FULL_ADMISSION2_PBAv3: data.CLAIM_DEFENDANT_RESPONSE2_SPEC('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION2: data.CLAIM_DEFENDANT_RESPONSE2_SPEC('PART_ADMISSION'),
+      PART_ADMISSION2_PBAv3: data.CLAIM_DEFENDANT_RESPONSE2_SPEC('PART_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       // COUNTER_CLAIM2: data.DEFENDANT_RESPONSE2('COUNTER_CLAIM')
     },
     TWO_V_ONE: {
@@ -165,6 +190,11 @@ const eventData = {
     //   PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1_SPEC('PART_ADMISSION'),
     //   NOT_PROCEED: data.CLAIMANT_RESPONSE_2v1_SPEC('NOT_PROCEED')
     // }
+  },
+  sdoTracks: {
+    CREATE_DISPOSAL: data.CREATE_DISPOSAL(),
+    CREATE_SMALL: data.CREATE_SMALL(),
+    CREATE_FAST: data.CREATE_FAST(),
   }
 };
 
@@ -220,17 +250,57 @@ module.exports = {
     await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
       null, 'Case data validation failed');
 
+    const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
+      : 'Your claim will not be issued until payment is confirmed.';
+
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
-      body: 'Your claim will not be issued until payment is confirmed.'
+      body: bodyText
     });
 
+    await waitForFinishedBusinessProcess(caseId, user);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+                                      claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
     await assignCase(caseId, multipartyScenario);
-    await waitForFinishedBusinessProcess(caseId,user);
+    await waitForFinishedBusinessProcess(caseId, user);
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     return caseId;
+  },
+
+  amendClaimDocuments: async (user) => {
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+
+    await apiRequest.setupTokens(user);
+
+    eventName = 'ADD_OR_AMEND_CLAIM_DOCUMENTS';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = returnedCaseData;
+
+    await validateEventPages(data[eventName]);
+
+    const document = await testingSupport.uploadDocument();
+    let errorData = await updateCaseDataWithPlaceholders(data[eventName], document);
+
+    await assertError('Upload', errorData.invalid.Upload.duplicateError,
+      'You need to either upload 1 Particulars of claim only or enter the Particulars of claim text in the field provided. You cannot do both.');
+
+    await assertSubmittedEvent('CASE_ISSUED', {
+      header: 'Documents uploaded successfully',
+      body: ''
+    });
+
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
   amendclaimDismissedDeadline: async (user) => {
@@ -254,6 +324,17 @@ module.exports = {
     }
 
     await assertSubmittedSpecEvent('PENDING_CASE_ISSUED');
+
+    var pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+    await waitForFinishedBusinessProcess(caseId, user);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+                                      claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
 
     await assignSpecCase(caseId, multipartyScenario);
     await waitForFinishedBusinessProcess(caseId, user);
@@ -1108,7 +1189,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
 
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
-    await apiRequest.startEvent(eventName, caseId);
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
 
     await validateEventPages(data[eventName]);
 
@@ -1116,6 +1197,10 @@ module.exports = {
       header: 'Defendant notified',
       body: 'The defendant legal representative\'s organisation has been notified of the claim details.'
     });
+
+    caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
+        value: listElement('Both')
+      }};
 
     await waitForFinishedBusinessProcess(caseId, user);
   },
@@ -1185,7 +1270,26 @@ module.exports = {
     for (let pageId of Object.keys(createClaimData.userInput)) {
       await assertValidClaimData(createClaimData, pageId);
     }
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', null, false);
+
+    const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
+      : 'Your claim will not be issued until payment is confirmed.';
+
+    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
+      header: 'Your claim has been received',
+      body: bodyText
+    });
+
+    await waitForFinishedBusinessProcess(caseId, user);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 
     if (scenario === 'ONE_V_TWO'
@@ -1204,6 +1308,12 @@ module.exports = {
                             expectedEvent = 'AWAITING_APPLICANT_INTENTION') => {
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
+
+    const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
+    if(pbaV3){
+      response = response+'_PBAv3';
+    }
+
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     let defendantResponseData = eventData['defendantResponsesSpec'][scenario][response];
     defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
@@ -1321,6 +1431,29 @@ module.exports = {
     await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId, user);
+  },
+
+  createSDO: async (caseId, user, response = 'CREATE_DISPOSAL') => {
+    console.log('SDO for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+
+    if (response === 'UNSUITABLE_FOR_SDO') {
+      eventName = 'NotSuitable_SDO';
+    } else {
+      eventName = 'CREATE_SDO';
+    }
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let disposalData = eventData['sdoTracks'][response];
+
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    if (response === 'UNSUITABLE_FOR_SDO') {
+      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
+    } else {
+      await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    }
   },
 
   retrieveTaskDetails:  async(user, caseNumber, taskId) => {
