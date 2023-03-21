@@ -2879,5 +2879,94 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "caseParticipantsFreeForm",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "freeFormRecitalAndOrderLabel",
+    "UserRoles": [
+      "judge-profile",
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "freeFormRecitalText",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "freeFormRecordedTextAreaLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "freeFormRecordedText",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "freeFormOrderedLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "freeFormOrderedText",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderOnCourtsListLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderOnCourtsList",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderOnCourtInitiative",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderWithoutNotice",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
   }
 ]
