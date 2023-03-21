@@ -67,6 +67,7 @@ const data = {
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
   CREATE_CLAIM: (mpScenario, claimantType, claimAmount) => claimData.createClaim(mpScenario, claimantType, claimAmount),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
+  UPDATE_CLAIMANT_SOLICITOR_EMAILID: claimSpecData.updateClaimantSolicitorEmailId(),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
   CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS: claimData.createClaimRespondentSolFirmNotInMyHmcts,
@@ -350,6 +351,14 @@ module.exports = {
 
   initiateGeneralApplication: async (user, parentCaseId) => {
     return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+  },
+
+  checkGeneralApplication: async (user, parentCaseId) => {
+    return await checkNoOfGeneralApplications(user, parentCaseId,);
+  },
+
+  updateCivilClaimClaimantSolEmailID: async (user, parentCaseId) => {
+    return await updateCivilClaimSolEmailID(user, parentCaseId);
   },
 
   initiateGaWithVaryJudgement: async (user, parentCaseId, isClaimant) => {
@@ -1875,6 +1884,25 @@ const initiateGaWithState = async (user, parentCaseId, expectState) => {
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
   await addUserCaseMapping(gaCaseReference, user);
   return gaCaseReference;
+};
+
+const updateCivilClaimSolEmailID = async (user, parentCaseId) => {
+  eventName = events.CHANGE_SOLICITOR_EMAIL.id;
+  await apiRequest.setupTokens(user);
+  await apiRequest.startUpdateEmailEvent(eventName, parentCaseId);
+
+  const response = await apiRequest.submitEvent(eventName, data.UPDATE_CLAIMANT_SOLICITOR_EMAILID,
+    parentCaseId);
+
+  assert.equal(response.status, 201);
+};
+
+const checkNoOfGeneralApplications = async (user, parentCaseId) => {
+
+  const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+  const updatedCivilCaseData = await response.json();
+  let totalGeneralApplication = updatedCivilCaseData.claimantGaAppDetails.length;
+  assert.equal(totalGeneralApplication, 2);
 };
 
 const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant) => {

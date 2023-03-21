@@ -48,5 +48,10 @@ module.exports = {
     description: 'Caseworker assigns the application to Legal Advisor',
     id: 'REFER_TO_LEGAL_ADVISOR',
     name: 'Refer to Legal Advisor'
+  },
+  CHANGE_SOLICITOR_EMAIL: {
+    description: 'Change solicitor email',
+    id: 'CHANGE_SOLICITOR_EMAIL',
+    name: 'Change solicitor email',
   }
 };

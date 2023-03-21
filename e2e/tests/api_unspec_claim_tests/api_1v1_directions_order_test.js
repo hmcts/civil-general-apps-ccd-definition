@@ -20,17 +20,15 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER - Respondent upload Direct
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-  console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionDirectionsOrder(config.judgeUser, gaCaseReference);
-  }else {
-    await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
-  }
-  console.log('*** End Judge Directions Order GA Case Reference: ' + gaCaseReference + ' ***');
+  await api.updateCivilClaimClaimantSolEmailID(config.applicantSolicitorUser, civilCaseReference);
 
-  console.log('*** Start Respondent respond to Judge Directions on GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentResponseToJudgeDirections(config.applicantSolicitorUser, gaCaseReference);
-  console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
+  console.log('Make a General Application');
+  gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
+
+  console.log('*** Check no. of General Application Case ***');
+  gaCaseReference = await api.checkGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
+  console.log('*** End  ***');
+
 });
 
 Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT - DIRECTIONS ORDER - Respondent upload Directions Document', async ({api}) => {
