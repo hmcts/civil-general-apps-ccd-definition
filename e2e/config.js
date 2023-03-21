@@ -52,17 +52,20 @@ module.exports = {
   applicantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
-    type: 'applicant_solicitor'
+    type: 'applicant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
   },
   defendantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.2.solicitor.1@gmail.com',
-    type: 'defendant_solicitor'
+    type: 'defendant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU'
   },
   secondDefendantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.3.solicitor.1@gmail.com',
-    type: 'defendant_solicitor'
+    type: 'defendant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0'
   },
   judgeUserWithRegionId1: {
     password: judgePassword,
