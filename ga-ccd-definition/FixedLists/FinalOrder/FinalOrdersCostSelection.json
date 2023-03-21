@@ -1,6 +1,6 @@
 [
   {
-    "ID": "FinalOrderCostsSelection",
+    "ID": "assistedOrderCostsSelection",
     "ListElementCode": "COSTS_IN_THE_CASE",
     "ListElement": "Costs in the case",
     "DisplayOrder": 1

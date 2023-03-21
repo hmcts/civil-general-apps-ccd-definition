@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "label",
-    "ID": "FinalOrderRecitalsRecorded",
+    "ID": "assistedOrderRecitalsRecorded",
     "ElementLabel": "### Is recorded that: (Optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -10,7 +10,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "text",
-    "ID": "FinalOrderRecitalsRecorded",
+    "ID": "assistedOrderRecitalsRecorded",
     "ElementLabel": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"

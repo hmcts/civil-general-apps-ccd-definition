@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "typeRepresentationList",
-    "ID": "FinalOrderRepresentation",
+    "ID": "assistedOrderRepresentation",
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FinalOrdersRepresentationList",
@@ -11,7 +11,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "typeRepresentationComplex",
-    "ID": "FinalOrderRepresentation",
+    "ID": "assistedOrderRepresentation",
     "ElementLabel": " ",
     "FieldType": "ClaimantAndDefendantHeard",
     "FieldShowCondition": "typeRepresentationList=\"CLAIMANT_AND_DEFENDANT\"",
@@ -20,7 +20,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "typeRepresentationOtherComplex",
-    "ID": "FinalOrderRepresentation",
+    "ID": "assistedOrderRepresentation",
     "ElementLabel": " ",
     "FieldType": "ClaimantAndDefendantHeard",
     "FieldShowCondition": "typeRepresentationList=\"OTHER_REPRESENTATION\"",
@@ -29,7 +29,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "typeRepresentationJudgePapersLabel",
-    "ID": "FinalOrderRepresentation",
+    "ID": "assistedOrderRepresentation",
     "ElementLabel": "### Judge considered the papers",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -37,7 +37,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "typeRepresentationJudgePapersList",
-    "ID": "FinalOrderRepresentation",
+    "ID": "assistedOrderRepresentation",
     "ElementLabel": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FinalOrdersJudgePapers",

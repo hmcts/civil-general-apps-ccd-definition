@@ -1,16 +1,16 @@
 [
   {
-    "ID": "FinalOrderRecitalsRecorded",
+    "ID": "assistedOrderRecitalsRecorded",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderRecitalsRecorded",
+    "CaseFieldID": "assistedOrderRecitalsRecorded",
     "ListElementCode": "label",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "FinalOrderRecitalsRecorded",
+    "ID": "assistedOrderRecitalsRecorded",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderRecitalsRecorded",
+    "CaseFieldID": "assistedOrderRecitalsRecorded",
     "ListElementCode": "text",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"

@@ -901,21 +901,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderSelectionLabel",
-    "Label": "**** \n ### What type of order do you wish to make?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderSelection",
-    "Label": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "FinalOrderSelection",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "caseParticipantsFreeForm",
     "Label": "## ${caseNameHmctsInternal}",
     "FieldType": "Label",

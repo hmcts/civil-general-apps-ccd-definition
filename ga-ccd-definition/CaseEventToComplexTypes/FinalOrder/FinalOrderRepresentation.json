@@ -1,40 +1,40 @@
 [
   {
-    "ID": "FinalOrderRepresentation",
+    "ID": "assistedOrderRepresentation",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderRepresentation",
+    "CaseFieldID": "assistedOrderRepresentation",
     "ListElementCode": "typeRepresentationList",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FinalOrderRepresentation",
+    "ID": "assistedOrderRepresentation",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderRepresentation",
+    "CaseFieldID": "assistedOrderRepresentation",
     "ListElementCode": "typeRepresentationComplex",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FinalOrderRepresentation",
+    "ID": "assistedOrderRepresentation",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderRepresentation",
+    "CaseFieldID": "assistedOrderRepresentation",
     "ListElementCode": "typeRepresentationOtherComplex",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FinalOrderRepresentation",
+    "ID": "assistedOrderRepresentation",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderRepresentation",
+    "CaseFieldID": "assistedOrderRepresentation",
     "ListElementCode": "typeRepresentationJudgePapersLabel",
     "FieldDisplayOrder": 4,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "FinalOrderRepresentation",
+    "ID": "assistedOrderRepresentation",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderRepresentation",
+    "CaseFieldID": "assistedOrderRepresentation",
     "ListElementCode": "typeRepresentationJudgePapersList",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"

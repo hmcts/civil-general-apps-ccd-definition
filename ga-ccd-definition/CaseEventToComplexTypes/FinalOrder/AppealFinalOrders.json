@@ -2,7 +2,7 @@
   {
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderAppealComplex",
+    "CaseFieldID": "assistedOrderAppealDetails",
     "ListElementCode": "label",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
@@ -10,7 +10,7 @@
   {
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderAppealComplex",
+    "CaseFieldID": "assistedOrderAppealDetails",
     "ListElementCode": "list",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
@@ -18,7 +18,7 @@
   {
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderAppealComplex",
+    "CaseFieldID": "assistedOrderAppealDetails",
     "ListElementCode": "otherText",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -26,7 +26,7 @@
   {
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderAppealComplex",
+    "CaseFieldID": "assistedOrderAppealDetails",
     "ListElementCode": "applicationLabel",
     "FieldDisplayOrder": 4,
     "DisplayContext": "READONLY"
@@ -34,7 +34,7 @@
   {
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderAppealComplex",
+    "CaseFieldID": "assistedOrderAppealDetails",
     "ListElementCode": "applicationList",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
@@ -42,7 +42,7 @@
   {
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderAppealComplex",
+    "CaseFieldID": "assistedOrderAppealDetails",
     "ListElementCode": "reasonsLabel",
     "FieldDisplayOrder": 6,
     "DisplayContext": "READONLY"
@@ -50,7 +50,7 @@
   {
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderAppealComplex",
+    "CaseFieldID": "assistedOrderAppealDetails",
     "ListElementCode": "reasonsText",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"

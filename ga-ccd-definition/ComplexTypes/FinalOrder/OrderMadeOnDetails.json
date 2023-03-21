@@ -64,7 +64,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "OrderMadeOnDetails",
+    "ID": "assistedOrderMadeOnDetails",
     "ListElementCode": "orderMadeOnOptionList",
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
@@ -72,15 +72,15 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "OrderMadeOnDetails",
-    "ListElementCode": "orderMadeOnDetails",
+    "ID": "assistedOrderMadeOnDetails",
+    "ListElementCode": "assistedOrderMadeOnDetails",
     "ElementLabel": " ",
     "FieldType": "OrderMadeOnOwnInitiative",
     "FieldShowCondition": "orderMadeOnOptionList=\"COURTS_INITIATIVE\"",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "OrderMadeOnDetails",
+    "ID": "assistedOrderMadeOnDetails",
     "ListElementCode": "orderMadeOnWithOutNotice",
     "ElementLabel": " ",
     "FieldType": "OrderMadeOnWithOutNotice",

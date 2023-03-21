@@ -2,7 +2,7 @@
   {
     "ID": "AssistedOrderReasons",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderGiveReasonsComplex",
+    "CaseFieldID": "assistedOrderGiveReasonsComplex",
     "ListElementCode": "reasonsLabel",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
@@ -10,7 +10,7 @@
   {
     "ID": "AssistedOrderReasons",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderGiveReasonsComplex",
+    "CaseFieldID": "assistedOrderGiveReasonsComplex",
     "ListElementCode": "reasonsText",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"

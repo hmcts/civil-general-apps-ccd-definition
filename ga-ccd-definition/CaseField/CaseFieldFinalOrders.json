@@ -30,42 +30,42 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderMadeLabel",
+    "ID": "assistedOrderMadeLabel",
     "Label": "**** \n ## Order Made",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderMadeSelectionLabel",
+    "ID": "assistedOrderMadeSelectionLabel",
     "Label": "#### Is this order made following a hearing?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderMadeSelection",
+    "ID": "assistedOrderMadeSelection",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderDateHeardComplex",
+    "ID": "assistedOrderDateHeardDetails",
     "Label": " ",
     "FieldType": "DateHeardFinalOrders",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderJudgeHeardLabel",
+    "ID": "assistedOrderJudgeHeardLabel",
     "Label": "**** \n ## Judge heard from",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderJudgeHeardFrom",
+    "ID": "assistedOrderJudgeHeardFrom",
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
@@ -73,21 +73,21 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderRepresentation",
+    "ID": "assistedOrderRepresentation",
     "Label": " ",
-    "FieldType": "FinalOrderRepresentation",
+    "FieldType": "assistedOrderRepresentation",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderRecitalsLabel",
+    "ID": "assistedOrderRecitalsLabel",
     "Label": "**** \n ## Recitals",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderRecitals",
+    "ID": "assistedOrderRecitals",
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
@@ -95,42 +95,42 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderRecitalsRecorded",
+    "ID": "assistedOrderRecitalsRecorded",
     "Label": " ",
-    "FieldType": "FinalOrderRecitalsRecorded",
+    "FieldType": "assistedOrderRecitalsRecorded",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderOrdered",
+    "ID": "assistedOrderOrdered",
     "Label": "**** \n ## Ordered",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderOrderedThat",
+    "ID": "assistedOrderOrderedThat",
     "Label": "### It is ordered that:",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderOrderedThatText",
+    "ID": "assistedOrderOrderedThatText",
     "Label": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderCost",
+    "ID": "assistedOrderCost",
     "Label": "**** \n ## Costs",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderCostSecondaryLabel",
+    "ID": "assistedOrderCostSecondaryLabel",
     "Label": "Select as appropriate",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -144,14 +144,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderFurtherHearingLabel",
+    "ID": "assistedOrderFurtherHearingLabel",
     "Label": "**** \n ## Further hearing (part heard or adjourned)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderFurtherHearingToggle",
+    "ID": "assistedOrderFurtherHearingToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
@@ -159,42 +159,42 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderFurtherHearingComplex",
+    "ID": "assistedOrderFurtherHearingDetails",
     "Label": " ",
     "FieldType": "FinalOrderFurtherHearing",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "orderMadeOnDetailsPrimaryLabel",
+    "ID": "assistedOrderMadeOnDetailsPrimeLabel",
     "Label": "**** \n ## Order made on court's own initiative/without notice",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "orderMadeOnDetailsSecondaryLabel",
+    "ID": "assistedOrderMadeOnDetailsSecondLabel",
     "Label": "### Select as appropriate",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "orderMadeOnDetails",
+    "ID": "assistedOrderMadeOnDetails",
     "Label": " ",
-    "FieldType": "OrderMadeOnDetails",
+    "FieldType": "assistedOrderMadeOnDetails",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderAppealLabel",
+    "ID": "assistedOrderAppealLabel",
     "Label": "**** \n ## Appeal",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderAppealToggle",
+    "ID": "assistedOrderAppealToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
@@ -202,35 +202,35 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderAppealComplex",
+    "ID": "assistedOrderAppealDetails",
     "Label": " ",
     "FieldType": "FinalOrderAppeal",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderReasonsLabel",
+    "ID": "assistedOrderReasonsLabel",
     "Label": "**** \n ## Reasons",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderGiveReasonsLabel",
+    "ID": "assistedOrderGiveReasonsLabel",
     "Label": "### Do you want to give reasons for the order?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderGiveReasonsYesNo",
+    "ID": "assistedOrderGiveReasonsYesNo",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderGiveReasonsComplex",
+    "ID": "assistedOrderGiveReasonsComplex",
     "Label": " ",
     "FieldType": "AssistedOrderReasons",
     "SecurityClassification": "Public"

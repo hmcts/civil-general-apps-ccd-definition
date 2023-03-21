@@ -21,7 +21,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderMadeLabel",
+    "CaseFieldID": "assistedOrderMadeLabel",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -31,7 +31,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderMadeSelectionLabel",
+    "CaseFieldID": "assistedOrderMadeSelectionLabel",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -41,7 +41,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderMadeSelection",
+    "CaseFieldID": "assistedOrderMadeSelection",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -51,7 +51,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderDateHeardComplex",
+    "CaseFieldID": "assistedOrderDateHeardDetails",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -71,7 +71,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderJudgeHeardLabel",
+    "CaseFieldID": "assistedOrderJudgeHeardLabel",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -81,7 +81,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderJudgeHeardFrom",
+    "CaseFieldID": "assistedOrderJudgeHeardFrom",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -91,7 +91,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderRepresentation",
+    "CaseFieldID": "assistedOrderRepresentation",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -101,7 +101,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderRecitalsLabel",
+    "CaseFieldID": "assistedOrderRecitalsLabel",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -111,7 +111,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderRecitals",
+    "CaseFieldID": "assistedOrderRecitals",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -121,7 +121,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderRecitalsRecorded",
+    "CaseFieldID": "assistedOrderRecitalsRecorded",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -131,7 +131,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderOrdered",
+    "CaseFieldID": "assistedOrderOrdered",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -141,7 +141,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderOrderedThat",
+    "CaseFieldID": "assistedOrderOrderedThat",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -151,7 +151,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderOrderedThatText",
+    "CaseFieldID": "assistedOrderOrderedThatText",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -171,7 +171,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderFurtherHearingLabel",
+    "CaseFieldID": "assistedOrderFurtherHearingLabel",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -181,7 +181,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderFurtherHearingToggle",
+    "CaseFieldID": "assistedOrderFurtherHearingToggle",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -191,7 +191,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderFurtherHearingComplex",
+    "CaseFieldID": "assistedOrderFurtherHearingDetails",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -201,7 +201,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "orderMadeOnDetailsPrimaryLabel",
+    "CaseFieldID": "assistedOrderMadeOnDetailsPrimeLabel",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -211,7 +211,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "orderMadeOnDetailsSecondaryLabel",
+    "CaseFieldID": "assistedOrderMadeOnDetailsSecondLabel",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -221,7 +221,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "orderMadeOnDetails",
+    "CaseFieldID": "assistedOrderMadeOnDetails",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -231,7 +231,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderAppealLabel",
+    "CaseFieldID": "assistedOrderAppealLabel",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -241,7 +241,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderAppealToggle",
+    "CaseFieldID": "assistedOrderAppealToggle",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -251,7 +251,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderAppealComplex",
+    "CaseFieldID": "assistedOrderAppealDetails",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -261,7 +261,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderReasonsLabel",
+    "CaseFieldID": "assistedOrderReasonsLabel",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -271,7 +271,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderGiveReasonsLabel",
+    "CaseFieldID": "assistedOrderGiveReasonsLabel",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -281,7 +281,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderGiveReasonsYesNo",
+    "CaseFieldID": "assistedOrderGiveReasonsYesNo",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -291,7 +291,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "finalOrderGiveReasonsComplex",
+    "CaseFieldID": "assistedOrderGiveReasonsComplex",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
