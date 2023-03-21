@@ -125,6 +125,10 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
           ],
           value: listElement(config.claimantSelectedCourt)
         },
+      caseLocation: {
+        region: '2',
+        baseLocation: '000000'
+      }
       },
       applicant1OrganisationPolicy: {
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
