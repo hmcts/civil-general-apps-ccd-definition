@@ -137,14 +137,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderCostList",
-    "Label": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "FinalOrderCostsSelection",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "assistedOrderCostDetails",
     "Label": " ",
     "FieldType": "AssistedOrderCostDetails",
@@ -191,6 +183,56 @@
     "ID": "orderMadeOnDetails",
     "Label": " ",
     "FieldType": "OrderMadeOnDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "finalOrderAppealLabel",
+    "Label": "**** \n ## Appeal",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "finalOrderAppealToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "finalOrderAppealComplex",
+    "Label": " ",
+    "FieldType": "FinalOrderAppeal",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "finalOrderReasonsLabel",
+    "Label": "**** \n ## Reasons",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "finalOrderGiveReasonsLabel",
+    "Label": "### Do you want to give reasons for the order?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "finalOrderGiveReasonsYesNo",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "finalOrderGiveReasonsComplex",
+    "Label": " ",
+    "FieldType": "AssistedOrderReasons",
     "SecurityClassification": "Public"
   }
 ]

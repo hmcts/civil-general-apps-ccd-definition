@@ -1,0 +1,61 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "label",
+    "ID": "FinalOrderAppeal",
+    "ElementLabel": "### The",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "list",
+    "ID": "FinalOrderAppeal",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "AppealList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "otherText",
+    "ID": "FinalOrderAppeal",
+    "ElementLabel": "Please specify",
+    "FieldType": "Text",
+    "FieldShowCondition": "list = \"OTHER\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "applicationLabel",
+    "ID": "FinalOrderAppeal",
+    "ElementLabel": "### application for permission to appeal is",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "applicationList",
+    "ID": "FinalOrderAppeal",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ApplicationAppealList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "reasonsLabel",
+    "ID": "FinalOrderAppeal",
+    "ElementLabel": "### Reasons",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "reasonsText",
+    "ID": "FinalOrderAppeal",
+    "ElementLabel": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  }
+]
