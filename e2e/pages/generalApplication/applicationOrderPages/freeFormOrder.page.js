@@ -1,4 +1,5 @@
 const {expect} = require('chai');
+const date = require('../../../fragments/date');
 const {I} = inject();
 
 module.exports = {
@@ -12,7 +13,9 @@ module.exports = {
         courtOwnInitiativeOrder: 'Order on court\'s own initiative',
         withoutNoticeOrder: 'Order without notice',
         noneOrder: 'None',
-      }
+      },
+      onInitiativeSelectionDateId: 'onInitiativeSelectionDate',
+      withoutNoticeSelectionDateId: 'withoutNoticeSelectionDate',
     },
   },
 
@@ -32,9 +35,11 @@ module.exports = {
     switch (order) {
       case 'courtOwnInitiativeOrder':
         await I.seeTextEquals('Order on court\'s own initiative', '#onInitiativeSelectionLabel h3');
+        await date.verifyPrePopulatedDate(this.fields.courtsOrder.onInitiativeSelectionDateId);
         break;
       case 'withoutNoticeOrder':
         await I.seeTextEquals('Order without notice', '#withoutNoticeSelectionLabel h3');
+        await date.verifyPrePopulatedDate(this.fields.courtsOrder.withoutNoticeSelectionDateId);
         break;
     }
     await I.clickContinue();
