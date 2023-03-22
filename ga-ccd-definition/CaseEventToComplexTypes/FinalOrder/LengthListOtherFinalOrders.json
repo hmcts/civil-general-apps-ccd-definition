@@ -3,7 +3,7 @@
     "ID": "CaseHearingLengthElement",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderFurtherHearingDetails",
-    "ListElementCode": "lengthListOther.lengthListOtherLabel",
+    "ListElementCode": "lengthOfHearingOther.lengthListOtherLabel",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
@@ -11,7 +11,7 @@
     "ID": "CaseHearingLengthElement",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderFurtherHearingDetails",
-    "ListElementCode": "lengthListOther.lengthListOtherDays",
+    "ListElementCode": "lengthOfHearingOther.lengthListOtherDays",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -19,7 +19,7 @@
     "ID": "CaseHearingLengthElement",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderFurtherHearingDetails",
-    "ListElementCode": "lengthListOther.lengthListOtherHours",
+    "ListElementCode": "lengthOfHearingOther.lengthListOtherHours",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -27,7 +27,7 @@
     "ID": "CaseHearingLengthElement",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderFurtherHearingDetails",
-    "ListElementCode": "lengthListOther.lengthListOtherMinutes",
+    "ListElementCode": "lengthOfHearingOther.lengthListOtherMinutes",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   }

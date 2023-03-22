@@ -41,7 +41,7 @@
   },
   {
     "ID": "OrderMadeOnWithOutNotice",
-    "ListElementCode": "withOutNoticeText",
+    "ListElementCode": "detailText",
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
@@ -57,7 +57,7 @@
   },
   {
     "ID": "OrderMadeOnWithOutNotice",
-    "ListElementCode": "withOutNoticeDate",
+    "ListElementCode": "date",
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
