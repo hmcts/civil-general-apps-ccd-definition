@@ -54,7 +54,7 @@
     "PageID": "FreeFormOrder",
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "finalOrderSelection = \"FREE_FORM_ORDER\"",
-    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/populate-free-form-preview-doc"
+    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/populate-final-order-preview-doc"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -162,14 +162,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "gaFreeFormOrderDocPreview",
-    "PageID": "FreeFormOrderDocPreview",
-    "PageLabel": "Preview Free Form Order Document",
+    "CaseFieldID": "gaFinalOrderDocPreview",
+    "PageID": "gaFinalOrderDocPreview",
+    "PageLabel": "Preview Final Order Document",
     "PageFieldDisplayOrder": 1,
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "finalOrderSelection = \"FREE_FORM_ORDER\"",
     "ShowSummaryChangeOption": "N"
   }
 ]

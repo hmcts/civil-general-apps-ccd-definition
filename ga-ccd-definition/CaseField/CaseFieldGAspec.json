@@ -994,7 +994,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "gaFreeFormOrderDocPreview",
+    "ID": "gaFinalOrderDocPreview",
     "Label": "Draft Order",
     "FieldType": "Document",
     "SecurityClassification": "Public"

@@ -335,7 +335,7 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "gaFreeFormOrderDocPreview",
+    "ListElementCode": "gaFinalOrderDocPreview",
     "FieldType": "Document",
     "ElementLabel": " ",
     "SecurityClassification": "Public"

@@ -114,7 +114,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "gaFreeFormOrderDocPreview",
+    "ListElementCode": "gaFinalOrderDocPreview",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },

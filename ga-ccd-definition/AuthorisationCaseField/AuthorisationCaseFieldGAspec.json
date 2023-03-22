@@ -2971,7 +2971,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaFreeFormOrderDocPreview",
+    "CaseFieldID": "gaFinalOrderDocPreview",
     "UserRoles": [
       "judge-profile"
     ],

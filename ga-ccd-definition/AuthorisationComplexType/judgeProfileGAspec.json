@@ -945,7 +945,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "gaFreeFormOrderDocPreview",
+    "ListElementCode": "gaFinalOrderDocPreview",
     "UserRole": "judge-profile",
     "CRUD": "CRU"
   }
