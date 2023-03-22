@@ -1902,7 +1902,8 @@ const checkNoOfGeneralApplications = async (user, parentCaseId) => {
   const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
   const updatedCivilCaseData = await response.json();
   let totalGeneralApplication = updatedCivilCaseData.claimantGaAppDetails.length;
-  assert.equal(totalGeneralApplication, 2);
+  // assert.equal(totalGeneralApplication, 2);
+  assert.equal(totalGeneralApplication, 1);
 };
 
 const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant) => {

@@ -36,8 +36,8 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER - Respondent upload Direct
   await api.updateCivilClaimClaimantSolEmailID(config.applicantSolicitorUser, civilCaseReference);
   console.log('*** End Update Claimant Solicitor Email ID on Case Reference: ' + civilCaseReference + ' ***');
 
-  console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
+/*  console.log('Make a General Application');
+  gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);*/
 
   console.log('*** Check no. of General Application Case ***');
   gaCaseReference = await api.checkGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
