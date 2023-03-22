@@ -114,20 +114,6 @@ module.exports = {
     return response.case_details.case_data || {};
   },
 
-  startUpdateEmailEvent: async (eventName, caseId) => {
-    let url = getCcdDataStoreBaseUrl();
-
-    if (caseId) {
-      url += `/cases/${caseId}`;
-    }
-    url += `/event-triggers/${eventName}/token`;
-
-    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET')
-        .then(response => response.json());
-    tokens.ccdEvent = response.token;
-    return response.case_details.case_data || {};
-  },
-
   startGAEvent: async (eventName, caseId) => {
     let url = getCcdDataStoreGABaseUrl();
     if (caseId) {

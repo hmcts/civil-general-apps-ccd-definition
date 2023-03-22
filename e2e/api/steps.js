@@ -1889,7 +1889,7 @@ const initiateGaWithState = async (user, parentCaseId, expectState) => {
 const updateCivilClaimSolEmailID = async (user, parentCaseId) => {
   eventName = events.CHANGE_SOLICITOR_EMAIL.id;
   await apiRequest.setupTokens(user);
-  await apiRequest.startUpdateEmailEvent(eventName, parentCaseId);
+  await apiRequest.startEvent(eventName, parentCaseId);
 
   const response = await apiRequest.submitEvent(eventName, data.UPDATE_CLAIMANT_SOLICITOR_EMAILID,
     parentCaseId);
