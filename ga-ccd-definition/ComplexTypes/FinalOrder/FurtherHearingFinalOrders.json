@@ -34,7 +34,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "dateToDate",
+    "ListElementCode": "listToDate",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
@@ -51,7 +51,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "lengthList",
+    "ListElementCode": "lengthOfNewHearing",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
@@ -60,11 +60,11 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "lengthListOther",
+    "ListElementCode": "lengthOfHearingOther",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
     "FieldType": "CaseHearingLengthElement",
-    "FieldShowCondition": "lengthList=\"OTHER\"",
+    "FieldShowCondition": "lengthOfNewHearing=\"OTHER\"",
     "SecurityClassification": "Public"
   },
   {
@@ -77,7 +77,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "alternativeHearingList",
+    "ListElementCode": "alternativeHearingLocation",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
     "FieldType": "DynamicList",
@@ -93,7 +93,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "hearingMethodList",
+    "ListElementCode": "hearingMethods",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
     "HintText": "If you want to include any extra information or want to request a certain hearing platform, please include this in the Hearing notes (Optional) section below",

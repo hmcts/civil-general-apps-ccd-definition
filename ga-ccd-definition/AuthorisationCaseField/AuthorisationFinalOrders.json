@@ -291,7 +291,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "assistedOrderGiveReasonsComplex",
+    "CaseFieldID": "assistedOrderGiveReasonsDetails",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",

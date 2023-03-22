@@ -3,7 +3,7 @@
     "ID": "assistedOrderRepresentation",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "typeRepresentationList",
+    "ListElementCode": "representationType",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -11,7 +11,7 @@
     "ID": "assistedOrderRepresentation",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "typeRepresentationComplex",
+    "ListElementCode": "claimantDefendantRepresentation",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -19,7 +19,7 @@
     "ID": "assistedOrderRepresentation",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "typeRepresentationOtherComplex",
+    "ListElementCode": "otherRepresentation",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },

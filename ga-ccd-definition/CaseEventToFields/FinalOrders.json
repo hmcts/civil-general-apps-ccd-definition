@@ -459,7 +459,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderGiveReasonsComplex",
+    "CaseFieldID": "assistedOrderGiveReasonsDetails",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 30,
     "DisplayContext": "COMPLEX",

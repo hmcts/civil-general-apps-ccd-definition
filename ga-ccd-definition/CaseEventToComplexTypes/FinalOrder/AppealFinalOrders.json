@@ -1,6 +1,6 @@
 [
   {
-    "ID": "FinalOrderAppeal",
+    "ID": "AssistedOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderAppealDetails",
     "ListElementCode": "label",
@@ -8,23 +8,23 @@
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "FinalOrderAppeal",
+    "ID": "AssistedOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderAppealDetails",
-    "ListElementCode": "list",
+    "ListElementCode": "appealOrigin",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FinalOrderAppeal",
+    "ID": "AssistedOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderAppealDetails",
-    "ListElementCode": "otherText",
+    "ListElementCode": "otherOriginText",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FinalOrderAppeal",
+    "ID": "AssistedOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderAppealDetails",
     "ListElementCode": "applicationLabel",
@@ -32,15 +32,15 @@
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "FinalOrderAppeal",
+    "ID": "AssistedOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderAppealDetails",
-    "ListElementCode": "applicationList",
+    "ListElementCode": "permissionToAppeal",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FinalOrderAppeal",
+    "ID": "AssistedOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderAppealDetails",
     "ListElementCode": "reasonsLabel",
@@ -48,7 +48,7 @@
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "FinalOrderAppeal",
+    "ID": "AssistedOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderAppealDetails",
     "ListElementCode": "reasonsText",

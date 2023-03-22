@@ -2,50 +2,50 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "label",
-    "ID": "FinalOrderAppeal",
+    "ID": "AssistedOrderAppealDetails",
     "ElementLabel": "### The",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "list",
-    "ID": "FinalOrderAppeal",
+    "ListElementCode": "appealOrigin",
+    "ID": "AssistedOrderAppealDetails",
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "AppealList",
+    "FieldTypeParameter": "AppealOriginTypes",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "otherText",
-    "ID": "FinalOrderAppeal",
+    "ListElementCode": "otherOriginText",
+    "ID": "AssistedOrderAppealDetails",
     "ElementLabel": "Please specify",
     "FieldType": "Text",
-    "FieldShowCondition": "list = \"OTHER\"",
+    "FieldShowCondition": "appealOrigin = \"OTHER\"",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "applicationLabel",
-    "ID": "FinalOrderAppeal",
+    "ID": "AssistedOrderAppealDetails",
     "ElementLabel": "### application for permission to appeal is",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "applicationList",
-    "ID": "FinalOrderAppeal",
+    "ListElementCode": "permissionToAppeal",
+    "ID": "AssistedOrderAppealDetails",
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "ApplicationAppealList",
+    "FieldTypeParameter": "PermissionToAppealTypes",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "reasonsLabel",
-    "ID": "FinalOrderAppeal",
+    "ID": "AssistedOrderAppealDetails",
     "ElementLabel": "### Reasons",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -53,7 +53,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "reasonsText",
-    "ID": "FinalOrderAppeal",
+    "ID": "AssistedOrderAppealDetails",
     "ElementLabel": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"

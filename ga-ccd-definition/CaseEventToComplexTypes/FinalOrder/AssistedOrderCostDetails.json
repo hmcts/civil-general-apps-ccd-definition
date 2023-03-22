@@ -3,7 +3,7 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "assistedOrderCostsList",
+    "ListElementCode": "assistedCostTypes",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -27,7 +27,7 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "costReservedDetails.detailsRepresentationText",
+    "ListElementCode": "costReservedDetails.detailText",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -51,7 +51,7 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "claimantCostStandardBase.claimantCostStandardText",
+    "ListElementCode": "claimantCostStandardBase.costAmount",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -67,7 +67,7 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "claimantCostStandardBase.claimantCostStandardDate",
+    "ListElementCode": "claimantCostStandardBase.costPaymentDeadLine",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
@@ -83,7 +83,7 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "claimantCostStandardBase.claimantCostStandardProtectionOption",
+    "ListElementCode": "claimantCostStandardBase.isPartyCostProtection",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
@@ -107,7 +107,7 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "defendantCostStandardBase.defendantCostStandardText",
+    "ListElementCode": "defendantCostStandardBase.costAmount",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -123,7 +123,7 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "defendantCostStandardBase.defendantCostStandardDate",
+    "ListElementCode": "defendantCostStandardBase.costPaymentDeadLine",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
@@ -139,7 +139,7 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "defendantCostStandardBase.defendantCostStandardProtectionOption",
+    "ListElementCode": "defendantCostStandardBase.isPartyCostProtection",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
@@ -163,7 +163,7 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "claimantCostSummarilyBase.claimantCostSummarilyText",
+    "ListElementCode": "claimantCostSummarilyBase.costAmount",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -179,7 +179,7 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "claimantCostSummarilyBase.claimantCostSummarilyDate",
+    "ListElementCode": "claimantCostSummarilyBase.costPaymentDeadLine",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
@@ -195,7 +195,7 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "claimantCostSummarilyBase.claimantCostSummarilyProtectionOption",
+    "ListElementCode": "claimantCostSummarilyBase.isPartyCostProtection",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
@@ -211,8 +211,16 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "defendantCostSummarilyBase.defendantCostSummarilyText",
+    "ListElementCode": "defendantCostSummarilyBase.defendantCostSummarilySecondLabel",
     "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderCostDetails",
+    "ListElementCode": "defendantCostSummarilyBase.costAmount",
+    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -220,15 +228,15 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilyBase.defendantCostSummarilyDateLabel",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "READONLY"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "defendantCostSummarilyBase.defendantCostSummarilyDate",
-    "FieldDisplayOrder": 5,
+    "ListElementCode": "defendantCostSummarilyBase.costPaymentDeadLine",
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -236,15 +244,15 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilyBase.defendantCostSummarilyProtectionLabel",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "READONLY"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "defendantCostSummarilyBase.defendantCostSummarilyProtectionOption",
-    "FieldDisplayOrder": 7,
+    "ListElementCode": "defendantCostSummarilyBase.isPartyCostProtection",
+    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -259,7 +267,7 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "besPokeCostDetails.besPokeCostDetailsText",
+    "ListElementCode": "besPokeCostDetails.detailText",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   }

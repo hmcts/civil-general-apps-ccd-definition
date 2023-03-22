@@ -9,7 +9,7 @@
   },
   {
     "ID": "OrderMadeOnOwnInitiative",
-    "ListElementCode": "ownInitiativeText",
+    "ListElementCode": "detailText",
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
@@ -25,7 +25,7 @@
   },
   {
     "ID": "OrderMadeOnOwnInitiative",
-    "ListElementCode": "ownInitiativeDate",
+    "ListElementCode": "date",
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
@@ -65,7 +65,7 @@
   },
   {
     "ID": "assistedOrderMadeOnDetails",
-    "ListElementCode": "orderMadeOnOptionList",
+    "ListElementCode": "orderMadeOnOption",
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "OrderMadeOnTypes",
@@ -76,7 +76,7 @@
     "ListElementCode": "assistedOrderMadeOnDetails",
     "ElementLabel": " ",
     "FieldType": "OrderMadeOnOwnInitiative",
-    "FieldShowCondition": "orderMadeOnOptionList=\"COURTS_INITIATIVE\"",
+    "FieldShowCondition": "orderMadeOnOption=\"COURTS_INITIATIVE\"",
     "SecurityClassification": "Public"
   },
   {
@@ -84,7 +84,7 @@
     "ListElementCode": "orderMadeOnWithOutNotice",
     "ElementLabel": " ",
     "FieldType": "OrderMadeOnWithOutNotice",
-    "FieldShowCondition": "orderMadeOnOptionList=\"WITHOUT_NOTICE\"",
+    "FieldShowCondition": "orderMadeOnOption=\"WITHOUT_NOTICE\"",
     "SecurityClassification": "Public"
   }
 ]

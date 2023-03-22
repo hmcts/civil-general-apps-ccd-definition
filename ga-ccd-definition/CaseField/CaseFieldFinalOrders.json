@@ -204,7 +204,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "assistedOrderAppealDetails",
     "Label": " ",
-    "FieldType": "FinalOrderAppeal",
+    "FieldType": "AssistedOrderAppealDetails",
     "SecurityClassification": "Public"
   },
   {
@@ -230,7 +230,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "assistedOrderGiveReasonsComplex",
+    "ID": "assistedOrderGiveReasonsDetails",
     "Label": " ",
     "FieldType": "AssistedOrderReasons",
     "SecurityClassification": "Public"

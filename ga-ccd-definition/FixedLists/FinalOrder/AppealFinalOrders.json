@@ -1,30 +1,30 @@
 [
   {
-    "ID": "AppealList",
+    "ID": "AppealOriginTypes",
     "ListElementCode": "CLAIMANT",
     "ListElement": "Claimant's",
     "DisplayOrder": 1
   },
   {
-    "ID": "AppealList",
+    "ID": "AppealOriginTypes",
     "ListElementCode": "DEFENDANT",
     "ListElement": "Defendant's",
     "DisplayOrder": 2
   },
   {
-    "ID": "AppealList",
+    "ID": "AppealOriginTypes",
     "ListElementCode": "OTHER",
     "ListElement": "Other",
     "DisplayOrder": 3
   },
   {
-    "ID": "ApplicationAppealList",
+    "ID": "PermissionToAppealTypes",
     "ListElementCode": "GRANTED",
     "ListElement": "granted",
     "DisplayOrder": 1
   },
   {
-    "ID": "ApplicationAppealList",
+    "ID": "PermissionToAppealTypes",
     "ListElementCode": "REFUSED",
     "ListElement": "refused",
     "DisplayOrder": 2

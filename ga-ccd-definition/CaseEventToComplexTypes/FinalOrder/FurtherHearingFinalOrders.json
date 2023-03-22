@@ -35,7 +35,7 @@
     "ID": "FinalOrderFurtherHearing",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderFurtherHearingDetails",
-    "ListElementCode": "dateToDate",
+    "ListElementCode": "listToDate",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
@@ -51,7 +51,7 @@
     "ID": "FinalOrderFurtherHearing",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderFurtherHearingDetails",
-    "ListElementCode": "lengthList",
+    "ListElementCode": "lengthOfNewHearing",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
@@ -59,7 +59,7 @@
     "ID": "FinalOrderFurtherHearing",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderFurtherHearingDetails",
-    "ListElementCode": "lengthListOther",
+    "ListElementCode": "lengthOfHearingOther",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
@@ -75,7 +75,7 @@
     "ID": "FinalOrderFurtherHearing",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderFurtherHearingDetails",
-    "ListElementCode": "alternativeHearingList",
+    "ListElementCode": "alternativeHearingLocation",
     "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL"
   },
@@ -91,7 +91,7 @@
     "ID": "FinalOrderFurtherHearing",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderFurtherHearingDetails",
-    "ListElementCode": "hearingMethodList",
+    "ListElementCode": "hearingMethods",
     "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   },
