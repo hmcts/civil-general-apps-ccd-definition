@@ -1,5 +1,6 @@
 const {expect} = require('chai');
 const date = require('../../../fragments/date');
+const {selectCourtsOrderType} = require('../../generalAppCommons');
 const {I} = inject();
 
 module.exports = {
@@ -16,6 +17,8 @@ module.exports = {
       },
       onInitiativeSelectionDateId: 'onInitiativeSelectionDate',
       withoutNoticeSelectionDateId: 'withoutNoticeSelectionDate',
+      courtInitiativeOrderText: 'textarea[id*="onInitiativeSelectionTextArea"]',
+      courWithoutNoticeOrderText: 'textarea[id*="withoutNoticeSelectionTextArea"]',
     },
   },
 
@@ -28,17 +31,14 @@ module.exports = {
     await I.see('It is ordered that:');
     let orderDetails = await I.grabValueFrom('#freeFormOrderedText');
     await expect(orderDetails).to.equals('Test Order details');
-    I.waitForElement(this.fields.courtsOrder.id);
-    await within(this.fields.courtsOrder.id, () => {
-      I.click(this.fields.courtsOrder.options[order]);
-    });
+
     switch (order) {
       case 'courtOwnInitiativeOrder':
-        await I.seeTextEquals('Order on court\'s own initiative', '#onInitiativeSelectionLabel h3');
+        await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtsOrder.courtInitiativeOrderText)).trim(), order);
         await date.verifyPrePopulatedDate(this.fields.courtsOrder.onInitiativeSelectionDateId);
         break;
       case 'withoutNoticeOrder':
-        await I.seeTextEquals('Order without notice', '#withoutNoticeSelectionLabel h3');
+        await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtsOrder.courWithoutNoticeOrderText)).trim(), order);
         await date.verifyPrePopulatedDate(this.fields.courtsOrder.withoutNoticeSelectionDateId);
         break;
     }

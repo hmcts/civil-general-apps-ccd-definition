@@ -1,7 +1,8 @@
 /* eslint-disable  no-case-declarations */
 const {I} = inject();
 const expect = require('chai').expect;
-const {verifyJudgeRecitalText, selectJudicialByCourtsInitiativeOption} = require('../../generalAppCommons');
+const {verifyJudgeRecitalText, selectCourtsOrderType} = require('../../generalAppCommons');
+const date = require('../../../fragments/date');
 
 module.exports = {
 
@@ -14,13 +15,9 @@ module.exports = {
         giveDirections: 'Give directions without listing for hearing'
       }
     },
-    courtInitiative: {
-      id: '#judicialDecisionMakeOrder_judicialByCourtsInitiative',
-      options: {
-        orderCourtInitiative: 'Order on court\'s own initiative',
-        orderWithoutNotice: 'Order without notice',
-        none: 'None'
-      }
+    courtOrder: {
+      dateId: 'orderCourtOwnInitiativeDate',
+      courtOrderText: 'textarea[id*="orderCourtOwnInitiative"]',
     },
     judgeRecitalTextArea: '#judicialDecisionMakeOrder_judgeRecitalText',
     orderTextArea: '#judicialDecisionMakeOrder_orderText',
@@ -37,7 +34,7 @@ module.exports = {
     judgeApproveEditOptionDateYear: '#judgeApproveEditOptionDate-year',
   },
 
-  async selectAnOrder(order, notice) {
+  async selectAnOrder(order, notice, orderType) {
     await I.waitForElement(this.fields.makeAnOrder.id);
     I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialMakeADecisionScreen');
     I.see('Judge’s recital');
@@ -50,9 +47,6 @@ module.exports = {
     }
     await within(this.fields.makeAnOrder.id, () => {
       I.click(this.fields.makeAnOrder.options[order]);
-    });
-    await within(this.fields.courtInitiative.id, () => {
-      I.click(this.fields.courtInitiative.options['none']);
     });
     switch (order) {
       case 'approveOrEditTheOrder':
@@ -74,7 +68,8 @@ module.exports = {
         I.fillField(this.fields.directionsResponseYear, '2024');
         break;
     }
-    await selectJudicialByCourtsInitiativeOption();
+    await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.courtOrderText)).trim(), orderType);
+    await date.enterDate(this.fields.courtOrder.dateId, +1);
     await I.fillField(this.fields.reasonForDecisionTextArea, 'Judges Decision');
     await I.clickContinue();
   }
