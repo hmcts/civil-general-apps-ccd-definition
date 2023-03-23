@@ -28,7 +28,7 @@ module.exports = {
     await I.waitForElement(this.fields.appDocTable);
     await I.seeInCurrentUrl('Documents');
     //  Concurrent written representations journey is now without notice to with notice hence added this logic
-    if (documentType === 'Written representation concurrent') {
+    if (documentType === 'Written representation concurrent' || documentType === 'Hearing Notice') {
       await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 2);
     } else {
       await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 1);
@@ -56,6 +56,9 @@ module.exports = {
       case 'Written representation concurrent':
         await I.see(`Order_Written_Representation_Concurrent_for_application_${docFullDate}`);
         break;
+      case 'Hearing Notice':
+        await I.see(`Application_Hearing_Notice_${docFullDate}`);
+        break;
     }
     await I.see('Type');
     await I.see('Uploaded on');
@@ -63,6 +66,9 @@ module.exports = {
     //  Concurrent written representations journey is now without notice to with notice hence added this logic
     if (documentType === 'Written representation concurrent') {
       await I.seeTextEquals('Request for information', locate(this.fields.docLabel).first());
+      await I.seeTextEquals(documentType, locate(this.fields.docLabel).last());
+    } else if (documentType === 'Hearing Notice') {
+      await I.seeTextEquals('Hearing order', locate(this.fields.docLabel).first());
       await I.seeTextEquals(documentType, locate(this.fields.docLabel).last());
     } else {
       await I.seeTextEquals(documentType, this.fields.docLabel);

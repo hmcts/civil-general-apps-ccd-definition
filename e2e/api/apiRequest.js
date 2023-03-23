@@ -14,9 +14,11 @@ const getCcdDataStoreGABaseUrl = () => `${config.url.ccdDataStore}/caseworkers/$
 
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getPaymentCallbackUrl = () => `${config.url.generalApplication}/service-request-update`;
-const getJudgeRevisitTaskHandlerUrl =(state) => `${config.url.generalApplication}/testing-support/trigger-judge-revisit-process-event/${state}`;
+const getJudgeRevisitTaskHandlerUrl =(state, genAppType) => `${config.url.generalApplication}/testing-support/trigger-judge-revisit-process-event/${state}/${genAppType}`;
 const getCaseDismissalTaskHandlerUrl =() => `${config.url.civilService}/testing-support/trigger-case-dismissal-scheduler`;
 const getGaCaseDataUrl =(caseId) => `${config.url.generalApplication}/testing-support/case/${caseId}`;
+const getCivilServiceUrl = () => `${config.url.civilService}`;
+
 
 const getRequestHeaders = (userAuth) => {
   return {
@@ -62,9 +64,9 @@ module.exports = {
     return response || {};
   },
 
-  gaOrderMadeSchedulerTaskHandler: async (state) => {
+  gaOrderMadeSchedulerTaskHandler: async (state, genAppType) => {
     const authToken = await idamHelper.accessToken(config.systemUpdate);
-    let url = getJudgeRevisitTaskHandlerUrl(state);
+    let url = getJudgeRevisitTaskHandlerUrl(state, genAppType);
     let response_msg =  await restHelper.retriedRequest(url, {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
@@ -257,5 +259,14 @@ module.exports = {
           }
         });
     }, TASK_MAX_RETRIES, TASK_RETRY_TIMEOUT_MS);
+  },
+
+  paymentUpdate: async (caseId, endpoint, serviceRequestUpdateDto) => {
+    let endpointURL = getCivilServiceUrl() + endpoint;
+    let response = await restHelper.retriedRequest(endpointURL, getRequestHeaders(tokens.userAuth),
+      serviceRequestUpdateDto,'PUT');
+
+    return response || {};
   }
+
 };

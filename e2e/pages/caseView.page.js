@@ -15,6 +15,7 @@ module.exports = {
     spinner: 'div.spinner-container',
     caseHeader: 'ccd-case-header > h1',
     generalApps: 'h1.govuk-heading-l',
+    tabList: 'div.mat-tab-list',
   },
   goButton: 'Go',
 
@@ -29,6 +30,7 @@ module.exports = {
       case 'Respond to judges list for hearing':
       case 'Refer to Judge':
       case 'Refer to Legal Advisor':
+      case 'Make an order':
         await I.waitForElement(this.fields.eventDropdown, 10);
         await I.selectOption(this.fields.eventDropdown, event);
         await I.retryUntilExists(async () => {
@@ -56,7 +58,19 @@ module.exports = {
     }
   },
 
+  async verifySummaryPage() {
+    await I.seeInCurrentUrl('#Summary');
+    await I.see('Summary');
+  },
+
   async clickOnTab(tabName) {
+    await I.waitForElement(this.fields.tabList, 5);
+    await I.refreshPage();
+    if (['preview'].includes(config.runningEnv)) {
+      await I.wait(8);
+    } else {
+      await I.wait(3);
+    }
     let urlBefore = await I.grabCurrentUrl();
     await I.retryUntilUrlChanges(async () => {
       await I.forceClick(locate(this.fields.tab).withText(tabName));
@@ -66,13 +80,11 @@ module.exports = {
   async navigateToTab(caseNumber, tabName) {
     if (tabName !== 'Application Documents') {
       await I.retryUntilExists(async () => {
-        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        console.log(`Navigating to case: ${normalizedCaseId}`);
-        await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
         if (['preview'].includes(config.runningEnv)) {
           await I.wait(5);
         } else {
-          await I.wait(2);
+          await I.wait(5);
         }
       }, 'exui-header');
     }
@@ -90,7 +102,7 @@ module.exports = {
       }
       await I.forceClick(locate(this.fields.tab).withText(tabName));
       if (['preview'].includes(config.runningEnv)) {
-        await I.wait(3);
+        await I.wait(5);
       } else {
         await I.wait(2);
       }

@@ -9,9 +9,17 @@ module.exports = {
     links: '.collection-field-table ccd-read-document-field a'
   },
 
-  async verifyUploadedDocument(childCaseNumber, documentType) {
+  async verifyHearingNoticeDocNotAvailable() {
+    await I.dontSee('Hearing Notice', locate(this.fields.docLabel).last());
+  },
+
+  async verifyUploadedDocument(documentType) {
     await I.seeInCurrentUrl('documents');
-    await I.seeNumberOfVisibleElements('ccd-read-complex-field-collection-table .complex-panel .complex-panel-title', 2);
+    if (documentType !== 'After SDO - Hearing Notice') {
+      await I.seeNumberOfVisibleElements('ccd-read-complex-field-collection-table .complex-panel .complex-panel-title', 2);
+    } else {
+      await I.seeNumberOfVisibleElements('ccd-read-complex-field-collection-table .complex-panel .complex-panel-title', 4);
+    }
     let docURL = await I.grabTextFrom(locate(this.fields.links).last());
     switch (documentType) {
       case 'General order document':
@@ -28,12 +36,19 @@ module.exports = {
         I.seeNumberOfVisibleElements(this.fields.links, 2);
         expect(docURL).to.contains(`Dismissal_order_for_application_${docFullDate}`);
         break;
+      case 'Hearing Notice':
+        expect(docURL).to.contains(`Application_Hearing_Notice_${docFullDate}`);
+        break;
     }
     I.see('System generated Case Documents');
     await I.see('Type');
     await I.see('Uploaded on');
     await I.see('Document URL');
     let docType = await I.grabTextFrom(locate(this.fields.docLabel).last());
-    expect(docType).to.equals(documentType);
+    if (documentType !== 'After SDO - Hearing Notice') {
+      expect(docType).to.equals(documentType);
+    } else {
+      expect(docType).to.equals('Hearing Notice');
+    }
   }
 };

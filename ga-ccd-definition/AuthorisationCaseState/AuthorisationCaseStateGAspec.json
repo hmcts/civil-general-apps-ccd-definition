@@ -339,7 +339,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseStateID": "APPLICATION_PAYMENT_FAILED",
+    "CaseStateID": "AWAITING_APPLICATION_PAYMENT",
     "AccessControl": [
       {
         "UserRoles": [
@@ -352,6 +352,42 @@
         "UserRoles": [
           "caseworker-ras-validation",
           "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },  {
+  "CaseTypeID": "GENERALAPPLICATION",
+  "CaseStateID": "LISTING_FOR_A_HEARING",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "hearing-schedule-access"
+      ],
+      "CRUD": "CRU"
+    }
+  ]
+},
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "HEARING_SCHEDULED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "hearing-schedule-access",
+          "caseworker-civil-systemupdate",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "legal-adviser",
+          "civil-administrator-standard",
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }

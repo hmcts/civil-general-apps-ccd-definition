@@ -1,3 +1,4 @@
+const config = require('../../config');
 const {I} = inject();
 
 module.exports = {
@@ -11,22 +12,28 @@ module.exports = {
       }
     },
     reviewLinks: '.govuk-table__body td a',
+    serviceRequestTable: 'table.govuk-table',
   },
 
-  async verifyAdditionalPayment(childCaseNumber) {
-    I.waitInUrl(childCaseNumber);
-    I.seeNumberOfVisibleElements(this.fields.reviewLinks, 2);
-    I.click(locate(this.fields.reviewLinks).last());
+  async verifyPaymentDetails() {
+    await I.waitInUrl('#Service', 5);
+    I.waitForVisible(this.fields.reviewLinks, 8);
+    I.click(this.fields.reviewLinks);
     I.see('Paid');
-    I.see('General application (on notice)');
-    I.see('Total fees to pay: £167.00');
+    I.see('General application');
+    I.see('Total fees to pay');
   },
 
-  async payAdditionalAmount(childCaseNumber) {
-    I.waitInUrl(childCaseNumber);
-    await I.see('Not paid');
+  async payGAAmount() {
+    if (['preview'].includes(config.runningEnv)) {
+      await I.wait(8);
+    } else {
+      await I.wait(3);
+    }
+    await I.waitInUrl('#Service', 5);
+    await I.waitForText('Not paid', 10, locate('td.govuk-table__cell').first());
+    await I.seeTextEquals('Not paid', locate('td.govuk-table__cell').first());
     I.click('Pay now');
-    I.see('£167.00');
     I.click({css: 'input#pbaAccount'});
     I.waitForElement(this.fields.pbaNumber.id);
     I.selectOption(this.fields.pbaNumber.id, this.fields.pbaNumber.options['activeAccount1']);

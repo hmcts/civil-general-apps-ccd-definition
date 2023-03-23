@@ -6,7 +6,7 @@ exports.config = {
       restart: false,
       keepCookies: true,
       show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
-      windowSize: '1200x900',
+      windowSize: '1920x1080',
       waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 50000),
       getPageTimeout: 120000,
       chrome: {
@@ -44,9 +44,12 @@ exports.config = {
       enabled: true,
       fullPageScreenshots: true,
     },
+    tryTo: {
+      enabled: true
+    },
   },
   mocha: {
-    bail: true,
+    bail: process.env.PROCEED_ON_FAILURE == true || false,
     reporterOptions: {
       'codeceptjs-cli-reporter': {
         stdout: '-',

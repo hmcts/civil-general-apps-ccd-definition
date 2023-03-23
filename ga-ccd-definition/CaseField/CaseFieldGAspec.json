@@ -314,13 +314,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "isCaseProgressionEnabled",
-    "Label": " ",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "isCcmccLocation",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -581,6 +574,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "migrationId",
+    "Label": "Migration Id",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "sequentialWrittenRepresentationUploadyBy",
     "Label": "${judicialSequentialDateText}",
     "FieldType": "Label",
@@ -611,8 +611,8 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "directionInRelationToHearingText",
-    "Label": "Directions in relation to hearing",
-    "ElementLabel": "Directions in relation to hearing",
+    "Label": "Order in relation to written representations",
+    "ElementLabel": "Order in relation to written representations",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 1000
@@ -854,6 +854,143 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Comment": " "
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaHearingNoticeApplication",
+    "Label": " ",
+    "FieldType": "GAHearingNoticeApplication",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaHearingNoticeDetail",
+    "FieldType": "GAHearingNoticeDetail",
+    "Label": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaHearingNoticeInformation",
+    "Label": "Is there more information you need to add to the Hearing Notification letter?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "hearingNoticeDocument",
+    "Label": "Hearing Notice",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseNameHmctsInternal",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_comment": "Used to populate title"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseNameLabel",
+    "Label": "## ${caseNameHmctsInternal}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "finalOrderSelectionLabel",
+    "Label": "**** \n ### What type of order do you wish to make?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "finalOrderSelection",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "FinalOrderSelection",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseParticipantsFreeForm",
+    "Label": "## ${caseNameHmctsInternal}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "freeFormRecitalAndOrderLabel",
+    "Label": "**** \n ## Recitals and order \n ### Insert any recitals and order you wish to make below",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "freeFormRecitalText",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "freeFormRecordedTextAreaLabel",
+    "Label": "### It is recorded that (Optional):",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "freeFormRecordedText",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "freeFormOrderedLabel",
+    "Label": "**** \n ## Ordered \n ### It is ordered that:",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "freeFormOrderedText",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderOnCourtsListLabel",
+    "Label": "**** \n ## Order made on court's own initiative/without notice \n ### Select as appropriate",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderOnCourtsList",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "OrderOnCourtsList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderOnCourtInitiative",
+    "Label": " ",
+    "FieldType": "OrderOnCourtInitiative",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderWithoutNotice",
+    "Label": " ",
+    "FieldType": "OrderWithoutNotice",
+    "SecurityClassification": "Public"
   }
 ]
 

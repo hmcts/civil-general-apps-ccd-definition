@@ -1,3 +1,5 @@
+const {listElement} = require('../../api/dataHelper');
+const config = require('../../config');
 module.exports = {
   judgeMakesDecisionData: () => {
     return {
@@ -89,6 +91,23 @@ module.exports = {
       }
     };
   },
+  judgeApprovesUnlessOrderAppl: (current_date) => {
+    return {
+      judicialDecision : {
+        decision: 'MAKE_AN_ORDER'
+      },
+      judicialDecisionMakeOrder: {
+        makeAnOrder: 'APPROVE_OR_EDIT',
+        orderText: 'sample text',
+        judgeApproveEditOptionDoc: 'DEFENCE_FORM',
+        displayjudgeApproveEditOptionDateForUnlessOrder: 'Yes',
+        judgeApproveEditOptionDateForUnlessOrder: current_date,
+        reasonForDecisionText: 'sample text',
+        isOrderProcessedByUnlessScheduler: 'No',
+        judicialByCourtsInitiative: 'OPTION_1'
+      }
+    };
+  },
 
   listingForHearing: () => {
     return {
@@ -112,6 +131,36 @@ module.exports = {
         judgeOtherSupport: 'sample text'
       },
       judicialByCourtsInitiativeListForHearing: 'OPTION_1'
+    };
+  },
+  listingForHearingInPerson: () => {
+    return {
+      judicialDecision : {
+        decision: 'LIST_FOR_A_HEARING'
+      },
+      judicialDecisionMakeOrder: {
+        directionsText: 'sample text',
+        reasonForDecisionText: 'sample text',
+        directionsResponseByDate: '2023-06-05',
+        displayjudgeApproveEditOptionDoc: 'No',
+        displayjudgeApproveEditOptionDate: 'No',
+        judicialByCourtsInitiativeListForHearing: 'OPTION_1'
+      },
+      judicialListForHearing: {
+        hearingPreferencesPreferredType: 'IN_PERSON',
+        hearingPreferredLocation: {
+          list_items: [
+            listElement(config.defendant2SelectedCourt)
+          ],
+          value: listElement(config.defendant2SelectedCourt)
+        },
+        judicialTimeEstimate: 'MINUTES_30',
+        judgeSignLanguage: 'sample text',
+        judgeLanguageInterpreter: 'sample text',
+        judgeOtherSupport: 'sample text'
+      },
+      judicialByCourtsInitiativeListForHearing: 'OPTION_2',
+      judicialGOHearingDirections:'Test Hearing Directions'
     };
   },
   applicationsDismiss: () => {
@@ -187,6 +236,78 @@ module.exports = {
       service_request_reference: '1324646546456',
       ccd_case_number: gaCaseId,
       service_request_amount: '167.00',
+      service_request_status: paymentStatus,
+      payment: {
+        _links: null,
+        account_number: null,
+        amount: 0,
+        case_reference: null,
+        ccd_case_number: null,
+        channel: null,
+        currency: null,
+        customer_reference: '13246546',
+        date_created: '2022-07-26T19:21:50.141Z',
+        date_updated: '2022-07-26T19:21:50.141Z',
+        description: null,
+        external_provider: null,
+        external_reference: null,
+        fees: null,
+        giro_slip_no: '',
+        id: '',
+        method: '',
+        organisation_name: null,
+        payment_group_reference: null,
+        payment_reference: '13213223',
+        reference: null,
+        reported_date_offline: null,
+        service_name: null,
+        site_id: null,
+        status: null,
+        status_histories: null
+      }
+    };
+  },
+  serviceUpdateDtoWithNotice:(gaCaseId,paymentStatus)=> {
+    return {
+      service_request_reference: '1324646546456',
+      ccd_case_number: gaCaseId,
+      service_request_amount: '275.00',
+      service_request_status: paymentStatus,
+      payment: {
+        _links: null,
+        account_number: null,
+        amount: 0,
+        case_reference: null,
+        ccd_case_number: null,
+        channel: null,
+        currency: null,
+        customer_reference: '13246546',
+        date_created: '2022-07-26T19:21:50.141Z',
+        date_updated: '2022-07-26T19:21:50.141Z',
+        description: null,
+        external_provider: null,
+        external_reference: null,
+        fees: null,
+        giro_slip_no: '',
+        id: '',
+        method: '',
+        organisation_name: null,
+        payment_group_reference: null,
+        payment_reference: '13213223',
+        reference: null,
+        reported_date_offline: null,
+        service_name: null,
+        site_id: null,
+        status: null,
+        status_histories: null
+      }
+    };
+  },
+  serviceUpdateDtoWithoutNotice:(gaCaseId,paymentStatus)=> {
+    return {
+      service_request_reference: '1324646546456',
+      ccd_case_number: gaCaseId,
+      service_request_amount: '108.00',
       service_request_status: paymentStatus,
       payment: {
         _links: null,
