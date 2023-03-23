@@ -366,7 +366,7 @@ module.exports = {
   },
 
   initiateGeneralApplicationWithOutNotice: async (user, parentCaseId) => {
-    let gaCaseReference;
+    let gaCaseReference, index = 0;
     eventName = events.INITIATE_GENERAL_APPLICATION.id;
 
     await apiRequest.setupTokens(user);
@@ -388,15 +388,19 @@ module.exports = {
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
 
+    if (updatedCivilCaseData.gaDetailsMasterCollection.length > 1) {
+      index = 1;
+    }
+
     switch (user.email) {
       case config.applicantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[index].value.caseLink.CaseReference;
         break;
       case config.defendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[index].value.caseLink.CaseReference;
         break;
       case config.secondDefendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[index].value.caseLink.CaseReference;
         break;
     }
 
@@ -1902,7 +1906,7 @@ const checkNoOfGeneralApplications = async (user, parentCaseId) => {
   const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
   const updatedCivilCaseData = await response.json();
   let totalGeneralApplication = updatedCivilCaseData.claimantGaAppDetails.length;
-  assert.equal(totalGeneralApplication, 1);
+  assert.equal(totalGeneralApplication, 2);
 };
 
 const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant) => {
