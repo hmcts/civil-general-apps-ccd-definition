@@ -51,7 +51,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "assistedOrderDateHeardDetails",
+    "ID": "assistedOrderMadeDateHeardDetails",
     "Label": " ",
     "FieldType": "DateHeardFinalOrders",
     "SecurityClassification": "Public"
@@ -233,6 +233,13 @@
     "ID": "assistedOrderGiveReasonsDetails",
     "Label": " ",
     "FieldType": "AssistedOrderReasons",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaFinalOrderDocPreview",
+    "Label": "Draft Order",
+    "FieldType": "Document",
     "SecurityClassification": "Public"
   }
 ]

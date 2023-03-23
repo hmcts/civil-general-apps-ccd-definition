@@ -41,7 +41,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "FinalOrderSelect",
     "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/populate-freeForm-values"
+    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/populate-finalOrder-values"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -168,7 +168,8 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "FinalOrderAssistedOrder",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "_CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/valid-assistedOrder-form"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -204,7 +205,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderDateHeardDetails",
+    "CaseFieldID": "assistedOrderMadeDateHeardDetails",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "COMPLEX",

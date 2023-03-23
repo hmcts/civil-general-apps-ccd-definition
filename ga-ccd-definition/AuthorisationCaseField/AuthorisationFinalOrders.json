@@ -51,7 +51,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "assistedOrderDateHeardDetails",
+    "CaseFieldID": "assistedOrderMadeDateHeardDetails",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",

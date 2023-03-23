@@ -73,7 +73,7 @@
   },
   {
     "ID": "assistedOrderMadeOnDetails",
-    "ListElementCode": "assistedOrderMadeOnDetails",
+    "ListElementCode": "orderMadeOnOwnInitiative",
     "ElementLabel": " ",
     "FieldType": "OrderMadeOnOwnInitiative",
     "FieldShowCondition": "orderMadeOnOption=\"COURTS_INITIATIVE\"",

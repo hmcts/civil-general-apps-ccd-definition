@@ -2,7 +2,7 @@
   {
     "ID": "DateHeardFinalOrders",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderDateHeardDetails",
+    "CaseFieldID": "assistedOrderMadeDateHeardDetails",
     "ListElementCode": "dateLabel",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
@@ -10,7 +10,7 @@
   {
     "ID": "DateHeardFinalOrders",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderDateHeardDetails",
+    "CaseFieldID": "assistedOrderMadeDateHeardDetails",
     "ListElementCode": "date",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
