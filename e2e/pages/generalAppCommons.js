@@ -21,18 +21,20 @@ let docFullDate = date.getFullYear().toString() + '-' + docMonth + '-' + twoDigi
 module.exports = {
 
   async selectCourtsOrderType(actualOrderText, orderType) {
+    let expectedInitOrderText = initiativeOrderText.replace(/\//g, '');
+    let expectedWNOrderText = withOutNoticeOrderText.replace(/\//g, '');
     switch (orderType) {
       case 'courtOwnInitiativeOrder':
         await I.click(ownInitiativeOrder);
         await I.waitForText('Please enter date', 3);
         await I.see(ownInitiativeOrder);
-        await expect(actualOrderText).to.equals(initiativeOrderText);
+        await expect(actualOrderText).to.equals(expectedInitOrderText);
         break;
       case 'withoutNoticeOrder':
         await I.click(withOutNoticeOrder);
         await I.waitForText('Please enter date', 3);
         await I.see(withOutNoticeOrder);
-        await expect(actualOrderText).to.equals(withOutNoticeOrderText);
+        await expect(actualOrderText).to.equals(expectedWNOrderText);
         break;
       case 'noneOrder':
         await I.click(noneOrder);
