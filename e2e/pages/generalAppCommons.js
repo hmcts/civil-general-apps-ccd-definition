@@ -2,6 +2,7 @@ const apiRequest = require('../api/apiRequest');
 const config = require('../config');
 const expect = require('chai').expect;
 const {I} = inject();
+const dateFrag = require('../fragments/date');
 
 const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const date = new Date();
@@ -20,21 +21,28 @@ let docFullDate = date.getFullYear().toString() + '-' + docMonth + '-' + twoDigi
 
 module.exports = {
 
-  async selectCourtsOrderType(actualOrderText, orderType) {
-    let expectedInitOrderText = initiativeOrderText.replace(/\//g, '');
-    let expectedWNOrderText = withOutNoticeOrderText.replace(/\//g, '');
+  async selectCourtsOrderType(actualOrderText, orderType, dateId) {
+    let expectedOrderText;
     switch (orderType) {
       case 'courtOwnInitiativeOrder':
         await I.click(ownInitiativeOrder);
         await I.waitForText('Please enter date', 3);
         await I.see(ownInitiativeOrder);
-        await expect(actualOrderText).to.equals(expectedInitOrderText);
+        expectedOrderText = initiativeOrderText.replace(/\//g, '').toString();
+        await expect(actualOrderText).to.equals(expectedOrderText);
+        if (dateId !== undefined) {
+          await dateFrag.enterDate(dateId, +1);
+        }
         break;
       case 'withoutNoticeOrder':
         await I.click(withOutNoticeOrder);
         await I.waitForText('Please enter date', 3);
         await I.see(withOutNoticeOrder);
-        await expect(actualOrderText).to.equals(expectedWNOrderText);
+        expectedOrderText = withOutNoticeOrderText.replace(/\//g, '').toString();
+        await expect(actualOrderText).to.equals(expectedOrderText);
+        if (dateId !== undefined) {
+          await dateFrag.enterDate(dateId, +1);
+        }
         break;
       case 'noneOrder':
         await I.click(noneOrder);

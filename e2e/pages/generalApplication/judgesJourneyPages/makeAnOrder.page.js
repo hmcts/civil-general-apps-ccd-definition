@@ -68,8 +68,8 @@ module.exports = {
         I.fillField(this.fields.directionsResponseYear, '2024');
         break;
     }
-    await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.courtOrderText)).trim(), orderType);
-    await date.enterDate(this.fields.courtOrder.dateId, +1);
+    await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.courtOrderText)).trim(),
+      orderType, this.fields.courtOrder.dateId);
     await I.fillField(this.fields.reasonForDecisionTextArea, 'Judges Decision');
     await I.clickContinue();
   }
