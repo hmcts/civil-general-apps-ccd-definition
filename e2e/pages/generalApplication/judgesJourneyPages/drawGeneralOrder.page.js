@@ -1,6 +1,5 @@
 const {I} = inject();
 const {verifyJudgeRecitalText, selectCourtsOrderType} = require('../../generalAppCommons');
-const date = require('../../../fragments/date');
 
 module.exports = {
 
