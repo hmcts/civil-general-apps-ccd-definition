@@ -2,7 +2,6 @@
 const {I} = inject();
 const expect = require('chai').expect;
 const {verifyJudgeRecitalText, selectCourtsOrderType} = require('../../generalAppCommons');
-const date = require('../../../fragments/date');
 
 module.exports = {
 
