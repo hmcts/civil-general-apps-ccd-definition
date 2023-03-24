@@ -1,272 +1,264 @@
 [
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "costReservedDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "assistedCostTypes",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "AssistedOrderCostDetails",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "costReservedDetails",
     "ListElementCode": "costReservedDetails.detailsRepresentationLabel",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "costReservedDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "costReservedDetails",
     "ListElementCode": "costReservedDetails.detailsRepresentationSecondLabel",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "costReservedDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "costReservedDetails",
     "ListElementCode": "costReservedDetails.detailText",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "claimantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "claimantCostStandardBase",
     "ListElementCode": "claimantCostStandardBase.claimantCostStandardLabel",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "claimantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "claimantCostStandardBase",
     "ListElementCode": "claimantCostStandardBase.claimantCostStandardSecondLabel",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "claimantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "claimantCostStandardBase",
     "ListElementCode": "claimantCostStandardBase.costAmount",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "claimantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "claimantCostStandardBase",
     "ListElementCode": "claimantCostStandardBase.claimantCostStandardDateLabel",
     "FieldDisplayOrder": 5,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "claimantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "claimantCostStandardBase",
     "ListElementCode": "claimantCostStandardBase.costPaymentDeadLine",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "claimantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "claimantCostStandardBase",
     "ListElementCode": "claimantCostStandardBase.claimantCostStandardProtectionLabel",
     "FieldDisplayOrder": 7,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "claimantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "claimantCostStandardBase",
     "ListElementCode": "claimantCostStandardBase.isPartyCostProtection",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {
-  "ID": "AssistedOrderCostDetails",
+  "ID": "defendantCostStandardBase",
   "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-  "CaseFieldID": "assistedOrderCostDetails",
+  "CaseFieldID": "defendantCostStandardBase",
   "ListElementCode": "defendantCostStandardBase.defendantCostStandardLabel",
   "FieldDisplayOrder": 2,
   "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "defendantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "defendantCostStandardBase",
     "ListElementCode": "defendantCostStandardBase.defendantCostStandardSecondLabel",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "defendantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "defendantCostStandardBase",
     "ListElementCode": "defendantCostStandardBase.costAmount",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "defendantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "defendantCostStandardBase",
     "ListElementCode": "defendantCostStandardBase.defendantCostStandardDateLabel",
     "FieldDisplayOrder": 5,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "defendantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "defendantCostStandardBase",
     "ListElementCode": "defendantCostStandardBase.costPaymentDeadLine",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "defendantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "defendantCostStandardBase",
     "ListElementCode": "defendantCostStandardBase.defendantCostStandardProtectionLabel",
     "FieldDisplayOrder": 7,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "defendantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "defendantCostStandardBase",
     "ListElementCode": "defendantCostStandardBase.isPartyCostProtection",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {
-  "ID": "AssistedOrderCostDetails",
+  "ID": "claimantCostSummarilyBase",
   "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-  "CaseFieldID": "assistedOrderCostDetails",
+  "CaseFieldID": "claimantCostSummarilyBase",
   "ListElementCode": "claimantCostSummarilyBase.claimantCostSummarilyLabel",
   "FieldDisplayOrder": 2,
   "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "claimantCostSummarilyBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "claimantCostSummarilyBase",
     "ListElementCode": "claimantCostSummarilyBase.claimantCostSummarilySecondLabel",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "claimantCostSummarilyBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "claimantCostSummarilyBase",
     "ListElementCode": "claimantCostSummarilyBase.costAmount",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "claimantCostSummarilyBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "claimantCostSummarilyBase",
     "ListElementCode": "claimantCostSummarilyBase.claimantCostSummarilyDateLabel",
     "FieldDisplayOrder": 5,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "claimantCostSummarilyBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "claimantCostSummarilyBase",
     "ListElementCode": "claimantCostSummarilyBase.costPaymentDeadLine",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "claimantCostSummarilyBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "claimantCostSummarilyBase",
     "ListElementCode": "claimantCostSummarilyBase.claimantCostSummarilyProtectionLabel",
     "FieldDisplayOrder": 7,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "claimantCostSummarilyBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "claimantCostSummarilyBase",
     "ListElementCode": "claimantCostSummarilyBase.isPartyCostProtection",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "defendantCostSummarilyBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "defendantCostSummarilyBase",
     "ListElementCode": "defendantCostSummarilyBase.defendantCostSummarilyLabel",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "defendantCostSummarilyBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "defendantCostSummarilyBase",
     "ListElementCode": "defendantCostSummarilyBase.defendantCostSummarilySecondLabel",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "defendantCostSummarilyBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "defendantCostSummarilyBase",
     "ListElementCode": "defendantCostSummarilyBase.costAmount",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "defendantCostSummarilyBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "defendantCostSummarilyBase",
     "ListElementCode": "defendantCostSummarilyBase.defendantCostSummarilyDateLabel",
     "FieldDisplayOrder": 5,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "defendantCostSummarilyBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "defendantCostSummarilyBase",
     "ListElementCode": "defendantCostSummarilyBase.costPaymentDeadLine",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "defendantCostSummarilyBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "defendantCostSummarilyBase",
     "ListElementCode": "defendantCostSummarilyBase.defendantCostSummarilyProtectionLabel",
     "FieldDisplayOrder": 7,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "defendantCostSummarilyBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "defendantCostSummarilyBase",
     "ListElementCode": "defendantCostSummarilyBase.isPartyCostProtection",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "besPokeCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "besPokeCostDetails",
     "ListElementCode": "besPokeCostDetails.besPokeCostDetailsLabel",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "AssistedOrderCostDetails",
+    "ID": "besPokeCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostDetails",
+    "CaseFieldID": "besPokeCostDetails",
     "ListElementCode": "besPokeCostDetails.detailText",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"

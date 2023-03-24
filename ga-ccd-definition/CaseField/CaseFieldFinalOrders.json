@@ -137,13 +137,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "assistedOrderCostDetails",
-    "Label": " ",
-    "FieldType": "AssistedOrderCostDetails",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "assistedOrderFurtherHearingLabel",
     "Label": "**** \n ## Further hearing (part heard or adjourned)",
     "FieldType": "Label",
@@ -255,6 +248,56 @@
     "ID": "orderMadeOnWithOutNotice",
     "Label": " ",
     "FieldType": "OrderMadeOnWithOutNotice",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "assistedCostTypes",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "AssistedCostTypesList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "costReservedDetails",
+    "Label": " ",
+    "FieldType": "CostReservedDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "defendantCostStandardBase",
+    "Label": " ",
+    "FieldType": "DefendantCostStandardBase",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "claimantCostStandardBase",
+    "Label": " ",
+    "FieldType": "ClaimantCostStandardBase",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "claimantCostSummarilyBase",
+    "Label": " ",
+    "FieldType": "ClaimantCostSummarilyBase",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "defendantCostSummarilyBase",
+    "Label": " ",
+    "FieldType": "DefendantCostSummarilyBase",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "besPokeCostDetails",
+    "Label": " ",
+    "FieldType": "BesPokeCostDetails",
     "SecurityClassification": "Public"
   }
 ]
