@@ -24,8 +24,8 @@ module.exports = {
     await I.see(`Hearing type is via ${hearingPreferences}`);
     await I.see(`Estimated length of hearing is ${timeEstimate}`);
     await I.see('Directions in relation to hearing');
-    await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.courtOrderText)).trim(), orderType);
-    await date.enterDate(this.fields.courtOrder.dateId, +1);
+    await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.courtOrderText)).trim(),
+      orderType, this.fields.courtOrder.dateId);
     await I.fillField(this.fields.hearingDetailsDirectionsTextArea, 'Test Directions');
     await I.clickContinue();
   },
@@ -42,8 +42,8 @@ module.exports = {
     } else {
       await I.see('The applicant and respondent may respond with written representations by 4pm on');
     }
-    await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.courtOrderText)).trim(), orderType);
-    await date.enterDate(this.fields.courtOrder.dateId, +1);
+    await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.courtOrderText)).trim(),
+      orderType, this.fields.courtOrder.dateId);
     await I.fillField(this.fields.writtenRepresentationsDirectionsTextArea, 'Test Directions');
     await I.clickContinue();
   },
