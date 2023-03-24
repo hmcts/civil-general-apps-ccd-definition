@@ -180,13 +180,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "assistedOrderMadeOnDetails",
-    "Label": " ",
-    "FieldType": "assistedOrderMadeOnDetails",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "assistedOrderAppealLabel",
     "Label": "**** \n ## Appeal",
     "FieldType": "Label",
@@ -240,6 +233,28 @@
     "ID": "gaFinalOrderDocPreview",
     "Label": "Draft Order",
     "FieldType": "Document",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderMadeOnOption",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "OrderMadeOnTypes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderMadeOnOwnInitiative",
+    "Label": " ",
+    "FieldType": "OrderMadeOnOwnInitiative",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderMadeOnWithOutNotice",
+    "Label": " ",
+    "FieldType": "OrderMadeOnWithOutNotice",
     "SecurityClassification": "Public"
   }
 ]

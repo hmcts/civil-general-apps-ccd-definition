@@ -420,19 +420,41 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderMadeOnDetails",
+    "CaseFieldID": "orderMadeOnOption",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 26,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderReasonsLabel",
+    "CaseFieldID": "orderMadeOnOwnInitiative",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 27,
+    "DisplayContext": "MANDATORY",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "orderMadeOnOption=\"COURTS_INITIATIVE\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "orderMadeOnWithOutNotice",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 28,
+    "DisplayContext": "MANDATORY",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "orderMadeOnOption=\"WITHOUT_NOTICE\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderReasonsLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 29,
     "DisplayContext": "READONLY",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y"
@@ -442,7 +464,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderGiveReasonsLabel",
     "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 28,
+    "PageFieldDisplayOrder": 30,
     "DisplayContext": "READONLY",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y"
@@ -452,7 +474,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderGiveReasonsYesNo",
     "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 29,
+    "PageFieldDisplayOrder": 31,
     "DisplayContext": "MANDATORY",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y"
@@ -462,7 +484,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderGiveReasonsDetails",
     "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 30,
+    "PageFieldDisplayOrder": 32,
     "DisplayContext": "COMPLEX",
     "PageID": "FinalOrderAssistedOrder",
     "FieldShowCondition": "assistedOrderGiveReasonsYesNo=\"Yes\"",

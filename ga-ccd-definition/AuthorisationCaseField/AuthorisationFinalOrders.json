@@ -221,16 +221,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "assistedOrderMadeOnDetails",
-    "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderAppealLabel",
     "UserRoles": [
       "judge-profile",
@@ -292,6 +282,36 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderGiveReasonsDetails",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderMadeOnOption",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderMadeOnOwnInitiative",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderMadeOnWithOutNotice",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",

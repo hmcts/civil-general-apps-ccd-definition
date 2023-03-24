@@ -62,29 +62,5 @@
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "assistedOrderMadeOnDetails",
-    "ListElementCode": "orderMadeOnOption",
-    "ElementLabel": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "OrderMadeOnTypes",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "assistedOrderMadeOnDetails",
-    "ListElementCode": "orderMadeOnOwnInitiative",
-    "ElementLabel": " ",
-    "FieldType": "OrderMadeOnOwnInitiative",
-    "FieldShowCondition": "orderMadeOnOption=\"COURTS_INITIATIVE\"",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "assistedOrderMadeOnDetails",
-    "ListElementCode": "orderMadeOnWithOutNotice",
-    "ElementLabel": " ",
-    "FieldType": "OrderMadeOnWithOutNotice",
-    "FieldShowCondition": "orderMadeOnOption=\"WITHOUT_NOTICE\"",
-    "SecurityClassification": "Public"
   }
 ]
