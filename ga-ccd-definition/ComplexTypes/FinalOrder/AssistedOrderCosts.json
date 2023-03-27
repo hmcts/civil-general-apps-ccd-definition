@@ -2,7 +2,7 @@
   {
     "ID": "CostReservedDetails",
     "ListElementCode": "detailsRepresentationLabel",
-    "ElementLabel": "### Cost reserved",
+    "ElementLabel": "### Costs reserved",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -239,8 +239,15 @@
   },
   {
     "ID": "BesPokeCostDetails",
+    "ListElementCode": "detailTextLabel",
+    "ElementLabel": "#### Please insert cost order you wish to make",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "BesPokeCostDetails",
     "ListElementCode": "detailText",
-    "ElementLabel": "Please insert cost order you wish to make",
+    "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"

@@ -44,7 +44,7 @@
   {
     "ID": "ClaimantRepresentationType",
     "ListElementCode": "CLAIMANT_NOT_ATTENDING",
-    "ListElement": "Claimant not attending",
+    "ListElement": "The claimant not attending",
     "DisplayOrder": 6
   },
   {
@@ -80,7 +80,7 @@
   {
     "ID": "DefendantRepresentationType",
     "ListElementCode": "DEFENDANT_NOT_ATTENDING",
-    "ListElement": "Defendant not attending",
+    "ListElement": "The defendant not attending",
     "DisplayOrder": 6
   },
   {

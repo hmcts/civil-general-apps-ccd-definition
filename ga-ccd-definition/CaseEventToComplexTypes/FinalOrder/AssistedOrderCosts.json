@@ -259,8 +259,16 @@
     "ID": "besPokeCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "besPokeCostDetails",
-    "ListElementCode": "besPokeCostDetails.detailText",
+    "ListElementCode": "besPokeCostDetails.detailTextLabel",
     "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "besPokeCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "besPokeCostDetails",
+    "ListElementCode": "besPokeCostDetails.detailText",
+    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   }
 ]

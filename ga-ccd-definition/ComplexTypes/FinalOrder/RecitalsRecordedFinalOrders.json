@@ -3,7 +3,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "label",
     "ID": "assistedOrderRecitalsRecorded",
-    "ElementLabel": "### Is recorded that: (Optional)",
+    "ElementLabel": "### It is recorded that: (Optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

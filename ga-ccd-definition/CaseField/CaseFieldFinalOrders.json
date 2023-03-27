@@ -131,7 +131,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "assistedOrderCostSecondaryLabel",
-    "Label": "Select as appropriate",
+    "Label": "### Select as appropriate",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
