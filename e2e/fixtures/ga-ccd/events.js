@@ -48,5 +48,10 @@ module.exports = {
     description: 'Caseworker assigns the application to Legal Advisor',
     id: 'REFER_TO_LEGAL_ADVISOR',
     name: 'Refer to Legal Advisor'
-  }
+  },
+  GENERATE_DIRECTIONS_ORDER: {
+    description: 'Make an order',
+    id: 'GENERATE_DIRECTIONS_ORDER',
+    name: 'Make an order'
+  },
 };
