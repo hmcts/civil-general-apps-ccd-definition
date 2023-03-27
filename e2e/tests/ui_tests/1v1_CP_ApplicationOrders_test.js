@@ -42,7 +42,7 @@ Scenario('1v1 - Free form applications orders - With notice journey', async ({I,
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeMakeAppOrder(gaCaseReference, 'freeFromOrder', 'withoutNoticeOrder');
+  await I.judgeMakeAppOrder(gaCaseReference, 'freeFromOrder', 'withoutNoticeOrder', 'Free_form');
   // To do
 });
 

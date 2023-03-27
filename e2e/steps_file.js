@@ -75,6 +75,9 @@ const judgeOrderPage = require('./pages/generalApplication/applicationOrderPages
 const freeFormOrderPage = require('./pages/generalApplication/applicationOrderPages/freeFormOrder.page');
 const makeAnOrderPage = require('./pages/generalApplication/judgesJourneyPages/makeAnOrder.page');
 const reviewOrderDocumentPage = require('./pages/generalApplication/judgesJourneyPages/reviewOrderDocument.page');
+const reviewAppOrderDocumentPage = require('./pages/generalApplication/applicationOrderPages/reviewAppOrderDocument.page');
+const appOrderCYAPage = require('./pages/generalApplication/applicationOrderPages/appOrderCheckYourAnswers.page');
+// const appOrderConfirmationPage = require('./pages/generalApplication/applicationOrderPages/appOrderConfirmation.page');
 const requestMoreInfoPage = require('./pages/generalApplication/judgesJourneyPages/requestMoreInformation.page');
 const judgesCheckYourAnswers = require('./pages/generalApplication/judgesJourneyPages/judgesCheckYourAnswers.page');
 const judgesConfirmationPage = require('./pages/generalApplication/judgesJourneyPages/judgesConfirmation.page');
@@ -804,7 +807,7 @@ module.exports = function () {
       ]);
     },
 
-    async judgeMakeAppOrder(gaCaseNumber, orderType, formType) {
+    async judgeMakeAppOrder(gaCaseNumber, orderType, formType, documentType) {
       eventName = events.GENERATE_DIRECTIONS_ORDER.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, gaCaseNumber),
@@ -812,17 +815,12 @@ module.exports = function () {
         () => judgeOrderPage.selectOrderType(orderType),
         () => freeFormOrderPage.verifyFreeFromErrorMessage(),
         () => freeFormOrderPage.fillFreeFormOrder(formType),
-        /*,
-        () => requestMoreInfoPage.requestMoreInfoOrder(infoType, withoutNotice),
-        () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
-        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
-        ...conditionalSteps(infoType === 'requestMoreInformation', [
-          ...submitApplication('You have requested more information'),
-        ]),
-        ...conditionalSteps(infoType === 'sendApplicationToOtherParty', [
-          ...submitApplication('You have requested a response'),
-        ]),
-        () => judgesConfirmationPage.verifyReqMoreInfoConfirmationPage(),*/
+        () => reviewAppOrderDocumentPage.reviewOrderDocument(documentType),
+        () => appOrderCYAPage.verifyAppOrderCheckAnswerForm(gaCaseNumber),
+        // Todo
+      /*  ...submitApplication('Your order has been issued'),
+        () => appOrderConfirmationPage.verifyConfirmationPage()*/
+
       ]);
     },
 
