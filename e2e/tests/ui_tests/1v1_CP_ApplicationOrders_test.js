@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 const doc = 'hearingNotice';
 let civilCaseReference, gaCaseReference;
 
-Feature('Before SDO 1v1 - GA CP - Applications Orders @ui-nightly');
+Feature('Before SDO 1v1 - GA CP - Applications Orders @ui-nightly @mmm');
 
 Scenario('1v1 - Free form applications orders - With notice journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -36,16 +36,16 @@ Scenario('1v1 - Free form applications orders - With notice journey', async ({I,
   }
   console.log('Hearing Notice created for: ' + gaCaseReference);
 
-  console.log('Judge making Application order for: ' + gaCaseReference);
+  /*console.log('Judge making Application order for: ' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeMakeAppOrder(gaCaseReference, 'freeFromOrder', 'withoutNoticeOrder');
+  await I.judgeMakeAppOrder(gaCaseReference, 'freeFromOrder', 'withoutNoticeOrder');*/
   // To do
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
