@@ -77,7 +77,7 @@ const makeAnOrderPage = require('./pages/generalApplication/judgesJourneyPages/m
 const reviewOrderDocumentPage = require('./pages/generalApplication/judgesJourneyPages/reviewOrderDocument.page');
 const reviewAppOrderDocumentPage = require('./pages/generalApplication/applicationOrderPages/reviewAppOrderDocument.page');
 const appOrderCYAPage = require('./pages/generalApplication/applicationOrderPages/appOrderCheckYourAnswers.page');
-// const appOrderConfirmationPage = require('./pages/generalApplication/applicationOrderPages/appOrderConfirmation.page');
+const appOrderConfirmationPage = require('./pages/generalApplication/applicationOrderPages/appOrderConfirmation.page');
 const requestMoreInfoPage = require('./pages/generalApplication/judgesJourneyPages/requestMoreInformation.page');
 const judgesCheckYourAnswers = require('./pages/generalApplication/judgesJourneyPages/judgesCheckYourAnswers.page');
 const judgesConfirmationPage = require('./pages/generalApplication/judgesJourneyPages/judgesConfirmation.page');
@@ -817,10 +817,8 @@ module.exports = function () {
         () => freeFormOrderPage.fillFreeFormOrder(formType),
         () => reviewAppOrderDocumentPage.reviewOrderDocument(documentType),
         () => appOrderCYAPage.verifyAppOrderCheckAnswerForm(gaCaseNumber),
-        // Todo
-      /*  ...submitApplication('Your order has been issued'),
-        () => appOrderConfirmationPage.verifyConfirmationPage()*/
-
+        ...submitApplication('Your order has been issued'),
+        () => appOrderConfirmationPage.verifyConfirmationPage()
       ]);
     },
 

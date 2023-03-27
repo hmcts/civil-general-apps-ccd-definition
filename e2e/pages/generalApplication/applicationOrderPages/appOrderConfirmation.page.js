@@ -9,10 +9,11 @@ module.exports = {
     applicationList: '#confirmation-body li'
   },
 
-  // Todo
   async verifyConfirmationPage() {
-    I.seeInCurrentUrl('');
-    I.seeTextEquals('Your order has been issued', '#confirmation-header h1');
+    await I.waitInUrl('GENERATE_DIRECTIONS_ORDER/confirm');
+    I.see('The order has been sent to:');
+    I.see('Test Inc');
+    I.see('Sir John Doe');
   },
 
   async closeAndReturnToCaseDetails() {
