@@ -59,7 +59,7 @@
     "ID": "ClaimantAndDefendantHeard",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "claimantDefendantRepresentation.heardFromClaimantNotAttending",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromClaimantNotAttend",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
     },
@@ -123,7 +123,7 @@
     "ID": "ClaimantAndDefendantHeard",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "claimantDefendantRepresentation.heardFromDefendantNotAttending",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromDefendantNotAttend",
     "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   },
