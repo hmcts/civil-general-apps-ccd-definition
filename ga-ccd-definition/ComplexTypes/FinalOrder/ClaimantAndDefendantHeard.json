@@ -63,7 +63,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "trialProcedureClaimantComplex",
+    "ListElementCode": "heardFromClaimantNotAttending",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
     "FieldType": "TrialNoticeProcedure",
@@ -134,7 +134,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "trialProcedureComplex",
+    "ListElementCode": "heardFromDefendantNotAttending",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
     "FieldType": "TrialNoticeProcedure",

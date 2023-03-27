@@ -3,7 +3,7 @@
     "ID": "TrialNoticeProcedure",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "claimantDefendantRepresentation.trialProcedureClaimantComplex.list",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromClaimantNotAttending.list",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -11,7 +11,7 @@
     "ID": "TrialNoticeProcedure",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "claimantDefendantRepresentation.trialProcedureClaimantComplex.label1",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromClaimantNotAttending.label1",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
@@ -19,7 +19,7 @@
     "ID": "TrialNoticeProcedure",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "claimantDefendantRepresentation.trialProcedureClaimantComplex.label2",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromClaimantNotAttending.label2",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
@@ -27,7 +27,7 @@
     "ID": "TrialNoticeProcedure",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "claimantDefendantRepresentation.trialProcedureClaimantComplex.label3",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromClaimantNotAttending.label3",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
@@ -35,7 +35,7 @@
     "ID": "TrialNoticeProcedure",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "claimantDefendantRepresentation.trialProcedureComplex.listDef",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromDefendantNotAttending.listDef",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -43,7 +43,7 @@
     "ID": "TrialNoticeProcedure",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "claimantDefendantRepresentation.trialProcedureComplex.label1Def",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromDefendantNotAttending.label1Def",
     "FieldDisplayOrder": 4,
     "DisplayContext": "READONLY"
   },
@@ -51,7 +51,7 @@
     "ID": "TrialNoticeProcedure",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "claimantDefendantRepresentation.trialProcedureComplex.label2Def",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromDefendantNotAttending.label2Def",
     "FieldDisplayOrder": 4,
     "DisplayContext": "READONLY"
   },
@@ -59,7 +59,7 @@
     "ID": "TrialNoticeProcedure",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "claimantDefendantRepresentation.trialProcedureComplex.label3Def",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromDefendantNotAttending.label3Def",
     "FieldDisplayOrder": 4,
     "DisplayContext": "READONLY"
   }

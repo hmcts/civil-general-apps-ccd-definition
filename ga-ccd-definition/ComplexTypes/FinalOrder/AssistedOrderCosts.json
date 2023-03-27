@@ -38,7 +38,7 @@
   {
     "ID": "ClaimantCostStandardBase",
     "ListElementCode": "costAmount",
-    "FieldType": "Text",
+    "FieldType": "MoneyGBP",
     "ElementLabel": " ",
     "HintText": "For example, 145.00",
     "SecurityClassification": "Public"
@@ -90,7 +90,7 @@
   {
     "ID": "DefendantCostStandardBase",
     "ListElementCode": "costAmount",
-    "FieldType": "Text",
+    "FieldType": "MoneyGBP",
     "ElementLabel": " ",
     "HintText": "For example, 145.00",
     "SecurityClassification": "Public"
@@ -142,7 +142,7 @@
   {
     "ID": "ClaimantCostSummarilyBase",
     "ListElementCode": "costAmount",
-    "FieldType": "Text",
+    "FieldType": "MoneyGBP",
     "ElementLabel": " ",
     "HintText": "For example, 145.00",
     "SecurityClassification": "Public"
@@ -194,7 +194,7 @@
   {
     "ID": "DefendantCostSummarilyBase",
     "ListElementCode": "costAmount",
-    "FieldType": "Text",
+    "FieldType": "MoneyGBP",
     "ElementLabel": " ",
     "HintText": "For example, 145.00",
     "SecurityClassification": "Public"

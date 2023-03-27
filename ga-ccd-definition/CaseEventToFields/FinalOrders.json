@@ -41,7 +41,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "FinalOrderSelect",
     "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/populate-finalOrder-values"
+    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/populate-finalOrder-form-values"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -169,7 +169,7 @@
     "DisplayContext": "READONLY",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y",
-    "_CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/valid-assistedOrder-form"
+    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/populate-final-order-preview-doc"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",

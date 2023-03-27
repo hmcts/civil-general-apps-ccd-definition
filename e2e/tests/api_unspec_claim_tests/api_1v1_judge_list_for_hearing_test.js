@@ -4,9 +4,9 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('Before SDO 1v1 - GA CP - Hearing Notice document API tests @api-tests');
+Feature('Before SDO 1v1 - GA CP - Hearing Notice document API tests @api-testsss');
 
-Scenario('Defendant Hearing notice journey', async ({api}) => {
+Scenario.only('Defendant Hearing notice journey', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
       config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -45,6 +45,6 @@ Scenario('Defendant Hearing notice journey', async ({api}) => {
   await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
+// AfterSuite(async ({api}) => {
+//   await api.cleanUp();
+// });
