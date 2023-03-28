@@ -895,6 +895,90 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "orderCourtOwnInitiative",
+    "UserRole": "civil-administrator-standard",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "orderCourtOwnInitiativeDate",
+    "UserRole": "civil-administrator-standard",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "orderWithoutNotice",
+    "UserRole": "civil-administrator-standard",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "orderWithoutNoticeDate",
+    "UserRole": "civil-administrator-standard",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderCourtOwnInitiativeListForHearing",
+    "ListElementCode": "orderCourtOwnInitiative",
+    "UserRole": "civil-administrator-standard",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderCourtOwnInitiativeListForHearing",
+    "ListElementCode": "orderCourtOwnInitiativeDate",
+    "UserRole": "civil-administrator-standard",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderWithoutNoticeListForHearing",
+    "ListElementCode": "orderWithoutNotice",
+    "UserRole": "civil-administrator-standard",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderWithoutNoticeListForHearing",
+    "ListElementCode": "orderWithoutNoticeDate",
+    "UserRole": "civil-administrator-standard",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderCourtOwnInitiativeForWrittenRep",
+    "ListElementCode": "orderCourtOwnInitiative",
+    "UserRole": "civil-administrator-standard",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderCourtOwnInitiativeForWrittenRep",
+    "ListElementCode": "orderCourtOwnInitiativeDate",
+    "UserRole": "civil-administrator-standard",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderWithoutNoticeForWrittenRep",
+    "ListElementCode": "orderWithoutNotice",
+    "UserRole": "civil-administrator-standard",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderWithoutNoticeForWrittenRep",
+    "ListElementCode": "orderWithoutNoticeDate",
+    "UserRole": "civil-administrator-standard",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppType",
     "UserRole": "civil-administrator-basic",
@@ -1770,6 +1854,90 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDate.hearingScheduledDate",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "orderCourtOwnInitiative",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "orderCourtOwnInitiativeDate",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "orderWithoutNotice",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "orderWithoutNoticeDate",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderCourtOwnInitiativeListForHearing",
+    "ListElementCode": "orderCourtOwnInitiative",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderCourtOwnInitiativeListForHearing",
+    "ListElementCode": "orderCourtOwnInitiativeDate",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderWithoutNoticeListForHearing",
+    "ListElementCode": "orderWithoutNotice",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderWithoutNoticeListForHearing",
+    "ListElementCode": "orderWithoutNoticeDate",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderCourtOwnInitiativeForWrittenRep",
+    "ListElementCode": "orderCourtOwnInitiative",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderCourtOwnInitiativeForWrittenRep",
+    "ListElementCode": "orderCourtOwnInitiativeDate",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderWithoutNoticeForWrittenRep",
+    "ListElementCode": "orderWithoutNotice",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderWithoutNoticeForWrittenRep",
+    "ListElementCode": "orderWithoutNoticeDate",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   }

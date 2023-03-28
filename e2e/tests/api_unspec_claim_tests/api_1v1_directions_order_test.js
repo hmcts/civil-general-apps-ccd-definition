@@ -31,6 +31,17 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER - Respondent upload Direct
   console.log('*** Start Respondent respond to Judge Directions on GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponseToJudgeDirections(config.applicantSolicitorUser, gaCaseReference);
   console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
+
+  console.log('*** Start Update Claimant Solicitor Email ID on Case Reference: ' + civilCaseReference + ' ***');
+  await api.updateCivilClaimClaimantSolEmailID(config.applicantSolicitorUser, civilCaseReference);
+  console.log('*** End Update Claimant Solicitor Email ID on Case Reference: ' + civilCaseReference + ' ***');
+
+  console.log('Make an another General Application');
+  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
+
+  console.log('*** Check no. of General Application Case ***');
+  gaCaseReference = await api.checkGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
+  console.log('*** End  ***');
 });
 
 Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT - DIRECTIONS ORDER - Respondent upload Directions Document', async ({api}) => {

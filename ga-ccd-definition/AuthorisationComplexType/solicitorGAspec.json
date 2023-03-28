@@ -863,6 +863,91 @@
     "ListElementCode": "generalAppHearingDate.hearingScheduledPreferenceYesNoLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "orderCourtOwnInitiative",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "orderCourtOwnInitiativeDate",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "orderWithoutNotice",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "orderWithoutNoticeDate",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderCourtOwnInitiativeListForHearing",
+    "ListElementCode": "orderCourtOwnInitiative",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderCourtOwnInitiativeListForHearing",
+    "ListElementCode": "orderCourtOwnInitiativeDate",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderWithoutNoticeListForHearing",
+    "ListElementCode": "orderWithoutNotice",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderWithoutNoticeListForHearing",
+    "ListElementCode": "orderWithoutNoticeDate",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderCourtOwnInitiativeForWrittenRep",
+    "ListElementCode": "orderCourtOwnInitiative",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderCourtOwnInitiativeForWrittenRep",
+    "ListElementCode": "orderCourtOwnInitiativeDate",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderWithoutNoticeForWrittenRep",
+    "ListElementCode": "orderWithoutNotice",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderWithoutNoticeForWrittenRep",
+    "ListElementCode": "orderWithoutNoticeDate",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
   }
 ]
 
