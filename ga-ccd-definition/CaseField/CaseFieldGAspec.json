@@ -826,7 +826,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialByCourtsInitiativeListForHearing",
-    "Label": "Optional paragraph to follow Judges' order",
+    "Label": "Select as appropriate",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAByCourtsInitiativeGAspec",
     "SecurityClassification": "Public"
@@ -834,7 +834,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialByCourtsInitiativeForWrittenRep",
-    "Label": "Optional paragraph to follow Judges' order",
+    "Label": "Select as appropriate",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAByCourtsInitiativeGAspec",
     "SecurityClassification": "Public"
@@ -990,6 +990,48 @@
     "ID": "orderWithoutNotice",
     "Label": " ",
     "FieldType": "OrderWithoutNotice",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderCourtOwnInitiativeListForHearing",
+    "Label": " ",
+    "FieldType": "GAOrderCourtOwnInitiativeGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderWithoutNoticeListForHearing",
+    "Label": " ",
+    "FieldType": "GAOrderWithoutNoticeGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderCourtOwnInitiativeForWrittenRep",
+    "Label": " ",
+    "FieldType": "GAOrderCourtOwnInitiativeGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderWithoutNoticeForWrittenRep",
+    "Label": " ",
+    "FieldType": "GAOrderWithoutNoticeGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderMadeCourtsInitiativeLabelForHearing",
+    "Label": "### Order made on court's own initiative/without notice",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "orderMadeCourtsInitiativeLabelForWrittenRep",
+    "Label": "### Order made on court's own initiative/without notice",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {

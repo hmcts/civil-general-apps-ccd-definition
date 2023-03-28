@@ -107,7 +107,7 @@
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "judicialByCourtsInitiative",
-    "ElementLabel": "Optional paragraph to follow judges' order",
+    "ElementLabel": "Select as appropriate",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAByCourtsInitiativeGAspec",
     "SecurityClassification": "Public"
@@ -126,5 +126,48 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "FieldShowCondition": "makeAnOrder=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "judicialByCourtsInitiativeLabel",
+    "ElementLabel": "### Order made on court's own initiative/without notice",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "orderCourtOwnInitiative",
+    "ElementLabel": "Order on court's own initiative",
+    "FieldType": "TextArea",
+    "FieldShowCondition": "judicialByCourtsInitiative=\"OPTION_1\"",
+    "SecurityClassification": "Public",
+    "Max": 400
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "orderCourtOwnInitiativeDate",
+    "ElementLabel": "Please enter date",
+    "FieldType": "Date",
+    "HintText": "For example, 16 4 2021",
+    "FieldShowCondition": "judicialByCourtsInitiative=\"OPTION_1\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "orderWithoutNotice",
+    "ElementLabel": "Order without notice",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "judicialByCourtsInitiative=\"OPTION_2\"",
+    "Max": 400
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "orderWithoutNoticeDate",
+    "ElementLabel": "Please enter date",
+    "FieldType": "Date",
+    "HintText": "For example, 16 4 2021",
+    "FieldShowCondition": "judicialByCourtsInitiative=\"OPTION_2\"",
+    "SecurityClassification": "Public"
   }
 ]
