@@ -213,7 +213,7 @@
     "CaseFieldID": "defendantCostSummarilyBase",
     "ListElementCode": "defendantCostSummarilyBase.costAmount",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "defendantCostSummarilyBase",
