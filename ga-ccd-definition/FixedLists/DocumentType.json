@@ -52,11 +52,5 @@
     "ListElementCode": "HEARING_NOTICE",
     "ListElement": "Hearing Notice",
     "DisplayOrder": 9
-  },
-  {
-    "ID": "DocumentType",
-    "ListElementCode": "FREE_FORM_ORDER",
-    "ListElement": "Free Form Order",
-    "DisplayOrder": 10
   }
 ]
