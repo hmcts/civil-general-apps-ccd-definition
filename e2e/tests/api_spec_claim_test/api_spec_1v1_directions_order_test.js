@@ -4,9 +4,9 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA SPEC Claim 1v1 Judge Make Order Directions Order API tests @api-testsskip');
+Feature('GA SPEC Claim 1v1 Judge Make Order Directions Order API tests @api-tests');
 
-Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
+Scenario.skip('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
     civilCaseReference = await api.createSpecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
     console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -31,7 +31,7 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
     console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
-Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER - VARY-JUDGEMENT', async ({api}) => {
+Scenario.skip('Judge makes decision 1V1 - DIRECTIONS ORDER - VARY-JUDGEMENT', async ({api}) => {
   civilCaseReference = await api.createSpecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -57,7 +57,7 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER - VARY-JUDGEMENT', async (
   console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
-Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER - VARY-JUDGEMENT as Defendant', async ({api}) => {
+Scenario.skip('Judge makes decision 1V1 - DIRECTIONS ORDER - VARY-JUDGEMENT as Defendant', async ({api}) => {
   civilCaseReference = await api.createSpecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);

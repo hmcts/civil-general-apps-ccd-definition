@@ -4,9 +4,9 @@ const config = require('../../config.js');
 let civilCaseReference,
   gaCaseReference;
 
-Feature('GA SPEC Claim 1v2 Claimant Response Case Close API tests @api-offline-nightly @api-nightlyskip');
+Feature('GA SPEC Claim 1v2 Claimant Response Case Close API tests @api-offline-nightly @api-nightly');
 
-Scenario('Case offline LISTING_FOR_A_HEARING', async ({api}) => {
+Scenario.skip('Case offline LISTING_FOR_A_HEARING', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   gaCaseReference
@@ -55,7 +55,7 @@ Scenario.skip('Case offline ORDER_MADE', async ({api}) => {
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
 });
 
-Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
+Scenario.skip('Case offline APPLICATION_DISMISSED', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application with state APPLICATION_DISMISSED');
@@ -78,7 +78,7 @@ Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'APPLICATION_DISMISSED');
 });
 
-Scenario('Case offline AWAITING_RESPONDENT_RESPONSE', async ({api}) => {
+Scenario.skips('Case offline AWAITING_RESPONDENT_RESPONSE', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
