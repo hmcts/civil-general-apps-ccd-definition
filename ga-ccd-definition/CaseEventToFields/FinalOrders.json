@@ -352,7 +352,7 @@
     "CaseFieldID": "defendantCostStandardBase",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 19,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "assistedCostTypes=\"DEFENDANT_COST_STANDARD_BASE\""
@@ -363,7 +363,7 @@
     "CaseFieldID": "claimantCostStandardBase",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 20,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "assistedCostTypes=\"CLAIMANT_COST_STANDARD_BASE\""
@@ -374,7 +374,7 @@
     "CaseFieldID": "defendantCostSummarilyBase",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 21,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "assistedCostTypes=\"DEFENDANT_COST_SUMMARILY_BASE\""
@@ -385,7 +385,7 @@
     "CaseFieldID": "claimantCostSummarilyBase",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 22,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "assistedCostTypes=\"CLAIMANT_COST_SUMMARILY_BASE\""

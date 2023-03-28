@@ -80,7 +80,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-  "ID": "defendantCostStandardBase",
+  "ID": "DefendantCostStandardBase",
   "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
   "CaseFieldID": "defendantCostStandardBase",
   "ListElementCode": "defendantCostStandardBase.defendantCostStandardLabel",
@@ -88,7 +88,7 @@
   "DisplayContext": "READONLY"
   },
   {
-    "ID": "defendantCostStandardBase",
+    "ID": "DefendantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "defendantCostStandardBase",
     "ListElementCode": "defendantCostStandardBase.defendantCostStandardSecondLabel",
@@ -96,7 +96,7 @@
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "defendantCostStandardBase",
+    "ID": "DefendantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "defendantCostStandardBase",
     "ListElementCode": "defendantCostStandardBase.costAmount",
@@ -104,7 +104,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "defendantCostStandardBase",
+    "ID": "DefendantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "defendantCostStandardBase",
     "ListElementCode": "defendantCostStandardBase.defendantCostStandardDateLabel",
@@ -112,7 +112,7 @@
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "defendantCostStandardBase",
+    "ID": "DefendantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "defendantCostStandardBase",
     "ListElementCode": "defendantCostStandardBase.costPaymentDeadLine",
@@ -120,7 +120,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "defendantCostStandardBase",
+    "ID": "DefendantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "defendantCostStandardBase",
     "ListElementCode": "defendantCostStandardBase.defendantCostStandardProtectionLabel",
@@ -128,7 +128,7 @@
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "defendantCostStandardBase",
+    "ID": "DefendantCostStandardBase",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "defendantCostStandardBase",
     "ListElementCode": "defendantCostStandardBase.isPartyCostProtection",

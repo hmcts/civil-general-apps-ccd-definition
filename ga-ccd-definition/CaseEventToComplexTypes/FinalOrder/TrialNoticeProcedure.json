@@ -3,7 +3,7 @@
     "ID": "TrialNoticeProcedure",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "claimantDefendantRepresentation.heardFromClaimantNotAttend.list",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromClaimantNotAttend.listClaim",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
