@@ -78,7 +78,7 @@ Scenario.skip('Case offline APPLICATION_DISMISSED', async ({api}) => {
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'APPLICATION_DISMISSED');
 });
 
-Scenario.skips('Case offline AWAITING_RESPONDENT_RESPONSE', async ({api}) => {
+Scenario.skip('Case offline AWAITING_RESPONDENT_RESPONSE', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
