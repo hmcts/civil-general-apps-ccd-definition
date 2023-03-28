@@ -54,7 +54,7 @@
     "PageID": "FreeFormOrder",
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "finalOrderSelection = \"FREE_FORM_ORDER\"",
-    "_CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/populate-final-order-preview-doc"
+    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/populate-final-order-preview-doc"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -555,5 +555,17 @@
     "PageID": "FinalOrderAssistedOrder",
     "FieldShowCondition": "assistedOrderGiveReasonsYesNo=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "gaFinalOrderDocPreview",
+    "PageID": "gaFinalOrderDocPreview",
+    "PageLabel": "Preview Final Order Document",
+    "PageFieldDisplayOrder": 1,
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N"
   }
 ]
