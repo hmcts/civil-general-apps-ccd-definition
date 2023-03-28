@@ -1025,5 +1025,12 @@
     "ListElementCode": "orderWithoutNoticeDate",
     "UserRole": "judge-profile",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "gaFinalOrderDocPreview",
+    "UserRole": "judge-profile",
+    "CRUD": "CRU"
   }
 ]

@@ -1033,6 +1033,13 @@
     "Label": "### Order made on court's own initiative/without notice",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaFinalOrderDocPreview",
+    "Label": "Draft Order",
+    "FieldType": "Document",
+    "SecurityClassification": "Public"
   }
 ]
 

@@ -3122,5 +3122,13 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaFinalOrderDocPreview",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
   }
 ]
