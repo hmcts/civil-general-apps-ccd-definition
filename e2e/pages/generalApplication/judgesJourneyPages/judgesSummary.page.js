@@ -58,7 +58,6 @@ module.exports = {
         await I.see('For which document?');
         await I.see('Reasons for decision');
         await I.see('Test Order details');
-        await I.see('Optional paragraph to follow judges');
         break;
       case 'Hearing order':
         await I.see('Judge’s recital');

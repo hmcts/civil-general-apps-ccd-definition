@@ -55,7 +55,8 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations', 'sequentialRep', gaCaseReference, 'yes', 'Order_Written_Representation_Sequential');
+  await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations',
+    'sequentialRep', gaCaseReference, 'yes', 'Order_Written_Representation_Sequential', 'noneOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_WRITTEN_REPRESENTATIONS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Sequential representations', 'yes');
