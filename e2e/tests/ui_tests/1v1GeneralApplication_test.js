@@ -49,7 +49,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'no', gaCaseReference, 'General_order');
+  await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'no', gaCaseReference, 'General_order', 'courtOwnInitiativeOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.ORDER_MADE.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Approve order', 'no');
@@ -94,7 +94,7 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', gaCaseReference, 'Directions_order');
+  await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', gaCaseReference, 'Directions_order', 'withoutNoticeOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Judges Directions', 'no');
@@ -134,7 +134,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'no', gaCaseReference, 'Dismissal_order');
+  await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'no', gaCaseReference, 'Dismissal_order', 'noneOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.APPLICATION_DISMISSED.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Dismissal order', 'no');
