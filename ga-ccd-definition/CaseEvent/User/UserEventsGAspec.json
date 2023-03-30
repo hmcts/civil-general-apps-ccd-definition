@@ -194,6 +194,20 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "TRIGGER_LOCATION_UPDATE",
+    "Name": "Update General App Location",
+    "Description": "Update General App Location",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "HEARING_SCHEDULED_GA",
     "Name": "Hearing Scheduled",
     "Description": "listing officer notify hearing",

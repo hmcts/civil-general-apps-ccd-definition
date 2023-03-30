@@ -28,7 +28,7 @@ Scenario('Claimant create GA - JUDICIAL_REFERRAL state', async ({api, I}) => {
     await api.judgeMakesDecisionOrderMade(config.judgeLocalUser, gaCaseReference);
   }
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
+  await api.verifyGALocation(config.applicantSolicitorUser, gaCaseReference, civilCaseReference);
 });
 
 AfterSuite(async ({api}) => {
