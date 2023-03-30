@@ -393,7 +393,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "besPokeCostDetails",
+    "CaseFieldID": "bespokeCostDetails",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 23,
     "DisplayContext": "MANDATORY",

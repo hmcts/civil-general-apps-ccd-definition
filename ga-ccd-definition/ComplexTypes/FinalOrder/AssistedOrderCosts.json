@@ -230,22 +230,22 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "BesPokeCostDetails",
-    "ListElementCode": "besPokeCostDetailsLabel",
+    "ID": "BespokeCostDetails",
+    "ListElementCode": "bespokeCostDetailsLabel",
     "ElementLabel": "### Bespoke costs order",
     "HintText": "For example, the judge heard from the claimant in person and counsel for the defendant",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "BesPokeCostDetails",
+    "ID": "BespokeCostDetails",
     "ListElementCode": "detailTextLabel",
     "ElementLabel": "#### Please insert cost order you wish to make",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "BesPokeCostDetails",
+    "ID": "BespokeCostDetails",
     "ListElementCode": "detailText",
     "ElementLabel": " ",
     "HintText": "",
