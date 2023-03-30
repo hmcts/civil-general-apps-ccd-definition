@@ -24,7 +24,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "caseParticipantsAssistedOrder",
-    "Label": "${caseNameHmctsInternal}",
+    "Label": "## ${caseNameHmctsInternal}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
