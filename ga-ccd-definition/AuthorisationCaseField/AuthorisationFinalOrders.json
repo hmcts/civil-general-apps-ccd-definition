@@ -297,7 +297,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "besPokeCostDetails",
+    "CaseFieldID": "bespokeCostDetails",
     "UserRoles": [
       "judge-profile"
     ],
