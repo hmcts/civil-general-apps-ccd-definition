@@ -78,6 +78,7 @@ module.exports = {
     await I.see('Judge heard from');
     await I.dontSeeCheckboxIsChecked(this.fields.judgeHeardFrom.judgeHeardFromCheckBox);
     await I.click(this.fields.judgeHeardFrom.judgeHeardFromCheckBox);
+    await I.waitForText('Judge considered the papers');
     await I.dontSeeCheckboxIsChecked(this.fields.judgeHeardFrom.repTypeCAndD);
     await I.dontSeeCheckboxIsChecked(this.fields.judgeHeardFrom.repTypeOther);
     await I.dontSeeCheckboxIsChecked(this.fields.judgeHeardFrom.judgeConsideredPapers);
@@ -96,7 +97,7 @@ module.exports = {
     await I.see('Recitals');
     await I.dontSeeCheckboxIsChecked(this.fields.recitals.recitalsShowCheckBox);
     await I.click(this.fields.recitals.recitalsShowCheckBox);
-    await I.see('It is recorded that:');
+    await I.waitForText('It is recorded that:');
     await I.fillField(this.fields.recitals.recitalsRecordedTextArea, 'Test recital records');
     await I.see('It is ordered that:');
     let orderDetails = await I.grabValueFrom('#assistedOrderOrderedThatText');
@@ -106,6 +107,7 @@ module.exports = {
   async selectCosts() {
     await I.see('Costs');
     await I.click(this.fields.costs.defCostBase);
+    await I.waitForText('To be paid by');
     await I.fillField(this.fields.costs.costAmount, '300.00');
     await I.click(this.fields.costs.isPartyCostProtection);
     await I.see('Does the paying party have cost protection?');
@@ -115,6 +117,7 @@ module.exports = {
     await I.see('Further hearing');
     await I.dontSeeCheckboxIsChecked(this.fields.furtherHearing.furtherHearingShowCheckBox);
     await I.click(this.fields.furtherHearing.furtherHearingShowCheckBox);
+    await I.waitForText('Length of new hearing');
     await I.see('Date of new hearing');
     await date.enterDate(this.fields.furtherHearing.listFromDateId, +1);
     await I.click(this.fields.furtherHearing.hearingLength);
@@ -125,6 +128,7 @@ module.exports = {
     await I.see('Appeal');
     await I.dontSeeCheckboxIsChecked(this.fields.appeal.appealShowCheckBox);
     await I.click(this.fields.appeal.appealShowCheckBox);
+    await I.waitForText('Reasons');
     await I.click(this.fields.appeal.appealOrigin);
     await I.click(this.fields.appeal.appealDecision);
     await I.fillField(this.fields.appeal.appealReasonText, 'Test reasons');
@@ -144,6 +148,7 @@ module.exports = {
   async selectReasons() {
     await I.see('Reasons');
     await I.click(this.fields.reasons.reasonType);
+    await I.waitForText('Brief reasons');
     await I.fillField(this.fields.reasons.reasonsText, 'Test reasons ...');
     await I.clickContinue();
   },
