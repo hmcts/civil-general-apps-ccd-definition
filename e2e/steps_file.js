@@ -73,6 +73,7 @@ const responseSummaryPage = require('./pages/generalApplication/responseJourneyP
 const judgeDecisionPage = require('./pages/generalApplication/judgesJourneyPages/judgeDecision.page');
 const judgeOrderPage = require('./pages/generalApplication/applicationOrderPages/judgeOrder.page');
 const freeFormOrderPage = require('./pages/generalApplication/applicationOrderPages/freeFormOrder.page');
+const assistedOrderPage = require('./pages/generalApplication/applicationOrderPages/assistedOrder.page');
 const makeAnOrderPage = require('./pages/generalApplication/judgesJourneyPages/makeAnOrder.page');
 const reviewOrderDocumentPage = require('./pages/generalApplication/judgesJourneyPages/reviewOrderDocument.page');
 const reviewAppOrderDocumentPage = require('./pages/generalApplication/applicationOrderPages/reviewAppOrderDocument.page');
@@ -813,12 +814,27 @@ module.exports = function () {
         () => caseViewPage.startEvent(eventName, gaCaseNumber),
         () => judgeOrderPage.verifyErrorMessage(),
         () => judgeOrderPage.selectOrderType(orderType),
-        () => freeFormOrderPage.verifyFreeFromErrorMessage(),
-        () => freeFormOrderPage.fillFreeFormOrder(formType),
-        () => reviewAppOrderDocumentPage.reviewOrderDocument(documentType),
-        () => appOrderCYAPage.verifyAppOrderCheckAnswerForm(gaCaseNumber),
-        ...submitApplication('Your order has been issued'),
-        () => appOrderConfirmationPage.verifyConfirmationPage()
+        ...conditionalSteps(orderType === 'freeFromOrder', [
+          () => freeFormOrderPage.verifyFreeFromErrorMessage(),
+          () => freeFormOrderPage.fillFreeFormOrder(formType),
+        ]),
+        ...conditionalSteps(orderType === 'assistedOrder', [
+          () => assistedOrderPage.verifyAssistedOrderErrorMessage(),
+          () => assistedOrderPage.isOrderMade('yes'),
+          () => assistedOrderPage.fillJudgeHeardForm(),
+          () => assistedOrderPage.fillRecitals(),
+          () => assistedOrderPage.selectCosts(),
+          () => assistedOrderPage.selectFurtherHearing(),
+          () => assistedOrderPage.selectAppeal(),
+          () => assistedOrderPage.selectOrderType(formType),
+          () => assistedOrderPage.selectReasons(),
+        ]),
+        ...conditionalSteps(orderType === 'freeFromOrder', [
+          () => reviewAppOrderDocumentPage.reviewOrderDocument(documentType),
+          () => appOrderCYAPage.verifyAppOrderCheckAnswerForm(gaCaseNumber),
+          ...submitApplication('Your order has been issued'),
+          () => appOrderConfirmationPage.verifyConfirmationPage(),
+        ]),
       ]);
     },
 
