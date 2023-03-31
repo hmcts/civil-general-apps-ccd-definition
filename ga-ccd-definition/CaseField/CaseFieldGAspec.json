@@ -901,21 +901,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderSelectionLabel",
-    "Label": "**** \n ### What type of order do you wish to make?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "finalOrderSelection",
-    "Label": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "FinalOrderSelection",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "caseParticipantsFreeForm",
     "Label": "## ${caseNameHmctsInternal}",
     "FieldType": "Label",
@@ -1032,13 +1017,6 @@
     "ID": "orderMadeCourtsInitiativeLabelForWrittenRep",
     "Label": "### Order made on court's own initiative/without notice",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "gaFinalOrderDocPreview",
-    "Label": "Draft Order",
-    "FieldType": "Document",
     "SecurityClassification": "Public"
   }
 ]
