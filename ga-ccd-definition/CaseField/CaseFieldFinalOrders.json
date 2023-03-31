@@ -24,7 +24,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "caseParticipantsAssistedOrder",
-    "Label": "${caseNameHmctsInternal}",
+    "Label": "## ${caseNameHmctsInternal}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -295,9 +295,9 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "besPokeCostDetails",
+    "ID": "bespokeCostDetails",
     "Label": " ",
-    "FieldType": "BesPokeCostDetails",
+    "FieldType": "BespokeCostDetails",
     "SecurityClassification": "Public"
   }
 ]

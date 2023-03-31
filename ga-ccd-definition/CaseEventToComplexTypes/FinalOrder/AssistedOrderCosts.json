@@ -248,26 +248,26 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "besPokeCostDetails",
+    "ID": "bespokeCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "besPokeCostDetails",
-    "ListElementCode": "besPokeCostDetails.besPokeCostDetailsLabel",
+    "CaseFieldID": "bespokeCostDetails",
+    "ListElementCode": "bespokeCostDetails.bespokeCostDetailsLabel",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "besPokeCostDetails",
+    "ID": "bespokeCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "besPokeCostDetails",
-    "ListElementCode": "besPokeCostDetails.detailTextLabel",
+    "CaseFieldID": "bespokeCostDetails",
+    "ListElementCode": "bespokeCostDetails.detailTextLabel",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "besPokeCostDetails",
+    "ID": "bespokeCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "besPokeCostDetails",
-    "ListElementCode": "besPokeCostDetails.detailText",
+    "CaseFieldID": "bespokeCostDetails",
+    "ListElementCode": "bespokeCostDetails.detailText",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   }
