@@ -332,5 +332,12 @@
     "FieldType": "Document",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "gaFinalOrderDocPreview",
+    "FieldType": "Document",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
   }
 ]

@@ -1,7 +1,7 @@
 /* eslint-disable  no-case-declarations */
 const {I} = inject();
 const expect = require('chai').expect;
-const {verifyJudgeRecitalText, selectJudicialByCourtsInitiativeOption} = require('../../generalAppCommons');
+const {verifyJudgeRecitalText, selectCourtsOrderType} = require('../../generalAppCommons');
 
 module.exports = {
 
@@ -13,6 +13,10 @@ module.exports = {
         dismissTheApplication: 'Dismiss the application',
         giveDirections: 'Give directions without listing for hearing'
       }
+    },
+    courtOrder: {
+      dateId: 'orderCourtOwnInitiativeDate',
+      courtOrderText: 'textarea[id*="orderCourtOwnInitiative"]',
     },
     judgeRecitalTextArea: '#judicialDecisionMakeOrder_judgeRecitalText',
     orderTextArea: '#judicialDecisionMakeOrder_orderText',
@@ -29,7 +33,7 @@ module.exports = {
     judgeApproveEditOptionDateYear: '#judgeApproveEditOptionDate-year',
   },
 
-  async selectAnOrder(order, notice) {
+  async selectAnOrder(order, notice, orderType) {
     await I.waitForElement(this.fields.makeAnOrder.id);
     I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialMakeADecisionScreen');
     I.see('Judge’s recital');
@@ -63,7 +67,8 @@ module.exports = {
         I.fillField(this.fields.directionsResponseYear, '2024');
         break;
     }
-    await selectJudicialByCourtsInitiativeOption();
+    await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.courtOrderText)).trim(),
+      orderType, this.fields.courtOrder.dateId);
     await I.fillField(this.fields.reasonForDecisionTextArea, 'Judges Decision');
     await I.clickContinue();
   }

@@ -67,6 +67,7 @@ const data = {
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
   CREATE_CLAIM: (mpScenario, claimantType, claimAmount) => claimData.createClaim(mpScenario, claimantType, claimAmount),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
+  UPDATE_CLAIMANT_SOLICITOR_EMAILID: claimSpecData.updateClaimantSolicitorEmailId(),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
   CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS: claimData.createClaimRespondentSolFirmNotInMyHmcts,
@@ -352,12 +353,20 @@ module.exports = {
     return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 
+  checkGeneralApplication: async (user, parentCaseId) => {
+    return await checkNoOfGeneralApplications(user, parentCaseId,);
+  },
+
+  updateCivilClaimClaimantSolEmailID: async (user, parentCaseId) => {
+    return await updateCivilClaimSolEmailID(user, parentCaseId);
+  },
+
   initiateGaWithVaryJudgement: async (user, parentCaseId, isClaimant) => {
     return await initiateWithVaryJudgement(user, parentCaseId, isClaimant);
   },
 
   initiateGeneralApplicationWithOutNotice: async (user, parentCaseId) => {
-    let gaCaseReference;
+    let gaCaseReference, index = 0;
     eventName = events.INITIATE_GENERAL_APPLICATION.id;
 
     await apiRequest.setupTokens(user);
@@ -379,15 +388,19 @@ module.exports = {
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
     const updatedCivilCaseData = await updatedResponse.json();
 
+    if (updatedCivilCaseData.gaDetailsMasterCollection.length > 1) {
+      index = 1;
+    }
+
     switch (user.email) {
       case config.applicantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[index].value.caseLink.CaseReference;
         break;
       case config.defendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[index].value.caseLink.CaseReference;
         break;
       case config.secondDefendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[index].value.caseLink.CaseReference;
         break;
     }
 
@@ -1251,6 +1264,17 @@ module.exports = {
     console.log('expectedState '+expectedState);
     assert.equal(updatedGABusinessProcessData.ccdState, expectedState);
   },
+  verifyGALocation: async (user, gaCaseId, civilCaseId) => {
+    await apiRequest.setupTokens(user);
+    const updatedGACaseDataResponse = await apiRequest.fetchUpdatedCaseData(gaCaseId, user);
+    const updatedGACaseData = await updatedGACaseDataResponse.json();
+    const updatedCivilCaseDataResponse = await apiRequest.fetchUpdatedCivilCaseData(civilCaseId, user);
+    const updatedCivilCaseData = await updatedCivilCaseDataResponse.json();
+    console.log('ccmccLocation After SDO on general application :'+updatedGACaseData.isCcmccLocation);
+    assert.equal(updatedGACaseData.isCcmccLocation, updatedCivilCaseData.generalApplications[0].value.isCcmccLocation);
+    assert.equal(updatedGACaseData.caseManagementLocation.region, updatedCivilCaseData.generalApplications[0].value.caseManagementLocation.region);
+    assert.equal(updatedGACaseData.caseManagementLocation.baseLocation, updatedCivilCaseData.generalApplications[0].value.caseManagementLocation.baseLocation);
+  },
 
   cleanUp: async () => {
     await unAssignAllUsers();
@@ -1875,6 +1899,25 @@ const initiateGaWithState = async (user, parentCaseId, expectState) => {
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
   await addUserCaseMapping(gaCaseReference, user);
   return gaCaseReference;
+};
+
+const updateCivilClaimSolEmailID = async (user, parentCaseId) => {
+  eventName = events.CHANGE_SOLICITOR_EMAIL.id;
+  await apiRequest.setupTokens(user);
+  await apiRequest.startEvent(eventName, parentCaseId);
+
+  const response = await apiRequest.submitEvent(eventName, data.UPDATE_CLAIMANT_SOLICITOR_EMAILID,
+    parentCaseId);
+
+  assert.equal(response.status, 201);
+};
+
+const checkNoOfGeneralApplications = async (user, parentCaseId) => {
+
+  const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+  const updatedCivilCaseData = await response.json();
+  let totalGeneralApplication = updatedCivilCaseData.claimantGaAppDetails.length;
+  assert.equal(totalGeneralApplication, 2);
 };
 
 const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant) => {

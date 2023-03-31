@@ -25,6 +25,7 @@ const applicant1WithPartyName = {
 };
 
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
+const solicitor3Email = 'hmcts.civil+organisation.3.solicitor.1@gmail.com';
 const claimAmount = '150000';
 
 const validPba = listElement('PBA0088192');
@@ -373,6 +374,15 @@ module.exports = {
 
     return userData;
   },
+
+  updateClaimantSolicitorEmailId : () => {
+    return {
+      applicantSolicitor1UserDetails: {
+        email: solicitor3Email
+      }
+    };
+  },
+
   serviceUpdateDto: (caseId, paymentStatus) => {
     return {
       service_request_reference: '1324646546456',
