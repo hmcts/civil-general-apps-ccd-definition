@@ -39,6 +39,11 @@ module.exports = {
     id: 'HEARING_SCHEDULED_GA',
     name: 'Hearing Scheduled'
   },
+  GENERATE_DIRECTIONS_ORDER: {
+    description: 'Judge make final order',
+    id: 'GENERATE_DIRECTIONS_ORDER',
+    name: 'Make an order'
+  },
   REFER_TO_JUDGE: {
     description: 'Caseworker assigns the application to Judge',
     id: 'REFER_TO_JUDGE',
