@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const doc = 'hearingNotice';
 let civilCaseReference, gaCaseReference;
 
-Feature('Before SDO 1v2 - GA CP - Applications Orders @ui-nightly @123');
+Feature('Before SDO 1v2 - GA CP - Applications Orders @ui-nightly');
 
 Scenario('1v2 - Assisted order - Without notice journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
