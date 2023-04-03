@@ -1,0 +1,274 @@
+[
+  {
+    "ID": "costReservedDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "costReservedDetails",
+    "ListElementCode": "costReservedDetails.detailsRepresentationLabel",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "costReservedDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "costReservedDetails",
+    "ListElementCode": "costReservedDetails.detailsRepresentationSecondLabel",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "costReservedDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "costReservedDetails",
+    "ListElementCode": "costReservedDetails.detailText",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "claimantCostStandardBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "claimantCostStandardBase",
+    "ListElementCode": "claimantCostStandardBase.claimantCostStandardLabel",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "claimantCostStandardBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "claimantCostStandardBase",
+    "ListElementCode": "claimantCostStandardBase.claimantCostStandardSecondLabel",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "claimantCostStandardBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "claimantCostStandardBase",
+    "ListElementCode": "claimantCostStandardBase.costAmount",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "claimantCostStandardBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "claimantCostStandardBase",
+    "ListElementCode": "claimantCostStandardBase.claimantCostStandardDateLabel",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "claimantCostStandardBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "claimantCostStandardBase",
+    "ListElementCode": "claimantCostStandardBase.costPaymentDeadLine",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "claimantCostStandardBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "claimantCostStandardBase",
+    "ListElementCode": "claimantCostStandardBase.claimantCostStandardProtectionLabel",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "claimantCostStandardBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "claimantCostStandardBase",
+    "ListElementCode": "claimantCostStandardBase.isPartyCostProtection",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+  "ID": "DefendantCostStandardBase",
+  "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+  "CaseFieldID": "defendantCostStandardBase",
+  "ListElementCode": "defendantCostStandardBase.defendantCostStandardLabel",
+  "FieldDisplayOrder": 2,
+  "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DefendantCostStandardBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "defendantCostStandardBase",
+    "ListElementCode": "defendantCostStandardBase.defendantCostStandardSecondLabel",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DefendantCostStandardBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "defendantCostStandardBase",
+    "ListElementCode": "defendantCostStandardBase.costAmount",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DefendantCostStandardBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "defendantCostStandardBase",
+    "ListElementCode": "defendantCostStandardBase.defendantCostStandardDateLabel",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DefendantCostStandardBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "defendantCostStandardBase",
+    "ListElementCode": "defendantCostStandardBase.costPaymentDeadLine",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DefendantCostStandardBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "defendantCostStandardBase",
+    "ListElementCode": "defendantCostStandardBase.defendantCostStandardProtectionLabel",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DefendantCostStandardBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "defendantCostStandardBase",
+    "ListElementCode": "defendantCostStandardBase.isPartyCostProtection",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+  "ID": "claimantCostSummarilyBase",
+  "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+  "CaseFieldID": "claimantCostSummarilyBase",
+  "ListElementCode": "claimantCostSummarilyBase.claimantCostSummarilyLabel",
+  "FieldDisplayOrder": 2,
+  "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "claimantCostSummarilyBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "claimantCostSummarilyBase",
+    "ListElementCode": "claimantCostSummarilyBase.claimantCostSummarilySecondLabel",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "claimantCostSummarilyBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "claimantCostSummarilyBase",
+    "ListElementCode": "claimantCostSummarilyBase.costAmount",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "claimantCostSummarilyBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "claimantCostSummarilyBase",
+    "ListElementCode": "claimantCostSummarilyBase.claimantCostSummarilyDateLabel",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "claimantCostSummarilyBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "claimantCostSummarilyBase",
+    "ListElementCode": "claimantCostSummarilyBase.costPaymentDeadLine",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "claimantCostSummarilyBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "claimantCostSummarilyBase",
+    "ListElementCode": "claimantCostSummarilyBase.claimantCostSummarilyProtectionLabel",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "claimantCostSummarilyBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "claimantCostSummarilyBase",
+    "ListElementCode": "claimantCostSummarilyBase.isPartyCostProtection",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "defendantCostSummarilyBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "defendantCostSummarilyBase",
+    "ListElementCode": "defendantCostSummarilyBase.defendantCostSummarilyLabel",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "defendantCostSummarilyBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "defendantCostSummarilyBase",
+    "ListElementCode": "defendantCostSummarilyBase.defendantCostSummarilySecondLabel",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "defendantCostSummarilyBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "defendantCostSummarilyBase",
+    "ListElementCode": "defendantCostSummarilyBase.costAmount",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "defendantCostSummarilyBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "defendantCostSummarilyBase",
+    "ListElementCode": "defendantCostSummarilyBase.defendantCostSummarilyDateLabel",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "defendantCostSummarilyBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "defendantCostSummarilyBase",
+    "ListElementCode": "defendantCostSummarilyBase.costPaymentDeadLine",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "defendantCostSummarilyBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "defendantCostSummarilyBase",
+    "ListElementCode": "defendantCostSummarilyBase.defendantCostSummarilyProtectionLabel",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "defendantCostSummarilyBase",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "defendantCostSummarilyBase",
+    "ListElementCode": "defendantCostSummarilyBase.isPartyCostProtection",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "bespokeCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "bespokeCostDetails",
+    "ListElementCode": "bespokeCostDetails.bespokeCostDetailsLabel",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "bespokeCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "bespokeCostDetails",
+    "ListElementCode": "bespokeCostDetails.detailTextLabel",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "bespokeCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "bespokeCostDetails",
+    "ListElementCode": "bespokeCostDetails.detailText",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  }
+]
