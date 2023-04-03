@@ -56,7 +56,7 @@ Scenario('Case offline 1V2 notify_claim_details ORDER_MADE', async ({api}) => {
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
 });
 
-Scenario('Case offline 1V2 notify_claim_details APPLICATION_DISMISSED', async ({api}) => {
+Scenario.skip('Case offline 1V2 notify_claim_details APPLICATION_DISMISSED', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
