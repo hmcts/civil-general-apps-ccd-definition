@@ -6,7 +6,7 @@ const hnStateStatus = states.HEARING_SCHEDULED.id;
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 Judge list the application for hearing  API tests @api-nightly');
+Feature('GA 1v2 Judge makes order application after hearing  API tests @api-nightly');
 
 Scenario('Without Notice Hearing notice journey', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -18,14 +18,14 @@ Scenario('Without Notice Hearing notice journey', async ({api}) => {
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.defendantSolicitorUser, civilCaseReference);
 
-  console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
+  console.log('*** Start Judge makes order application after hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   const doc = 'hearingNotice';
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
   }else {
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
   }
-  console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
+  console.log('*** End Judge makes order application after hearing GA Case Reference: ' + gaCaseReference + ' ***');
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
     await api.assertGaDocumentVisibilityToUser( config.judgeUser, civilCaseReference, gaCaseReference, doc);
@@ -37,6 +37,15 @@ Scenario('Without Notice Hearing notice journey', async ({api}) => {
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
   await api.assertNullGaDocumentVisibilityToUser( config.applicantSolicitorUser, civilCaseReference, doc);
   await api.assertGaDocumentVisibilityToUser( config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
+
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeMakeFinalOrder(config.judgeUser, gaCaseReference, 'FREE_FORM_ORDER');
+  }else {
+    await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'FREE_FORM_ORDER');
+  }
+  const finalDoc = 'generalOrder';
+  await api.assertNullGaDocumentVisibilityToUser( config.applicantSolicitorUser, civilCaseReference, finalDoc);
+  await api.assertGaDocumentVisibilityToUser( config.defendantSolicitorUser, civilCaseReference, gaCaseReference, finalDoc);
 });
 
 AfterSuite(async ({api}) => {
