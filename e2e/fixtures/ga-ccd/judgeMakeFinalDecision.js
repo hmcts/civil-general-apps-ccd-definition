@@ -20,6 +20,6 @@ module.exports = {
     judgeMakesDecisionAssisted: () => {
         return {
             finalOrderSelection: 'ASSISTED_ORDER',
-        }
+        };
     }
 };
