@@ -1264,6 +1264,17 @@ module.exports = {
     console.log('expectedState '+expectedState);
     assert.equal(updatedGABusinessProcessData.ccdState, expectedState);
   },
+  verifyGALocation: async (user, gaCaseId, civilCaseId) => {
+    await apiRequest.setupTokens(user);
+    const updatedGACaseDataResponse = await apiRequest.fetchUpdatedCaseData(gaCaseId, user);
+    const updatedGACaseData = await updatedGACaseDataResponse.json();
+    const updatedCivilCaseDataResponse = await apiRequest.fetchUpdatedCivilCaseData(civilCaseId, user);
+    const updatedCivilCaseData = await updatedCivilCaseDataResponse.json();
+    console.log('ccmccLocation After SDO on general application :'+updatedGACaseData.isCcmccLocation);
+    assert.equal(updatedGACaseData.isCcmccLocation, updatedCivilCaseData.generalApplications[0].value.isCcmccLocation);
+    assert.equal(updatedGACaseData.caseManagementLocation.region, updatedCivilCaseData.generalApplications[0].value.caseManagementLocation.region);
+    assert.equal(updatedGACaseData.caseManagementLocation.baseLocation, updatedCivilCaseData.generalApplications[0].value.caseManagementLocation.baseLocation);
+  },
 
   cleanUp: async () => {
     await unAssignAllUsers();
