@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "GARespondentDebtorOfferGAspec",
+    "ListElementCode": "ACCEPT",
+    "ListElement": "I accept the debtor's offer",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "GARespondentDebtorOfferGAspec",
+    "ListElementCode": "DECLINE",
+    "ListElement": "I DO NOT accept the debtor's offer",
+    "DisplayOrder": 2
+  }
+]
