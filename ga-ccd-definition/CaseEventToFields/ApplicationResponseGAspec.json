@@ -21,6 +21,7 @@
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
     "PageShowCondition": "generalAppVaryJudgementType = \"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/mid/validate-debtor-offer",
     "ShowSummaryChangeOption": "Y"
   },
   {

@@ -10,6 +10,9 @@ module.exports = {
           'EXTEND_TIME'
         ]
       },
+      gaRespondentDebtorOffer: {
+        respondentDebtorOffer: 'DECLINE'
+      },
       generalAppRespondentAgreement: {
         hasAgreed: 'No'
       },

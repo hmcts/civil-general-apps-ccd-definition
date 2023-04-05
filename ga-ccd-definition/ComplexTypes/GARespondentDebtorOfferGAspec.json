@@ -4,7 +4,7 @@
     "ListElementCode": "respondentDebtorOffer",
     "ElementLabel": "Do you accept the debtor's offer?",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "GARespondentDebtorOfferGAspec",
+    "FieldTypeParameter": "GARespondentDebtorOfferOptionsGAspec",
     "SecurityClassification": "Public"
   },
   {

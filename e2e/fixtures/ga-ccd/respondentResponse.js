@@ -7,6 +7,9 @@ module.exports = {
       generalAppRespondent1Representative : {
         hasAgreed: 'No'
       },
+      gaRespondentDebtorOffer: {
+        respondentDebtorOffer: 'DECLINE'
+      },
       hearingDetailsResp: {
         hearingYesorNo: 'No',
         hearingDate: null,
