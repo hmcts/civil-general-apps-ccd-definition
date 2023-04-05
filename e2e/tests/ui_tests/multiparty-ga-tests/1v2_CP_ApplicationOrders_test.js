@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('Before SDO 1v2 - GA CP - Applications Orders @ui-nightly');
 
-Scenario('1v2 - Assisted order - Without notice journey', async ({I, api}) => {
+Scenario('1v2 - Assisted order - Without notice journey @123', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -42,5 +42,5 @@ Scenario('1v2 - Assisted order - Without notice journey', async ({I, api}) => {
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
