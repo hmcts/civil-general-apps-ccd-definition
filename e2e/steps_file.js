@@ -829,11 +829,16 @@ module.exports = function () {
           () => assistedOrderPage.selectOrderType(formType),
           () => assistedOrderPage.selectReasons(),
         ]),
+        () => reviewAppOrderDocumentPage.reviewOrderDocument(documentType),
         ...conditionalSteps(orderType === 'freeFromOrder', [
-          () => reviewAppOrderDocumentPage.reviewOrderDocument(documentType),
-          () => appOrderCYAPage.verifyAppOrderCheckAnswerForm(gaCaseNumber),
+          () => appOrderCYAPage.verifyAppOrderCheckAnswerForm(gaCaseNumber, 7),
           ...submitApplication('Your order has been issued'),
-          () => appOrderConfirmationPage.verifyConfirmationPage(),
+          () => appOrderConfirmationPage.verifyFFConfirmationPage(),
+        ]),
+        ...conditionalSteps(orderType === 'assistedOrder', [
+          () => appOrderCYAPage.verifyAppOrderCheckAnswerForm(gaCaseNumber, 22),
+          ...submitApplication('Your order has been issued'),
+          () => appOrderConfirmationPage.verifyAOConfirmationPage(),
         ]),
       ]);
     },
