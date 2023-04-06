@@ -10,9 +10,6 @@ module.exports = {
           'EXTEND_TIME'
         ]
       },
-      gaRespondentDebtorOffer: {
-        respondentDebtorOffer: 'DECLINE'
-      },
       generalAppRespondentAgreement: {
         hasAgreed: 'No'
       },
@@ -90,6 +87,9 @@ module.exports = {
       },
       generalAppRespondentAgreement: {
         hasAgreed: 'No'
+      },
+      gaRespondentDebtorOffer: {
+        respondentDebtorOffer: 'DECLINE'
       },
       generalAppUrgencyRequirement: {
         generalAppUrgency: 'No',
