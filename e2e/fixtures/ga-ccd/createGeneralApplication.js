@@ -88,9 +88,6 @@ module.exports = {
       generalAppRespondentAgreement: {
         hasAgreed: 'No'
       },
-      gaRespondentDebtorOffer: {
-        respondentDebtorOffer: 'DECLINE'
-      },
       generalAppUrgencyRequirement: {
         generalAppUrgency: 'No',
         urgentAppConsiderationDate: null,

@@ -10,6 +10,7 @@ module.exports = {
       gaRespondentDebtorOffer: {
         respondentDebtorOffer: 'DECLINE'
       },
+      parentClaimantIsApplicant: 'No',
       hearingDetailsResp: {
         hearingYesorNo: 'No',
         hearingDate: null,
