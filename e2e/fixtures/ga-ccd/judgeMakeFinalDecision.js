@@ -21,5 +21,10 @@ module.exports = {
         return {
             finalOrderSelection: 'ASSISTED_ORDER',
         };
+    },
+    judgeMakesDecisionAssistedWithHearing: () => {
+        return {
+            finalOrderSelection: 'ASSISTED_ORDER',
+        };
     }
 };

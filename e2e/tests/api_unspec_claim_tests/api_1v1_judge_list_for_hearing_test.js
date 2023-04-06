@@ -43,6 +43,13 @@ Scenario('Defendant Hearing notice journey', async ({api}) => {
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
   await api.assertGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, doc);
   await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
+
+  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeMakeFinalOrder(config.judgeUser, gaCaseReference, 'ASSISTED_ORDER', true);
+  }else {
+    await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'ASSISTED_ORDER', true);
+  }
+
 });
 
 AfterSuite(async ({api}) => {
