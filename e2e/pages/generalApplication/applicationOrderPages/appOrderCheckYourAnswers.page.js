@@ -8,12 +8,12 @@ module.exports = {
     }
   },
 
-  async verifyAppOrderCheckAnswerForm(caseNumber) {
+  async verifyAppOrderCheckAnswerForm(caseNumber, num) {
     await I.waitInUrl('GENERATE_DIRECTIONS_ORDER/submit');
     await I.see('Check your answers');
     I.seeInCurrentUrl(caseNumber);
     I.seeNumberOfVisibleElements('.button', 2);
-    I.seeNumberOfVisibleElements('.case-field-change a', 7);
+    I.seeNumberOfVisibleElements('.case-field-change a', num);
   },
 };
 
