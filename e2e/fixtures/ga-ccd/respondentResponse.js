@@ -43,7 +43,6 @@ module.exports = {
       generalAppRespondent1Representative : {
         hasAgreed: 'No'
       },
-      parentClaimantIsApplicant: 'No',
       hearingDetailsResp: {
         hearingYesorNo: 'No',
         hearingDate: null,
