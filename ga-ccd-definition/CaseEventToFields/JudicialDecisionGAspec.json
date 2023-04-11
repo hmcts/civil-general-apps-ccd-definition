@@ -502,5 +502,17 @@
     "PageColumnNumber": 1,
     "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "generalAppSuperClaimType",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "isMultiPartyPage",
+    "PageDisplayOrder": 8,
+    "PageColumnNumber": 2,
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N"
   }
 ]

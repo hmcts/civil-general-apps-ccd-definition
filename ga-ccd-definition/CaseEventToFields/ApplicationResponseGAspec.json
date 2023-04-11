@@ -61,5 +61,18 @@
     "PageShowCondition": "generalAppRespondent1Representative = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppSuperClaimType",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "isMultiPartyPage",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 2,
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "generalAppRespondent1Representative = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   }
 ]
