@@ -1365,7 +1365,12 @@ module.exports = {
       await assertValidClaimData(defendantResponseData, pageId);
     }
     deleteCaseFields('respondentSolGaAppDetails');
+    deleteCaseFields('respondentSolTwoGaAppDetails');
     deleteCaseFields('generalApplications');
+    deleteCaseFields('generalOrderDocClaimant');
+    deleteCaseFields('generalOrderDocRespondentSol');
+    deleteCaseFields('generalOrderDocRespondentSolTwo');
+    deleteCaseFields('generalOrderDocStaff');
     switch (scenario) {
       case 'ONE_V_ONE_DIF_SOL':
         /* when camunda process is done, when both respondents have answered
