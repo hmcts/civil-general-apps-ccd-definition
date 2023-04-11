@@ -875,6 +875,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppSuperClaimType",
+    "UserRole": "judge-profile",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
     "ListElementCode": "caseManagementCategory",
     "UserRole": "judge-profile",
     "CRUD": "R"

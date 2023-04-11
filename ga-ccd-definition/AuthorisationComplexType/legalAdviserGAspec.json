@@ -847,6 +847,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppSuperClaimType",
+    "UserRole": "legal-adviser",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
     "ListElementCode": "caseManagementCategory",
     "UserRole": "legal-adviser",
     "CRUD": "R"
