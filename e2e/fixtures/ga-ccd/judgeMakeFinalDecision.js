@@ -1,4 +1,5 @@
-const {date} = require('../../api/dataHelper');
+const {date, listElement} = require('../../api/dataHelper');
+const config = require("../../config");
 module.exports = {
     judgeMakesDecisionFreeFormData: () => {
         return {
@@ -20,11 +21,93 @@ module.exports = {
     judgeMakesDecisionAssisted: () => {
         return {
             finalOrderSelection: 'ASSISTED_ORDER',
+            assistedOrderAppealToggle: [
+                'SHOW'
+            ],
+            orderMadeOnOption: 'NONE',
+            assistedOrderAppealDetails: {
+                reasonsText: 'asdfasd asdf',
+                appealOrigin: 'CLAIMANT',
+                permissionToAppeal: 'GRANTED'
+            },
+            assistedOrderMadeSelection: 'Yes',
+            assistedOrderJudgeHeardFrom: [
+                'SHOW'
+            ],
+            assistedOrderRepresentation: {
+                representationType: 'OTHER_REPRESENTATION',
+                otherRepresentation: {
+                    detailsRepresentationText: 'something',
+                    claimantRepresentation: null,
+                    defendantRepresentation: null
+                },
+                typeRepresentationJudgePapersList: [
+                    'CONSIDERED'
+                ]
+            },
+            assistedOrderOrderedThatText: 'Test Order details',
+            assistedOrderGiveReasonsYesNo: 'No',
+            assistedOrderRecitalsRecorded: {
+                text: 'dsfads fasdf'
+            },
+            assistedOrderFurtherHearingToggle: [
+                'SHOW'
+            ],
+            assistedOrderMadeDateHeardDetails: {
+                date: date(1)
+            },
         };
     },
     judgeMakesDecisionAssistedWithHearing: () => {
         return {
             finalOrderSelection: 'ASSISTED_ORDER',
+            assistedOrderAppealToggle: [
+                'SHOW'
+            ],
+            orderMadeOnOption: 'NONE',
+            assistedOrderAppealDetails: {
+                reasonsText: 'asdfasd asdf',
+                appealOrigin: 'CLAIMANT',
+                permissionToAppeal: 'GRANTED'
+            },
+            assistedOrderMadeSelection: 'Yes',
+            assistedOrderJudgeHeardFrom: [
+                'SHOW'
+            ],
+            assistedOrderRepresentation: {
+                representationType: 'OTHER_REPRESENTATION',
+                otherRepresentation: {
+                    detailsRepresentationText: 'something',
+                    claimantRepresentation: null,
+                    defendantRepresentation: null
+                },
+                typeRepresentationJudgePapersList: [
+                    'CONSIDERED'
+                ]
+            },
+            assistedOrderOrderedThatText: 'Test Order details',
+            assistedOrderGiveReasonsYesNo: 'No',
+            assistedOrderRecitalsRecorded: {
+                text: 'dsfads fasdf'
+            },
+            assistedOrderFurtherHearingToggle: [
+                'SHOW'
+            ],
+            assistedOrderMadeDateHeardDetails: {
+                date: date(1)
+            },
+            assistedOrderFurtherHearingDetails: {
+                listFromDate: date(1),
+                hearingMethods: 'VIDEO',
+                hearingNotesText: 'asdf',
+                lengthOfNewHearing: 'MINUTES_30',
+                alternativeHearingLocation: {
+                    list_items: [
+                        listElement(config.defendantSelectedCourt)
+                    ],
+                    value: listElement(config.defendantSelectedCourt)
+                }
+            },
         };
     }
 };
