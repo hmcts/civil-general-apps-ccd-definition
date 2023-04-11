@@ -38,7 +38,8 @@ Scenario('1v2 - Assisted order - Without notice journey @123', async ({I, api}) 
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeMakeAppOrder(gaCaseReference, 'assistedOrder', 'withoutNoticeOrder', 'Assisted_order');
+  await I.judgeMakeAppOrder(gaCaseReference, 'assistedOrder', 'withoutNoticeOrder', 'Assisted_order_form');
+  await I.judgeCloseAndReturnToCaseDetails();
 });
 
 AfterSuite(async ({api}) => {
