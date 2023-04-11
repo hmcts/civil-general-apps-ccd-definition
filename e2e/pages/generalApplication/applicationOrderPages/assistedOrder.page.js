@@ -19,8 +19,8 @@ module.exports = {
       repTypeCAndD: 'input[id*="CLAIMANT_AND_DEFENDANT"]',
       repTypeOther: 'input[id*="OTHER_REPRESENTATION"]',
       judgeConsideredPapers: 'input[id*="CONSIDERED"]',
-      claimantDropDown: 'select[id*="claimantDefendantRepresentation_ClaimantRepresentation"]',
-      defendantDropDown: 'select[id*="claimantDefendantRepresentation_DefendantRepresentation"]',
+      claimantDropDown: 'select[id*="claimantDefendantRepresentation_claimantRepresentation"]',
+      defendantDropDown: 'select[id*="claimantDefendantRepresentation_defendantRepresentation"]',
       repTypeOtherTextArea: 'textarea[id*="otherRepresentation_detailsRepresentationText"]',
     },
     recitals: {
