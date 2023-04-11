@@ -43,10 +43,11 @@ const data = {
   INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
   INITIATE_GENERAL_APPLICATION_STAY_CLAIM: genAppData.gaTypeWithStayClaim(),
   INITIATE_GENERAL_APPLICATION_UNLESS_ORDER: genAppData.gaTypeWithUnlessOrder(),
-  INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT: (isWithNotice, generalAppN245FormUpload) => genAppData.createGAData(isWithNotice,null,
-    '27500','FEE0442', generalAppN245FormUpload),
+  INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT: (isWithNotice, generalAppN245FormUpload) => genAppData.createGADataVaryJudgement(isWithNotice,null,
+    '1400','FEE0458', generalAppN245FormUpload),
   INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
   RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
+  RESPOND_DEBTOR_TO_APPLICATION: genAppRespondentResponseData.respondDebtorGAData(),
   MAKE_DECISION: genAppJudgeMakeDecisionData.judgeMakesDecisionData(),
   REFER_TO_JUDGE: genAppNbcAdminReferToJudgeData.nbcAdminReferToJudgeData(),
   REFER_TO_LEGAL_ADVISOR: genAppNbcAdminReferToLegalAdvisorData.nbcAdminReferToLegalAdvisorData(),
@@ -599,6 +600,23 @@ module.exports = {
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
     const response = await apiRequest.submitGAEvent(eventName, data.RESPOND_TO_APPLICATION, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.state, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
+    await addUserCaseMapping(gaCaseId, user);
+  },
+
+  respondentDebtorResponse: async (user, gaCaseId) => {
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
+
+    await apiRequest.setupTokens(user);
+    eventName = events.RESPOND_TO_APPLICATION.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.RESPOND_DEBTOR_TO_APPLICATION, gaCaseId);
     const responseBody = await response.json();
 
     assert.equal(response.status, 201);
