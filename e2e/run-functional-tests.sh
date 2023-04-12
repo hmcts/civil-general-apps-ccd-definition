@@ -2,4 +2,4 @@
 set -ex
 
 echo "Running FE tests on tests on ${ENVIRONMENT} env"
-yarn test:e2e
+yarn test:master-e2e-tests
