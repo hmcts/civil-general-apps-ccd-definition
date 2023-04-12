@@ -1,5 +1,58 @@
 [
   {
+    "ID": "GARespondentDebtorOffer",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "gaRespondentDebtorOffer",
+    "ListElementCode": "respondentDebtorOffer",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GARespondentDebtorOffer",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "gaRespondentDebtorOffer",
+    "ListElementCode": "debtorOfferAccept",
+    "FieldDisplayOrder": 2,
+    "FieldShowCondition": "gaRespondentDebtorOffer.respondentDebtorOffer=\"ACCEPT\"",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GARespondentDebtorOffer",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "gaRespondentDebtorOffer",
+    "ListElementCode": "paymentPlan",
+    "FieldDisplayOrder": 3,
+    "FieldShowCondition": "gaRespondentDebtorOffer.respondentDebtorOffer=\"DECLINE\"",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GARespondentDebtorOffer",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "gaRespondentDebtorOffer",
+    "ListElementCode": "paymentSetDate",
+    "FieldDisplayOrder": 4,
+    "FieldShowCondition": "gaRespondentDebtorOffer.paymentPlan=\"PAYFULL\" AND gaRespondentDebtorOffer.respondentDebtorOffer=\"DECLINE\"",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GARespondentDebtorOffer",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "gaRespondentDebtorOffer",
+    "ListElementCode": "monthlyInstalment",
+    "FieldDisplayOrder": 4,
+    "FieldShowCondition": "gaRespondentDebtorOffer.paymentPlan=\"INSTALMENT\" AND gaRespondentDebtorOffer.respondentDebtorOffer=\"DECLINE\"",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GARespondentDebtorOffer",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "gaRespondentDebtorOffer",
+    "ListElementCode": "debtorObjections",
+    "FieldDisplayOrder": 5,
+    "FieldShowCondition": "gaRespondentDebtorOffer.respondentDebtorOffer=\"DECLINE\"",
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "HearingDetails",
     "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "hearingDetailsResp",
