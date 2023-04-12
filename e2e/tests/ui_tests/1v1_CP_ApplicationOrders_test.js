@@ -1,12 +1,14 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
+const states = require('../../fixtures/ga-ccd/state');
 const mpScenario = 'ONE_V_ONE';
 const doc = 'hearingNotice';
 let civilCaseReference, gaCaseReference;
+const judgeApproveOrderStatus = states.ORDER_MADE.name;
 
 Feature('Before SDO 1v1 - GA CP - Applications Orders @ui-nightly');
 
-Scenario('1v1 - Free form applications orders - With notice journey', async ({I, api}) => {
+Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -36,14 +38,19 @@ Scenario('1v1 - Free form applications orders - With notice journey', async ({I,
   }
   console.log('Hearing Notice created for: ' + gaCaseReference);
 
-  console.log('Judge making Application order for: ' + gaCaseReference);
+  console.log('Judge making Free form application order for: ' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeMakeAppOrder(gaCaseReference, 'freeFromOrder', 'withoutNoticeOrder', 'Free_form_order');
+  await I.judgeMakeAppOrder(gaCaseReference, 'freeFromOrder', 'withoutNoticeOrder');
   await I.judgeCloseAndReturnToCaseDetails();
+
+  await I.verifyApplicationDocument('Free From Order');
+  await I.navigateToApplicationsTab(civilCaseReference);
+  await I.see(judgeApproveOrderStatus);
+  await I.verifyClaimDocument('Free From Order');
 });
 
 AfterSuite(async ({api}) => {

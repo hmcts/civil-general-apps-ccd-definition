@@ -829,7 +829,7 @@ module.exports = function () {
       ]);
     },
 
-    async judgeMakeAppOrder(gaCaseNumber, orderType, formType, documentType) {
+    async judgeMakeAppOrder(gaCaseNumber, orderType, formType) {
       eventName = events.GENERATE_DIRECTIONS_ORDER.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, gaCaseNumber),
@@ -850,7 +850,7 @@ module.exports = function () {
           () => assistedOrderPage.selectOrderType(formType),
           () => assistedOrderPage.selectReasons(),
         ]),
-        () => reviewAppOrderDocumentPage.reviewOrderDocument(documentType),
+        () => reviewAppOrderDocumentPage.reviewOrderDocument(),
         ...conditionalSteps(orderType === 'freeFromOrder', [
           () => appOrderCYAPage.verifyAppOrderCheckAnswerForm(gaCaseNumber, 7),
           ...submitApplication('Your order has been issued'),
