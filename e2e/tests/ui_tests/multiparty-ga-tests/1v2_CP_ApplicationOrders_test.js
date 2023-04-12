@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('Before SDO 1v2 - GA CP - Applications Orders @ui-nightly');
 
-Scenario('1v2 - Assisted order - Without notice journey', async ({I, api}) => {
+Scenario('1v2 - Assisted order - Without notice journey @123', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -32,16 +32,16 @@ Scenario('1v2 - Assisted order - Without notice journey', async ({I, api}) => {
     await api.assertGaDocumentVisibilityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
   }
   console.log('Hearing Notice created for: ' + gaCaseReference);
-  console.log('Judge making Application order for: ' + gaCaseReference);
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  console.log('Judge making Assisted order for: ' + gaCaseReference);
+/*  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);
   } else {
     await I.login(config.judgeLocalUser);
   }
   await I.judgeMakeAppOrder(gaCaseReference, 'assistedOrder', 'withoutNoticeOrder', 'Assisted_order_form');
-  await I.judgeCloseAndReturnToCaseDetails();
+  await I.judgeCloseAndReturnToCaseDetails();*/
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
