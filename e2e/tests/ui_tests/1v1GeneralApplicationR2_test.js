@@ -13,7 +13,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA R2 1v1 - General Application Journey @ui-nightly');
 
-Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @e2e-tests', async ({I, api}) => {
+Scenario('Defendant of main claim initiates Vary Judgement application @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -36,7 +36,11 @@ Scenario('GA R2 1v1 - Without Notice - Vary Judgement - Hearing order journey @e
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
     states.AWAITING_RESPONDENT_RESPONSE.id, config.defendantSolicitorUser, respondentStatus);
 
-  await api.respondentResponse(config.applicantSolicitorUser, gaCaseReference);
+  await I.login(config.applicantSolicitorUser);
+  await I.respondToVaryJudgementApp(gaCaseReference, getAppTypes().slice(10, 11), 'doNotAccept', 'fullPayment');
+  await I.respCloseAndReturnToCaseDetails();
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
+    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
