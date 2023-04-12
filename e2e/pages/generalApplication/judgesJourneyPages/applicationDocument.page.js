@@ -27,15 +27,18 @@ module.exports = {
   async verifyUploadedDocumentPDF(documentType) {
     await I.waitForElement(this.fields.appDocTable);
     await I.seeInCurrentUrl('Documents');
-    //  Concurrent written representations journey is now without notice to with notice hence added this logic
     if (documentType === 'Written representation concurrent' || documentType === 'Hearing Notice') {
       await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 2);
+    } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
+      await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 3);
     } else {
       await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 1);
     }
     let docURL = await I.grabTextFrom(locate(this.fields.links).first());
     switch (documentType) {
       case 'General order':
+      case 'Free From Order':
+      case 'Assisted Order':
         expect(docURL).to.contains(`General_order_for_application_${docFullDate}`);
         break;
       case 'Directions order':
@@ -70,6 +73,9 @@ module.exports = {
     } else if (documentType === 'Hearing Notice') {
       await I.seeTextEquals('Hearing order', locate(this.fields.docLabel).first());
       await I.seeTextEquals(documentType, locate(this.fields.docLabel).last());
+    } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
+      await I.seeTextEquals('General order', locate(this.fields.docLabel).first());
+      await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).last());
     } else {
       await I.seeTextEquals(documentType, this.fields.docLabel);
     }
