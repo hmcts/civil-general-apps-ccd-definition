@@ -9,8 +9,10 @@ module.exports = {
     writtenRepresentationsJudgeRecitalTextArea: '#judgeRecitalText',
     writtenRepresentationsDirectionsTextArea: '#directionInRelationToHearingText',
     courtOrder: {
-      dateId: 'orderCourtOwnInitiativeDate',
+      coDateId: 'orderCourtOwnInitiativeDate',
+      woDateId: 'orderWithoutNoticeDate',
       courtOrderText: 'textarea[id*="orderCourtOwnInitiative"]',
+      wnOrderText: 'textarea[id*="orderWithoutNotice"]',
     }
   },
 
@@ -23,8 +25,18 @@ module.exports = {
     await I.see(`Hearing type is via ${hearingPreferences}`);
     await I.see(`Estimated length of hearing is ${timeEstimate}`);
     await I.see('Directions in relation to hearing');
-    await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.courtOrderText)).trim(),
-      orderType, this.fields.courtOrder.dateId);
+
+    switch (orderType) {
+      case 'courtOwnInitiativeOrder':
+        await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.courtOrderText)).trim(),
+          orderType, this.fields.courtOrder.coDateId);
+        break;
+      case 'withoutNoticeOrder':
+        await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.wnOrderText)).trim(),
+          orderType, this.fields.courtOrder.woDateId);
+        break;
+    }
+
     await I.fillField(this.fields.hearingDetailsDirectionsTextArea, 'Test Directions');
     await I.clickContinue();
   },
@@ -41,8 +53,18 @@ module.exports = {
     } else {
       await I.see('The applicant and respondent may respond with written representations by 4pm on');
     }
-    await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.courtOrderText)).trim(),
-      orderType, this.fields.courtOrder.dateId);
+
+    switch (orderType) {
+      case 'courtOwnInitiativeOrder':
+        await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.courtOrderText)).trim(),
+          orderType, this.fields.courtOrder.coDateId);
+        break;
+      case 'withoutNoticeOrder':
+        await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.wnOrderText)).trim(),
+          orderType, this.fields.courtOrder.woDateId);
+        break;
+    }
+
     await I.fillField(this.fields.writtenRepresentationsDirectionsTextArea, 'Test Directions');
     await I.clickContinue();
   },
