@@ -43,8 +43,8 @@ const data = {
   INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
   INITIATE_GENERAL_APPLICATION_STAY_CLAIM: genAppData.gaTypeWithStayClaim(),
   INITIATE_GENERAL_APPLICATION_UNLESS_ORDER: genAppData.gaTypeWithUnlessOrder(),
-  INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT: (isWithNotice, generalAppN245FormUpload) => genAppData.createGADataVaryJudgement(isWithNotice,null,
-    '1400','FEE0458', generalAppN245FormUpload),
+  INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT: (isWithNotice, generalAppN245FormUpload, urgency) => genAppData.createGADataVaryJudgement(isWithNotice,null,
+    '1400','FEE0458', generalAppN245FormUpload, urgency),
   INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
   RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
   RESPOND_DEBTOR_TO_APPLICATION: genAppRespondentResponseData.respondDebtorGAData(),
@@ -362,8 +362,8 @@ module.exports = {
     return await updateCivilClaimSolEmailID(user, parentCaseId);
   },
 
-  initiateGaWithVaryJudgement: async (user, parentCaseId, isClaimant) => {
-    return await initiateWithVaryJudgement(user, parentCaseId, isClaimant);
+  initiateGaWithVaryJudgement: async (user, parentCaseId, isClaimant, urgency) => {
+    return await initiateWithVaryJudgement(user, parentCaseId, isClaimant, urgency);
   },
 
   initiateGeneralApplicationWithOutNotice: async (user, parentCaseId) => {
@@ -1943,13 +1943,13 @@ const checkNoOfGeneralApplications = async (user, parentCaseId) => {
   assert.equal(totalGeneralApplication, 2);
 };
 
-const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant) => {
+const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency) => {
   eventName = events.INITIATE_GENERAL_APPLICATION.id;
   await apiRequest.setupTokens(user);
   await apiRequest.startEvent(eventName, parentCaseId);
   const response = await apiRequest.submitEvent(eventName,
     data.INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT('Yes',isClaimant ?
-      null : createGeneralAppN245FormUpload()),
+      null : createGeneralAppN245FormUpload(), urgency),
     parentCaseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);
@@ -1971,8 +1971,9 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant) => {
     genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
   assert.equal(payment_response.status, 200);
 
+  let ccdState = urgency ? 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION' : 'AWAITING_RESPONDENT_RESPONSE';
   //comment out next line to see race condition
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, ccdState, user);
   await addUserCaseMapping(gaCaseReference, user);
   return gaCaseReference;
 };
