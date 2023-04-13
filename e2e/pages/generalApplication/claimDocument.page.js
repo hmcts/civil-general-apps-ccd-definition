@@ -6,7 +6,8 @@ module.exports = {
 
   fields: {
     docLabel: 'div.case-viewer-label',
-    links: '.collection-field-table ccd-read-document-field a'
+    links: '.collection-field-table ccd-read-document-field a',
+    docTitles: 'ccd-read-complex-field-collection-table .complex-panel .complex-panel-title'
   },
 
   async verifyHearingNoticeDocNotAvailable() {
@@ -16,11 +17,11 @@ module.exports = {
   async verifyUploadedDocument(documentType) {
     await I.seeInCurrentUrl('documents');
     if (documentType === 'After SDO - Hearing Notice') {
-      await I.seeNumberOfVisibleElements('ccd-read-complex-field-collection-table .complex-panel .complex-panel-title', 4);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 4);
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
-      await I.seeNumberOfVisibleElements('ccd-read-complex-field-collection-table .complex-panel .complex-panel-title', 3);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);
     } else {
-      await I.seeNumberOfVisibleElements('ccd-read-complex-field-collection-table .complex-panel .complex-panel-title', 2);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 2);
     }
     let docURL = await I.grabTextFrom(locate(this.fields.links).last());
     switch (documentType) {

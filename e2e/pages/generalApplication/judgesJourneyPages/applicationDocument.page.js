@@ -9,6 +9,7 @@ module.exports = {
     links: '.collection-field-table ccd-read-document-field a',
     appDocTable: '.Application.Documents',
     tab: 'div.mat-tab-label-content',
+    docTitles: 'dl.complex-panel-title span'
   },
 
   async verifyUploadedFile(expectedLabel, uploadedDoc) {
@@ -28,11 +29,11 @@ module.exports = {
     await I.waitForElement(this.fields.appDocTable);
     await I.seeInCurrentUrl('Documents');
     if (documentType === 'Written representation concurrent' || documentType === 'Hearing Notice') {
-      await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 2);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 2);
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
-      await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 3);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);
     } else {
-      await I.seeNumberOfVisibleElements('dl.complex-panel-title span', 1);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 1);
     }
     let docURL = await I.grabTextFrom(locate(this.fields.links).first());
     switch (documentType) {
