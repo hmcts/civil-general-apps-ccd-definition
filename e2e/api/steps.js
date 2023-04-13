@@ -25,6 +25,7 @@ const claimSpecData = require('../fixtures/events/createClaimSpec.js');
 const genAppData = require('../fixtures/ga-ccd/createGeneralApplication.js');
 const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentResponse.js');
 const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
+const genAppJudgeMakeFinalOrderData = require('../fixtures/ga-ccd/judgeMakeFinalDecision.js');
 const genAppHearingData = require('../fixtures/ga-ccd/genAppHearing.js');
 const genAppNbcAdminReferToJudgeData = require('../fixtures/ga-ccd/nbcAdminTask.js');
 const  genAppNbcAdminReferToLegalAdvisorData = require('../fixtures/ga-ccd/nbcAdminTask.js');
@@ -96,6 +97,9 @@ const data = {
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
+  FINAL_ORDER_FREEFORM: genAppJudgeMakeFinalOrderData.judgeMakesDecisionFreeFormData(),
+  FINAL_ORDER_ASSISTED: genAppJudgeMakeFinalOrderData.judgeMakesDecisionAssisted(),
+  FINAL_ORDER_ASSISTED_WITH_HEARING: genAppJudgeMakeFinalOrderData.judgeMakesDecisionAssistedWithHearing(),
 
   CLAIM_CREATE_CLAIM_AP_SPEC: (scenario) => claimDataSpec.createClaimForAccessProfiles(scenario),
   CLAIM_DEFENDANT_RESPONSE_SPEC: (response, camundaEvent) => require('../fixtures/events/claim/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
@@ -1180,6 +1184,32 @@ module.exports = {
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId,user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'HEARING_SCHEDULED');
+  },
+
+  judgeMakeFinalOrder: async (user, gaCaseId, orderSelection, hearing) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.GENERATE_DIRECTIONS_ORDER.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+    let finalOrder;
+    if(orderSelection === 'FREE_FORM_ORDER') {
+      finalOrder = data.FINAL_ORDER_FREEFORM;
+    } else if(hearing) {
+      finalOrder = data.FINAL_ORDER_ASSISTED_WITH_HEARING;
+    } else {
+      finalOrder = data.FINAL_ORDER_ASSISTED;
+    }
+    const response = await apiRequest.submitGAEvent(eventName, finalOrder, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# Your order has been issued');
+
+    if (orderSelection === 'ASSISTED_ORDER' && hearing) {
+      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'LISTING_FOR_A_HEARING',user);
+    } else {
+      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE',user);
+    }
   },
 
   notifyClaim: async (user, multipartyScenario, caseId) => {
