@@ -6,7 +6,7 @@ const hnStateStatus = states.HEARING_SCHEDULED.id;
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 Judge makes order application after hearing API tests @api-tests');
+Feature('GA 1v2 Judge makes order application after hearing API tests @api-nightly');
 
 Scenario('Without Notice Hearing notice journey', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(

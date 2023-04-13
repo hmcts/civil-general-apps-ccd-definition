@@ -94,7 +94,7 @@ const data = {
   DEFENDANT_RESPONSE_TWO_APPLICANTS: require('../fixtures/events/2v1Events/defendantResponse_2v1'),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario),
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
-  CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
+  CASE_PROCEEDS_IN_CASEMAN_SPEC: require('../fixtures/events/caseProceedsInCasemanSpec.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
   FINAL_ORDER_FREEFORM: genAppJudgeMakeFinalOrderData.judgeMakesDecisionFreeFormData(),
@@ -1547,9 +1547,9 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     deleteCaseFields('respondentSolGaAppDetails');
     deleteCaseFields('generalApplications');
-    await validateEventPages(data.CASE_PROCEEDS_IN_CASEMAN);
+    await validateEventPages(data.CASE_PROCEEDS_IN_CASEMAN_SPEC);
 
-    await assertError('CaseProceedsInCaseman', data[eventName].invalid.CaseProceedsInCaseman,
+    await assertError('CaseProceedsInCaseman', data['CASE_PROCEEDS_IN_CASEMAN_SPEC'].invalid.CaseProceedsInCaseman,
                       'The date entered cannot be in the future');
 
     await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
