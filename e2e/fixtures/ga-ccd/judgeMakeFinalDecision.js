@@ -51,7 +51,7 @@ module.exports = {
                 text: 'dsfads fasdf'
             },
             assistedOrderFurtherHearingToggle: [
-                'SHOW'
+
             ],
             assistedOrderMadeDateHeardDetails: {
                 date: date(1)
