@@ -4,7 +4,7 @@ const { date } = require('../../api/dataHelper');
 module.exports = {
   valid: {
     CaseProceedsInCaseman: {
-      claimProceedsInCaseman: {
+      claimProceedsInCasemanLR: {
         date: date(-1),
         reason: 'APPLICATION',
       }
@@ -12,7 +12,7 @@ module.exports = {
   },
   invalid: {
     CaseProceedsInCaseman: {
-      claimProceedsInCaseman: {
+      claimProceedsInCasemanLR: {
         date: date(1),
         reason: 'APPLICATION',
       }
