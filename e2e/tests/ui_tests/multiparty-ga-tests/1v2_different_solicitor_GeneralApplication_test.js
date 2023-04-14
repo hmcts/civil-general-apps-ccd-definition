@@ -178,7 +178,7 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
       civilCaseReference, gaCaseReference, null);
   });
 
-Scenario('With Notice application - Org3 Solicitor Initiate GA @e2e-tests', async ({api, I}) => {
+Scenario('With Notice application - Org3 Solicitor Initiate GA', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
