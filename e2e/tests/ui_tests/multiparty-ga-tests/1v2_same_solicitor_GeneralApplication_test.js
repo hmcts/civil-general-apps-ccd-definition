@@ -15,7 +15,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly');
 
-Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey @123', async ({
+Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey', async ({
                                                                                                                      I,
                                                                                                                      api
                                                                                                                    }) => {
