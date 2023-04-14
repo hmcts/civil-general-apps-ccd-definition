@@ -37,7 +37,7 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER - VARY-JUDGEMENT', async (
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGaWithVaryJudgement(config.applicantSolicitorUser,
-    civilCaseReference,false);
+    civilCaseReference,false, false);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
@@ -63,7 +63,7 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER - VARY-JUDGEMENT as Defend
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGaWithVaryJudgement(config.applicantSolicitorUser,
-    civilCaseReference,true);
+    civilCaseReference,true, false);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
@@ -81,6 +81,15 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER - VARY-JUDGEMENT as Defend
   console.log('*** Start Respondent respond to Judge Directions on GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponseToJudgeDirections(config.applicantSolicitorUser, gaCaseReference);
   console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
+});
+
+Scenario('Make an Urgent General Application with Vary Judgement', async ({api}) => {
+    civilCaseReference = await api.createSpecifiedClaim(
+        config.applicantSolicitorUser, mpScenario);
+    console.log('Civil Case created for general application: ' + civilCaseReference);
+    console.log('Make a General Application');
+    gaCaseReference = await api.initiateGaWithVaryJudgement(config.applicantSolicitorUser,
+                                                            civilCaseReference,true, true);
 });
 
 AfterSuite(async ({api}) => {
