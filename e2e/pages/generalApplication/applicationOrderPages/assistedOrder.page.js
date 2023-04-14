@@ -142,6 +142,9 @@ module.exports = {
       case 'withoutNoticeOrder':
         await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtsOrder.withoutNoticeOrderText)).trim(), order);
         break;
+      case 'noneOrder':
+        await selectCourtsOrderType('', order, '');
+        break;
     }
   },
 
