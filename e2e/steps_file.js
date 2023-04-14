@@ -66,6 +66,7 @@ const confirmationPage = require('./pages/generalApplication/gaConfirmation.page
 const applicationTab = require('./pages/generalApplication/applicationTab.page');
 const applicantSummaryPage = require('./pages/generalApplication/applicantSummary.page');
 const respConsentCheckPage = require('./pages/generalApplication/responseJourneyPages/responseConsentCheck.page');
+const respondentDebtorResponsePage = require('./pages/generalApplication/responseJourneyPages/respondentDebtorResponse.page');
 const respHearingDetailsPage = require('./pages/generalApplication/responseJourneyPages/responseHearingDetails.page');
 const responseCheckYourAnswersPage = require('./pages/generalApplication/responseJourneyPages/responseCheckYourAnswers.page');
 const responseConfirmationPage = require('./pages/generalApplication/responseJourneyPages/responseConfirmation.page');
@@ -771,6 +772,26 @@ module.exports = function () {
       ]);
     },
 
+    async respondToVaryJudgementApp(caseId, appTypes, type, paymentPlanType) {
+      eventName = events.RESPOND_TO_APPLICATION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName,caseId),
+        () => respondentDebtorResponsePage.selectDebtorOffer(type, paymentPlanType),
+        () => respHearingDetailsPage.isRespHearingScheduled('yes'),
+        () => respHearingDetailsPage.isRespJudgeRequired('yes'),
+        () => respHearingDetailsPage.isRespTrialRequired('yes'),
+        () => respHearingDetailsPage.selectRespHearingPreferences('inPerson'),
+        () => respHearingDetailsPage.selectRespHearingDuration('fortyFiveMin'),
+        () => respHearingDetailsPage.isRespUnavailableTrailRequired('no'),
+        () => respHearingDetailsPage.selectRespVulnerabilityQuestions('no'),
+        () => respHearingDetailsPage.selectRespSupportRequirement('signLanguageInterpreter'),
+        () => responseCheckYourAnswersPage.respVerifyCheckAnswerForm(caseId),
+        ...submitApplication('You have provided the requested info'),
+        () => responseConfirmationPage.verifyRespConfirmationPage(),
+        () => responseConfirmationPage.verifyRespApplicationType(appTypes),
+      ]);
+    },
+
     async respondToSameApplicationAndVerifyErrorMsg() {
       await this.triggerStepsWithScreenshot([
         () => responseConfirmationPage.verifyAlreadyRespondedErrorMessage(),
@@ -808,7 +829,7 @@ module.exports = function () {
       ]);
     },
 
-    async judgeMakeAppOrder(gaCaseNumber, orderType, formType, documentType) {
+    async judgeMakeAppOrder(gaCaseNumber, orderType, formType) {
       eventName = events.GENERATE_DIRECTIONS_ORDER.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, gaCaseNumber),
@@ -829,11 +850,16 @@ module.exports = function () {
           () => assistedOrderPage.selectOrderType(formType),
           () => assistedOrderPage.selectReasons(),
         ]),
+        () => reviewAppOrderDocumentPage.reviewOrderDocument(),
         ...conditionalSteps(orderType === 'freeFromOrder', [
-          () => reviewAppOrderDocumentPage.reviewOrderDocument(documentType),
-          () => appOrderCYAPage.verifyAppOrderCheckAnswerForm(gaCaseNumber),
+          () => appOrderCYAPage.verifyAppOrderCheckAnswerForm(gaCaseNumber, 7),
           ...submitApplication('Your order has been issued'),
-          () => appOrderConfirmationPage.verifyConfirmationPage(),
+          () => appOrderConfirmationPage.verifyFFConfirmationPage(),
+        ]),
+        ...conditionalSteps(orderType === 'assistedOrder', [
+          () => appOrderCYAPage.verifyAppOrderCheckAnswerForm(gaCaseNumber, 22),
+          ...submitApplication('Your order has been issued'),
+          () => appOrderConfirmationPage.verifyAOConfirmationPage(),
         ]),
       ]);
     },

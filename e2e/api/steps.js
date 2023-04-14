@@ -25,6 +25,7 @@ const claimSpecData = require('../fixtures/events/createClaimSpec.js');
 const genAppData = require('../fixtures/ga-ccd/createGeneralApplication.js');
 const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentResponse.js');
 const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
+const genAppJudgeMakeFinalOrderData = require('../fixtures/ga-ccd/judgeMakeFinalDecision.js');
 const genAppHearingData = require('../fixtures/ga-ccd/genAppHearing.js');
 const genAppNbcAdminReferToJudgeData = require('../fixtures/ga-ccd/nbcAdminTask.js');
 const  genAppNbcAdminReferToLegalAdvisorData = require('../fixtures/ga-ccd/nbcAdminTask.js');
@@ -43,10 +44,11 @@ const data = {
   INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
   INITIATE_GENERAL_APPLICATION_STAY_CLAIM: genAppData.gaTypeWithStayClaim(),
   INITIATE_GENERAL_APPLICATION_UNLESS_ORDER: genAppData.gaTypeWithUnlessOrder(),
-  INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT: (isWithNotice, generalAppN245FormUpload) => genAppData.createGAData(isWithNotice,null,
-    '27500','FEE0442', generalAppN245FormUpload),
+  INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT: (isWithNotice, generalAppN245FormUpload) => genAppData.createGADataVaryJudgement(isWithNotice,null,
+    '1400','FEE0458', generalAppN245FormUpload),
   INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
   RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
+  RESPOND_DEBTOR_TO_APPLICATION: genAppRespondentResponseData.respondDebtorGAData(),
   MAKE_DECISION: genAppJudgeMakeDecisionData.judgeMakesDecisionData(),
   REFER_TO_JUDGE: genAppNbcAdminReferToJudgeData.nbcAdminReferToJudgeData(),
   REFER_TO_LEGAL_ADVISOR: genAppNbcAdminReferToLegalAdvisorData.nbcAdminReferToLegalAdvisorData(),
@@ -92,9 +94,12 @@ const data = {
   DEFENDANT_RESPONSE_TWO_APPLICANTS: require('../fixtures/events/2v1Events/defendantResponse_2v1'),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario),
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
-  CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
+  CASE_PROCEEDS_IN_CASEMAN_SPEC: require('../fixtures/events/caseProceedsInCasemanSpec.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
+  FINAL_ORDER_FREEFORM: genAppJudgeMakeFinalOrderData.judgeMakesDecisionFreeFormData(),
+  FINAL_ORDER_ASSISTED: genAppJudgeMakeFinalOrderData.judgeMakesDecisionAssisted(),
+  FINAL_ORDER_ASSISTED_WITH_HEARING: genAppJudgeMakeFinalOrderData.judgeMakesDecisionAssistedWithHearing(),
 
   CLAIM_CREATE_CLAIM_AP_SPEC: (scenario) => claimDataSpec.createClaimForAccessProfiles(scenario),
   CLAIM_DEFENDANT_RESPONSE_SPEC: (response, camundaEvent) => require('../fixtures/events/claim/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
@@ -599,6 +604,23 @@ module.exports = {
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
     const response = await apiRequest.submitGAEvent(eventName, data.RESPOND_TO_APPLICATION, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.state, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
+    await addUserCaseMapping(gaCaseId, user);
+  },
+
+  respondentDebtorResponse: async (user, gaCaseId) => {
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
+
+    await apiRequest.setupTokens(user);
+    eventName = events.RESPOND_TO_APPLICATION.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.RESPOND_DEBTOR_TO_APPLICATION, gaCaseId);
     const responseBody = await response.json();
 
     assert.equal(response.status, 201);
@@ -1164,6 +1186,32 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'HEARING_SCHEDULED');
   },
 
+  judgeMakeFinalOrder: async (user, gaCaseId, orderSelection, hearing) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.GENERATE_DIRECTIONS_ORDER.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+    let finalOrder;
+    if(orderSelection === 'FREE_FORM_ORDER') {
+      finalOrder = data.FINAL_ORDER_FREEFORM;
+    } else if(hearing) {
+      finalOrder = data.FINAL_ORDER_ASSISTED_WITH_HEARING;
+    } else {
+      finalOrder = data.FINAL_ORDER_ASSISTED;
+    }
+    const response = await apiRequest.submitGAEvent(eventName, finalOrder, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# Your order has been issued');
+
+    if (orderSelection === 'ASSISTED_ORDER' && hearing) {
+      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'LISTING_FOR_A_HEARING',user);
+    } else {
+      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE',user);
+    }
+  },
+
   notifyClaim: async (user, multipartyScenario, caseId) => {
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
     mpScenario = multipartyScenario;
@@ -1347,7 +1395,12 @@ module.exports = {
       await assertValidClaimData(defendantResponseData, pageId);
     }
     deleteCaseFields('respondentSolGaAppDetails');
+    deleteCaseFields('respondentSolTwoGaAppDetails');
     deleteCaseFields('generalApplications');
+    deleteCaseFields('generalOrderDocClaimant');
+    deleteCaseFields('generalOrderDocRespondentSol');
+    deleteCaseFields('generalOrderDocRespondentSolTwo');
+    deleteCaseFields('generalOrderDocStaff');
     switch (scenario) {
       case 'ONE_V_ONE_DIF_SOL':
         /* when camunda process is done, when both respondents have answered
@@ -1494,9 +1547,9 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     deleteCaseFields('respondentSolGaAppDetails');
     deleteCaseFields('generalApplications');
-    await validateEventPages(data.CASE_PROCEEDS_IN_CASEMAN);
+    await validateEventPages(data.CASE_PROCEEDS_IN_CASEMAN_SPEC);
 
-    await assertError('CaseProceedsInCaseman', data[eventName].invalid.CaseProceedsInCaseman,
+    await assertError('CaseProceedsInCaseman', data['CASE_PROCEEDS_IN_CASEMAN_SPEC'].invalid.CaseProceedsInCaseman,
                       'The date entered cannot be in the future');
 
     await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {

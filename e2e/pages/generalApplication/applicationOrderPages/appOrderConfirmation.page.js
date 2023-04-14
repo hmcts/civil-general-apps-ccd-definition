@@ -9,11 +9,19 @@ module.exports = {
     applicationList: '#confirmation-body li'
   },
 
-  async verifyConfirmationPage() {
+  async verifyFFConfirmationPage() {
     await I.waitInUrl('GENERATE_DIRECTIONS_ORDER/confirm');
     I.see('The order has been sent to:');
     I.see('Test Inc');
     I.see('Sir John Doe');
+  },
+
+  async verifyAOConfirmationPage() {
+    await I.waitInUrl('GENERATE_DIRECTIONS_ORDER/confirm');
+    I.see('The order has been sent to:');
+    I.see('Test Inc');
+    I.see('Sir John Doe');
+    I.see('Dr Foo Bar');
   },
 
   async closeAndReturnToCaseDetails() {
