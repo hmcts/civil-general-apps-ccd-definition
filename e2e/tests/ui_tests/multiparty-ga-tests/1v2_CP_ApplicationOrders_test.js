@@ -1,12 +1,14 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../../config.js');
+const states = require('../../../fixtures/ga-ccd/state');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const doc = 'hearingNotice';
+const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 let civilCaseReference, gaCaseReference;
 
 Feature('Before SDO 1v2 - GA CP - Applications Orders @ui-nightly');
 
-Scenario('1v2 - Assisted order - Without notice journey', async ({I, api}) => {
+Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -32,14 +34,19 @@ Scenario('1v2 - Assisted order - Without notice journey', async ({I, api}) => {
     await api.assertGaDocumentVisibilityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
   }
   console.log('Hearing Notice created for: ' + gaCaseReference);
-  console.log('Judge making Application order for: ' + gaCaseReference);
+  console.log('Judge making Assisted order for: ' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);
   } else {
     await I.login(config.judgeLocalUser);
   }
-  await I.judgeMakeAppOrder(gaCaseReference, 'assistedOrder', 'withoutNoticeOrder', 'Assisted_order_form');
+  await I.judgeMakeAppOrder(gaCaseReference, 'assistedOrder', 'withoutNoticeOrder');
   await I.judgeCloseAndReturnToCaseDetails();
+
+  await I.verifyApplicationDocument('Assisted Order');
+  await I.navigateToApplicationsTab(civilCaseReference);
+  await I.see(listForHearingStatus);
+  await I.verifyClaimDocument('Assisted Order');
 });
 
 AfterSuite(async ({api}) => {
