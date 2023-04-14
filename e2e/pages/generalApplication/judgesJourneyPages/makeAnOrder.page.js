@@ -79,6 +79,9 @@ module.exports = {
         await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.wnOrderText)).trim(),
           orderType, this.fields.courtOrder.woDateId);
         break;
+      case 'noneOrder':
+        await selectCourtsOrderType('', orderType, '');
+        break;
     }
 
     await I.fillField(this.fields.reasonForDecisionTextArea, 'Judges Decision');
