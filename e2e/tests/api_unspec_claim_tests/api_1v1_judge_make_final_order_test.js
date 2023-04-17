@@ -8,7 +8,7 @@ Feature('Before SDO 1v1 - GA CP - Hearing Notice document API tests @api-tests')
 
 Scenario('Defendant Hearing notice journey', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
-      config.applicantSolicitorUser, mpScenario, 'Company');
+    config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -44,9 +44,9 @@ Scenario('Defendant Hearing notice journey', async ({api}) => {
   await api.assertGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, doc);
   await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeMakeFinalOrder(config.judgeUser, gaCaseReference, 'ASSISTED_ORDER', true);
-  }else {
+  } else {
     await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'ASSISTED_ORDER', true);
   }
 
