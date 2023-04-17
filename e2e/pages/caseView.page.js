@@ -94,14 +94,14 @@ module.exports = {
     await I.retryUntilUrlChanges(async () => {
       if (tabName === 'Application Documents') {
         await I.refreshPage();
-        if (['preview'].includes(config.runningEnv)) {
+        if (['preview','aat'].includes(config.runningEnv)) {
           await I.wait(5);
         } else {
           await I.wait(2);
         }
       }
       await I.forceClick(locate(this.fields.tab).withText(tabName));
-      if (['preview'].includes(config.runningEnv)) {
+      if (['preview','aat'].includes(config.runningEnv)) {
         await I.wait(5);
       } else {
         await I.wait(2);
