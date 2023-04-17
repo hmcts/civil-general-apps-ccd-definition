@@ -66,7 +66,7 @@ module.exports = {
   async clickOnTab(tabName) {
     await I.waitForElement(this.fields.tabList, 5);
     await I.refreshPage();
-    if (['preview'].includes(config.runningEnv)) {
+    if (['preview','aat'].includes(config.runningEnv)) {
       await I.wait(8);
     } else {
       await I.wait(3);
