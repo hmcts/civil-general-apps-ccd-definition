@@ -1,3 +1,4 @@
+const {date} = require('../../api/dataHelper');
 const config = require('../../config.js');
 
 module.exports = {
@@ -78,7 +79,7 @@ module.exports = {
       }
     };
   },
-  createGADataVaryJudgement: (isWithNotice, reasonWithoutNotice,calculatedAmount, code, linkGAN245FormUpload) => {
+  createGADataVaryJudgement: (isWithNotice, reasonWithoutNotice,calculatedAmount, code, linkGAN245FormUpload, urgency) => {
     return {
       generalAppType: {
         types: [
@@ -89,9 +90,9 @@ module.exports = {
         hasAgreed: 'No'
       },
       generalAppUrgencyRequirement: {
-        generalAppUrgency: 'No',
-        urgentAppConsiderationDate: null,
-        reasonsForUrgency: null,
+        generalAppUrgency: urgency ? 'Yes' : 'No',
+        urgentAppConsiderationDate: urgency ? date(1) : null,
+        reasonsForUrgency: urgency ? 'Urgent!' : null,
         ConsentAgreementCheckBox: []
       },
       generalAppInformOtherParty: {
