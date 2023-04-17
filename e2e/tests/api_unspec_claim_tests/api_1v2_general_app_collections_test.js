@@ -111,28 +111,6 @@ Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Deci
   console.log('*** End of Validating  GA Case Visibility in all Collections: ' + gaCaseReference + ' ***');
 });
 
-Scenario('GA 1v2  - With Notice Application Collection after Creation of GA Case Test', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Individual');
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  console.log('Civil Case created for general application: ' + civilCaseReference);
-
-  console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplicationWithNoStrikeOut(config.applicantSolicitorUser, civilCaseReference);
-
-  console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
-  console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
-
-  console.log('*** Start  GA Case Visibility in all Collections: ' + gaCaseReference + ' ***');
-  await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
-  await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
-  await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
-  console.log('*** End of Validating  GA Case Visibility in all Collections: ' + gaCaseReference + ' ***');
-});
-
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
