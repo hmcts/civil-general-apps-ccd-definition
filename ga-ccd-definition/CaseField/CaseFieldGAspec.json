@@ -1025,6 +1025,13 @@
     "Label": " ",
     "FieldType": "GARespondentDebtorOfferGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaApplicantDisplayName",
+    "Label": "Applicant",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
 
