@@ -41,6 +41,9 @@ module.exports = {
         await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtsOrder.courWithoutNoticeOrderText)).trim(), order);
         await date.verifyPrePopulatedDate(this.fields.courtsOrder.withoutNoticeSelectionDateId);
         break;
+      case 'noneOrder':
+        await selectCourtsOrderType('', order, '');
+        break;
     }
     await I.clickContinue();
   },

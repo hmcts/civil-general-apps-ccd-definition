@@ -4,7 +4,7 @@ const {I} = inject();
 module.exports = {
 
   async verifyApplicationDetails(applicationTypes, appCount) {
-    if (['preview'].includes(config.runningEnv)) {
+    if (['preview','aat'].includes(config.runningEnv)) {
       await I.wait(5);
     } else {
       await I.wait(3);
