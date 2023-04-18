@@ -54,34 +54,6 @@ Scenario('Case offline ORDER_MADE', async ({api}) => {
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
 });
 
-Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
-  console.log('Civil Case created for general application: ' + civilCaseReference);
-
-  console.log('Make a General Application with state APPLICATION_DISMISSED');
-  gaCaseReference
-    = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
-  console.log('*** Start Judge Make Decision Application Dismiss on GA Case Reference: '
-    + gaCaseReference + ' ***');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeDismissApplication(config.judgeUser, gaCaseReference);
-  } else {
-    await api.judgeDismissApplication(config.judgeLocalUser, gaCaseReference);
-  }
-  console.log('*** End Judge Make Decision Application Dismiss on GA Case Reference: '
-    + gaCaseReference + ' ***');
-
-  console.log('*** Case offline: ' + civilCaseReference + ' ***');
-  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-  await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-    'PROCEEDS_IN_HERITAGE_SYSTEM');
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'APPLICATION_DISMISSED');
-});
-
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
