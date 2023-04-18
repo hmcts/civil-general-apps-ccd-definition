@@ -8,7 +8,7 @@ def product = "civil"
 def component = "ga-ccd"
 def camundaBranch = "master"
 
-def ccddefbranch = "master"
+def ccddefbranch = "feat/CIV-6245"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
