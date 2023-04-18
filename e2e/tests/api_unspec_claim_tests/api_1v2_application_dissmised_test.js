@@ -21,9 +21,9 @@ Scenario('Judge makes decision 1V2 - DISMISS_THE_APPLICATION', async ({api}) => 
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReference + ' ***');
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeDismissApplication(config.judgeUser, gaCaseReference);
-  }else {
+  } else {
     await api.judgeDismissApplication(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReference + ' ***');

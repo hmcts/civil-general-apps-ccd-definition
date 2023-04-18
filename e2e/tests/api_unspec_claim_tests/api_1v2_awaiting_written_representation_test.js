@@ -21,9 +21,9 @@ Scenario('Judge makes decision 1V2 - WRITTEN_REPRESENTATIONS', async ({api}) => 
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge Make Order on GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeMakesDecisionWrittenRep(config.judgeUser, gaCaseReference);
-  }else {
+  } else {
     await api.judgeMakesDecisionWrittenRep(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge Make Order GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
