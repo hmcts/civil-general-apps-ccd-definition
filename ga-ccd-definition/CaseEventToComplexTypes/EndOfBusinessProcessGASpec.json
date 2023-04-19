@@ -19,5 +19,16 @@
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
+  },
+  {
+    "ID": "GATypePage",
+    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
+    "CaseFieldID": "generalAppSuperClaimType",
+    "ListElementCode": "types",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
   }
 ]
