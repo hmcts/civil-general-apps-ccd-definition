@@ -15,8 +15,10 @@ module.exports = {
       }
     },
     courtOrder: {
-      dateId: 'orderCourtOwnInitiativeDate',
+      coDateId: 'orderCourtOwnInitiativeDate',
+      woDateId: 'orderWithoutNoticeDate',
       courtOrderText: 'textarea[id*="orderCourtOwnInitiative"]',
+      wnOrderText: 'textarea[id*="orderWithoutNotice"]',
     },
     judgeRecitalTextArea: '#judicialDecisionMakeOrder_judgeRecitalText',
     orderTextArea: '#judicialDecisionMakeOrder_orderText',
@@ -67,8 +69,21 @@ module.exports = {
         I.fillField(this.fields.directionsResponseYear, '2024');
         break;
     }
-    await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.courtOrderText)).trim(),
-      orderType, this.fields.courtOrder.dateId);
+
+    switch (orderType) {
+      case 'courtOwnInitiativeOrder':
+        await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.courtOrderText)).trim(),
+          orderType, this.fields.courtOrder.coDateId);
+        break;
+      case 'withoutNoticeOrder':
+        await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtOrder.wnOrderText)).trim(),
+          orderType, this.fields.courtOrder.woDateId);
+        break;
+      case 'noneOrder':
+        await selectCourtsOrderType('', orderType, '');
+        break;
+    }
+
     await I.fillField(this.fields.reasonForDecisionTextArea, 'Judges Decision');
     await I.clickContinue();
   }

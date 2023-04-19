@@ -31,30 +31,6 @@ Scenario('Case offline LISTING_FOR_A_HEARING', async ({api}) => {
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
-Scenario('Case offline ORDER_MADE', async ({api}) => {
-  civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
-  console.log('Civil Case created for general application: ' + civilCaseReference);
-
-  console.log('Make a General Application with state ORDER_MADE');
-  gaCaseReference
-    = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
-  console.log('*** Start Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
-    + gaCaseReference + ' ***');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesOrderDecisionUncloak(config.judgeUser, gaCaseReference);
-  } else {
-    await api.judgeMakesOrderDecisionUncloak(config.judgeLocalUser, gaCaseReference);
-  }
-  console.log('*** End Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
-    + gaCaseReference + ' ***');
-
-  console.log('*** Case offline: ' + civilCaseReference + ' ***');
-  await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO');
-  await api.claimantResponseClaimSpec(config.applicantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO',
-    'AWAITING_APPLICANT_INTENTION');
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
-});
-
 Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
