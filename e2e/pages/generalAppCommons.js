@@ -58,9 +58,9 @@ module.exports = {
       fullJudgeName = await apiRequest.getUserFullName(config.judgeLocalUser);
     }
     if (notice === 'no') {
-      await expect(actualJudgeRecitalText).to.equals(`Judge: ${fullJudgeName} \n\nThe Judge considered the without notice application of Claimant dated ${fullDate} \n\nAnd the Judge considered the information provided by the Claimant`);
+      await expect(actualJudgeRecitalText).to.equals(`Judge: ${fullJudgeName}\n\nThe Judge considered the without notice application of Claimant dated ${fullDate}\n\nAnd the Judge considered the information provided by the Claimant`);
     } else {
-      await expect(actualJudgeRecitalText).to.equals(`Judge: ${fullJudgeName} \n\nThe Judge considered the application of Claimant dated ${fullDate} \n\nAnd the Judge considered the information provided by the parties`);
+      await expect(actualJudgeRecitalText).to.equals(`Judge: ${fullJudgeName}\n\nThe Judge considered the application of Claimant dated ${fullDate}\n\nAnd the Judge considered the information provided by the parties`);
     }
   },
   docFullDate,
