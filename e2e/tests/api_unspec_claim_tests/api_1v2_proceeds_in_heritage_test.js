@@ -21,9 +21,9 @@ Scenario('Judge makes decision 1V2 - Accept Strike out application', async ({api
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge approves strike out application: ' + gaCaseReference + ' ***');
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeApprovesStrikeOutApplication(config.judgeUser, gaCaseReference);
-  }else {
+  } else {
     await api.judgeApprovesStrikeOutApplication(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge approves strike out application - GA Case Reference: ' + gaCaseReference + ' ***');

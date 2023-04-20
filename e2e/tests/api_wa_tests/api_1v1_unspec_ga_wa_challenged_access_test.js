@@ -1,9 +1,8 @@
 const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 
-let civilCaseReference, gaCaseReference, expectedReviewApplicationTask,expectedJudgeDecideOnApplicationBeforeSDOTask,expectedLADecideOnApplicationBeforeSDOTask;
+let civilCaseReference, gaCaseReference,expectedJudgeDecideOnApplicationBeforeSDOTask,expectedLADecideOnApplicationBeforeSDOTask;
 if (config.runWAApiTest) {
-  expectedReviewApplicationTask = require('../../../wa/tasks/reviewApplicationTask.js');
   expectedJudgeDecideOnApplicationBeforeSDOTask = require('../../../wa/tasks/judgeDecideOnApplicationBeforeSDOTask.js');
   expectedLADecideOnApplicationBeforeSDOTask = require('../../../wa/tasks/laDecideOnApplicationBeforeSDOTask.js');
 }
@@ -22,23 +21,10 @@ Scenario('GA - Challenged Access test - NBCAdmin & judge', async ({I, api, wa}) 
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
   console.log('*** General Application case created ***' + gaCaseReference);
 
-  console.log('*** Validate Task Initiation for Review Application - Start ***');
-  if (config.runWAApiTest) {
-    const actualReviewApplicationTask = await api.retrieveTaskDetails(config.nbcAdminWithRegionId4,
-      gaCaseReference, config.waTaskIds.nbcUserReviewGA);
-    console.log('actualReviewApplicationTask...', actualReviewApplicationTask);
-    wa.validateTaskInfo(actualReviewApplicationTask, expectedReviewApplicationTask);
-  }
-  console.log('*** Validate Task Initiation for Review Application - End ***');
-
   console.log('*** Challenged Access steps for nbcAdmin - Start ***');
   await I.login(config.nbcAdminWithRegionId1);
   await wa.runChallengedAccessSteps(gaCaseReference);
   console.log('*** Challenged Access steps for nbcAdmin - End ***');
-
-  console.log('*** NBC Admin Region4 Refer to Judge Process Start ***');
-  await api.nbcAdminReferToJudge(config.nbcAdminWithRegionId4, gaCaseReference);
-  console.log('*** NBC Admin Region4 Refer to Judge Process End ***');
 
   console.log('*** Validate Task Initiation for Judge Decide On Application - Start ***');
   if (config.runWAApiTest) {
@@ -66,19 +52,6 @@ Scenario('GA - Challenged Access test - LegalAdvisor', async ({I, api, wa}) => {
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
-
-  console.log('*** Validate Task Initiation for Review Application - Start ***');
-  if (config.runWAApiTest) {
-    const actualReviewApplicationTask = await api.retrieveTaskDetails(config.nbcAdminWithRegionId4,
-      gaCaseReference, config.waTaskIds.nbcUserReviewGA);
-    console.log('actualReviewApplicationTask...', actualReviewApplicationTask);
-    wa.validateTaskInfo(actualReviewApplicationTask, expectedReviewApplicationTask);
-  }
-  console.log('*** Validate Task Initiation for Review Application - End ***');
-
-  console.log('*** NBC Admin Region4 Refer to Legal Advisor Process Start ***');
-  await api.nbcAdminReferToLegalAdvisor(config.nbcAdminWithRegionId4, gaCaseReference);
-  console.log('*** NBC Admin Region4 Refer to Legal Advisor Process End ***');
 
   console.log('*** Validate Task Initiation for Legal Advisor Decide On Application - Start ***');
   if (config.runWAApiTest) {

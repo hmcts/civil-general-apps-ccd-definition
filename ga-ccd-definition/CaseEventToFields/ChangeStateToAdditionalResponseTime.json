@@ -41,6 +41,18 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "CHANGE_STATE_TO_ADDITIONAL_RESPONSE_TIME_EXPIRED",
+    "CaseFieldID": "generalAppSuperClaimType",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "isMultiPartyPage",
+    "PageDisplayOrder": 8,
+    "PageColumnNumber": 2,
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "CHANGE_STATE_TO_ADDITIONAL_RESPONSE_TIME_EXPIRED",
     "CaseFieldID": "judicialDecision",
     "PageID": "GAJudicialDecision",
     "PageFieldDisplayOrder": 1,
