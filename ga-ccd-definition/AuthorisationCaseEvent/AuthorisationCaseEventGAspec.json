@@ -380,16 +380,13 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "civil-administrator-standard",
-          "legal-adviser"
+          "civil-administrator-standard"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "civil-administrator-basic",
-          "caseworker-ras-validation",
           "ga-basic-access"
         ],
         "CRUD": "R"
@@ -402,16 +399,13 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "civil-administrator-standard",
-          "legal-adviser"
+          "civil-administrator-standard"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "civil-administrator-basic",
-          "caseworker-ras-validation",
           "ga-basic-access"
         ],
         "CRUD": "R"
