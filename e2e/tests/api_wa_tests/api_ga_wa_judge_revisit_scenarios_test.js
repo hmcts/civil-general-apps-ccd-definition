@@ -2,20 +2,16 @@ const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 const genAppType = 'STAY_THE_CLAIM';
 
-let civilCaseReference, gaCaseReference, expectedReviewApplicationTask, expectedJudgeDecideOnApplicationBeforeSDOTask,
-  expectedLADecideOnApplicationBeforeSDOTask, expectedReviewResivistedForWrittenRep,
-  expectedJudgeDecideOnApplicationAfterSDOTask, expectedJudgeRevisitApplicationBeforeSDOTask, expectedLARevisitApplicationBeforeSDOTask,
-  expectedReviewRevisitedTask, expectedJudgeRevisitApplicationAfterSDOTask;
+let civilCaseReference, gaCaseReference, expectedJudgeDecideOnApplicationBeforeSDOTask,
+  expectedLADecideOnApplicationBeforeSDOTask,
+  expectedJudgeDecideOnApplicationAfterSDOTask, expectedJudgeRevisitApplicationBeforeSDOTask, expectedLARevisitApplicationBeforeSDOTask, expectedJudgeRevisitApplicationAfterSDOTask;
 if (config.runWAApiTest) {
-  expectedReviewApplicationTask = require('../../../wa/tasks/reviewApplicationTask.js');
   expectedJudgeDecideOnApplicationBeforeSDOTask = require('../../../wa/tasks/judgeDecideOnApplicationBeforeSDOTask.js');
   expectedJudgeDecideOnApplicationAfterSDOTask = require('../../../wa/tasks/judgeDecideOnApplicationAfterSDOTask.js');
   expectedLADecideOnApplicationBeforeSDOTask = require('../../../wa/tasks/laDecideOnApplicationBeforeSDOTask.js');
   expectedJudgeRevisitApplicationBeforeSDOTask = require('../../../wa/tasks/judgeRevisitApplicationBeforeSDO.js');
   expectedLARevisitApplicationBeforeSDOTask = require('../../../wa/tasks/legalAdvisorRevisitApplication.js');
-  expectedReviewRevisitedTask = require('../../../wa/tasks/reviewRevisitedApplication.js');
   expectedJudgeRevisitApplicationAfterSDOTask = require('../../../wa/tasks/judgeRevisitApplicationAfterSDO.js');
-  expectedReviewResivistedForWrittenRep = require('../../../wa/tasks/reviewRevisitedApplicationWrittenRep.js');
 }
 
 Feature(' GA - WA Judge Revisit Applications @api-wa');
@@ -31,19 +27,6 @@ Scenario('Before SDO GA - Directions Order Additional Response time Expired', as
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
   console.log('*** General Application case created ***' + gaCaseReference);
-
-  console.log('*** Validate Task Initiation for Review Application - Start ***');
-  if (config.runWAApiTest) {
-    const actualReviewApplicationTask = await api.retrieveTaskDetails(config.nbcAdminWithRegionId4,
-      gaCaseReference, config.waTaskIds.nbcUserReviewGA);
-    console.log('actualReviewApplicationTask...', actualReviewApplicationTask);
-    wa.validateTaskInfo(actualReviewApplicationTask, expectedReviewApplicationTask);
-  }
-  console.log('*** Validate Task Initiation for Review Application - End ***');
-
-  console.log('*** NBC Admin Region4 Refer to Judge Process Start ***');
-  await api.nbcAdminReferToJudge(config.nbcAdminWithRegionId4, gaCaseReference);
-  console.log('*** NBC Admin Region4 Refer to Judge Process End ***');
 
   console.log('*** Validate Task Initiation for Judge Decide On Application - Start ***');
   if (config.runWAApiTest) {
@@ -61,19 +44,6 @@ Scenario('Before SDO GA - Directions Order Additional Response time Expired', as
   console.log('*** Triggering Judge Revisit Directions Order Scheduler ***');
   await api.judgeRevisitScheduler(gaCaseReference, 'AWAITING_DIRECTIONS_ORDER_DOCS', genAppType);
   console.log('*** End of Judge Revisit Directions Order Scheduler ***');
-
- console.log('*** Validate Task Initiation for Review Revisited Application - Start ***');
-  if (config.runWAApiTest) {
-    const actualReviewRevisitedApplicationTask = await api.retrieveTaskDetails(config.nbcAdminWithRegionId4,
-      gaCaseReference, config.waTaskIds.reviewRevisitedApplication);
-    console.log('actualReviewRevisitedApplicationTask...', actualReviewRevisitedApplicationTask);
-    wa.validateTaskInfo(actualReviewRevisitedApplicationTask, expectedReviewRevisitedTask);
-  }
-  console.log('*** Validate Task Initiation for Review Revisited Application - End ***');
-
-  console.log('*** NBC Admin Region4 Refer to Judge Process Start ***');
-  await api.nbcAdminReferToJudge(config.nbcAdminWithRegionId4, gaCaseReference);
-  console.log('*** NBC Admin Region4 Refer to Judge Process End ***');
 
   console.log('*** Validate Task Initiation for Judge Revisit Application- Start ***');
   if (config.runWAApiTest) {
@@ -97,19 +67,6 @@ Scenario('Before SDO GA 1v1 spec - Written Representations Additional Response t
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-  console.log('*** Validate Task Initiation for Review Application - Start ***');
-  if (config.runWAApiTest) {
-    const actualReviewApplicationTask = await api.retrieveTaskDetails(config.nbcAdminWithRegionId4,
-      gaCaseReference, config.waTaskIds.nbcUserReviewGA);
-    console.log('actualReviewApplicationTask...', actualReviewApplicationTask);
-    wa.validateTaskInfo(actualReviewApplicationTask, expectedReviewApplicationTask);
-  }
-  console.log('*** Validate Task Initiation for Review Application - End ***');
-
-  console.log('*** NBC Admin Region4 Refer to Legal Advisor Process Start ***');
-  await api.nbcAdminReferToLegalAdvisor(config.nbcAdminWithRegionId4, gaCaseReference);
-  console.log('*** NBC Admin Region4 Refer to Legal Advisor Process End ***');
-
   console.log('*** Validate Task Initiation for Legal Advisor Decide On Application - Start ***');
   if (config.runWAApiTest) {
     const actualLegalAdvisorDecideOnApplicationTask = await api.retrieveTaskDetails(config.tribunalCaseworkerWithRegionId4,
@@ -127,18 +84,6 @@ Scenario('Before SDO GA 1v1 spec - Written Representations Additional Response t
   await api.judgeRevisitScheduler(gaCaseReference, state, genAppType);
   console.log('*** End of Legal Advisor Revisit Written Representations Scheduler ***');
 
-  console.log('*** Validate Task Initiation for Review Revisited Application - Start ***');
-  if (config.runWAApiTest) {
-    const actualReviewRevisitedApplicationTask = await api.retrieveTaskDetails(config.nbcAdminWithRegionId4,
-      gaCaseReference, config.waTaskIds.reviewRevisitedApplication);
-    console.log('actualReviewRevisitedApplicationTask...', actualReviewRevisitedApplicationTask);
-    wa.validateTaskInfo(actualReviewRevisitedApplicationTask, expectedReviewResivistedForWrittenRep);
-  }
-  console.log('*** Validate Task Initiation for Review Revisited Application - End ***');
-
-  console.log('*** NBC Admin Region4 Refer to Legal Advisor Process Start ***');
-  await api.nbcAdminReferToLegalAdvisor(config.nbcAdminWithRegionId4, gaCaseReference);
-  console.log('*** NBC Admin Region4 Refer to Legal Advisor Process End ***');
   console.log('*** Validate Task Initiation for Legal Advisor Revisit Application- Start ***');
   if (config.runWAApiTest) {
     const actualLARevisitApplicationTask = await api.retrieveTaskDetails(config.tribunalCaseworkerWithRegionId4,
