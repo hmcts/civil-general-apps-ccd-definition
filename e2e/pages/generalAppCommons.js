@@ -63,5 +63,19 @@ module.exports = {
       await expect(actualJudgeRecitalText).to.equals(`Judge: ${fullJudgeName}\n\nThe Judge considered the application of Claimant dated ${fullDate}\n\nAnd the Judge considered the information provided by the parties`);
     }
   },
+
+  verifyGAApplicantName: async (actualApplicantName, applicantName) => {
+    switch (applicantName) {
+      case 'Claimant':
+        await expect(actualApplicantName).to.equals('Test Inc - Claimant');
+        break;
+      case 'Defendant 1':
+        await expect(actualApplicantName).to.equals('Sir John Doe - Defendant');
+        break;
+      case 'Defendant 2':
+        await expect(actualApplicantName).to.equals('Dr Foo Bar - Defendant');
+        break;
+    }
+  },
   docFullDate,
 };
