@@ -160,5 +160,11 @@
     "CaseFieldID": "hearingNoticeDocument",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaApplicantDisplayName",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
   }
 ]
