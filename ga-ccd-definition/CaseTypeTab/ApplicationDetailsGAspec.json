@@ -4,7 +4,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "judicialDecisionRequestMoreInfo",
+    "CaseFieldID": "gaApplicantDisplayName",
     "TabFieldDisplayOrder": 1
   },
   {
@@ -12,7 +12,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "TabFieldDisplayOrder": 2
   },
   {
@@ -20,8 +20,16 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "judicialDecisionMakeOrder",
+    "CaseFieldID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
     "TabFieldDisplayOrder": 3
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application",
+    "TabLabel": "Application",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "TabFieldDisplayOrder": 4
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -30,7 +38,7 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "judicialDecision",
     "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\"",
-    "TabFieldDisplayOrder": 4
+    "TabFieldDisplayOrder": 5
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -38,7 +46,7 @@
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
     "CaseFieldID": "judgeRecitalText",
-    "TabFieldDisplayOrder": 5,
+    "TabFieldDisplayOrder": 6,
     "FieldShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\""
   },
   {
@@ -47,7 +55,7 @@
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
     "CaseFieldID": "directionInRelationToHearingText",
-    "TabFieldDisplayOrder": 6,
+    "TabFieldDisplayOrder": 7,
     "FieldShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\""
   },
   {
@@ -56,7 +64,7 @@
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
     "CaseFieldID": "judicialGeneralHearingOrderRecital",
-    "TabFieldDisplayOrder": 5,
+    "TabFieldDisplayOrder": 8,
     "FieldShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\""
   },
   {
@@ -65,7 +73,7 @@
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
     "CaseFieldID": "judicialGOHearingDirections",
-    "TabFieldDisplayOrder": 6,
+    "TabFieldDisplayOrder": 9,
     "FieldShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\""
   },
   {
@@ -74,30 +82,6 @@
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
     "CaseFieldID": "generalAppRespondentAgreement",
-    "TabFieldDisplayOrder": 7
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application",
-    "TabLabel": "Application",
-    "TabDisplayOrder": 1,
-    "CaseFieldID": "isApplicationUrgent",
-    "TabFieldDisplayOrder": 8
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application",
-    "TabLabel": "Application",
-    "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppInformOtherParty",
-    "TabFieldDisplayOrder": 9
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application",
-    "TabLabel": "Application",
-    "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppType",
     "TabFieldDisplayOrder": 10
   },
   {
@@ -105,7 +89,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppN245FormUpload",
+    "CaseFieldID": "isApplicationUrgent",
     "TabFieldDisplayOrder": 11
   },
   {
@@ -113,7 +97,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppDetailsOfOrder",
+    "CaseFieldID": "generalAppInformOtherParty",
     "TabFieldDisplayOrder": 12
   },
   {
@@ -121,7 +105,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppReasonsOfOrder",
+    "CaseFieldID": "generalAppType",
     "TabFieldDisplayOrder": 13
   },
   {
@@ -129,7 +113,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppEvidenceDocument",
+    "CaseFieldID": "generalAppN245FormUpload",
     "TabFieldDisplayOrder": 14
   },
   {
@@ -137,7 +121,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppHearingDetails",
+    "CaseFieldID": "generalAppDetailsOfOrder",
     "TabFieldDisplayOrder": 15
   },
   {
@@ -145,8 +129,32 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppParentCaseLink",
+    "CaseFieldID": "generalAppReasonsOfOrder",
     "TabFieldDisplayOrder": 16
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application",
+    "TabLabel": "Application",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppEvidenceDocument",
+    "TabFieldDisplayOrder": 17
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application",
+    "TabLabel": "Application",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppHearingDetails",
+    "TabFieldDisplayOrder": 18
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application",
+    "TabLabel": "Application",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppParentCaseLink",
+    "TabFieldDisplayOrder": 19
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -155,7 +163,7 @@
     "ElementLabel": "Respondend response",
     "TabDisplayOrder": 1,
     "CaseFieldID": "respondentsResponses",
-    "TabFieldDisplayOrder": 17
+    "TabFieldDisplayOrder": 20
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -163,7 +171,7 @@
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
     "CaseFieldID": "referToJudge",
-    "TabFieldDisplayOrder": 18
+    "TabFieldDisplayOrder": 21
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -171,6 +179,6 @@
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
     "CaseFieldID": "referToLegalAdvisor",
-    "TabFieldDisplayOrder": 19
+    "TabFieldDisplayOrder": 22
   }
 ]
