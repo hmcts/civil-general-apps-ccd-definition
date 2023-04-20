@@ -7,7 +7,7 @@ let civilCaseReference, gaCaseReference;
 Feature('GA 1v1 Uncloak application API  @api-nightly');
 
 Scenario('Judge makes decision 1V1 - ORDER_MADE - Uncloak and Application Approved', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -20,20 +20,20 @@ Scenario('Judge makes decision 1V1 - ORDER_MADE - Uncloak and Application Approv
   console.log('*** Start Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
     + gaCaseReference + ' ***');
   const doc = 'generalOrder';
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeMakesOrderDecisionUncloak(config.judgeUser, gaCaseReference);
-  }else {
+  } else {
     await api.judgeMakesOrderDecisionUncloak(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
     + gaCaseReference + ' ***');
 
-  await api.assertGaDocumentVisibilityToUser( config.applicantSolicitorUser, civilCaseReference, gaCaseReference, doc);
-  await api.assertGaDocumentVisibilityToUser( config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
+  await api.assertGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, doc);
+  await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 });
 
 Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Application', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -45,9 +45,9 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
 
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference);
-  }else {
+  } else {
     await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
@@ -61,7 +61,7 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
 
 Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Payment fails', async ({api}) => {
 
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -73,9 +73,9 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Payment fails', 
 
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference);
-  }else {
+  } else {
     await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
@@ -89,7 +89,7 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Payment fails', 
 
 Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Application - Response - Directions Order', async ({api}) => {
 
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -97,39 +97,39 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application without notice');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser,
-                                                                      civilCaseReference);
+    civilCaseReference);
 
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
-              + gaCaseReference + ' ***');
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    + gaCaseReference + ' ***');
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference);
-  }else {
+  } else {
     await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
-              + gaCaseReference + ' ***');
+    + gaCaseReference + ' ***');
 
   console.log('*** Start Callback for Additional Payment: ' + gaCaseReference + ' ***');
   await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
   console.log('*** End Callback for Additional Payment on GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Respondent respond to Judge Additional information on GA Case Reference: '
-              + gaCaseReference + ' ***');
+    + gaCaseReference + ' ***');
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Respondent respond to Judge Additional information on GA Case Reference: '
-              + gaCaseReference + ' ***');
+    + gaCaseReference + ' ***');
 
   console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeMakesDecisionDirectionsOrder(config.judgeUser, gaCaseReference);
-  }else {
+  } else {
     await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
 
   const doc = 'directionOrder';
-  await api.assertGaDocumentVisibilityToUser( config.applicantSolicitorUser, civilCaseReference, gaCaseReference, doc);
-  await api.assertGaDocumentVisibilityToUser( config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
+  await api.assertGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, doc);
+  await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 });
 
 AfterSuite(async ({api}) => {

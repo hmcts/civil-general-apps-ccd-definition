@@ -7,11 +7,10 @@ const states = require('../../../fixtures/ga-ccd/state.js');
 const listForHearingStatus = states.LISTING_FOR_A_HEARING.id;
 
 
-let civilCaseReference, gaCaseReference, expectedReviewApplicationTask, expectedJudgeDecideOnApplicationBeforeSDOTask,
+let civilCaseReference, gaCaseReference, expectedJudgeDecideOnApplicationBeforeSDOTask,
   expectedLADecideOnApplicationBeforeSDOTask, expectedScheduleAppHearingBeforeSDOTask,
   expectedJudgeDecideOnApplicationAfterSDOTask;
 if (config.runWAApiTest) {
-  expectedReviewApplicationTask = require('../../../../wa/tasks/reviewApplicationTask.js');
   expectedJudgeDecideOnApplicationBeforeSDOTask = require('../../../../wa/tasks/judgeDecideOnApplicationBeforeSDOTask.js');
   expectedJudgeDecideOnApplicationAfterSDOTask = require('../../../../wa/tasks/judgeDecideOnApplicationAfterSDOTask.js');
   expectedLADecideOnApplicationBeforeSDOTask = require('../../../../wa/tasks/laDecideOnApplicationBeforeSDOTask.js');
@@ -29,19 +28,6 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin review scheduled Appli
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
-
-  console.log('Region 4 NBC admin review application and Refer to Judge');
-  if (config.runWAApiTest) {
-    const actualReviewApplicationTask = await api.retrieveTaskDetails(config.nbcAdminWithRegionId4,
-      gaCaseReference, config.waTaskIds.nbcUserReviewGA);
-    console.log('actualReviewApplicationTask...', actualReviewApplicationTask);
-    wa.validateTaskInfo(actualReviewApplicationTask, expectedReviewApplicationTask);
-  }
-  await I.login(config.nbcAdminWithRegionId4);
-  await wa.goToTask(gaCaseReference, config.waTaskIds.nbcUserReviewGA);
-  await wa.goToEvent('Refer to Judge');
-  await wa.referToJudge();
-  await wa.verifyNoActiveTask(gaCaseReference);
 
   console.log('Region 4 Judge List for a hearing');
   if (config.runWAApiTest) {
@@ -69,19 +55,6 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin review scheduled Appli
 Scenario.skip('Before SDO GA - LA Make decision - NBC admin review', async ({I, api, wa}) => {
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
-
-  console.log('Region 4 NBC admin review application and Refer to Judge');
-  if (config.runWAApiTest) {
-    const actualReviewApplicationTask = await api.retrieveTaskDetails(config.nbcAdminWithRegionId4,
-      gaCaseReference, config.waTaskIds.nbcUserReviewGA);
-    console.log('actualReviewApplicationTask...', actualReviewApplicationTask);
-    wa.validateTaskInfo(actualReviewApplicationTask, expectedReviewApplicationTask);
-  }
-  await I.login(config.nbcAdminWithRegionId4);
-  await wa.goToTask(gaCaseReference, config.waTaskIds.nbcUserReviewGA);
-  await wa.goToEvent('Refer to Legal Advisor');
-  await wa.referToLA();
-  await wa.verifyNoActiveTask(gaCaseReference);
 
   console.log('Region 4 LA List for a hearing');
   if (config.runWAApiTest) {

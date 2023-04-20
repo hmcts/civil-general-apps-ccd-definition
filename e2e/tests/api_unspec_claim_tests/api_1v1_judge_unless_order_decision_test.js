@@ -22,9 +22,9 @@ Scenario('Judge makes decision 1V1 - unless order  @api-tests @api-scheduler-tes
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge makes decision unless order: ' + gaCaseReference + ' ***');
-  if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     state = await api.judgeMakesDecisionOrderMadeUnlessOrderAppln(config.judgeUser, gaCaseReference);
-  }else {
+  } else {
     state = await api.judgeMakesDecisionOrderMadeUnlessOrderAppln(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge makes decision unless order - GA Case Reference: ' + gaCaseReference + ' ***');
@@ -33,7 +33,7 @@ Scenario('Judge makes decision 1V1 - unless order  @api-tests @api-scheduler-tes
 Scenario('Judge Revisit 1V1 - unless order End Date Scheduler @api-scheduler-test', async ({api}) => {
 
   console.log('*** Triggering Judge Revisit unless order Scheduler ***');
-  await api.judgeRevisitScheduler(gaCaseReference,state,genAppType);
+  await api.judgeRevisitScheduler(gaCaseReference, state, genAppType);
   console.log('*** End of Judge Revisit unless order Scheduler ***');
 
 });
