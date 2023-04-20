@@ -43,7 +43,6 @@ Scenario('Verify Specific access check for judge', async ({I, wa, api}) => {
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
   console.log('*** General Application case created ***' + gaCaseReference);
 
-  await api.nbcAdminReferToJudge(config.nbcAdminWithRegionId4, gaCaseReference) ;
   await I.login(config.iacLeadershipJudge);
   await wa.runSpecificAccessRequestSteps(gaCaseReference);
   if (config.runWAApiTest) {
@@ -68,7 +67,6 @@ Scenario('Verify Specific access check for Legal Ops', async ({I, wa, api}) => {
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
   console.log('*** General Application case created ***' + gaCaseReference);
-  await api.nbcAdminReferToLegalAdvisor(config.nbcAdminWithRegionId4, gaCaseReference);
   await I.login(config.iacLegalOpsUser);
   await wa.runSpecificAccessRequestSteps(gaCaseReference);
   if (config.runWAApiTest) {
