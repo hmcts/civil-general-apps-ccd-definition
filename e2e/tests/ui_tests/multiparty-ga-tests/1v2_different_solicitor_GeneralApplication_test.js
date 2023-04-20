@@ -163,7 +163,7 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
     await I.navigateToApplicationsTab(civilCaseReference);
     await I.see(judgeDecisionStatus);
 
-   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
       await api.judgeMakesDecisionWrittenRep(config.judgeUser, gaCaseReference);
     } else {
       await api.judgeMakesDecisionWrittenRep(config.judgeLocalUser, gaCaseReference);
@@ -171,15 +171,11 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
     await I.login(config.defendantSolicitorUser);
     await I.navigateToApplicationsTab(civilCaseReference);
     await I.see(writtenRepStatus);
-
-    await I.navigateToCaseDetails(gaCaseReference);
-    await I.wait(10000);
-
-    /*
-        await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser,
-          civilCaseReference, gaCaseReference, null);
-        await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser,
-          civilCaseReference, gaCaseReference, null);*/
+    
+    await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser,
+      civilCaseReference, gaCaseReference, null);
+    await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser,
+      civilCaseReference, gaCaseReference, null);
   });
 
 Scenario('With Notice application - Org3 Solicitor Initiate GA', async ({api, I}) => {
