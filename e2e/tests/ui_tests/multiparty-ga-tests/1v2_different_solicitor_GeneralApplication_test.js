@@ -150,7 +150,7 @@ Scenario('Without Notice application to With Notice application - Directions Ord
       civilCaseReference, gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id);
   });
 
-Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations @mmm',
+Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations',
   async ({api, I}) => {
     civilCaseReference = await api.createUnspecifiedClaim(
       config.applicantSolicitorUser, mpScenario, 'SoleTrader');
@@ -171,7 +171,9 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
     await I.login(config.defendantSolicitorUser);
     await I.navigateToApplicationsTab(civilCaseReference);
     await I.see(writtenRepStatus);
-    
+
+    await api.assertGAApplicantDisplayName(config.defendantSolicitorUser, gaCaseReference);
+
     await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser,
       civilCaseReference, gaCaseReference, null);
     await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser,
@@ -198,6 +200,7 @@ Scenario('With Notice application - Org3 Solicitor Initiate GA', async ({api, I}
     civilCaseReference, gaCaseReference, states.AWAITING_RESPONDENT_RESPONSE.id);
   await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
+  await api.assertGAApplicantDisplayName(config.secondDefendantSolicitorUser, gaCaseReference);
 });
 
 Scenario('With Notice application - Org2 Solicitor Initiate GA', async ({api, I}) => {
@@ -221,8 +224,9 @@ Scenario('With Notice application - Org2 Solicitor Initiate GA', async ({api, I}
     civilCaseReference, gaCaseReference, 'Y');
   await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser,
     civilCaseReference, gaCaseReference, 'Y');
+  await api.assertGAApplicantDisplayName(config.defendantSolicitorUser, gaCaseReference);
 });
 
 AfterSuite(async ({api}) => {
-  // await api.cleanUp();
+  await api.cleanUp();
 });
