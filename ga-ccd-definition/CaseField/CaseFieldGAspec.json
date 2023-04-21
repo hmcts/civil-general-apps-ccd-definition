@@ -761,7 +761,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppVaryJudgementType",
-    "Label": "Vary Judgement GA Type",
+    "Label": "Vary Judgment GA Type",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
