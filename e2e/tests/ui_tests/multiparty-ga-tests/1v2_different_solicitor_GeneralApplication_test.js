@@ -67,7 +67,7 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
       states.LISTING_FOR_A_HEARING.id, config.applicantSolicitorUser);
     await I.judgeCloseAndReturnToCaseDetails();
-    await I.verifyJudgesSummaryPage('Hearing order', 'yes');
+    await I.verifyJudgesSummaryPage('Hearing order', 'yes', 'Claimant');
     await I.verifyApplicationDocument('Hearing order');
     await I.dontSee('Go');
     await I.dontSee('Next step');
@@ -172,6 +172,8 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
     await I.navigateToApplicationsTab(civilCaseReference);
     await I.see(writtenRepStatus);
 
+    await api.assertGAApplicantDisplayName(config.defendantSolicitorUser, gaCaseReference);
+
     await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser,
       civilCaseReference, gaCaseReference, null);
     await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser,
@@ -198,6 +200,7 @@ Scenario('With Notice application - Org3 Solicitor Initiate GA', async ({api, I}
     civilCaseReference, gaCaseReference, states.AWAITING_RESPONDENT_RESPONSE.id);
   await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
+  await api.assertGAApplicantDisplayName(config.secondDefendantSolicitorUser, gaCaseReference);
 });
 
 Scenario('With Notice application - Org2 Solicitor Initiate GA', async ({api, I}) => {
@@ -221,6 +224,7 @@ Scenario('With Notice application - Org2 Solicitor Initiate GA', async ({api, I}
     civilCaseReference, gaCaseReference, 'Y');
   await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser,
     civilCaseReference, gaCaseReference, 'Y');
+  await api.assertGAApplicantDisplayName(config.defendantSolicitorUser, gaCaseReference);
 });
 
 AfterSuite(async ({api}) => {
