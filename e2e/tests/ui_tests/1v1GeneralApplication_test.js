@@ -52,7 +52,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'no', gaCaseReference, 'General_order', 'courtOwnInitiativeOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.ORDER_MADE.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Approve order', 'no');
+  await I.verifyJudgesSummaryPage('Approve order', 'no', 'Claimant');
   await I.verifyApplicationDocument('General order');
   console.log('Judges made a decision on case: ' + gaCaseReference);
   await I.login(config.applicantSolicitorUser);
@@ -97,7 +97,7 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', gaCaseReference, 'Directions_order', 'withoutNoticeOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Judges Directions', 'no');
+  await I.verifyJudgesSummaryPage('Judges Directions', 'no', 'Claimant');
   await I.verifyApplicationDocument('Directions order');
   console.log('Judges Directions Order Made on case: ' + gaCaseReference);
   await I.login(config.applicantSolicitorUser);
@@ -137,7 +137,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
   await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'no', gaCaseReference, 'Dismissal_order', 'noneOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.APPLICATION_DISMISSED.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Dismissal order', 'no');
+  await I.verifyJudgesSummaryPage('Dismissal order', 'no', 'Claimant');
   await I.verifyApplicationDocument('Dismissal order');
   await I.dontSee('Go');
   await I.dontSee('Next step');
@@ -193,7 +193,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', gaCaseReference, 'yes', 'Request_for_information');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id, config.defendantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Request more information', 'yes');
+  await I.verifyJudgesSummaryPage('Request more information', 'yes', 'Claimant');
   await I.verifyApplicationDocument('Request for information');
   console.log('Judges requested more information on case: ' + gaCaseReference);
   await I.login(config.applicantSolicitorUser);

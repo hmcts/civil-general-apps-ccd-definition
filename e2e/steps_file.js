@@ -995,8 +995,8 @@ module.exports = function () {
       ]);
     },
 
-    async verifyJudgesSummaryPage(decisionType, consentCheck) {
-      await judgesSummary.verifyJudgesSummaryPage(decisionType, consentCheck);
+    async verifyJudgesSummaryPage(decisionType, consentCheck, applicantName) {
+      await judgesSummary.verifyJudgesSummaryPage(decisionType, consentCheck, applicantName);
     },
 
     async verifyApplicantSummaryPage() {

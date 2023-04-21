@@ -1,19 +1,21 @@
-const {verifyJudgeRecitalText} = require('../../generalAppCommons');
+const {verifyJudgeRecitalText, verifyGAApplicantName} = require('../../generalAppCommons');
 const {I} = inject();
 
 module.exports = {
 
   fields: {
-    summaryLabels: 'table.Application ccd-read-text-area-field span'
+    summaryLabels: 'table.Application ccd-read-text-area-field span',
+    applicantNameText: 'td[id*="gaApplicantDisplayName"] span'
   },
 
-  async verifyJudgesSummaryPage(decisionType, notice) {
+  async verifyJudgesSummaryPage(decisionType, notice, applicantName) {
     I.waitInUrl('#Application');
     I.see('Application');
     I.see('Parent Case ID');
     I.see('Hearing details');
     I.see('Preferred location');
     I.see('Vulnerability questions');
+    await verifyGAApplicantName(await I.grabTextFrom(locate(this.fields.applicantNameText).last()), applicantName);
     switch (decisionType) {
       case 'Judges Directions':
         await I.see('Judge’s recital');
