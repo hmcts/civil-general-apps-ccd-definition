@@ -141,34 +141,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppTypeLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "R"
-      },
-      {
-        "UserRoles": [
-          "civil-administrator-standard",
-          "civil-administrator-basic"
-        ],
-        "CRUD": "R"
-      },
-      {
-        "UserRoles": [
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppType",
     "AccessControl": [
       {
@@ -3150,6 +3122,28 @@
           "civil-administrator-basic",
           "caseworker-ras-validation",
           "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaApplicantDisplayName",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "civil-administrator-standard",
+          "civil-administrator-basic",
+          "ga-basic-access",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
