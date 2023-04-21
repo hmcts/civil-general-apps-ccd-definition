@@ -71,7 +71,7 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
     'concurrentRep', gaCaseReference, 'no', 'Order_Written_Representation_Concurrent', 'withoutNoticeOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_WRITTEN_REPRESENTATIONS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Concurrent representations', 'no');
+  await I.verifyJudgesSummaryPage('Concurrent representations', 'no', 'Claimant');
   await I.verifyApplicationDocument('Written representation concurrent');
   console.log('Judges made an order for Concurrent written representations on case: ' + gaCaseReference);
 
