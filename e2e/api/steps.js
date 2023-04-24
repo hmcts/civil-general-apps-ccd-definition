@@ -34,10 +34,16 @@ const {checkPBAv3ToggleEnabled} = require('./testingSupport');
 const {createGeneralAppN245FormUpload} = require('../fixtures/ga-ccd/createGeneralApplication');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const {expect} = require('chai');
+const gaTypesList = {
+  'LATypes': ['STAY_THE_CLAIM','EXTEND_TIME', 'AMEND_A_STMT_OF_CASE'],
+  'JudgeGaTypes': ['STRIKE_OUT']
+};
 
 const data = {
-  INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
-    '27500','FEE0442'),
+  INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes', null,
+    '27500', 'FEE0442'),
+  INITIATE_GENERAL_APPLICATION_FOR_LA: genAppData.createGA(gaTypesList.LATypes, 'No', null,
+    '27500', 'FEE0442'),
   INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE: genAppData.createGADataWithoutNotice('No','Test 123',
     '10800','FEE0443'),
   INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
@@ -368,66 +374,14 @@ module.exports = {
   },
 
   initiateGeneralApplicationWithOutNotice: async (user, parentCaseId) => {
-    let gaCaseReference, index = 0;
-    eventName = events.INITIATE_GENERAL_APPLICATION.id;
-
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName, parentCaseId);
-
-    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE,
-      parentCaseId);
-
-    const responseBody = await response.json();
-    assert.equal(response.status, 201);
-    console.log('General application case state : ' + responseBody.state);
-    assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header,
-      '# You have made an application');
-
-    await waitForFinishedBusinessProcess(parentCaseId, user);
-    await waitForGAFinishedBusinessProcess(parentCaseId, user);
-
-    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
-    const updatedCivilCaseData = await updatedResponse.json();
-
-    if (updatedCivilCaseData.gaDetailsMasterCollection.length > 1) {
-      index = 1;
-    }
-
-    switch (user.email) {
-      case config.applicantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[index].value.caseLink.CaseReference;
-        break;
-      case config.defendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[index].value.caseLink.CaseReference;
-        break;
-      case config.secondDefendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[index].value.caseLink.CaseReference;
-        break;
-    }
-
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
-
-    //Payment callback handler response after the payment from service request tab
-    const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
-      genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
-
-    assert.equal(payment_response.status, 200);
-
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-      'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', user);
-
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseReference, user);
-    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
-    assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
-
-    console.log('General application case state : APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
-    console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
-    await addUserCaseMapping(gaCaseReference, user);
-    return gaCaseReference;
+    return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE);
   },
 
-   initiateGeneralApplicationWithNoStrikeOut: async (user, parentCaseId) => {
+  initiateGaForLA: async (user, parentCaseId) => {
+    return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, data.INITIATE_GENERAL_APPLICATION_FOR_LA) ;
+  },
+
+  initiateGeneralApplicationWithNoStrikeOut: async (user, parentCaseId) => {
     eventName = events.INITIATE_GENERAL_APPLICATION.id;
     let gaCaseReference;
 
@@ -1991,6 +1945,65 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   let ccdState = urgency ? 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION' : 'AWAITING_RESPONDENT_RESPONSE';
   //comment out next line to see race condition
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, ccdState, user);
+  await addUserCaseMapping(gaCaseReference, user);
+  return gaCaseReference;
+};
+
+const initiateGeneralApplicationWithOutNotice = async (user, parentCaseId, gaData) => {
+  let gaCaseReference, index = 0;
+  eventName = events.INITIATE_GENERAL_APPLICATION.id;
+
+  await apiRequest.setupTokens(user);
+  await apiRequest.startEvent(eventName, parentCaseId);
+
+  let response = await apiRequest.submitEvent(eventName, gaData, parentCaseId);
+
+  const responseBody = await response.json();
+  assert.equal(response.status, 201);
+  console.log('General application case state : ' + responseBody.state);
+  assert.equal(responseBody.callback_response_status_code, 200);
+  assert.include(responseBody.after_submit_callback_response.confirmation_header,
+    '# You have made an application');
+
+  await waitForFinishedBusinessProcess(parentCaseId, user);
+  await waitForGAFinishedBusinessProcess(parentCaseId, user);
+
+  const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+  const updatedCivilCaseData = await updatedResponse.json();
+
+  if (updatedCivilCaseData.gaDetailsMasterCollection.length > 1) {
+    index = 1;
+  }
+
+  switch (user.email) {
+    case config.applicantSolicitorUser.email:
+      gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[index].value.caseLink.CaseReference;
+      break;
+    case config.defendantSolicitorUser.email:
+      gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[index].value.caseLink.CaseReference;
+      break;
+    case config.secondDefendantSolicitorUser.email:
+      gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[index].value.caseLink.CaseReference;
+      break;
+  }
+
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
+
+  //Payment callback handler response after the payment from service request tab
+  const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+    genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference, 'Paid'));
+
+  assert.equal(payment_response.status, 200);
+
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
+    'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', user);
+
+  const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseReference, user);
+  const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+  assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+
+  console.log('General application case state : APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+  console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   await addUserCaseMapping(gaCaseReference, user);
   return gaCaseReference;
 };

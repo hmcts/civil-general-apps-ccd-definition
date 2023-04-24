@@ -13,7 +13,7 @@ module.exports = {
   case_management_category: 'Civil',
   work_type_id: 'hearing_work',
   work_type_label: 'Hearing work',
-  permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel' ] },
-  description: '',
+  permissions: {values: ['Read', 'Own', 'CompleteOwn', 'CancelOwn', 'Claim', 'Unclaim', 'UnclaimAssign']},
+  description: '[ScheduleApplicationHearing](/cases/case-details/${[CASE_REFERENCE]}/trigger/HEARING_SCHEDULED_GA/HEARING_SCHEDULED_GAHearingNoticeGADetail)',
   role_category: 'ADMIN'
 };

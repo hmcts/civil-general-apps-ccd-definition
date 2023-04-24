@@ -45,18 +45,19 @@ module.exports = function () {
         await this.waitInUrl('MAKE_DECISIONGAJudicialDecision', 10);
       } else if (taskName === 'LegalAdvisorDecideOnApplication') {
         await this.waitInUrl('MAKE_DECISIONGAJudicialDecision', 10);
+      } else if (taskName === 'ScheduleApplicationHearing') {
+        await this.waitInUrl('HEARING_SCHEDULED_GAHearingNoticeGADetail', 10);
       } else {
         await this.waitInUrl('Application', 5);
       }
     },
 
-    goToAdminTask: async function (caseId) {
+    goToAdminTask: async function (caseId, taskName) {
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
       await this.waitForElement('#event');
       await this.click('#action_claim');
       await this.waitForElement('#action_reassign');
-      // Enable this after implementation
-      // await this.waitForText(taskName);
+      await this.waitForText(taskName);
       await this.see('Active tasks');
       await this.see('Next steps');
     },
@@ -89,8 +90,8 @@ module.exports = function () {
       await this.click('Submit');
     },
 
-    runChallengedAccessSteps: async function(caseId) {
-      await this.fillField('#caseReference',caseId);
+    runChallengedAccessSteps: async function (caseId) {
+      await this.fillField('#caseReference', caseId);
       await this.click('Find');
       await this.wait(5);
       await this.waitForText('Request access');
@@ -104,8 +105,8 @@ module.exports = function () {
       console.log('Challenged access requested successfully');
     },
 
-    runSpecificAccessRequestSteps: async function(caseId) {
-      await this.fillField('#caseReference',caseId);
+    runSpecificAccessRequestSteps: async function (caseId) {
+      await this.fillField('#caseReference', caseId);
       await this.click('Find');
       await this.wait(5);
       await this.click('Request access');
@@ -120,7 +121,7 @@ module.exports = function () {
       console.log('Specific access requested successfully');
     },
 
-    runSpecificAccessApprovalSteps: async function(caseId, approveType) {
+    runSpecificAccessApprovalSteps: async function (caseId, approveType) {
       console.log('config.url.manageCase...', config.url.manageCase);
       await this.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/tasks');
       await this.waitForElement('#action_claim');
@@ -135,9 +136,9 @@ module.exports = function () {
       await this.waitForElement('#specific-access-1');
       if (approveType == '7 days') {
         await this.click('7 days');
-      } else if (approveType == 'Indefinite'){
+      } else if (approveType == 'Indefinite') {
         await this.click('Indefinite');
-      } else if (approveType == 'Another period'){
+      } else if (approveType == 'Another period') {
         await this.click('Another period');
       }
       await this.click('Submit');
@@ -146,7 +147,7 @@ module.exports = function () {
       await this.waitForText('My tasks');
     },
 
-    runJudgeSpecificAccessApprovalSteps: async function(caseId) {
+    runJudgeSpecificAccessApprovalSteps: async function (caseId) {
       console.log('config.url.manageCase...', config.url.manageCase);
       await this.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/tasks');
       await this.waitForElement('#action_assign');
@@ -156,7 +157,7 @@ module.exports = function () {
       await this.click('Continue');
       await this.wait(5);
       await this.waitForElement('#sub-title-hint');
-      await this.fillField('#inputSelectPerson','Joe Bloggs (4925721EMP-@ejudiciary.net)');
+      await this.fillField('#inputSelectPerson', 'Joe Bloggs (4925721EMP-@ejudiciary.net)');
       await this.click('Continue');
       await this.waitForElement('#reassign-confirm-hint');
       await this.see('Check you are assigning work to the right person.');
@@ -166,11 +167,11 @@ module.exports = function () {
     },
 
     validateTaskInfo(createdTask, expectedTaskInfo) {
-      if(expectedTaskInfo && createdTask) {
+      if (expectedTaskInfo && createdTask) {
         for (let taskDMN of Object.keys(taskFieldsToBeValidated)) {
           console.log(`asserting dmn info: ${taskDMN} has valid data`);
           taskFieldsToBeValidated[taskDMN].forEach(
-            fieldsToBeValidated  => {
+            fieldsToBeValidated => {
               assert.deepEqual(createdTask[fieldsToBeValidated], expectedTaskInfo[fieldsToBeValidated]);
             }
           );

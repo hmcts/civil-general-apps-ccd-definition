@@ -9,17 +9,18 @@ const listForHearingStatus = states.LISTING_FOR_A_HEARING.id;
 
 let civilCaseReference, gaCaseReference, expectedJudgeDecideOnApplicationBeforeSDOTask,
   expectedLADecideOnApplicationBeforeSDOTask, expectedScheduleAppHearingBeforeSDOTask,
-  expectedJudgeDecideOnApplicationAfterSDOTask;
+  expectedJudgeDecideOnApplicationAfterSDOTask, expectedScheduleAppHearingAfterSDOTask;
 if (config.runWAApiTest) {
   expectedJudgeDecideOnApplicationBeforeSDOTask = require('../../../../wa/tasks/judgeDecideOnApplicationBeforeSDOTask.js');
   expectedJudgeDecideOnApplicationAfterSDOTask = require('../../../../wa/tasks/judgeDecideOnApplicationAfterSDOTask.js');
   expectedLADecideOnApplicationBeforeSDOTask = require('../../../../wa/tasks/laDecideOnApplicationBeforeSDOTask.js');
   expectedScheduleAppHearingBeforeSDOTask = require('../../../../wa/tasks/scheduleAppHearingBeforeSDOTask.js');
+  expectedScheduleAppHearingAfterSDOTask = require('../../../../wa/tasks/scheduleAppHearingAfterSDOTask.js');
 }
 
 Feature('1v1 Unspec: GA - WA Schedule Application Hearing @e2e-wa');
 
-Scenario('Before SDO GA - Judge Make decision - NBC admin review scheduled Application Hearing', async ({I, api, wa}) => {
+Scenario('Before SDO GA - Judge Make decision - NBC admin schedule Hearing', async ({I, api, wa}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -48,13 +49,24 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin review scheduled Appli
      console.log('actualScheduleApplicationHearingTask...', actualScheduleApplicationHearingTask);
      wa.validateTaskInfo(actualScheduleApplicationHearingTask, expectedScheduleAppHearingBeforeSDOTask);
    }
-   await I.login(config.nbcAdminWithRegionId4);
-   await wa.goToAdminTask(gaCaseReference);
-}).retry(1);
 
-Scenario.skip('Before SDO GA - LA Make decision - NBC admin review', async ({I, api, wa}) => {
+  await I.login(config.nbcAdminWithRegionId4);
+  await wa.goToTask(gaCaseReference, config.waTaskIds.scheduleApplicationHearing);
+  await I.fillHearingNotice(gaCaseReference, 'claimAndDef', 'basildon', 'VIDEO');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.HEARING_SCHEDULED.id, config.nbcAdminWithRegionId4);
+  console.log('Hearing Notice created for: ' + gaCaseReference);
+  await wa.verifyNoActiveTask(gaCaseReference);
+});
+
+Scenario('Before SDO GA - LA Make decision - NBC admin schedule Hearing @mmm', async ({I, api, wa}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(
+    config.applicantSolicitorUser, mpScenario, 'Company');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api.initiateGaForLA(config.applicantSolicitorUser, civilCaseReference);
 
   console.log('Region 4 LA List for a hearing');
   if (config.runWAApiTest) {
@@ -76,11 +88,26 @@ Scenario.skip('Before SDO GA - LA Make decision - NBC admin review', async ({I, 
     console.log('actualScheduleApplicationHearingTask...', actualScheduleApplicationHearingTask);
     wa.validateTaskInfo(actualScheduleApplicationHearingTask, expectedScheduleAppHearingBeforeSDOTask);
   }
-  await I.login(config.nbcAdminWithRegionId4);
-  await wa.goToAdminTask(gaCaseReference);
-}).retry(1);
 
-Scenario.skip('After SDO GA - Judge Make decision - HC admin review', async ({I, api, wa}) => {
+  await I.login(config.nbcAdminWithRegionId4);
+  await wa.goToTask(gaCaseReference, config.waTaskIds.scheduleApplicationHearing);
+  await I.fillHearingNotice(gaCaseReference, 'claimAndDef', 'basildon', 'VIDEO');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.HEARING_SCHEDULED.id, config.nbcAdminWithRegionId4);
+  console.log('Hearing Notice created for: ' + gaCaseReference);
+  await wa.verifyNoActiveTask(gaCaseReference);
+});
+
+Scenario('After SDO GA - Judge Make decision - HC admin review', async ({I, api, wa}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(
+    config.applicantSolicitorUser, mpScenario, 'Company');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
@@ -97,12 +124,12 @@ Scenario.skip('After SDO GA - Judge Make decision - HC admin review', async ({I,
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, config.judgeUserWithRegionId1);
   await wa.verifyNoActiveTask(gaCaseReference);
 
-  console.log('Region 4 HCA admin review scheduled Application Hearing');
+  console.log('Region 1 HCA admin review scheduled Application Hearing');
   if (config.runWAApiTest) {
     const actualScheduleApplicationHearingTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1,
       gaCaseReference, config.waTaskIds.scheduleApplicationHearing);
     console.log('actualScheduleApplicationHearingTask...', actualScheduleApplicationHearingTask);
-    wa.validateTaskInfo(actualScheduleApplicationHearingTask, expectedScheduleAppHearingBeforeSDOTask);
+    wa.validateTaskInfo(actualScheduleApplicationHearingTask, expectedScheduleAppHearingAfterSDOTask);
   }
   await I.login(config.hearingCenterAdminWithRegionId1);
   await wa.goToAdminTask(gaCaseReference);
@@ -110,7 +137,7 @@ Scenario.skip('After SDO GA - Judge Make decision - HC admin review', async ({I,
 
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
 
 
