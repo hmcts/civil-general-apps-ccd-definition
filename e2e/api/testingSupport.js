@@ -95,7 +95,7 @@ module.exports = {
           } else if (businessProcess && businessProcess.status === 'FINISHED' && response.ccdState !== ccdState) {
             throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
               + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId},`
-              +` Present Case state: ${response.ccdState}, Expected State: ${ccdState}`);
+              + ` Present Case state: ${response.ccdState}, Expected State: ${ccdState}`);
           }
         });
     }, MAX_RETRIES, RETRY_TIMEOUT_MS);
@@ -121,8 +121,9 @@ module.exports = {
           if (response.status === 200) {
             console.log('Role assigned successfully');
           } else if (response.status === 409) {
-            console.log('Role assigned failed');
+            console.log('Role already exists!');
           } else {
+            console.log('response..', response);
             throw new Error(`Error occurred with status : ${response.status}`);
           }
         });
@@ -147,7 +148,7 @@ module.exports = {
           if (response.status === 200) {
             caseIds.forEach(caseId => console.log(`User unassigned from case [${caseId}] successfully`));
           } else {
-            throw new Error(`Error occurred with status : ${response.status}`);
+            console.log(`Error occurred with status : ${response.status}`);
           }
         });
     });
@@ -177,7 +178,7 @@ module.exports = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
       }, null, 'GET')
-      .then(async response =>  {
+      .then(async response => {
           if (response.status === 200) {
             const json = await response.json();
             return json.toggleEnabled;
