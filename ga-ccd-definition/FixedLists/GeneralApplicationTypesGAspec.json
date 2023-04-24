@@ -8,7 +8,7 @@
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "SUMMARY_JUDGEMENT",
-    "ListElement": "Summary Judgement",
+    "ListElement": "Summary Judgment",
     "DisplayOrder": 2
   },
   {
@@ -38,7 +38,7 @@
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "SET_ASIDE_JUDGEMENT",
-    "ListElement": "Application to Set Aside Judgement",
+    "ListElement": "Application to Set Aside Judgment",
     "DisplayOrder": 7
   },
   {
@@ -68,7 +68,7 @@
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "VARY_JUDGEMENT",
-    "ListElement": "Application to Vary Judgement",
+    "ListElement": "Application to Vary Judgment",
     "DisplayOrder": 12
   }
 ]
