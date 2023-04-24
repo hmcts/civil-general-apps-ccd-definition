@@ -5,7 +5,7 @@ const claimAmountJudge = '11000';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('Unspec 1v1 - General Application after SDO Journey @api-tests');
+Feature('Unspec 1v1 - General Application after SDO Journey @ui-nightlytest');
 
 // Test before enable this test
 Scenario('Claimant create GA - JUDICIAL_REFERRAL state', async ({api, I}) => {
