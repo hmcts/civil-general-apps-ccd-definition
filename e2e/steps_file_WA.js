@@ -52,7 +52,7 @@ module.exports = function () {
       }
     },
 
-    goToAdminTask: async function (caseId, taskName) {
+    verifyAdminTask: async function (caseId, taskName) {
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
       await this.waitForElement('#event');
       await this.click('#action_claim');
