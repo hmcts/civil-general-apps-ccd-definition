@@ -962,7 +962,7 @@ module.exports = function () {
 
     async judgeApproveAnOrderWA(decision, order, consentCheck, caseNumber, documentType, user) {
       await judgeDecisionPage.selectJudgeDecision(decision);
-      await makeAnOrderPage.selectAnOrder(order, consentCheck, user);
+      await makeAnOrderPage.selectAnOrder(order, consentCheck, 'noneOrder', user);
       await reviewOrderDocumentPage.reviewOrderDocument(documentType);
       await judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber);
       await event.submit('Submit', 'Your order has been made');

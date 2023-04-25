@@ -98,7 +98,7 @@ Scenario('Before SDO GA - LA Make decision - NBC admin schedule Hearing', async 
   await wa.verifyNoActiveTask(gaCaseReference);
 });
 
-Scenario('After SDO GA - Judge Make decision - HC admin review', async ({I, api, wa}) => {
+Scenario('After SDO GA - Judge Make decision - HC admin schedule Hearing', async ({I, api, wa}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
