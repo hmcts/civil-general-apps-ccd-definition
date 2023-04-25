@@ -185,7 +185,8 @@
     "FieldTypeParameter": "Document",
     "Label": "Supporting evidence",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -194,7 +195,8 @@
     "FieldTypeParameter": "Document",
     "Label": "Response file",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -203,7 +205,8 @@
     "FieldTypeParameter": "Document",
     "Label": "Written Representation Documents",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -212,7 +215,8 @@
     "FieldTypeParameter": "Document",
     "Label": "Response file",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -221,7 +225,8 @@
     "FieldTypeParameter": "Document",
     "Label": "Directions Order Documents",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -792,7 +797,8 @@
     "ID": "judicialMakeOrderDocPreview",
     "Label": "Draft Order",
     "FieldType": "Document",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -1023,6 +1029,13 @@
     "ID": "gaApplicantDisplayName",
     "Label": "Applicant",
     "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "componentLauncher",
+    "Label": "Case file view",
+    "FieldType": "ComponentLauncher",
     "SecurityClassification": "Public"
   }
 ]
