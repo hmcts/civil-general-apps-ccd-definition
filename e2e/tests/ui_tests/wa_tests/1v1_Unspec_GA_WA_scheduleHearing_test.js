@@ -39,16 +39,16 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin schedule Hearing', asy
   }
   await I.login(config.judgeUserWithRegionId4);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
-  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order');
+  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order', config.judgeUserWithRegionId4);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, config.judgeUserWithRegionId4);
   await wa.verifyNoActiveTask(gaCaseReference);
 
-   console.log('Region 4 NBC admin review scheduled Application Hearing');
-   if (config.runWAApiTest) {
-     const actualScheduleApplicationHearingTask = await api.retrieveTaskDetails(config.nbcAdminWithRegionId4, gaCaseReference, config.waTaskIds.scheduleApplicationHearing);
-     console.log('actualScheduleApplicationHearingTask...', actualScheduleApplicationHearingTask);
-     wa.validateTaskInfo(actualScheduleApplicationHearingTask, expectedScheduleAppHearingBeforeSDOTask);
-   }
+  console.log('Region 4 NBC admin review scheduled Application Hearing');
+  if (config.runWAApiTest) {
+    const actualScheduleApplicationHearingTask = await api.retrieveTaskDetails(config.nbcAdminWithRegionId4, gaCaseReference, config.waTaskIds.scheduleApplicationHearing);
+    console.log('actualScheduleApplicationHearingTask...', actualScheduleApplicationHearingTask);
+    wa.validateTaskInfo(actualScheduleApplicationHearingTask, expectedScheduleAppHearingBeforeSDOTask);
+  }
 
   await I.login(config.nbcAdminWithRegionId4);
   await wa.goToTask(gaCaseReference, config.waTaskIds.scheduleApplicationHearing);
@@ -58,7 +58,7 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin schedule Hearing', asy
   await wa.verifyNoActiveTask(gaCaseReference);
 });
 
-Scenario('Before SDO GA - LA Make decision - NBC admin schedule Hearing @mmm', async ({I, api, wa}) => {
+Scenario('Before SDO GA - LA Make decision - NBC admin schedule Hearing', async ({I, api, wa}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -75,9 +75,10 @@ Scenario('Before SDO GA - LA Make decision - NBC admin schedule Hearing @mmm', a
     console.log('actualLADecideOnApplicationTask...', actualLADecideOnApplicationTask);
     wa.validateTaskInfo(actualLADecideOnApplicationTask, expectedLADecideOnApplicationBeforeSDOTask);
   }
+
   await I.login(config.tribunalCaseworkerWithRegionId4);
   await wa.goToTask(gaCaseReference, config.waTaskIds.legalAdvisorDecideOnApplication);
-  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order');
+  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order', config.tribunalCaseworkerWithRegionId4);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, config.tribunalCaseworkerWithRegionId4);
   await wa.verifyNoActiveTask(gaCaseReference);
 
@@ -99,7 +100,7 @@ Scenario('Before SDO GA - LA Make decision - NBC admin schedule Hearing @mmm', a
 
 Scenario('After SDO GA - Judge Make decision - HC admin review', async ({I, api, wa}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Company');
+    config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -109,7 +110,7 @@ Scenario('After SDO GA - Judge Make decision - HC admin review', async ({I, api,
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api.initiateGaForJudge(config.applicantSolicitorUser, civilCaseReference);
 
   console.log('Region 1 Judge List for a hearing');
   if (config.runWAApiTest) {
@@ -118,9 +119,10 @@ Scenario('After SDO GA - Judge Make decision - HC admin review', async ({I, api,
     console.log('actualLADecideOnApplicationTask...', actualJudgeDecideOnApplicationAfterSDOTask);
     wa.validateTaskInfo(actualJudgeDecideOnApplicationAfterSDOTask, expectedJudgeDecideOnApplicationAfterSDOTask);
   }
+
   await I.login(config.judgeUserWithRegionId1);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
-  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order');
+  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order', config.judgeUserWithRegionId1);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, config.judgeUserWithRegionId1);
   await wa.verifyNoActiveTask(gaCaseReference);
 
@@ -131,13 +133,18 @@ Scenario('After SDO GA - Judge Make decision - HC admin review', async ({I, api,
     console.log('actualScheduleApplicationHearingTask...', actualScheduleApplicationHearingTask);
     wa.validateTaskInfo(actualScheduleApplicationHearingTask, expectedScheduleAppHearingAfterSDOTask);
   }
+
   await I.login(config.hearingCenterAdminWithRegionId1);
-  await wa.goToAdminTask(gaCaseReference);
-}).retry(1);
+  await wa.goToTask(gaCaseReference, config.waTaskIds.scheduleApplicationHearing);
+  await I.fillHearingNotice(gaCaseReference, 'claimAndDef', 'basildon', 'VIDEO');
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.HEARING_SCHEDULED.id, config.hearingCenterAdminWithRegionId1);
+  console.log('Hearing Notice created for: ' + gaCaseReference);
+  await wa.verifyNoActiveTask(gaCaseReference);
+});
 
 
 AfterSuite(async ({api}) => {
-  //await api.cleanUp();
+  await api.cleanUp();
 });
 
 

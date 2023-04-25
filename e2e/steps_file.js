@@ -798,12 +798,12 @@ module.exports = function () {
       ]);
     },
 
-    async judgeMakeDecision(decision, order, notice, caseNumber, documentType, orderType) {
+    async judgeMakeDecision(decision, order, notice, caseNumber, documentType, orderType, user) {
       eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
-        () => makeAnOrderPage.selectAnOrder(order, notice, orderType),
+        () => makeAnOrderPage.selectAnOrder(order, notice, orderType, user),
         () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
         () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
         ...submitApplication('Your order has been made'),
@@ -930,7 +930,7 @@ module.exports = function () {
       ]);
     },
 
-    async judgeListForAHearingDecision(decision, caseNumber, notice, documentType) {
+    async judgeListForAHearingDecision(decision, caseNumber, notice, documentType, user) {
       eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
@@ -939,7 +939,7 @@ module.exports = function () {
         () => listForHearingPage.selectJudicialTimeEstimate('fifteenMin'),
         () => listForHearingPage.verifyVulnerabilityQuestions(),
         () => listForHearingPage.selectJudicialSupportRequirement('disabledAccess'),
-        () => drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('video', '15 minutes', notice, 'withoutNoticeOrder'),
+        () => drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('video', '15 minutes', notice, 'withoutNoticeOrder', user),
         () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
         () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
         ...submitApplication('Your order has been made'),
@@ -947,36 +947,36 @@ module.exports = function () {
       ]);
     },
 
-    judgeListForAHearingDecisionWA: async function (decision, caseNumber, notice, documentType) {
+    judgeListForAHearingDecisionWA: async function (decision, caseNumber, notice, documentType, user) {
       await judgeDecisionPage.selectJudgeDecision(decision);
       await listForHearingPage.selectJudicialHearingPreferences('inPerson');
       await listForHearingPage.selectJudicialTimeEstimate('fifteenMin');
       await listForHearingPage.verifyVulnerabilityQuestions();
       await listForHearingPage.selectJudicialSupportRequirement('disabledAccess');
-      await drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('video', '15 minutes', notice, 'courtOwnInitiativeOrder');
+      await drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('video', '15 minutes', notice, 'noneOrder', user);
       await reviewOrderDocumentPage.reviewOrderDocument(documentType);
       await judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber);
       await event.submit('Submit', 'Your order has been made');
       await judgesConfirmationPage.verifyJudgesConfirmationPage();
     },
 
-    async judgeApproveAnOrderWA(decision, order, consentCheck, caseNumber, documentType) {
+    async judgeApproveAnOrderWA(decision, order, consentCheck, caseNumber, documentType, user) {
       await judgeDecisionPage.selectJudgeDecision(decision);
-      await makeAnOrderPage.selectAnOrder(order, consentCheck);
+      await makeAnOrderPage.selectAnOrder(order, consentCheck, user);
       await reviewOrderDocumentPage.reviewOrderDocument(documentType);
       await judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber);
       await event.submit('Submit', 'Your order has been made');
       await judgesConfirmationPage.verifyJudgesConfirmationPage();
     },
 
-    async judgeWrittenRepresentationsDecision(decision, representationsType, caseNumber, notice, documentType, orderType) {
+    async judgeWrittenRepresentationsDecision(decision, representationsType, caseNumber, notice, documentType, orderType, user) {
       eventName = events.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseNumber),
         ...conditionalSteps(notice !== 'withOutNotice', [
           () => judgeDecisionPage.selectJudgeDecision(decision),
           () => writtenRepresentationsPage.selectWrittenRepresentations(representationsType),
-          () => drawGeneralOrderPage.verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType, notice, orderType),
+          () => drawGeneralOrderPage.verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType, notice, orderType, user),
           () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
           () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
           ...submitApplication('Your order has been made'),
@@ -995,8 +995,8 @@ module.exports = function () {
       ]);
     },
 
-    async verifyJudgesSummaryPage(decisionType, consentCheck, applicantName) {
-      await judgesSummary.verifyJudgesSummaryPage(decisionType, consentCheck, applicantName);
+    async verifyJudgesSummaryPage(decisionType, consentCheck, applicantName, user) {
+      await judgesSummary.verifyJudgesSummaryPage(decisionType, consentCheck, applicantName, user);
     },
 
     async verifyApplicantSummaryPage() {

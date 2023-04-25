@@ -36,14 +36,16 @@ const sdoTracks = require('../fixtures/events/createSDO.js');
 const {expect} = require('chai');
 const gaTypesList = {
   'LATypes': ['STAY_THE_CLAIM','EXTEND_TIME', 'AMEND_A_STMT_OF_CASE'],
-  'JudgeGaTypes': ['STRIKE_OUT']
+  'JudgeGaTypes': ['SET_ASIDE_JUDGEMENT']
 };
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes', null,
     '27500', 'FEE0442'),
   INITIATE_GENERAL_APPLICATION_FOR_LA: genAppData.createGA(gaTypesList.LATypes, 'No', null,
-    '27500', 'FEE0442'),
+    '10800', 'FEE0443'),
+  INITIATE_GENERAL_APPLICATION_FOR_JUDGE: genAppData.createGA(gaTypesList.JudgeGaTypes, 'No', null,
+    '10800', 'FEE0443'),
   INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE: genAppData.createGADataWithoutNotice('No','Test 123',
     '10800','FEE0443'),
   INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
@@ -379,6 +381,10 @@ module.exports = {
 
   initiateGaForLA: async (user, parentCaseId) => {
     return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, data.INITIATE_GENERAL_APPLICATION_FOR_LA) ;
+  },
+
+  initiateGaForJudge: async (user, parentCaseId) => {
+    return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, data.INITIATE_GENERAL_APPLICATION_FOR_JUDGE) ;
   },
 
   initiateGeneralApplicationWithNoStrikeOut: async (user, parentCaseId) => {

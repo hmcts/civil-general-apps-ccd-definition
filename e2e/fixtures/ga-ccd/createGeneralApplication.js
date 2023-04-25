@@ -600,7 +600,7 @@ module.exports = {
         generalAppHearingMinutes: null,
         unavailableTrialRequiredYesOrNo: 'No',
         vulnerabilityQuestionsYesOrNo: 'Yes',
-        vulnerabilityQuestion: 'Test Answer',
+        vulnerabilityQuestion: 'Test Test',
         SupportRequirementSignLanguage: null,
         SupportRequirementLanguageInterpreter: null,
         SupportRequirementOther: null,
