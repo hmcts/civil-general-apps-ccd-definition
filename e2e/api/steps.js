@@ -944,7 +944,7 @@ module.exports = {
     else{
       docCivil = civilCaseData[doc + 'DocStaff'];
     }
-    assert.isNull(docCivil);
+    assert.equal(typeof(docCivil), 'undefined');
   },
 
   judgeMakesDecisionOrderMade: async (user, gaCaseId) => {
