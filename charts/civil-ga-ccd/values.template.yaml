@@ -7,7 +7,6 @@ civil-general-applications:
         resourceGroup: civil
         secrets:
           - civil-idam-client-secret
-          - microservicekey-civil-service
           - system-update-user-username
           - system-update-user-password
           - cross-access-user-username
