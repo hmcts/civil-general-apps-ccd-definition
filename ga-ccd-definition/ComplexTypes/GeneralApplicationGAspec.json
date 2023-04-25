@@ -40,7 +40,7 @@
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppVaryJudgementType",
-    "ElementLabel": "Vary Judgement GA Type",
+    "ElementLabel": "Vary Judgment GA Type",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },

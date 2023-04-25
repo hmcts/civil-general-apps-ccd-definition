@@ -67,9 +67,9 @@ module.exports = {
     await I.waitForElement(this.fields.tabList, 5);
     await I.refreshPage();
     if (['preview','aat'].includes(config.runningEnv)) {
-      await I.wait(8);
+      await I.wait(12);
     } else {
-      await I.wait(3);
+      await I.wait(5);
     }
     let urlBefore = await I.grabCurrentUrl();
     await I.retryUntilUrlChanges(async () => {
