@@ -1,5 +1,4 @@
 const apiRequest = require('../api/apiRequest');
-const config = require('../config');
 const expect = require('chai').expect;
 const {I} = inject();
 const dateFrag = require('../fragments/date');
@@ -50,13 +49,8 @@ module.exports = {
     }
   },
 
-  verifyJudgeRecitalText: async (actualJudgeRecitalText, notice) => {
-    let fullJudgeName;
-    if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-      fullJudgeName = await apiRequest.getUserFullName(config.judgeUser);
-    } else {
-      fullJudgeName = await apiRequest.getUserFullName(config.judgeLocalUser);
-    }
+  verifyJudgeRecitalText: async (actualJudgeRecitalText, notice, user) => {
+    let fullJudgeName = await apiRequest.getUserFullName(user);
     if (notice === 'no') {
       await expect(actualJudgeRecitalText).to.equals(`Judge: ${fullJudgeName}\n\nThe Judge considered the without notice application of Claimant dated ${fullDate}\n\nAnd the Judge considered the information provided by the Claimant`);
     } else {

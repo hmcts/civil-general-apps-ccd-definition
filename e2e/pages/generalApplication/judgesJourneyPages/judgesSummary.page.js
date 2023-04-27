@@ -8,7 +8,7 @@ module.exports = {
     applicantNameText: 'td[id*="gaApplicantDisplayName"] span'
   },
 
-  async verifyJudgesSummaryPage(decisionType, notice, applicantName) {
+  async verifyJudgesSummaryPage(decisionType, notice, applicantName, user) {
     I.waitInUrl('#Application');
     I.see('Application');
     I.see('Parent Case ID');
@@ -19,21 +19,21 @@ module.exports = {
     switch (decisionType) {
       case 'Judges Directions':
         await I.see('Judge’s recital');
-        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
+        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice, user);
         await I.see('Reasons for decision');
         await I.see('Directions');
         await I.see('When should this application be referred to a Judge again?');
         break;
       case 'Concurrent representations':
         await I.see('Judge’s recital');
-        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
+        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice, user);
         await I.see('Make an order for written representations');
         await I.see('Concurrent representations');
         await I.see('Order in relation to written representations');
         break;
       case 'Sequential representations':
         await I.see('Judge’s recital');
-        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
+        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice, user);
         await I.see('Make an order for written representations');
         await I.see('Sequential representations');
         await I.see('Order in relation to written representations');
@@ -49,21 +49,21 @@ module.exports = {
         break;
       case 'Dismissal order':
         await I.see('Judge’s recital');
-        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
+        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice, user);
         await I.see('Judges dismissed the order');
         await I.see('Dismissal order');
         await I.see('Reasons for decision');
         break;
       case 'Approve order':
         await I.see('Judge’s recital');
-        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
+        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice, user);
         await I.see('For which document?');
         await I.see('Reasons for decision');
         await I.see('Test Order details');
         break;
       case 'Hearing order':
         await I.see('Judge’s recital');
-        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
+        await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice, user);
         await I.see('Directions in relation to hearing');
         break;
       case 'Send application to other party':

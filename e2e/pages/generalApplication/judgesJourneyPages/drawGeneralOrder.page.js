@@ -16,12 +16,12 @@ module.exports = {
     }
   },
 
-  async verifyHearingDetailsGeneralOrderScreen(hearingPreferences, timeEstimate, notice, orderType) {
+  async verifyHearingDetailsGeneralOrderScreen(hearingPreferences, timeEstimate, notice, orderType, user) {
     await I.waitForElement(this.fields.hearingDetailsJudgeRecitalTextArea);
     I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialHearingDetailsGeneralOrderScreen');
     I.see('Draw a General Order');
     I.see('Judge’s recital');
-    await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.hearingDetailsJudgeRecitalTextArea), notice);
+    await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.hearingDetailsJudgeRecitalTextArea), notice, user);
     await I.see(`Hearing type is via ${hearingPreferences}`);
     await I.see(`Estimated length of hearing is ${timeEstimate}`);
     await I.see('Directions in relation to hearing');
@@ -44,12 +44,12 @@ module.exports = {
     await I.clickContinue();
   },
 
-  async verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType, notice, orderType) {
+  async verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType, notice, orderType, user) {
     await I.waitForElement(this.fields.writtenRepresentationsJudgeRecitalTextArea);
     I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialWrittenRepresentationsDrawGeneralOrder');
     I.see('Draw a General Order');
     I.see('Judge’s recital');
-    await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.writtenRepresentationsJudgeRecitalTextArea), notice);
+    await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.writtenRepresentationsJudgeRecitalTextArea), notice, user);
     if ('sequentialRep' === representationsType) {
       await I.see('The respondent may upload any written representations by 4pm on');
       await I.see('The applicant may upload any written representations by 4pm on');
