@@ -33,6 +33,7 @@ const { replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForClai
 const {checkPBAv3ToggleEnabled} = require('./testingSupport');
 const {createGeneralAppN245FormUpload} = require('../fixtures/ga-ccd/createGeneralApplication');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const {expect} = require('chai');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes',null,
@@ -941,7 +942,6 @@ module.exports = {
       assert.equal(gaCaseId, gaReference);
     }
     console.log('*** GA Case Reference: ' + gaReference + ' ***');
-
   },
 
   assertGaDocumentVisibilityToUser: async ( user, parentCaseId, gaCaseId, doc) => {
@@ -984,7 +984,7 @@ module.exports = {
     else{
       docCivil = civilCaseData[doc + 'DocStaff'];
     }
-    assert.isNull(docCivil);
+    assert.equal(typeof(docCivil), 'undefined');
   },
 
   judgeMakesDecisionOrderMade: async (user, gaCaseId) => {
@@ -1284,6 +1284,7 @@ module.exports = {
     console.log('expectedState '+expectedState);
     assert.equal(updatedGABusinessProcessData.ccdState, expectedState);
   },
+
   verifyGALocation: async (user, gaCaseId, civilCaseId) => {
     await apiRequest.setupTokens(user);
     const updatedGACaseDataResponse = await apiRequest.fetchUpdatedCaseData(gaCaseId, user);
@@ -1294,6 +1295,20 @@ module.exports = {
     assert.equal(updatedGACaseData.isCcmccLocation, updatedCivilCaseData.generalApplications[0].value.isCcmccLocation);
     assert.equal(updatedGACaseData.caseManagementLocation.region, updatedCivilCaseData.generalApplications[0].value.caseManagementLocation.region);
     assert.equal(updatedGACaseData.caseManagementLocation.baseLocation, updatedCivilCaseData.generalApplications[0].value.caseManagementLocation.baseLocation);
+  },
+
+  assertGAApplicantDisplayName: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    const updatedGACaseDataResponse = await apiRequest.fetchUpdatedCaseData(gaCaseId, user);
+    const updatedGACaseData = await updatedGACaseDataResponse.json();
+
+    if (user.email === config.applicantSolicitorUser.email) {
+      await expect(updatedGACaseData.gaApplicantDisplayName).to.equals('Test Inc - Claimant');
+    } else if (user.email === config.defendantSolicitorUser.email) {
+      await expect(updatedGACaseData.gaApplicantDisplayName).to.equals('Sir John Doe - Defendant');
+    } else if (user.email === config.secondDefendantSolicitorUser.email) {
+      await expect(updatedGACaseData.gaApplicantDisplayName).to.equals('Dr Foo Bar - Defendant');
+    }
   },
 
   cleanUp: async () => {

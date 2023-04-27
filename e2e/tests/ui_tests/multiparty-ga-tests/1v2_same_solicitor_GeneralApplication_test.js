@@ -59,7 +59,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
     'sequentialRep', gaCaseReference, 'yes', 'Order_Written_Representation_Sequential', 'noneOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_WRITTEN_REPRESENTATIONS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Sequential representations', 'yes');
+  await I.verifyJudgesSummaryPage('Sequential representations', 'yes', 'Claimant');
   await I.verifyApplicationDocument('Written representation sequential');
   console.log('Judges made an order for Sequential written representations on case: ' + gaCaseReference);
 
@@ -101,7 +101,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     await I.judgeRequestMoreInfo('requestMoreInfo', 'sendApplicationToOtherParty', gaCaseReference, 'no', 'sendApplicationToOtherParty');
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.APPLICATION_ADD_PAYMENT.id, config.applicantSolicitorUser);
     await I.judgeCloseAndReturnToCaseDetails();
-    await I.verifyJudgesSummaryPage('Send application to other party', 'no');
+    await I.verifyJudgesSummaryPage('Send application to other party', 'no', 'Claimant');
     console.log('Judges sent application to other party and requested hearing details on case: ' + gaCaseReference);
 
     await I.login(config.applicantSolicitorUser);
