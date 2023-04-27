@@ -9,7 +9,7 @@ const judgeDecisionStatus = states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECIS
 const writtenRepStatus = states.AWAITING_WRITTEN_REPRESENTATIONS.name;
 const claimantType = 'Company';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
-let civilCaseReference, gaCaseReference;
+let civilCaseReference, gaCaseReference, user;
 
 Feature('GA CCD 2v1 - General Application Journey @multiparty-e2e-tests @ui-nightly');
 
@@ -39,12 +39,15 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
 
   console.log('Judge Making decision:' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await I.login(config.judgeUser);
+    user = config.judgeUser;
+    await I.login(user);
   } else {
-    await I.login(config.judgeLocalUser);
+    user = config.judgeLocalUser;
+    await I.login(user);
   }
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations',
-    'concurrentRep', gaCaseReference, 'withOutNotice', 'Order_Written_Representation_Concurrent', 'courtOwnInitiativeOrder');
+    'concurrentRep', gaCaseReference, 'withOutNotice', 'Order_Written_Representation_Concurrent',
+    'courtOwnInitiativeOrder', user);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference);
@@ -68,10 +71,11 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
     await I.login(config.judgeLocalUser);
   }
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations',
-    'concurrentRep', gaCaseReference, 'no', 'Order_Written_Representation_Concurrent', 'withoutNoticeOrder');
+    'concurrentRep', gaCaseReference, 'no', 'Order_Written_Representation_Concurrent',
+    'withoutNoticeOrder', user);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_WRITTEN_REPRESENTATIONS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Concurrent representations', 'no', 'Claimant');
+  await I.verifyJudgesSummaryPage('Concurrent representations', 'no', 'Claimant', user);
   await I.verifyApplicationDocument('Written representation concurrent');
   console.log('Judges made an order for Concurrent written representations on case: ' + gaCaseReference);
 

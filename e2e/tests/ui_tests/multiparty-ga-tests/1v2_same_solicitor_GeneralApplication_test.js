@@ -11,7 +11,7 @@ const writtenRepStatus = states.AWAITING_WRITTEN_REPRESENTATIONS.name;
 const additionalPaymentStatus = states.APPLICATION_ADD_PAYMENT.name;
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 const claimantType = 'Company';
-let civilCaseReference, gaCaseReference;
+let civilCaseReference, gaCaseReference, user;
 
 Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly');
 
@@ -51,15 +51,17 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
 
   console.log('Judge Making decision:' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await I.login(config.judgeUser);
+    user = config.judgeUser;
+    await I.login(user);
   } else {
-    await I.login(config.judgeLocalUser);
+    user = config.judgeLocalUser;
+    await I.login(user);
   }
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations',
-    'sequentialRep', gaCaseReference, 'yes', 'Order_Written_Representation_Sequential', 'noneOrder');
+    'sequentialRep', gaCaseReference, 'yes', 'Order_Written_Representation_Sequential', 'noneOrder', user);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_WRITTEN_REPRESENTATIONS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Sequential representations', 'yes', 'Claimant');
+  await I.verifyJudgesSummaryPage('Sequential representations', 'yes', 'Claimant', user);
   await I.verifyApplicationDocument('Written representation sequential');
   console.log('Judges made an order for Sequential written representations on case: ' + gaCaseReference);
 
@@ -94,14 +96,16 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
 
     console.log('Judge Making decision:' + gaCaseReference);
     if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-      await I.login(config.judgeUser);
+      user = config.judgeUser;
+      await I.login(user);
     } else {
-      await I.login(config.judgeLocalUser);
+      user = config.judgeLocalUser;
+      await I.login(user);
     }
     await I.judgeRequestMoreInfo('requestMoreInfo', 'sendApplicationToOtherParty', gaCaseReference, 'no', 'sendApplicationToOtherParty');
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.APPLICATION_ADD_PAYMENT.id, config.applicantSolicitorUser);
     await I.judgeCloseAndReturnToCaseDetails();
-    await I.verifyJudgesSummaryPage('Send application to other party', 'no', 'Claimant');
+    await I.verifyJudgesSummaryPage('Send application to other party', 'no', 'Claimant', user);
     console.log('Judges sent application to other party and requested hearing details on case: ' + gaCaseReference);
 
     await I.login(config.applicantSolicitorUser);

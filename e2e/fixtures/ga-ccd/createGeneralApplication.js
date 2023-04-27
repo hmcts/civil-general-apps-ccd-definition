@@ -2,7 +2,7 @@ const {date} = require('../../api/dataHelper');
 const config = require('../../config.js');
 
 module.exports = {
-  createGAData: (isWithNotice, reasonWithoutNotice,calculatedAmount, code) => {
+  createGAData: (isWithNotice, reasonWithoutNotice, calculatedAmount, code) => {
     return {
       generalAppType: {
         types: [
@@ -79,7 +79,7 @@ module.exports = {
       }
     };
   },
-  createGADataVaryJudgement: (isWithNotice, reasonWithoutNotice,calculatedAmount, code, linkGAN245FormUpload, urgency) => {
+  createGADataVaryJudgement: (isWithNotice, reasonWithoutNotice, calculatedAmount, code, linkGAN245FormUpload, urgency) => {
     return {
       generalAppType: {
         types: [
@@ -155,7 +155,7 @@ module.exports = {
       }
     };
   },
-  createGADataWithoutNotice: (isWithNotice, reasonWithoutNotice,calculatedAmount, code) => {
+  createGADataWithoutNotice: (isWithNotice, reasonWithoutNotice, calculatedAmount, code) => {
     return {
       generalAppType: {
         types: [
@@ -295,7 +295,7 @@ module.exports = {
         generalAppHearingMinutes: null,
         unavailableTrialRequiredYesOrNo: 'No',
         vulnerabilityQuestionsYesOrNo: 'Yes',
-        vulnerabilityQuestion: 'Test Answer',
+        vulnerabilityQuestion: 'Test Test',
         SupportRequirementSignLanguage: null,
         SupportRequirementLanguageInterpreter: null,
         SupportRequirementOther: null,
@@ -551,6 +551,81 @@ module.exports = {
       }
     };
   },
+
+  createGA: (gaTypes, isWithNotice, reasonWithoutNotice, calculatedAmount, code) => {
+    return {
+      generalAppType: {
+        types: gaTypes,
+      },
+      generalAppRespondentAgreement: {
+        hasAgreed: 'No'
+      },
+      generalAppUrgencyRequirement: {
+        generalAppUrgency: 'No',
+        urgentAppConsiderationDate: null,
+        reasonsForUrgency: null,
+        ConsentAgreementCheckBox: []
+      },
+      generalAppInformOtherParty: {
+        isWithNotice: isWithNotice,
+        reasonsForWithoutNotice: reasonWithoutNotice
+      },
+      generalAppDetailsOfOrder: 'Test Order details',
+      generalAppReasonsOfOrder: 'Test reason for order',
+      generalAppEvidenceDocument: [],
+      generalAppStatementOfTruthConsent: [
+        'ConsentAgreementCheckBox'
+      ],
+      generalAppStatementOfTruth: {
+        name: 'John Doe',
+        role: 'Test Solicitor'
+      },
+      generalAppHearingDetails: {
+        hearingYesorNo: 'No',
+        hearingDate: null,
+        judgeRequiredYesOrNo: 'No',
+        judgeName: null,
+        trialRequiredYesOrNo: 'No',
+        trialDateFrom: null,
+        trialDateTo: null,
+        HearingPreferencesPreferredType: 'IN_PERSON',
+        TelephoneHearingPreferredType: null,
+        ReasonForPreferredHearingType: 'sdsd',
+        HearingPreferredLocation: null,
+        HearingDetailsTelephoneNumber: '07446778166',
+        HearingDetailsEmailID: 'update@gh.com',
+        HearingDuration: 'MINUTES_15',
+        generalAppHearingDays: null,
+        generalAppHearingHours: null,
+        generalAppHearingMinutes: null,
+        unavailableTrialRequiredYesOrNo: 'No',
+        vulnerabilityQuestionsYesOrNo: 'Yes',
+        vulnerabilityQuestion: 'Test Test',
+        SupportRequirementSignLanguage: null,
+        SupportRequirementLanguageInterpreter: null,
+        SupportRequirementOther: null,
+        generalAppUnavailableDates: [],
+        SupportRequirement: []
+      },
+      generalAppPBADetails: {
+        paymentSuccessfulDate: null,
+        fee: {
+          calculatedAmountInPence: calculatedAmount,
+          code: code,
+          version: '2'
+        },
+        paymentDetails: {
+          status: null,
+          reference: null,
+          errorMessage: null,
+          errorCode: null,
+          customerReference: null
+        },
+        serviceRequestReference: null
+      }
+    };
+  },
+
   createGeneralAppN245FormUpload: () => {
     return {
       document_url: 'http://dm-store:8080/documents/5b6d9333-9dc9-4d42-b47c-0af8cdd8d56a',

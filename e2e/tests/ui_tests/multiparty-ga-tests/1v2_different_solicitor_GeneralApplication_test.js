@@ -11,7 +11,7 @@ const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 const judgeDirectionsOrderStatus = states.AWAITING_DIRECTIONS_ORDER_DOCS.name;
 const writtenRepStatus = states.AWAITING_WRITTEN_REPRESENTATIONS.name;
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
-let gaCaseReference, civilCaseReference;
+let gaCaseReference, civilCaseReference, user;
 
 Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly');
 
@@ -59,15 +59,17 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
 
     console.log('Judge Making decision:' + gaCaseReference);
     if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-      await I.login(config.judgeUser);
+      user = config.judgeUser;
+      await I.login(user);
     } else {
-      await I.login(config.judgeLocalUser);
+      user = config.judgeLocalUser;
+      await I.login(user);
     }
-    await I.judgeListForAHearingDecision('listForAHearing', gaCaseReference, 'yes', 'Hearing_order');
+    await I.judgeListForAHearingDecision('listForAHearing', gaCaseReference, 'yes', 'Hearing_order', user);
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
       states.LISTING_FOR_A_HEARING.id, config.applicantSolicitorUser);
     await I.judgeCloseAndReturnToCaseDetails();
-    await I.verifyJudgesSummaryPage('Hearing order', 'yes', 'Claimant');
+    await I.verifyJudgesSummaryPage('Hearing order', 'yes', 'Claimant', user);
     await I.verifyApplicationDocument('Hearing order');
     await I.dontSee('Go');
     await I.dontSee('Next step');
