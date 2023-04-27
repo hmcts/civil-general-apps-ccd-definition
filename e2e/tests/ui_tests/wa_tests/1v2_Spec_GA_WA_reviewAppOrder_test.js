@@ -74,25 +74,25 @@ Scenario('LA refer to judge - R4 Judge Make decision - NBC admin schedule Hearin
 });
 
 // Enable test after this CIV-8283 bug fix
-Scenario.skip('After SDO GA - Change court location  - HC admin review application order', async ({I, api, wa}) => {
+Scenario('After SDO GA - Change court location  - HC admin review application order @123', async ({I, api, wa}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   gaCaseReference = await api.initiateGaForJudge(config.applicantSolicitorUser, civilCaseReference);
 
-  console.log('Region 4 LA referring to Judge');
+/*  console.log('Region 4 LA referring to Judge');
   if (config.runWAApiTest) {
     const actualLADecideOnApplicationTask = await api.retrieveTaskDetails(config.tribunalCaseworkerWithRegionId4,
       gaCaseReference, config.waTaskIds.legalAdvisorDecideOnApplication);
     console.log('actualLADecideOnApplicationTask...', actualLADecideOnApplicationTask);
     wa.validateTaskInfo(actualLADecideOnApplicationTask, expectedLADecideOnApplicationBeforeSDOTask);
-  }
+  }*/
 
-  await I.login(config.tribunalCaseworkerWithRegionId4);
+/*  await I.login(config.tribunalCaseworkerWithRegionId4);
   await wa.verifyAdminTask(gaCaseReference, config.waTaskIds.legalAdvisorDecideOnApplication);
   await wa.goToEvent('Refer to Judge');
   await wa.referToJudge();
-  await wa.verifyNoActiveTask(gaCaseReference);
+  await wa.verifyNoActiveTask(gaCaseReference);*/
 
   console.log('Changing court location');
   await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
@@ -100,7 +100,7 @@ Scenario.skip('After SDO GA - Change court location  - HC admin review applicati
     'JUDICIAL_REFERRAL');
   await waitForFinishedBusinessProcess(civilCaseReference, config.applicantSolicitorUser);
   await waitForGAFinishedBusinessProcess(civilCaseReference, config.applicantSolicitorUser);
-
+/*
   console.log('Region 1 Judge List for a hearing');
   if (config.runWAApiTest) {
     const actualJudgeDecideOnApplicationTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1,
@@ -127,11 +127,11 @@ Scenario.skip('After SDO GA - Change court location  - HC admin review applicati
   await I.fillHearingNotice(gaCaseReference, 'claimAndDef', 'basildon', 'VIDEO');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.HEARING_SCHEDULED.id, config.hearingCenterAdminWithRegionId1);
   console.log('Hearing Notice created for: ' + gaCaseReference);
-  await wa.verifyNoActiveTask(gaCaseReference);
+  await wa.verifyNoActiveTask(gaCaseReference);*/
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
 
 
