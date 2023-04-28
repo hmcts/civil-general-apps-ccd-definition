@@ -73,6 +73,7 @@ civil-general-applications:
       auth:
         username: ${POSTGRES_USER}
         password: ${POSTGRES_PASSWORD}
+        postgresPassword: ${POSTGRES_PASSWORD}
 
 civil-service:
   enabled: true
