@@ -253,7 +253,6 @@ ccd:
       keyVaults: []
   ccd-definition-store-api:
     java:
-      releaseNameOverride: ${SERVICE_NAME}-ccd-definition-store-api
       imagePullPolicy: Always
       devmemoryRequests: 2048Mi
       devcpuRequests: 1000m
