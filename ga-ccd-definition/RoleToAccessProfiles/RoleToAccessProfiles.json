@@ -353,7 +353,7 @@
   {
     "RoleName" : "idam:caseworker-wa-task-configuration",
     "Authorisation": "",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "caseworker-wa-task-configuration",
     "ReadOnly": "N",
     "Disabled": "F",
