@@ -10,3 +10,7 @@ camunda-bpm:
   enabled: false
 civil-service:
   enabled: false
+wa:
+  enabled: false
+servicebus:
+  enabled: false
