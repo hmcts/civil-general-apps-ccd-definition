@@ -2387,7 +2387,8 @@
       {
         "UserRoles": [
           "civil-administrator-standard",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       },

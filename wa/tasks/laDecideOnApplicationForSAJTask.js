@@ -1,12 +1,12 @@
 module.exports = {
   name: 'Application for set aside judgement',
-  type: 'JudgeDecideOnApplication',
+  type: 'LegalAdvisorDecideOnApplication',
   task_title: 'Application for set aside judgement',
-  location_name: 'Barnet Civil and Family Centre',
-  location: '229786',
+  location_name: 'County Court Money Claims Centre',
+  location: '192280',
   execution_type: 'Case Management Task',
   jurisdiction: 'CIVIL',
-  region: '1',
+  region: '4',
   case_type_id: 'GENERALAPPLICATION',
   case_category: 'Civil',
   auto_assigned: false,
@@ -14,6 +14,6 @@ module.exports = {
   work_type_id: 'decision_making_work',
   work_type_label: 'Decision-making work',
   permissions: {values: ['Read', 'Own', 'Manage', 'Cancel', 'CompleteOwn', 'CancelOwn', 'Claim', 'Unclaim', 'Assign', 'Unassign', 'UnclaimAssign']},
-  description: '[JudgeDecideOnApplication](/cases/case-details/${[CASE_REFERENCE]}/trigger/MAKE_DECISION/MAKE_DECISIONGAJudicialDecision)',
-  role_category: 'JUDICIAL'
+  description: '[LegalAdvisorDecideOnApplication](/cases/case-details/${[CASE_REFERENCE]}/trigger/MAKE_DECISION/MAKE_DECISIONGAJudicialDecision)',
+  role_category: 'LEGAL_OPERATIONS'
 };
