@@ -158,7 +158,8 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
-    "Publish": "Y"
+    "Publish": "Y",
+    "EventEnablingCondition":"isCcmccLocation = \"Yes\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -243,5 +244,23 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "APPROVE_CONSENT_ORDER",
+    "Name": "Approve Consent Order",
+    "Description": "Caseworker approves consent order application",
+    "DisplayOrder": 13,
+    "PreConditionState(s)": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION;ADDITIONAL_RESPONSE_TIME_EXPIRED",
+    "PostConditionState": "*",
+    "CallBackURLAboutToStartEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "SecurityClassification": "Public",
+    "EndButtonLabel": "Submit",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "Publish": "Y"
   }
 ]

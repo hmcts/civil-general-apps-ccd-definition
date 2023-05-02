@@ -41,6 +41,19 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "TRIGGER_LOCATION_UPDATE",
+    "CaseFieldID": "generalAppConsentOrder",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "isMultiPartyPage",
+    "PageDisplayOrder": 8,
+    "PageColumnNumber": 1,
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "TRIGGER_LOCATION_UPDATE",
     "CaseFieldID": "generalAppSuperClaimType",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
