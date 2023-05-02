@@ -39,6 +39,14 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppConsentOrder",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "With notice",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "generalAppConsentOrder = \"No\""
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppVaryJudgementType",
     "ElementLabel": "Vary Judgment GA Type",
     "FieldType": "YesOrNo",
@@ -77,6 +85,7 @@
     "ListElementCode": "generalAppInformOtherParty",
     "FieldType": "GAWithOrWithoutNotice",
     "ElementLabel": " ",
+    "FieldShowCondition": "generalAppConsentOrder = \"\"",
     "SecurityClassification": "Public"
   },
   {
