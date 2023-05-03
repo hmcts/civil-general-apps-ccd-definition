@@ -35,7 +35,7 @@
     "test:fullfunctional": "./e2e/run-nightly-functional-tests.sh",
     "prepare": "husky install",
     "yarn-update": "yarn set version 3.x",
-    "install-dependencies": "/usr/bin/yarn install --immutable --silent"
+    "install-dependencies": "/usr/bin/yarn install --mutex network --immutable --silent"
   },
   "license": "MIT",
   "devDependencies": {
