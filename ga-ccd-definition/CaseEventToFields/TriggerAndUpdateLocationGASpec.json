@@ -41,26 +41,26 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "TRIGGER_LOCATION_UPDATE",
-    "CaseFieldID": "generalAppConsentOrder",
-    "PageFieldDisplayOrder": 1,
+    "CaseFieldID": "generalAppSuperClaimType",
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",
     "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
-    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "TRIGGER_LOCATION_UPDATE",
-    "CaseFieldID": "generalAppSuperClaimType",
+    "CaseFieldID": "generalAppConsentOrder",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
-    "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
-    "PageColumnNumber": 2,
+    "PageID": "isMultiPartyPage2",
+    "PageDisplayOrder": 9,
+    "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "Publish": "Y"
+    "Publish": "Y",
+    "PageShowCondition": "generalAppSuperClaimType = \"DO_NOT_SHOW_IN_UI\""
   }
 ]
