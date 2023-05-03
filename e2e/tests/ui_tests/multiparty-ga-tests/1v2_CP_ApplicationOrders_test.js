@@ -34,6 +34,7 @@ Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, ap
     await api.assertGaDocumentVisibilityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
   }
   console.log('Hearing Notice created for: ' + gaCaseReference);
+
   console.log('Judge making Assisted order for: ' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await I.login(config.judgeUser);
@@ -47,6 +48,7 @@ Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, ap
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(listForHearingStatus);
   await I.verifyClaimDocument('Assisted Order');
+  await I.verifyCaseFileDocument('Hearing Notice');
 });
 
 AfterSuite(async ({api}) => {
