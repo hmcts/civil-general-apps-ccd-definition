@@ -121,6 +121,7 @@
     "PageDisplayOrder": 7,
     "PageColumnNumber": 2,
     "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
