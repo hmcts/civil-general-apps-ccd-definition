@@ -139,9 +139,9 @@ Scenario('After SDO GA - Change court location  - HC admin review application or
   await wa.verifyNoActiveTask(gaCaseReference);
 });
 
-AfterSuite(async ({api}) => {
+/*AfterSuite(async ({api}) => {
   await api.cleanUp();
-});
+});*/
 
 
 
