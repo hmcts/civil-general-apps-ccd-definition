@@ -57,7 +57,7 @@
     "CaseFieldID": "generalAppConsentOrder",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
-    "PageID": "isMultiPartyPage2",
+    "PageID": "isMultiPartyPage3",
     "PageDisplayOrder": 10,
     "PageColumnNumber": 1,
     "PageShowCondition": "generalAppSuperClaimType = \"DO_NOT_SHOW_IN_UI\"",
