@@ -1031,6 +1031,13 @@
     "Label": "Applicant",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaRespondentConsent",
+    "Label": "The applicant has confirmed that you have agreed to the order that the applicant has requested the court to make. Is this correct?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
   }
 ]
 
