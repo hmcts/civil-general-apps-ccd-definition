@@ -117,7 +117,7 @@
     "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "generalAppSuperClaimType",
     "DisplayContext": "OPTIONAL",
-    "PageID": "isMultiPartyPage2",
+    "PageID": "isMultiPartyPage",
     "PageDisplayOrder": 7,
     "PageColumnNumber": 2,
     "PageFieldDisplayOrder": 1,
