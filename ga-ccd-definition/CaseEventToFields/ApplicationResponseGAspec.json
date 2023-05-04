@@ -20,7 +20,8 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
