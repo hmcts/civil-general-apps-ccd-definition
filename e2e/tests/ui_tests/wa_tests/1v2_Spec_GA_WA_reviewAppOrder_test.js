@@ -47,10 +47,10 @@ Scenario('LA refer to judge - R4 Judge Make decision - NBC admin schedule Hearin
   await wa.referToJudge();
   await wa.verifyNoActiveTask(gaCaseReference);
 
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    judgeUser = config.judgeUserWithRegionId4;
-  } else if (['aat'].includes(config.runningEnv)) {
+  if (['preview', 'aat'].includes(config.runningEnv)) {
     judgeUser = config.judgeUser;
+  } else if (['demo'].includes(config.runningEnv)) {
+    judgeUser = config.judgeUserWithRegionId4;
   } else {
     judgeUser = config.judgeLocalUser;
   }
