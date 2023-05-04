@@ -44,8 +44,9 @@
     "CaseFieldID": "generalAppSuperClaimType",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
-    "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
+    "PageID": "isMultiPartyPage3",
+    "PageDisplayOrder": 10,
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"

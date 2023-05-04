@@ -117,10 +117,11 @@
     "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "generalAppSuperClaimType",
     "DisplayContext": "OPTIONAL",
-    "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 7,
-    "PageColumnNumber": 2,
+    "PageID": "isMultiPartyPage2",
+    "PageDisplayOrder": 8,
+    "PageColumnNumber": 1,
     "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "generalAppRespondent1Representative = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
