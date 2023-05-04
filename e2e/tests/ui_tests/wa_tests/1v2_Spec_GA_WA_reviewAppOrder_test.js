@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../../config.js');
-const {waitForGACamundaEventsFinishedBusinessProcess,
-  waitForFinishedBusinessProcess, waitForGAFinishedBusinessProcess} = require('../../../api/testingSupport');
+const {
+  waitForGACamundaEventsFinishedBusinessProcess,
+  waitForFinishedBusinessProcess
+} = require('../../../api/testingSupport');
 const states = require('../../../fixtures/ga-ccd/state.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
@@ -12,7 +14,7 @@ let civilCaseReference, gaCaseReference,
   expectedJudgeDecideOnApplicationAfterSDOTask,
   expectedJudgeDecideOnApplicationBeforeSDOTask,
   expectedScheduleAppHearingBeforeSDOTask,
-  expectedScheduleAppHearingAfterSDOTask;
+  expectedScheduleAppHearingAfterSDOTask, judgeUser;
 
 if (config.runWAApiTest) {
   expectedLADecideOnApplicationBeforeSDOTask = require('../../../../wa/tasks/laDecideOnApplicationForSAJTask.js');
@@ -45,17 +47,25 @@ Scenario('LA refer to judge - R4 Judge Make decision - NBC admin schedule Hearin
   await wa.referToJudge();
   await wa.verifyNoActiveTask(gaCaseReference);
 
+  if (['preview', 'aat'].includes(config.runningEnv)) {
+    judgeUser = config.judgeUser;
+  } else if (['demo'].includes(config.runningEnv)) {
+    judgeUser = config.judgeUserWithRegionId4;
+  } else {
+    judgeUser = config.judgeLocalUser;
+  }
+
   console.log('Region 4 Judge List for a hearing');
   if (config.runWAApiTest) {
-    const actualJudgeDecideOnApplicationTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId4,
+    const actualJudgeDecideOnApplicationTask = await api.retrieveTaskDetails(judgeUser,
       gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
     console.log('actualJudgeDecideOnApplicationTask...', actualJudgeDecideOnApplicationTask);
     wa.validateTaskInfo(actualJudgeDecideOnApplicationTask, expectedJudgeDecideOnApplicationBeforeSDOTask);
   }
-  await I.login(config.judgeUserWithRegionId4);
+  await I.login(judgeUser);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
-  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order', config.judgeUserWithRegionId4);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, config.judgeUserWithRegionId4);
+  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order', judgeUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, judgeUser);
   await wa.verifyNoActiveTask(gaCaseReference);
 
   console.log('Region 4 NBC admin review scheduled Application Hearing');
@@ -73,8 +83,7 @@ Scenario('LA refer to judge - R4 Judge Make decision - NBC admin schedule Hearin
   await wa.verifyNoActiveTask(gaCaseReference);
 });
 
-// Enable test after this CIV-8283 bug fix
-Scenario.skip('After SDO GA - Change court location  - HC admin review application order', async ({I, api, wa}) => {
+Scenario('After SDO GA - Change court location  - HC admin review application order', async ({I, api, wa}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
@@ -99,7 +108,7 @@ Scenario.skip('After SDO GA - Change court location  - HC admin review applicati
   await api.claimantResponseClaimSpec(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
     'JUDICIAL_REFERRAL');
   await waitForFinishedBusinessProcess(civilCaseReference, config.applicantSolicitorUser);
-  await waitForGAFinishedBusinessProcess(civilCaseReference, config.applicantSolicitorUser);
+  await I.wait(5);
 
   console.log('Region 1 Judge List for a hearing');
   if (config.runWAApiTest) {

@@ -79,3 +79,5 @@ ccd:
 camunda-bpm:
   java:
     ingressHost: civil-ga-ccd-camunda-staging-aat.service.core-compute-aat.internal
+wa:
+  enabled: false
