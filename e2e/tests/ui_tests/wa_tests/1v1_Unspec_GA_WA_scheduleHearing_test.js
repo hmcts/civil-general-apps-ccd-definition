@@ -31,10 +31,10 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin schedule Hearing', asy
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    judgeUser = config.judgeUserWithRegionId4;
-  } else if (['aat'].includes(config.runningEnv)) {
+  if (['preview', 'aat'].includes(config.runningEnv)) {
     judgeUser = config.judgeUser;
+  } else if (['demo'].includes(config.runningEnv)) {
+    judgeUser = config.judgeUserWithRegionId4;
   } else {
     judgeUser = config.judgeLocalUser;
   }
