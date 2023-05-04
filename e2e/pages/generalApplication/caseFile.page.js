@@ -5,29 +5,37 @@ const {docFullDate} = require('../generalAppCommons');
 module.exports = {
 
   fields: {
-    docNodes: 'div[aria-label*="Applications"] .node__count',
-    docFolder: '[aria-expanded="true"] .node-name-document',
+    appFolder: 'div[aria-label*="Applications"] .node__count',
+    orderFolder: 'div[aria-label*="Orders"] .node__count',
+    ordersFolder: '[aria-expanded="true"] .node-name-document',
   },
 
   async verifyCaseFileDocument(documentType) {
     await I.seeInCurrentUrl('File');
     await I.wait(3);
-    let docCount = await I.grabTextFrom(locate(this.fields.docNodes));
-    expect(docCount).to.equals('1');
-    await I.click(this.fields.docNodes);
-    let docURL = await I.grabTextFrom(locate(this.fields.docFolder));
+
+    if (documentType === 'Hearing Notice') {
+      let docCount = await I.grabTextFrom(locate(this.fields.appFolder));
+      expect(docCount).to.equals('1');
+      await I.click(this.fields.appFolder);
+    }
+    await I.click(locate(this.fields.orderFolder).first());
+    await I.waitForText('Orders made on applications');
+    await I.click('Orders made on applications');
+    let docs = await I.grabTextFromAll(locate(this.fields.ordersFolder));
     switch (documentType) {
       case 'General order document':
-        expect(docURL).to.contains(`General_order_for_application_${docFullDate}`);
+        expect(docs.toString()).to.contains(`General_order_for_application_${docFullDate}`);
         break;
       case 'Directions order document':
-        expect(docURL).to.contains(`Directions_order_for_application_${docFullDate}`);
+        expect(docs.toString()).to.contains(`Directions_order_for_application_${docFullDate}`);
         break;
       case 'Dismissal order document':
-        expect(docURL).to.contains(`Dismissal_order_for_application_${docFullDate}`);
+        expect(docs.toString()).to.contains(`Dismissal_order_for_application_${docFullDate}`);
         break;
       case 'Hearing Notice':
-        expect(docURL).to.contains(`Application_Hearing_Notice_${docFullDate}`);
+        expect(docs.toString()).to.includes(`Application_Hearing_Notice_${docFullDate}`,
+          `General_order_for_application_${docFullDate}`,);
         break;
     }
   }
