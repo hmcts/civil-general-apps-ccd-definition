@@ -89,15 +89,16 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "isApplicationUrgent",
-    "TabFieldDisplayOrder": 11
+    "CaseFieldID": "generalAppConsentOrder",
+    "TabFieldDisplayOrder": 11,
+    "FieldShowCondition": "generalAppConsentOrder = \"No\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppInformOtherParty",
+    "CaseFieldID": "isApplicationUrgent",
     "TabFieldDisplayOrder": 12
   },
   {
@@ -105,7 +106,8 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppType",
+    "CaseFieldID": "generalAppInformOtherParty",
+    "FieldShowCondition": "generalAppConsentOrder = \"\"",
     "TabFieldDisplayOrder": 13
   },
   {
@@ -113,7 +115,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppN245FormUpload",
+    "CaseFieldID": "generalAppType",
     "TabFieldDisplayOrder": 14
   },
   {
@@ -121,7 +123,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppDetailsOfOrder",
+    "CaseFieldID": "generalAppN245FormUpload",
     "TabFieldDisplayOrder": 15
   },
   {
@@ -129,7 +131,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppReasonsOfOrder",
+    "CaseFieldID": "generalAppDetailsOfOrder",
     "TabFieldDisplayOrder": 16
   },
   {
@@ -137,7 +139,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppEvidenceDocument",
+    "CaseFieldID": "generalAppReasonsOfOrder",
     "TabFieldDisplayOrder": 17
   },
   {
@@ -145,7 +147,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppHearingDetails",
+    "CaseFieldID": "generalAppEvidenceDocument",
     "TabFieldDisplayOrder": 18
   },
   {
@@ -153,8 +155,16 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "generalAppParentCaseLink",
+    "CaseFieldID": "generalAppHearingDetails",
     "TabFieldDisplayOrder": 19
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application",
+    "TabLabel": "Application",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "generalAppParentCaseLink",
+    "TabFieldDisplayOrder": 20
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -163,14 +173,6 @@
     "ElementLabel": "Respondend response",
     "TabDisplayOrder": 1,
     "CaseFieldID": "respondentsResponses",
-    "TabFieldDisplayOrder": 20
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application",
-    "TabLabel": "Application",
-    "TabDisplayOrder": 1,
-    "CaseFieldID": "referToJudge",
     "TabFieldDisplayOrder": 21
   },
   {
@@ -178,7 +180,15 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "referToLegalAdvisor",
+    "CaseFieldID": "referToJudge",
     "TabFieldDisplayOrder": 22
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application",
+    "TabLabel": "Application",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "referToLegalAdvisor",
+    "TabFieldDisplayOrder": 23
   }
 ]

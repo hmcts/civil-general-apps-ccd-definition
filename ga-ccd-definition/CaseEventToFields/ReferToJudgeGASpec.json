@@ -68,9 +68,9 @@
     "CaseFieldID": "generalAppSuperClaimType",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
-    "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 8,
-    "PageColumnNumber": 2,
+    "PageID": "isMultiPartyPage2",
+    "PageDisplayOrder": 9,
+    "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
