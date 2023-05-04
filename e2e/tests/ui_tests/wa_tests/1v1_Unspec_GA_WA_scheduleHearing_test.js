@@ -9,7 +9,8 @@ const listForHearingStatus = states.LISTING_FOR_A_HEARING.id;
 
 let civilCaseReference, gaCaseReference, expectedJudgeDecideOnApplicationBeforeSDOTask,
   expectedLADecideOnApplicationBeforeSDOTask, expectedScheduleAppHearingBeforeSDOTask,
-  expectedJudgeDecideOnApplicationAfterSDOTask, expectedScheduleAppHearingAfterSDOTask;
+  expectedJudgeDecideOnApplicationAfterSDOTask, expectedScheduleAppHearingAfterSDOTask,
+  judgeUser;
 if (config.runWAApiTest) {
   expectedJudgeDecideOnApplicationBeforeSDOTask = require('../../../../wa/tasks/judgeDecideOnApplicationBeforeSDOTask.js');
   expectedJudgeDecideOnApplicationAfterSDOTask = require('../../../../wa/tasks/judgeDecideOnApplicationAfterSDOTask.js');
@@ -30,17 +31,25 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin schedule Hearing', asy
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
+  if (['preview', 'aat'].includes(config.runningEnv)) {
+    judgeUser = config.judgeUser;
+  } else if (['demo'].includes(config.runningEnv)) {
+    judgeUser = config.judgeUserWithRegionId4;
+  } else {
+    judgeUser = config.judgeLocalUser;
+  }
+
   console.log('Region 4 Judge List for a hearing');
   if (config.runWAApiTest) {
-    const actualJudgeDecideOnApplicationTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId4,
+    const actualJudgeDecideOnApplicationTask = await api.retrieveTaskDetails(judgeUser,
       gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
     console.log('actualJudgeDecideOnApplicationTask...', actualJudgeDecideOnApplicationTask);
     wa.validateTaskInfo(actualJudgeDecideOnApplicationTask, expectedJudgeDecideOnApplicationBeforeSDOTask);
   }
-  await I.login(config.judgeUserWithRegionId4);
+  await I.login(judgeUser);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
-  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order', config.judgeUserWithRegionId4);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, config.judgeUserWithRegionId4);
+  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order', judgeUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, judgeUser);
   await wa.verifyNoActiveTask(gaCaseReference);
 
   console.log('Region 4 NBC admin review scheduled Application Hearing');
