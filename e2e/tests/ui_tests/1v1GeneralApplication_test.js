@@ -42,7 +42,9 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(3, 4), 1);
   await I.see(awaitingPaymentStatus);
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser, judgeDecisionStatus);
+    states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, judgeDecisionStatus);
+
+  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     user = config.judgeUser;
