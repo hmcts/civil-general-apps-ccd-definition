@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 Defendants response consent order API tests @api-tests');
+Feature('GA 1v2 Defendants response consent order API tests @e2e-wa');
 
 Scenario('Defendants response 1V2', async ({api}) => {
     civilCaseReference = await api.createUnspecifiedClaim(
@@ -19,6 +19,11 @@ Scenario('Defendants response 1V2', async ({api}) => {
     console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
     await api.respondentConsentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
     console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
+
+    console.log('*** NBC Admin Region4 Refer to Judge Process Start ***');
+    await api.nbcAdminReferToJudge(config.nbcAdminWithRegionId4, gaCaseReference);
+    console.log('*** NBC Admin Region4 Refer to Judge Process End ***');
+
 });
 
 AfterSuite(async ({api}) => {
