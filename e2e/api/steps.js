@@ -61,6 +61,7 @@ const data = {
   INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
   RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
   RESPOND_DEBTOR_TO_APPLICATION: genAppRespondentResponseData.respondDebtorGAData(),
+  RESPOND_TO_CONSENT_APPLICATION: genAppRespondentResponseData.respondConsentGAData(),
   MAKE_DECISION: genAppJudgeMakeDecisionData.judgeMakesDecisionData(),
   REFER_TO_JUDGE: genAppNbcAdminReferToJudgeData.nbcAdminReferToJudgeData(),
   REFER_TO_LEGAL_ADVISOR: genAppNbcAdminReferToLegalAdvisorData.nbcAdminReferToLegalAdvisorData(),
@@ -363,11 +364,15 @@ module.exports = {
   },
 
   initiateGeneralApplicationWithState: async (user, parentCaseId, expectState) => {
-    return await initiateGaWithState(user, parentCaseId, expectState);
+    return await initiateGaWithState(user, parentCaseId, expectState, data.INITIATE_GENERAL_APPLICATION);
   },
 
   initiateGeneralApplication: async (user, parentCaseId) => {
-    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', data.INITIATE_GENERAL_APPLICATION);
+  },
+
+  initiateConsentGeneralApplication: async (user, parentCaseId) => {
+    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', data.INITIATE_GENERAL_APPLICATION_CONSENT);
   },
 
   checkGeneralApplication: async (user, parentCaseId) => {
@@ -594,35 +599,12 @@ module.exports = {
     await addUserCaseMapping(gaCaseId, user);
   },
 
- respondentResponse1v2: async (user, user2, gaCaseId) => {
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
+  respondentResponse1v2: async (user, user2, gaCaseId) => {
+     await respondentResponse1v2WithPayload(user, user2, gaCaseId, data.RESPOND_TO_APPLICATION);
+  },
 
-    await apiRequest.setupTokens(user);
-    eventName = events.RESPOND_TO_APPLICATION.id;
-    await apiRequest.startGAEvent(eventName, gaCaseId);
-
-    const response = await apiRequest.submitGAEvent(eventName, data.RESPOND_TO_APPLICATION, gaCaseId);
-    const responseBody = await response.json();
-    assert.equal(response.status, 201);
-    assert.equal(responseBody.state, 'AWAITING_RESPONDENT_RESPONSE');
-    assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
-
-   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
-
-   await apiRequest.setupTokens(user2);
-   eventName = events.RESPOND_TO_APPLICATION.id;
-   await apiRequest.startGAEvent(eventName, gaCaseId);
-
-   const response2 = await apiRequest.submitGAEvent(eventName, data.RESPOND_TO_APPLICATION, gaCaseId);
-   const responseBody2 = await response2.json();
-
-   assert.equal(response2.status, 201);
-   assert.equal(responseBody2.state, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
-   assert.equal(responseBody2.callback_response_status_code, 200);
-   assert.include(responseBody2.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
-   await addUserCaseMapping(gaCaseId, user);
-   await addUserCaseMapping(gaCaseId, user2);
+  respondentConsentResponse1v2: async (user, user2, gaCaseId) => {
+    await respondentResponse1v2WithPayload(user, user2, gaCaseId, data.RESPOND_TO_CONSENT_APPLICATION);
   },
 
   nbcAdminReferToJudge: async (user, gaCaseId) => {
@@ -1902,11 +1884,11 @@ const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
 
-const initiateGaWithState = async (user, parentCaseId, expectState) => {
+const initiateGaWithState = async (user, parentCaseId, expectState, payload) => {
   eventName = events.INITIATE_GENERAL_APPLICATION.id;
   await apiRequest.setupTokens(user);
   await apiRequest.startEvent(eventName, parentCaseId);
-  const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION, parentCaseId);
+  const response = await apiRequest.submitEvent(eventName, payload, parentCaseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);
   console.log('General application case state : ' + responseBody.state);
@@ -2044,6 +2026,37 @@ const initiateGeneralApplicationWithOutNotice = async (user, parentCaseId, gaDat
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   await addUserCaseMapping(gaCaseReference, user);
   return gaCaseReference;
+};
+
+const respondentResponse1v2WithPayload = async (user, user2, gaCaseId, payload) => {
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
+
+  await apiRequest.setupTokens(user);
+  eventName = events.RESPOND_TO_APPLICATION.id;
+  await apiRequest.startGAEvent(eventName, gaCaseId);
+
+  const response = await apiRequest.submitGAEvent(eventName, payload, gaCaseId);
+  const responseBody = await response.json();
+  assert.equal(response.status, 201);
+  assert.equal(responseBody.state, 'AWAITING_RESPONDENT_RESPONSE');
+  assert.equal(responseBody.callback_response_status_code, 200);
+  assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
+
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
+
+  await apiRequest.setupTokens(user2);
+  eventName = events.RESPOND_TO_APPLICATION.id;
+  await apiRequest.startGAEvent(eventName, gaCaseId);
+
+  const response2 = await apiRequest.submitGAEvent(eventName, payload, gaCaseId);
+  const responseBody2 = await response2.json();
+
+  assert.equal(response2.status, 201);
+  assert.equal(responseBody2.state, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+  assert.equal(responseBody2.callback_response_status_code, 200);
+  assert.include(responseBody2.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
+  await addUserCaseMapping(gaCaseId, user);
+  await addUserCaseMapping(gaCaseId, user2);
 };
 
 function addMidEventFields(pageId, responseBody) {
