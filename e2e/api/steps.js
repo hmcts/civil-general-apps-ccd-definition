@@ -27,6 +27,8 @@ const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentRespo
 const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
 const genAppJudgeMakeFinalOrderData = require('../fixtures/ga-ccd/judgeMakeFinalDecision.js');
 const genAppHearingData = require('../fixtures/ga-ccd/genAppHearing.js');
+const genAppNbcAdminReferToJudgeData = require('../fixtures/ga-ccd/nbcAdminTask.js');
+const  genAppNbcAdminReferToLegalAdvisorData = require('../fixtures/ga-ccd/nbcAdminTask.js');
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
 const { replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
@@ -36,7 +38,8 @@ const sdoTracks = require('../fixtures/events/createSDO.js');
 const {expect} = require('chai');
 const gaTypesList = {
   'LATypes': ['STAY_THE_CLAIM','EXTEND_TIME', 'AMEND_A_STMT_OF_CASE'],
-  'JudgeGaTypes': ['SET_ASIDE_JUDGEMENT']
+  'JudgeGaTypes': ['SET_ASIDE_JUDGEMENT'],
+  'ConsentGaTypes': ['STAY_THE_CLAIM']
 };
 
 const data = {
@@ -48,6 +51,8 @@ const data = {
     '10800', 'FEE0443'),
   INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE: genAppData.createGADataWithoutNotice('No','Test 123',
     '10800','FEE0443'),
+  INITIATE_GENERAL_APPLICATION_CONSENT: genAppData.createGaWithConsentAndNotice(gaTypesList.ConsentGaTypes, true, null,
+    '10800','FEE0443'),
   INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
   INITIATE_GENERAL_APPLICATION_STAY_CLAIM: genAppData.gaTypeWithStayClaim(),
   INITIATE_GENERAL_APPLICATION_UNLESS_ORDER: genAppData.gaTypeWithUnlessOrder(),
@@ -57,6 +62,8 @@ const data = {
   RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
   RESPOND_DEBTOR_TO_APPLICATION: genAppRespondentResponseData.respondDebtorGAData(),
   MAKE_DECISION: genAppJudgeMakeDecisionData.judgeMakesDecisionData(),
+  REFER_TO_JUDGE: genAppNbcAdminReferToJudgeData.nbcAdminReferToJudgeData(),
+  REFER_TO_LEGAL_ADVISOR: genAppNbcAdminReferToLegalAdvisorData.nbcAdminReferToLegalAdvisorData(),
   JUDGE_MAKES_ORDER_WRITTEN_REP: (current_date) => genAppJudgeMakeDecisionData.judgeMakeOrderWrittenRep(current_date),
   JUDGE_MAKES_ORDER_WRITTEN_REP_ON_UNCLOAKED_APPLN: (current_date) => genAppJudgeMakeDecisionData.judgeMakeOrderWrittenRep_On_Uncloaked_Appln(current_date),
   RESPOND_TO_JUDGE_ADDITIONAL_INFO: genAppRespondentResponseData.toJudgeAdditionalInfo(),
@@ -617,6 +624,31 @@ module.exports = {
    await addUserCaseMapping(gaCaseId, user);
    await addUserCaseMapping(gaCaseId, user2);
   },
+
+  nbcAdminReferToJudge: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.REFER_TO_JUDGE.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.REFER_TO_JUDGE, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+  },
+
+  nbcAdminReferToLegalAdvisor: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.REFER_TO_LEGAL_ADVISOR.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.REFER_TO_LEGAL_ADVISOR, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+  },
+
 
   judgeMakesDecisionAdditionalInformation: async (user, gaCaseId) => {
     await apiRequest.setupTokens(user);
