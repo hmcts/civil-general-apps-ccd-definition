@@ -744,6 +744,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "approveConsentOrder",
+    "Label": "Approve or edit a consent order",
+    "FieldType": "GAApproveConsentOrderGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "applicationClosedDate",
     "Label": "Application Closed date",
     "FieldType": "DateTime",
@@ -818,6 +825,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialRequestMoreInfoDocPreview",
+    "Label": "Draft Order",
+    "FieldType": "Document",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "consentOrderDocPreview",
     "Label": "Draft Order",
     "FieldType": "Document",
     "SecurityClassification": "Public"
