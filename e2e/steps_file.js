@@ -147,7 +147,7 @@ const apiRequest = require('./api/apiRequest');
 const genAppJudgeMakeDecisionData = require('./fixtures/ga-ccd/judgeMakeDecision');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('./api/testingSupport');
 
-const SIGNED_IN_SELECTOR = 'exui-header';
+const SIGNED_IN_SELECTOR = 'ul[class*="navigation-list"] a';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 const GA_CASE_HEADER = '.heading-h2';
@@ -236,6 +236,7 @@ module.exports = function () {
             output.log(`Signing in user: ${user.type}`);
             await loginPage.signIn(user);
           }
+          await this.waitForText('Sign out', 20, SIGNED_IN_SELECTOR);
         }, SIGNED_IN_SELECTOR);
         loggedInUser = user;
       }
