@@ -65,16 +65,16 @@ module.exports = {
 
   async clickOnTab(tabName) {
     await I.waitForElement(this.fields.tabList, 5);
-    await I.refreshPage();
-    if (['preview','aat'].includes(config.runningEnv)) {
-      await I.wait(12);
-    } else {
-      await I.wait(5);
-    }
     let urlBefore = await I.grabCurrentUrl();
     await I.retryUntilUrlChanges(async () => {
       await I.forceClick(locate(this.fields.tab).withText(tabName));
     }, urlBefore);
+    await I.refreshPage();
+    if (['preview','aat'].includes(config.runningEnv)) {
+      await I.wait(6);
+    } else {
+      await I.wait(2);
+    }
   },
 
   async navigateToTab(caseNumber, tabName) {
