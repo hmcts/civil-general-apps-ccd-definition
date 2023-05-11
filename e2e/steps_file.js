@@ -239,6 +239,7 @@ module.exports = function () {
           await this.waitForSelector(SIGNED_IN_SELECTOR);
         }, SIGNED_IN_SELECTOR);
         loggedInUser = user;
+        console.log('Logged in user..', loggedInUser);
       }
     },
 
