@@ -147,7 +147,7 @@ const apiRequest = require('./api/apiRequest');
 const genAppJudgeMakeDecisionData = require('./fixtures/ga-ccd/judgeMakeDecision');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('./api/testingSupport');
 
-const SIGNED_IN_SELECTOR = 'ul[class*="navigation-list"] a';
+const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 const GA_CASE_HEADER = '.heading-h2';
@@ -233,10 +233,10 @@ module.exports = function () {
           this.amOnPage(config.url.manageCase, 90);
 
           if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
-            output.log(`Signing in user: ${user.type}`);
+            console.log(`Signing in user: ${user.type}`);
             await loginPage.signIn(user);
           }
-          await this.waitForText('Sign out', 20, SIGNED_IN_SELECTOR);
+          await this.waitForSelector(SIGNED_IN_SELECTOR);
         }, SIGNED_IN_SELECTOR);
         loggedInUser = user;
       }
@@ -489,13 +489,13 @@ module.exports = function () {
      */
     async retryUntilInvisible(action, locator, maxNumberOfRetries = 3) {
       for (let tryNumber = 1; tryNumber <= maxNumberOfRetries; tryNumber++) {
-        output.log(`retryUntilInvisible(${locator}): starting try #${tryNumber}`);
+        console.log(`retryUntilInvisible(${locator}): starting try #${tryNumber}`);
         await action();
 
         if (await this.hasSelector(locator) > 0) {
-          output.print(`retryUntilInvisible(${locator}): error present after try #${tryNumber} was executed`);
+          console.print(`retryUntilInvisible(${locator}): error present after try #${tryNumber} was executed`);
         } else {
-          output.log(`retryUntilInvisible(${locator}): error not present after try #${tryNumber} was executed`);
+          console.log(`retryUntilInvisible(${locator}): error not present after try #${tryNumber} was executed`);
           break;
         }
         if (tryNumber === maxNumberOfRetries) {
