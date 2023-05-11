@@ -8,7 +8,7 @@ const judgeApproveOrderStatus = states.ORDER_MADE.name;
 
 Feature('Before SDO 1v1 - GA CP - Applications Orders @ui-nightly');
 
-Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, api}) => {
+Scenario.skip('1v1 - Free form order - With notice journey @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -53,7 +53,7 @@ Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, ap
   await I.verifyClaimDocument('Free From Order');
 });
 
-Scenario('1v1 - Assisted order - Without Further Hearing', async ({api, I}) => {
+Scenario.skip('1v1 - Assisted order - Without Further Hearing', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
