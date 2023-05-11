@@ -19,6 +19,11 @@ Scenario('Defendants response 1V2', async ({api}) => {
     console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
     await api.respondentConsentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
     console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
+
+    console.log('*** NBC Admin Region4 Refer to Judge Process Start ***');
+    await api.nbcAdminReferToJudge(config.nbcAdminWithRegionId4, gaCaseReference);
+    console.log('*** NBC Admin Region4 Refer to Judge Process End ***');
+
 });
 
 AfterSuite(async ({api}) => {
