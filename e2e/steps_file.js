@@ -90,6 +90,7 @@ const uploadScreenPage = require('./pages/generalApplication/judgesJourneyPages/
 const applicationDocumentPage = require('./pages/generalApplication/judgesJourneyPages/applicationDocument.page');
 const judgesSummary = require('./pages/generalApplication/judgesJourneyPages/judgesSummary.page');
 const claimDocumentPage = require('./pages/generalApplication/claimDocument.page');
+const caseFileDocPage = require('./pages/generalApplication/caseFile.page');
 const serviceRequestPage = require('./pages/generalApplication/serviceRequest.page');
 const appDetailsPage = require('./pages/generalApplication/hearingNoticePages/applicationDetails.page');
 const hearingSchedulePage = require('./pages/generalApplication/hearingNoticePages/hearingSchedule.page');
@@ -232,9 +233,10 @@ module.exports = function () {
           this.amOnPage(config.url.manageCase, 90);
 
           if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
-            output.log(`Signing in user: ${user.type}`);
+            console.log(`Signing in user: ${user.type}`);
             await loginPage.signIn(user);
           }
+          await this.waitForSelector(SIGNED_IN_SELECTOR);
         }, SIGNED_IN_SELECTOR);
         loggedInUser = user;
       }
@@ -487,13 +489,13 @@ module.exports = function () {
      */
     async retryUntilInvisible(action, locator, maxNumberOfRetries = 3) {
       for (let tryNumber = 1; tryNumber <= maxNumberOfRetries; tryNumber++) {
-        output.log(`retryUntilInvisible(${locator}): starting try #${tryNumber}`);
+        console.log(`retryUntilInvisible(${locator}): starting try #${tryNumber}`);
         await action();
 
         if (await this.hasSelector(locator) > 0) {
-          output.print(`retryUntilInvisible(${locator}): error present after try #${tryNumber} was executed`);
+          console.print(`retryUntilInvisible(${locator}): error present after try #${tryNumber} was executed`);
         } else {
-          output.log(`retryUntilInvisible(${locator}): error not present after try #${tryNumber} was executed`);
+          console.log(`retryUntilInvisible(${locator}): error not present after try #${tryNumber} was executed`);
           break;
         }
         if (tryNumber === maxNumberOfRetries) {
@@ -901,6 +903,11 @@ module.exports = function () {
     async verifyClaimDocument(docType) {
       await caseViewPage.clickOnTab('Claim documents');
       await claimDocumentPage.verifyUploadedDocument(docType);
+    },
+
+    async verifyCaseFileDocument(docType) {
+      await caseViewPage.clickOnTab('Case File');
+      await caseFileDocPage.verifyCaseFileDocument(docType);
     },
 
     async verifyHearingNoticeDocNotAvailable() {
