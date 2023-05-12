@@ -16,6 +16,7 @@ module.exports = {
     caseHeader: 'ccd-case-header > h1',
     generalApps: 'h1.govuk-heading-l',
     tabList: 'div.mat-tab-list',
+    selectedTab: 'div[aria-selected="true"] div[class*="content"]',
   },
   goButton: 'Go',
 
@@ -64,24 +65,22 @@ module.exports = {
   },
 
   async clickOnTab(tabName) {
-    await I.waitForElement(this.fields.tabList, 5);
-    let urlBefore = await I.grabCurrentUrl();
-    await I.retryUntilUrlChanges(async () => {
-      await I.forceClick(locate(this.fields.tab).withText(tabName));
-    }, urlBefore);
+    await I.waitForElement(this.fields.tabList, 10);
     await I.refreshPage();
-    if (['preview','aat'].includes(config.runningEnv)) {
+    if (['preview', 'aat'].includes(config.runningEnv)) {
       await I.wait(6);
     } else {
       await I.wait(2);
     }
+    await I.forceClick(locate(this.fields.tab).withText(tabName));
+    await I.waitForText(tabName, 10, this.fields.selectedTab);
   },
 
   async navigateToTab(caseNumber, tabName) {
     if (tabName !== 'Application Documents') {
       await I.retryUntilExists(async () => {
         await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
-        if (['preview'].includes(config.runningEnv)) {
+        if (['preview', 'aat'].includes(config.runningEnv)) {
           await I.wait(5);
         } else {
           await I.wait(5);
@@ -94,18 +93,14 @@ module.exports = {
     await I.retryUntilUrlChanges(async () => {
       if (tabName === 'Application Documents') {
         await I.refreshPage();
-        if (['preview','aat'].includes(config.runningEnv)) {
+        if (['preview', 'aat'].includes(config.runningEnv)) {
           await I.wait(5);
         } else {
           await I.wait(2);
         }
       }
       await I.forceClick(locate(this.fields.tab).withText(tabName));
-      if (['preview','aat'].includes(config.runningEnv)) {
-        await I.wait(5);
-      } else {
-        await I.wait(2);
-      }
+      await I.waitForText(tabName, 10, this.fields.selectedTab);
     }, urlBefore);
   },
 };
