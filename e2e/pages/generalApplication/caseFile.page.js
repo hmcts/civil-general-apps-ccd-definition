@@ -7,22 +7,36 @@ module.exports = {
   fields: {
     appFolder: 'div[aria-label*="Applications"] .node__count',
     orderFolder: 'div[aria-label*="Orders"] .node__count',
-    ordersFolder: '[aria-expanded="true"] .node-name-document',
+    expandedFolder: '[aria-expanded="true"] .node-name-document',
+    nameFolder: 'div[aria-label*="Applications"] + span',
   },
 
-  async verifyCaseFileDocument(documentType) {
+  async verifyCaseFileAppDocument(documentType) {
     await I.seeInCurrentUrl('File');
-    await I.wait(3);
-
-    if (documentType === 'Hearing Notice') {
-      let docCount = await I.grabTextFrom(locate(this.fields.appFolder));
-      expect(docCount).to.equals('1');
-      await I.click(this.fields.appFolder);
+    await I.waitNumberOfVisibleElements('.cdk-tree', 1, 20);
+    await I.waitForText('Applications', 20, this.fields.nameFolder);
+    await I.click(locate(this.fields.appFolder));
+    let docs = await I.grabTextFromAll(locate(this.fields.expandedFolder));
+    switch (documentType) {
+      case 'Hearing Notice':
+        expect(docs.toString()).to.includes(`Application_Hearing_Notice_${docFullDate}`,
+          `Hearing_order_for_application_${docFullDate}`,);
+        break;
+      case 'Applicant Evidence':
+        expect(docs.toString()).to.contains('examplePDF.pdf');
+        break;
     }
+    await I.click(locate(this.fields.appFolder));
+  },
+
+  async verifyCaseFileOrderDocument(documentType) {
+    await I.seeInCurrentUrl('File');
+    await I.waitNumberOfVisibleElements('.cdk-tree', 1, 20);
+    await I.waitForText('Applications', 20, this.fields.nameFolder);
     await I.click(locate(this.fields.orderFolder).first());
     await I.waitForText('Orders made on applications');
     await I.click('Orders made on applications');
-    let docs = await I.grabTextFromAll(locate(this.fields.ordersFolder));
+    let docs = await I.grabTextFromAll(locate(this.fields.expandedFolder));
     switch (documentType) {
       case 'General order document':
         expect(docs.toString()).to.contains(`General_order_for_application_${docFullDate}`);
@@ -33,10 +47,7 @@ module.exports = {
       case 'Dismissal order document':
         expect(docs.toString()).to.contains(`Dismissal_order_for_application_${docFullDate}`);
         break;
-      case 'Hearing Notice':
-        expect(docs.toString()).to.includes(`Application_Hearing_Notice_${docFullDate}`,
-          `General_order_for_application_${docFullDate}`,);
-        break;
     }
+    await I.click(locate(this.fields.orderFolder).first());
   }
 };

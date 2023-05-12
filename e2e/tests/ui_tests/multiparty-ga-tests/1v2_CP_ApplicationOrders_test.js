@@ -49,8 +49,9 @@ Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, ap
   await I.see(listForHearingStatus);
   await I.verifyClaimDocument('Assisted Order');
 
- /* Uncomment the code for setting up the categoryID after CIV-7926 is merged in Civil repo
-  await I.verifyCaseFileDocument('Hearing Notice');*/
+  await I.clickMainTab('Case File');
+  await I.verifyCaseFileOrderDocument('General order document');
+  await I.verifyCaseFileAppDocument('Hearing Notice');
 });
 
 AfterSuite(async ({api}) => {
