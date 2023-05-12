@@ -68,7 +68,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.verifyCaseFileDocument('General order document');*/
 });
 
-Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
+Scenario('GA for 1v1 - Direction order journey @123', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
