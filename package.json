@@ -33,7 +33,9 @@
     "test:nightly-e2e-tests": "MOCHAWESOME_REPORTFILENAME=nightly-e2e-tests PROCEED_ON_FAILURE=true npx codeceptjs run-workers --suites 2 --grep @ui-nightly --reporter mocha-multi --verbose",
     "test:master-e2e-tests": "MOCHAWESOME_REPORTFILENAME=master-e2e-tests npx codeceptjs run-workers --suites 2 --grep @e2e-tests --reporter mocha-multi --verbose",
     "test:fullfunctional": "./e2e/run-nightly-functional-tests.sh",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "yarn-update": "yarn set version 3.x",
+    "install-dependencies": "/usr/bin/yarn install --immutable --silent"
   },
   "license": "MIT",
   "devDependencies": {
@@ -53,6 +55,7 @@
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.7",
     "puppeteer": "18.1.0",
+    "puppeteer-core": "18.1.0",
     "run-script-os": "^1.1.6",
     "totp-generator": "^0.0.7",
     "uuid": "^3.4.0",

@@ -633,4 +633,78 @@ module.exports = {
       document_binary_url: 'http://dm-store:8080/documents/5b6d9333-9dc9-4d42-b47c-0af8cdd8d56a/binary'
     };
   },
+
+  createGaWithConsentAndNotice: (gaTypes, consent, withNotice, calculatedAmount, code) => {
+    return {
+      generalAppType: {
+        types: gaTypes,
+      },
+      generalAppRespondentAgreement: {
+        hasAgreed: consent ? 'Yes':'No'
+      },
+      generalAppUrgencyRequirement: {
+        generalAppUrgency: 'No',
+        urgentAppConsiderationDate: null,
+        reasonsForUrgency: null,
+        ConsentAgreementCheckBox: []
+      },
+      generalAppInformOtherParty: withNotice == null ? null : {
+        isWithNotice: withNotice ? 'Yes':'No',
+        reasonsForWithoutNotice: withNotice ? 'Reason':null,
+      },
+      generalAppDetailsOfOrder: 'Test Order details',
+      generalAppReasonsOfOrder: 'Test reason for order',
+      generalAppEvidenceDocument: [],
+      generalAppStatementOfTruthConsent: [
+        'ConsentAgreementCheckBox'
+      ],
+      generalAppStatementOfTruth: {
+        name: 'John Doe',
+        role: 'Test Solicitor'
+      },
+      generalAppHearingDetails: {
+        hearingYesorNo: 'No',
+        hearingDate: null,
+        judgeRequiredYesOrNo: 'No',
+        judgeName: null,
+        trialRequiredYesOrNo: 'No',
+        trialDateFrom: null,
+        trialDateTo: null,
+        HearingPreferencesPreferredType: 'IN_PERSON',
+        TelephoneHearingPreferredType: null,
+        ReasonForPreferredHearingType: 'sdsd',
+        HearingPreferredLocation: null,
+        HearingDetailsTelephoneNumber: '07446778166',
+        HearingDetailsEmailID: 'update@gh.com',
+        HearingDuration: 'MINUTES_15',
+        generalAppHearingDays: null,
+        generalAppHearingHours: null,
+        generalAppHearingMinutes: null,
+        unavailableTrialRequiredYesOrNo: 'No',
+        vulnerabilityQuestionsYesOrNo: 'Yes',
+        vulnerabilityQuestion: 'Test Test',
+        SupportRequirementSignLanguage: null,
+        SupportRequirementLanguageInterpreter: null,
+        SupportRequirementOther: null,
+        generalAppUnavailableDates: [],
+        SupportRequirement: []
+      },
+      generalAppPBADetails: {
+        paymentSuccessfulDate: null,
+        fee: {
+          calculatedAmountInPence: calculatedAmount,
+          code: code,
+          version: '2'
+        },
+        paymentDetails: {
+          status: null,
+          reference: null,
+          errorMessage: null,
+          errorCode: null,
+          customerReference: null
+        },
+        serviceRequestReference: null
+      }
+    };
+  },
 };

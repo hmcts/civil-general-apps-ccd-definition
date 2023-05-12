@@ -42,7 +42,9 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(3, 4), 1);
   await I.see(awaitingPaymentStatus);
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser, judgeDecisionStatus);
+    states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);
+
+  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     user = config.judgeUser;
@@ -62,6 +64,8 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.see(judgeApproveOrderStatus);
   await I.verifyClaimDocument('General order document');
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
+  /*  Uncomment the code for setting up the categoryID after CIV-7926 is merged in Civil repo
+  await I.verifyCaseFileDocument('General order document');*/
 });
 
 Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
@@ -108,6 +112,10 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeDirectionsOrderStatus);
   await I.verifyClaimDocument('Directions order document');
+
+/*   Uncomment the code for setting up the categoryID after CIV-7926 is merged in Civil repo
+  await I.verifyCaseFileDocument('Directions order document');*/
+
   await I.respondToJudgesDirections(gaCaseReference);
   console.log('Responded to Judges directions on case: ' + gaCaseReference);
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id);
@@ -152,6 +160,10 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({I, api})
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeDismissOrderStatus);
   await I.verifyClaimDocument('Dismissal order document');
+
+ /* // Uncomment the code for setting up the categoryID after CIV-7926 is merged in Civil repo
+  await I.verifyCaseFileDocument('Dismissal order document');*/
+
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.APPLICATION_DISMISSED.id);
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
