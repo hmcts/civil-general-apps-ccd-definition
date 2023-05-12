@@ -382,14 +382,14 @@
         "UserRoles": [
           "civil-administrator-standard",
           "legal-adviser"
-
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "civil-administrator-basic",
-          "ga-basic-access"
+          "ga-basic-access",
+          "caseworker-ras-validation"
         ],
         "CRUD": "R"
       }
@@ -408,7 +408,28 @@
       {
         "UserRoles": [
           "civil-administrator-basic",
-          "ga-basic-access"
+          "ga-basic-access",
+          "caseworker-ras-validation"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "APPROVE_CONSENT_ORDER",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "civil-administrator-standard"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-basic",
+          "ga-basic-access",
+          "caseworker-ras-validation"
         ],
         "CRUD": "R"
       }
