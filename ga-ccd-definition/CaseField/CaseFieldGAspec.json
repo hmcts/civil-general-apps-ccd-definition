@@ -745,7 +745,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "approveConsentOrder",
-    "Label": "Approve or edit a consent order",
+    "Label": "Approve consent order",
     "FieldType": "GAApproveConsentOrderGAspec",
     "SecurityClassification": "Public"
   },
