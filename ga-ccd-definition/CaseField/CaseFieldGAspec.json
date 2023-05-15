@@ -1024,6 +1024,14 @@
     "Label": "Applicant",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaRespDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Respondent Evidence",
+    "SecurityClassification": "Public"
   }
 ]
 
