@@ -6,7 +6,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAJudgeRequestMoreInfoOptionGAspec",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "isWithNotice=\"No\" OR applicationIsCloaked=\"Yes\""
+    "FieldShowCondition": "isWithNotice=\"No\""
   },
   {
     "ID": "GAJudicialRequestMoreInfoGAspec",
