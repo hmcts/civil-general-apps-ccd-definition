@@ -248,7 +248,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "APPROVE_CONSENT_ORDER",
-    "Name": "Approve or edit consent order",
+    "Name": "Approve Consent Order",
     "Description": "Caseworker approves consent order application",
     "DisplayOrder": 13,
     "PreConditionState(s)": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION;ADDITIONAL_RESPONSE_TIME_EXPIRED",
