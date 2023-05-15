@@ -91,5 +91,5 @@ ccd:
 camunda-bpm:
   java:
     ingressHost: camunda-${SERVICE_FQDN}
-civil-wa:
+wa:
   enabled: false
