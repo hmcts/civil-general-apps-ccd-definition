@@ -187,6 +187,12 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "APPROVE_CONSENT_ORDER",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_HEARING_NOTICE_DOCUMENT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
