@@ -919,13 +919,13 @@ module.exports = {
   },
 
   assertGaDocumentVisibilityToUser: async ( user, parentCaseId, gaCaseId, doc) => {
-    let docGa = doc + 'Document';
+    let docGaTitle = doc + 'Document';
     let docCivil = '';
     const response = await apiRequest.fetchMainCivilCaseData(parentCaseId, user);
     const civilCaseData = await response.json();
     const updatedResponse = await apiRequest.fetchGaCaseData(gaCaseId);
     const updatedGaCaseData = await updatedResponse.json();
-    docGa = updatedGaCaseData[docGa];
+    let docGa = updatedGaCaseData[docGaTitle];
     if(user.email === config.applicantSolicitorUser.email){
       docCivil = civilCaseData[doc + 'DocClaimant'];
     }
@@ -938,7 +938,7 @@ module.exports = {
     else{
       docCivil = civilCaseData[doc + 'DocStaff'];
     }
-    assert.equal(docGa['id'], docCivil['id']);
+    assert.equal(docGa[0]['id'], docCivil[0]['id']);
 
   },
 
