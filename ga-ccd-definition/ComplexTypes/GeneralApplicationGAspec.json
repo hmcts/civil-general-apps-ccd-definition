@@ -351,6 +351,13 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "consentOrderDocPreview",
+    "FieldType": "Document",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "gaApplicantDisplayName",
     "FieldType": "Text",
     "ElementLabel": " ",
