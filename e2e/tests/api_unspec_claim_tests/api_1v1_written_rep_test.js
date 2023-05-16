@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v1 Judge Make Order Written Rep API tests @api-nightly');
 
-Scenario('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS- Respondent upload Directions Document', async ({api}) => {
+Scenario('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS- Respondent upload Directions Document @123', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -54,5 +54,5 @@ Scenario('Judge uncloaked the without notice application: Judge revisit makes de
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
