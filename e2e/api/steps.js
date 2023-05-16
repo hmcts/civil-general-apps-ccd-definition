@@ -617,7 +617,6 @@ module.exports = {
 
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
-
   },
 
   nbcAdminReferToLegalAdvisor: async (user, gaCaseId) => {
