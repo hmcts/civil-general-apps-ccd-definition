@@ -62,7 +62,7 @@ module.exports = {
       await I.see(expectedLocation, this.fields(channel).hearingLocation.id);
     }
     I.forceClick(this.fields(channel).channelType.id);
-    await date.enterDate(this.fields(channel).hearingDate, +2);
+    await date.enterDate(this.fields(channel).hearingDate, +3000);
     I.selectOption(this.fields(channel).hearingTime.id, this.fields(channel).hearingTime.options['9']);
     I.selectOption(this.fields(channel).hearingDuration.id, this.fields(channel).hearingDuration.options['30']);
     await I.clickContinue();
