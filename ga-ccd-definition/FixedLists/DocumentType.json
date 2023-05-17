@@ -58,5 +58,11 @@
     "ListElementCode": "FREE_FORM_ORDER",
     "ListElement": "Free Form Order",
     "DisplayOrder": 10
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "CONSENT_ORDER",
+    "ListElement": "Consent Order",
+    "DisplayOrder": 11
   }
 ]
