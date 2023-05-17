@@ -32,7 +32,7 @@ module.exports = {
     I.waitForElement(this.fields.applicationDetailDD.id);
     I.selectOption(this.fields.applicationDetailDD.id, this.fields.applicationDetailDD.options[party]);
     await I.fillField(this.fields.typeOfApplication, 'Test App type');
-    await date.enterDate(this.fields.applicationDate, +2000);
+    await date.enterDate(this.fields.applicationDate, +3000);
     await I.clickContinue();
   },
 };
