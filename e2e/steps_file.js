@@ -151,6 +151,7 @@ const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 const GA_CASE_HEADER = '.heading-h2';
+const SIGN_OUT_LINK = 'ul[class*="navigation-list"] a';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 
@@ -893,6 +894,7 @@ module.exports = function () {
       console.log(`GA payment for ID: ${gaCaseReference} done successfully with expected state: ${ccdState}`);
       await caseViewPage.navigateToTab(civilCaseReference, 'Applications');
       await this.see(gaStatus);
+      await this.waitForText('Sign out', 10, SIGN_OUT_LINK);
     },
 
     async payForGA() {
@@ -1021,7 +1023,8 @@ module.exports = function () {
 
     async clickAndVerifyTab(caseNumber, tabName, appType, appCount) {
       await this.triggerStepsWithScreenshot([
-        () => confirmationPage.clickPayFeeLink(),
+        () => confirmationPage.closeAndReturnToCaseDetails(),
+        () => caseViewPage.navigateToTab(caseNumber, tabName),
         () => applicationTab.verifyApplicationDetails(appType, appCount),
       ]);
     },
