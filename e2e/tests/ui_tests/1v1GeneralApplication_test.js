@@ -19,7 +19,7 @@ const claimantType = 'Company';
 
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA CCD 1v1 - General Application Journey  @ui-nightly');
+Feature('GA CCD 1v1 - General Application Journey  @ui-nightly @regression2');
 
 Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
