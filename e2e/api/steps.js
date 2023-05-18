@@ -651,7 +651,6 @@ module.exports = {
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE', user);
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
-    let ccd_state = updatedGABusinessProcessData.ccdState;
     assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
   },
 
