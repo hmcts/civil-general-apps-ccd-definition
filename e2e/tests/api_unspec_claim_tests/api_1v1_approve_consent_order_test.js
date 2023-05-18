@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v1 Caseworker Approve Consent Order API tests @api-tests');
 
-Scenario('caseworker makes decision 1V1 - CONSENT ORDER', async ({api}) => {
+Scenario('caseworker makes decision 1V1 - CONSENT ORDER @123-tests', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -31,7 +31,7 @@ Scenario('caseworker makes decision 1V1 - CONSENT ORDER', async ({api}) => {
 
 });
 
-AfterSuite(async ({api}) => {
+/*AfterSuite(async ({api}) => {
   await api.cleanUp();
-});
+});*/
 
