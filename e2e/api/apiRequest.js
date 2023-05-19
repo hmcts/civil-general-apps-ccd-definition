@@ -18,6 +18,7 @@ const getJudgeRevisitTaskHandlerUrl =(state, genAppType) => `${config.url.genera
 const getCaseDismissalTaskHandlerUrl =() => `${config.url.civilService}/testing-support/trigger-case-dismissal-scheduler`;
 const getGaCaseDataUrl =(caseId) => `${config.url.generalApplication}/testing-support/case/${caseId}`;
 const getCivilServiceUrl = () => `${config.url.civilService}`;
+const getMainCivilServiceCaseDataUrl = () => `${config.url.civilService}/testing-support/case/`;
 const getCivilServiceCaseDataUrl = () => `${config.url.generalApplication}/testing-support/case/`;
 
 
@@ -193,6 +194,20 @@ module.exports = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
       },null, 'GET');
+  },
+
+  fetchMainCivilCaseData: async (caseId, user) => {
+    const authToken = await idamHelper.accessToken(user);
+    let url = getMainCivilServiceCaseDataUrl();
+    console.log('*** Civil Case Reference: '  + caseId + ' ***');
+    if (caseId) {
+      url += `${caseId}`;
+    }
+    return await restHelper.retriedRequest(url,
+                                           {
+                                             'Content-Type': 'application/json',
+                                             'Authorization': `Bearer ${authToken}`,
+                                           },null, 'GET');
   },
 
   fetchUpdatedCaseData: async (caseId, user) => {

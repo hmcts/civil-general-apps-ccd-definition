@@ -8,7 +8,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('Before SDO 1v2 - GA CP - Applications Orders @ui-nightly');
 
-Scenario.skip('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, api}) => {
+Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
