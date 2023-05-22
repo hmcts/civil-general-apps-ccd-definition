@@ -53,7 +53,7 @@ Scenario('Defendant of main claim initiates Vary Judgement application @e2e-test
   await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
-Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async ({I, api}) => {
+Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regression2', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
