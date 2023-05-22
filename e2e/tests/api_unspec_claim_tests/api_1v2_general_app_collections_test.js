@@ -75,7 +75,28 @@ Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA C
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, null);
   await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
   console.log('*** End of Validating  GA Case Visibility in all Collections: ' + gaCaseReference + ' ***');
+  console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeMakesDecisionAdditionalInformation(config.judgeUser, gaCaseReference);
+  } else {
+    await api.judgeMakesDecisionAdditionalInformation(config.judgeLocalUser, gaCaseReference);
+  }
+  console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
 
+  console.log('*** Start Respondent respond to Judge Additional information on GA Case Reference: '
+              + gaCaseReference + ' ***');
+  await api.respondentResponseToJudgeAdditionalInfo(config.secondDefendantSolicitorUser, gaCaseReference);
+  console.log('*** End Respondent respond to Judge Additional information on GA Case Reference: '
+              + gaCaseReference + ' ***');
+  let doc = 'gaResp';
+  await api.assertNullGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, doc);
+  await api.assertNullGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, doc);
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.assertGaDocumentVisibilityToUser(config.judgeUser, civilCaseReference, gaCaseReference, doc);
+  } else {
+    await api.assertGaDocumentVisibilityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
+  }
+  await api.assertGaDocumentVisibilityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 });
 
 Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Decision Order Made', async ({api}) => {

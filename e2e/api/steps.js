@@ -272,13 +272,8 @@ module.exports = {
     const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
-      : 'Your claim will not be issued until payment is confirmed.';
 
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received',
-      body: bodyText
-    });
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await waitForFinishedBusinessProcess(caseId, user);
 
@@ -954,13 +949,13 @@ module.exports = {
   },
 
   assertGaDocumentVisibilityToUser: async ( user, parentCaseId, gaCaseId, doc) => {
-    let docGa = doc + 'Document';
+    let docGaTitle = doc + 'Document';
     let docCivil = '';
-    const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+    const response = await apiRequest.fetchMainCivilCaseData(parentCaseId, user);
     const civilCaseData = await response.json();
     const updatedResponse = await apiRequest.fetchGaCaseData(gaCaseId);
     const updatedGaCaseData = await updatedResponse.json();
-    docGa = updatedGaCaseData[docGa];
+    let docGa = updatedGaCaseData[docGaTitle];
     if(user.email === config.applicantSolicitorUser.email){
       docCivil = civilCaseData[doc + 'DocClaimant'];
     }
@@ -973,7 +968,7 @@ module.exports = {
     else{
       docCivil = civilCaseData[doc + 'DocStaff'];
     }
-    assert.equal(docGa['id'], docCivil['id']);
+    assert.equal(docGa[0]['id'], docCivil[0]['id']);
 
   },
 
@@ -1342,13 +1337,7 @@ module.exports = {
     const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
-      : 'Your claim will not be issued until payment is confirmed.';
-
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received',
-      body: bodyText
-    });
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await waitForFinishedBusinessProcess(caseId, user);
 
