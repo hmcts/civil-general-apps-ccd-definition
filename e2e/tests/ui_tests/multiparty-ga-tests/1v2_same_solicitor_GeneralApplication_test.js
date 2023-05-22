@@ -13,7 +13,7 @@ const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 const claimantType = 'Company';
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly');
+Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly  @regression1');
 
 Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey', async ({
                                                                                                                      I,
