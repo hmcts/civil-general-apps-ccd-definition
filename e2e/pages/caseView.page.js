@@ -32,6 +32,7 @@ module.exports = {
       case 'Refer to Judge':
       case 'Refer to Legal Advisor':
       case 'Make an order':
+      case 'Approve Consent Order':
         await I.waitForElement(this.fields.eventDropdown, 10);
         await I.selectOption(this.fields.eventDropdown, event);
         await I.retryUntilExists(async () => {
