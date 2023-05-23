@@ -43,6 +43,8 @@ const gaTypesList = {
 };
 
 const data = {
+  INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES: (types, isWithNotice, reason, calculatedAmount, code) => genAppData.createGA(types,
+    isWithNotice, reason, calculatedAmount, code),
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes', null,
     '27500', 'FEE0442'),
   INITIATE_GENERAL_APPLICATION_FOR_LA: genAppData.createGA(gaTypesList.LATypes, 'No', null,
@@ -384,6 +386,11 @@ module.exports = {
 
   initiateGeneralApplicationWithOutNotice: async (user, parentCaseId) => {
     return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE);
+  },
+
+  initiateGaWithTypes: async (user, parentCaseId, types, calculatedAmount, code) => {
+    return await initiateGeneralApplicationWithOutNotice(user, parentCaseId,
+         data.INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES(types, 'No', null, calculatedAmount, code));
   },
 
   initiateGaForLA: async (user, parentCaseId) => {
