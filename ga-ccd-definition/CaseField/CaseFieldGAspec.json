@@ -667,6 +667,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "draftApplication",
+    "Label": "Application Draft ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalOrderDocument",
     "Label": "General order document",
     "FieldType": "Collection",
