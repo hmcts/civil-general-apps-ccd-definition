@@ -65,19 +65,13 @@ module.exports = {
   },
 
   async clickOnTab(tabName) {
-    await I.waitForElement(this.fields.tabList, 10);
+    await I.waitForElement(this.fields.tabList, 5);
     await I.refreshPage();
     if (['preview', 'aat'].includes(config.runningEnv)) {
-      await I.wait(6);
+      await I.wait(8);
     } else {
-      await I.wait(2);
+      await I.wait(4);
     }
-    await I.forceClick(locate(this.fields.tab).withText(tabName));
-    await I.waitForText(tabName, 10, this.fields.selectedTab);
-  },
-
-  async clickMainTab(tabName) {
-    await I.waitForElement(this.fields.tabList, 10);
     await I.forceClick(locate(this.fields.tab).withText(tabName));
     await I.waitForText(tabName, 10, this.fields.selectedTab);
   },
@@ -100,9 +94,9 @@ module.exports = {
       if (tabName === 'Application Documents') {
         await I.refreshPage();
         if (['preview', 'aat'].includes(config.runningEnv)) {
-          await I.wait(5);
+          await I.wait(6);
         } else {
-          await I.wait(2);
+          await I.wait(3);
         }
       }
       await I.forceClick(locate(this.fields.tab).withText(tabName));

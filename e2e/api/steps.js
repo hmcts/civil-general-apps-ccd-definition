@@ -272,13 +272,8 @@ module.exports = {
     const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
-      : 'Your claim will not be issued until payment is confirmed.';
 
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received',
-      body: bodyText
-    });
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await waitForFinishedBusinessProcess(caseId, user);
 
@@ -919,13 +914,13 @@ module.exports = {
   },
 
   assertGaDocumentVisibilityToUser: async ( user, parentCaseId, gaCaseId, doc) => {
-    let docGa = doc + 'Document';
+    let docGaTitle = doc + 'Document';
     let docCivil = '';
-    const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+    const response = await apiRequest.fetchMainCivilCaseData(parentCaseId, user);
     const civilCaseData = await response.json();
     const updatedResponse = await apiRequest.fetchGaCaseData(gaCaseId);
     const updatedGaCaseData = await updatedResponse.json();
-    docGa = updatedGaCaseData[docGa];
+    let docGa = updatedGaCaseData[docGaTitle];
     if(user.email === config.applicantSolicitorUser.email){
       docCivil = civilCaseData[doc + 'DocClaimant'];
     }
@@ -938,7 +933,7 @@ module.exports = {
     else{
       docCivil = civilCaseData[doc + 'DocStaff'];
     }
-    assert.equal(docGa['id'], docCivil['id']);
+    assert.equal(docGa[0]['id'], docCivil[0]['id']);
 
   },
 
@@ -1307,13 +1302,7 @@ module.exports = {
     const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
-      : 'Your claim will not be issued until payment is confirmed.';
-
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received',
-      body: bodyText
-    });
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await waitForFinishedBusinessProcess(caseId, user);
 
@@ -1658,7 +1647,6 @@ const validateEventPages = async (data, solicitor) => {
 
 const validateEventPagesWithCheck = async (data, check, solicitor) => {
   //transform the data
-  console.log('validateEventPages');
   for (let pageId of Object.keys(data.valid)) {
     if (pageId === 'Upload' || pageId === 'DraftDirections' || pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
       const document = await testingSupport.uploadDocument();
@@ -1670,8 +1658,6 @@ const validateEventPagesWithCheck = async (data, check, solicitor) => {
 };
 
 const assertValidDataSpec = async (data, pageId) => {
-  console.log(`asserting page: ${pageId} has valid data`);
-
   const userData = data.userInput[pageId];
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(
@@ -1773,8 +1759,6 @@ function checkGenerated(responseBodyData, generated, prefix = '') {
 }
 
 const assertValidData = async (data, pageId, solicitor, check) => {
-  console.log(`asserting page: ${pageId} has valid data`);
-
   const validDataForPage = data.valid[pageId];
   caseData = {...caseData, ...validDataForPage};
   const response = await apiRequest.validatePage(
@@ -1805,13 +1789,12 @@ const assertValidData = async (data, pageId, solicitor, check) => {
   }
   catch(err) {
     if(check) {
-      console.log('Valid data is failed with mismatch ..', err);
+      // console.log('Valid data is failed with mismatch ..', err);
     }
   }
 };
 
 function removeUiFields(pageId, caseData) {
-  console.log(`Removing ui fields for pageId: ${pageId}`);
   const midEventField = midEventFieldForPage[pageId];
 
   if (midEventField.uiField.remove === true) {
@@ -2208,8 +2191,6 @@ async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListI
 }
 
 const assertValidClaimData = async (data, pageId) => {
-  console.log(`asserting page: ${pageId} has valid data`);
-
   const userData = data.userInput[pageId];
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(

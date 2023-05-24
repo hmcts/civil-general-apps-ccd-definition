@@ -8,7 +8,7 @@ const hnStatus = states.HEARING_SCHEDULED.name;
 const mpScenario = 'ONE_V_ONE';
 let civilCaseReference, gaCaseReference;
 
-Feature('Before SDO 1v1 - GA CP - Hearing Notice document @ui-nightly');
+Feature('Before SDO 1v1 - GA CP - Hearing Notice document @ui-nightly @regression2');
 
 Scenario('Claimant and Defendant Hearing notice - With notice journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(

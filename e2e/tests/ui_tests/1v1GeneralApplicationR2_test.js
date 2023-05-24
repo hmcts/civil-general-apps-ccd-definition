@@ -6,7 +6,6 @@ const states = require('../../fixtures/ga-ccd/state.js');
 
 const mpScenario = 'ONE_V_ONE';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
-const judgeDecisionStatus = states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.name;
 const respondentStatus = states.AWAITING_RESPONDENT_RESPONSE.name;
 const claimantType = 'Company';
 let civilCaseReference, gaCaseReference;
@@ -29,7 +28,7 @@ Scenario('Defendant of main claim initiates Vary Judgement application @e2e-test
     states.AWAITING_APPLICATION_PAYMENT.id, config.defendantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(10, 11), 1);
   await I.see(awaitingPaymentStatus);
-  await I.navigateToCaseDetails(gaCaseReference);
+  await I.navigateToTab(gaCaseReference, 'Application');
   await I.verifyN245FormElements();
   await I.clickOnTab('Application Documents');
   await I.verifyN245FormElements();
@@ -54,7 +53,7 @@ Scenario('Defendant of main claim initiates Vary Judgement application @e2e-test
   await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
-Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey', async ({I, api}) => {
+Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regression2', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);

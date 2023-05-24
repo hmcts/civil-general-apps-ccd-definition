@@ -70,7 +70,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.verifyCaseFileAppDocument('Applicant Evidence');
 });
 
-Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
+Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -124,7 +124,7 @@ Scenario('GA for 1v1 - Direction order journey', async ({I, api}) => {
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
-Scenario('GA for 1v1 Specified Claim- Dismissal order journey @123', async ({I, api}) => {
+Scenario('GA for 1v1 Specified Claim- Dismissal order journey @regression2', async ({I, api}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
@@ -171,7 +171,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @123', async ({I, 
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
-Scenario('GA for 1v1- respond to application - Request more information', async ({I, api}) => {
+Scenario('GA for 1v1- respond to application - Request more information @regression2', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -227,5 +227,5 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
 });
 
 AfterSuite(async ({api}) => {
-  // await api.cleanUp();
+  await api.cleanUp();
 });

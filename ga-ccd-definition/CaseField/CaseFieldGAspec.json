@@ -1052,6 +1052,14 @@
     "Label": "The applicant has confirmed that you have agreed to the order that the applicant has requested the court to make. Is this correct?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaRespDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Respondent Evidence",
+    "SecurityClassification": "Public"
   }
 ]
 
