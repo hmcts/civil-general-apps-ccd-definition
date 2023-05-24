@@ -17,6 +17,7 @@ module.exports = {
     generalApps: 'h1.govuk-heading-l',
     tabList: 'div.mat-tab-list',
     selectedTab: 'div[aria-selected="true"] div[class*="content"]',
+    caseViewerLabel: '.Summary .case-viewer-label',
   },
   goButton: 'Go',
 
@@ -60,17 +61,17 @@ module.exports = {
   },
 
   async verifySummaryPage() {
-    await I.seeInCurrentUrl('#Summary');
-    await I.see('Summary');
+    await I.waitForText('Summary', 15, this.fields.selectedTab);
+    await I.seeTextEquals('Type of claim', locate(this.fields.caseViewerLabel).first());
   },
 
   async clickOnTab(tabName) {
     await I.waitForElement(this.fields.tabList, 10);
     await I.refreshPage();
     if (['preview', 'aat'].includes(config.runningEnv)) {
-      await I.wait(8);
+      await I.wait(12);
     } else {
-      await I.wait(4);
+      await I.wait(5);
     }
     await I.forceClick(locate(this.fields.tab).withText(tabName));
     await I.waitForText(tabName, 10, this.fields.selectedTab);
@@ -81,7 +82,7 @@ module.exports = {
       await I.retryUntilExists(async () => {
         await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
         if (['preview', 'aat'].includes(config.runningEnv)) {
-          await I.wait(5);
+          await I.wait(10);
         } else {
           await I.wait(5);
         }
@@ -94,9 +95,9 @@ module.exports = {
       if (tabName === 'Application Documents') {
         await I.refreshPage();
         if (['preview', 'aat'].includes(config.runningEnv)) {
-          await I.wait(6);
+          await I.wait(10);
         } else {
-          await I.wait(3);
+          await I.wait(5);
         }
       }
       await I.forceClick(locate(this.fields.tab).withText(tabName));
