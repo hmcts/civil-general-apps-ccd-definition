@@ -63,6 +63,9 @@ module.exports = {
       case 'Hearing Notice':
         await I.see(`Application_Hearing_Notice_${docFullDate}`);
         break;
+      case 'Consent Order':
+        await I.see(`Consent_order_for_application_${docFullDate}`);
+        break;
     }
     await I.see('Type');
     await I.see('Uploaded on');
