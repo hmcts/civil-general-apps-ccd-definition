@@ -15,7 +15,7 @@ Scenario('MixTypesWithVary - 14 pounds', async ({api}) => {
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGaWithTypes(
-    config.applicantSolicitorUser, civilCaseReference, ['VARY_JUDGEMENT','EXTEND_TIME','STAY_THE_CLAIM'],
+    config.applicantSolicitorUser, civilCaseReference, ['VARY_ORDER','EXTEND_TIME','STAY_THE_CLAIM'],
     '1400', 'FEE0458');
 });
 
