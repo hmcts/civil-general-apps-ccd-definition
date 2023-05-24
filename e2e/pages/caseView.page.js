@@ -17,6 +17,7 @@ module.exports = {
     generalApps: 'h1.govuk-heading-l',
     tabList: 'div.mat-tab-list',
     selectedTab: 'div[aria-selected="true"] div[class*="content"]',
+    caseViewerLabel: '.Summary .case-viewer-label',
   },
   goButton: 'Go',
 
@@ -61,8 +62,8 @@ module.exports = {
   },
 
   async verifySummaryPage() {
-    await I.seeInCurrentUrl('#Summary');
-    await I.see('Summary');
+    await I.waitForText('Summary', 15, this.fields.selectedTab);
+    await I.seeTextEquals('Type of claim', locate(this.fields.caseViewerLabel).first());
   },
 
   async clickOnTab(tabName) {
