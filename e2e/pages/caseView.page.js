@@ -70,9 +70,9 @@ module.exports = {
     await I.waitForElement(this.fields.tabList, 10);
     await I.refreshPage();
     if (['preview', 'aat'].includes(config.runningEnv)) {
-      await I.wait(8);
+      await I.wait(12);
     } else {
-      await I.wait(4);
+      await I.wait(5);
     }
     await I.forceClick(locate(this.fields.tab).withText(tabName));
     await I.waitForText(tabName, 10, this.fields.selectedTab);
@@ -83,7 +83,7 @@ module.exports = {
       await I.retryUntilExists(async () => {
         await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
         if (['preview', 'aat'].includes(config.runningEnv)) {
-          await I.wait(5);
+          await I.wait(10);
         } else {
           await I.wait(5);
         }
@@ -96,9 +96,9 @@ module.exports = {
       if (tabName === 'Application Documents') {
         await I.refreshPage();
         if (['preview', 'aat'].includes(config.runningEnv)) {
-          await I.wait(6);
+          await I.wait(10);
         } else {
-          await I.wait(3);
+          await I.wait(5);
         }
       }
       await I.forceClick(locate(this.fields.tab).withText(tabName));
