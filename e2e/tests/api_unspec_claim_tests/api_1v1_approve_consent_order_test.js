@@ -31,6 +31,38 @@ Scenario('caseworker makes decision 1V1 - CONSENT ORDER', async ({api}) => {
 
 });
 
+Scenario.only('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application', async ({api}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(
+    config.applicantSolicitorUser, mpScenario, 'Company');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+
+  console.log('Make a General Application');
+  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, false, false);
+
+  console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
+  await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
+  console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
+
+  console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
+    + gaCaseReference + ' ***');
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference);
+  } else {
+    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference);
+  }
+  console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
+    + gaCaseReference + ' ***');
+
+  console.log('*** Start Callback for Additional Payment: ' + gaCaseReference + ' ***');
+  await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+  console.log('*** End Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReference + ' ***');
+  console.log('*** End CaseWorker Approve Consent Order on GA Case Reference: ' + gaCaseReference + ' ***');
+
+});
+
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
