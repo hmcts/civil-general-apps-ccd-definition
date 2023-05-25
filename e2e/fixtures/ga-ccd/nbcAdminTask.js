@@ -14,5 +14,13 @@ module.exports = {
         legalAdvisorAdditionalInfo: 'sample data'
       }
     };
+  },
+  nbcAdminApproveConsentOrderData: () => {
+    return {
+      approveConsentOrder: {
+        consentOrderDescription: 'Testing Approve Consent Order',
+        showConsentOrderDate: 'No'
+      }
+    };
   }
 };

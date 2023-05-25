@@ -14,6 +14,11 @@ module.exports = {
     id: 'MAKE_DECISION',
     name: 'Make decision'
   },
+  APPROVE_CONSENT_ORDER: {
+    description: 'Caseworker makes decision',
+    id: 'APPROVE_CONSENT_ORDER',
+    name: 'Approve Consent Order'
+  },
   RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION: {
     description: 'Applicant and Respondent response',
     id: 'RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION',
