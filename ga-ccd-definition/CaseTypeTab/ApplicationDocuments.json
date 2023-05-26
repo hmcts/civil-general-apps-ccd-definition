@@ -116,7 +116,7 @@
     "TabID": "Application Documents",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
-    "CaseFieldID": "draftApplication",
+    "CaseFieldID": "gaDraftDocument",
     "TabFieldDisplayOrder": 14,
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
   }

@@ -667,7 +667,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "draftApplication",
+    "ID": "gaDraftDocument",
     "Label": "Application Draft ",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",

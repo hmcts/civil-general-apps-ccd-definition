@@ -2195,7 +2195,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "draftApplication",
+    "CaseFieldID": "gaDraftDocument",
     "AccessControl": [
       {
         "UserRoles": [

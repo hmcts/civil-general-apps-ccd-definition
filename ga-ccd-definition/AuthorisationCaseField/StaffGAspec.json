@@ -73,7 +73,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "draftApplication",
+    "CaseFieldID": "gaDraftDocument",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   },
