@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v1 GA Fee API tests @api-tests');
 
-Scenario('MixTypesWithVary - 14 pounds', async ({api}) => {
+Scenario.only('MixTypesWithVary - 14 pounds', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -17,6 +17,15 @@ Scenario('MixTypesWithVary - 14 pounds', async ({api}) => {
   gaCaseReference = await api.initiateGaWithTypes(
     config.applicantSolicitorUser, civilCaseReference, ['VARY_ORDER','EXTEND_TIME','STAY_THE_CLAIM'],
     '1400', 'FEE0458');
+  console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
+              + gaCaseReference + ' ***');
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, false);
+  } else {
+    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, false);
+  }
+  console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
+              + gaCaseReference + ' ***');
 });
 
 Scenario('MixTypesWithSetAside - 108 pounds', async ({api}) => {

@@ -44,9 +44,9 @@ Scenario('Case offline APPLICATION_ADD_PAYMENT', async ({api}) => {
   console.log('*** Start Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
     + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true);
   } else {
-    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference);
+    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true);
   }
   console.log('*** End Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
     + gaCaseReference + ' ***');
