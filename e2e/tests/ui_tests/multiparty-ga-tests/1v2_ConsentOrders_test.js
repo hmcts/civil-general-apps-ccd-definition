@@ -39,6 +39,8 @@ Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(states.ORDER_MADE.name);
   await I.verifyClaimDocument('Consent order document');
+
+  await I.clickMainTab('Case File');
   await I.verifyCaseFileOrderDocument('Consent Order');
 });
 

@@ -114,6 +114,7 @@ Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) =
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeDirectionsOrderStatus);
   await I.verifyClaimDocument('Directions order document');
+
   await I.clickMainTab('Case File');
   await I.verifyCaseFileOrderDocument('Directions order document');
   await I.verifyCaseFileAppDocument('Applicant Evidence');

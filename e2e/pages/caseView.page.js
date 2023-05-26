@@ -78,6 +78,12 @@ module.exports = {
     await I.waitForText(tabName, 10, this.fields.selectedTab);
   },
 
+  async clickMainTab(tabName) {
+    await I.waitForElement(this.fields.tabList, 10);
+    await I.forceClick(locate(this.fields.tab).withText(tabName));
+    await I.waitForText(tabName, 10, this.fields.selectedTab);
+  },
+
   async navigateToTab(caseNumber, tabName) {
     if (tabName !== 'Application Documents') {
       await I.retryUntilExists(async () => {
