@@ -48,6 +48,9 @@ module.exports = {
       case 'Hearing Notice':
         expect(docURL).to.contains(`Application_Hearing_Notice_${docFullDate}`);
         break;
+      case 'Consent order document':
+        await I.see(`Consent_order_for_application_${docFullDate}`);
+        break;
     }
     I.see('System generated Case Documents');
     await I.see('Type');
