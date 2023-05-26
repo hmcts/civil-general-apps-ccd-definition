@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v1 GA Fee API tests @api-tests');
 
-Scenario.only('MixTypesWithVary - 14 pounds', async ({api}) => {
+Scenario('MixTypesWithVary - 14 pounds', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);

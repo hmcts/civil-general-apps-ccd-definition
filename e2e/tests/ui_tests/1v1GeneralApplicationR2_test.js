@@ -12,7 +12,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA R2 1v1 - General Application Journey @ui-nightly');
 
-Scenario('Defendant of main claim initiates Vary Judgement application @e2e-tests', async ({I, api}) => {
+Scenario('Defendant of main claim initiates Vary Judgement application', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);

@@ -6,7 +6,8 @@ module.exports = {
     confirmation: {
       id: '#confirmation-body'
     },
-    applicationList: '#confirmation-body li'
+    applicationList: '#confirmation-body li',
+    selectedTab: 'div[aria-selected="true"] div[class*="content"]',
   },
 
   async verifyJudgesConfirmationPage() {
@@ -30,6 +31,7 @@ module.exports = {
 
   async closeAndReturnToCaseDetails() {
     await I.click('Close and Return to case details');
+    await I.waitForText('Application', 15, this.fields.selectedTab);
   }
 };
 
