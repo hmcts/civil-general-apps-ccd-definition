@@ -31,7 +31,7 @@ Scenario('caseworker makes decision 1V1 - CONSENT ORDER', async ({api}) => {
 
 });
 
-Scenario.only('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application', async ({api}) => {
+Scenario('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -58,8 +58,8 @@ Scenario.only('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application', 
 
   console.log('*** Start Callback for Additional Payment: ' + gaCaseReference + ' ***');
   await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
-  console.log('*** End Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReference + ' ***');
-  console.log('*** End CaseWorker Approve Consent Order on GA Case Reference: ' + gaCaseReference + ' ***');
+  console.log('*** End uncloaking consent order: ' + gaCaseReference + ' ***');
+
 
 });
 
