@@ -683,6 +683,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "consentOrderDocument",
+    "Label": "Consent order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "dismissalOrderDocument",
     "Label": "Dismissal order document",
     "FieldType": "Collection",

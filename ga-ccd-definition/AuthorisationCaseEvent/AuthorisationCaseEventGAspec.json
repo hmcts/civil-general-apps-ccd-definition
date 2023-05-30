@@ -437,7 +437,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "civil-administrator-standard"
+          "civil-administrator-standard",
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       },

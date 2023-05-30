@@ -72,6 +72,10 @@ const responseCheckYourAnswersPage = require('./pages/generalApplication/respons
 const responseConfirmationPage = require('./pages/generalApplication/responseJourneyPages/responseConfirmation.page');
 const responseSummaryPage = require('./pages/generalApplication/responseJourneyPages/responseSummary.page');
 const judgeDecisionPage = require('./pages/generalApplication/judgesJourneyPages/judgeDecision.page');
+const consentOrderPage = require('./pages/generalApplication/consentOrderPages/approveConsentOrder.page');
+const consentOrderReviewPage = require('./pages/generalApplication/consentOrderPages/reviewConsentOrderDocument.page');
+const consentOrderCYAPage = require('./pages/generalApplication/consentOrderPages/consentOrderCheckYourAnswers.page');
+
 const judgeOrderPage = require('./pages/generalApplication/applicationOrderPages/judgeOrder.page');
 const freeFormOrderPage = require('./pages/generalApplication/applicationOrderPages/freeFormOrder.page');
 const assistedOrderPage = require('./pages/generalApplication/applicationOrderPages/assistedOrder.page');
@@ -830,6 +834,18 @@ module.exports = function () {
           ...submitApplication('You have requested a response'),
         ]),
         () => judgesConfirmationPage.verifyReqMoreInfoConfirmationPage(),
+      ]);
+    },
+
+    async approveConsentOrder(gaCaseNumber) {
+      eventName = events.APPROVE_CONSENT_ORDER.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, gaCaseNumber),
+        () => consentOrderPage.approveConsentOrder(),
+        () => consentOrderReviewPage.reviewOrderDocument(),
+        () => consentOrderCYAPage.verifyConsentOrderCheckAnswerForm(gaCaseNumber, 1),
+        ...submitApplication('Your order has been made'),
+        () => judgesConfirmationPage.closeAndReturnToCaseDetails(),
       ]);
     },
 

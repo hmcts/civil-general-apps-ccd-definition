@@ -870,83 +870,83 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "orderCourtOwnInitiative",
     "UserRole": "legal-adviser",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "orderCourtOwnInitiativeDate",
     "UserRole": "legal-adviser",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "orderWithoutNotice",
     "UserRole": "legal-adviser",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "orderWithoutNoticeDate",
     "UserRole": "legal-adviser",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderCourtOwnInitiativeListForHearing",
     "ListElementCode": "orderCourtOwnInitiative",
     "UserRole": "legal-adviser",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderCourtOwnInitiativeListForHearing",
     "ListElementCode": "orderCourtOwnInitiativeDate",
     "UserRole": "legal-adviser",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderWithoutNoticeListForHearing",
     "ListElementCode": "orderWithoutNotice",
     "UserRole": "legal-adviser",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderWithoutNoticeListForHearing",
     "ListElementCode": "orderWithoutNoticeDate",
     "UserRole": "legal-adviser",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderCourtOwnInitiativeForWrittenRep",
     "ListElementCode": "orderCourtOwnInitiative",
     "UserRole": "legal-adviser",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderCourtOwnInitiativeForWrittenRep",
     "ListElementCode": "orderCourtOwnInitiativeDate",
     "UserRole": "legal-adviser",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderWithoutNoticeForWrittenRep",
     "ListElementCode": "orderWithoutNotice",
     "UserRole": "legal-adviser",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderWithoutNoticeForWrittenRep",
     "ListElementCode": "orderWithoutNoticeDate",
     "UserRole": "legal-adviser",
-    "CRUD": "R"
+    "CRUD": "CRU"
   }
 ]

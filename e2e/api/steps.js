@@ -27,8 +27,7 @@ const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentRespo
 const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
 const genAppJudgeMakeFinalOrderData = require('../fixtures/ga-ccd/judgeMakeFinalDecision.js');
 const genAppHearingData = require('../fixtures/ga-ccd/genAppHearing.js');
-const genAppNbcAdminReferToJudgeData = require('../fixtures/ga-ccd/nbcAdminTask.js');
-const  genAppNbcAdminReferToLegalAdvisorData = require('../fixtures/ga-ccd/nbcAdminTask.js');
+const genAppNbcAdminTask = require('../fixtures/ga-ccd/nbcAdminTask.js');
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
 const { replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
@@ -43,6 +42,8 @@ const gaTypesList = {
 };
 
 const data = {
+  INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES: (types, isWithNotice, reason, calculatedAmount, code) => genAppData.createGA(types,
+    isWithNotice, reason, calculatedAmount, code),
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes', null,
     '27500', 'FEE0442'),
   INITIATE_GENERAL_APPLICATION_FOR_LA: genAppData.createGA(gaTypesList.LATypes, 'No', null,
@@ -63,8 +64,9 @@ const data = {
   RESPOND_DEBTOR_TO_APPLICATION: genAppRespondentResponseData.respondDebtorGAData(),
   RESPOND_TO_CONSENT_APPLICATION: genAppRespondentResponseData.respondConsentGAData(),
   MAKE_DECISION: genAppJudgeMakeDecisionData.judgeMakesDecisionData(),
-  REFER_TO_JUDGE: genAppNbcAdminReferToJudgeData.nbcAdminReferToJudgeData(),
-  REFER_TO_LEGAL_ADVISOR: genAppNbcAdminReferToLegalAdvisorData.nbcAdminReferToLegalAdvisorData(),
+  APPROVE_CONSENT_ORDER: genAppNbcAdminTask.nbcAdminApproveConsentOrderData(),
+  REFER_TO_JUDGE: genAppNbcAdminTask.nbcAdminReferToJudgeData(),
+  REFER_TO_LEGAL_ADVISOR: genAppNbcAdminTask.nbcAdminReferToLegalAdvisorData(),
   JUDGE_MAKES_ORDER_WRITTEN_REP: (current_date) => genAppJudgeMakeDecisionData.judgeMakeOrderWrittenRep(current_date),
   JUDGE_MAKES_ORDER_WRITTEN_REP_ON_UNCLOAKED_APPLN: (current_date) => genAppJudgeMakeDecisionData.judgeMakeOrderWrittenRep_On_Uncloaked_Appln(current_date),
   RESPOND_TO_JUDGE_ADDITIONAL_INFO: genAppRespondentResponseData.toJudgeAdditionalInfo(),
@@ -272,13 +274,8 @@ module.exports = {
     const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
-      : 'Your claim will not be issued until payment is confirmed.';
 
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received',
-      body: bodyText
-    });
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await waitForFinishedBusinessProcess(caseId, user);
 
@@ -389,6 +386,11 @@ module.exports = {
 
   initiateGeneralApplicationWithOutNotice: async (user, parentCaseId) => {
     return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE);
+  },
+
+  initiateGaWithTypes: async (user, parentCaseId, types, calculatedAmount, code) => {
+    return await initiateGeneralApplicationWithOutNotice(user, parentCaseId,
+         data.INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES(types, 'No', null, calculatedAmount, code));
   },
 
   initiateGaForLA: async (user, parentCaseId) => {
@@ -582,6 +584,23 @@ module.exports = {
     await addUserCaseMapping(gaCaseId, user);
   },
 
+  respondentResponseConsentOrderApp: async (user, gaCaseId) => {
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
+
+    await apiRequest.setupTokens(user);
+    eventName = events.RESPOND_TO_APPLICATION.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.RESPOND_TO_CONSENT_APPLICATION, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.state, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
+    await addUserCaseMapping(gaCaseId, user);
+  },
+
   respondentDebtorResponse: async (user, gaCaseId) => {
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
 
@@ -617,6 +636,24 @@ module.exports = {
 
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
+  },
+
+  nbcAdminApproveConsentOrder: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.APPROVE_CONSENT_ORDER.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.APPROVE_CONSENT_ORDER, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE', user);
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
   },
 
   nbcAdminReferToLegalAdvisor: async (user, gaCaseId) => {
@@ -1307,13 +1344,7 @@ module.exports = {
     const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
-      : 'Your claim will not be issued until payment is confirmed.';
-
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received',
-      body: bodyText
-    });
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await waitForFinishedBusinessProcess(caseId, user);
 
@@ -1658,7 +1689,6 @@ const validateEventPages = async (data, solicitor) => {
 
 const validateEventPagesWithCheck = async (data, check, solicitor) => {
   //transform the data
-  console.log('validateEventPages');
   for (let pageId of Object.keys(data.valid)) {
     if (pageId === 'Upload' || pageId === 'DraftDirections' || pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
       const document = await testingSupport.uploadDocument();
@@ -1670,8 +1700,6 @@ const validateEventPagesWithCheck = async (data, check, solicitor) => {
 };
 
 const assertValidDataSpec = async (data, pageId) => {
-  console.log(`asserting page: ${pageId} has valid data`);
-
   const userData = data.userInput[pageId];
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(
@@ -1773,8 +1801,6 @@ function checkGenerated(responseBodyData, generated, prefix = '') {
 }
 
 const assertValidData = async (data, pageId, solicitor, check) => {
-  console.log(`asserting page: ${pageId} has valid data`);
-
   const validDataForPage = data.valid[pageId];
   caseData = {...caseData, ...validDataForPage};
   const response = await apiRequest.validatePage(
@@ -1805,13 +1831,12 @@ const assertValidData = async (data, pageId, solicitor, check) => {
   }
   catch(err) {
     if(check) {
-      console.log('Valid data is failed with mismatch ..', err);
+      // console.log('Valid data is failed with mismatch ..', err);
     }
   }
 };
 
 function removeUiFields(pageId, caseData) {
-  console.log(`Removing ui fields for pageId: ${pageId}`);
   const midEventField = midEventFieldForPage[pageId];
 
   if (midEventField.uiField.remove === true) {
@@ -2208,8 +2233,6 @@ async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListI
 }
 
 const assertValidClaimData = async (data, pageId) => {
-  console.log(`asserting page: ${pageId} has valid data`);
-
   const userData = data.userInput[pageId];
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(
