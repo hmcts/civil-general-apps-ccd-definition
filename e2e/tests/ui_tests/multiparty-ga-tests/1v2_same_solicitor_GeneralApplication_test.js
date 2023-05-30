@@ -137,7 +137,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id);
     await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id);
 
-    await I.navigateToTab('1685441379952795', 'Applications');
+    await I.navigateToTab(civilCaseReference, 'Applications');
     await I.clickMainTab('Case File');
     await I.verifyCaseFileAppDocument('Request more info order');
 });
