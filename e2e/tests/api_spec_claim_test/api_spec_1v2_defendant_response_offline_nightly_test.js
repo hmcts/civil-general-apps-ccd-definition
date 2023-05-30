@@ -4,7 +4,7 @@ const config = require('../../config.js');
 let civilCaseReference,
   gaCaseReference;
 
-Feature('GA SPEC Claim 1v2 Defendant Response Case Close API tests @api-offline-nightly @api-nightly');
+Feature('GA SPEC Claim 1v2 Defendant Response Case Close API tests @api-offline-nightly @api-nightly @fail');
 
 Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');

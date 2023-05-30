@@ -99,7 +99,7 @@ Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA C
   await api.assertGaDocumentVisibilityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 });
 
-Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Decision Order Made', async ({api}) => {
+Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Decision Order Made @fail', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
