@@ -86,10 +86,11 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
   console.log('Responded to Judges written representations on case: ' + gaCaseReference);
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_WRITTEN_REPRESENTATIONS.id);
 
-  console.log('Written representation concurrent Order ----> : ' + civilCaseReference);
-
+  await I.navigateToTab('1685441863067423', 'Applications');
+  await I.clickMainTab('Case File');
+  await I.verifyCaseFileAppDocument('Concurrent order document');
 });
 
 AfterSuite(async ({api}) => {
-  // await api.cleanUp();
+  await api.cleanUp();
 });

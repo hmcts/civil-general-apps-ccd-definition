@@ -52,7 +52,10 @@ Scenario('Defendant of main claim initiates Vary Judgement application @123', as
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
   await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 
-  console.log('N245 and LFH Order ----> : ' + civilCaseReference);
+  await I.navigateToTab(civilCaseReference, 'Applications');
+  await I.see(states.LISTING_FOR_A_HEARING.name);
+  await I.clickMainTab('Case File');
+  await I.verifyCaseFileAppDocument('N245 Evidence');
 });
 
 Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regression2', async ({I, api}) => {
@@ -89,5 +92,5 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
 });
 
 AfterSuite(async ({api}) => {
-  // await api.cleanUp();
+  await api.cleanUp();
 });

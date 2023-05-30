@@ -71,7 +71,9 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.respondToJudgesWrittenRep(gaCaseReference, 'Written Representation Documents');
   console.log('Responded to Judges written representations on case: ' + gaCaseReference);
 
-  console.log('Written Representation Seq Order ----> : ' + civilCaseReference);
+  await I.navigateToTab(civilCaseReference, 'Applications');
+  await I.clickMainTab('Case File');
+  await I.verifyCaseFileAppDocument('Sequential order document');
 });
 
 Scenario('GA for 1v2 Same Solicitor - Send application to other party journey @123',
@@ -135,9 +137,11 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey @1
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id);
     await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id);
 
-    console.log('requestMoreInfo Order ----> : ' + civilCaseReference);
-  });
+    await I.navigateToTab('1685441379952795', 'Applications');
+    await I.clickMainTab('Case File');
+    await I.verifyCaseFileAppDocument('Request more info order');
+});
 
 AfterSuite(async ({api}) => {
-  // await api.cleanUp();
+  await api.cleanUp();
 });

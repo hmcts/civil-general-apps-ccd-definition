@@ -17,6 +17,7 @@ module.exports = {
     await I.waitForText('Applications', 20, this.fields.nameFolder);
     await I.click(locate(this.fields.appFolder));
     let docs = await I.grabTextFromAll(locate(this.fields.expandedFolder));
+    let appCount = await I.grabTextFrom(locate(this.fields.appFolder));
     switch (documentType) {
       case 'Hearing Notice':
         expect(docs.toString()).to.includes(`Application_Hearing_Notice_${docFullDate}`,
@@ -24,6 +25,26 @@ module.exports = {
         break;
       case 'Applicant Evidence':
         expect(docs.toString()).to.contains('examplePDF.pdf');
+        break;
+      case 'N245 Evidence':
+        expect(docs.toString()).to.includes(`Hearing_order_for_application_${docFullDate}`,
+          'examplePDF.pdf');
+        expect(appCount).equals('3');
+        break;
+      case 'Sequential order document':
+        expect(docs.toString()).to.includes(`Order_Written_Representation_Sequential_for_application_${docFullDate}`,
+          'examplePDF.pdf');
+        expect(appCount).equals('3');
+        break;
+      case 'Request more info order':
+        expect(docs.toString()).to.includes(`Request_for_information_for_application_${docFullDate}`,
+          'examplePDF.pdf');
+        expect(appCount).equals('2');
+        break;
+      case 'Concurrent order document':
+        expect(docs.toString()).to.includes(`Order_Written_Representation_Concurrent_for_application_${docFullDate}`,
+          'examplePDF.pdf');
+        expect(appCount).equals('4');
         break;
     }
     await I.click(locate(this.fields.appFolder));
