@@ -68,10 +68,6 @@ module.exports = {
       case 'Dismissal order document':
         expect(docs.toString()).to.contains(`Dismissal_order_for_application_${docFullDate}`);
         break;
-      case 'Hearing Notice':
-        expect(docs.toString()).to.includes(`Application_Hearing_Notice_${docFullDate}`,
-          `General_order_for_application_${docFullDate}`,);
-        break;
       case 'Consent Order':
         expect(docs.toString()).to.contains(`Consent_order_for_application_${docFullDate}`);
         break;
