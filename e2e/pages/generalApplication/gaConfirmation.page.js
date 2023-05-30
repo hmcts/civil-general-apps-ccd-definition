@@ -43,6 +43,7 @@ module.exports = {
     await I.forceClick(this.fields.applicationFeeLink);
     await I.wait(5);
     await I.switchToNextTab();
+    await I.closeOtherTabs();
   }
 };
 

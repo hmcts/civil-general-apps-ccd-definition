@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
 const states = require('../../fixtures/ga-ccd/state');
+const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 const mpScenario = 'ONE_V_ONE';
 const doc = 'hearingNotice';
-let civilCaseReference, gaCaseReference;
+let civilCaseReference, gaCaseReference, user;
 const judgeApproveOrderStatus = states.ORDER_MADE.name;
 
 Feature('Before SDO 1v1 - GA CP - Applications Orders @ui-nightly');
@@ -40,13 +41,15 @@ Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, ap
 
   console.log('Judge making Free form application order for: ' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await I.login(config.judgeUser);
+    user = config.judgeUser;
+    await I.login(user);
   } else {
-    await I.login(config.judgeLocalUser);
+    user = config.judgeLocalUser;
+    await I.login(user);
   }
   await I.judgeMakeAppOrder(gaCaseReference, 'freeFromOrder', 'withoutNoticeOrder');
   await I.judgeCloseAndReturnToCaseDetails();
-
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.ORDER_MADE.id, user);
   await I.verifyApplicationDocument('Free From Order');
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(judgeApproveOrderStatus);
