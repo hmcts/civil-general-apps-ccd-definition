@@ -15,7 +15,7 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly  @regression1');
 
-Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey', async ({
+Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey @123', async ({
                                                                                                                      I,
                                                                                                                      api
                                                                                                                    }) => {
@@ -70,9 +70,11 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.see(writtenRepStatus);
   await I.respondToJudgesWrittenRep(gaCaseReference, 'Written Representation Documents');
   console.log('Responded to Judges written representations on case: ' + gaCaseReference);
+
+  console.log('Written Representation Seq Order ----> : ' + civilCaseReference);
 });
 
-Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
+Scenario('GA for 1v2 Same Solicitor - Send application to other party journey @123',
   async ({I, api}) => {
     civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
     await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -132,8 +134,10 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     console.log('Judges requested more information on case: ' + gaCaseReference);
     await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id);
     await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id);
+
+    console.log('requestMoreInfo Order ----> : ' + civilCaseReference);
   });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

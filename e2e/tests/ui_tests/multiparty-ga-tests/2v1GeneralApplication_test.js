@@ -13,7 +13,7 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('GA CCD 2v1 - General Application Journey @multiparty-e2e-tests @ui-nightly  @regression2');
 
-Scenario('GA for 2v1 - Concurrent written representations - without notice to with notice journey', async ({
+Scenario('GA for 2v1 - Concurrent written representations - without notice to with notice journey @123', async ({
                                                                                                              I,
                                                                                                              api
                                                                                                            }) => {
@@ -85,8 +85,11 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
   await I.respondToJudgesWrittenRep(gaCaseReference, 'Written representation concurrent document');
   console.log('Responded to Judges written representations on case: ' + gaCaseReference);
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_WRITTEN_REPRESENTATIONS.id);
+
+  console.log('Written representation concurrent Order ----> : ' + civilCaseReference);
+
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

@@ -12,7 +12,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA R2 1v1 - General Application Journey @ui-nightly');
 
-Scenario('Defendant of main claim initiates Vary Judgement application', async ({I, api}) => {
+Scenario('Defendant of main claim initiates Vary Judgement application @123', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -51,6 +51,8 @@ Scenario('Defendant of main claim initiates Vary Judgement application', async (
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'LISTING_FOR_A_HEARING');
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
   await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
+
+  console.log('N245 and LFH Order ----> : ' + civilCaseReference);
 });
 
 Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regression2', async ({I, api}) => {
@@ -87,5 +89,5 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
