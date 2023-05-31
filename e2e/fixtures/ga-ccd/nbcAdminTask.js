@@ -19,7 +19,8 @@ module.exports = {
     return {
       approveConsentOrder: {
         consentOrderDescription: 'Testing Approve Consent Order',
-        showConsentOrderDate: 'No'
+        showConsentOrderDate: 'No',
+        isOrderProcessedByStayScheduler: 'No'
       }
     };
   }
