@@ -50,9 +50,9 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
     'courtOwnInitiativeOrder', user);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true);
   } else {
-    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference);
+    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true);
   }
 
   console.log('*** Start Callback for Additional Payment: ' + gaCaseReference + ' ***');
