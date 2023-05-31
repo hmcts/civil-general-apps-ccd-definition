@@ -64,8 +64,10 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.see(judgeApproveOrderStatus);
   await I.verifyClaimDocument('General order document');
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
-  /*  Uncomment the code for setting up the categoryID after CIV-7926 is merged in Civil repo
-  await I.verifyCaseFileDocument('General order document');*/
+
+  await I.clickMainTab('Case File');
+  await I.verifyCaseFileOrderDocument('General order document');
+  await I.verifyCaseFileAppDocument('Applicant Evidence');
 });
 
 Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) => {
@@ -113,8 +115,9 @@ Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) =
   await I.see(judgeDirectionsOrderStatus);
   await I.verifyClaimDocument('Directions order document');
 
-/*   Uncomment the code for setting up the categoryID after CIV-7926 is merged in Civil repo
-  await I.verifyCaseFileDocument('Directions order document');*/
+  await I.clickMainTab('Case File');
+  await I.verifyCaseFileOrderDocument('Directions order document');
+  await I.verifyCaseFileAppDocument('Applicant Evidence');
 
   await I.respondToJudgesDirections(gaCaseReference);
   console.log('Responded to Judges directions on case: ' + gaCaseReference);
@@ -156,13 +159,14 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @regression2', asy
   await I.dontSee('Go');
   await I.dontSee('Next step');
   console.log('Judges Dismissed this order: ' + gaCaseReference);
+
   await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeDismissOrderStatus);
   await I.verifyClaimDocument('Dismissal order document');
-
- /* // Uncomment the code for setting up the categoryID after CIV-7926 is merged in Civil repo
-  await I.verifyCaseFileDocument('Dismissal order document');*/
+  await I.clickMainTab('Case File');
+  await I.verifyCaseFileOrderDocument('Dismissal order document');
+  await I.verifyCaseFileAppDocument('Applicant Evidence');
 
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.APPLICATION_DISMISSED.id);
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
