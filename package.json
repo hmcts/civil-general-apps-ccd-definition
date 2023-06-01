@@ -24,7 +24,7 @@
     "test:functional": "./e2e/run-functional-tests.sh",
     "test:functionallocal": "run-script-os",
     "test:functionallocal:win32": "npx codeceptjs run --grep \"GA 1v1 Make Adjourn Vacate API tests @ignore-api-tests\" --reporter mocha-multi --verbose",
-    "test:functionallocal:darwin:linux": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep '@e2e-tests|@api-tests' --reporter mocha-multi --verbose",
+    "test:functionallocal:darwin:linux": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep 'GA 1v1 Make Adjourn Vacate API tests @ignore-api-tests' --reporter mocha-multi --verbose",
     "test:crossbrowser-e2e": "MOCHAWESOME_REPORTFILENAME=crossbrowser codeceptjs run-multiple --grep @cross-browser-tests ${BROWSER_GROUP:-'--all'} -c saucelabs.conf.js --reporter mocha-multi",
     "test:crossbrowser": "./e2e/run-crossbrowser-tests.sh",
     "test:e2e-ga-wa": "MOCHAWESOME_REPORTFILENAME=wa-ui npx codeceptjs run-workers --suites 2 --grep @e2e-wa --reporter mocha-multi --verbose",
