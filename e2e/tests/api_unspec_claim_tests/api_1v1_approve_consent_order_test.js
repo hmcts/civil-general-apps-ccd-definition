@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 Caseworker Approve Consent Order API tests @api-testssss');
+Feature('GA 1v1 Caseworker Approve Consent Order API tests @api-tests');
 
 Scenario('caseworker makes decision 1V1 - CONSENT ORDER', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
