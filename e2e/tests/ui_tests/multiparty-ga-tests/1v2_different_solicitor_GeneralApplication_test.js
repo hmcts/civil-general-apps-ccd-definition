@@ -121,9 +121,9 @@ Scenario('Without Notice application to With Notice application - Directions Ord
       civilCaseReference, gaCaseReference, null);
 
     if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-      await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference);
+      await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true);
     } else {
-      await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference);
+      await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true);
     }
     await api.additionalPaymentSuccess(config.secondDefendantSolicitorUser, gaCaseReference,
       states.AWAITING_RESPONDENT_RESPONSE.id);
