@@ -38,7 +38,7 @@ Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) =>
 
   console.log('Create SDO');
   await api.createSDO(civilCaseReference, config.judgeUserWithRegionId1, 'CREATE_FAST');
-  await I.wait(10);
+  await I.wait(30);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
