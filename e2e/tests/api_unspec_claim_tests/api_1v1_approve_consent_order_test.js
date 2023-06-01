@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 Caseworker Approve Consent Order API tests @api-tests');
+Feature('GA 1v1 Caseworker Approve Consent Order API tests @api-testssss');
 
 Scenario('caseworker makes decision 1V1 - CONSENT ORDER', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -32,14 +32,14 @@ Scenario('caseworker makes decision 1V1 - CONSENT ORDER', async ({api}) => {
 });
 
 Scenario('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Company');
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  console.log('Civil Case created for general application: ' + civilCaseReference);
+  // civilCaseReference = await api.createUnspecifiedClaim(
+  //   config.applicantSolicitorUser, mpScenario, 'Company');
+  // await api.amendClaimDocuments(config.applicantSolicitorUser);
+  // await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  // await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  // console.log('Civil Case created for general application: ' + civilCaseReference);
 
-  console.log('Make a General Application');
+  console.log('Make a General Application with consent');
   gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, false, false);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
