@@ -76,7 +76,7 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_WRITTEN_REPRESENTATIONS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Concurrent representations', 'no', 'Claimant', user);
-  await I.verifyApplicationDocument('Written representation concurrent');
+  await I.verifyUploadedApplicationDocument(gaCaseReference, 'Written representation concurrent');
   console.log('Judges made an order for Concurrent written representations on case: ' + gaCaseReference);
 
   await I.login(config.applicantSolicitorUser);
@@ -86,9 +86,7 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
   console.log('Responded to Judges written representations on case: ' + gaCaseReference);
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_WRITTEN_REPRESENTATIONS.id);
 
-  await I.navigateToTab(civilCaseReference, 'Applications');
-  await I.clickMainTab('Case File');
-  await I.verifyCaseFileAppDocument('Concurrent order document');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Concurrent order document');
 });
 
 AfterSuite(async ({api}) => {

@@ -52,16 +52,16 @@ Scenario.skip('Claimant Hearing notice - Without notice journey @e2e-tests', asy
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.HEARING_SCHEDULED.id, config.hearingCenterAdminWithRegionId1);
   console.log('After SDO Hearing Notice created for: ' + gaCaseReference);
   await I.click('Close and Return to case details');
-  await I.verifyApplicationDocument('Hearing Notice');
+  await I.verifyUploadedApplicationDocument(gaCaseReference, 'Hearing Notice');
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(states.HEARING_SCHEDULED.name);
-  await I.verifyClaimDocument('After SDO - Hearing Notice');
+  await I.verifyUploadedClaimDocument(civilCaseReference, 'After SDO - Hearing Notice');
 
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
-  await I.verifyClaimDocument('After SDO - Hearing Notice');
+  await I.verifyUploadedClaimDocument(civilCaseReference, 'After SDO - Hearing Notice');
   await I.navigateToCaseDetails(gaCaseReference);
-  await I.verifyApplicationDocument('Hearing Notice');
+  await I.verifyUploadedApplicationDocument(gaCaseReference, 'Hearing Notice');
 
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);

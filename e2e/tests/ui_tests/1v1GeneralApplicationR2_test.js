@@ -54,8 +54,7 @@ Scenario('Defendant of main claim initiates Vary Judgement application', async (
 
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(states.LISTING_FOR_A_HEARING.name);
-  await I.clickMainTab('Case File');
-  await I.verifyCaseFileAppDocument('N245 Evidence');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'N245 Evidence');
 });
 
 Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regression2', async ({I, api}) => {

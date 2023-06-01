@@ -21,7 +21,7 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('GA CCD 1v1 - General Application Journey  @ui-nightly');
 
-Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
+Scenario('GA for 1v1 - Make an order journey @e2e-tests @123', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -57,17 +57,16 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.ORDER_MADE.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Approve order', 'no', 'Claimant', user);
-  await I.verifyApplicationDocument('General order');
+  await I.verifyUploadedApplicationDocument(gaCaseReference, 'General order');
   console.log('Judges made a decision on case: ' + gaCaseReference);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeApproveOrderStatus);
-  await I.verifyClaimDocument('General order document');
+  await I.verifyUploadedClaimDocument(civilCaseReference, 'General order document');
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 
-  await I.clickMainTab('Case File');
-  await I.verifyCaseFileOrderDocument('General order document');
-  await I.verifyCaseFileAppDocument('Applicant Evidence');
+  await I.verifyCaseFileOrderDocument(civilCaseReference, 'General order document');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Applicant Evidence');
 });
 
 Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) => {
@@ -108,16 +107,15 @@ Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) =
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Judges Directions', 'no', 'Claimant', user);
-  await I.verifyApplicationDocument('Directions order');
+  await I.verifyUploadedApplicationDocument(gaCaseReference, 'Directions order');
   console.log('Judges Directions Order Made on case: ' + gaCaseReference);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeDirectionsOrderStatus);
-  await I.verifyClaimDocument('Directions order document');
+  await I.verifyUploadedClaimDocument(civilCaseReference, 'Directions order document');
 
-  await I.clickMainTab('Case File');
-  await I.verifyCaseFileOrderDocument('Directions order document');
-  await I.verifyCaseFileAppDocument('Applicant Evidence');
+  await I.verifyCaseFileOrderDocument(civilCaseReference, 'Directions order document');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Applicant Evidence');
 
   await I.respondToJudgesDirections(gaCaseReference);
   console.log('Responded to Judges directions on case: ' + gaCaseReference);
@@ -155,7 +153,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @regression2', asy
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.APPLICATION_DISMISSED.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Dismissal order', 'no', 'Claimant', user);
-  await I.verifyApplicationDocument('Dismissal order');
+  await I.verifyUploadedApplicationDocument(gaCaseReference, 'Dismissal order');
   await I.dontSee('Go');
   await I.dontSee('Next step');
   console.log('Judges Dismissed this order: ' + gaCaseReference);
@@ -163,10 +161,10 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @regression2', asy
   await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeDismissOrderStatus);
-  await I.verifyClaimDocument('Dismissal order document');
-  await I.clickMainTab('Case File');
-  await I.verifyCaseFileOrderDocument('Dismissal order document');
-  await I.verifyCaseFileAppDocument('Applicant Evidence');
+  await I.verifyUploadedClaimDocument(civilCaseReference, 'Dismissal order document');
+
+  await I.verifyCaseFileOrderDocument(civilCaseReference, 'Dismissal order document');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Applicant Evidence');
 
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.APPLICATION_DISMISSED.id);
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
@@ -218,7 +216,7 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id, config.defendantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Request more information', 'yes', 'Claimant', user);
-  await I.verifyApplicationDocument('Request for information');
+  await I.verifyUploadedApplicationDocument(gaCaseReference, 'Request for information');
   console.log('Judges requested more information on case: ' + gaCaseReference);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
