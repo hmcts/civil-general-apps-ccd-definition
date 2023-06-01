@@ -924,9 +924,12 @@ module.exports = function () {
       await claimDocumentPage.verifyUploadedDocument(docType);
     },
 
-    async verifyCaseFileDocument(docType) {
-      await caseViewPage.clickOnTab('Case File');
-      await caseFileDocPage.verifyCaseFileDocument(docType);
+    async verifyCaseFileAppDocument(documentType) {
+      await caseFileDocPage.verifyCaseFileAppDocument(documentType);
+    },
+
+    async verifyCaseFileOrderDocument(documentType) {
+      await caseFileDocPage.verifyCaseFileOrderDocument(documentType);
     },
 
     async verifyHearingNoticeDocNotAvailable() {
@@ -1049,6 +1052,10 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.clickOnTab(tabName),
       ]);
+    },
+
+    async clickMainTab(tabName) {
+      await caseViewPage.clickMainTab(tabName);
     },
 
     async closeAndReturnToCaseDetails() {
