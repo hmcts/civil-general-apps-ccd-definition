@@ -732,6 +732,16 @@ module.exports = function () {
       await caseViewPage.navigateToTab(caseNumber, 'Applications');
     },
 
+    async verifyUploadedClaimDocument(civilCaseReference, docType) {
+      await caseViewPage.navigateToTab(civilCaseReference, 'Claim documents');
+      await claimDocumentPage.verifyUploadedDocument(docType);
+    },
+
+    async verifyUploadedApplicationDocument(gaCaseReference, docType) {
+      await caseViewPage.navigateToTab(gaCaseReference, 'Application Documents');
+      await applicationDocumentPage.verifyUploadedDocumentPDF(docType);
+    },
+
     async navigateToMainCase(civilCaseNumber) {
       await this.navigateToCaseDetails(civilCaseNumber);
       await caseViewPage.clickOnTab('Applications');
@@ -895,11 +905,6 @@ module.exports = function () {
       ]);
     },
 
-    async verifyApplicationDocument(docType) {
-      await caseViewPage.clickOnTab('Application Documents');
-      await applicationDocumentPage.verifyUploadedDocumentPDF(docType);
-    },
-
     async payAndVerifyGAStatus(civilCaseReference, gaCaseReference, ccdState, user, gaStatus) {
       console.log(`GA Payment using API: ${gaCaseReference}`);
       await apiRequest.paymentApiRequestUpdateServiceCallback(
@@ -910,7 +915,7 @@ module.exports = function () {
       console.log(`GA payment for ID: ${gaCaseReference} done successfully with expected state: ${ccdState}`);
       await caseViewPage.navigateToTab(civilCaseReference, 'Applications');
       await this.see(gaStatus);
-      await this.waitForText('Sign out', 10, SIGN_OUT_LINK);
+      await this.waitForSelector(SIGN_OUT_LINK, 30);
     },
 
     async payForGA() {
@@ -919,16 +924,15 @@ module.exports = function () {
        await serviceRequestPage.verifyPaymentDetails();
     },
 
-    async verifyClaimDocument(docType) {
-      await caseViewPage.clickOnTab('Claim documents');
-      await claimDocumentPage.verifyUploadedDocument(docType);
-    },
-
-    async verifyCaseFileAppDocument(documentType) {
+    async verifyCaseFileAppDocument(civilCaseReference, documentType) {
+      await caseViewPage.navigateToTab(civilCaseReference, 'Case File');
+      await this.waitForSelector('.cdk-tree', 20);
       await caseFileDocPage.verifyCaseFileAppDocument(documentType);
     },
 
-    async verifyCaseFileOrderDocument(documentType) {
+    async verifyCaseFileOrderDocument(civilCaseReference, documentType) {
+      await caseViewPage.navigateToTab(civilCaseReference, 'Case File');
+      await this.waitForSelector('.cdk-tree', 20);
       await caseFileDocPage.verifyCaseFileOrderDocument(documentType);
     },
 
@@ -1052,10 +1056,6 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.clickOnTab(tabName),
       ]);
-    },
-
-    async clickMainTab(tabName) {
-      await caseViewPage.clickMainTab(tabName);
     },
 
     async closeAndReturnToCaseDetails() {
