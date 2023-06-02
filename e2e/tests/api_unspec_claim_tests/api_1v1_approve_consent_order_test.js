@@ -3,7 +3,7 @@ const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
-
+const genAppType = 'STAY_THE_CLAIM';
 Feature('GA 1v1 Caseworker Approve Consent Order API tests @api-tests');
 
 Scenario('caseworker makes decision 1V1 - CONSENT ORDER', async ({api}) => {
@@ -29,6 +29,8 @@ Scenario('caseworker makes decision 1V1 - CONSENT ORDER', async ({api}) => {
   }
   console.log('*** End CaseWorker Approve Consent Order on GA Case Reference: ' + gaCaseReference + ' ***');
 
+  await api.judgeRevisitConsentScheduler(gaCaseReference, 'ORDER_MADE', genAppType);
+  console.log('*** End Judge Directions Order GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
 AfterSuite(async ({api}) => {
