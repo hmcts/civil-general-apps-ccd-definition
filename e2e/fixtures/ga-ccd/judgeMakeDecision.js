@@ -219,15 +219,15 @@ module.exports = {
       }
     };
   },
-  judgeRequestMoreInfomationUncloakData: () => {
+  judgeRequestMoreInfomationUncloakData: (pay) => {
     return {
       judicialDecision : {
         decision: 'REQUEST_MORE_INFO'
       },
       judicialDecisionRequestMoreInfo: {
         requestMoreInfoOption: 'SEND_APP_TO_OTHER_PARTY',
-        judgeRequestMoreInfoText: 'sample data',
-        judgeRequestMoreInfoByDate: '2026-05-04'
+        judgeRequestMoreInfoText: pay ? null : 'sample data',
+        judgeRequestMoreInfoByDate: pay ? null : '2026-05-04'
       }
     };
   },
