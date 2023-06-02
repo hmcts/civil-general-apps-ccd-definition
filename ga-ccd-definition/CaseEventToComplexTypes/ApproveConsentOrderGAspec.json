@@ -27,5 +27,15 @@
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "consentOrderDescription = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "GAApproveConsentOrder",
+    "CaseEventID": "APPROVE_CONSENT_ORDER",
+    "CaseFieldID": "approveConsentOrder",
+    "ListElementCode": "isOrderProcessedByStayScheduler",
+    "EventElementLabel": "  ",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "consentOrderDescription = \"DO_NOT_SHOW_IN_UI\""
   }
 ]
