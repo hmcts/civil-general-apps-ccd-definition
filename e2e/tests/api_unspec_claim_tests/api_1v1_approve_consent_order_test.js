@@ -28,9 +28,6 @@ Scenario('caseworker makes decision 1V1 - CONSENT ORDER @api-tests @api-schedule
     await api.nbcAdminApproveConsentOrder(config.hearingCenterAdminLocal, gaCaseReference);
   }
   console.log('*** End CaseWorker Approve Consent Order on GA Case Reference: ' + gaCaseReference + ' ***');
-
-  await api.judgeRevisitConsentScheduler(gaCaseReference, 'ORDER_MADE', genAppType);
-  console.log('*** End Judge Directions Order GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
 Scenario('Judge Revisit 1V1 - consentOrder End Date Scheduler @api-scheduler-test', async ({api}) => {
