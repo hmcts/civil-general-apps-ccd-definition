@@ -1,3 +1,4 @@
+const {date} = require("../../api/dataHelper");
 module.exports = {
   nbcAdminReferToJudgeData: () => {
     return {
@@ -20,7 +21,8 @@ module.exports = {
       approveConsentOrder: {
         consentOrderDescription: 'Testing Approve Consent Order',
         showConsentOrderDate: 'No',
-        isOrderProcessedByStayScheduler: 'No'
+        isOrderProcessedByStayScheduler: 'No',
+        consentOrderDateToEnd:date(0),
       }
     };
   }
