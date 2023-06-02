@@ -47,14 +47,16 @@ Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, ap
   await I.judgeMakeAppOrder(gaCaseReference, 'assistedOrder', 'withoutNoticeOrder');
   await I.judgeCloseAndReturnToCaseDetails();
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.LISTING_FOR_A_HEARING.id, user);
-  await I.verifyApplicationDocument('Assisted Order');
+
+  await I.verifyUploadedApplicationDocument(gaCaseReference, 'Assisted Order');
+
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(listForHearingStatus);
-  await I.verifyClaimDocument('Assisted Order');
 
-  await I.clickMainTab('Case File');
-  await I.verifyCaseFileOrderDocument('General order document');
-  await I.verifyCaseFileAppDocument('Hearing Notice');
+  await I.verifyUploadedClaimDocument(civilCaseReference, 'Assisted Order');
+
+  await I.verifyCaseFileOrderDocument(civilCaseReference, 'General order document');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
 });
 
 AfterSuite(async ({api}) => {
