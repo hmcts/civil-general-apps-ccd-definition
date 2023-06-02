@@ -4,9 +4,9 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 const genAppType = 'STAY_THE_CLAIM';
-Feature('GA 1v1 Caseworker Approve Consent Order API tests @api-tests');
+Feature('GA 1v1 Caseworker Approve Consent Order API tests');
 
-Scenario('caseworker makes decision 1V1 - CONSENT ORDER', async ({api}) => {
+Scenario('caseworker makes decision 1V1 - CONSENT ORDER @api-testssss @api-scheduler-test', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -31,6 +31,14 @@ Scenario('caseworker makes decision 1V1 - CONSENT ORDER', async ({api}) => {
 
   await api.judgeRevisitConsentScheduler(gaCaseReference, 'ORDER_MADE', genAppType);
   console.log('*** End Judge Directions Order GA Case Reference: ' + gaCaseReference + ' ***');
+});
+
+Scenario('Judge Revisit 1V1 - consentOrder End Date Scheduler @api-testssss @api-scheduler-test', async ({api}) => {
+
+  console.log('*** Triggering Judge Revisit Order Made Scheduler ***');
+  await api.judgeRevisitConsentScheduler(gaCaseReference, 'ORDER_MADE', genAppType);
+  console.log('*** End of Judge Revisit Order Made Scheduler ***');
+
 });
 
 AfterSuite(async ({api}) => {
