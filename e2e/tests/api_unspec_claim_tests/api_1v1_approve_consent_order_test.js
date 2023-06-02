@@ -41,6 +41,32 @@ Scenario('Judge Revisit 1V1 - consentOrder End Date Scheduler @api-testssss @api
 
 });
 
+Scenario('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application', async ({api}) => {
+
+  console.log('Make a General Application for Consent order');
+  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, false, false);
+
+  console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
+  await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
+  console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
+
+  console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
+    + gaCaseReference + ' ***');
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference);
+  } else {
+    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference);
+  }
+  console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
+    + gaCaseReference + ' ***');
+
+  console.log('*** Start Callback for Additional Payment: ' + gaCaseReference + ' ***');
+  await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+  console.log('*** End uncloaking consent order: ' + gaCaseReference + ' ***');
+
+
+});
+
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
