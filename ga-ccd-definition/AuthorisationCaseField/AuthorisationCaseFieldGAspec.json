@@ -2391,8 +2391,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate"
+          "payment-access"
         ],
         "CRUD": "CRU"
       },
