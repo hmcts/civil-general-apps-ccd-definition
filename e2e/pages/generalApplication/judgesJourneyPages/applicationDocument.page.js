@@ -35,7 +35,7 @@ module.exports = {
     } else {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 2);
     }
-    let docURL = await I.grabTextFrom(locate(this.fields.links).first());
+    let docURL = await I.grabTextFrom(locate(this.fields.links).last());
     switch (documentType) {
       case 'General order':
       case 'Free From Order':
