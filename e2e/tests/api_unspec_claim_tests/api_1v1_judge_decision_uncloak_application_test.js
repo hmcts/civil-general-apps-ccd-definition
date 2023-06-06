@@ -46,9 +46,9 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
   } else {
-    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true, true);
   }
   console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
@@ -74,9 +74,9 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Payment fails', 
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
   } else {
-    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true, true);
   }
   console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
@@ -102,9 +102,9 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
   } else {
-    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true, true);
   }
   console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
