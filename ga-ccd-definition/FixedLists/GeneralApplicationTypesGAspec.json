@@ -56,7 +56,7 @@
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "ADJOURN_VACATE_HEARING",
-    "ListElement": "Application to adjourn/vacate a hearing",
+    "ListElement": "Adjourn a hearing",
     "DisplayOrder": 10
   },
   {
