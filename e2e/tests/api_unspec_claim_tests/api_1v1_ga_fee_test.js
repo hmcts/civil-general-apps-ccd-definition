@@ -20,9 +20,9 @@ Scenario('MixTypesWithVary - 14 pounds', async ({api}) => {
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
               + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, false);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, false, true);
   } else {
-    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, false);
+    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, false, true);
   }
   console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
               + gaCaseReference + ' ***');
