@@ -19,9 +19,9 @@ module.exports = {
     I.see(expectedLabel);
     //  Concurrent written representations journey is now without notice to with notice hence added this logic
     if (expectedLabel !== 'Written representation concurrent document') {
-      I.seeNumberOfVisibleElements(this.fields.links, 3);
-    } else {
       I.seeNumberOfVisibleElements(this.fields.links, 4);
+    } else {
+      I.seeNumberOfVisibleElements(this.fields.links, 5);
     }
   },
 
@@ -29,11 +29,11 @@ module.exports = {
     await I.waitForElement(this.fields.appDocTable);
     await I.seeInCurrentUrl('Documents');
     if (documentType === 'Written representation concurrent' || documentType === 'Hearing Notice') {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 2);
-    } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);
+    } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 4);
     } else {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 1);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 2);
     }
     let docURL = await I.grabTextFrom(locate(this.fields.links).first());
     switch (documentType) {
