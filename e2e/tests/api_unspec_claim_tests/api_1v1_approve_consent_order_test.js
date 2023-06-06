@@ -34,7 +34,7 @@ Scenario('caseworker makes decision 1V1 - CONSENT ORDER', async ({api}) => {
 Scenario('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application', async ({api}) => {
 
   console.log('Make a General Application for Consent order');
-  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, false, false);
+  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
@@ -43,9 +43,9 @@ Scenario('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application', async
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
   } else {
-    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference);
+    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true, true);
   }
   console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
