@@ -12,7 +12,7 @@
     "highLevelDataSetup": "echo './gradlew highLevelDataSetup --args=$1' > ./temp.sh && sh ./temp.sh",
     "test:smoke": "run-script-os",
     "test:smoke:win32": "npx codeceptjs run --grep @smoke-tests --reporter mocha-multi --verbose",
-    "test:smoke:darwin:linux": "MOCHAWESOME_REPORTFILENAME=smoke REPORT_DIR=test-results/smokeTest REPORT_FILE=test-results/smokeTest/results.xml npx codeceptjs run --grep @runVacateGA --reporter mocha-multi --verbose",
+    "test:smoke:darwin:linux": "MOCHAWESOME_REPORTFILENAME=smoke REPORT_DIR=test-results/smokeTest REPORT_FILE=test-results/smokeTest/results.xml npx codeceptjs run --grep @smoke-tests --reporter mocha-multi --verbose",
     "test:ga-smoke": "run-script-os",
     "test:ga-smoke:win32": "npx codeceptjs run --grep @ga-smoke-tests --reporter mocha-multi --verbose",
     "test:ga-smoke:darwin:linux": "MOCHAWESOME_REPORTFILENAME=ga-smoke REPORT_DIR=test-results/smokeTest REPORT_FILE=test-results/smokeTest/results.xml npx codeceptjs run --grep @ga-smoke-tests --reporter mocha-multi --verbose",
