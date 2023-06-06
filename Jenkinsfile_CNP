@@ -6,8 +6,10 @@ import uk.gov.hmcts.contino.GithubAPI
 def type = "nodejs"
 def product = "civil"
 def component = "ga-ccd"
+
 def camundaBranch = "master"
 def ccddefbranch = "CIV-8430"
+
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
 
