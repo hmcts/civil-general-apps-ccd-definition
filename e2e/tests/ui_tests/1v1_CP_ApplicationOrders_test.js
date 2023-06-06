@@ -50,10 +50,10 @@ Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, ap
   await I.judgeMakeAppOrder(gaCaseReference, 'freeFromOrder', 'withoutNoticeOrder');
   await I.judgeCloseAndReturnToCaseDetails();
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.ORDER_MADE.id, user);
-  await I.verifyApplicationDocument('Free From Order');
+  await I.verifyUploadedApplicationDocument(gaCaseReference, 'Free From Order');
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(judgeApproveOrderStatus);
-  await I.verifyClaimDocument('Free From Order');
+  await I.verifyUploadedClaimDocument(civilCaseReference, 'Free From Order');
 });
 
 Scenario('1v1 - Assisted order - Without Further Hearing @regression2', async ({api, I}) => {
@@ -98,11 +98,10 @@ Scenario('1v1 - Assisted order - Without Further Hearing @regression2', async ({
     await I.login(config.judgeLocalUser);
   }
 
-  await I.navigateToCaseDetails(gaCaseReference);
-  await I.verifyApplicationDocument('Assisted Order');
+  await I.verifyUploadedApplicationDocument(gaCaseReference, 'Assisted Order');
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(judgeApproveOrderStatus);
-  await I.verifyClaimDocument('Assisted Order');
+  await I.verifyUploadedClaimDocument(civilCaseReference, 'Assisted Order');
 });
 
 AfterSuite(async ({api}) => {

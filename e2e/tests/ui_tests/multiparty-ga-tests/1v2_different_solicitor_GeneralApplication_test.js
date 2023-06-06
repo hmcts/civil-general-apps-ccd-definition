@@ -70,7 +70,7 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
       states.LISTING_FOR_A_HEARING.id, config.applicantSolicitorUser);
     await I.judgeCloseAndReturnToCaseDetails();
     await I.verifyJudgesSummaryPage('Hearing order', 'yes', 'Claimant', user);
-    await I.verifyApplicationDocument('Hearing order');
+    await I.verifyUploadedApplicationDocument(gaCaseReference, 'Hearing order');
     await I.dontSee('Go');
     await I.dontSee('Next step');
     console.log('Judges list for a hearing on case: ' + gaCaseReference);
