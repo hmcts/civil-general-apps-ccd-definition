@@ -35,7 +35,7 @@ module.exports = {
     } else {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 2);
     }
-    let docURL = await I.grabTextFrom(locate(this.fields.links).last());
+    let docURL = await I.grabTextFrom(locate(this.fields.links).first());
     switch (documentType) {
       case 'General order':
       case 'Free From Order':
@@ -67,21 +67,25 @@ module.exports = {
         await I.see(`Consent_order_for_application_${docFullDate}`);
         break;
     }
+    let draftAppURL = await I.grabTextFrom(locate(this.fields.links).last());
+    expect(draftAppURL).to.contains(`Draft_application_${docFullDate}`);
+    await I.see(`Consent_order_for_application_${docFullDate}`);
     await I.see('Type');
     await I.see('Uploaded on');
     await I.see('Document URL');
     //  Concurrent written representations journey is now without notice to with notice hence added this logic
     if (documentType === 'Written representation concurrent') {
       await I.seeTextEquals('Request for information', locate(this.fields.docLabel).first());
-      await I.seeTextEquals(documentType, locate(this.fields.docLabel).last());
+      await I.seeTextEquals(documentType, locate(this.fields.docLabel).at(1));
     } else if (documentType === 'Hearing Notice') {
       await I.seeTextEquals('Hearing order', locate(this.fields.docLabel).first());
-      await I.seeTextEquals(documentType, locate(this.fields.docLabel).last());
+      await I.seeTextEquals(documentType, locate(this.fields.docLabel).at(1));
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeTextEquals('General order', locate(this.fields.docLabel).first());
-      await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).last());
+      await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(1));
     } else {
-      await I.seeTextEquals(documentType, this.fields.docLabel);
+      await I.seeTextEquals(documentType, locate(this.fields.docLabel).first());
     }
+    await I.seeTextEquals('Application Draft', locate(this.fields.docLabel).last());
   }
 };
