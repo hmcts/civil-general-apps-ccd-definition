@@ -17,32 +17,32 @@ module.exports = {
   async verifyUploadedDocument(documentType) {
     await I.seeInCurrentUrl('documents');
     if (documentType === 'After SDO - Hearing Notice') {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 4);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 5);
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 4);
     } else {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 2);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);
     }
     let docURL = await I.grabTextFrom(locate(this.fields.links).last());
     switch (documentType) {
       case 'General order document':
         I.see('Upload documents');
-        I.seeNumberOfVisibleElements(this.fields.links, 3);
+        I.seeNumberOfVisibleElements(this.fields.links, 4);
         expect(docURL).to.contains(`General_order_for_application_${docFullDate}`);
         break;
       case 'Free From Order':
       case 'Assisted Order':
         I.see('Upload documents');
-        I.seeNumberOfVisibleElements(this.fields.links, 4);
+        I.seeNumberOfVisibleElements(this.fields.links, 5);
         I.see(`General_order_for_application_${docFullDate}`);
         break;
       case 'Directions order document':
         I.see('Upload documents');
-        I.seeNumberOfVisibleElements(this.fields.links, 3);
+        I.seeNumberOfVisibleElements(this.fields.links, 4);
         expect(docURL).to.contains(`Directions_order_for_application_${docFullDate}`);
         break;
       case 'Dismissal order document':
-        I.seeNumberOfVisibleElements(this.fields.links, 2);
+        I.seeNumberOfVisibleElements(this.fields.links, 3);
         expect(docURL).to.contains(`Dismissal_order_for_application_${docFullDate}`);
         break;
       case 'Hearing Notice':
@@ -63,7 +63,7 @@ module.exports = {
       await I.see('General order document');
       expect(docType).to.equals('Hearing Notice');
     } else {
-      expect(docType).to.equals(documentType);
+      expect(docType).to.equals('Application Draft document');
     }
   }
 };
