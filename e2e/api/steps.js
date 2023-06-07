@@ -510,9 +510,6 @@ module.exports = {
                                                     feeVersion) => {
     eventName = events.INITIATE_GENERAL_APPLICATION.id;
     let freeGa = calculatedAmount==='0';
-    // if (['preview', 'demo', 'aat'].includes(config.runningEnv) && freeGa) { {
-    //   calculatedAmount = '1000';
-    // }
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, parentCaseId);
     const response = await apiRequest.submitEvent(eventName,
