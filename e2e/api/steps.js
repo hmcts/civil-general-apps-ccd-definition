@@ -1965,7 +1965,11 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   let ccdState = urgency ? 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION' : 'AWAITING_RESPONDENT_RESPONSE';
   //comment out next line to see race condition
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, ccdState, user);
-  await assertGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, gaCaseReference, doc);
+  if (user.email === config.defendantSolicitorUser.email
+      || user.email === config.secondDefendantSolicitorUser.email ) {
+    await assertGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, gaCaseReference,
+                                      doc);
+  }
   await addUserCaseMapping(gaCaseReference, user);
   return gaCaseReference;
 };
