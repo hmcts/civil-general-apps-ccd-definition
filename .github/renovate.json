@@ -9,5 +9,6 @@
   "helmv3": {
     "bumpVersion": "patch"
   },
+  "schedule": ["after 9pm on sunday"],
   "prConcurrentLimit": 10
 }

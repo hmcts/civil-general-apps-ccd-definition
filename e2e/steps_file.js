@@ -479,6 +479,7 @@ module.exports = function () {
 
     async navigateToTab(caseNumber, tabName) {
       await caseViewPage.navigateToTab(caseNumber, tabName);
+      await this.waitForSelector(SIGN_OUT_LINK, 30);
     },
 
     /**
@@ -708,6 +709,7 @@ module.exports = function () {
       await this.retryUntilExists(async () => {
         console.log(`Navigating to case: ${caseNumber}`);
         await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
+        await this.waitForSelector(SIGN_OUT_LINK, 30);
       }, SIGNED_IN_SELECTOR);
     },
 
@@ -1041,6 +1043,12 @@ module.exports = function () {
     async verifyN245FormElements() {
       await this.triggerStepsWithScreenshot([
         () => applicantSummaryPage.verifyN245FormElements(),
+      ]);
+    },
+
+    async verifyNoServiceReqElements() {
+      await this.triggerStepsWithScreenshot([
+        () => applicantSummaryPage.verifyNoServiceReqElements(),
       ]);
     },
 
