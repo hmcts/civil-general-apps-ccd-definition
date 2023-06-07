@@ -42,6 +42,9 @@ Scenario.only('Judge makes decision 1V1 - VARY-JUDGEMENT  as DEFENDANT - DIRECTI
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGaWithVaryJudgement(config.defendantSolicitorUser, civilCaseReference, false, false);
+  let doc = 'gaEvidence';
+  await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
+  await api.assertNullGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, doc);
   //
   // console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   // await api.respondentDebtorResponse(config.applicantSolicitorUser, gaCaseReference);
@@ -60,6 +63,6 @@ Scenario.only('Judge makes decision 1V1 - VARY-JUDGEMENT  as DEFENDANT - DIRECTI
   // console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
 });
 AfterSuite(async ({api}) => {
-  //await api.cleanUp();
+  await api.cleanUp();
 });
 
