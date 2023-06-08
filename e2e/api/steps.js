@@ -1095,6 +1095,18 @@ module.exports = {
     console.log('*** Judge Revisit Scheduler ran successfully: ');
   },
 
+  judgeRevisitConsentScheduler: async (gaCaseId,state,genAppType) => {
+    const response_msg = await apiRequest.gaOrderMadeSchedulerTaskHandler(state, genAppType);
+    assert.equal(response_msg.status, 200);
+    // retrive the dcase data for the ga reference  and assert that the flag is true
+    const updatedResponse = await apiRequest.fetchGaCaseData(gaCaseId);
+    const updatedGaCaseData = await updatedResponse.json();
+    let isOrderProcessedByScheduler = updatedGaCaseData.approveConsentOrder.isOrderProcessedByStayScheduler;
+    assert.equal(isOrderProcessedByScheduler,'Yes');
+
+    console.log('*** Judge Revisit Scheduler ran successfully: ');
+  },
+
   verifySpecificAccessForGaCaseData: async (user, gaCaseId) => {
     const response = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     assert.equal(response.status, 200);
