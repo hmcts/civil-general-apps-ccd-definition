@@ -479,6 +479,7 @@ module.exports = function () {
 
     async navigateToTab(caseNumber, tabName) {
       await caseViewPage.navigateToTab(caseNumber, tabName);
+      await this.waitForSelector(SIGN_OUT_LINK, 30);
     },
 
     /**
@@ -708,6 +709,7 @@ module.exports = function () {
       await this.retryUntilExists(async () => {
         console.log(`Navigating to case: ${caseNumber}`);
         await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
+        await this.waitForSelector(SIGN_OUT_LINK, 30);
       }, SIGNED_IN_SELECTOR);
     },
 
@@ -730,6 +732,16 @@ module.exports = function () {
 
     async navigateToApplicationsTab(caseNumber) {
       await caseViewPage.navigateToTab(caseNumber, 'Applications');
+    },
+
+    async verifyUploadedClaimDocument(civilCaseReference, docType) {
+      await caseViewPage.navigateToTab(civilCaseReference, 'Claim documents');
+      await claimDocumentPage.verifyUploadedDocument(docType);
+    },
+
+    async verifyUploadedApplicationDocument(gaCaseReference, docType) {
+      await caseViewPage.navigateToTab(gaCaseReference, 'Application Documents');
+      await applicationDocumentPage.verifyUploadedDocumentPDF(docType);
     },
 
     async navigateToMainCase(civilCaseNumber) {
@@ -895,11 +907,6 @@ module.exports = function () {
       ]);
     },
 
-    async verifyApplicationDocument(docType) {
-      await caseViewPage.clickOnTab('Application Documents');
-      await applicationDocumentPage.verifyUploadedDocumentPDF(docType);
-    },
-
     async payAndVerifyGAStatus(civilCaseReference, gaCaseReference, ccdState, user, gaStatus) {
       console.log(`GA Payment using API: ${gaCaseReference}`);
       await apiRequest.paymentApiRequestUpdateServiceCallback(
@@ -910,7 +917,7 @@ module.exports = function () {
       console.log(`GA payment for ID: ${gaCaseReference} done successfully with expected state: ${ccdState}`);
       await caseViewPage.navigateToTab(civilCaseReference, 'Applications');
       await this.see(gaStatus);
-      await this.waitForText('Sign out', 10, SIGN_OUT_LINK);
+      await this.waitForSelector(SIGN_OUT_LINK, 30);
     },
 
     async payForGA() {
@@ -919,14 +926,16 @@ module.exports = function () {
        await serviceRequestPage.verifyPaymentDetails();
     },
 
-    async verifyClaimDocument(docType) {
-      await caseViewPage.clickOnTab('Claim documents');
-      await claimDocumentPage.verifyUploadedDocument(docType);
+    async verifyCaseFileAppDocument(civilCaseReference, documentType) {
+      await caseViewPage.navigateToTab(civilCaseReference, 'Case File');
+      await this.waitForSelector('.cdk-tree', 20);
+      await caseFileDocPage.verifyCaseFileAppDocument(documentType);
     },
 
-    async verifyCaseFileDocument(docType) {
-      await caseViewPage.clickOnTab('Case File');
-      await caseFileDocPage.verifyCaseFileDocument(docType);
+    async verifyCaseFileOrderDocument(civilCaseReference, documentType) {
+      await caseViewPage.navigateToTab(civilCaseReference, 'Case File');
+      await this.waitForSelector('.cdk-tree', 20);
+      await caseFileDocPage.verifyCaseFileOrderDocument(documentType);
     },
 
     async verifyHearingNoticeDocNotAvailable() {
@@ -1034,6 +1043,12 @@ module.exports = function () {
     async verifyN245FormElements() {
       await this.triggerStepsWithScreenshot([
         () => applicantSummaryPage.verifyN245FormElements(),
+      ]);
+    },
+
+    async verifyNoServiceReqElements() {
+      await this.triggerStepsWithScreenshot([
+        () => applicantSummaryPage.verifyNoServiceReqElements(),
       ]);
     },
 

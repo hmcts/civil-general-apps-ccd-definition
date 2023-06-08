@@ -50,9 +50,9 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
     'courtOwnInitiativeOrder', user);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
   } else {
-    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference);
+    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true, true);
   }
 
   console.log('*** Start Callback for Additional Payment: ' + gaCaseReference + ' ***');
@@ -76,7 +76,7 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_WRITTEN_REPRESENTATIONS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Concurrent representations', 'no', 'Claimant', user);
-  await I.verifyApplicationDocument('Written representation concurrent');
+  await I.verifyUploadedApplicationDocument(gaCaseReference, 'Written representation concurrent');
   console.log('Judges made an order for Concurrent written representations on case: ' + gaCaseReference);
 
   await I.login(config.applicantSolicitorUser);
@@ -85,6 +85,8 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
   await I.respondToJudgesWrittenRep(gaCaseReference, 'Written representation concurrent document');
   console.log('Responded to Judges written representations on case: ' + gaCaseReference);
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_WRITTEN_REPRESENTATIONS.id);
+
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Concurrent order document');
 });
 
 AfterSuite(async ({api}) => {
