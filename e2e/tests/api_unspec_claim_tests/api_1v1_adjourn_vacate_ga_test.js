@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 Make Adjourn Vacate API tests @ignore-api-tests');
+Feature('GA 1v1 Make Adjourn Vacate API tests @api-tests');
 
 Scenario('AC 4 - 15 Days with consent', async ({api}) => {
   let hearingDate = await api.createDateString(15);
@@ -38,6 +38,7 @@ Scenario('AC 2 - 14 Days without consent, without notice', async ({api}) => {
   let hearingDate = await api.createDateString(14);
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);

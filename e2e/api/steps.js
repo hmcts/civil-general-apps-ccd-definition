@@ -509,7 +509,7 @@ module.exports = {
                                                     calculatedAmount, feeCode,
                                                     feeVersion) => {
     eventName = events.INITIATE_GENERAL_APPLICATION.id;
-
+    let freeGa = calculatedAmount==='0';
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, parentCaseId);
     const response = await apiRequest.submitEvent(eventName,
@@ -518,9 +518,13 @@ module.exports = {
     const responseBody = await response.json();
     assert.equal(response.status, 201);
     assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+    if (freeGa) {
+      assert.include(responseBody.after_submit_callback_response.confirmation_body, 'The court will make a decision');
+    } else {
+      assert.include(responseBody.after_submit_callback_response.confirmation_body, 'Your application fee');
+    }
     await waitForFinishedBusinessProcess(parentCaseId, user);
     await waitForGAFinishedBusinessProcess(parentCaseId, user);
 
@@ -529,14 +533,14 @@ module.exports = {
     let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
-    //Payment callback handler response after the payment from service request tab
-    const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
-      genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
-    assert.equal(payment_response.status, 200);
-    console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
-
-    await addUserCaseMapping(gaCaseReference, user);
+    if (!freeGa) {
+      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
+      //Payment callback handler response after the payment from service request tab
+      const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+        genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+      assert.equal(payment_response.status, 200);
+      console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
+    }
     return gaCaseReference;
   },
 
@@ -1088,6 +1092,18 @@ module.exports = {
       let isOrderProcessedByScheduler = updatedGaCaseData.judicialDecisionMakeOrder.isOrderProcessedByUnlessScheduler;
       assert.equal(isOrderProcessedByScheduler,'Yes');
     }
+    console.log('*** Judge Revisit Scheduler ran successfully: ');
+  },
+
+  judgeRevisitConsentScheduler: async (gaCaseId,state,genAppType) => {
+    const response_msg = await apiRequest.gaOrderMadeSchedulerTaskHandler(state, genAppType);
+    assert.equal(response_msg.status, 200);
+    // retrive the dcase data for the ga reference  and assert that the flag is true
+    const updatedResponse = await apiRequest.fetchGaCaseData(gaCaseId);
+    const updatedGaCaseData = await updatedResponse.json();
+    let isOrderProcessedByScheduler = updatedGaCaseData.approveConsentOrder.isOrderProcessedByStayScheduler;
+    assert.equal(isOrderProcessedByScheduler,'Yes');
+
     console.log('*** Judge Revisit Scheduler ran successfully: ');
   },
 
