@@ -57,7 +57,7 @@
     "RoleName": "[APPLICANTSOLICITORONE]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "APP-SOL-UNSPEC-PROFILE",
+    "AccessProfiles": "APP-SOL-UNSPEC-PROFILE,payment-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": "UNSPEC_CLAIM"
@@ -84,7 +84,7 @@
     "RoleName": "[APPLICANTSOLICITORONE]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "APP-SOL-SPEC-PROFILE",
+    "AccessProfiles": "APP-SOL-SPEC-PROFILE,payment-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": "SPEC_CLAIM"
