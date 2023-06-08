@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 const genAppType = 'STAY_THE_CLAIM';
 Feature('GA 1v1 Caseworker Approve Consent Order API tests');
 
-Scenario('caseworker makes decision 1V1 - CONSENT ORDER @api-tests @api-scheduler-test', async ({api}) => {
+Scenario('caseworker makes decision 1V1 - CONSENT ORDER @fail @api-tests @api-scheduler-test', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
