@@ -69,7 +69,6 @@ module.exports = {
     }
     let draftAppURL = await I.grabTextFrom(locate(this.fields.links).last());
     expect(draftAppURL).to.contains(`Draft_application_${docFullDate}`);
-    await I.see(`Consent_order_for_application_${docFullDate}`);
     await I.see('Type');
     await I.see('Uploaded on');
     await I.see('Document URL');
@@ -82,7 +81,8 @@ module.exports = {
       await I.seeTextEquals(documentType, locate(this.fields.docLabel).at(1));
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeTextEquals('General order', locate(this.fields.docLabel).first());
-      await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(1));
+      await I.seeTextEquals('Hearing order', locate(this.fields.docLabel).at(2));
+      await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(3));
     } else {
       await I.seeTextEquals(documentType, locate(this.fields.docLabel).first());
     }

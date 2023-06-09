@@ -20,11 +20,15 @@ module.exports = {
     let appCount = await I.grabTextFrom(locate(this.fields.appFolder));
     switch (documentType) {
       case 'Hearing Notice':
-        expect(docs.toString()).to.includes(`Application_Hearing_Notice_${docFullDate}`,
-          `Hearing_order_for_application_${docFullDate}`,);
+        expect(docs.toString()).to.contains(`Hearing_order_for_application_${docFullDate}`);
+        expect(docs.toString()).to.contains(`Application_Hearing_Notice_${docFullDate}`);
+        expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
+        expect(appCount).equals('3');
         break;
       case 'Applicant Evidence':
         expect(docs.toString()).to.contains('examplePDF.pdf');
+        expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
+        expect(appCount).equals('2');
         break;
       case 'N245 Evidence':
         expect(docs.toString()).to.includes(`Hearing_order_for_application_${docFullDate}`,
@@ -45,6 +49,10 @@ module.exports = {
         expect(docs.toString()).to.includes(`Order_Written_Representation_Concurrent_for_application_${docFullDate}`,
           'examplePDF.pdf');
         expect(appCount).equals('4');
+        break;
+      case 'Consent Order':
+        expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
+        expect(appCount).equals('1');
         break;
     }
     await I.click(locate(this.fields.appFolder));
