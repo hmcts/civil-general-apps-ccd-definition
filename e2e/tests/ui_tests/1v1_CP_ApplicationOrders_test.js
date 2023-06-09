@@ -54,6 +54,8 @@ Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, ap
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(judgeApproveOrderStatus);
   await I.verifyUploadedClaimDocument(civilCaseReference, 'Free From Order');
+  await I.verifyCaseFileOrderDocument(civilCaseReference, 'General order document');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
 });
 
 Scenario('1v1 - Assisted order - Without Further Hearing @regression2', async ({api, I}) => {
