@@ -21,5 +21,13 @@
     "FieldType":  "YesOrNo",
     "SecurityClassification": "Public",
     "FieldShowCondition": "consentOrderDescription = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "GAApproveConsentOrderGAspec",
+    "ListElementCode": "isOrderProcessedByStayScheduler",
+    "ElementLabel": " ",
+    "FieldType":  "YesOrNo",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "consentOrderDescription = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

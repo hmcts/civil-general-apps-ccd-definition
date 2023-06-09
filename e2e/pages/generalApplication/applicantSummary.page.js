@@ -24,6 +24,11 @@ module.exports = {
     await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
     await I.see('N245 Form');
     await I.seeNumberOfVisibleElements(this.fields.n245FormLink, 1);
+  },
+
+  async verifyNoServiceReqElements() {
+    await I.seeNumberOfVisibleElements(this.fields.summaryTab, 2);
+    await I.dontSee('Service Request', this.fields.summaryTab);
   }
 };
 
