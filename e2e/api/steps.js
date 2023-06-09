@@ -959,7 +959,7 @@ module.exports = {
   },
 
   assertGaDocumentVisibilityToUser: async ( user, parentCaseId, gaCaseId, doc) => {
-    await assertGaDocVisibilityToUser( user, parentCaseId, gaCaseId, doc)
+    await assertGaDocVisibilityToUser( user, parentCaseId, gaCaseId, doc);
   },
 
   assertNullGaDocumentVisibilityToUser: async ( user, parentCaseId, doc) => {
