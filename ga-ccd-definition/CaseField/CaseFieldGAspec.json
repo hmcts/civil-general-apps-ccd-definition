@@ -668,7 +668,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "gaDraftDocument",
-    "Label": "Application Draft ",
+    "Label": "Draft Application document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"
