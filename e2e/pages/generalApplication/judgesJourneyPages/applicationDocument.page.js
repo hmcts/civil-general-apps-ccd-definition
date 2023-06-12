@@ -86,6 +86,6 @@ module.exports = {
     } else {
       await I.seeTextEquals(documentType, locate(this.fields.docLabel).first());
     }
-    await I.seeTextEquals('Application Draft', locate(this.fields.docLabel).last());
+    await I.seeTextEquals('Draft Application', locate(this.fields.docLabel).last());
   }
 };
