@@ -384,8 +384,8 @@ module.exports = {
     return await initiateWithVaryJudgement(user, parentCaseId, isClaimant, urgency);
   },
 
-  initiateGeneralApplicationWithOutNotice: async (user, parentCaseId) => {
-    return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE);
+  initiateGeneralApplicationWithOutNotice: async (user, parentCaseId, respondentTwoCollection) => {
+    return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE, respondentTwoCollection);
   },
 
   initiateGaWithTypes: async (user, parentCaseId, types, calculatedAmount, code) => {
@@ -2013,7 +2013,7 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   return gaCaseReference;
 };
 
-const initiateGeneralApplicationWithOutNotice = async (user, parentCaseId, gaData) => {
+const initiateGeneralApplicationWithOutNotice = async (user, parentCaseId, gaData, respondentTwoCollection) => {
   let gaCaseReference, index = 0;
   eventName = events.INITIATE_GENERAL_APPLICATION.id;
 
@@ -2047,6 +2047,9 @@ const initiateGeneralApplicationWithOutNotice = async (user, parentCaseId, gaDat
       gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[index].value.caseLink.CaseReference;
       break;
     case config.secondDefendantSolicitorUser.email:
+      if (respondentTwoCollection == 'respondentTwoCollection') {
+        index = 0;
+      }
       gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[index].value.caseLink.CaseReference;
       break;
   }
