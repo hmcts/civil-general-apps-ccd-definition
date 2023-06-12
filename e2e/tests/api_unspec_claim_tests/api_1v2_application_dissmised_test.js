@@ -5,7 +5,7 @@ const {I} = inject();
 
 let civilCaseReference, gaCaseReference, gaCaseReferenceSolicitorOne, gaCaseReferenceSolicitorTwo;
 
-Feature('GA 1v2 Judge Dismiss Application API tests @run1v2withoutNotice');
+Feature('GA 1v2 Judge Dismiss Application API tests @api-nightly');
 
 Scenario('1V2 Different Solicitors - Respondent Solicitors initiate Without Application', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
