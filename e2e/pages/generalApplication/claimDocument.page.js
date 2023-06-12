@@ -65,9 +65,9 @@ module.exports = {
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeTextEquals('General order document', locate(this.fields.docLabel).at(3));
       await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(4));
-      await I.seeTextEquals('Draft Application', locate(this.fields.docLabel).last());
+      await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).last());
     } else {
-      expect(docType).to.equals('Draft Application');
+      expect(docType).to.equals('Draft Application document');
     }
   }
 };
