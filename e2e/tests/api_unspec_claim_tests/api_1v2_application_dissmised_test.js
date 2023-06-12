@@ -5,7 +5,7 @@ const {I} = inject();
 
 let civilCaseReference, gaCaseReference, gaCaseReferenceSolicitorOne, gaCaseReferenceSolicitorTwo;
 
-Feature('GA 1v2 Judge Dismiss Application API tests @api-nightly');
+Feature('GA 1v2 Judge Dismiss Application API tests @run1v2withoutNotice');
 
 Scenario('1V2 Different Solicitors - Respondent Solicitors initiate Without Application', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -25,6 +25,9 @@ Scenario('1V2 Different Solicitors - Respondent Solicitors initiate Without Appl
   gaCaseReferenceSolicitorTwo = await api.initiateGeneralApplicationWithOutNotice(config.secondDefendantSolicitorUser,
     civilCaseReference, 'respondentTwoCollection');
 
+  await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReferenceSolicitorOne, 'Y');
+  await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReferenceSolicitorTwo, 'Y');
+
   console.log('*** Start Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReferenceSolicitorOne + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeDismissApplication(config.judgeUser, gaCaseReferenceSolicitorOne);
@@ -33,13 +36,6 @@ Scenario('1V2 Different Solicitors - Respondent Solicitors initiate Without Appl
   }
   console.log('*** End Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReferenceSolicitorOne + ' ***');
 
-  console.log('*** Start Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReferenceSolicitorTwo + ' ***');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeDismissApplication(config.judgeUser, gaCaseReferenceSolicitorTwo);
-  } else {
-    await api.judgeDismissApplication(config.judgeLocalUser, gaCaseReferenceSolicitorTwo);
-  }
-  console.log('*** End Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReferenceSolicitorTwo + ' ***');
 });
 
 Scenario('Judge makes decision 1V2 - DISMISS_THE_APPLICATION', async ({api}) => {
