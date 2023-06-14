@@ -57,6 +57,12 @@ module.exports = {
       case 'No document':
         expect(appCount).equals('0');
         break;
+      case 'Hearing order':
+        expect(docs.toString()).to.contains(`Hearing_order_for_application_${docFullDate}`);
+        expect(docs.toString()).to.contains('examplePDF.pdf');
+        expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
+        expect(appCount).equals('3');
+        break;
     }
     await I.click(locate(this.fields.appFolder));
   },

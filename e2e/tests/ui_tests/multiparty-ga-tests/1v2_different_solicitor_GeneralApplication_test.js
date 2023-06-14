@@ -87,6 +87,7 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
     await I.login(config.applicantSolicitorUser);
     await I.navigateToTab(civilCaseReference, 'Applications');
     await I.see(listForHearingStatus);
+    await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing order');
   });
 
 Scenario('Without Notice application for a hearing @regression1', async ({api, I}) => {
