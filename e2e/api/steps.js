@@ -89,7 +89,7 @@ const data = {
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
   CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS: claimData.createClaimRespondentSolFirmNotInMyHmcts,
   JUDGE_MAKES_ORDER_UNCLOAK: genAppJudgeMakeDecisionData.judgeMakeOrderUncloakApplication(),
-  JUDGE_REQUEST_MORE_INFO_UNCLOAK: genAppJudgeMakeDecisionData.judgeRequestMoreInfomationUncloakData(),
+  JUDGE_REQUEST_MORE_INFO_UNCLOAK: (other) => genAppJudgeMakeDecisionData.judgeRequestMoreInfomationUncloakData(other),
   RESUBMIT_CLAIM: require('../fixtures/events/resubmitClaim.js'),
   NOTIFY_DEFENDANT_OF_CLAIM: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol.js'),
   PARTIAL_DEFENDANT_OF_CLAIM: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol_partial.js'),
@@ -509,7 +509,7 @@ module.exports = {
                                                     calculatedAmount, feeCode,
                                                     feeVersion) => {
     eventName = events.INITIATE_GENERAL_APPLICATION.id;
-
+    let freeGa = calculatedAmount==='0';
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, parentCaseId);
     const response = await apiRequest.submitEvent(eventName,
@@ -518,9 +518,13 @@ module.exports = {
     const responseBody = await response.json();
     assert.equal(response.status, 201);
     assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+    if (freeGa) {
+      assert.include(responseBody.after_submit_callback_response.confirmation_body, 'The court will make a decision');
+    } else {
+      assert.include(responseBody.after_submit_callback_response.confirmation_body, 'Your application fee');
+    }
     await waitForFinishedBusinessProcess(parentCaseId, user);
     await waitForGAFinishedBusinessProcess(parentCaseId, user);
 
@@ -529,14 +533,14 @@ module.exports = {
     let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
     console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
 
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
-    //Payment callback handler response after the payment from service request tab
-    const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
-      genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
-    assert.equal(payment_response.status, 200);
-    console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
-
-    await addUserCaseMapping(gaCaseReference, user);
+    if (!freeGa) {
+      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
+      //Payment callback handler response after the payment from service request tab
+      const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+        genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+      assert.equal(payment_response.status, 200);
+      console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
+    }
     return gaCaseReference;
   },
 
@@ -727,13 +731,13 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
   },
 
-  judgeRequestMoreInformationUncloak: async (user, gaCaseId, pay=true) => {
+  judgeRequestMoreInformationUncloak: async (user, gaCaseId, pay=true, other=false) => {
     await apiRequest.setupTokens(user);
     eventName = events.MAKE_DECISION.id;
 
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
-    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_REQUEST_MORE_INFO_UNCLOAK, gaCaseId);
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_REQUEST_MORE_INFO_UNCLOAK(other), gaCaseId);
     const responseBody = await response.json();
 
     assert.equal(response.status, 201);
@@ -1053,6 +1057,18 @@ module.exports = {
       let isOrderProcessedByScheduler = updatedGaCaseData.judicialDecisionMakeOrder.isOrderProcessedByUnlessScheduler;
       assert.equal(isOrderProcessedByScheduler,'Yes');
     }
+    console.log('*** Judge Revisit Scheduler ran successfully: ');
+  },
+
+  judgeRevisitConsentScheduler: async (gaCaseId,state,genAppType) => {
+    const response_msg = await apiRequest.gaOrderMadeSchedulerTaskHandler(state, genAppType);
+    assert.equal(response_msg.status, 200);
+    // retrive the dcase data for the ga reference  and assert that the flag is true
+    const updatedResponse = await apiRequest.fetchGaCaseData(gaCaseId);
+    const updatedGaCaseData = await updatedResponse.json();
+    let isOrderProcessedByScheduler = updatedGaCaseData.approveConsentOrder.isOrderProcessedByStayScheduler;
+    assert.equal(isOrderProcessedByScheduler,'Yes');
+
     console.log('*** Judge Revisit Scheduler ran successfully: ');
   },
 
@@ -1893,7 +1909,7 @@ const initiateGaWithState = async (user, parentCaseId, expectState, payload) => 
 
   const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
   const updatedCivilCaseData = await updatedResponse.json();
-  let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+  let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails.pop().value.caseLink.CaseReference;
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
 

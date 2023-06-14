@@ -35,13 +35,15 @@ Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
 
   await I.approveConsentOrder(gaCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.ORDER_MADE.id, user);
-  await I.verifyApplicationDocument('Consent Order');
+  await I.verifyUploadedApplicationDocument(gaCaseReference, 'Consent Order');
+
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(states.ORDER_MADE.name);
-  await I.verifyClaimDocument('Consent order document');
 
-  await I.clickMainTab('Case File');
-  await I.verifyCaseFileOrderDocument('Consent Order');
+  await I.verifyUploadedClaimDocument(civilCaseReference, 'Consent order document');
+
+  await I.verifyCaseFileOrderDocument(civilCaseReference, 'Consent Order');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Consent Order');
 });
 
 AfterSuite(async ({api}) => {

@@ -13,13 +13,13 @@ const writtenRepStatus = states.AWAITING_WRITTEN_REPRESENTATIONS.name;
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 let gaCaseReference, civilCaseReference, user;
 
-Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly  @regression1');
+Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly');
 
-Scenario('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey',
+Scenario('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey @regression3',
   async ({api, I}) => {
     civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
     console.log('Case created for general application: ' + civilCaseReference);
-    await I.login(config.applicantSolicitorUser);
+    await I.login(config.defendantSolicitorUser);
     await I.navigateToCaseDetails(civilCaseReference);
     await I.createGeneralApplication(
       getAppTypes().slice(0, 3),
@@ -32,13 +32,23 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
       states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
     await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 3), 1);
     await I.see(awaitingPaymentStatus);
+
+    await I.login(config.applicantSolicitorUser);
+    await I.navigateToCaseDetails(gaCaseReference);
+    await I.verifyNoServiceReqElements();
+
+    await I.login(config.secondDefendantSolicitorUser);
+    await I.navigateToCaseDetails(gaCaseReference);
+    await I.verifyNoServiceReqElements();
+
     await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-      states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);
+      states.AWAITING_RESPONDENT_RESPONSE.id, config.defendantSolicitorUser, respondentStatus);
+    await I.login(config.defendantSolicitorUser);
     await I.navigateToCaseDetails(gaCaseReference);
     await I.verifyApplicantSummaryPage();
 
-    console.log('Defendant 1 solicitor responding:' + gaCaseReference);
-    await I.login(config.defendantSolicitorUser);
+    console.log('Applicant solicitor responding:' + gaCaseReference);
+    await I.login(config.applicantSolicitorUser);
     await I.respondToApplication(gaCaseReference, 'yes', 'yes', 'yes', 'yes', 'no',
       'signLanguageInterpreter', getAppTypes().slice(0, 3));
     console.log('Defendant 1 solicitor responded to application: ' + gaCaseReference);
@@ -65,12 +75,12 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
       user = config.judgeLocalUser;
       await I.login(user);
     }
-    await I.judgeListForAHearingDecision('listForAHearing', gaCaseReference, 'yes', 'Hearing_order', user);
+    await I.judgeListForAHearingDecision('listForAHearing', gaCaseReference, 'Defendant 1', 'Hearing_order', user);
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
       states.LISTING_FOR_A_HEARING.id, config.applicantSolicitorUser);
     await I.judgeCloseAndReturnToCaseDetails();
-    await I.verifyJudgesSummaryPage('Hearing order', 'yes', 'Claimant', user);
-    await I.verifyApplicationDocument('Hearing order');
+    await I.verifyJudgesSummaryPage('Hearing order', 'Defendant 1', 'Defendant 1', user);
+    await I.verifyUploadedApplicationDocument(gaCaseReference, 'Hearing order');
     await I.dontSee('Go');
     await I.dontSee('Next step');
     console.log('Judges list for a hearing on case: ' + gaCaseReference);
@@ -79,7 +89,7 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
     await I.see(listForHearingStatus);
   });
 
-Scenario('Without Notice application for a hearing', async ({api, I}) => {
+Scenario('Without Notice application for a hearing @regression1', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -121,9 +131,9 @@ Scenario('Without Notice application to With Notice application - Directions Ord
       civilCaseReference, gaCaseReference, null);
 
     if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-      await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true);
+      await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
     } else {
-      await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true);
+      await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true, true);
     }
     await api.additionalPaymentSuccess(config.secondDefendantSolicitorUser, gaCaseReference,
       states.AWAITING_RESPONDENT_RESPONSE.id);
@@ -152,7 +162,7 @@ Scenario('Without Notice application to With Notice application - Directions Ord
       civilCaseReference, gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id);
   });
 
-Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations',
+Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations @regression1',
   async ({api, I}) => {
     civilCaseReference = await api.createUnspecifiedClaim(
       config.applicantSolicitorUser, mpScenario, 'SoleTrader');
@@ -182,7 +192,7 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
       civilCaseReference, gaCaseReference, null);
   });
 
-Scenario('With Notice application - Org3 Solicitor Initiate GA', async ({api, I}) => {
+Scenario('With Notice application - Org3 Solicitor Initiate GA @regression1', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -205,7 +215,7 @@ Scenario('With Notice application - Org3 Solicitor Initiate GA', async ({api, I}
   await api.assertGAApplicantDisplayName(config.secondDefendantSolicitorUser, gaCaseReference);
 });
 
-Scenario('With Notice application - Org2 Solicitor Initiate GA', async ({api, I}) => {
+Scenario('With Notice application - Org2 Solicitor Initiate GA @regression1', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
