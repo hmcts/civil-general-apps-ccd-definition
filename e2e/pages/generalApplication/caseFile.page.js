@@ -36,14 +36,16 @@ module.exports = {
         expect(appCount).equals('3');
         break;
       case 'Sequential order document':
-        expect(docs.toString()).to.includes(`Order_Written_Representation_Sequential_for_application_${docFullDate}`,
-          'examplePDF.pdf');
-        expect(appCount).equals('3');
+        expect(docs.toString()).to.contains(`Order_Written_Representation_Sequential_for_application_${docFullDate}`);
+        expect(docs.toString()).to.contains('examplePDF.pdf');
+        expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
+        expect(appCount).equals('4');
         break;
       case 'Request more info order':
-        expect(docs.toString()).to.includes(`Request_for_information_for_application_${docFullDate}`,
-          'examplePDF.pdf');
-        expect(appCount).equals('2');
+        expect(docs.toString()).to.contains(`Request_for_information_for_application_${docFullDate}`);
+        expect(docs.toString()).to.contains('examplePDF.pdf');
+        expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
+        expect(appCount).equals('3');
         break;
       case 'Concurrent order document':
         expect(docs.toString()).to.includes(`Order_Written_Representation_Concurrent_for_application_${docFullDate}`,
