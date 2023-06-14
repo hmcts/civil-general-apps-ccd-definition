@@ -21,14 +21,14 @@ module.exports = {
     if (expectedLabel !== 'Written representation concurrent document') {
       I.seeNumberOfVisibleElements(this.fields.links, 4);
     } else {
-      I.seeNumberOfVisibleElements(this.fields.links, 5);
+      I.seeNumberOfVisibleElements(this.fields.links, 4);
     }
   },
 
   async verifyUploadedDocumentPDF(documentType) {
     await I.waitForElement(this.fields.appDocTable);
     await I.seeInCurrentUrl('Documents');
-    if (documentType === 'Written representation concurrent' || documentType === 'Hearing Notice') {
+    if (documentType === 'Hearing Notice') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 4);
@@ -74,8 +74,7 @@ module.exports = {
     await I.see('Document URL');
     //  Concurrent written representations journey is now without notice to with notice hence added this logic
     if (documentType === 'Written representation concurrent') {
-      await I.seeTextEquals('Request for information', locate(this.fields.docLabel).first());
-      await I.seeTextEquals(documentType, locate(this.fields.docLabel).at(1));
+      await I.seeTextEquals(documentType, locate(this.fields.docLabel).first());
     } else if (documentType === 'Hearing Notice') {
       await I.seeTextEquals('Hearing order', locate(this.fields.docLabel).first());
       await I.seeTextEquals(documentType, locate(this.fields.docLabel).at(2));
