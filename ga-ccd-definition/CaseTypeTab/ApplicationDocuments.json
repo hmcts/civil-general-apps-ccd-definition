@@ -119,5 +119,14 @@
     "CaseFieldID": "consentOrderDocument",
     "TabFieldDisplayOrder": 14,
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application Documents",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "gaDraftDocument",
+    "TabFieldDisplayOrder": 15,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
   }
 ]

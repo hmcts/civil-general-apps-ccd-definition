@@ -19,9 +19,9 @@ module.exports = {
     I.see(expectedLabel);
     //  Concurrent written representations journey is now without notice to with notice hence added this logic
     if (expectedLabel !== 'Written representation concurrent document') {
-      I.seeNumberOfVisibleElements(this.fields.links, 3);
-    } else {
       I.seeNumberOfVisibleElements(this.fields.links, 4);
+    } else {
+      I.seeNumberOfVisibleElements(this.fields.links, 5);
     }
   },
 
@@ -29,11 +29,11 @@ module.exports = {
     await I.waitForElement(this.fields.appDocTable);
     await I.seeInCurrentUrl('Documents');
     if (documentType === 'Written representation concurrent' || documentType === 'Hearing Notice') {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 2);
-    } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);
+    } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 4);
     } else {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 1);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 2);
     }
     let docURL = await I.grabTextFrom(locate(this.fields.links).first());
     switch (documentType) {
@@ -67,21 +67,25 @@ module.exports = {
         await I.see(`Consent_order_for_application_${docFullDate}`);
         break;
     }
+    let draftAppURL = await I.grabTextFrom(locate(this.fields.links).last());
+    expect(draftAppURL).to.contains(`Draft_application_${docFullDate}`);
     await I.see('Type');
     await I.see('Uploaded on');
     await I.see('Document URL');
     //  Concurrent written representations journey is now without notice to with notice hence added this logic
     if (documentType === 'Written representation concurrent') {
       await I.seeTextEquals('Request for information', locate(this.fields.docLabel).first());
-      await I.seeTextEquals(documentType, locate(this.fields.docLabel).last());
+      await I.seeTextEquals(documentType, locate(this.fields.docLabel).at(1));
     } else if (documentType === 'Hearing Notice') {
       await I.seeTextEquals('Hearing order', locate(this.fields.docLabel).first());
-      await I.seeTextEquals(documentType, locate(this.fields.docLabel).last());
+      await I.seeTextEquals(documentType, locate(this.fields.docLabel).at(1));
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeTextEquals('General order', locate(this.fields.docLabel).first());
-      await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).last());
+      await I.seeTextEquals('Hearing order', locate(this.fields.docLabel).at(2));
+      await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(3));
     } else {
-      await I.seeTextEquals(documentType, this.fields.docLabel);
+      await I.seeTextEquals(documentType, locate(this.fields.docLabel).first());
     }
+    await I.seeTextEquals('Draft Application', locate(this.fields.docLabel).last());
   }
 };
