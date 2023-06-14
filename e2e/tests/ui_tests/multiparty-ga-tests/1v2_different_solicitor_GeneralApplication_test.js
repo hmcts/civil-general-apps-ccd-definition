@@ -112,7 +112,7 @@ Scenario('Without Notice application for a hearing @regression1', async ({api, I
     civilCaseReference, gaCaseReference, null);
 });
 
-Scenario('Without Notice application to With Notice application - Directions Order @e2e-tests',
+Scenario('Without Notice application to With Notice application - Directions Order @regression1',
   async ({api, I}) => {
     civilCaseReference = await api.createUnspecifiedClaim(
       config.applicantSolicitorUser, mpScenario, 'SoleTrader');

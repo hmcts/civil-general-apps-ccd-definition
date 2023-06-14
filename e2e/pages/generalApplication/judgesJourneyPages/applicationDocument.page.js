@@ -78,7 +78,7 @@ module.exports = {
       await I.seeTextEquals(documentType, locate(this.fields.docLabel).at(1));
     } else if (documentType === 'Hearing Notice') {
       await I.seeTextEquals('Hearing order', locate(this.fields.docLabel).first());
-      await I.seeTextEquals(documentType, locate(this.fields.docLabel).at(1));
+      await I.seeTextEquals(documentType, locate(this.fields.docLabel).at(2));
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeTextEquals('General order', locate(this.fields.docLabel).first());
       await I.seeTextEquals('Hearing order', locate(this.fields.docLabel).at(2));

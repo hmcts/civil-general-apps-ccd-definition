@@ -241,7 +241,7 @@ module.exports = function () {
             console.log(`Signing in user: ${user.type}`);
             await loginPage.signIn(user);
           }
-          await this.waitForSelector(SIGNED_IN_SELECTOR);
+          await this.waitForSelector(SIGN_OUT_LINK, 30);
         }, SIGNED_IN_SELECTOR);
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
@@ -938,8 +938,8 @@ module.exports = function () {
       await caseFileDocPage.verifyCaseFileOrderDocument(documentType);
     },
 
-    async verifyHearingNoticeDocNotAvailable() {
-      await caseViewPage.clickOnTab('Claim documents');
+    async verifyHearingNoticeDocNotAvailable(civilCaseReference) {
+      await caseViewPage.navigateToTab(civilCaseReference, 'Claim documents');
       await claimDocumentPage.verifyHearingNoticeDocNotAvailable();
     },
 
