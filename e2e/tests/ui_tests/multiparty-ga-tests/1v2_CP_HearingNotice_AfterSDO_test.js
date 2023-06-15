@@ -23,7 +23,7 @@ Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.secondDefendantSolicitorUser, civilCaseReference);
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
@@ -54,7 +54,7 @@ Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({
   await I.see(states.HEARING_SCHEDULED.name);
   await I.verifyUploadedClaimDocument(civilCaseReference, 'After SDO - Hearing Notice');
 
-  await I.login(config.applicantSolicitorUser);
+  await I.login(config.secondDefendantSolicitorUser);
   await I.verifyUploadedClaimDocument(civilCaseReference, 'After SDO - Hearing Notice');
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
 
@@ -63,7 +63,7 @@ Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({
   await I.dontSee('Applications', 'div.mat-tab-label-content');
   await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
 
-  await I.login(config.secondDefendantSolicitorUser);
+  await I.login(config.applicantSolicitorUser);
   await I.verifyHearingNoticeDocNotAvailable(civilCaseReference);
   await I.dontSee('Applications', 'div.mat-tab-label-content');
   await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');

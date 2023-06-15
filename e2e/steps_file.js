@@ -920,10 +920,10 @@ module.exports = function () {
       await this.waitForSelector(SIGN_OUT_LINK, 30);
     },
 
-    async payForGA() {
-       await caseViewPage.clickOnTab('Service Request');
-       await serviceRequestPage.payGAAmount();
-       await serviceRequestPage.verifyPaymentDetails();
+    async payForGA(gaCaseReference) {
+      await caseViewPage.navigateToTab(gaCaseReference, 'Service Request');
+      await serviceRequestPage.payGAAmount();
+      await serviceRequestPage.verifyPaymentDetails();
     },
 
     async verifyCaseFileAppDocument(civilCaseReference, documentType) {
