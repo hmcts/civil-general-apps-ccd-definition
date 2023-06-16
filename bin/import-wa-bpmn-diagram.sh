@@ -8,7 +8,7 @@ serviceToken=$($(realpath $workspace)/bin/utils/idam-lease-service-token.sh civi
 
 filepath="$(realpath $workspace)/resources"
 
-for file in $(find ${filepath} -name '*.bpmn')
+for file in $(find ${filepath} -name 'wa-task-initiation-ia-asylum.bpmn')
 do
   uploadResponse=$(curl --insecure -v --silent -w "\n%{http_code}" --show-error -X POST \
     ${CAMUNDA_BASE_URL:-http://localhost:9404}/engine-rest/deployment/create \
