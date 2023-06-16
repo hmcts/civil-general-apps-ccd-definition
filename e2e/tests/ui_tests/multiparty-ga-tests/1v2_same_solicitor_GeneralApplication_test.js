@@ -15,10 +15,8 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly  @regression1');
 
-Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey', async ({
-                                                                                                                     I,
-                                                                                                                     api
-                                                                                                                   }) => {
+Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey',
+  async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
