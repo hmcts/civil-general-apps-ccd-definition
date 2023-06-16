@@ -1377,6 +1377,11 @@ module.exports = {
     deleteCaseFields('generalOrderDocRespondentSol');
     deleteCaseFields('generalOrderDocRespondentSolTwo');
     deleteCaseFields('generalOrderDocStaff');
+    deleteCaseFields('gaDraftDocument');
+    deleteCaseFields('gaDraftDocStaff');
+    deleteCaseFields('gaDraftDocClaimant');
+    deleteCaseFields('gaDraftDocRespondentSol');
+    deleteCaseFields('gaDraftDocRespondentSolTwo');
     switch (scenario) {
       case 'ONE_V_ONE_DIF_SOL':
         /* when camunda process is done, when both respondents have answered
