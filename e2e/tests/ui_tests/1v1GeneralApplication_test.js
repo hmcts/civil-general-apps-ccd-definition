@@ -88,13 +88,8 @@ Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) =
     states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(awaitingPaymentStatus);
-  await I.navigateToCaseDetails(gaCaseReference);
-  await I.payForGA();
-  await waitForGAFinishedBusinessProcess(civilCaseReference, config.applicantSolicitorUser);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser);
-  await I.navigateToApplicationsTab(civilCaseReference);
-  await I.see(judgeDecisionStatus);
+  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
+    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser, judgeDecisionStatus);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     user = config.judgeUser;

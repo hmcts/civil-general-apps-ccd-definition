@@ -8,9 +8,9 @@ let civilCaseReference, gaCaseReference;
 
 Feature('After SDO 1v2 - GA CP - Hearing Notice document @ui-nightly');
 
-Scenario.skip('Claimant Hearing notice - Without notice journey @e2e-tests', async ({api, I}) => {
+Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
-   mpScenario, 'SoleTrader', '11000');
+    mpScenario, 'SoleTrader', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -22,12 +22,8 @@ Scenario.skip('Claimant Hearing notice - Without notice journey @e2e-tests', asy
   await I.wait(10);
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
-  console.log('Create SDO');
-  await api.createSDO(civilCaseReference, config.judgeUserWithRegionId1, 'CREATE_FAST');
-  await I.wait(10);
-
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.secondDefendantSolicitorUser, civilCaseReference);
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
@@ -52,36 +48,25 @@ Scenario.skip('Claimant Hearing notice - Without notice journey @e2e-tests', asy
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.HEARING_SCHEDULED.id, config.hearingCenterAdminWithRegionId1);
   console.log('After SDO Hearing Notice created for: ' + gaCaseReference);
   await I.click('Close and Return to case details');
+
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'Hearing Notice');
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(states.HEARING_SCHEDULED.name);
   await I.verifyUploadedClaimDocument(civilCaseReference, 'After SDO - Hearing Notice');
 
-  await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(civilCaseReference);
+  await I.login(config.secondDefendantSolicitorUser);
   await I.verifyUploadedClaimDocument(civilCaseReference, 'After SDO - Hearing Notice');
-  await I.navigateToCaseDetails(gaCaseReference);
-  await I.verifyUploadedApplicationDocument(gaCaseReference, 'Hearing Notice');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
 
   await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(civilCaseReference);
-  await I.verifyHearingNoticeDocNotAvailable();
+  await I.verifyHearingNoticeDocNotAvailable(civilCaseReference);
+  await I.dontSee('Applications', 'div.mat-tab-label-content');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
 
-  await I.login(config.secondDefendantSolicitorUser);
-  await I.navigateToCaseDetails(civilCaseReference);
-  await I.verifyHearingNoticeDocNotAvailable();
-
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.assertGaAppCollectionVisiblityToUser(config.hearingCenterAdminWithRegionId1, civilCaseReference, gaCaseReference, 'Y');
-    await api.assertGaAppCollectionVisiblityToUser(config.judgeUserWithRegionId1, civilCaseReference, gaCaseReference, 'Y');
-  } else {
-    await api.assertGaAppCollectionVisiblityToUser(config.hearingCenterAdminLocal, civilCaseReference, gaCaseReference, 'Y');
-    await api.assertGaAppCollectionVisiblityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, 'Y');
-  }
-
-  await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
-  await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, null);
-  await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, null);
+  await I.login(config.applicantSolicitorUser);
+  await I.verifyHearingNoticeDocNotAvailable(civilCaseReference);
+  await I.dontSee('Applications', 'div.mat-tab-label-content');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
 });
 
 AfterSuite(async ({api}) => {
