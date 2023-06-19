@@ -31,28 +31,41 @@ module.exports = {
         expect(appCount).equals('2');
         break;
       case 'N245 Evidence':
-        expect(docs.toString()).to.includes(`Hearing_order_for_application_${docFullDate}`,
-          'examplePDF.pdf');
-        expect(appCount).equals('3');
+        expect(docs.toString()).to.contains(`Hearing_order_for_application_${docFullDate}`);
+        expect(docs.toString()).to.contains('examplePDF.pdf');
+        expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
+        expect(appCount).equals('4');
         break;
       case 'Sequential order document':
-        expect(docs.toString()).to.includes(`Order_Written_Representation_Sequential_for_application_${docFullDate}`,
-          'examplePDF.pdf');
-        expect(appCount).equals('3');
+        expect(docs.toString()).to.contains(`Order_Written_Representation_Sequential_for_application_${docFullDate}`);
+        expect(docs.toString()).to.contains('examplePDF.pdf');
+        expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
+        expect(appCount).equals('4');
         break;
       case 'Request more info order':
-        expect(docs.toString()).to.includes(`Request_for_information_for_application_${docFullDate}`,
-          'examplePDF.pdf');
-        expect(appCount).equals('2');
+        expect(docs.toString()).to.contains(`Request_for_information_for_application_${docFullDate}`);
+        expect(docs.toString()).to.contains('examplePDF.pdf');
+        expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
+        expect(appCount).equals('3');
         break;
       case 'Concurrent order document':
-        expect(docs.toString()).to.includes(`Order_Written_Representation_Concurrent_for_application_${docFullDate}`,
-          'examplePDF.pdf');
+        expect(docs.toString()).to.contains(`Order_Written_Representation_Concurrent_for_application_${docFullDate}`);
+        expect(docs.toString()).to.contains('examplePDF.pdf');
+        expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
         expect(appCount).equals('4');
         break;
       case 'Consent Order':
         expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
         expect(appCount).equals('1');
+        break;
+      case 'No document':
+        expect(appCount).equals('0');
+        break;
+      case 'Hearing order':
+        expect(docs.toString()).to.contains(`Hearing_order_for_application_${docFullDate}`);
+        expect(docs.toString()).to.contains('examplePDF.pdf');
+        expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
+        expect(appCount).equals('3');
         break;
     }
     await I.click(locate(this.fields.appFolder));
