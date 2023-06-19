@@ -8,7 +8,7 @@ const mpScenario = 'ONE_V_ONE';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 const respondentStatus = states.AWAITING_RESPONDENT_RESPONSE.name;
 const claimantType = 'Company';
-let civilCaseReference, gaCaseReference;
+let civilCaseReference, gaCaseReference, user;
 
 Feature('GA R2 1v1 - General Application Journey @ui-nightly');
 
@@ -32,6 +32,18 @@ Scenario('Defendant of main claim initiates Vary Judgement application @regressi
   await I.verifyN245FormElements();
   await I.clickOnTab('Application Documents');
   await I.verifyN245FormElements();
+
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    user = config.judgeUser;
+    await I.login(user);
+  } else {
+    user = config.judgeLocalUser;
+    await I.login(user);
+  }
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
+  await I.login(config.applicantSolicitorUser);
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
+
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
     states.AWAITING_RESPONDENT_RESPONSE.id, config.defendantSolicitorUser, respondentStatus);
 
@@ -41,12 +53,7 @@ Scenario('Defendant of main claim initiates Vary Judgement application @regressi
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
     states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser);
 
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
-  } else {
-    await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
-  }
-
+  await api.judgeListApplicationForHearing(user, gaCaseReference);
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'LISTING_FOR_A_HEARING');
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'LISTING_FOR_A_HEARING');
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
