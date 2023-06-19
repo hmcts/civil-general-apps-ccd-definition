@@ -920,10 +920,10 @@ module.exports = function () {
       await this.waitForSelector(SIGN_OUT_LINK, 30);
     },
 
-    async payForGA() {
-       await caseViewPage.clickOnTab('Service Request');
-       await serviceRequestPage.payGAAmount();
-       await serviceRequestPage.verifyPaymentDetails();
+    async payForGA(gaCaseReference) {
+      await caseViewPage.navigateToTab(gaCaseReference, 'Service Request');
+      await serviceRequestPage.payGAAmount();
+      await serviceRequestPage.verifyPaymentDetails();
     },
 
     async verifyCaseFileAppDocument(civilCaseReference, documentType) {
@@ -938,8 +938,8 @@ module.exports = function () {
       await caseFileDocPage.verifyCaseFileOrderDocument(documentType);
     },
 
-    async verifyHearingNoticeDocNotAvailable() {
-      await caseViewPage.clickOnTab('Claim documents');
+    async verifyHearingNoticeDocNotAvailable(civilCaseReference) {
+      await caseViewPage.navigateToTab(civilCaseReference, 'Claim documents');
       await claimDocumentPage.verifyHearingNoticeDocNotAvailable();
     },
 
