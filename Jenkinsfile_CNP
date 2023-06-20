@@ -9,7 +9,7 @@ def component = "ga-ccd"
 def camundaBranch = "master"
 def ccddefbranch = "master"
 def dmnBranch = "master"
-def waStandaloneBranch = "master"
+def waStandaloneBranch = "CIV-8430"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
