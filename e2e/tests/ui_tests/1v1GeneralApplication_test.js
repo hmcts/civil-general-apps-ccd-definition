@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
 const {
-  waitForGACamundaEventsFinishedBusinessProcess,
-  waitForGAFinishedBusinessProcess
+  waitForGACamundaEventsFinishedBusinessProcess
 } = require('../../api/testingSupport');
 const {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 const states = require('../../fixtures/ga-ccd/state.js');
