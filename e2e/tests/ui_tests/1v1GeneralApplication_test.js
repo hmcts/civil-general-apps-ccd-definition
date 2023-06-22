@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
 const {
-  waitForGACamundaEventsFinishedBusinessProcess,
-  waitForGAFinishedBusinessProcess
+  waitForGACamundaEventsFinishedBusinessProcess
 } = require('../../api/testingSupport');
 const {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 const states = require('../../fixtures/ga-ccd/state.js');
@@ -41,10 +40,6 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
     states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(3, 4), 1);
   await I.see(awaitingPaymentStatus);
-  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);
-
-  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     user = config.judgeUser;
@@ -53,6 +48,16 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
     user = config.judgeLocalUser;
     await I.login(user);
   }
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
+  await I.login(config.defendantSolicitorUser);
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
+
+  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
+    states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);
+
+  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
+
+  await I.login(user);
   await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'no', gaCaseReference, 'General_order', 'courtOwnInitiativeOrder', user);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.ORDER_MADE.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
