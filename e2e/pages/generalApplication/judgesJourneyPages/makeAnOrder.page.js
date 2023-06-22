@@ -25,7 +25,7 @@ module.exports = {
     dismissalOrderTextArea: '#judicialDecisionMakeOrder_dismissalOrderText',
     directionsTextArea: '#judicialDecisionMakeOrder_directionsText',
     reasonForDecisionTextArea: '#judicialDecisionMakeOrder_reasonForDecisionText',
-    consentAgreementCheckBox: '#makeAppVisibleToRespondents_makeAppAvailableCheck-ConsentAgreementCheckBox',
+    consentAgreementCheckBox: '#makeAppVisibleToRespondents_makeAppAvailableCheck-CONSENT_AGREEMENT_CHECKBOX',
     directionsResponseDay: '#directionsResponseByDate-day',
     directionsResponseMonth: '#directionsResponseByDate-month',
     directionsResponseYear: '#directionsResponseByDate-year',
