@@ -4,10 +4,10 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 application collection for different solicitor API tests @api-tests');
+Feature('GA 1v2 application collection for different solicitor API tests @api-nightly');
 
 
-Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Decision List for Hearing', async ({api}) => {
+Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Decision List for Hearing  @api-tests', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -38,7 +38,7 @@ Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Deci
 
 });
 
-Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case Test', async ({api}) => {
+Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case Test  @api-tests', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);

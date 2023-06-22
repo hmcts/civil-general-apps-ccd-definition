@@ -9,7 +9,7 @@ module.exports = {
       'Relief from sanctions',
       'Set aside judgment',
       'Vary order',
-      'Adjourn or vacate a hearing',
+      'Adjourn a hearing',
       'Unless order',
       'Vary judgment',
       'Other'

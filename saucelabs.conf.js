@@ -12,7 +12,7 @@ const defaultSauceOptions = {
   tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
   acceptSslCerts: true,
   windowSize: '1600x900',
-  tags: ['Civil - GA'],
+  tags: ['Civil'],
 };
 
 function merge(intoObject, fromObject) {
@@ -82,7 +82,7 @@ const setupConfig = {
   },
   include: {
     I: './e2e/steps_file.js',
-    api: './e2e/api/steps.js'
+    api: './e2e/api/steps.js',
   },
   mocha: {
     reporterOptions: {
@@ -101,27 +101,27 @@ const setupConfig = {
         options: {
           reportDir: testConfig.TestOutputDir,
           reportName: 'index',
-          reportTitle: 'GA Cross browser results',
+          reportTitle: 'Crossbrowser results',
           inlineAssets: true,
         },
       },
     },
   },
   multiple: {
+    microsoft: {
+      browsers: getBrowserConfig('microsoft'),
+    },
     chrome: {
       browsers: getBrowserConfig('chrome'),
-    },
-    safari: {
-      browsers: getBrowserConfig('safari'),
-    },
-    edge: {
-      browsers: getBrowserConfig('edge'),
     },
     firefox: {
       browsers: getBrowserConfig('firefox'),
     },
+    safari: {
+      browsers: getBrowserConfig('safari'),
+    },
   },
-  name: 'Civil FrontEnd Cross-Browser Tests',
+  name: 'Civil GA FrontEnd Cross-Browser Tests',
 };
 
 exports.config = setupConfig;
