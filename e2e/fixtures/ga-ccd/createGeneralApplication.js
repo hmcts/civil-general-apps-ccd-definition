@@ -476,7 +476,7 @@ module.exports = {
     return {
       generalAppType: {
         types: [
-          'ADJOURN_VACATE_HEARING'
+          'ADJOURN_HEARING'
         ]
       },
       generalAppRespondentAgreement: {

@@ -4,8 +4,7 @@ const mpScenario = 'ONE_V_TWO_SAME_SOL';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('Spec 1v2 - General Application after SDO Journey @api-tests');
-
+Feature('Spec 1v2 - General Application after SDO Journey @api-nightly');
 
 Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
