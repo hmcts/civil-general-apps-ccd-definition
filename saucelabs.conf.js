@@ -11,7 +11,7 @@ const defaultSauceOptions = {
   accessKey: process.env.SAUCE_ACCESS_KEY,
   tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
   acceptSslCerts: true,
-  windowSize: '1600x900',
+  windowSize: '1024x768',
   tags: ['Civil'],
 };
 
@@ -48,9 +48,20 @@ const setupConfig = {
       smartWait,
       waitForTimeout,
       cssSelectorsEnabled: 'true',
+      chromeOptions: {
+        args: [
+          '--disable-dev-shm-usage',
+          '--disable-gpu',
+          '--no-sandbox'
+        ],
+      },
+      acceptInsecureCerts: true,
+      sauceSeleniumAddress: 'ondemand.eu-central-1.saucelabs.com:443/wd/hub',
       host: 'ondemand.eu-central-1.saucelabs.com',
       port: 80,
       region: 'eu',
+      sauceConnect: true,
+      supportedBrowsers,
       capabilities: {},
     },
     BrowserHelpers: {

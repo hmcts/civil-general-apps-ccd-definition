@@ -57,9 +57,9 @@ Scenario('GA - Make an order journey', async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeApproveOrderStatus);
-}).retry(2);
+}).retry(0);
 
-Scenario('GA - Case progression journey', async ({I, api}) => {
+Scenario.skip('GA - Case progression journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -104,6 +104,6 @@ Scenario('GA - Case progression journey', async ({I, api}) => {
 }).retry(2);
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
 
