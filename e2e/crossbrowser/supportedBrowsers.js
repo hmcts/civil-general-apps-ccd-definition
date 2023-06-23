@@ -6,11 +6,11 @@ const supportedBrowsers = {
       browserName: 'chrome',
       platformName: 'macOS 12',
       browserVersion: 'latest',
-      name: 'civil-ga-chrome-mac-test',
       extendedDebugging: true,
-      capturePerformance: true,
-      sharedTestFiles: false,
       maxInstances: 1,
+      'sauce:options': {
+        name: 'civil-ga-chrome-mac-test',
+      },
     },
   },
   edge: {
@@ -20,9 +20,10 @@ const supportedBrowsers = {
       browserVersion: 'latest',
       name: 'civil-ga-edge-win-test',
       extendedDebugging: true,
-      capturePerformance: true,
-      sharedTestFiles: false,
       maxInstances: 1,
+      'sauce:options': {
+        name: 'civil-ga-edge-win-test',
+      },
     },
   },
   firefox: {
@@ -32,9 +33,10 @@ const supportedBrowsers = {
       browserVersion: 'latest',
       name: 'civil-ga-firefox-win-test',
       extendedDebugging: true,
-      capturePerformance: true,
-      sharedTestFiles: false,
       maxInstances: 1,
+      'sauce:options': {
+        name: 'civil-ga-ff-win-test',
+      },
     },
   },
 };
