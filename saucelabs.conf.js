@@ -50,9 +50,12 @@ const setupConfig = {
       cssSelectorsEnabled: 'true',
       chromeOptions: {
         args: [
+          'start-maximized',
           '--disable-dev-shm-usage',
           '--disable-gpu',
-          '--no-sandbox'
+          '--no-sandbox',
+          'disable-infobars',
+          'ignore-gpu-blacklist',
         ],
       },
       acceptInsecureCerts: true,
