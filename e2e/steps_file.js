@@ -159,7 +159,7 @@ const SIGN_OUT_LINK = 'ul[class*="navigation-list"] a';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 
-let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
+let caseId, screenshotNumber, eventName, loggedInUser;
 let eventNumber = 0;
 
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
@@ -265,13 +265,13 @@ module.exports = function () {
     },
 
     async takeScreenshot() {
-      if (currentEventName !== eventName) {
+  /*    if (currentEventName !== eventName) {
         currentEventName = eventName;
         eventNumber++;
         screenshotNumber = 0;
       }
       screenshotNumber++;
-      await this.saveScreenshot(getScreenshotName(), true);
+      await this.saveScreenshot(getScreenshotName(), true);*/
     },
 
     triggerStepsWithScreenshot: async function (steps) {
