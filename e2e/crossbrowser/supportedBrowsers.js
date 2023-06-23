@@ -6,8 +6,9 @@ const supportedBrowsers = {
       browserName: 'chrome',
       platformName: 'macOS 12',
       browserVersion: 'latest',
-      name: 'civil-ga-chrome-mac-test',
-      maxInstances: 1,
+      'sauce:options': {
+        name: 'civil-ga-chrome-mac-test',
+      },
     },
   },
   edge: {
@@ -15,8 +16,9 @@ const supportedBrowsers = {
       browserName: 'MicrosoftEdge',
       platformName: LATEST_WINDOWS,
       browserVersion: 'latest',
-      name: 'civil-ga-edge-win-test',
-      maxInstances: 1,
+      'sauce:options': {
+        name: 'civil-ga-edge-win-test',
+      },
     },
   },
   firefox: {
@@ -24,8 +26,9 @@ const supportedBrowsers = {
       browserName: 'firefox',
       platformName: LATEST_WINDOWS,
       browserVersion: 'latest',
-      name: 'civil-ga-firefox-win-test',
-      maxInstances: 1,
+      'sauce:options': {
+        name: 'civil-ga-firefox-win-test',
+      },
     },
   },
 };
