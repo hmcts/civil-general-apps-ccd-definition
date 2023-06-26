@@ -8,7 +8,7 @@ const supportedBrowsers = {
       browserVersion: 'latest',
       'sauce:options': {
         name: 'Civil GA E2E Tests: MAC_CHROME_LATEST',
-        screenResolution: '2360x1770'
+        screenResolution: '1280x960'
       },
     },
   },
@@ -19,7 +19,7 @@ const supportedBrowsers = {
       browserVersion: 'latest',
       'sauce:options': {
         name: 'Civil GA E2E Tests: WIN_EDGE_LATEST',
-        screenResolution: '2560x1600'
+        screenResolution: '1024x768'
       },
     },
   },
@@ -30,19 +30,19 @@ const supportedBrowsers = {
       browserVersion: 'latest',
       'sauce:options': {
         name: 'Civil GA E2E Tests: WIN_FF_LATEST',
-        screenResolution: '2560x1600'
+        screenResolution: '1024x768'
       },
     },
   },
   safari: {
     safari_mac: {
       browserName: 'safari',
-      platformName: 'macOS 10.14',
+      platformName: 'macOS 12',
       browserVersion: 'latest',
       'sauce:options': {
         name: 'Civil GA E2E Tests: MAC_SAFARI',
         seleniumVersion: '3.141.59',
-        screenResolution: '2360x1770'
+        screenResolution: '1280x960'
       }
     }
   },
