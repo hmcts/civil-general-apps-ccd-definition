@@ -3,8 +3,6 @@
 const supportedBrowsers = require('./e2e/crossbrowser/supportedBrowsers.js');
 const testConfig = require('./e2e/config');
 
-const waitForTimeout = parseInt(process.env.WAIT_FOR_TIMEOUT_MS) || 45000;
-const smartWait = parseInt(process.env.SMART_WAIT) || 30000;
 const browser = process.env.SAUCELABS_BROWSER || 'chrome';
 const defaultSauceOptions = {
   username: process.env.SAUCE_USERNAME,
@@ -45,8 +43,8 @@ const setupConfig = {
     WebDriver: {
       url: testConfig.url.manageCase,
       browser,
-      smartWait,
-      waitForTimeout,
+      waitForTimeout: 90000,
+      smartWait: 90000,
       cssSelectorsEnabled: 'true',
       chromeOptions: {
         args: [
@@ -93,6 +91,10 @@ const setupConfig = {
       ],
       delayAfter: 2000,
     },
+    screenshotOnFail: {
+      enabled: true,
+      fullPageScreenshots: 'true'
+    }
   },
   include: {
     I: './e2e/steps_file.js',
@@ -115,7 +117,7 @@ const setupConfig = {
         options: {
           reportDir: testConfig.TestOutputDir,
           reportName: 'index',
-          reportTitle: 'Crossbrowser results',
+          reportTitle: 'Crossbrowser results for: ' + browser.toUpperCase(),
           inlineAssets: true,
         },
       },
@@ -135,7 +137,7 @@ const setupConfig = {
       browsers: getBrowserConfig('safari'),
     },
   },
-  name: 'Civil GA FrontEnd Cross-Browser Tests',
+  name: 'Civil GA Cross-Browser Tests',
 };
 
 exports.config = setupConfig;
