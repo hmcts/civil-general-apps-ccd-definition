@@ -43,7 +43,7 @@ const setupConfig = {
     WebDriver: {
       url: testConfig.url.manageCase,
       browser,
-      waitForTimeout: 90000,
+      waitForTimeout: 900000,
       smartWait: 90000,
       cssSelectorsEnabled: 'true',
       chromeOptions: {

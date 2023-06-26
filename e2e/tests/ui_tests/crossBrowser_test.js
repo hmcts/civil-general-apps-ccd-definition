@@ -101,7 +101,7 @@ Scenario('GA - Case progression journey', async ({I, api}) => {
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(listForHearingStatus);
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
-}).retry(2);
+}).retry(0);
 
 AfterSuite(async ({api}) => {
    await api.cleanUp();
