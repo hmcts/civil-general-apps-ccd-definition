@@ -165,17 +165,15 @@ xui-webapp:
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: 'hmctspublic.azurecr.io/xui/webapp:latest'
     memoryRequests: 2Gi
-    cpuRequests: 1000m
+    cpuRequests: 2000m
     memoryLimits: 4Gi
-    cpuLimits: 2500m
-    devmemoryRequests: 4Gi
-    devcpuRequests: 1000m
-    devmemoryLimits: 4Gi
-    devcpuLimits: 2500m
+    cpuLimits: 3500m
+    devmemoryRequests: 6Gi
+    devcpuRequests: 2000m
+    devmemoryLimits: 8Gi
+    devcpuLimits: 4500m
     autoscaling: # Default is false
-      enabled: true
-      maxReplicas: 5    # Required setting
-      targetCPUUtilizationPercentage: 80 # Default is 80% target CPU utilization
+      enabled: false
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health
       HEALTH_CCD_DATA_API: http://${SERVICE_NAME}-ccd-data-store-api/health
@@ -234,10 +232,10 @@ ccd:
     java:
       releaseNameOverride: ${SERVICE_NAME}-ccd-data-store-api
       imagePullPolicy: Always
-      devmemoryRequests: 2048Mi
-      devcpuRequests: 1000m
-      devmemoryLimits: 4096Mi
-      devcpuLimits: 2000m
+      devmemoryRequests: 3048Mi
+      devcpuRequests: 2000m
+      devmemoryLimits: 5096Mi
+      devcpuLimits: 3000m
       autoscaling:
         enabled: false
       environment:
