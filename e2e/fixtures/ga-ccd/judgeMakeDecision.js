@@ -214,7 +214,7 @@ module.exports = {
       },
       makeAppVisibleToRespondents: {
         makeAppAvailableCheck: [
-          'ConsentAgreementCheckBox'
+          'CONSENT_AGREEMENT_CHECKBOX'
         ]
       }
     };
