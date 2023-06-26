@@ -17,7 +17,7 @@ const doc = 'hearingNotice';
 let civilCaseReference, gaCaseReference, user;
 Feature('End-to-end General application journey @cross-browser-tests');
 
-Scenario('GA - Make an order journey', async ({I, api}) => {
+Scenario.skip('GA - Make an order journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, 'ONE_V_ONE', claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -59,7 +59,7 @@ Scenario('GA - Make an order journey', async ({I, api}) => {
   await I.see(judgeApproveOrderStatus);
 }).retry(0);
 
-Scenario.skip('GA - Case progression journey', async ({I, api}) => {
+Scenario('GA - Case progression journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -104,6 +104,6 @@ Scenario.skip('GA - Case progression journey', async ({I, api}) => {
 }).retry(2);
 
 AfterSuite(async ({api}) => {
-  // await api.cleanUp();
+   await api.cleanUp();
 });
 
