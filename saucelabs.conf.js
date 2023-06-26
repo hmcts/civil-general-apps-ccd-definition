@@ -9,8 +9,9 @@ const defaultSauceOptions = {
   accessKey: process.env.SAUCE_ACCESS_KEY,
   tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
   acceptSslCerts: true,
-  windowSize: '1024x768',
-  tags: ['Civil'],
+  pageLoadStrategy: 'normal',
+  idleTimeout: 700,
+  tags: ['Civil GA'],
 };
 
 function merge(intoObject, fromObject) {
@@ -43,7 +44,7 @@ const setupConfig = {
     WebDriver: {
       url: testConfig.url.manageCase,
       browser,
-      waitForTimeout: 900000,
+      waitForTimeout: 90000,
       smartWait: 90000,
       cssSelectorsEnabled: 'true',
       chromeOptions: {
@@ -124,7 +125,7 @@ const setupConfig = {
     },
   },
   multiple: {
-    microsoft: {
+    edge: {
       browsers: getBrowserConfig('edge'),
     },
     chrome: {

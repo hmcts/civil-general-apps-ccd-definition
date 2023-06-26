@@ -8,7 +8,8 @@ const supportedBrowsers = {
       browserVersion: 'latest',
       'sauce:options': {
         name: 'Civil GA E2E Tests: MAC_CHROME_LATEST',
-        screenResolution: '1280x960'
+        screenResolution: '1280x960',
+        extendedDebugging: true,
       },
     },
   },
