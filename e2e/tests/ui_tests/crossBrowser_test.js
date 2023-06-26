@@ -9,7 +9,6 @@ const states = require('../../fixtures/ga-ccd/state.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 const respondentStatus = states.AWAITING_RESPONDENT_RESPONSE.name;
-const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 const judgeApproveOrderStatus = states.ORDER_MADE.name;
 const claimantType = 'Company';
 const doc = 'hearingNotice';
@@ -94,12 +93,12 @@ Scenario('GA - Case progression journey', async ({I, api}) => {
     user = config.judgeLocalUser;
     await I.login(user);
   }
-  await I.judgeMakeAppOrder(gaCaseReference, 'assistedOrder', 'withoutNoticeOrder');
+  await I.judgeMakeAppOrder(gaCaseReference, 'freeFromOrder', 'withoutNoticeOrder');
   await I.judgeCloseAndReturnToCaseDetails();
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.LISTING_FOR_A_HEARING.id, user);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.ORDER_MADE.id, user);
 
   await I.navigateToApplicationsTab(civilCaseReference);
-  await I.see(listForHearingStatus);
+  await I.see(judgeApproveOrderStatus);
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
 }).retry(0);
 
