@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('Before SDO 1v1 - GA CP - Hearing Notice document API tests @api-tests');
 
-Scenario('Defendant Hearing notice journey', async ({api}) => {
+Scenario('Defendant Hearing notice journey', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -19,7 +19,7 @@ Scenario('Defendant Hearing notice journey', async ({api}) => {
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
-
+  await I.wait(5);
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   const doc = 'hearingNotice';
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
