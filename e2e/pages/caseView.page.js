@@ -1,5 +1,5 @@
 const config = require('../config');
-const {I} = inject();
+const I = actor();
 
 module.exports = {
 
@@ -69,7 +69,7 @@ module.exports = {
   async clickOnTab(tabName) {
     await I.waitForElement(this.fields.tabList, 5);
     await I.refreshPage();
-    if (['preview', 'aat'].includes(config.runningEnv)) {
+    if (['preview', 'aat', 'demo'].includes(config.runningEnv)) {
       await I.wait(12);
     } else {
       await I.wait(5);
@@ -87,13 +87,12 @@ module.exports = {
   async navigateToTab(caseNumber, tabName) {
     await I.retryUntilExists(async () => {
       await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
-      if (['preview', 'aat'].includes(config.runningEnv)) {
+      if (['preview', 'aat', 'demo'].includes(config.runningEnv)) {
         await I.wait(10);
       } else {
         await I.wait(6);
       }
     }, 'exui-header');
-
     await I.forceClick(locate(this.fields.tab).withText(tabName));
     await I.waitForText(tabName, 15, this.fields.selectedTab);
   },

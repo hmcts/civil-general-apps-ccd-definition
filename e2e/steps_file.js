@@ -156,6 +156,7 @@ const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 const GA_CASE_HEADER = '.heading-h2';
 const SIGN_OUT_LINK = 'ul[class*="navigation-list"] a';
+const CONTINUE_BUTTON = 'button[type="submit"]';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 
@@ -468,8 +469,7 @@ module.exports = function () {
     },
 
     async clickContinue() {
-      let urlBefore = await this.grabCurrentUrl();
-      await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
+      await this.waitForNavigationToComplete(CONTINUE_BUTTON);
     },
 
     async clickOnElement(element) {

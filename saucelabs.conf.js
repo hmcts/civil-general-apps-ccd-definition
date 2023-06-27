@@ -75,6 +75,9 @@ const setupConfig = {
     SauceLabsReportingHelper: {
       require: './e2e/helpers/sauce_labs_reporting_helper.js',
     },
+    WebDriverHelper: {
+      require: './e2e/helpers/WebDriverHelper.js'
+    },
   },
   plugins: {
     retryFailedStep: {
@@ -90,7 +93,7 @@ const setupConfig = {
         'selectOption',
         'attachFile',
       ],
-      delayAfter: 2000,
+      delayAfter: 5000,
     },
     screenshotOnFail: {
       enabled: true,

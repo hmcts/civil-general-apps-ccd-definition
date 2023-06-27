@@ -4,17 +4,34 @@ exports.config = {
   helpers: {
     Puppeteer: {
       restart: false,
-      keepCookies: true,
+      keepCookies: false,
+      keepBrowserState: false,
+      waitForNavigation: ['networkidle2'],
       show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
       windowSize: '1200x900',
       waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 50000),
       getPageTimeout: 120000,
       chrome: {
-        ignoreHTTPSErrors: true
-      },
+        ignoreHTTPSErrors: true,
+        'ignore-certificate-errors': true,
+        'defaultViewport': {
+          'width': 1280,
+          'height': 960
+        },
+        args: [
+          '--disable-gpu',
+          '--no-sandbox',
+          '--allow-running-insecure-content',
+          '--ignore-certificate-errors',
+          '--window-size=1440,1400'
+        ]
+      }
     },
     BrowserHelpers: {
       require: './e2e/helpers/browser_helper.js',
+    },
+    PuppeteerHelper: {
+      'require': './e2e/helpers/PuppeteerHelper.js'
     },
     GenerateReportHelper: {
       require: './e2e/helpers/generate_report_helper.js'
@@ -49,7 +66,7 @@ exports.config = {
     },
   },
   mocha: {
-    bail: process.env.PROCEED_ON_FAILURE == true || false,
+    bail: process.env.PROCEED_ON_FAILURE === true || false,
     reporterOptions: {
       'codeceptjs-cli-reporter': {
         stdout: '-',
@@ -67,7 +84,7 @@ exports.config = {
         stdout: '-',
         options: {
           reportDir: process.env.REPORT_DIR || 'test-results/functional',
-          reportFilename: `${process.env.MOCHAWESOME_REPORTFILENAME+'-'+new Date().getTime()}`,
+          reportFilename: `${process.env.MOCHAWESOME_REPORTFILENAME + '-' + new Date().getTime()}`,
           inlineAssets: true,
           overwrite: false,
           json: false,
