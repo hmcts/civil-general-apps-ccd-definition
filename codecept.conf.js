@@ -4,27 +4,15 @@ exports.config = {
   helpers: {
     Puppeteer: {
       restart: false,
-      keepCookies: false,
-      keepBrowserState: false,
+      keepCookies: true,
+      keepBrowserState: true,
       waitForNavigation: ['networkidle2'],
       show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
       windowSize: '1200x900',
-      waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 50000),
-      getPageTimeout: 120000,
+      waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 90000),
       chrome: {
         ignoreHTTPSErrors: true,
         'ignore-certificate-errors': true,
-        'defaultViewport': {
-          'width': 1280,
-          'height': 960
-        },
-        args: [
-          '--disable-gpu',
-          '--no-sandbox',
-          '--allow-running-insecure-content',
-          '--ignore-certificate-errors',
-          '--window-size=1440,1400'
-        ]
       }
     },
     BrowserHelpers: {

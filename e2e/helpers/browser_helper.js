@@ -5,11 +5,11 @@ const Helper = require('@codeceptjs/helper');
 module.exports = class BrowserHelpers extends Helper {
 
   getHelper() {
-    return this.helpers.Puppeteer || this.helpers.WebDriver;
+    return this.helpers['Puppeteer'] || this.helpers['WebDriver'];
   }
 
   isPuppeteer(){
-    return this.helpers.Puppeteer;
+    return this.helpers['Puppeteer'];
   }
 
   /**
@@ -41,7 +41,8 @@ module.exports = class BrowserHelpers extends Helper {
     const waitTimeout = sec ? sec * 1000 : helper.options.waitForTimeout;
     try {
       if (this.isPuppeteer()) {
-        return await helper.waitForSelector(locator, {timeout: waitTimeout});
+        const context = await helper._getContext();
+        return await context.waitForSelector(locator, {timeout: waitTimeout});
       } else {
         return await helper.waitForElement(locator, waitTimeout);
       }
