@@ -152,7 +152,6 @@ const genAppJudgeMakeDecisionData = require('./fixtures/ga-ccd/judgeMakeDecision
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('./api/testingSupport');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
-const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 const GA_CASE_HEADER = '.heading-h2';
 const SIGN_OUT_LINK = 'ul[class*="navigation-list"] a';
@@ -260,9 +259,8 @@ module.exports = function () {
     },
 
     async signOut() {
-      await this.retryUntilExists(() => {
-        this.click('Sign out');
-      }, SIGNED_OUT_SELECTOR);
+      let urlBefore = await this.grabCurrentUrl();
+      await this.retryUntilUrlChanges(() => this.waitForNavigationToComplete(SIGN_OUT_LINK), urlBefore);
     },
 
     async takeScreenshot() {
@@ -469,7 +467,8 @@ module.exports = function () {
     },
 
     async clickContinue() {
-      await this.waitForNavigationToComplete(CONTINUE_BUTTON);
+      let urlBefore = await this.grabCurrentUrl();
+      await this.retryUntilUrlChanges(() => this.waitForNavigationToComplete(CONTINUE_BUTTON), urlBefore);
     },
 
     async clickOnElement(element) {
@@ -706,11 +705,9 @@ module.exports = function () {
     },
 
     async navigateToCaseDetails(caseNumber) {
-      await this.retryUntilExists(async () => {
-        console.log(`Navigating to case: ${caseNumber}`);
-        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
-        await this.waitForSelector(SIGN_OUT_LINK, 30);
-      }, SIGNED_IN_SELECTOR);
+      console.log(`Navigating to case: ${caseNumber}`);
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
+      await this.waitForSelector(SIGN_OUT_LINK, 30);
     },
 
     async navigateToHearingNoticePage(caseId) {

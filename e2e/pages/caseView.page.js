@@ -19,9 +19,10 @@ module.exports = {
     selectedTab: 'div[aria-selected="true"] div[class*="content"]',
     caseViewerLabel: '.Summary .case-viewer-label',
   },
-  goButton: 'Go',
+  goButton: 'button[type="submit"]',
 
   async start(event) {
+    let urlBefore = await I.grabCurrentUrl();
     switch (event) {
       case 'Make decision':
       case 'Make an application':
@@ -36,23 +37,17 @@ module.exports = {
       case 'Approve Consent Order':
         await I.waitForElement(this.fields.eventDropdown, 10);
         await I.selectOption(this.fields.eventDropdown, event);
-        await I.retryUntilExists(async () => {
-          await I.forceClick(this.goButton);
-        }, this.fields.generalApps);
+        await I.retryUntilUrlChanges(() => I.waitForNavigationToComplete(this.goButton), urlBefore);
         break;
       default:
         await I.waitForClickable('.event-trigger .button', 10);
-        await I.retryUntilExists(async () => {
-          await I.forceClick(this.goButton);
-        }, this.fields.generalApps);
+        await I.retryUntilUrlChanges(() => I.waitForNavigationToComplete(this.goButton), urlBefore);
     }
   },
 
   async startEvent(event, caseId) {
-    await I.retryUntilExists(async () => {
-      await I.navigateToCaseDetails(caseId);
-      await this.start(event);
-    }, locate('.govuk-heading-l'));
+    await I.navigateToCaseDetails(caseId);
+    await this.start(event);
   },
 
   async assertNoEventsAvailable() {
@@ -85,15 +80,13 @@ module.exports = {
   },
 
   async navigateToTab(caseNumber, tabName) {
-    await I.retryUntilExists(async () => {
-      await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
-      if (['preview', 'aat', 'demo'].includes(config.runningEnv)) {
-        await I.wait(10);
-      } else {
-        await I.wait(6);
-      }
-    }, 'exui-header');
-    await I.forceClick(locate(this.fields.tab).withText(tabName));
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
+    if (['preview', 'aat', 'demo'].includes(config.runningEnv)) {
+      await I.wait(10);
+    } else {
+      await I.wait(6);
+    }
+    await I.clickTab(tabName);
     await I.waitForText(tabName, 15, this.fields.selectedTab);
   },
 };

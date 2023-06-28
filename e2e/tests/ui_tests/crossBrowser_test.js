@@ -56,10 +56,10 @@ Scenario('GA - Make an order journey', async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeApproveOrderStatus);*/
-}).retry(1);
+}).retry(0);
 
-Scenario('GA - Case progression journey @123', async ({I, api}) => {
-/*  civilCaseReference = await api.createUnspecifiedClaim(
+Scenario('GA - Case progression journey', async ({I, api}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -83,9 +83,8 @@ Scenario('GA - Case progression journey @123', async ({I, api}) => {
     await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
     await api.assertGaDocumentVisibilityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
   }
-  console.log('Hearing Notice created for: ' + gaCaseReference);*/
-  civilCaseReference ='1687864017169167';
-  gaCaseReference ='1687864065820596';
+  console.log('Hearing Notice created for: ' + gaCaseReference);
+
   console.log('Judge making Assisted order for: ' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     user = config.judgeUser;
