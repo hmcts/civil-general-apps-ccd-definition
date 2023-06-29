@@ -23,7 +23,6 @@ module.exports = {
   goButton: 'button[type="submit"]',
 
   async start(event) {
-    let urlBefore = await I.grabCurrentUrl();
     switch (event) {
       case 'Make decision':
       case 'Make an application':
@@ -38,17 +37,23 @@ module.exports = {
       case 'Approve Consent Order':
         await I.waitForSelector(this.fields.eventDropdown, 20);
         await I.selectOption(this.fields.eventDropdown, event);
-        await I.retryUntilUrlChanges(() => I.waitForNavigationToComplete(this.goButton), urlBefore);
+        await I.retryUntilExists(async () => {
+          await I.forceClick(this.goButton);
+        }, this.fields.generalApps);
         break;
       default:
         await I.waitForClickable('.event-trigger .button', 10);
-        await I.retryUntilUrlChanges(() => I.waitForNavigationToComplete(this.goButton), urlBefore);
+        await I.retryUntilExists(async () => {
+          await I.forceClick(this.goButton);
+        }, this.fields.generalApps);
     }
   },
 
   async startEvent(event, caseId) {
-    await I.navigateToCaseDetails(caseId);
-    await this.start(event);
+    await I.retryUntilExists(async () => {
+      await I.navigateToCaseDetails(caseId);
+      await this.start(event);
+    }, locate(this.fields.generalApps));
   },
 
   async assertNoEventsAvailable() {

@@ -709,9 +709,11 @@ module.exports = function () {
     },
 
     async navigateToCaseDetails(caseNumber) {
-      console.log(`Navigating to case: ${caseNumber}`);
-      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
-      await this.waitForSelector(SIGN_OUT_LINK, 30);
+      await this.retryUntilExists(async () => {
+        console.log(`Navigating to case: ${caseNumber}`);
+        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
+        await this.waitForSelector(SIGN_OUT_LINK, 30);
+      }, SIGNED_IN_SELECTOR);
     },
 
     async navigateToHearingNoticePage(caseId) {
