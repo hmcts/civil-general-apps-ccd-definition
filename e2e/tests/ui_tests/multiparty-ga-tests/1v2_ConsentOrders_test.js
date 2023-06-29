@@ -5,7 +5,7 @@ const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/te
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference, user;
 
-Feature('Before SDO 1v2 - GA - Consent Orders @1234');
+Feature('Before SDO 1v2 - GA - Consent Orders @ui-nightly @regression2');
 
 Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -47,5 +47,5 @@ Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
 });
 
 AfterSuite(async ({api}) => {
- // await api.cleanUp();
+  await api.cleanUp();
 });
