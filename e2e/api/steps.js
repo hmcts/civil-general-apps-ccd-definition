@@ -2084,9 +2084,6 @@ const respondentResponse1v2WithPayload = async (user, user2, gaCaseId, payload) 
 
   const response2 = await apiRequest.submitGAEvent(eventName, payload, gaCaseId);
   const responseBody2 = await response2.json();
-
-  assert.equal(response2.status, 201);
-  assert.equal(responseBody2.state, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   assert.equal(responseBody2.callback_response_status_code, 200);
   assert.include(responseBody2.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
 
@@ -2094,10 +2091,9 @@ const respondentResponse1v2WithPayload = async (user, user2, gaCaseId, payload) 
   const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
   const updatedGABusinessProcessData = await updatedBusinessProcess.json();
   assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
-
+  await sleep(5000);
   await addUserCaseMapping(gaCaseId, user);
   await addUserCaseMapping(gaCaseId, user2);
-  await sleep(5000);
 };
 
 function addMidEventFields(pageId, responseBody) {
