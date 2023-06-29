@@ -152,6 +152,7 @@ const genAppJudgeMakeDecisionData = require('./fixtures/ga-ccd/judgeMakeDecision
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('./api/testingSupport');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
+const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 const GA_CASE_HEADER = '.heading-h2';
 const SIGN_OUT_LINK = 'ul[class*="navigation-list"] a';
@@ -232,6 +233,7 @@ module.exports = function () {
     async login(user) {
       if (loggedInUser !== user) {
         if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+          await this.waitForSelector(SIGN_OUT_LINK, 30);
           await this.signOut();
         }
         await this.retryUntilExists(async () => {
@@ -241,7 +243,7 @@ module.exports = function () {
             console.log(`Signing in user: ${user.type}`);
             await loginPage.signIn(user);
           }
-          await this.waitForSelector(SIGNED_IN_SELECTOR);
+          await this.waitForSelector(SIGN_OUT_LINK, 30);
         }, SIGNED_IN_SELECTOR);
 
         loggedInUser = user;
@@ -260,8 +262,9 @@ module.exports = function () {
     },
 
     async signOut() {
-      let urlBefore = await this.grabCurrentUrl();
-      await this.retryUntilUrlChanges(() => this.waitForNavigationToComplete(SIGN_OUT_LINK), urlBefore);
+      await this.retryUntilExists(() => {
+        this.click('Sign out');
+      }, SIGNED_OUT_SELECTOR);
     },
 
     async takeScreenshot() {

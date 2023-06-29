@@ -18,6 +18,7 @@ module.exports = {
     tabList: 'div.mat-tab-list',
     selectedTab: 'div[aria-selected="true"] div[class*="content"]',
     caseViewerLabel: '.Summary .case-viewer-label',
+    signOutLink: 'ul[class*="navigation-list"] a',
   },
   goButton: 'button[type="submit"]',
 
@@ -35,7 +36,7 @@ module.exports = {
       case 'Refer to Legal Advisor':
       case 'Make an order':
       case 'Approve Consent Order':
-        await I.waitForElement(this.fields.eventDropdown, 10);
+        await I.waitForSelector(this.fields.eventDropdown, 20);
         await I.selectOption(this.fields.eventDropdown, event);
         await I.retryUntilUrlChanges(() => I.waitForNavigationToComplete(this.goButton), urlBefore);
         break;
@@ -62,14 +63,15 @@ module.exports = {
   },
 
   async clickOnTab(tabName) {
-    await I.waitForElement(this.fields.tabList, 5);
+    await I.waitForSelector(this.fields.tabList, 5);
     await I.refreshPage();
     if (['preview', 'aat', 'demo'].includes(config.runningEnv)) {
-      await I.wait(12);
-    } else {
       await I.wait(5);
+    } else {
+      await I.wait(3);
     }
-    await I.forceClick(locate(this.fields.tab).withText(tabName));
+    await I.waitForSelector(this.fields.signOutLink, 30);
+    await I.clickTab(tabName);
     await I.waitForText(tabName, 10, this.fields.selectedTab);
   },
 
@@ -82,10 +84,11 @@ module.exports = {
   async navigateToTab(caseNumber, tabName) {
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
     if (['preview', 'aat', 'demo'].includes(config.runningEnv)) {
-      await I.wait(10);
+      await I.wait(5);
     } else {
-      await I.wait(6);
+      await I.wait(3);
     }
+    await I.waitForSelector(this.fields.signOutLink, 30);
     await I.clickTab(tabName);
     await I.waitForText(tabName, 15, this.fields.selectedTab);
   },
