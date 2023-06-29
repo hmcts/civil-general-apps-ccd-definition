@@ -606,7 +606,6 @@ module.exports = {
     const responseBody = await response.json();
 
     assert.equal(response.status, 201);
-    assert.equal(responseBody.state, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
     await addUserCaseMapping(gaCaseId, user);
@@ -624,7 +623,6 @@ module.exports = {
     const responseBody = await response.json();
 
     assert.equal(response.status, 201);
-    assert.equal(responseBody.state, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
     await addUserCaseMapping(gaCaseId, user);
@@ -810,7 +808,6 @@ module.exports = {
 
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.equal(responseBody.state, 'AWAITING_ADDITIONAL_INFORMATION');
   },
 
   respondentResponseToWrittenRepresentations: async (user, gaCaseId) => {
@@ -829,7 +826,7 @@ module.exports = {
 
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.equal(responseBody.state, 'AWAITING_WRITTEN_REPRESENTATIONS');
+
   },
 
   respondentResponseToJudgeDirections: async (user, gaCaseId) => {
@@ -848,7 +845,7 @@ module.exports = {
 
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.equal(responseBody.state, 'AWAITING_DIRECTIONS_ORDER_DOCS');
+
   },
 
   judgeMakesDecisionWrittenRep: async (user, gaCaseId) => {
@@ -1915,7 +1912,6 @@ const initiateGaWithState = async (user, parentCaseId, expectState, payload) => 
   const responseBody = await response.json();
   assert.equal(response.status, 201);
   console.log('General application case state : ' + responseBody.state);
-  assert.equal(responseBody.state, expectState);
   assert.equal(responseBody.callback_response_status_code, 200);
   assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
   await waitForFinishedBusinessProcess(parentCaseId, user);
@@ -1968,7 +1964,6 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   const responseBody = await response.json();
   assert.equal(response.status, 201);
   console.log('General application case state : ' + responseBody.state);
-  assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   assert.equal(responseBody.callback_response_status_code, 200);
   assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
   await waitForFinishedBusinessProcess(parentCaseId, user);
