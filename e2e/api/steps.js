@@ -586,7 +586,9 @@ module.exports = {
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+    console.log('General application updated case state : ' + updatedGABusinessProcessData.ccdState);
     await addUserCaseMapping(gaCaseId, user);
+    await this.wait(5);
   },
 
   respondentResponseConsentOrderApp: async (user, gaCaseId) => {
@@ -604,6 +606,7 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
     await addUserCaseMapping(gaCaseId, user);
+    await this.wait(5);
   },
 
   respondentDebtorResponse: async (user, gaCaseId) => {
@@ -621,6 +624,7 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
     await addUserCaseMapping(gaCaseId, user);
+    await this.wait(5);
   },
 
   respondentResponse1v2: async (user, user2, gaCaseId) => {
@@ -2089,6 +2093,7 @@ const respondentResponse1v2WithPayload = async (user, user2, gaCaseId, payload) 
 
   await addUserCaseMapping(gaCaseId, user);
   await addUserCaseMapping(gaCaseId, user2);
+  await this.wait(5);
 };
 
 function addMidEventFields(pageId, responseBody) {
