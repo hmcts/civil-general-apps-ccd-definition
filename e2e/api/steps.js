@@ -17,6 +17,7 @@ const {
   waitForGAFinishedBusinessProcess,
   waitForGACamundaEventsFinishedBusinessProcess
 } = require('../api/testingSupport');
+
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
@@ -132,6 +133,9 @@ const data = {
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
 };
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 const eventData = {
   defendantResponsesSpec: {
     ONE_V_ONE: {
@@ -588,7 +592,7 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
     console.log('General application updated case state : ' + updatedGABusinessProcessData.ccdState);
     await addUserCaseMapping(gaCaseId, user);
-    await this.wait(5);
+    await sleep(5000);
   },
 
   respondentResponseConsentOrderApp: async (user, gaCaseId) => {
@@ -606,7 +610,7 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
     await addUserCaseMapping(gaCaseId, user);
-    await this.wait(5);
+    await sleep(5000);
   },
 
   respondentDebtorResponse: async (user, gaCaseId) => {
@@ -624,7 +628,7 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
     await addUserCaseMapping(gaCaseId, user);
-    await this.wait(5);
+    await sleep(5000);
   },
 
   respondentResponse1v2: async (user, user2, gaCaseId) => {
@@ -2073,7 +2077,7 @@ const respondentResponse1v2WithPayload = async (user, user2, gaCaseId, payload) 
   assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
 
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
-
+  await sleep(5000);
   await apiRequest.setupTokens(user2);
   eventName = events.RESPOND_TO_APPLICATION.id;
   await apiRequest.startGAEvent(eventName, gaCaseId);
@@ -2093,7 +2097,7 @@ const respondentResponse1v2WithPayload = async (user, user2, gaCaseId, payload) 
 
   await addUserCaseMapping(gaCaseId, user);
   await addUserCaseMapping(gaCaseId, user2);
-  await this.wait(5);
+  await sleep(5000);
 };
 
 function addMidEventFields(pageId, responseBody) {
