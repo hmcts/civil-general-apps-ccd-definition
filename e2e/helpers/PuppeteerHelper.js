@@ -8,8 +8,10 @@ class PuppeteerHelper extends Helper {
   async waitForNavigationToComplete(locator) {
     const page = this.helpers[helperName].page;
     await page.waitForSelector(locator, 10);
-    await page.click(locator);
-    await page.waitForNavigation();
+    await Promise.all([
+      page.waitForNavigation(0),
+      await page.click(locator)
+    ]);
   }
 
   async clickTab(tabTitle) {
