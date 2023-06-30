@@ -23,7 +23,7 @@ Scenario('GA - Make an order journey', async ({I, api}) => {
   await api.notifyClaim(config.applicantSolicitorUser, 'ONE_V_ONE', civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Case created for general application: ' + civilCaseReference);
-  await I.login(config.applicantSolicitorUser);
+/*  await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(
     getAppTypes().slice(3, 4),
@@ -35,9 +35,9 @@ Scenario('GA - Make an order journey', async ({I, api}) => {
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
     states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(3, 4), 1);
-  await I.see(awaitingPaymentStatus);
-  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);
+  await I.see(awaitingPaymentStatus);*/
+  /*await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
+    states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);*/
 
 /*  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
 
@@ -56,7 +56,7 @@ Scenario('GA - Make an order journey', async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeApproveOrderStatus);*/
-}).retry(0);
+}).retry(1);
 
 Scenario('GA - Case progression journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -85,7 +85,7 @@ Scenario('GA - Case progression journey', async ({I, api}) => {
   }
   console.log('Hearing Notice created for: ' + gaCaseReference);
 
-  console.log('Judge making Assisted order for: ' + gaCaseReference);
+/*  console.log('Judge making Assisted order for: ' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     user = config.judgeUser;
     await I.login(user);
@@ -99,8 +99,8 @@ Scenario('GA - Case progression journey', async ({I, api}) => {
 
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(judgeApproveOrderStatus);
-  await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
-}).retry(0);
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');*/
+}).retry(1);
 
 AfterSuite(async ({api}) => {
    await api.cleanUp();

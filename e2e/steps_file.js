@@ -157,6 +157,7 @@ const CASE_HEADER = 'ccd-case-header > h1';
 const GA_CASE_HEADER = '.heading-h2';
 const SIGN_OUT_LINK = 'ul[class*="navigation-list"] a';
 const CONTINUE_BUTTON = 'button[type="submit"]';
+const LOGIN_FORM = 'form[name="loginForm"]';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 
@@ -239,11 +240,16 @@ module.exports = function () {
         await this.retryUntilExists(async () => {
           this.amOnPage(config.url.manageCase, 90);
 
+          if (await this.waitForSelector(LOGIN_FORM, 15) === null) {
+            this.amOnPage(config.url.manageCase, 90);
+            await this.waitForSelector(LOGIN_FORM, 15);
+          }
+
           if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
             console.log(`Signing in user: ${user.type}`);
             await loginPage.signIn(user);
           }
-          await this.waitForSelector(SIGN_OUT_LINK, 30);
+          await this.waitForSelector(SIGN_OUT_LINK, 15);
         }, SIGNED_IN_SELECTOR);
 
         loggedInUser = user;
