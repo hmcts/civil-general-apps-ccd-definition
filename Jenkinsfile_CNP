@@ -7,7 +7,7 @@ def type = "nodejs"
 def product = "civil"
 def component = "ga-ccd"
 def camundaBranch = "CIV-9323"
-def ccddefbranch = "master"
+def ccddefbranch = "CIV-9373"
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
 
