@@ -3,16 +3,15 @@
 const supportedBrowsers = require('./e2e/crossbrowser/supportedBrowsers.js');
 const testConfig = require('./e2e/config');
 
-const waitForTimeout = parseInt(process.env.WAIT_FOR_TIMEOUT_MS) || 45000;
-const smartWait = parseInt(process.env.SMART_WAIT) || 30000;
 const browser = process.env.SAUCELABS_BROWSER || 'chrome';
 const defaultSauceOptions = {
   username: process.env.SAUCE_USERNAME,
   accessKey: process.env.SAUCE_ACCESS_KEY,
   tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
   acceptSslCerts: true,
-  windowSize: '1600x900',
-  tags: ['Civil'],
+  pageLoadStrategy: 'normal',
+  idleTimeout: 700,
+  tags: ['Civil GA'],
 };
 
 function merge(intoObject, fromObject) {
@@ -45,12 +44,26 @@ const setupConfig = {
     WebDriver: {
       url: testConfig.url.manageCase,
       browser,
-      smartWait,
-      waitForTimeout,
+      waitForTimeout: 90000,
+      smartWait: 90000,
       cssSelectorsEnabled: 'true',
+      chromeOptions: {
+        args: [
+          'start-maximized',
+          '--disable-dev-shm-usage',
+          '--disable-gpu',
+          '--no-sandbox',
+          'disable-infobars',
+          'ignore-gpu-blacklist',
+        ],
+      },
+      acceptInsecureCerts: true,
+      sauceSeleniumAddress: 'ondemand.eu-central-1.saucelabs.com:443/wd/hub',
       host: 'ondemand.eu-central-1.saucelabs.com',
       port: 80,
       region: 'eu',
+      sauceConnect: true,
+      supportedBrowsers,
       capabilities: {},
     },
     BrowserHelpers: {
@@ -61,6 +74,9 @@ const setupConfig = {
     },
     SauceLabsReportingHelper: {
       require: './e2e/helpers/sauce_labs_reporting_helper.js',
+    },
+    WebDriverHelper: {
+      require: './e2e/helpers/WebDriverHelper.js'
     },
   },
   plugins: {
@@ -77,8 +93,12 @@ const setupConfig = {
         'selectOption',
         'attachFile',
       ],
-      delayAfter: 2000,
+      delayAfter: 5000,
     },
+    screenshotOnFail: {
+      enabled: true,
+      fullPageScreenshots: 'true'
+    }
   },
   include: {
     I: './e2e/steps_file.js',
@@ -101,15 +121,15 @@ const setupConfig = {
         options: {
           reportDir: testConfig.TestOutputDir,
           reportName: 'index',
-          reportTitle: 'Crossbrowser results',
+          reportTitle: 'Crossbrowser results for: ' + browser.toUpperCase(),
           inlineAssets: true,
         },
       },
     },
   },
   multiple: {
-    microsoft: {
-      browsers: getBrowserConfig('microsoft'),
+    edge: {
+      browsers: getBrowserConfig('edge'),
     },
     chrome: {
       browsers: getBrowserConfig('chrome'),
@@ -121,7 +141,7 @@ const setupConfig = {
       browsers: getBrowserConfig('safari'),
     },
   },
-  name: 'Civil GA FrontEnd Cross-Browser Tests',
+  name: 'Civil GA Cross-Browser Tests',
 };
 
 exports.config = setupConfig;

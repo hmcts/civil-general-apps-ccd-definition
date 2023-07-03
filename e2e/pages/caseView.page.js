@@ -1,5 +1,5 @@
 const config = require('../config');
-const {I} = inject();
+const I = actor();
 
 module.exports = {
 
@@ -18,8 +18,9 @@ module.exports = {
     tabList: 'div.mat-tab-list',
     selectedTab: 'div[aria-selected="true"] div[class*="content"]',
     caseViewerLabel: '.Summary .case-viewer-label',
+    signOutLink: 'ul[class*="navigation-list"] a',
   },
-  goButton: 'Go',
+  goButton: 'button[type="submit"]',
 
   async start(event) {
     switch (event) {
@@ -34,7 +35,7 @@ module.exports = {
       case 'Refer to Legal Advisor':
       case 'Make an order':
       case 'Approve Consent Order':
-        await I.waitForElement(this.fields.eventDropdown, 10);
+        await I.waitForSelector(this.fields.eventDropdown, 20);
         await I.selectOption(this.fields.eventDropdown, event);
         await I.retryUntilExists(async () => {
           await I.forceClick(this.goButton);
@@ -52,7 +53,7 @@ module.exports = {
     await I.retryUntilExists(async () => {
       await I.navigateToCaseDetails(caseId);
       await this.start(event);
-    }, locate('.govuk-heading-l'));
+    }, locate(this.fields.generalApps));
   },
 
   async assertNoEventsAvailable() {
@@ -67,14 +68,15 @@ module.exports = {
   },
 
   async clickOnTab(tabName) {
-    await I.waitForElement(this.fields.tabList, 5);
+    await I.waitForSelector(this.fields.tabList, 5);
     await I.refreshPage();
-    if (['preview', 'aat'].includes(config.runningEnv)) {
-      await I.wait(12);
-    } else {
+    if (['preview', 'aat', 'demo'].includes(config.runningEnv)) {
       await I.wait(5);
+    } else {
+      await I.wait(3);
     }
-    await I.forceClick(locate(this.fields.tab).withText(tabName));
+    await I.waitForSelector(this.fields.signOutLink, 30);
+    await I.clickTab(tabName);
     await I.waitForText(tabName, 10, this.fields.selectedTab);
   },
 
@@ -85,16 +87,14 @@ module.exports = {
   },
 
   async navigateToTab(caseNumber, tabName) {
-    await I.retryUntilExists(async () => {
-      await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
-      if (['preview', 'aat'].includes(config.runningEnv)) {
-        await I.wait(10);
-      } else {
-        await I.wait(6);
-      }
-    }, 'exui-header');
-
-    await I.forceClick(locate(this.fields.tab).withText(tabName));
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
+    if (['preview', 'aat', 'demo'].includes(config.runningEnv)) {
+      await I.wait(5);
+    } else {
+      await I.wait(3);
+    }
+    await I.waitForSelector(this.fields.signOutLink, 30);
+    await I.clickTab(tabName);
     await I.waitForText(tabName, 15, this.fields.selectedTab);
   },
 };
