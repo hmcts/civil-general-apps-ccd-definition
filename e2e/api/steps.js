@@ -130,6 +130,9 @@ const data = {
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
+
+  BREATHING_SPACE_ENTER_SPEC: (type) => require('../fixtures/events/claim/claimantBreathingSpaceSpec1v1.js').enterBs(type),
+  BREATHING_SPACE_LIFT_SPEC: () => require('../fixtures/events/claim/claimantBreathingSpaceSpec1v1.js').liftBs(),
 };
 
 const eventData = {
@@ -216,7 +219,7 @@ const eventData = {
     CREATE_DISPOSAL: data.CREATE_DISPOSAL(),
     CREATE_SMALL: data.CREATE_SMALL(),
     CREATE_FAST: data.CREATE_FAST(),
-  }
+  },
 };
 
 const midEventFieldForPage = {
@@ -1660,6 +1663,32 @@ module.exports = {
 
     deleteCaseFields('respondent1Copy');
     deleteCaseFields('respondent2Copy');
+  },
+
+  breathingSpaceClaimSpec: async (caseId, user, type, enter=true) => {
+    await apiRequest.setupTokens(user);
+    if (enter) {
+      eventName = 'ENTER_BREATHING_SPACE_SPEC';
+    } else {
+      eventName = 'LIFT_BREATHING_SPACE_SPEC';
+    }
+    let expectedHeader, expectedBody;
+    await apiRequest.startEvent(eventName, caseId);
+    if (enter) {
+      caseData = data.BREATHING_SPACE_ENTER_SPEC(type);
+      expectedHeader = 'Breathing Space Entered';
+      expectedBody = 'Breathing space will now be active';
+    } else {
+      caseData = data.BREATHING_SPACE_LIFT_SPEC();
+      expectedHeader = 'Breathing Space lifted';
+      expectedBody = 'We have sent you a confirmation email';
+    }
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: expectedHeader,
+      body: expectedBody
+    });
+
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
     createDateString: async (plusDays) => {
