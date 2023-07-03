@@ -156,10 +156,12 @@ const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 const GA_CASE_HEADER = '.heading-h2';
 const SIGN_OUT_LINK = 'ul[class*="navigation-list"] a';
+const CONTINUE_BUTTON = 'button[type="submit"]';
+const LOGIN_FORM = 'form[name="loginForm"]';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 
-let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
+let caseId, screenshotNumber, eventName, loggedInUser;
 let eventNumber = 0;
 
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
@@ -232,17 +234,24 @@ module.exports = function () {
     async login(user) {
       if (loggedInUser !== user) {
         if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+          await this.waitForSelector(SIGN_OUT_LINK, 30);
           await this.signOut();
         }
         await this.retryUntilExists(async () => {
           this.amOnPage(config.url.manageCase, 90);
 
+          if (await this.waitForSelector(LOGIN_FORM, 15) === null) {
+            this.amOnPage(config.url.manageCase, 90);
+            await this.waitForSelector(LOGIN_FORM, 15);
+          }
+
           if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
             console.log(`Signing in user: ${user.type}`);
             await loginPage.signIn(user);
           }
-          await this.waitForSelector(SIGNED_IN_SELECTOR);
+          await this.waitForSelector(SIGN_OUT_LINK, 15);
         }, SIGNED_IN_SELECTOR);
+
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
       }
@@ -265,13 +274,13 @@ module.exports = function () {
     },
 
     async takeScreenshot() {
-      if (currentEventName !== eventName) {
+  /*    if (currentEventName !== eventName) {
         currentEventName = eventName;
         eventNumber++;
         screenshotNumber = 0;
       }
       screenshotNumber++;
-      await this.saveScreenshot(getScreenshotName(), true);
+      await this.saveScreenshot(getScreenshotName(), true);*/
     },
 
     triggerStepsWithScreenshot: async function (steps) {
@@ -469,7 +478,7 @@ module.exports = function () {
 
     async clickContinue() {
       let urlBefore = await this.grabCurrentUrl();
-      await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
+      await this.retryUntilUrlChanges(() => this.waitForNavigationToComplete(CONTINUE_BUTTON), urlBefore);
     },
 
     async clickOnElement(element) {
@@ -533,15 +542,15 @@ module.exports = function () {
       for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
         output.log(`retryUntilExists(${locator}): starting try #${tryNumber}`);
         if (tryNumber > 1 && await this.hasSelector(locator)) {
-          output.log(`retryUntilExists(${locator}): element found before try #${tryNumber} was executed`);
+          console.log(`retryUntilExists(${locator}): element found before try #${tryNumber} was executed`);
           break;
         }
         await action();
         if (await this.waitForSelector(locator) != null) {
-          output.log(`retryUntilExists(${locator}): element found after try #${tryNumber} was executed`);
+          console.log(`retryUntilExists(${locator}): element found after try #${tryNumber} was executed`);
           break;
         } else {
-          output.print(`retryUntilExists(${locator}): element not found after try #${tryNumber} was executed`);
+          console.log(`retryUntilExists(${locator}): element not found after try #${tryNumber} was executed`);
         }
         if (tryNumber === maxNumberOfTries) {
           throw new Error(`Maximum number of tries (${maxNumberOfTries}) has been reached in search for ${locator}`);

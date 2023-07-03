@@ -1,25 +1,15 @@
 const LATEST_WINDOWS = 'Windows 11';
 
 const supportedBrowsers = {
-  safari: {
-    safari_mac_latest: {
-      browserName: 'safari',
+  chrome: {
+    chrome_mac_latest: {
+      browserName: 'chrome',
       platformName: 'macOS 12',
       browserVersion: 'latest',
       'sauce:options': {
-        name: 'Civil: MAC_SAFARI',
-        seleniumVersion: '3.141.59',
-        screenResolution: '1376x1032',
-      },
-    },
-  },
-  chrome: {
-    chrome_win_latest: {
-      browserName: 'chrome',
-      platformName: LATEST_WINDOWS,
-      browserVersion: 'latest',
-      'sauce:options': {
-        name: 'Civil: WIN_CHROME_LATEST',
+        name: 'Civil GA E2E Tests: MAC_CHROME_LATEST',
+        screenResolution: '1280x960',
+        extendedDebugging: true,
       },
     },
   },
@@ -29,7 +19,8 @@ const supportedBrowsers = {
       platformName: LATEST_WINDOWS,
       browserVersion: 'latest',
       'sauce:options': {
-        name: 'Civil: WIN_EDGE_LATEST',
+        name: 'Civil GA E2E Tests: WIN_EDGE_LATEST',
+        screenResolution: '1024x768'
       },
     },
   },
@@ -39,9 +30,22 @@ const supportedBrowsers = {
       platformName: LATEST_WINDOWS,
       browserVersion: 'latest',
       'sauce:options': {
-        name: 'Civil: WIN_FIREFOX_LATEST',
+        name: 'Civil GA E2E Tests: WIN_FF_LATEST',
+        screenResolution: '1024x768'
       },
     },
+  },
+  safari: {
+    safari_mac: {
+      browserName: 'safari',
+      platformName: 'macOS 12',
+      browserVersion: 'latest',
+      'sauce:options': {
+        name: 'Civil GA E2E Tests: MAC_SAFARI',
+        seleniumVersion: '3.141.59',
+        screenResolution: '1280x960'
+      }
+    }
   },
 };
 
