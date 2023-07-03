@@ -7,7 +7,7 @@ let civilCaseReference, gaCaseReference, state;
 
 Feature('GA 1v1 Judge make decision order made API tests');
 
-Scenario('Judge makes decision 1V1 - Order Made  @api-tests @api-scheduler-test', async ({api}) => {
+Scenario('Judge makes decision 1V1 - Order Made @api-tests @api-scheduler-test', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -20,7 +20,6 @@ Scenario('Judge makes decision 1V1 - Order Made  @api-tests @api-scheduler-test'
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
-
   console.log('*** Start Judge makes decision order made and : ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     state = await api.judgeMakesDecisionOrderMadeStayClaimAppln(config.judgeUser, gaCaseReference);
