@@ -1,5 +1,6 @@
 const testConfig = require('../config.js');
 const {runAccessibility} = require('./accessibility/runner');
+const Helper = require('@codeceptjs/helper');
 
 module.exports = class BrowserHelpers extends Helper {
 
