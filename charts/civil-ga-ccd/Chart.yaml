@@ -36,7 +36,7 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: servicebus.enabled
 
-  # WA
+  # WA 
   - name: wa-task-management-api
     version: ~0.0.37
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
