@@ -19,7 +19,6 @@ Scenario('Defendant Hearing notice journey', async ({api}) => {
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
-
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   const doc = 'hearingNotice';
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
