@@ -1,6 +1,7 @@
 civil-general-applications:
   java:
     ingressHost: ${SERVICE_FQDN}
+    image: 'hmctspublic.azurecr.io/civil/general-applications:pr-1077'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -33,6 +34,7 @@ civil-general-applications:
 civil-service:
   java:
     ingressHost: civil-ga-ccd-civil-service-staging-aat.service.core-compute-aat.internal
+    image: 'hmctspublic.azurecr.io/civil/service:pr-2930'
     keyVaults:
       civil:
         resourceGroup: civil
