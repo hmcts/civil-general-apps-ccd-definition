@@ -2036,7 +2036,7 @@ const initiateGeneralApplicationWithOutNotice = async (user, parentCaseId, gaDat
 
   switch (user.email) {
     case config.applicantSolicitorUser.email:
-      gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[index].value.caseLink.CaseReference;
+      gaCaseReference = updatedCivilCaseData.claimantGaAppDetails.pop().value.caseLink.CaseReference;
       break;
     case config.defendantSolicitorUser.email:
       gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[index].value.caseLink.CaseReference;
