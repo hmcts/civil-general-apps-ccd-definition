@@ -133,9 +133,6 @@ const data = {
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
 };
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
 const eventData = {
   defendantResponsesSpec: {
     ONE_V_ONE: {
