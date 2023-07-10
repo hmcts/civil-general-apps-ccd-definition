@@ -45,7 +45,8 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("hearing-schedule-access", "PUBLIC"),
         new CcdRoleConfig("caseflags-admin", "PUBLIC"),
         new CcdRoleConfig("caseflags-viewer", "PUBLIC"),
-        new CcdRoleConfig("caseworker-wa-task-configuration","PUBLIC")
+        new CcdRoleConfig("caseworker-wa-task-configuration","PUBLIC"),
+        new CcdRoleConfig("CITIZEN-DEFENDANT-PROFILE","PUBLIC")
     };
 
     private final CcdEnvironment environment;
