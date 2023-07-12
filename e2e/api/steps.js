@@ -327,7 +327,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     let claimDismissedDeadline;
     claimDismissedDeadline = {'claimDismissedDeadline':'2022-01-10T15:59:50'};
-    testingSupport.updateCaseData(caseId, claimDismissedDeadline);
+    await testingSupport.updateCaseData(caseId, claimDismissedDeadline);
   },
 
   createSpecifiedClaim: async (user, multipartyScenario) => {
