@@ -26,6 +26,8 @@
 ./bin/utils/ccd-add-role.sh "caseflags-admin"
 ./bin/utils/ccd-add-role.sh "caseflags-viewer"
 ./bin/utils/ccd-add-role.sh "caseworker-wa-task-configuration"
+./bin/utils/ccd-add-role.sh "CITIZEN-DEFENDANT-PROFILE"
+./bin/utils/ccd-add-role.sh "CITIZEN-CLAIMANT-PROFILE"
 
 
 roles=("solicitor" "systemupdate" "admin" "staff" "judge")
