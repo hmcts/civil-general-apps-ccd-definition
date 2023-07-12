@@ -937,13 +937,13 @@ module.exports = function () {
 
     async verifyCaseFileAppDocument(civilCaseReference, documentType) {
       await caseViewPage.navigateToTab(civilCaseReference, 'Case File');
-      await this.waitForSelector('.cdk-tree', 20);
+      await this.waitForSelector('.cdk-tree', 30);
       await caseFileDocPage.verifyCaseFileAppDocument(documentType);
     },
 
     async verifyCaseFileOrderDocument(civilCaseReference, documentType) {
       await caseViewPage.navigateToTab(civilCaseReference, 'Case File');
-      await this.waitForSelector('.cdk-tree', 20);
+      await this.waitForSelector('.cdk-tree', 30);
       await caseFileDocPage.verifyCaseFileOrderDocument(documentType);
     },
 

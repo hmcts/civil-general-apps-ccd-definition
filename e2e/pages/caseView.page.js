@@ -70,8 +70,10 @@ module.exports = {
   async clickOnTab(tabName) {
     await I.waitForSelector(this.fields.tabList, 5);
     await I.refreshPage();
-    if (['preview', 'aat', 'demo'].includes(config.runningEnv)) {
+    if (['preview'].includes(config.runningEnv)) {
       await I.wait(5);
+    } else if (['aat', 'demo'].includes(config.runningEnv)) {
+      await I.wait(10);
     } else {
       await I.wait(3);
     }
@@ -88,8 +90,10 @@ module.exports = {
 
   async navigateToTab(caseNumber, tabName) {
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
-    if (['preview', 'aat', 'demo'].includes(config.runningEnv)) {
+    if (['preview'].includes(config.runningEnv)) {
       await I.wait(5);
+    } else if (['aat', 'demo'].includes(config.runningEnv)) {
+      await I.wait(10);
     } else {
       await I.wait(3);
     }
