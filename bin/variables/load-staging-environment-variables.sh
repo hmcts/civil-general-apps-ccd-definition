@@ -9,7 +9,7 @@ echo "export SERVICE_AUTH_PROVIDER_API_BASE_URL=http://rpe-service-auth-provider
 echo "export IDAM_API_BASE_URL=https://idam-api.aat.platform.hmcts.net"
 echo "export CCD_IDAM_REDIRECT_URL=https://ccd-case-management-web-aat.service.core-compute-aat.internal/oauth2redirect"
 echo "export CCD_DEFINITION_STORE_API_BASE_URL=https://civil-ga-ccd-definition-store-staging.aat.platform.hmcts.net"
-echo "export CAMUNDA_BASE_URL=https://civil-ga-ccd-camunda.aat.platform.hmcts.net"
+echo "export CAMUNDA_BASE_URL=https://civil-ga-ccd-camunda-staging.aat.platform.hmcts.net"
 
 # definition placeholders
 echo "export CCD_DEF_CASE_SERVICE_BASE_URL=http://civil-ga-ccd-staging-civil-service"
