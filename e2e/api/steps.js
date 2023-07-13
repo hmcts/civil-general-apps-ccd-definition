@@ -330,6 +330,13 @@ module.exports = {
     await testingSupport.updateCaseData(caseId, claimDismissedDeadline);
   },
 
+  amendDirectionOrderDeadlineDate: async (user) => {
+    await apiRequest.setupTokens(user);
+    let deadlineDate;
+    deadlineDate = {'judicialDecisionMakeOrder.':'2022-01-10T15:59:50'};
+    await testingSupport.updateCaseData(caseId, deadlineDate);
+  },
+
   createSpecifiedClaim: async (user, multipartyScenario) => {
 
     eventName = 'CREATE_CLAIM_SPEC';
