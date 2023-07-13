@@ -32,7 +32,7 @@ civil-general-applications:
       PAY_CALLBACK_URL: https://civil-ga-ccd-staging.aat.platform.hmcts.net/service-request-update
 civil-service:
   java:
-    ingressHost: civil-ga-ccd-civil-service-staging-aat.service.core-compute-aat.internal
+    ingressHost: civil-ga-ccd-civil-service-staging.aat.platform.hmcts.net
     keyVaults:
       civil:
         resourceGroup: civil
@@ -69,15 +69,15 @@ xui-webapp:
 ccd:
   ccd-api-gateway-web:
     nodejs:
-      ingressHost: civil-ga-ccd-gateway-staging-aat.service.core-compute-aat.internal
+      ingressHost: civil-ga-ccd-gateway-staging.aat.platform.hmcts.net
   ccd-data-store-api:
     java:
-      ingressHost: civil-ga-ccd-data-store-staging-aat.service.core-compute-aat.internal
+      ingressHost: civil-ga-ccd-data-store-staging.aat.platform.hmcts.net
   ccd-definition-store-api:
     java:
-      ingressHost: civil-ga-ccd-definition-store-staging-aat.service.core-compute-aat.internal
+      ingressHost: civil-ga-ccd-definition-store-staging.aat.platform.hmcts.net
 camunda-bpm:
   java:
-    ingressHost: civil-ga-ccd-camunda-staging-aat.service.core-compute-aat.internal
+    ingressHost: civil-ga-ccd-camunda-staging.aat.platform.hmcts.net
 civil-wa:
   enabled: false
