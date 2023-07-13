@@ -133,9 +133,6 @@ const data = {
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
 };
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
 const eventData = {
   defendantResponsesSpec: {
     ONE_V_ONE: {
@@ -592,7 +589,6 @@ module.exports = {
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
     console.log('General application updated case state : ' + updatedGABusinessProcessData.ccdState);
     await addUserCaseMapping(gaCaseId, user);
-    await sleep(7000);
   },
 
   respondentResponseConsentOrderApp: async (user, gaCaseId) => {
@@ -613,7 +609,6 @@ module.exports = {
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
     await addUserCaseMapping(gaCaseId, user);
-    await sleep(7000);
   },
 
   respondentDebtorResponse: async (user, gaCaseId) => {
@@ -634,7 +629,6 @@ module.exports = {
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
     await addUserCaseMapping(gaCaseId, user);
-    await sleep(7000);
   },
 
   respondentResponse1v2: async (user, user2, gaCaseId) => {
@@ -2084,7 +2078,6 @@ const respondentResponse1v2WithPayload = async (user, user2, gaCaseId, payload) 
   const updatedBusinessProcess1 = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
   const updatedGABusinessProcessData1 = await updatedBusinessProcess1.json();
   assert.equal(updatedGABusinessProcessData1.ccdState, 'AWAITING_RESPONDENT_RESPONSE');
-  await sleep(7000);
   await apiRequest.setupTokens(user2);
   eventName = events.RESPOND_TO_APPLICATION.id;
   await apiRequest.startGAEvent(eventName, gaCaseId);
@@ -2098,7 +2091,6 @@ const respondentResponse1v2WithPayload = async (user, user2, gaCaseId, payload) 
   const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
   const updatedGABusinessProcessData = await updatedBusinessProcess.json();
   assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
-  await sleep(7000);
   await addUserCaseMapping(gaCaseId, user);
   await addUserCaseMapping(gaCaseId, user2);
 };
