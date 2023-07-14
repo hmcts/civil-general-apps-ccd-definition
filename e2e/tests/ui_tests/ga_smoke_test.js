@@ -31,6 +31,3 @@ Scenario('GA 1v2  - Judge Makes Decision Order Made @smoke-tests', async ({api, 
   await I.see('Order Made');
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
