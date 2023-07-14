@@ -85,7 +85,10 @@ civil-service:
     releaseNameOverride: ${SERVICE_NAME}-civil-service
     image: 'hmctspublic.azurecr.io/civil/service:latest'
     imagePullPolicy: Always
-    devcpuRequests: 500m
+    devmemoryRequests: 2048Mi
+    devcpuRequests: 2000m
+    devmemoryLimits: 4096Mi
+    devcpuLimits: 4000m
     keyVaults:
       civil:
         resourceGroup: civil
@@ -164,13 +167,13 @@ xui-webapp:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: 'hmctspublic.azurecr.io/xui/webapp:latest'
-    memoryRequests: 2Gi
+    memoryRequests: 3Gi
     cpuRequests: 2000m
-    memoryLimits: 4Gi
+    memoryLimits: 5Gi
     cpuLimits: 3500m
-    devmemoryRequests: 6Gi
+    devmemoryRequests: 8Gi
     devcpuRequests: 2000m
-    devmemoryLimits: 8Gi
+    devmemoryLimits: 9Gi
     devcpuLimits: 4500m
     autoscaling: # Default is false
       enabled: false
