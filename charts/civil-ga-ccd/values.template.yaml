@@ -47,6 +47,7 @@ civil-general-applications:
       DOCUMENT_MANAGEMENT_SECURED: true
       RD_PROFESSIONAL_API_URL: http://rd-professional-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
       RELEASE_REVISION: "{{ .Release.Revision }}"
+      GA_S2S_AUTHORISED_SERVICES: payment_app,civil_service
     postgresql:
       enabled: true
       releaseNameOverride: ${SERVICE_NAME}-postgresql
