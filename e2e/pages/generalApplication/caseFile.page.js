@@ -1,4 +1,4 @@
-const {I} = inject();
+const I = actor();
 const expect = require('chai').expect;
 const {docFullDate} = require('../generalAppCommons');
 
@@ -15,7 +15,10 @@ module.exports = {
     await I.seeInCurrentUrl('File');
     await I.waitNumberOfVisibleElements('.cdk-tree', 1, 20);
     await I.waitForText('Applications', 20, this.fields.nameFolder);
-    await I.click(locate(this.fields.appFolder));
+    if ('No document' !== documentType) {
+      await I.forceClick(locate(this.fields.appFolder));
+      await I.waitForSelector(this.fields.expandedFolder, 30);
+    }
     let docs = await I.grabTextFromAll(locate(this.fields.expandedFolder));
     let appCount = await I.grabTextFrom(locate(this.fields.appFolder));
     switch (documentType) {
@@ -68,16 +71,16 @@ module.exports = {
         expect(appCount).equals('3');
         break;
     }
-    await I.click(locate(this.fields.appFolder));
+    await I.forceClick(locate(this.fields.appFolder));
   },
 
   async verifyCaseFileOrderDocument(documentType) {
     await I.seeInCurrentUrl('File');
     await I.waitNumberOfVisibleElements('.cdk-tree', 1, 20);
     await I.waitForText('Applications', 20, this.fields.nameFolder);
-    await I.click(locate(this.fields.orderFolder).first());
+    await I.forceClick(locate(this.fields.orderFolder).first());
     await I.waitForText('Orders made on applications');
-    await I.click('Orders made on applications');
+    await I.forceClick('Orders made on applications');
     let docs = await I.grabTextFromAll(locate(this.fields.expandedFolder));
     switch (documentType) {
       case 'General order document':
@@ -93,6 +96,6 @@ module.exports = {
         expect(docs.toString()).to.contains(`Consent_order_for_application_${docFullDate}`);
         break;
     }
-    await I.click(locate(this.fields.orderFolder).first());
+    await I.forceClick(locate(this.fields.orderFolder).first());
   }
 };

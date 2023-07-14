@@ -93,7 +93,8 @@ module.exports = {
     if (['preview'].includes(config.runningEnv)) {
       await I.wait(5);
     } else if (['aat', 'demo'].includes(config.runningEnv)) {
-      await I.wait(10);
+      await I.refreshPage();
+      await I.wait(15);
     } else {
       await I.wait(3);
     }
