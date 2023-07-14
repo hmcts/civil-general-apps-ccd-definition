@@ -101,7 +101,6 @@ module.exports = {
       },
       generalAppDetailsOfOrder: 'Test Order details',
       generalAppReasonsOfOrder: 'Test reason for order',
-      generalAppEvidenceDocument: [],
       generalAppStatementOfTruthConsent: [
         'ConsentAgreementCheckBox'
       ],
@@ -136,7 +135,6 @@ module.exports = {
         generalAppUnavailableDates: [],
         SupportRequirement: []
       },
-      generalAppN245FormUpload: linkGAN245FormUpload,
       generalAppPBADetails: {
         paymentSuccessfulDate: null,
         fee: {
