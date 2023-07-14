@@ -33,7 +33,7 @@ Scenario('GA - Challenged Access test - NBCAdmin & judge', async ({I, api, wa}) 
     console.log('actualJudgeDecideOnApplicationTask...', actualJudgeDecideOnApplicationTask);
     wa.validateTaskInfo(actualJudgeDecideOnApplicationTask, expectedJudgeDecideOnApplicationBeforeSDOTask);
   }
-  console.log('*** Validate Task Initiation for Judge Decide On Application- End ***');
+  console.log('*** Validate Task Initiation for Judge Decide On Application - End ***');
 
   console.log('*** Challenged Access steps for Judge - Start ***');
   await I.login(config.judgeUserWithRegionId1);
@@ -47,11 +47,8 @@ Scenario('GA - Challenged Access test - LegalAdvisor', async ({I, api, wa}) => {
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api.initiateGaForLA(config.applicantSolicitorUser, civilCaseReference);
   console.log('General Application Created Successfully');
-  console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
-  console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Validate Task Initiation for Legal Advisor Decide On Application - Start ***');
   if (config.runWAApiTest) {
@@ -66,7 +63,6 @@ Scenario('GA - Challenged Access test - LegalAdvisor', async ({I, api, wa}) => {
   await I.login(config.tribunalCaseworkerWithRegionId);
   await wa.runChallengedAccessSteps(gaCaseReference);
   console.log('*** Challenged Access steps for LegalAdvisor - End ***');
-
 }).retry(0);
 
 

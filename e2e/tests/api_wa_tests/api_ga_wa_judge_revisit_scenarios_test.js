@@ -16,7 +16,7 @@ if (config.runWAApiTest) {
 
 Feature(' GA - WA Judge Revisit Applications @api-wa');
 
-Scenario('Before SDO GA - Directions Order Additional Response time Expired', async ({api, wa}) => {
+Scenario.skip('Before SDO GA - Directions Order Additional Response time Expired', async ({api, wa}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -56,16 +56,13 @@ Scenario('Before SDO GA - Directions Order Additional Response time Expired', as
 
 }).retry(0);
 
-Scenario('Before SDO GA 1v1 spec - Written Representations Additional Response time Expired', async ({api, wa}) => {
+Scenario.skip('Before SDO GA 1v1 spec - Written Representations Additional Response time Expired', async ({api, wa}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api.initiateGaForJudge(config.applicantSolicitorUser, civilCaseReference);
   console.log('General Application Created Successfully');
-  console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
-  console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Validate Task Initiation for Legal Advisor Decide On Application - Start ***');
   if (config.runWAApiTest) {

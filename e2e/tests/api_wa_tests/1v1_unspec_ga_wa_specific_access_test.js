@@ -51,6 +51,7 @@ Scenario('Verify Specific access check for judge', async ({I, wa, api}) => {
     console.log('WA flag is not enabled');
     return;
   }
+
   await I.login(config.leaderShipJudge);
   await wa.runJudgeSpecificAccessApprovalSteps(gaCaseReference);
   await api.verifySpecificAccessForGaCaseData(config.iacLeadershipJudge, gaCaseReference);
@@ -65,7 +66,7 @@ Scenario('Verify Specific access check for Legal Ops', async ({I, wa, api}) => {
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api.initiateGaForLA(config.applicantSolicitorUser, civilCaseReference);
   console.log('*** General Application case created ***' + gaCaseReference);
   await I.login(config.iacLegalOpsUser);
   await wa.runSpecificAccessRequestSteps(gaCaseReference);

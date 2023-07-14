@@ -246,7 +246,7 @@ module.exports = {
 
   fetchTaskDetails: async (user, caseNumber, taskId, expectedStatus = 200) => {
     let taskDetails;
-    const userToken =  await idamHelper.accessToken(user);
+    const userToken = await idamHelper.accessToken(user);
     const s2sToken = await restHelper.retriedRequest(
       `${config.url.authProviderApi}/lease`,
       {'Content-Type': 'application/json'},
@@ -258,9 +258,9 @@ module.exports = {
 
     const inputData = {
       'search_parameters': [
-        {'key': 'jurisdiction','operator': 'IN','values': ['CIVIL']},
-        {'key': 'caseId','operator': 'IN','values': [caseNumber]},
-        {'key':'state','operator':'IN','values':['assigned','unassigned']}
+        {'key': 'caseId', 'operator': 'IN', 'values': [caseNumber]},
+        {'key': 'jurisdiction', 'operator': 'IN', 'values': ['CIVIL']},
+        {'key': 'state', 'operator': 'IN', 'values': ['assigned', 'unassigned']}
       ],
       'sorting_parameters': [{'sort_by': 'dueDate', 'sort_order': 'asc'}]
     };
@@ -277,8 +277,9 @@ module.exports = {
         .then(jsonResponse => {
           let availableTaskDetails = jsonResponse['tasks'];
           availableTaskDetails.forEach((taskInfo) => {
-            if(taskInfo['type'] === taskId) {
+            if (taskInfo['type'] === taskId) {
               console.log('Found taskInfo with id ...', taskId);
+              console.log('Task details are ...', taskInfo);
               taskDetails = taskInfo;
             }
           });

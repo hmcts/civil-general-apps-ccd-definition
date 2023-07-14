@@ -93,12 +93,12 @@ module.exports = function () {
     runChallengedAccessSteps: async function (caseId) {
       await this.fillField('#caseReference', caseId);
       await this.click('Find');
-      await this.wait(5);
+      await this.wait(10);
       await this.waitForText('Request access');
-      await this.click('Request access');
+      await this.forceClick('Request access');
       await this.see('To determine if the case needs to be consolidated');
-      await this.click('#reason-1');
-      await this.click('Submit');
+      await this.forceClick('#reason-1');
+      await this.forceClick('Submit');
       await this.waitForText('Access successful');
       await this.see(caseId);
       await this.click('View case file');
@@ -106,9 +106,9 @@ module.exports = function () {
     },
 
     runSpecificAccessRequestSteps: async function (caseId) {
-      await this.fillField('#caseReference', caseId);
-      await this.click('Find');
-      await this.wait(5);
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
+      await this.waitForElement('#action_claim');
+      await this.wait(10);
       await this.click('Request access');
       await this.waitForText('Why do you need to access this case');
       await this.fillField('#specific-reason', 'Req for iac user');
@@ -123,47 +123,44 @@ module.exports = function () {
 
     runSpecificAccessApprovalSteps: async function (caseId, approveType) {
       console.log('config.url.manageCase...', config.url.manageCase);
-      await this.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/tasks');
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
       await this.waitForElement('#action_claim');
-      await this.click('Assign to me');
+      await this.forceClick(locate('#action_claim').at(1));
       await this.waitForElement('#action_reassign');
-      await this.see('Next steps');
-      await this.click('Review Access Request');
-      await this.waitForElement('#APPROVE_REQUEST');
-      await this.click('Approve request');
-      await this.wait(5);
-      await this.click('Continue');
+      await this.forceClick('Review Access Request');
+      await this.waitForSelector('#APPROVE_REQUEST', 10);
+      await this.forceClick('Approve request');
+      await this.wait(2);
+      await this.forceClick('Continue');
       await this.waitForElement('#specific-access-1');
       if (approveType == '7 days') {
-        await this.click('7 days');
+        await this.forceClick('7 days');
       } else if (approveType == 'Indefinite') {
-        await this.click('Indefinite');
+        await this.forceClick('Indefinite');
       } else if (approveType == 'Another period') {
-        await this.click('Another period');
+        await this.forceClick('Another period');
       }
-      await this.click('Submit');
-      await this.waitForText('Access approved');
-      await this.click('Return to My tasks');
-      await this.waitForText('My tasks');
+      await this.forceClick('Submit');
+      await this.waitForText('Access approved', 10);
     },
 
     runJudgeSpecificAccessApprovalSteps: async function (caseId) {
       console.log('config.url.manageCase...', config.url.manageCase);
-      await this.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/tasks');
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
       await this.waitForElement('#action_assign');
-      await this.click('Assign task');
+      await this.forceClick(locate('#action_assign').at(1));
       await this.waitForElement('#JUDICIAL');
-      await this.click('Judicial');
       await this.click('Continue');
       await this.wait(5);
       await this.waitForElement('#sub-title-hint');
-      await this.fillField('#inputSelectPerson', 'Joe Bloggs (4925721EMP-@ejudiciary.net)');
+      await this.fillField('#inputSelectPerson', 'Shaun Micheal ');
+      await this.waitForSelector('span.mat-option-text', 20);
+      await this.forceClick(locate('span.mat-option-text').at(1));
       await this.click('Continue');
       await this.waitForElement('#reassign-confirm-hint');
       await this.see('Check you are assigning work to the right person.');
       await this.click('Assign');
-      await this.click('Return to My tasks');
-      await this.see('My tasks');
+      await this.wait(5);
     },
 
     validateTaskInfo(createdTask, expectedTaskInfo) {

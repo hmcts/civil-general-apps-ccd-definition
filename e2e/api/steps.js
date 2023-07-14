@@ -324,7 +324,14 @@ module.exports = {
     await apiRequest.setupTokens(user);
     let claimDismissedDeadline;
     claimDismissedDeadline = {'claimDismissedDeadline':'2022-01-10T15:59:50'};
-    testingSupport.updateCaseData(caseId, claimDismissedDeadline);
+    await testingSupport.updateCaseData(caseId, claimDismissedDeadline);
+  },
+
+  amendDirectionOrderDeadlineDate: async (user) => {
+    await apiRequest.setupTokens(user);
+    let deadlineDate;
+    deadlineDate = {'judicialDecisionMakeOrder.':'2022-01-10T15:59:50'};
+    await testingSupport.updateCaseData(caseId, deadlineDate);
   },
 
   createSpecifiedClaim: async (user, multipartyScenario) => {
@@ -2030,7 +2037,7 @@ const initiateGeneralApplicationWithOutNotice = async (user, parentCaseId, gaDat
 
   switch (user.email) {
     case config.applicantSolicitorUser.email:
-      gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[index].value.caseLink.CaseReference;
+      gaCaseReference = updatedCivilCaseData.claimantGaAppDetails.pop().value.caseLink.CaseReference;
       break;
     case config.defendantSolicitorUser.email:
       gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[index].value.caseLink.CaseReference;

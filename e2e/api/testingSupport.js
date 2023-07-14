@@ -157,6 +157,17 @@ module.exports = {
     });
   },
 
+  updateCaseData: async (caseId, caseData, user = config.applicantSolicitorUser) => {
+    const authToken = await idamHelper.accessToken(user);
+
+    await restHelper.retriedRequest(
+      `${config.url.civilService}/testing-support/case/${caseId}`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      }, caseData, 'PUT');
+  },
+
   uploadDocument: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
     let response = await restHelper.request(
