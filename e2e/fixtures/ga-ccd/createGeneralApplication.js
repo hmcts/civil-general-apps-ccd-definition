@@ -101,6 +101,7 @@ module.exports = {
       },
       generalAppDetailsOfOrder: 'Test Order details',
       generalAppReasonsOfOrder: 'Test reason for order',
+      generalAppEvidenceDocument: [],
       generalAppStatementOfTruthConsent: [
         'ConsentAgreementCheckBox'
       ],
@@ -135,6 +136,7 @@ module.exports = {
         generalAppUnavailableDates: [],
         SupportRequirement: []
       },
+      generalAppN245FormUpload: linkGAN245FormUpload,
       generalAppPBADetails: {
         paymentSuccessfulDate: null,
         fee: {
@@ -624,11 +626,12 @@ module.exports = {
     };
   },
 
-  createGeneralAppN245FormUpload: () => {
+  createGeneralAppN245FormUpload: (document) => {
     return {
-      document_url: 'http://dm-store:8080/documents/5b6d9333-9dc9-4d42-b47c-0af8cdd8d56a',
-      document_filename: 'test.pdf.pdf',
-      document_binary_url: 'http://dm-store:8080/documents/5b6d9333-9dc9-4d42-b47c-0af8cdd8d56a/binary'
+      document_url: document.document_url,
+      document_binary_url: document.document_binary_url,
+      document_filename: document.document_filename,
+      category_id: 'applications'
     };
   },
 
