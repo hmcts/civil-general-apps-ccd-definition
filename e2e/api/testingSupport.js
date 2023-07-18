@@ -2,6 +2,7 @@ const config = require('../config.js');
 const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
+const totp = require("totp-generator");
 
 let incidentMessage;
 
@@ -11,6 +12,14 @@ const RETRY_TIMEOUT_MS = 5000;
 module.exports = {
   waitForFinishedBusinessProcess: async (caseId, user) => {
     const authToken = await idamHelper.accessToken(user);
+    const s2sAuth = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
 
     await retry(() => {
       return restHelper.request(
@@ -18,6 +27,7 @@ module.exports = {
         {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`,
+          'ServiceAuthorization': s2sAuth
         }, null, 'GET')
         .then(async response => await response.json()).then(response => {
           let businessProcess = response.businessProcess;
@@ -42,6 +52,14 @@ module.exports = {
    */
   waitForGAFinishedBusinessProcess: async (caseId, user) => {
     const authToken = await idamHelper.accessToken(user);
+    const s2sAuth = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
     console.log('** Start waitForGAFinishedBusinessProcess to wait for GA Camunda Tasks to Start and Finish **');
 
     await retry(() => {
@@ -50,6 +68,7 @@ module.exports = {
         {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`,
+          'ServiceAuthorization': s2sAuth
         }, null, 'GET')
         .then(async response => await response.json()).then(response => {
           let businessProcess = response.businessProcess;
@@ -76,6 +95,13 @@ module.exports = {
    */
   waitForGACamundaEventsFinishedBusinessProcess: async (caseId, ccdState, user) => {
     const authToken = await idamHelper.accessToken(user);
+    const s2sAuth = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
     console.log('** Start waitForGACamundaEventsFinishedBusinessProcess to wait for GA Camunda Tasks to Start and Finish **');
 
     await retry(() => {
@@ -84,6 +110,7 @@ module.exports = {
         {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`,
+          'ServiceAuthorization': s2sAuth
         }, null, 'GET')
         .then(async response => await response.json()).then(response => {
           let businessProcess = response.businessProcess;

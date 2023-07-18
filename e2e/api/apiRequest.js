@@ -82,7 +82,7 @@ module.exports = {
     let url = getCaseDismissalTaskHandlerUrl();
     let response_msg =  await restHelper.retriedRequest(url, {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`,
+        'Authorization': `Bearer ${authToken}`
       },null,
       'GET');
     return response_msg|| {};
@@ -99,6 +99,7 @@ module.exports = {
       {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
+        'ServiceAuthorization': tokens.s2sAuth
       },null, 'GET');
   },
 
@@ -207,6 +208,7 @@ module.exports = {
                                            {
                                              'Content-Type': 'application/json',
                                              'Authorization': `Bearer ${authToken}`,
+                                             'ServiceAuthorization': tokens.s2sAuth
                                            },null, 'GET');
   },
 
@@ -224,6 +226,7 @@ module.exports = {
       {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
+        'ServiceAuthorization': tokens.s2sAuth
       },null, 'GET');
   },
 
@@ -241,6 +244,7 @@ module.exports = {
       {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
+        'ServiceAuthorization': tokens.s2sAuth
       },null, 'GET');
   },
 
