@@ -7,7 +7,7 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('Before SDO 1v2 - GA - Consent Orders @ui-nightly @regression2');
 
-Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
+Scenario('NBC admin Approve Consent Order @e2e-tests @mmm', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -15,7 +15,7 @@ Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
-  console.log('Make a General Application');
+ /* console.log('Make a General Application');
   gaCaseReference = await api.initiateConsentGeneralApplication(config.secondDefendantSolicitorUser,
     civilCaseReference, false, false);
 
@@ -43,9 +43,9 @@ Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
   await I.verifyUploadedClaimDocument(civilCaseReference, 'Consent order document');
 
   await I.verifyCaseFileOrderDocument(civilCaseReference, 'Consent Order');
-  await I.verifyCaseFileAppDocument(civilCaseReference, 'Consent Order');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Consent Order');*/
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

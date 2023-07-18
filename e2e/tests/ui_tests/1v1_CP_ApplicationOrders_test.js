@@ -9,7 +9,7 @@ const judgeApproveOrderStatus = states.ORDER_MADE.name;
 
 Feature('Before SDO 1v1 - GA CP - Applications Orders @ui-nightly');
 
-Scenario('1v1 - Free form order - With notice journey @e2e-tests @mmm', async ({I, api}) => {
+Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -107,5 +107,5 @@ Scenario('1v1 - Assisted order - Without Further Hearing @regression2', async ({
 });
 
 AfterSuite(async ({api}) => {
-  // await api.cleanUp();
+  await api.cleanUp();
 });
