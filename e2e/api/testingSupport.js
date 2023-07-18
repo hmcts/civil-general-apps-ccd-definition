@@ -102,7 +102,7 @@ module.exports = {
         microservice: config.s2s.microservice,
         oneTimePassword: totp(config.s2s.secret)
       })
-    console.log('** Start waitForGACamundaEventsFinishedBusinessProcess to wait for GA Camunda Tasks to Start and Finish **');
+    console.log('** Start waitForGACamundaEventsFinishedBusinessProcess to wait for GA Camunda Tasks to Start and Finish **'+ s2sAuth);
 
     await retry(() => {
       return restHelper.request(
