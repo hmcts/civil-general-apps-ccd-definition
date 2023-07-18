@@ -113,6 +113,7 @@ module.exports = {
           'ServiceAuthorization': s2sAuth
         }, null, 'GET')
         .then(async response => await response.json()).then(response => {
+          console.log(response.status);
           let businessProcess = response.businessProcess;
           if (response.incidentMessage) {
             incidentMessage = response.incidentMessage;
