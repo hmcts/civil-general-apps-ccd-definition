@@ -74,7 +74,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Applicant Evidence');
 });
 
-Scenario('GA for 1v1 - Direction order journey @regression2 @fail', async ({I, api}) => {
+Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -170,7 +170,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @regression2', asy
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
-Scenario('GA for 1v1- respond to application - Request more information @regression2 @fail', async ({I, api}) => {
+Scenario('GA for 1v1- respond to application - Request more information @regression2', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -200,6 +200,7 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
   await I.respCloseAndReturnToCaseDetails();
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
     states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.defendantSolicitorUser);
+  await I.navigateToTab(gaCaseReference, 'Application Documents');
   await I.dontSee('Go');
   await I.dontSee('Next step');
   await I.navigateToTab(civilCaseReference, 'Applications');
