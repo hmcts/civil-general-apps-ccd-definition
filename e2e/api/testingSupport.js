@@ -2,7 +2,7 @@ const config = require('../config.js');
 const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
-const totp = require("totp-generator");
+const totp = require('totp-generator');
 
 let incidentMessage;
 
