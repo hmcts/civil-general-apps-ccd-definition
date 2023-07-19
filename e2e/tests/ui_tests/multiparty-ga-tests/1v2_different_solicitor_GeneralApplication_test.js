@@ -64,6 +64,8 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
       'signLanguageInterpreter', getAppTypes().slice(0, 3));
     console.log('Defendant 2 solicitor Responded to application: ' + gaCaseReference);
     await I.respCloseAndReturnToCaseDetails();
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
+      states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.secondDefendantSolicitorUser);
     await I.navigateToTab(civilCaseReference, 'Applications');
     await I.see(judgeDecisionStatus);
 

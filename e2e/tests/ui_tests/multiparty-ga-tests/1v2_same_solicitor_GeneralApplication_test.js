@@ -44,6 +44,8 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   console.log('Defendant 1 Solicitor responded to application: ' + gaCaseReference);
   await I.respCloseAndReturnToCaseDetails();
   await I.verifyResponseSummaryPage();
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
+    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.defendantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeDecisionStatus);
 
@@ -119,6 +121,8 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     await I.respondToApplication(gaCaseReference, 'yes', 'yes', 'yes', 'yes', 'no',
       'signLanguageInterpreter', getAppTypes().slice(0, 5));
     console.log('Defendant Solicitor responded to application: ' + gaCaseReference);
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
+      states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.defendantSolicitorUser);
     await I.navigateToTab(civilCaseReference, 'Applications');
     await I.see(judgeDecisionStatus);
 
