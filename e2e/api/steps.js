@@ -1967,10 +1967,15 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   eventName = events.INITIATE_GENERAL_APPLICATION.id;
   await apiRequest.setupTokens(user);
   await apiRequest.startEvent(eventName, parentCaseId);
-  const response = await apiRequest.submitEvent(eventName,
-    data.INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT('Yes',isClaimant ?
-      null : createGeneralAppN245FormUpload(), urgency),
-    parentCaseId);
+  let initiateData;
+
+  if(!isClaimant) {
+    const document = await testingSupport.uploadDocument();
+    initiateData = data.INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT('Yes',createGeneralAppN245FormUpload(document), urgency);
+  } else {
+    initiateData = data.INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT('Yes', null,  urgency);
+  }
+  const response = await apiRequest.submitEvent(eventName, initiateData ,parentCaseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);
   console.log('General application case state : ' + responseBody.state);
