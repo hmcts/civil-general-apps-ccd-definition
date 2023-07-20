@@ -200,6 +200,7 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
   await I.respCloseAndReturnToCaseDetails();
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
     states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.defendantSolicitorUser);
+  await I.navigateToTab(gaCaseReference, 'Application Documents');
   await I.dontSee('Go');
   await I.dontSee('Next step');
   await I.navigateToTab(civilCaseReference, 'Applications');
