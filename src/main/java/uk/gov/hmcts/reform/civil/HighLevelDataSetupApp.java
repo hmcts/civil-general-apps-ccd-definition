@@ -49,7 +49,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("CITIZEN-DEFENDANT-PROFILE","PUBLIC"),
         new CcdRoleConfig("CITIZEN-CLAIMANT-PROFILE","PUBLIC"),
         new CcdRoleConfig("cui-admin-profile","PUBLIC"),
-        new CcdRoleConfig("cui-nbc-profile","PUBLIC"),
+        new CcdRoleConfig("cui-nbc-profile","PUBLIC")
     };
 
     private final CcdEnvironment environment;
