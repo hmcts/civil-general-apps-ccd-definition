@@ -7,8 +7,7 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('Before SDO 1v2 - GA - Consent Orders @ui-nightly @regression2');
 
-// Skipped due to CIV-9793
-Scenario.skip('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
+Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -24,6 +23,13 @@ Scenario.skip('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => 
   await api.respondentConsentResponse1v2(config.applicantSolicitorUser,
     config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
+
+  if (config.runWAApiTest) {
+    await api.retrieveTaskDetails(config.nbcAdminWithRegionId4, gaCaseReference, config.waTaskIds.nbcUserReviewGA);
+  } else {
+    console.log('WA flag is not enabled');
+    return;
+  }
 
   console.log('NBC admin Approves Consent order' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
