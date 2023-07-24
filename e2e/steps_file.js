@@ -860,14 +860,21 @@ module.exports = function () {
 
     async approveConsentOrder(gaCaseNumber) {
       eventName = events.APPROVE_CONSENT_ORDER.name;
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(eventName, gaCaseNumber),
-        () => consentOrderPage.approveConsentOrder(),
-        () => consentOrderReviewPage.reviewOrderDocument(),
-        () => consentOrderCYAPage.verifyConsentOrderCheckAnswerForm(gaCaseNumber, 1),
-        ...submitApplication('Your order has been made'),
-        () => judgesConfirmationPage.closeAndReturnToCaseDetails(),
-      ]);
+
+      if (config.runWAApiTest) {
+        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + gaCaseNumber + '/tasks');
+        await this.waitForElement('#event');
+        await this.forceClick('#action_claim');
+        await this.waitForElement('#action_reassign');
+        await this.waitForText('ReviewApplication', 5);
+      }
+
+      await caseViewPage.startEvent(eventName, gaCaseNumber);
+      await consentOrderPage.approveConsentOrder();
+      await consentOrderReviewPage.reviewOrderDocument();
+      await consentOrderCYAPage.verifyConsentOrderCheckAnswerForm(gaCaseNumber, 1);
+      await event.submit('Submit', 'Your order has been made');
+      await judgesConfirmationPage.closeAndReturnToCaseDetails();
     },
 
     async judgeMakeAppOrder(gaCaseNumber, orderType, formType) {
