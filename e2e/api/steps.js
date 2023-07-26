@@ -2371,7 +2371,7 @@ const assertGaDocVisibilityToUser = async ( user, parentCaseId, gaCaseId, doc) =
   else{
     docCivil = civilCaseData[doc + 'DocStaff'];
   }
-  assert.equal(docGa[0]['id'], docCivil[0]['id']);
+  assert.equal(docGa.pop()['id'], docCivil.pop()['id']);
 
 };
 
