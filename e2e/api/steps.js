@@ -427,13 +427,13 @@ module.exports = {
 
     switch (user.email) {
       case config.applicantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.claimantGaAppDetails.pop().value.caseLink.CaseReference;
         break;
       case config.defendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails.pop().value.caseLink.CaseReference;
         break;
       case config.secondDefendantSolicitorUser.email:
-        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
+        gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails.pop().value.caseLink.CaseReference;
         break;
     }
 
@@ -960,19 +960,19 @@ module.exports = {
     const civilCaseData = await response.json();
     let gaReference;
     if(user.email === config.applicantSolicitorUser.email && isVisibleToUser){
-      gaReference = civilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+      gaReference = civilCaseData.claimantGaAppDetails.pop().value.caseLink.CaseReference;
       assert.equal(gaCaseId, gaReference);
     }
     else if(user.email === config.defendantSolicitorUser.email && isVisibleToUser) {
-      gaReference = civilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+      gaReference = civilCaseData.respondentSolGaAppDetails.pop().value.caseLink.CaseReference;
       assert.equal(gaCaseId, gaReference);
     }
     else if(user.email === config.secondDefendantSolicitorUser.email && isVisibleToUser) {
-      gaReference = civilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
+      gaReference = civilCaseData.respondentSolTwoGaAppDetails.pop().value.caseLink.CaseReference;
       assert.equal(gaCaseId, gaReference);
     }
     else{
-      gaReference = civilCaseData.gaDetailsMasterCollection[0].value.caseLink.CaseReference;
+      gaReference = civilCaseData.gaDetailsMasterCollection.pop().value.caseLink.CaseReference;
       assert.equal(gaCaseId, gaReference);
     }
     console.log('*** GA Case Reference: ' + gaReference + ' ***');
@@ -2015,7 +2015,7 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
 };
 
 const initiateGeneralApplicationWithOutNotice = async (user, parentCaseId, gaData) => {
-  let gaCaseReference, index = 0;
+  let gaCaseReference;
   eventName = events.INITIATE_GENERAL_APPLICATION.id;
 
   await apiRequest.setupTokens(user);
@@ -2036,19 +2036,15 @@ const initiateGeneralApplicationWithOutNotice = async (user, parentCaseId, gaDat
   const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
   const updatedCivilCaseData = await updatedResponse.json();
 
-  if (updatedCivilCaseData.gaDetailsMasterCollection.length > 1) {
-    index = 1;
-  }
-
   switch (user.email) {
     case config.applicantSolicitorUser.email:
       gaCaseReference = updatedCivilCaseData.claimantGaAppDetails.pop().value.caseLink.CaseReference;
       break;
     case config.defendantSolicitorUser.email:
-      gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[index].value.caseLink.CaseReference;
+      gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails.pop().value.caseLink.CaseReference;
       break;
     case config.secondDefendantSolicitorUser.email:
-      gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[index].value.caseLink.CaseReference;
+      gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails.pop().value.caseLink.CaseReference;
       break;
   }
 
