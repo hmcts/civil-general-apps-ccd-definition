@@ -73,18 +73,12 @@ module.exports = {
     if (['preview'].includes(config.runningEnv)) {
       await I.wait(5);
     } else if (['aat', 'demo'].includes(config.runningEnv)) {
-      await I.wait(10);
+      await I.wait(8);
     } else {
       await I.wait(3);
     }
     await I.waitForSelector(this.fields.signOutLink, 30);
     await I.clickTab(tabName);
-    await I.waitForText(tabName, 10, this.fields.selectedTab);
-  },
-
-  async clickMainTab(tabName) {
-    await I.waitForElement(this.fields.tabList, 10);
-    await I.forceClick(locate(this.fields.tab).withText(tabName));
     await I.waitForText(tabName, 10, this.fields.selectedTab);
   },
 
@@ -94,7 +88,7 @@ module.exports = {
       await I.wait(5);
     } else if (['aat', 'demo'].includes(config.runningEnv)) {
       await I.refreshPage();
-      await I.wait(15);
+      await I.wait(8);
     } else {
       await I.wait(3);
     }
