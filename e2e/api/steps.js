@@ -562,16 +562,16 @@ module.exports = {
     let gaCaseReference;
 
     if(user.email === config.applicantSolicitorUser.email){
-      gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+      gaCaseReference = updatedCivilCaseData.claimantGaAppDetails.pop().value.caseLink.CaseReference;
     }
     else if(user.email === config.defendantSolicitorUser.email) {
-      gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
+      gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails.pop().value.caseLink.CaseReference;
     }
     else if(user.email === config.secondDefendantSolicitorUser.email) {
-      gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails[0].value.caseLink.CaseReference;
+      gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails.pop().value.caseLink.CaseReference;
     }
     else{
-      gaCaseReference = updatedCivilCaseData.gaDetailsMasterCollection[0].value.caseLink.CaseReference;
+      gaCaseReference = updatedCivilCaseData.gaDetailsMasterCollection.pop().value.caseLink.CaseReference;
     }
 
     console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
