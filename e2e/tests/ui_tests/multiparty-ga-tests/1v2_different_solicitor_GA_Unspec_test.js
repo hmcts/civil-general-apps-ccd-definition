@@ -10,7 +10,7 @@ const judgeDirectionsOrderStatus = states.AWAITING_DIRECTIONS_ORDER_DOCS.name;
 const writtenRepStatus = states.AWAITING_WRITTEN_REPRESENTATIONS.name;
 let gaCaseReference, civilCaseReference;
 
-Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly @123');
+Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly');
 
 BeforeSuite(async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
