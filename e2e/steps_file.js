@@ -861,7 +861,7 @@ module.exports = function () {
     async approveConsentOrder(gaCaseNumber) {
       eventName = events.APPROVE_CONSENT_ORDER.name;
 
-      if (config.runWAApiTest) {
+      if (config.runWAApiTest || ['demo'].includes(config.runningEnv)) {
         await this.amOnPage(config.url.manageCase + '/cases/case-details/' + gaCaseNumber + '/tasks');
         await this.waitForElement('#event');
         await this.forceClick('#action_claim');
