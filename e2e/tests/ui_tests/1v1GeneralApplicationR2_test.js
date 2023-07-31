@@ -12,13 +12,16 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('GA R2 1v1 - General Application Journey @ui-nightly');
 
-Scenario('Defendant of main claim initiates Vary Judgement application @regression3', async ({I, api}) => {
+BeforeSuite(async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Case created for general application: ' + civilCaseReference);
+});
+
+Scenario('Defendant of main claim initiates Vary Judgement application @regression3', async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.verifyNoN245Form(civilCaseReference, getAppTypes().slice(10, 11), 'no');
   await I.login(config.defendantSolicitorUser);
@@ -65,12 +68,6 @@ Scenario('Defendant of main claim initiates Vary Judgement application @regressi
 });
 
 Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regression2', async ({I, api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, claimantType);
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(
@@ -81,7 +78,7 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
     states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
-  await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(9, 10), 1);
+  await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(9, 10), 2);
   await I.see(awaitingPaymentStatus);
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
     states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);

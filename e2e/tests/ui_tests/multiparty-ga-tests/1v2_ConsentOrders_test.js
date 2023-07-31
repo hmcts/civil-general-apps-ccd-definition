@@ -24,7 +24,7 @@ Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
     config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-  if (config.runWAApiTest) {
+  if (config.runWAApiTest || ['demo'].includes(config.runningEnv)) {
     await api.retrieveTaskDetails(config.nbcAdminWithRegionId4, gaCaseReference, config.waTaskIds.nbcUserReviewGA);
   } else {
     console.log('WA flag is not enabled');

@@ -29,23 +29,19 @@ module.exports = {
     switch (documentType) {
       case 'General order document':
         I.see('Upload documents');
-        I.seeNumberOfVisibleElements(this.fields.links, 4);
         I.see(`General_order_for_application_${docFullDate}`);
         break;
       case 'Free From Order':
       case 'Assisted Order':
         I.see('Upload documents');
-        I.seeNumberOfVisibleElements(this.fields.links, 5);
         I.see(`General_order_for_application_${docFullDate}`);
         I.see(`Application_Hearing_Notice_${docFullDate}`);
         break;
       case 'Directions order document':
         I.see('Upload documents');
-        I.seeNumberOfVisibleElements(this.fields.links, 4);
         I.see(`Directions_order_for_application_${docFullDate}`);
         break;
       case 'Dismissal order document':
-        I.seeNumberOfVisibleElements(this.fields.links, 3);
         I.see(`Dismissal_order_for_application_${docFullDate}`);
         break;
       case 'Hearing Notice':

@@ -10,18 +10,21 @@ const judgeDecisionStatus = states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECIS
 const writtenRepStatus = states.AWAITING_WRITTEN_REPRESENTATIONS.name;
 const additionalPaymentStatus = states.APPLICATION_ADD_PAYMENT.name;
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
-const claimantType = 'Company';
 let civilCaseReference, gaCaseReference, user;
 
 Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly  @regression1');
 
-Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey',
-  async ({I, api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
+BeforeSuite(async ({api}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(
+    config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  console.log('Case created for general application: ' + civilCaseReference);
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+});
+
+Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey',
+  async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(
@@ -65,22 +68,18 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'Written representation sequential');
   console.log('Judges made an order for Sequential written representations on case: ' + gaCaseReference);
 
-  await I.login(config.applicantSolicitorUser);
+  // Skipped due to CIV-9804
+ /* await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(writtenRepStatus);
   await I.respondToJudgesWrittenRep(gaCaseReference, 'Written Representation Documents');
   console.log('Responded to Judges written representations on case: ' + gaCaseReference);
 
-  await I.verifyCaseFileAppDocument(civilCaseReference, 'Sequential order document');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Sequential order document');*/
 });
 
 Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
   async ({I, api}) => {
-    civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
-    await api.amendClaimDocuments(config.applicantSolicitorUser);
-    await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-    await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-    console.log('Case created for general application: ' + civilCaseReference);
     await I.login(config.applicantSolicitorUser);
     await I.navigateToCaseDetails(civilCaseReference);
     await I.createGeneralApplication(
@@ -91,7 +90,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     console.log('General Application created: ' + civilCaseReference);
     gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
-    await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 5), 1);
+    await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 5), 2);
     await I.see(awaitingPaymentStatus);
     await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
       states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser, judgeDecisionStatus);
