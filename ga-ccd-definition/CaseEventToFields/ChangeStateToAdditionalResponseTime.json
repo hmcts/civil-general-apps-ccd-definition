@@ -79,7 +79,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
+    "CaseEventID": "CHANGE_STATE_TO_ADDITIONAL_RESPONSE_TIME_EXPIRED",
     "CaseFieldID": "referToJudge",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
@@ -92,7 +92,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
+    "CaseEventID": "CHANGE_STATE_TO_ADDITIONAL_RESPONSE_TIME_EXPIRED",
     "CaseFieldID": "referToLegalAdvisor",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
