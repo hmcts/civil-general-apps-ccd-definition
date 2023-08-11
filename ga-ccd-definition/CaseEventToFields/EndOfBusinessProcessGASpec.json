@@ -76,5 +76,31 @@
     "PageShowCondition": "generalAppSuperClaimType = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
+    "CaseFieldID": "referToLegalAdvisor",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "GaReferToLegalAdvisor",
+    "PageDisplayOrder": 12,
+    "PageColumnNumber": 1,
+    "PageShowCondition": "generalAppSuperClaimType = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
+    "CaseFieldID": "referToJudge",
+    "PageID": "GAReferToJudge",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageDisplayOrder": 13,
+    "PageColumnNumber": 1,
+    "PageShowCondition": "generalAppSuperClaimType = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   }
 ]

@@ -76,5 +76,31 @@
     "DisplayContext": "OPTIONAL",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
+    "CaseFieldID": "referToJudge",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "referToJudge",
+    "PageDisplayOrder": 11,
+    "PageColumnNumber": 1,
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
+    "CaseFieldID": "referToLegalAdvisor",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "referToLegalAdvisor",
+    "PageDisplayOrder": 12,
+    "PageColumnNumber": 1,
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   }
 ]
