@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 Defendants response consent order API tests @api-tests');
+Feature('GA 1v2 Defendants response consent order API tests @api-');
 
 Scenario('Defendants response 1V2', async ({api}) => {
     civilCaseReference = await api.createUnspecifiedClaim(
@@ -26,7 +26,7 @@ Scenario('Defendants response 1V2', async ({api}) => {
 
 });
 
-AfterSuite(async ({api}) => {
-    await api.cleanUp();
-});
+// AfterSuite(async ({api}) => {
+//     await api.cleanUp();
+// });
 
