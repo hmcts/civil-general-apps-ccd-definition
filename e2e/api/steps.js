@@ -39,7 +39,9 @@ const {expect} = require('chai');
 const gaTypesList = {
   'LATypes': ['STAY_THE_CLAIM','EXTEND_TIME', 'AMEND_A_STMT_OF_CASE'],
   'JudgeGaTypes': ['SET_ASIDE_JUDGEMENT'],
-  'ConsentGaTypes': ['STAY_THE_CLAIM']
+  'ConsentGaTypes': ['STAY_THE_CLAIM'],
+  'ConsentNormalGaTypes': ['EXTEND_TIME'],
+  'ConsentGaTypesReview': ['STAY_THE_CLAIM']
 };
 
 const data = {
@@ -53,7 +55,9 @@ const data = {
     '10800', 'FEE0443'),
   INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE: genAppData.createGADataWithoutNotice('No','Test 123',
     '10800','FEE0443'),
-  INITIATE_GENERAL_APPLICATION_CONSENT: genAppData.createGaWithConsentAndNotice(gaTypesList.ConsentGaTypes, true, null,
+  INITIATE_GENERAL_APPLICATION_CONSENT: (genAppType) => genAppData.createGaWithConsentAndNotice(genAppType, true, false,null,
+    '10800','FEE0443'),
+  INITIATE_GENERAL_APPLICATION_CONSENT_URGENT:(genAppType) => genAppData.createGaWithConsentAndNotice(genAppType, true, true,null,
     '10800','FEE0443'),
   INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
   INITIATE_GENERAL_APPLICATION_STAY_CLAIM: genAppData.gaTypeWithStayClaim(),
@@ -376,8 +380,12 @@ module.exports = {
     return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', data.INITIATE_GENERAL_APPLICATION);
   },
 
-  initiateConsentGeneralApplication: async (user, parentCaseId) => {
-    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', data.INITIATE_GENERAL_APPLICATION_CONSENT);
+  initiateConsentGeneralApplication: async (user, parentCaseId, gaAppData) => {
+    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', gaAppData);
+  },
+
+  initiateConsentUrgentGeneralApplication: async (user, parentCaseId, gaAppData ) => {
+    return await initiateGaWithState(user, parentCaseId, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', gaAppData);
   },
 
   checkGeneralApplication: async (user, parentCaseId) => {
