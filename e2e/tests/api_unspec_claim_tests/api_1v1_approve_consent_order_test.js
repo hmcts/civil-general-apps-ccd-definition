@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
+const states = require('../../../fixtures/ga-ccd/state.js');
 const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, civilCaseReferenceAfterSDO, gaCaseReference;
@@ -38,7 +39,7 @@ Scenario('Caseworker makes decision 1V1 - CONSENT ORDER @api-testsssss @api-sche
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, data.INITIATE_GENERAL_APPLICATION_CONSENT(['STAY_THE_CLAIM']));
+  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, ['STAY_THE_CLAIM']);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
@@ -64,7 +65,7 @@ Scenario('Judge Revisit 1V1 - consentOrder End Date Scheduler @api-scheduler-tes
 Scenario('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application @api-testsssss', async ({api}) => {
 
   console.log('Make a General Application for Consent order');
-  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, data.INITIATE_GENERAL_APPLICATION_CONSENT(['STRIKE_OUT']));
+  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, ['STRIKE_OUT']);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
@@ -90,8 +91,7 @@ Scenario('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application @api-
 
   console.log('Make a General Application for Consent order');
 
-  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference,
-    data.INITIATE_GENERAL_APPLICATION_CONSENT(['EXTEND_TIME']));
+  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference['EXTEND_TIME']);
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
@@ -115,7 +115,7 @@ Scenario('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application @api-
 Scenario.only('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Application @api-testsssss', async ({api}) => {
 
   console.log('Make a General Application for Consent order');
-  gaCaseReference = await api.initiateConsentUrgentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, data.INITIATE_GENERAL_APPLICATION_CONSENT_URGENT(['STRIKE_OUT']));
+  gaCaseReference = await api.initiateConsentUrgentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, ['STRIKE_OUT']);
 
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '+ gaCaseReference + ' ***');
 
@@ -140,7 +140,7 @@ Scenario.only('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Applica
 Scenario('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 1V1 - Uncloak Application @api-testsssss', async ({api, I}) => {
 
   console.log('Make a Urgent General Application for Consent order');
-  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, data.INITIATE_GENERAL_APPLICATION_CONSENT(['STAY_THE_CLAIM']));
+  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, ['STAY_THE_CLAIM']);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
@@ -171,7 +171,7 @@ Scenario('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 
 Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1V1 -- URGENT - Uncloak Application @api-tests', async ({api, I}) => {
 
   console.log('Make a Urgent General Application for Consent order');
-  gaCaseReference = await api.initiateConsentUrgentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, data.INITIATE_GENERAL_APPLICATION_CONSENT_URGENT(['STAY_THE_CLAIM']));
+  gaCaseReference = await api.initiateConsentUrgentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, ['STAY_THE_CLAIM']);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     console.log('*** NBC Admin Region1 Refer to Judge Process Start ***');

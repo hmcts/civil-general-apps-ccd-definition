@@ -380,12 +380,12 @@ module.exports = {
     return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', data.INITIATE_GENERAL_APPLICATION);
   },
 
-  initiateConsentGeneralApplication: async (user, parentCaseId, gaAppData) => {
-    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', gaAppData);
+  initiateConsentGeneralApplication: async (user, parentCaseId, gaAppType) => {
+    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', data.INITIATE_GENERAL_APPLICATION_CONSENT(gaAppType));
   },
 
-  initiateConsentUrgentGeneralApplication: async (user, parentCaseId, gaAppData ) => {
-    return await initiateGaWithState(user, parentCaseId, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', gaAppData);
+  initiateConsentUrgentGeneralApplication: async (user, parentCaseId, gaAppType ) => {
+    return await initiateGaWithState(user, parentCaseId, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', data.INITIATE_GENERAL_APPLICATION_CONSENT_URGENT(gaAppType));
   },
 
   checkGeneralApplication: async (user, parentCaseId) => {
