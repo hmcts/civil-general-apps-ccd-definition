@@ -14,7 +14,7 @@ Scenario('Defendants response 1V2', async ({api}) => {
     await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
     console.log('Civil Case created for general application: ' + civilCaseReference);
     console.log('Make a General Application');
-    gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
+    gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, data.INITIATE_GENERAL_APPLICATION_CONSENT(['STAY_THE_CLAIM']));
 
     console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
     await api.respondentConsentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
