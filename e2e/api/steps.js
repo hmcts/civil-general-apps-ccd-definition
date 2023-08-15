@@ -377,11 +377,11 @@ module.exports = {
   },
 
   initiateGeneralApplication: async (user, parentCaseId) => {
-    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', data.INITIATE_GENERAL_APPLICATION);
+    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', data.INITIATE_GENERAL_APPLICATION);
   },
 
   initiateConsentGeneralApplication: async (user, parentCaseId, gaAppType) => {
-    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', data.INITIATE_GENERAL_APPLICATION_CONSENT(gaAppType));
+    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', data.INITIATE_GENERAL_APPLICATION_CONSENT(gaAppType));
   },
 
   initiateConsentUrgentGeneralApplication: async (user, parentCaseId, gaAppType ) => {
@@ -1947,7 +1947,7 @@ const initiateGaWithState = async (user, parentCaseId, expectState, payload) => 
   assert.equal(payment_response.status, 200);
 
   //comment out next line to see race condition
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,expectState , user);
   await addUserCaseMapping(gaCaseReference, user);
   return gaCaseReference;
 };
