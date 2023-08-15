@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-const states = require('../../../fixtures/ga-ccd/state.js');
 const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, civilCaseReferenceAfterSDO, gaCaseReference;
