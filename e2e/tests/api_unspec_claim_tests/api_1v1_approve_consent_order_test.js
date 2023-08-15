@@ -90,7 +90,7 @@ Scenario('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application @api-
 
   console.log('Make a General Application for Consent order');
 
-  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, civilCaseReference['EXTEND_TIME']);
+  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, ['EXTEND_TIME']);
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
@@ -183,9 +183,9 @@ Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1
   }
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUserWithRegionId1, gaCaseReference, true, true);
   } else {
-    await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUserWithRegionId1, gaCaseReference, true, true);
   }
 
   console.log('*** Start Callback for Additional Payment: ' + gaCaseReference + ' ***');
