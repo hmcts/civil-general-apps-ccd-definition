@@ -38,10 +38,7 @@ const sdoTracks = require('../fixtures/events/createSDO.js');
 const {expect} = require('chai');
 const gaTypesList = {
   'LATypes': ['STAY_THE_CLAIM','EXTEND_TIME', 'AMEND_A_STMT_OF_CASE'],
-  'JudgeGaTypes': ['SET_ASIDE_JUDGEMENT'],
-  'ConsentGaTypes': ['STAY_THE_CLAIM'],
-  'ConsentNormalGaTypes': ['EXTEND_TIME'],
-  'ConsentGaTypesReview': ['STAY_THE_CLAIM']
+  'JudgeGaTypes': ['SET_ASIDE_JUDGEMENT']
 };
 
 const data = {
