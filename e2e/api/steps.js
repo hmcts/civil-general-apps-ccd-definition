@@ -2074,6 +2074,11 @@ const respondentResponse1v2WithPayload = async (user, user2, gaCaseId, payload) 
 
   await apiRequest.setupTokens(user);
   eventName = events.RESPOND_TO_APPLICATION.id;
+  console.log('*** respondentResponse1v2WithPayload: Start uploading the document ***');
+  const document = await testingSupport.uploadDocument();
+  payload = await updateCaseDataWithPlaceholders(payload, document);
+  console.log('*** respondentResponse1v2WithPayload: Finish uploading the document ***');
+
   await apiRequest.startGAEvent(eventName, gaCaseId);
 
   const response = await apiRequest.submitGAEvent(eventName, payload, gaCaseId);
