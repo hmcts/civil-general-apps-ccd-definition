@@ -584,7 +584,12 @@ module.exports = {
     await apiRequest.setupTokens(user);
     eventName = events.RESPOND_TO_APPLICATION.id;
     await apiRequest.startGAEvent(eventName, gaCaseId);
-    const response = await apiRequest.submitGAEvent(eventName, data.RESPOND_TO_APPLICATION, gaCaseId);
+    let payload = data.RESPOND_TO_APPLICATION;
+    console.log('*** respondentResponse1v2WithPayload: Start uploading the document ***');
+    const document = await testingSupport.uploadDocument();
+    payload = await updateCaseDataWithPlaceholders(payload, document);
+    console.log('*** respondentResponse1v2WithPayload: Finish uploading the document ***');
+    const response = await apiRequest.submitGAEvent(eventName, payload, gaCaseId);
     const responseBody = await response.json();
 
     assert.equal(response.status, 201);
