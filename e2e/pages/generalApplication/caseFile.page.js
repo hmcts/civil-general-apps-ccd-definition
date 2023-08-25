@@ -59,7 +59,8 @@ module.exports = {
         break;
       case 'Consent Order':
         expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
-        expect(appCount).equals('1');
+        expect(docs.toString()).to.contains('examplePDF.pdf');
+        expect(appCount).equals('3');
         break;
       case 'No document':
         expect(appCount).equals('0');

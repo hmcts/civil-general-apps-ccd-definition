@@ -2,9 +2,21 @@ const uuid = require('uuid');
 
 const docUuid = uuid.v1();
 module.exports = {
-  respondConsentGAData: () => {
+  respondConsentGAData: (agree) => {
     return {
-      gaRespondentConsent: 'Yes',
+      gaRespondentConsent: agree ? 'Yes' : 'No',
+      generalAppRespondConsentReason: agree ? null : 'Reason',
+      generalAppRespondConsentDocument: agree ? null : [
+        {
+          id: docUuid,
+          value: {
+            document_url: '${TEST_DOCUMENT_URL}',
+            document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+            document_filename: '${TEST_DOCUMENT_FILENAME}',
+            documentHash: null
+          }
+        }
+      ],
       hearingDetailsResp: {
         hearingYesorNo: 'No',
         hearingDate: null,

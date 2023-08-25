@@ -17,7 +17,7 @@ Scenario('Defendants response 1V2', async ({api}) => {
     gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
 
     console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-    await api.respondentConsentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
+    await api.respondentConsentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference, true);
     console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
     console.log('*** NBC Admin Region4 Refer to Judge Process Start ***');

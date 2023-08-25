@@ -63,7 +63,7 @@ const data = {
   INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
   RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
   RESPOND_DEBTOR_TO_APPLICATION: genAppRespondentResponseData.respondDebtorGAData(),
-  RESPOND_TO_CONSENT_APPLICATION: genAppRespondentResponseData.respondConsentGAData(),
+  RESPOND_TO_CONSENT_APPLICATION: (agree) => genAppRespondentResponseData.respondConsentGAData(agree),
   MAKE_DECISION: genAppJudgeMakeDecisionData.judgeMakesDecisionData(),
   APPROVE_CONSENT_ORDER: genAppNbcAdminTask.nbcAdminApproveConsentOrderData(),
   REFER_TO_JUDGE: genAppNbcAdminTask.nbcAdminReferToJudgeData(),
@@ -642,8 +642,8 @@ module.exports = {
      await respondentResponse1v2WithPayload(user, user2, gaCaseId, data.RESPOND_TO_APPLICATION);
   },
 
-  respondentConsentResponse1v2: async (user, user2, gaCaseId) => {
-    await respondentResponse1v2WithPayload(user, user2, gaCaseId, data.RESPOND_TO_CONSENT_APPLICATION);
+  respondentConsentResponse1v2: async (user, user2, gaCaseId, agree=false) => {
+    await respondentResponse1v2WithPayload(user, user2, gaCaseId, data.RESPOND_TO_CONSENT_APPLICATION(agree));
   },
 
   nbcAdminReferToJudge: async (user, gaCaseId) => {

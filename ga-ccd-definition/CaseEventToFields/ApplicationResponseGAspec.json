@@ -51,6 +51,42 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppRespondConsentReason",
+    "DisplayContext": "MANDATORY",
+    "PageID": "GARespondentConsent",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "gaRespondentConsent=\"No\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppRespondConsentUploadLabel",
+    "DisplayContext": "READONLY",
+    "PageID": "GARespondentConsent",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "gaRespondentConsent=\"No\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppRespondConsentDocument",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "GARespondentConsent",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "gaRespondentConsent=\"No\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "generalAppRespondent1Representative",
     "DisplayContext": "MANDATORY",
     "PageID": "GARespondent1RespScreen",
