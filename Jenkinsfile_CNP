@@ -7,8 +7,8 @@ def type = "nodejs"
 def product = "civil"
 def component = "ga-ccd"
 def camundaBranch = "master"
-def ccddefbranch = "CIV-0000-testSdo"
-def dmnBranch = "feat/CIV-9930"
+def ccddefbranch = "master"
+def dmnBranch = "master"
 def waStandaloneBranch = "master"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
