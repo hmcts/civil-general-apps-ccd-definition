@@ -39,6 +39,30 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppRespondDebtorUploadLabel",
+    "DisplayContext": "READONLY",
+    "PageID": "GARespondentDebtorOffer",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "gaRespondentDebtorOffer.respondentDebtorOffer=\"DECLINE\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppRespondDebtorDocument",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "GARespondentDebtorOffer",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "gaRespondentDebtorOffer.respondentDebtorOffer=\"DECLINE\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "gaRespondentConsent",
     "DisplayContext": "MANDATORY",
     "PageID": "GARespondentConsent",
