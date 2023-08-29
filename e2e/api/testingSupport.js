@@ -52,6 +52,14 @@ module.exports = {
    */
   waitForGAFinishedBusinessProcess: async (caseId, user) => {
     const authToken = await idamHelper.accessToken(user);
+    const s2sAuth = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
     console.log('** Start waitForGAFinishedBusinessProcess to wait for GA Camunda Tasks to Start and Finish **');
 
     await retry(() => {
