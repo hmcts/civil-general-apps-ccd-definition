@@ -67,8 +67,7 @@ module.exports = {
         `${config.url.generalApplication}/testing-support/case/${caseId}/business-process/ga`,
         {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`,
-          'ServiceAuthorization': s2sAuth
+          'Authorization': `Bearer ${authToken}`
         }, null, 'GET')
         .then(async response => await response.json()).then(response => {
           let businessProcess = response.businessProcess;
