@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CHANGE_STATE_TO_AWAITING_JUDICIAL_DECISION",
+    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
     "CaseFieldID": "generalAppUrgencyRequirement",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
@@ -14,7 +14,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CHANGE_STATE_TO_AWAITING_JUDICIAL_DECISION",
+    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
     "CaseFieldID": "generalAppType",
     "DisplayContext": "OPTIONAL",
     "PageID": "GATypePage",
@@ -27,7 +27,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CHANGE_STATE_TO_AWAITING_JUDICIAL_DECISION",
+    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
     "CaseFieldID": "isCcmccLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
@@ -40,7 +40,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CHANGE_STATE_TO_AWAITING_JUDICIAL_DECISION",
+    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
     "CaseFieldID": "generalAppSuperClaimType",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
@@ -53,7 +53,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CHANGE_STATE_TO_AWAITING_JUDICIAL_DECISION",
+    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
     "CaseFieldID": "generalAppConsentOrder",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
@@ -66,11 +66,11 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CHANGE_STATE_TO_AWAITING_JUDICIAL_DECISION",
-    "CaseFieldID": "judicialDecision",
-    "PageID": "GAJudicialDecision",
+    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
+    "CaseFieldID": "referToJudge",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
+    "PageID": "isMultiPartyPage4",
     "PageDisplayOrder": 11,
     "PageColumnNumber": 1,
     "PageShowCondition": "generalAppSuperClaimType = \"DO_NOT_SHOW_IN_UI\"",
@@ -79,12 +79,12 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CHANGE_STATE_TO_AWAITING_JUDICIAL_DECISION",
-    "CaseFieldID": "referToJudge",
+    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
+    "CaseFieldID": "referToLegalAdvisor",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
-    "PageID": "GaReferToJudge",
-    "PageDisplayOrder": 12,
+    "PageID": "isMultiPartyPage5",
+    "PageDisplayOrder": 11,
     "PageColumnNumber": 1,
     "PageShowCondition": "generalAppSuperClaimType = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
@@ -92,14 +92,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CHANGE_STATE_TO_AWAITING_JUDICIAL_DECISION",
-    "CaseFieldID": "referToLegalAdvisor",
-    "PageID": "GaReferToLegalAdvisor",
+    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
+    "CaseFieldID": "judicialDecision",
+    "PageID": "isMultiPartyPage6",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL",
-    "PageDisplayOrder": 13,
+    "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "PageShowCondition": "generalAppSuperClaimType = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
+    "DisplayContext": "OPTIONAL",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
