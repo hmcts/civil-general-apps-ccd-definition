@@ -648,7 +648,7 @@ module.exports = {
     await addUserCaseMapping(gaCaseId, user);
   },
 
-  respondentResponse1v2: async (user, user2, gaCaseId) => {
+  respondentResponse1v2: async (user, user2, gaCaseId, agree=true) => {
      await respondentResponse1v2WithPayload(user, user2, gaCaseId, data.RESPOND_TO_APPLICATION(agree));
   },
 
