@@ -657,7 +657,7 @@ module.exports = {
      await respondentResponse1v2WithPayload(user, user2, gaCaseId, data.RESPOND_TO_APPLICATION(agree));
   },
 
-  respondentConsentResponse1v2: async (user, user2, gaCaseId, agree=false) => {
+  respondentConsentResponse1v2: async (user, user2, gaCaseId, agree=true) => {
     await respondentResponse1v2WithPayload(user, user2, gaCaseId, data.RESPOND_TO_CONSENT_APPLICATION(agree));
   },
 

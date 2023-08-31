@@ -21,7 +21,7 @@ Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentConsentResponse1v2(config.applicantSolicitorUser,
-    config.defendantSolicitorUser, gaCaseReference, false);
+    config.defendantSolicitorUser, gaCaseReference, true);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   if (config.runWAApiTest || ['demo'].includes(config.runningEnv)) {
