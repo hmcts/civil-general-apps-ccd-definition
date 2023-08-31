@@ -44,7 +44,7 @@ Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT  as DEFENDANT - DIRECTIONS O
   gaCaseReference = await api.initiateGaWithVaryJudgement(config.defendantSolicitorUser, civilCaseReference, false, false);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentDebtorResponse(config.applicantSolicitorUser, gaCaseReference);
+  await api.respondentDebtorResponse(config.applicantSolicitorUser, gaCaseReference, false);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
