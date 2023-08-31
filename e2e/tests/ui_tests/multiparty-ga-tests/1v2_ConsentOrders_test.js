@@ -17,7 +17,7 @@ Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
 
   console.log('Make a General Application');
   gaCaseReference = await api.initiateConsentGeneralApplication(config.secondDefendantSolicitorUser,
-    civilCaseReference, false, false);
+    civilCaseReference, ['STAY_THE_CLAIM'],false, false);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentConsentResponse1v2(config.applicantSolicitorUser,
