@@ -63,5 +63,44 @@
     "ShowSummaryChangeOption": "N",
     "Publish": "Y",
     "PageShowCondition": "generalAppSuperClaimType = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "TRIGGER_LOCATION_UPDATE",
+    "CaseFieldID": "judicialDecision",
+    "PageID": "GAJudicialDecision",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageDisplayOrder": 11,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y",
+    "PageShowCondition": "generalAppSuperClaimType = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "TRIGGER_LOCATION_UPDATE",
+    "CaseFieldID": "referToJudge",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "GaReferToJudge",
+    "PageDisplayOrder": 12,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y",
+    "PageShowCondition": "generalAppSuperClaimType = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "TRIGGER_LOCATION_UPDATE",
+    "CaseFieldID": "referToLegalAdvisor",
+    "PageID": "GaReferToLegalAdvisor",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageDisplayOrder": 13,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y",
+    "PageShowCondition": "generalAppSuperClaimType = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

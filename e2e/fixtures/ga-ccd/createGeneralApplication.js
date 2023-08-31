@@ -635,7 +635,7 @@ module.exports = {
     };
   },
 
-  createGaWithConsentAndNotice: (gaTypes, consent, withNotice, calculatedAmount, code) => {
+  createGaWithConsentAndNotice: (gaTypes, consent, urgency, withNotice, calculatedAmount, code) => {
     return {
       generalAppType: {
         types: gaTypes,
@@ -644,9 +644,9 @@ module.exports = {
         hasAgreed: consent ? 'Yes':'No'
       },
       generalAppUrgencyRequirement: {
-        generalAppUrgency: 'No',
-        urgentAppConsiderationDate: null,
-        reasonsForUrgency: null,
+        generalAppUrgency: urgency ? 'Yes' : 'No',
+        urgentAppConsiderationDate: urgency ? date(1) : null,
+        reasonsForUrgency: urgency ? 'Urgent!' : null,
         ConsentAgreementCheckBox: []
       },
       generalAppInformOtherParty: withNotice == null ? null : {
