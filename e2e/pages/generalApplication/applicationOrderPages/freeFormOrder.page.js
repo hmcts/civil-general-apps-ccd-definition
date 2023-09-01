@@ -1,4 +1,3 @@
-const {expect} = require('chai');
 const date = require('../../../fragments/date');
 const {selectCourtsOrderType} = require('../../generalAppCommons');
 const {I} = inject();
