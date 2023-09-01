@@ -2967,22 +2967,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "freeFormRecordedTextAreaLabel",
-    "UserRoles": [
-      "judge-profile"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "freeFormRecordedText",
-    "UserRoles": [
-      "judge-profile"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "freeFormOrderedLabel",
     "UserRoles": [
       "judge-profile"

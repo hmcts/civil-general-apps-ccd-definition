@@ -79,7 +79,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "freeFormRecordedTextAreaLabel",
+    "CaseFieldID": "freeFormOrderedLabel",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
@@ -89,29 +89,9 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "freeFormRecordedText",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "FreeFormOrder",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "freeFormOrderedLabel",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 6,
-    "DisplayContext": "READONLY",
-    "PageID": "FreeFormOrder",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "freeFormOrderedText",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 7,
+    "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "FreeFormOrder",
     "ShowSummaryChangeOption": "Y"
@@ -121,7 +101,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderOnCourtsListLabel",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 8,
+    "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "FreeFormOrder",
     "ShowSummaryChangeOption": "Y"
@@ -131,7 +111,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderOnCourtsList",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 9,
+    "PageFieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",
     "PageID": "FreeFormOrder",
     "ShowSummaryChangeOption": "Y"
@@ -141,7 +121,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderOnCourtInitiative",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 10,
+    "PageFieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY",
     "PageID": "FreeFormOrder",
     "ShowSummaryChangeOption": "Y",
@@ -153,7 +133,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderWithoutNotice",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 11,
+    "PageFieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY",
     "PageID": "FreeFormOrder",
     "ShowSummaryChangeOption": "Y",

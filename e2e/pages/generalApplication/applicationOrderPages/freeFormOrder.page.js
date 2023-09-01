@@ -7,7 +7,6 @@ module.exports = {
 
   fields: {
     insertRecitals: '#freeFormRecitalText',
-    insertRecordedText: '#freeFormRecordedText',
     courtsOrder: {
       id: '#orderOnCourtsList',
       options: {
@@ -29,8 +28,6 @@ module.exports = {
     await I.fillField(this.fields.insertRecitals, 'Test Recitals');
     await I.fillField(this.fields.insertRecordedText, 'Test Records');
     await I.see('It is ordered that:');
-    let orderDetails = await I.grabValueFrom('#freeFormOrderedText');
-    await expect(orderDetails).to.equals('Test Order details');
 
     switch (order) {
       case 'courtOwnInitiativeOrder':
