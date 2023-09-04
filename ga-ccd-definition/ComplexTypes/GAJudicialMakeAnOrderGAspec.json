@@ -1,8 +1,16 @@
 [
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "showJudgeRecitalText",
+    "ElementLabel": "Recitals",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "judgeRecitalText",
-    "ElementLabel": "Judge’s recital",
+    "ElementLabel": "The court records that:",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
