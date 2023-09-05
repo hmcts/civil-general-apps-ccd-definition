@@ -1995,7 +1995,7 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
 
   const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
   const updatedCivilCaseData = await updatedResponse.json();
-  let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+  let gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails[0].value.caseLink.CaseReference;
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
 
