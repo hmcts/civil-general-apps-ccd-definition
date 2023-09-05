@@ -1936,9 +1936,10 @@ const initiateGaWithState = async (user, parentCaseId, expectState, payload) => 
   await waitForFinishedBusinessProcess(parentCaseId, user);
   await waitForGAFinishedBusinessProcess(parentCaseId, user);
 
-  const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
-  const updatedCivilCaseData = await updatedResponse.json();
-  let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails.pop().value.caseLink.CaseReference;
+ // const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+//  const updatedCivilCaseData = await updatedResponse.json();
+  let gaCaseReference = await api.getGACaseReference(user, parentCaseId);
+
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
 
