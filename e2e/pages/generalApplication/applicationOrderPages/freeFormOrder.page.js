@@ -47,7 +47,7 @@ module.exports = {
   async verifyFreeFromErrorMessage() {
     await I.waitInUrl('/GENERATE_DIRECTIONS_ORDER/GENERATE_DIRECTIONS_ORDERFreeFormOrder', 5);
     await I.click('Continue');
-    await I.seeNumberOfVisibleElements('.error-message', 2);
+    await I.seeNumberOfVisibleElements('.error-message', 3);
   }
 };
 
