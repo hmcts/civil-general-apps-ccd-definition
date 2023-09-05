@@ -113,8 +113,8 @@ module.exports = {
       judicialDecision : {
         decision: 'FREE_FORM_ORDER'
       },
-      finalOrderSelection : 'FREE_FORM_ORDER',
       caseNameHmctsInternal: 'Test Inc v Sir John Doe, Dr Foo Bar',
+      caseParticipantsFreeForm: 'Test Inc v Sir John Doe, Dr Foo Bar',
       freeFormRecitalText: 'Recital of who attended',
       freeFormOrderedText: 'Orders that were made',
       orderOnCourtsList: 'ORDER_ON_COURT_INITIATIVE',
@@ -126,7 +126,6 @@ module.exports = {
         onInitiativeSelectionDate: date()
       }
     };
-
   },
   listingForHearing: () => {
     return {
