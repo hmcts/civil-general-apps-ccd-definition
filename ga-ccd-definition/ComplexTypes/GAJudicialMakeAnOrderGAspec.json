@@ -1,10 +1,24 @@
 [
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "judgeRecitalLabel",
+    "ElementLabel": "### Recitals",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "showJudgeRecitalText",
-    "ElementLabel": "Recitals",
+    "ElementLabel": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "judgeOrderLabel",
+    "ElementLabel": "### Order",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -25,7 +39,7 @@
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "orderText",
-    "ElementLabel": "Order",
+    "ElementLabel": "The court orders that:",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 4000,
@@ -65,7 +79,7 @@
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "dismissalOrderText",
-    "ElementLabel": "Dismissal order",
+    "ElementLabel": "The court orders that:",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 4000,
@@ -74,7 +88,7 @@
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "directionsText",
-    "ElementLabel": "Directions",
+    "ElementLabel": "The court orders that:",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 4000,
