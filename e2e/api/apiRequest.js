@@ -32,7 +32,8 @@ const getRequestHeaders = (userAuth) => {
 
 const getRequestHeadersPayment = () => {
   return {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'ServiceAuthorization': tokens.s2sAuth
   };
 };
 const getGeneralApplicationBaseUrl = () => `${config.url.generalApplication}/testing-support/case/`;
