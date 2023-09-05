@@ -38,8 +38,7 @@ const sdoTracks = require('../fixtures/events/createSDO.js');
 const {expect} = require('chai');
 const gaTypesList = {
   'LATypes': ['STAY_THE_CLAIM','EXTEND_TIME', 'AMEND_A_STMT_OF_CASE'],
-  'JudgeGaTypes': ['SET_ASIDE_JUDGEMENT'],
-  'ConsentGaTypes': ['STAY_THE_CLAIM']
+  'JudgeGaTypes': ['SET_ASIDE_JUDGEMENT']
 };
 
 const data = {
@@ -53,7 +52,9 @@ const data = {
     '10800', 'FEE0443'),
   INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE: genAppData.createGADataWithoutNotice('No','Test 123',
     '10800','FEE0443'),
-  INITIATE_GENERAL_APPLICATION_CONSENT: genAppData.createGaWithConsentAndNotice(gaTypesList.ConsentGaTypes, true, null,
+  INITIATE_GENERAL_APPLICATION_CONSENT: (genAppType) => genAppData.createGaWithConsentAndNotice(genAppType, true, false,null,
+    '10800','FEE0443'),
+  INITIATE_GENERAL_APPLICATION_CONSENT_URGENT:(genAppType) => genAppData.createGaWithConsentAndNotice(genAppType, true, true,null,
     '10800','FEE0443'),
   INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
   INITIATE_GENERAL_APPLICATION_STAY_CLAIM: genAppData.gaTypeWithStayClaim(),
@@ -373,11 +374,15 @@ module.exports = {
   },
 
   initiateGeneralApplication: async (user, parentCaseId) => {
-    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', data.INITIATE_GENERAL_APPLICATION);
+    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', data.INITIATE_GENERAL_APPLICATION);
   },
 
-  initiateConsentGeneralApplication: async (user, parentCaseId) => {
-    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', data.INITIATE_GENERAL_APPLICATION_CONSENT);
+  initiateConsentGeneralApplication: async (user, parentCaseId, gaAppType) => {
+    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', data.INITIATE_GENERAL_APPLICATION_CONSENT(gaAppType));
+  },
+
+  initiateConsentUrgentGeneralApplication: async (user, parentCaseId, gaAppType ) => {
+    return await initiateGaWithState(user, parentCaseId, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', data.INITIATE_GENERAL_APPLICATION_CONSENT_URGENT(gaAppType));
   },
 
   checkGeneralApplication: async (user, parentCaseId) => {
@@ -1649,6 +1654,10 @@ module.exports = {
       deleteCaseFields('respondent1ClaimResponseType');
       deleteCaseFields('respondent1DQExperts');
       deleteCaseFields('respondent1DQWitnesses');
+
+      deleteCaseFields('respondent1Experts');
+      deleteCaseFields('respondent1Witnesses');
+      deleteCaseFields('respondent1DetailsForClaimDetailsTab');
     }
     await validateEventPagesWithCheck(defendantResponseData, false, solicitor);
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
@@ -1939,7 +1948,7 @@ const initiateGaWithState = async (user, parentCaseId, expectState, payload) => 
   assert.equal(payment_response.status, 200);
 
   //comment out next line to see race condition
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,expectState , user);
   await addUserCaseMapping(gaCaseReference, user);
   return gaCaseReference;
 };
@@ -2202,6 +2211,10 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1DQDraftDirections'];
     delete responseBody.data['respondent1DQRequestedCourt'];
     delete responseBody.data['respondent1DQFurtherInformation'];
+    delete responseBody.data['respondent1ResponseDeadline'];
+    delete responseBody.data['respondent1Experts'];
+    delete responseBody.data['respondent1Witnesses'];
+    delete responseBody.data['respondent1DetailsForClaimDetailsTab'];
   } else {
     delete responseBody.data['respondent2'];
   }
