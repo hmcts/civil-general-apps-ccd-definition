@@ -6,6 +6,7 @@ module.exports = {
 
   fields: {
     insertRecitals: '#freeFormRecitalText',
+    orderText: '#freeFormOrderedText',
     courtsOrder: {
       id: '#orderOnCourtsList',
       options: {
@@ -25,8 +26,8 @@ module.exports = {
     await I.see('Test Inc v Sir John Doe');
     await I.see('Recitals and order');
     await I.fillField(this.fields.insertRecitals, 'Test Recitals');
-    await I.fillField(this.fields.insertRecordedText, 'Test Records');
-    await I.see('It is ordered that:');
+    await I.see('Ordered');
+    await I.fillField(this.fields.insertRecitals, 'Test Order');
 
     switch (order) {
       case 'courtOwnInitiativeOrder':
