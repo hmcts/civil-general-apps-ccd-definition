@@ -6,6 +6,7 @@ module.exports = {
 
   fields: {
     insertRecitals: '#freeFormRecitalText',
+    orderText: '#freeFormOrderedText',
     courtsOrder: {
       id: '#orderOnCourtsList',
       options: {
@@ -25,8 +26,8 @@ module.exports = {
     await I.see('Test Inc v Sir John Doe');
     await I.see('Recitals and order');
     await I.fillField(this.fields.insertRecitals, 'Test Recitals');
-    await I.fillField(this.fields.insertRecordedText, 'Test Records');
-    await I.see('It is ordered that:');
+    await I.see('Ordered');
+    await I.fillField(this.fields.orderText, 'Test Order');
 
     switch (order) {
       case 'courtOwnInitiativeOrder':
@@ -47,7 +48,7 @@ module.exports = {
   async verifyFreeFromErrorMessage() {
     await I.waitInUrl('/GENERATE_DIRECTIONS_ORDER/GENERATE_DIRECTIONS_ORDERFreeFormOrder', 5);
     await I.click('Continue');
-    await I.seeNumberOfVisibleElements('.error-message', 2);
+    await I.seeNumberOfVisibleElements('.error-message', 3);
   }
 };
 
