@@ -27,7 +27,7 @@ module.exports = {
     await I.see('Recitals and order');
     await I.fillField(this.fields.insertRecitals, 'Test Recitals');
     await I.see('Ordered');
-    await I.fillField(this.fields.insertRecitals, 'Test Order');
+    await I.fillField(this.fields.orderText, 'Test Order');
 
     switch (order) {
       case 'courtOwnInitiativeOrder':
