@@ -5,7 +5,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference,
   gaCaseReference;
 
-Feature('GA 1v2 Notify Claim Details Case Close API tests @api-offline-nightly @api-nightly');
+Feature('GA 1v2 Notify Claim Details Case Close API tests @api-offline-nightly @api-nightly @runtest');
 
 Scenario('Case offline 1V2 notify_claim_details AWAITING_DIRECTIONS_ORDER_DOCS', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -14,7 +14,7 @@ Scenario('Case offline 1V2 notify_claim_details AWAITING_DIRECTIONS_ORDER_DOCS',
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
 
   gaCaseReference
-    = await api.initiateGeneralApplicationWithState(config.applicantSolicitorUser, civilCaseReference, 'AWAITING_CASE_DETAILS_NOTIFICATION');
+    = await api.initiateGeneralApplicationWithState(config.applicantSolicitorUser, civilCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
@@ -33,5 +33,5 @@ Scenario('Case offline 1V2 notify_claim_details AWAITING_DIRECTIONS_ORDER_DOCS',
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
