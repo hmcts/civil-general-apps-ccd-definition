@@ -18,7 +18,7 @@ module.exports = {
     await verifyGAApplicantName(await I.grabTextFrom(locate(this.fields.applicantNameText).last()), applicantName);
     switch (decisionType) {
       case 'Judges Directions':
-        await I.see('Judge’s recital');
+        await I.see('The court records that:');
         await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice, user);
         await I.see('Reasons for decision');
         await I.see('Directions');
@@ -48,14 +48,14 @@ module.exports = {
         await I.see('When should this application be referred to a Judge again?');
         break;
       case 'Dismissal order':
-        await I.see('Judge’s recital');
+        await I.see('The court records that:');
         await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice, user);
         await I.see('Judges dismissed the order');
         await I.see('Dismissal order');
         await I.see('Reasons for decision');
         break;
       case 'Approve order':
-        await I.see('Judge’s recital');
+        await I.see('The court records that:');
         await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice, user);
         await I.see('For which document?');
         await I.see('Reasons for decision');
