@@ -53,7 +53,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "assistedOrderMadeDateHeardDetails",
     "Label": " ",
-    "FieldType": "DateHeardFinalOrders",
+    "FieldType": "AssistedOrderMadeDateSelection",
     "SecurityClassification": "Public"
   },
   {
