@@ -35,7 +35,7 @@ module.exports = {
     judgeApproveEditOptionDateYear: '#judgeApproveEditOptionDate-year',
   },
 
-  async selectAnOrder(order, notice, orderType, user) {
+  async selectAnOrder(order, notice, orderType) {
     await I.waitForElement(this.fields.makeAnOrder.id);
     I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialMakeADecisionScreen');
     I.see('The court records that:');
