@@ -38,7 +38,7 @@ module.exports = {
   async selectAnOrder(order, notice, orderType, user) {
     await I.waitForElement(this.fields.makeAnOrder.id);
     I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialMakeADecisionScreen');
-    I.see('Judge’s recital');
+    I.see('The court records that:');
     await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.judgeRecitalTextArea), notice, user);
     I.see('Reasons for decision');
     if (notice === 'no') {
