@@ -50,7 +50,6 @@ module.exports = {
   },
 
   verifyJudgeRecitalText: async (actualJudgeRecitalText, notice, user) => {
-    let fullJudgeName = await apiRequest.getUserFullName(user);
     if (notice === 'no') {
       await expect(actualJudgeRecitalText).to.equals(`The Judge considered the without notice application of Claimant dated ${fullDate}\n\nAnd the Judge considered the information provided by the Claimant`);
     } else if (notice === 'yes') {
