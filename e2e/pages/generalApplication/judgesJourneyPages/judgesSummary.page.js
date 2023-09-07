@@ -8,7 +8,7 @@ module.exports = {
     applicantNameText: 'td[id*="gaApplicantDisplayName"] span'
   },
 
-  async verifyJudgesSummaryPage(decisionType, notice, applicantName, user) {
+  async verifyJudgesSummaryPage(decisionType, notice, applicantName) {
     I.waitInUrl('#Application');
     I.see('Application');
     I.see('Parent Case ID');

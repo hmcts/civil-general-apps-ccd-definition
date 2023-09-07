@@ -16,7 +16,7 @@ module.exports = {
     }
   },
 
-  async verifyHearingDetailsGeneralOrderScreen(hearingPreferences, timeEstimate, notice, orderType, user) {
+  async verifyHearingDetailsGeneralOrderScreen(hearingPreferences, timeEstimate, notice, orderType) {
     await I.waitForElement(this.fields.hearingDetailsJudgeRecitalTextArea);
     I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialHearingDetailsGeneralOrderScreen');
     I.see('Draw a General Order');
@@ -44,7 +44,7 @@ module.exports = {
     await I.clickContinue();
   },
 
-  async verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType, notice, orderType, user) {
+  async verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType, notice, orderType) {
     await I.waitForElement(this.fields.writtenRepresentationsJudgeRecitalTextArea);
     I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialWrittenRepresentationsDrawGeneralOrder');
     I.see('Draw a General Order');
