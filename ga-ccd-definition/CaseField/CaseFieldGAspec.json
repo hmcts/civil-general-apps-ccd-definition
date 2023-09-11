@@ -444,7 +444,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "judicialDecision",
-    "Label": "What is your decision on this application?",
+    "Label": "What do you wish to do in relation to this application?",
     "FieldType": "GAJudicialDecisionGAspec",
     "SecurityClassification": "Public"
   },
