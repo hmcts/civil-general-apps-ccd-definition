@@ -885,11 +885,11 @@ module.exports = function () {
         () => judgeOrderPage.selectOrderType(orderType),
         ...conditionalSteps(orderType === 'freeFromOrder', [
           () => freeFormOrderPage.verifyFreeFromErrorMessage(),
-          () => freeFormOrderPage.fillFreeFormOrder(formType),
+          () => freeFormOrderPage.fillFreeFormOrder(orderType, formType),
         ]),
         ...conditionalSteps(orderType === 'assistedOrder', [
           () => assistedOrderPage.verifyAssistedOrderErrorMessage(),
-          () => assistedOrderPage.isOrderMade('yes'),
+          () => assistedOrderPage.isOrderMade('yes', orderType),
           () => assistedOrderPage.fillJudgeHeardForm(),
           () => assistedOrderPage.fillRecitals(),
           () => assistedOrderPage.selectCosts(),
