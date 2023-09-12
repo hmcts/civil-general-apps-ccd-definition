@@ -1938,7 +1938,19 @@ const initiateGaWithState = async (user, parentCaseId, expectState, payload) => 
 
   const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
   const updatedCivilCaseData = await updatedResponse.json();
-  let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails.pop().value.caseLink.CaseReference;
+  let gaCaseReference;
+  if(user.email === config.applicantSolicitorUser.email){
+    gaCaseReference = updatedCivilCaseData.claimantGaAppDetails.pop().value.caseLink.CaseReference;
+  }
+  else if(user.email === config.defendantSolicitorUser.email) {
+    gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails.pop().value.caseLink.CaseReference;
+  }
+  else if(user.email === config.secondDefendantSolicitorUser.email) {
+    gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails.pop().value.caseLink.CaseReference;
+  }
+  else{
+    gaCaseReference = updatedCivilCaseData.gaDetailsMasterCollection.pop().value.caseLink.CaseReference;
+  }
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
 
@@ -1995,7 +2007,20 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
 
   const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
   const updatedCivilCaseData = await updatedResponse.json();
-  let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+  let gaCaseReference;
+  if(user.email === config.applicantSolicitorUser.email){
+    gaCaseReference = updatedCivilCaseData.claimantGaAppDetails.pop().value.caseLink.CaseReference;
+  }
+  else if(user.email === config.defendantSolicitorUser.email) {
+    gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails.pop().value.caseLink.CaseReference;
+  }
+  else if(user.email === config.secondDefendantSolicitorUser.email) {
+    gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails.pop().value.caseLink.CaseReference;
+  }
+  else{
+    gaCaseReference = updatedCivilCaseData.gaDetailsMasterCollection.pop().value.caseLink.CaseReference;
+  }
+
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
 
