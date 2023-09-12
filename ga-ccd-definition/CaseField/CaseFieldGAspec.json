@@ -1062,6 +1062,77 @@
     "FieldTypeParameter": "Document",
     "Label": "Respondent Evidence",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppRespondReason",
+    "Label": "Reasons why",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppRespondUploadLabel",
+    "Label": "## Upload any evidence that supports your position \nBefore uploading your files, make sure:\n* is 100mb or smaller \n* is one of the following file types: JPG, PNG, SVG, GIF, DOC or PDF \n* has an accurate file name - for example WitnessStatement_JaneDoe_FirstDefendant_01_3_2022.doc\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppRespondDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload evidence",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaRespondDoc",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Respond upload evidence",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppRespondConsentReason",
+    "Label": "Reasons why",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppRespondConsentUploadLabel",
+    "Label": "## Upload any evidence that supports your position \nBefore uploading your files, make sure:\n* is 100mb or smaller \n* is one of the following file types: JPG, PNG, SVG, GIF, DOC or PDF \n* has an accurate file name - for example WitnessStatement_JaneDoe_FirstDefendant_01_3_2022.doc\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppRespondConsentDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload evidence",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppRespondDebtorUploadLabel",
+    "Label": "## Upload any evidence that supports your position \nBefore uploading your files, make sure:\n* is 100mb or smaller \n* is one of the following file types: JPG, PNG, SVG, GIF, DOC or PDF \n* has an accurate file name - for example WitnessStatement_JaneDoe_FirstDefendant_01_3_2022.doc\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppRespondDebtorDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload evidence",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public"
   }
 ]
 

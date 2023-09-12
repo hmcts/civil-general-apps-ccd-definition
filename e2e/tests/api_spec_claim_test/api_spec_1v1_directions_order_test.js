@@ -14,7 +14,7 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
+  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference, false);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
