@@ -179,9 +179,18 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "reasonForDecisionLabel",
+    "ListElementCode": "orderWithoutNoticeDate",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 19,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialMakeADecisionScreen",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "reasonForDecisionLabel",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 20,
     "DisplayContext": "READONLY"
   },
   {
@@ -189,15 +198,6 @@
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "showReasonForDecision",
-    "EventElementLabel": " ",
-    "FieldDisplayOrder": 20,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "GAJudicialMakeADecisionScreen",
-    "CaseEventID": "MAKE_DECISION",
-    "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "orderWithoutNoticeDate",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 21,
     "DisplayContext": "MANDATORY"
