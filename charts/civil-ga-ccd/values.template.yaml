@@ -1,6 +1,6 @@
 civil-general-applications:
   java:
-    image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3033'
     imagePullPolicy: Always
     keyVaults:
       civil:
