@@ -80,6 +80,7 @@ const data = {
   JUDGE_APPROVES_UNLESSORDER_APPLN: (current_date) => genAppJudgeMakeDecisionData.judgeApprovesUnlessOrderAppl(current_date),
   PAYMENT_SERVICE_REQUEST_UPDATED: genAppJudgeMakeDecisionData.serviceUpdateDto(),
   LIST_FOR_A_HEARING: genAppJudgeMakeDecisionData.listingForHearing(),
+  JUDGE_DECIDES_FREE_FORM_ORDER: genAppJudgeMakeDecisionData.freeFormOrder(),
   LIST_FOR_A_HEARING_InPerson: genAppJudgeMakeDecisionData.listingForHearingInPerson(),
   SCHEDULE_HEARING: genAppHearingData.scheduleHearing(),
   APPLICATION_DISMISSED: genAppJudgeMakeDecisionData.applicationsDismiss(),
@@ -1125,6 +1126,25 @@ module.exports = {
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'LISTING_FOR_A_HEARING');
+  },
+
+  judgeListApplicationForFreeFormOrder: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.MAKE_DECISION.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_DECIDES_FREE_FORM_ORDER, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE', user);
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
   },
 
   judgeListApplicationForHearingInPerson: async (user, gaCaseId) => {

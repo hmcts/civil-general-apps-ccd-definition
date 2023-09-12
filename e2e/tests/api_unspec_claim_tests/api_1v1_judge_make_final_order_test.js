@@ -6,6 +6,28 @@ let civilCaseReference, gaCaseReference;
 
 Feature('Before SDO 1v1 - GA CP - Hearing Notice document API tests @api-tests');
 
+Scenario('Judge decides Free Form Order', async ({api}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(
+    config.applicantSolicitorUser, mpScenario, 'Company');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+  console.log('Make a General Application');
+  gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
+
+  console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
+  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
+  console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
+  console.log('*** Start Judge decides Free Form Order on GA Case Reference: ' + gaCaseReference + ' ***');
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeListApplicationForFreeFormOrder(config.judgeUser, gaCaseReference);
+  } else {
+    await api.judgeListApplicationForFreeFormOrder(config.judgeLocalUser, gaCaseReference);
+  }
+  console.log('*** End Judge decides Free Form Order: ' + gaCaseReference + ' ***');
+});
+
 Scenario('Defendant Hearing notice journey', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');

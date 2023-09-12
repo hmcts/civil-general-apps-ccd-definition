@@ -938,7 +938,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "freeFormRecitalAndOrderLabel",
-    "Label": "**** \n ## Recitals and order \n ### Insert any recitals and order you wish to make below",
+    "Label": "**** \n ## Recitals and order \n ### The court records that:",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -951,22 +951,8 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "freeFormRecordedTextAreaLabel",
-    "Label": "### It is recorded that (Optional):",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "freeFormRecordedText",
-    "Label": " ",
-    "FieldType": "TextArea",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "freeFormOrderedLabel",
-    "Label": "**** \n ## Ordered \n ### It is ordered that:",
+    "Label": "**** \n ## Ordered \n ### The court orders that:",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
