@@ -6,7 +6,8 @@ module.exports = {
     judgeDecision: {
       id: '#judicialDecision_judicialDecision',
       options: {
-        makeAnOrder: 'Make an order',
+        makeAnOrder: 'Make an order without a hearing',
+        freeFormOrder: 'Free form order',
         requestMoreInfo: 'Request more information',
         listForAHearing: 'List for a hearing',
         orderForWrittenRepresentations: 'Make an order for written representations'
