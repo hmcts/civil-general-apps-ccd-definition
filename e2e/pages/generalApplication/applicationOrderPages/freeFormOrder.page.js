@@ -21,7 +21,7 @@ module.exports = {
     },
   },
 
-  async fillFreeFormOrder(order) {
+  async fillFreeFormOrder(orderType, formType) {
     await I.waitInUrl('/GENERATE_DIRECTIONS_ORDER/GENERATE_DIRECTIONS_ORDERFreeFormOrder', 5);
     await I.see('Test Inc v Sir John Doe');
     await I.see('Recitals and order');
@@ -29,17 +29,17 @@ module.exports = {
     await I.see('Ordered');
     await I.fillField(this.fields.orderText, 'Test Order');
 
-    switch (order) {
+    switch (formType) {
       case 'courtOwnInitiativeOrder':
-        await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtsOrder.courtInitiativeOrderText)).trim(), order);
-        await date.verifyPrePopulatedDate(this.fields.courtsOrder.onInitiativeSelectionDateId);
+        await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtsOrder.courtInitiativeOrderText)).trim(), formType);
+        await date.verifyPrePopulatedDate(this.fields.courtsOrder.onInitiativeSelectionDateId, orderType);
         break;
       case 'withoutNoticeOrder':
-        await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtsOrder.courWithoutNoticeOrderText)).trim(), order);
-        await date.verifyPrePopulatedDate(this.fields.courtsOrder.withoutNoticeSelectionDateId);
+        await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtsOrder.courWithoutNoticeOrderText)).trim(), formType);
+        await date.verifyPrePopulatedDate(this.fields.courtsOrder.withoutNoticeSelectionDateId, orderType);
         break;
       case 'noneOrder':
-        await selectCourtsOrderType('', order, '');
+        await selectCourtsOrderType('', formType, '');
         break;
     }
     await I.clickContinue();
