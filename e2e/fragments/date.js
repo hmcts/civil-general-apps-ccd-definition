@@ -1,5 +1,4 @@
 const {expect} = require('chai');
-const {selectCourtsOrderType} = require('../pages/generalAppCommons');
 const {I} = inject();
 
 module.exports = {
