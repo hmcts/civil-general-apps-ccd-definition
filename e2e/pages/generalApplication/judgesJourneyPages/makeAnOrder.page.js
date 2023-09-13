@@ -91,7 +91,7 @@ module.exports = {
         break;
     }
 
-    await I.click(this.fields.showReasonForDecisionTextArea.options['yes']);
+    await I.click(this.fields.showReasonForDecisionTextArea.options.yes);
     await I.fillField(this.fields.reasonForDecisionTextArea, 'Judges Decision');
     await I.clickContinue();
   }
