@@ -27,8 +27,8 @@ module.exports = {
     showReasonForDecisionTextArea: {
       id: '#judicialDecisionMakeOrder_showReasonForDecision_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#judicialDecisionMakeOrder_showReasonForDecision_Yes',
+        no: '#judicialDecisionMakeOrder_showReasonForDecision_No'
       }
     },
     reasonForDecisionTextArea: '#judicialDecisionMakeOrder_reasonForDecisionText',
@@ -90,8 +90,9 @@ module.exports = {
         await selectCourtsOrderType('', orderType, '');
         break;
     }
-
-    await I.click(this.fields.showReasonForDecisionTextArea.options.yes);
+    await within(this.fields.showReasonForDecisionTextArea.id, () => {
+      I.click(this.fields.showReasonForDecisionTextArea.options.yes);
+    });
     await I.fillField(this.fields.reasonForDecisionTextArea, 'Judges Decision');
     await I.clickContinue();
   }
