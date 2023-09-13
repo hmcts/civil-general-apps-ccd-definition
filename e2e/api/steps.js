@@ -62,9 +62,9 @@ const data = {
   INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT: (isWithNotice, generalAppN245FormUpload, urgency) => genAppData.createGADataVaryJudgement(isWithNotice,null,
     '1400','FEE0458', generalAppN245FormUpload, urgency),
   INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
-  RESPOND_TO_APPLICATION: genAppRespondentResponseData.respondGAData(),
-  RESPOND_DEBTOR_TO_APPLICATION: genAppRespondentResponseData.respondDebtorGAData(),
-  RESPOND_TO_CONSENT_APPLICATION: genAppRespondentResponseData.respondConsentGAData(),
+  RESPOND_TO_APPLICATION: (agree) => genAppRespondentResponseData.respondGAData(agree),
+  RESPOND_DEBTOR_TO_APPLICATION: (agree) => genAppRespondentResponseData.respondDebtorGAData(agree),
+  RESPOND_TO_CONSENT_APPLICATION: (agree) => genAppRespondentResponseData.respondConsentGAData(agree),
   MAKE_DECISION: genAppJudgeMakeDecisionData.judgeMakesDecisionData(),
   APPROVE_CONSENT_ORDER: genAppNbcAdminTask.nbcAdminApproveConsentOrderData(),
   REFER_TO_JUDGE: genAppNbcAdminTask.nbcAdminReferToJudgeData(),
@@ -80,6 +80,7 @@ const data = {
   JUDGE_APPROVES_UNLESSORDER_APPLN: (current_date) => genAppJudgeMakeDecisionData.judgeApprovesUnlessOrderAppl(current_date),
   PAYMENT_SERVICE_REQUEST_UPDATED: genAppJudgeMakeDecisionData.serviceUpdateDto(),
   LIST_FOR_A_HEARING: genAppJudgeMakeDecisionData.listingForHearing(),
+  JUDGE_DECIDES_FREE_FORM_ORDER: genAppJudgeMakeDecisionData.freeFormOrder(),
   LIST_FOR_A_HEARING_InPerson: genAppJudgeMakeDecisionData.listingForHearingInPerson(),
   SCHEDULE_HEARING: genAppHearingData.scheduleHearing(),
   APPLICATION_DISMISSED: genAppJudgeMakeDecisionData.applicationsDismiss(),
@@ -584,12 +585,17 @@ module.exports = {
     return gaCaseReference;
   },
 
-    respondentResponse: async (user, gaCaseId) => {
+    respondentResponse: async (user, gaCaseId, agree=true) => {
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
     await apiRequest.setupTokens(user);
     eventName = events.RESPOND_TO_APPLICATION.id;
     await apiRequest.startGAEvent(eventName, gaCaseId);
-    const response = await apiRequest.submitGAEvent(eventName, data.RESPOND_TO_APPLICATION, gaCaseId);
+    let payload = data.RESPOND_TO_APPLICATION(agree);
+    console.log('*** respondentResponse1v2WithPayload: Start uploading the document ***');
+    const document = await testingSupport.uploadDocument();
+    payload = await updateCaseDataWithPlaceholders(payload, document);
+    console.log('*** respondentResponse1v2WithPayload: Finish uploading the document ***');
+    const response = await apiRequest.submitGAEvent(eventName, payload, gaCaseId);
     const responseBody = await response.json();
 
     assert.equal(response.status, 201);
@@ -603,14 +609,14 @@ module.exports = {
     await addUserCaseMapping(gaCaseId, user);
   },
 
-  respondentResponseConsentOrderApp: async (user, gaCaseId) => {
+  respondentResponseConsentOrderApp: async (user, gaCaseId, agree=true) => {
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
 
     await apiRequest.setupTokens(user);
     eventName = events.RESPOND_TO_APPLICATION.id;
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
-    const response = await apiRequest.submitGAEvent(eventName, data.RESPOND_TO_CONSENT_APPLICATION, gaCaseId);
+    const response = await apiRequest.submitGAEvent(eventName, data.RESPOND_TO_CONSENT_APPLICATION(agree), gaCaseId);
     const responseBody = await response.json();
 
     assert.equal(response.status, 201);
@@ -623,14 +629,19 @@ module.exports = {
     await addUserCaseMapping(gaCaseId, user);
   },
 
-  respondentDebtorResponse: async (user, gaCaseId) => {
+  respondentDebtorResponse: async (user, gaCaseId, agree=true) => {
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_RESPONDENT_RESPONSE', user);
 
     await apiRequest.setupTokens(user);
     eventName = events.RESPOND_TO_APPLICATION.id;
     await apiRequest.startGAEvent(eventName, gaCaseId);
 
-    const response = await apiRequest.submitGAEvent(eventName, data.RESPOND_DEBTOR_TO_APPLICATION, gaCaseId);
+    let payload = data.RESPOND_DEBTOR_TO_APPLICATION(agree);
+    console.log('*** respondentResponse1v2WithPayload: Start uploading the document ***');
+    const document = await testingSupport.uploadDocument();
+    payload = await updateCaseDataWithPlaceholders(payload, document);
+
+    const response = await apiRequest.submitGAEvent(eventName, payload, gaCaseId);
     const responseBody = await response.json();
 
     assert.equal(response.status, 201);
@@ -643,12 +654,12 @@ module.exports = {
     await addUserCaseMapping(gaCaseId, user);
   },
 
-  respondentResponse1v2: async (user, user2, gaCaseId) => {
-     await respondentResponse1v2WithPayload(user, user2, gaCaseId, data.RESPOND_TO_APPLICATION);
+  respondentResponse1v2: async (user, user2, gaCaseId, agree=true) => {
+     await respondentResponse1v2WithPayload(user, user2, gaCaseId, data.RESPOND_TO_APPLICATION(agree));
   },
 
-  respondentConsentResponse1v2: async (user, user2, gaCaseId) => {
-    await respondentResponse1v2WithPayload(user, user2, gaCaseId, data.RESPOND_TO_CONSENT_APPLICATION);
+  respondentConsentResponse1v2: async (user, user2, gaCaseId, agree=true) => {
+    await respondentResponse1v2WithPayload(user, user2, gaCaseId, data.RESPOND_TO_CONSENT_APPLICATION(agree));
   },
 
   nbcAdminReferToJudge: async (user, gaCaseId) => {
@@ -1115,6 +1126,25 @@ module.exports = {
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     assert.equal(updatedGABusinessProcessData.ccdState, 'LISTING_FOR_A_HEARING');
+  },
+
+  judgeListApplicationForFreeFormOrder: async (user, gaCaseId) => {
+    await apiRequest.setupTokens(user);
+    eventName = events.MAKE_DECISION.id;
+    await apiRequest.startGAEvent(eventName, gaCaseId);
+
+    const response = await apiRequest.submitGAEvent(eventName, data.JUDGE_DECIDES_FREE_FORM_ORDER, gaCaseId);
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, 'Your order has been made');
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'ORDER_MADE', user);
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'ORDER_MADE');
   },
 
   judgeListApplicationForHearingInPerson: async (user, gaCaseId) => {
@@ -1938,7 +1968,19 @@ const initiateGaWithState = async (user, parentCaseId, expectState, payload) => 
 
   const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
   const updatedCivilCaseData = await updatedResponse.json();
-  let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails.pop().value.caseLink.CaseReference;
+  let gaCaseReference;
+  if(user.email === config.applicantSolicitorUser.email){
+    gaCaseReference = updatedCivilCaseData.claimantGaAppDetails.pop().value.caseLink.CaseReference;
+  }
+  else if(user.email === config.defendantSolicitorUser.email) {
+    gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails.pop().value.caseLink.CaseReference;
+  }
+  else if(user.email === config.secondDefendantSolicitorUser.email) {
+    gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails.pop().value.caseLink.CaseReference;
+  }
+  else{
+    gaCaseReference = updatedCivilCaseData.gaDetailsMasterCollection.pop().value.caseLink.CaseReference;
+  }
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
 
@@ -1995,7 +2037,20 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
 
   const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
   const updatedCivilCaseData = await updatedResponse.json();
-  let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+  let gaCaseReference;
+  if(user.email === config.applicantSolicitorUser.email){
+    gaCaseReference = updatedCivilCaseData.claimantGaAppDetails.pop().value.caseLink.CaseReference;
+  }
+  else if(user.email === config.defendantSolicitorUser.email) {
+    gaCaseReference = updatedCivilCaseData.respondentSolGaAppDetails.pop().value.caseLink.CaseReference;
+  }
+  else if(user.email === config.secondDefendantSolicitorUser.email) {
+    gaCaseReference = updatedCivilCaseData.respondentSolTwoGaAppDetails.pop().value.caseLink.CaseReference;
+  }
+  else{
+    gaCaseReference = updatedCivilCaseData.gaDetailsMasterCollection.pop().value.caseLink.CaseReference;
+  }
+
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
 
@@ -2083,6 +2138,11 @@ const respondentResponse1v2WithPayload = async (user, user2, gaCaseId, payload) 
 
   await apiRequest.setupTokens(user);
   eventName = events.RESPOND_TO_APPLICATION.id;
+  console.log('*** respondentResponse1v2WithPayload: Start uploading the document ***');
+  const document = await testingSupport.uploadDocument();
+  payload = await updateCaseDataWithPlaceholders(payload, document);
+  console.log('*** respondentResponse1v2WithPayload: Finish uploading the document ***');
+
   await apiRequest.startGAEvent(eventName, gaCaseId);
 
   const response = await apiRequest.submitGAEvent(eventName, payload, gaCaseId);

@@ -1,10 +1,22 @@
 const uuid = require('uuid');
-
+const {date} = require('../../api/dataHelper');
 const docUuid = uuid.v1();
 module.exports = {
-  respondConsentGAData: () => {
+  respondConsentGAData: (agree) => {
     return {
-      gaRespondentConsent: 'Yes',
+      gaRespondentConsent: agree ? 'Yes' : 'No',
+      generalAppRespondConsentReason: agree ? null : 'Reason',
+      generalAppRespondConsentDocument: agree ? null : [
+        {
+          id: docUuid,
+          value: {
+            document_url: '${TEST_DOCUMENT_URL}',
+            document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+            document_filename: '${TEST_DOCUMENT_FILENAME}',
+            documentHash: null
+          }
+        }
+      ],
       hearingDetailsResp: {
         hearingYesorNo: 'No',
         hearingDate: null,
@@ -33,14 +45,28 @@ module.exports = {
         SupportRequirement: []
       }
     };
-  }, respondDebtorGAData: () => {
+  }, respondDebtorGAData: (agree) => {
     return {
       generalAppRespondent1Representative : {
-        hasAgreed: 'No'
+        hasAgreed: agree ? 'Yes' : 'No',
       },
-      gaRespondentDebtorOffer: {
-        respondentDebtorOffer: 'ACCEPT'
+      gaRespondentDebtorOffer: agree ? null : {
+        respondentDebtorOffer: 'DECLINE',
+        paymentPlan: 'PAYFULL',
+        debtorObjections: 'Objection Reason',
+        paymentSetDate: date(1),
       },
+      generalAppRespondDocument: agree ? null : [
+        {
+          id: docUuid,
+          value: {
+            document_url: '${TEST_DOCUMENT_URL}',
+            document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+            document_filename: '${TEST_DOCUMENT_FILENAME}',
+            documentHash: null
+          }
+        }
+      ],
       hearingDetailsResp: {
         hearingYesorNo: 'No',
         hearingDate: null,
@@ -69,11 +95,23 @@ module.exports = {
         SupportRequirement: []
       }
     };
-  }, respondGAData: () => {
+  }, respondGAData: (agree) => {
     return {
       generalAppRespondent1Representative : {
-        hasAgreed: 'No'
+        hasAgreed: agree ? 'Yes' : 'No',
       },
+      generalAppRespondReason : agree ? null : 'Reason',
+      generalAppRespondDocument: agree ? null : [
+        {
+          id: docUuid,
+          value: {
+            document_url: '${TEST_DOCUMENT_URL}',
+            document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+            document_filename: '${TEST_DOCUMENT_FILENAME}',
+            documentHash: null
+          }
+        }
+      ],
       hearingDetailsResp: {
         hearingYesorNo: 'No',
         hearingDate: null,

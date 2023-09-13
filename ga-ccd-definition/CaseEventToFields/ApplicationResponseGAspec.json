@@ -39,6 +39,30 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppRespondDebtorUploadLabel",
+    "DisplayContext": "READONLY",
+    "PageID": "GARespondentDebtorOffer",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "gaRespondentDebtorOffer.respondentDebtorOffer=\"DECLINE\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppRespondDebtorDocument",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "GARespondentDebtorOffer",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "gaRespondentDebtorOffer.respondentDebtorOffer=\"DECLINE\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "gaRespondentConsent",
     "DisplayContext": "MANDATORY",
     "PageID": "GARespondentConsent",
@@ -51,6 +75,42 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppRespondConsentReason",
+    "DisplayContext": "MANDATORY",
+    "PageID": "GARespondentConsent",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "gaRespondentConsent=\"No\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppRespondConsentUploadLabel",
+    "DisplayContext": "READONLY",
+    "PageID": "GARespondentConsent",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "gaRespondentConsent=\"No\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppRespondConsentDocument",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "GARespondentConsent",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "gaRespondentConsent=\"No\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
     "CaseFieldID": "generalAppRespondent1Representative",
     "DisplayContext": "MANDATORY",
     "PageID": "GARespondent1RespScreen",
@@ -58,6 +118,42 @@
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
     "PageShowCondition": "generalAppVaryJudgementType = \"No\" AND generalAppConsentOrder = \"\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppRespondReason",
+    "DisplayContext": "MANDATORY",
+    "PageID": "GARespondent1RespScreen",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "generalAppRespondent1Representative.hasAgreed=\"No\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppRespondUploadLabel",
+    "DisplayContext": "READONLY",
+    "PageID": "GARespondent1RespScreen",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "generalAppRespondent1Representative.hasAgreed=\"No\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "generalAppRespondDocument",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "GARespondent1RespScreen",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "generalAppRespondent1Representative.hasAgreed=\"No\"",
     "ShowSummaryChangeOption": "Y"
   },
   {

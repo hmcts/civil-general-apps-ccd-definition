@@ -6,7 +6,6 @@ module.exports = {
             finalOrderSelection : 'FREE_FORM_ORDER',
             caseNameHmctsInternal: 'Test Inc v Sir John Doe, Dr Foo Bar',
             freeFormRecitalText: 'Recital of who attended',
-            freeFormRecordedText: 'Record of agreement',
             freeFormOrderedText: 'Orders that were made',
             orderOnCourtsList: 'ORDER_ON_COURT_INITIATIVE',
             orderOnCourtInitiative: {
