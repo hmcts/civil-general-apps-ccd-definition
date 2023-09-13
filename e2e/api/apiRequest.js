@@ -29,6 +29,13 @@ const getRequestHeaders = (userAuth) => {
     'ServiceAuthorization': tokens.s2sAuth
   };
 };
+
+const getRequestHeadersPayment = () => {
+  return {
+    'Content-Type': 'application/json',
+    'ServiceAuthorization': tokens.s2sAuth
+  };
+};
 const getGeneralApplicationBaseUrl = () => `${config.url.generalApplication}/testing-support/case/`;
 
 module.exports = {
@@ -61,7 +68,7 @@ module.exports = {
 
   paymentApiRequestUpdateServiceCallback: async (serviceRequestUpdateDto) => {
     let url = getPaymentCallbackUrl();
-    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth),
+    let response = await restHelper.retriedRequest(url, getRequestHeadersPayment(),
       serviceRequestUpdateDto,'PUT');
     return response || {};
   },

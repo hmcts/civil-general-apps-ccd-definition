@@ -1,4 +1,4 @@
-const {listElement} = require('../../api/dataHelper');
+const {date, listElement} = require('../../api/dataHelper');
 const config = require('../../config');
 module.exports = {
   judgeMakesDecisionData: () => {
@@ -112,7 +112,25 @@ module.exports = {
       }
     };
   },
-
+  freeFormOrder: () => {
+    return {
+      judicialDecision : {
+        decision: 'FREE_FORM_ORDER'
+      },
+      caseNameHmctsInternal: 'Test Inc v Sir John Doe, Dr Foo Bar',
+      caseParticipantsFreeForm: 'Test Inc v Sir John Doe, Dr Foo Bar',
+      freeFormRecitalText: 'Recital of who attended',
+      freeFormOrderedText: 'Orders that were made',
+      orderOnCourtsList: 'ORDER_ON_COURT_INITIATIVE',
+      orderOnCourtInitiative: {
+        onInitiativeSelectionTextArea: 'As this order was made on the court\'s own '
+          + 'initiative any party affected by the order '
+          + 'may apply to set aside, vary or stay the order. '
+          + 'Any such application must be made by 4pm on',
+        onInitiativeSelectionDate: date()
+      }
+    };
+  },
   listingForHearing: () => {
     return {
       judicialDecision : {
