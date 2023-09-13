@@ -24,7 +24,13 @@ module.exports = {
     orderTextArea: '#judicialDecisionMakeOrder_orderText',
     dismissalOrderTextArea: '#judicialDecisionMakeOrder_dismissalOrderText',
     directionsTextArea: '#judicialDecisionMakeOrder_directionsText',
-    showReasonForDecisionTextArea: '#judicialDecisionMakeOrder_showReasonForDecision',
+    showReasonForDecisionTextArea: {
+      id: '#judicialDecisionMakeOrder_showReasonForDecision_radio',
+      options: {
+        yes: 'Yes',
+        no: 'No'
+      }
+    },
     reasonForDecisionTextArea: '#judicialDecisionMakeOrder_reasonForDecisionText',
     consentAgreementCheckBox: '#makeAppVisibleToRespondents_makeAppAvailableCheck-CONSENT_AGREEMENT_CHECKBOX',
     directionsResponseDay: '#directionsResponseByDate-day',
@@ -85,7 +91,7 @@ module.exports = {
         break;
     }
 
-    await I.click(this.fields.showReasonForDecisionTextArea.options.yes);
+    await I.click(this.fields.showReasonForDecisionTextArea.options['yes']);
     await I.fillField(this.fields.reasonForDecisionTextArea, 'Judges Decision');
     await I.clickContinue();
   }
