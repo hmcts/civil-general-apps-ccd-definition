@@ -13,6 +13,7 @@ module.exports = {
         no: 'No'
       },
       dateId: 'date',
+      singleDate: 'input[id*="SINGLE_DATE"]',
     },
     judgeHeardFrom: {
       judgeHeardFromCheckBox: '#assistedOrderJudgeHeardFrom-SHOW',
@@ -70,7 +71,8 @@ module.exports = {
     await within(this.fields.orderMade.id, () => {
       I.click(this.fields.orderMade.options[orderMade]);
     });
-    await I.see('Date heard');
+    await I.see('Enter date(s) of hearing');
+    await I.forceClick(this.fields.orderMade.singleDate);
     await date.verifyPrePopulatedDate(this.fields.orderMade.dateId, orderType);
   },
 
