@@ -679,27 +679,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "judgeRecitalLabel",
-    "UserRole": "judge-profile",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "judgeOrderLabel",
-    "UserRole": "judge-profile",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "showJudgeRecitalText",
-    "UserRole": "judge-profile",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "judgeRecitalText",
     "UserRole": "judge-profile",
     "CRUD": "CRU"
