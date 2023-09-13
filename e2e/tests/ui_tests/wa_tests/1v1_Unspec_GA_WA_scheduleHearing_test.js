@@ -48,7 +48,7 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin schedule Hearing', asy
   }
   await I.login(judgeUser);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
-  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order', judgeUser);
+  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, judgeUser);
   await wa.verifyNoActiveTask(gaCaseReference);
 
@@ -88,8 +88,7 @@ Scenario('Before SDO GA - LA Make decision - NBC admin schedule Hearing', async 
 
   await I.login(config.tribunalCaseworkerWithRegionId4);
   await wa.goToTask(gaCaseReference, config.waTaskIds.legalAdvisorDecideOnApplication);
-  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order',
-    config.tribunalCaseworkerWithRegionId4);
+  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus,
     config.tribunalCaseworkerWithRegionId4);
   await wa.verifyNoActiveTask(gaCaseReference);
@@ -134,7 +133,7 @@ Scenario('After SDO GA - Judge Make decision - HC admin schedule Hearing', async
 
   await I.login(config.judgeUserWithRegionId1);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
-  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order', config.judgeUserWithRegionId1);
+  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, config.judgeUserWithRegionId1);
   await wa.verifyNoActiveTask(gaCaseReference);
 
