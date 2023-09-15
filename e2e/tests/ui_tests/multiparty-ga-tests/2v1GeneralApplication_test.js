@@ -46,7 +46,7 @@ Scenario.skip('GA for 2v1 - Concurrent written representations - without notice 
   }
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations',
     'concurrentRep', gaCaseReference, 'withOutNotice', 'Order_Written_Representation_Concurrent',
-    'courtOwnInitiativeOrder', user);
+    'courtOwnInitiativeOrder');
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
@@ -71,10 +71,10 @@ Scenario.skip('GA for 2v1 - Concurrent written representations - without notice 
   }
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations',
     'concurrentRep', gaCaseReference, 'no', 'Order_Written_Representation_Concurrent',
-    'withoutNoticeOrder', user);
+    'withoutNoticeOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_WRITTEN_REPRESENTATIONS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Concurrent representations', 'no', 'Claimant', user);
+  await I.verifyJudgesSummaryPage('Concurrent representations', 'no', 'Claimant');
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'Written representation concurrent');
   console.log('Judges made an order for Concurrent written representations on case: ' + gaCaseReference);
 
