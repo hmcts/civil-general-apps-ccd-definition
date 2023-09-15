@@ -23,7 +23,7 @@ BeforeSuite(async ({api}) => {
   console.log('Civil Case created for general application: ' + civilCaseReference);
 });
 
-Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey @9804',
+Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey',
   async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
@@ -68,7 +68,6 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'Written representation sequential');
   console.log('Judges made an order for Sequential written representations on case: ' + gaCaseReference);
 
-  // Skipped due to CIV-9804
   await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(writtenRepStatus);

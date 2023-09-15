@@ -74,8 +74,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Applicant Evidence');
 });
 
-// Skipped due to CIV-9804
-Scenario('GA for 1v1 - Direction order journey @regression2 @9804', async ({I, api}) => {
+Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -171,8 +170,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @regression2', asy
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
-// Skipped due to CIV-9804
-Scenario('GA for 1v1- respond to application - Request more information @regression2 @9804', async ({I, api}) => {
+Scenario('GA for 1v1- respond to application - Request more information @regression2', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
