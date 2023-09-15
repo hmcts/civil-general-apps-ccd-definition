@@ -53,8 +53,10 @@ module.exports = {
 
             ],
             assistedOrderMadeDateHeardDetails: {
-                date: date(1)
-            },
+              singleDateSelection: {
+                singleDateHeard:  date(1)
+            }
+          },
         };
     },
     judgeMakesDecisionAssistedWithHearing: () => {
@@ -93,7 +95,9 @@ module.exports = {
                 'SHOW'
             ],
             assistedOrderMadeDateHeardDetails: {
-                date: date(1)
+              singleDateSelection: {
+                singleDateHeard:  date(1)
+              }
             },
             assistedOrderFurtherHearingDetails: {
                 listFromDate: date(1),
