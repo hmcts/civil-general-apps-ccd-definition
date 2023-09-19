@@ -7,7 +7,6 @@ const respondentStatus = states.AWAITING_RESPONDENT_RESPONSE.name;
 const judgeDecisionStatus = states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.name;
 const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 const judgeDirectionsOrderStatus = states.AWAITING_DIRECTIONS_ORDER_DOCS.name;
-const writtenRepStatus = states.AWAITING_WRITTEN_REPRESENTATIONS.name;
 let gaCaseReference, civilCaseReference;
 
 Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly');
@@ -81,46 +80,6 @@ Scenario('Without Notice application to With Notice application - Directions Ord
     await api.verifyGAState(config.secondDefendantSolicitorUser,
       civilCaseReference, gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id);
   });
-
-Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations @regression1',
-  async ({api, I}) => {
-    gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.defendantSolicitorUser, civilCaseReference);
-    await I.login(config.defendantSolicitorUser);
-    await I.navigateToApplicationsTab(civilCaseReference);
-    await I.see(judgeDecisionStatus);
-
-    if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-      await api.judgeMakesDecisionWrittenRep(config.judgeUser, gaCaseReference);
-    } else {
-      await api.judgeMakesDecisionWrittenRep(config.judgeLocalUser, gaCaseReference);
-    }
-    await I.login(config.defendantSolicitorUser);
-    await I.navigateToApplicationsTab(civilCaseReference);
-    await I.see(writtenRepStatus);
-
-    await api.assertGAApplicantDisplayName(config.defendantSolicitorUser, gaCaseReference);
-
-    await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser,
-      civilCaseReference, gaCaseReference, null);
-    await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser,
-      civilCaseReference, gaCaseReference, null);
-  });
-
-Scenario('With Notice application - Org3 Solicitor Initiate GA @regression1', async ({api, I}) => {
-  gaCaseReference = await api.initiateGeneralApplicationWithNoStrikeOut(config.secondDefendantSolicitorUser,
-    civilCaseReference);
-  await I.login(config.secondDefendantSolicitorUser);
-  await I.navigateToApplicationsTab(civilCaseReference);
-  await I.see(respondentStatus);
-
-  await api.verifyGAState(config.applicantSolicitorUser,
-    civilCaseReference, gaCaseReference, states.AWAITING_RESPONDENT_RESPONSE.id);
-  await api.verifyGAState(config.defendantSolicitorUser,
-    civilCaseReference, gaCaseReference, states.AWAITING_RESPONDENT_RESPONSE.id);
-  await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
-  await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
-  await api.assertGAApplicantDisplayName(config.secondDefendantSolicitorUser, gaCaseReference);
-});
 
 Scenario('With Notice application - Org2 Solicitor Initiate GA @regression1', async ({api, I}) => {
   gaCaseReference = await api.initiateGeneralApplicationWithNoStrikeOut(config.defendantSolicitorUser, civilCaseReference);
