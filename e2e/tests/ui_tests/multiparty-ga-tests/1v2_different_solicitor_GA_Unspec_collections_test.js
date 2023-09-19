@@ -18,6 +18,7 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
     await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
     await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
     console.log('Civil Case created for general application: ' + civilCaseReference);
+
     gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.defendantSolicitorUser, civilCaseReference);
     await I.login(config.defendantSolicitorUser);
     await I.navigateToApplicationsTab(civilCaseReference);
@@ -34,10 +35,10 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
 
     await api.assertGAApplicantDisplayName(config.defendantSolicitorUser, gaCaseReference);
 
-    await api.assertGaAppCollectionVisiblityToUser(config.applicantSolicitorUser,
-      civilCaseReference, gaCaseReference, null);
-    await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser,
-      civilCaseReference, gaCaseReference, null);
+    await api.assertGACollectionNotVisiblityToUser(config.applicantSolicitorUser,
+      civilCaseReference, gaCaseReference);
+    await api.assertGACollectionNotVisiblityToUser(config.secondDefendantSolicitorUser,
+      civilCaseReference, gaCaseReference);
   });
 
 Scenario('With Notice application - Org3 Solicitor Initiate GA @regression1', async ({api, I}) => {
