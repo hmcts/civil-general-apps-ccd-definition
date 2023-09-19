@@ -1,17 +1,17 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "dateLabel",
-    "ID": "DateHeardFinalOrders",
-    "ElementLabel": "### Date heard",
+    "ListElementCode": "singleDateLabel",
+    "ID": "AssistedOrderSingleDateHeard",
+    "ElementLabel": "### Single date",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "date",
-    "ID": "DateHeardFinalOrders",
-    "ElementLabel": " ",
+    "ListElementCode": "singleDateHeard",
+    "ID": "AssistedOrderSingleDateHeard",
+    "ElementLabel": "Date heard",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
     "SecurityClassification": "Public"

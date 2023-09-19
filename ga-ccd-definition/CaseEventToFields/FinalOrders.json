@@ -188,7 +188,7 @@
     "CaseFieldID": "assistedOrderMadeDateHeardDetails",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 5,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "FinalOrderAssistedOrder",
     "FieldShowCondition": "assistedOrderMadeSelection=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
