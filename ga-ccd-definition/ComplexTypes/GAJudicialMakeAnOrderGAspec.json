@@ -104,8 +104,22 @@
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "reasonForDecisionLabel",
+    "ElementLabel": "### Reasons",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "showReasonForDecision",
+    "ElementLabel": "Do you want to give reasons for the order?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "reasonForDecisionText",
-    "ElementLabel": "Reasons for decision",
+    "ElementLabel": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 400
