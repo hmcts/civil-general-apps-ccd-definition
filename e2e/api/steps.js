@@ -994,6 +994,23 @@ module.exports = {
     console.log('*** GA Case Reference: ' + gaReference + ' ***');
   },
 
+  assertGACollectionNotVisiblityToUser: async ( user, parentCaseId) => {
+    const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+    const civilCaseData = await response.json();
+
+    if(user.email === config.applicantSolicitorUser.email){
+      assert.equal(typeof(civilCaseData.claimantGaAppDetails), 'undefined');
+    }
+    else if(user.email === config.defendantSolicitorUser.email) {
+      assert.equal(typeof(civilCaseData.respondentSolGaAppDetails), 'undefined');
+    }
+    else if(user.email === config.secondDefendantSolicitorUser.email) {
+      assert.equal(typeof(civilCaseData.respondentSolTwoGaAppDetails), 'undefined');
+    }
+    else{
+      assert.equal(typeof(civilCaseData.gaDetailsMasterCollection), 'undefined');    }
+  },
+
   assertGaDocumentVisibilityToUser: async ( user, parentCaseId, gaCaseId, doc) => {
     await assertGaDocVisibilityToUser( user, parentCaseId, gaCaseId, doc);
   },
