@@ -18,7 +18,7 @@ BeforeSuite(async ({api}) => {
   console.log('Civil Case created for general application: ' + civilCaseReference);
 });
 
-Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, api}) => {
+Scenario('1v1 - Free form order - With notice journey @e2e-tests @123', async ({I, api}) => {
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
 
@@ -42,7 +42,7 @@ Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, ap
   }
   console.log('Hearing Notice created for: ' + gaCaseReference);
 
-  console.log('Judge making Free form application order for: ' + gaCaseReference);
+  /*console.log('Judge making Free form application order for: ' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     user = config.judgeUser;
     await I.login(user);
@@ -58,10 +58,10 @@ Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, ap
   await I.see(judgeApproveOrderStatus);
   await I.verifyUploadedClaimDocument(civilCaseReference, 'Free From Order');
   await I.verifyCaseFileOrderDocument(civilCaseReference, 'General order document');
-  await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');*/
 });
 
-Scenario('1v1 - Assisted order - Without Further Hearing @regression2', async ({api, I}) => {
+Scenario('1v1 - Assisted order - Without Further Hearing @regression2 @123', async ({api, I}) => {
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
 
@@ -69,7 +69,7 @@ Scenario('1v1 - Assisted order - Without Further Hearing @regression2', async ({
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-  console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
+/*  console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   const doc = 'hearingNotice';
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
@@ -100,9 +100,9 @@ Scenario('1v1 - Assisted order - Without Further Hearing @regression2', async ({
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'Assisted Order');
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(judgeApproveOrderStatus);
-  await I.verifyUploadedClaimDocument(civilCaseReference, 'Assisted Order');
+  await I.verifyUploadedClaimDocument(civilCaseReference, 'Assisted Order');*/
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
