@@ -30,7 +30,6 @@ module.exports = {
   },
 
   async verifyAlreadyRespondedErrorMessage() {
-    I.waitForClickable('.event-trigger .button', 3);
     await I.retryUntilExists(async () => {
       await I.click(this.fields.goButton);
     }, this.fields.errorMessage);
