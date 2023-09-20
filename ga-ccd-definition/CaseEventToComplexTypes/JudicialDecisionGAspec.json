@@ -188,10 +188,29 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "reasonForDecisionText",
+    "ListElementCode": "reasonForDecisionLabel",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 20,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "GAJudicialMakeADecisionScreen",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "showReasonForDecision",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 21,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialMakeADecisionScreen",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "reasonForDecisionText",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 22,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "judicialDecisionMakeOrder.showReasonForDecision=\"Yes\""
   },
   {
     "ID": "GAJudicialRequestMoreInfoScreen",
