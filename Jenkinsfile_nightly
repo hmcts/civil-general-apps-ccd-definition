@@ -65,14 +65,11 @@ withNightlyPipeline(type, product, component) {
     'aat': params.ENVIRONMENT
   ])
   loadVaultSecrets(secrets)
-  //switching of nightly until civil ccd demo upload gets fixed due to elastic search 10000 limit
   enableFullFunctionalTest(200)
 
   afterAlways('fullFunctionalTest') {
     archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
-
-  //enableCrossBrowserTest()
 
   afterAlways('crossBrowserTest') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'

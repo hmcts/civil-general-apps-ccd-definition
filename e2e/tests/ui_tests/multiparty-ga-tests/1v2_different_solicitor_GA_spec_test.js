@@ -24,9 +24,9 @@ Scenario('GA for Specified Claim 1v2 different Solicitor - respond to applicatio
       'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no',
       'signLanguageInterpreter');
     console.log('General Application created: ' + civilCaseReference);
-    gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
+    gaCaseReference = await api.getGACaseReference(config.defendantSolicitorUser, civilCaseReference);
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-      states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
+      states.AWAITING_APPLICATION_PAYMENT.id, config.defendantSolicitorUser);
     await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 3), 1);
     await I.see(awaitingPaymentStatus);
 
