@@ -10,7 +10,7 @@ module.exports = {
     },
     applicationFeeLink: '#confirmation-body a',
     feeTextInfo: '#confirmation-body p:nth-child(2)',
-    paymentNavigationInfo: '#confirmation-body p:nth-child(3)'
+    paymentNavigationInfo: '#confirmation-body p:nth-child(4)'
   },
 
   async verifyConfirmationPage(parentCaseId, consentCheck, notice, type) {
