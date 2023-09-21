@@ -68,14 +68,13 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'Written representation sequential');
   console.log('Judges made an order for Sequential written representations on case: ' + gaCaseReference);
 
-  // Skipped due to CIV-9804
- /* await I.login(config.applicantSolicitorUser);
+  await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(writtenRepStatus);
   await I.respondToJudgesWrittenRep(gaCaseReference, 'Written Representation Documents');
   console.log('Responded to Judges written representations on case: ' + gaCaseReference);
 
-  await I.verifyCaseFileAppDocument(civilCaseReference, 'Sequential order document');*/
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Sequential order document');
 });
 
 Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',

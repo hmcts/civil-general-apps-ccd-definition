@@ -24,6 +24,13 @@ module.exports = {
     orderTextArea: '#judicialDecisionMakeOrder_orderText',
     dismissalOrderTextArea: '#judicialDecisionMakeOrder_dismissalOrderText',
     directionsTextArea: '#judicialDecisionMakeOrder_directionsText',
+    showReasonForDecisionTextArea: {
+      id: '#judicialDecisionMakeOrder_showReasonForDecision_radio',
+      options: {
+        yes: '#judicialDecisionMakeOrder_showReasonForDecision_Yes',
+        no: '#judicialDecisionMakeOrder_showReasonForDecision_No'
+      }
+    },
     reasonForDecisionTextArea: '#judicialDecisionMakeOrder_reasonForDecisionText',
     consentAgreementCheckBox: '#makeAppVisibleToRespondents_makeAppAvailableCheck-CONSENT_AGREEMENT_CHECKBOX',
     directionsResponseDay: '#directionsResponseByDate-day',
@@ -40,7 +47,7 @@ module.exports = {
     I.seeInCurrentUrl('/MAKE_DECISIONGAJudicialMakeADecisionScreen');
     I.see('The court records that:');
     await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.judgeRecitalTextArea), notice);
-    I.see('Reasons for decision');
+    I.see('Reasons');
     if (notice === 'no') {
       I.seeTextEquals('This application is cloaked', '#applicationIsCloakedLabel h2');
       I.see('Make application visible to all parties');
@@ -83,7 +90,9 @@ module.exports = {
         await selectCourtsOrderType('', orderType, '');
         break;
     }
-
+    await within(this.fields.showReasonForDecisionTextArea.id, () => {
+      I.click(this.fields.showReasonForDecisionTextArea.options.yes);
+    });
     await I.fillField(this.fields.reasonForDecisionTextArea, 'Judges Decision');
     await I.clickContinue();
   }

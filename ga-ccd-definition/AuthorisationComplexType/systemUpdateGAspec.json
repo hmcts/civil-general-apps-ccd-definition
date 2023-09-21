@@ -868,6 +868,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "showReasonForDecision",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "judicialByCourtsInitiative",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

@@ -67,7 +67,7 @@ Scenario('Defendant of main claim initiates Vary Judgement application @regressi
   await I.verifyCaseFileAppDocument(civilCaseReference, 'N245 Evidence');
 });
 
-Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regression2', async ({I, api}) => {
+Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regression3', async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(
@@ -78,7 +78,7 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
     states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
-  await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(9, 10), 1);
+  await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(9, 10), 2);
   await I.see(awaitingPaymentStatus);
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
     states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);
