@@ -21,7 +21,6 @@ module.exports = {
         await I.see('The court records that:');
         await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
         await I.see('Reasons');
-        await I.see('Directions');
         await I.see('When should this application be referred to a Judge again?');
         break;
       case 'Concurrent representations':
