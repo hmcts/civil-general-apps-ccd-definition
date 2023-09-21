@@ -139,14 +139,14 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppUploadEvidenceLabel",
-    "Label": "## Upload any evidence that supports your application (optional) \n* files must be no more than 100MB in size \n* you can upload Word, Excel, Powerpoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF. files \n* before uploading a file, give it a meaningful name. For example claimnumber.document-type.doc\n",
+    "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, Powerpoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppWrittenRepUploadLabel",
-    "Label": "## Before uploading your files, make sure: \n* the file size is no larger than 100MB \n* the file format is either Word, Excel, Powerpoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF. \n* the file name describes the document you are uploading - for example, 'Receipt for repair work'\n",
+    "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, Powerpoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1073,7 +1073,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppRespondUploadLabel",
-    "Label": "## Upload any evidence that supports your position \nBefore uploading your files, make sure:\n* is 100MB or smaller \n* is one of the following file types: JPG, PNG, SVG, GIF, DOC or PDF \n* has an accurate file name - for example WitnessStatement_JaneDoe_FirstDefendant_01_3_2022.doc\n",
+    "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, Powerpoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1105,7 +1105,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppRespondConsentUploadLabel",
-    "Label": "## Upload any evidence that supports your position \nBefore uploading your files, make sure:\n* is 100MB or smaller \n* is one of the following file types: JPG, PNG, SVG, GIF, DOC or PDF \n* has an accurate file name - for example WitnessStatement_JaneDoe_FirstDefendant_01_3_2022.doc\n",
+    "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, Powerpoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1121,7 +1121,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppRespondDebtorUploadLabel",
-    "Label": "## Upload any evidence that supports your position \nBefore uploading your files, make sure:\n* is 100MB or smaller \n* is one of the following file types: JPG, PNG, SVG, GIF, DOC or PDF \n* has an accurate file name - for example WitnessStatement_JaneDoe_FirstDefendant_01_3_2022.doc\n",
+    "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, Powerpoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
