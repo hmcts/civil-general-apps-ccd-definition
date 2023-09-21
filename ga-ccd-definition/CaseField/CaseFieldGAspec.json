@@ -139,14 +139,14 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppUploadEvidenceLabel",
-    "Label": "## Upload any evidence that supports your application (optional) \n* files must be no more than 100MB in size \n* you can upload jpg.png.svg.gif.doc and PDF files \n* before uploading a file, give it a meaningful name. For example claimnumber.document-type.doc\n",
+    "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppWrittenRepUploadLabel",
-    "Label": "## Before uploading your files, make sure: \n* the file size is no larger than 100MB \n* the file format is either JPG, PNG, SVG, DOC, DOCX, DOT, PDF, RTF, XLT or XLSX \n* the file name describes the document you are uploading - for example, 'Receipt for repair work'\n",
+    "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -191,7 +191,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Supporting evidence",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "SecurityClassification": "Public"
   },
   {
@@ -200,7 +200,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Response file",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "SecurityClassification": "Public"
   },
   {
@@ -209,7 +209,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Written Representation Documents",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "SecurityClassification": "Public"
   },
   {
@@ -218,7 +218,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Response file",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "SecurityClassification": "Public"
   },
   {
@@ -227,7 +227,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Directions Order Documents",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "SecurityClassification": "Public"
   },
   {
@@ -236,7 +236,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Response file",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "SecurityClassification": "Public"
   },
   {
@@ -245,7 +245,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Additional Information Documents",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "SecurityClassification": "Public"
   },
   {
@@ -807,7 +807,7 @@
     "ID": "generalAppN245FormUpload",
     "Label": "N245 Form",
     "FieldType": "Document",
-    "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "SecurityClassification": "Public"
   },
   {
@@ -1073,7 +1073,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppRespondUploadLabel",
-    "Label": "## Upload any evidence that supports your position \nBefore uploading your files, make sure:\n* is 100mb or smaller \n* is one of the following file types: JPG, PNG, SVG, GIF, DOC or PDF \n* has an accurate file name - for example WitnessStatement_JaneDoe_FirstDefendant_01_3_2022.doc\n",
+    "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1083,7 +1083,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Upload evidence",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "SecurityClassification": "Public"
   },
   {
@@ -1092,7 +1092,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "Label": "Respond upload evidence",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "SecurityClassification": "Public"
   },
   {
@@ -1105,7 +1105,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppRespondConsentUploadLabel",
-    "Label": "## Upload any evidence that supports your position \nBefore uploading your files, make sure:\n* is 100mb or smaller \n* is one of the following file types: JPG, PNG, SVG, GIF, DOC or PDF \n* has an accurate file name - for example WitnessStatement_JaneDoe_FirstDefendant_01_3_2022.doc\n",
+    "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1115,13 +1115,13 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Upload evidence",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppRespondDebtorUploadLabel",
-    "Label": "## Upload any evidence that supports your position \nBefore uploading your files, make sure:\n* is 100mb or smaller \n* is one of the following file types: JPG, PNG, SVG, GIF, DOC or PDF \n* has an accurate file name - for example WitnessStatement_JaneDoe_FirstDefendant_01_3_2022.doc\n",
+    "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1131,7 +1131,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Upload evidence",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "SecurityClassification": "Public"
   }
 ]
