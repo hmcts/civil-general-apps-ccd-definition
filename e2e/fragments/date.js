@@ -30,7 +30,10 @@ module.exports = {
 
     switch (orderType) {
       case 'freeFromOrder':
-        await expect(expectedDay).to.equals((twoDigitDate + 7).toString());
+        date.setDate(date.getDate() + 7);
+        docMonth = ((date.getMonth() + 1) >= 10) ? (date.getMonth() + 1) : '0' + (date.getMonth() + 1);
+        twoDigitDate = ((date.getDate()) >= 10) ? (date.getDate()) : '0' + (date.getDate());
+        await expect(expectedDay).to.equals((twoDigitDate).toString());
         break;
       case 'assistedOrder':
         await expect(expectedDay).to.equals(twoDigitDate.toString());
