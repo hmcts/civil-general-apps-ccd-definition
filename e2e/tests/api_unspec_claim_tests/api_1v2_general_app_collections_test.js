@@ -7,7 +7,7 @@ let civilCaseReference, gaCaseReference;
 Feature('GA 1v2 application collection for different solicitor API tests @api-nightly');
 
 
-Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Decision List for Hearing  @api-tests', async ({api}) => {
+Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Decision List for Hearing  @failure', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
