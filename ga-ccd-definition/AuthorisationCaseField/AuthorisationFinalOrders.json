@@ -265,7 +265,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "defendantCostStandardBase",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
     "UserRoles": [
       "judge-profile"
     ],
@@ -273,7 +273,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "claimantCostStandardBase",
+    "CaseFieldID": "assistedOrderCostsBespoke",
     "UserRoles": [
       "judge-profile"
     ],
@@ -281,7 +281,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "defendantCostSummarilyBase",
+    "CaseFieldID": "publicFundingCostsProtectionLabel",
     "UserRoles": [
       "judge-profile"
     ],
@@ -289,7 +289,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "claimantCostSummarilyBase",
+    "CaseFieldID": "publicFundingCostsProtection",
     "UserRoles": [
       "judge-profile"
     ],
@@ -297,7 +297,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "bespokeCostDetails",
+    "CaseFieldID": "publicFundingCostsProtectionDropdown",
     "UserRoles": [
       "judge-profile"
     ],
