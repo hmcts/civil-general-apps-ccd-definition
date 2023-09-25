@@ -321,7 +321,7 @@
     "CaseFieldID": "costReservedDetails",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 18,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "COMPLEX",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "assistedCostTypes=\"COSTS_RESERVED\""
