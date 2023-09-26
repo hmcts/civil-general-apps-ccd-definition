@@ -436,7 +436,7 @@
     "CaseFieldID": "assistedOrderAppealDetails",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 29,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "FinalOrderAssistedOrder",
     "FieldShowCondition": "assistedOrderAppealToggle=\"SHOW\"",
     "ShowSummaryChangeOption": "Y"

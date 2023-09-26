@@ -1,0 +1,37 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "appealDropdownLabel",
+    "ID": "AssistedOrderAppealChoiceList",
+    "ElementLabel": "### An appeal lies from this order to",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "assistedOrderAppealJudgeSelection",
+    "ID": "AssistedOrderAppealChoiceList",
+    "ElementLabel": " ",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "AssistedOrderAppealJudgeSelection",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "assistedOrderAppealFirstOption",
+    "ID": "AssistedOrderAppealChoiceList",
+    "ElementLabel": " ",
+    "FieldType": "AssistedOrderAppealFirstOption",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "assistedOrderAppealJudgeSelection = \"CIRCUIT_COURT_JUDGE\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "assistedOrderAppealSecondOption",
+    "ID": "AssistedOrderAppealChoiceList",
+    "ElementLabel": " ",
+    "FieldType": "AssistedOrderAppealSecondOption",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "assistedOrderAppealJudgeSelection = \"HIGH_COURT_JUDGE\""
+  }
+]
