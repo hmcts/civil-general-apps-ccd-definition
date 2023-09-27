@@ -17,7 +17,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "assistedOrderAppealDateB",
+    "ListElementCode": "assistedOrderAppealDate",
     "ID": "AssistedOrderAppealSecondOption",
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
