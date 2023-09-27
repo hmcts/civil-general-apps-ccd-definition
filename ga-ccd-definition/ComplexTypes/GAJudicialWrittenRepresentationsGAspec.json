@@ -28,7 +28,7 @@
   {
     "ID": "GAJudicialWrittenRepresentationsGAspec",
     "ListElementCode": "writtenConcurrentRepresentationsBy",
-    "ElementLabel": "Any written representations may be uploaded by 4pm on",
+    "ElementLabel": "The applicant and respondent may upload any written submissions and evidence by 4pm on",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "DisplayContextParameter": "#DATETIMEDISPLAY(d LLLL yyyy)",
