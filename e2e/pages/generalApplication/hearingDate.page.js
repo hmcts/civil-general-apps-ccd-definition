@@ -17,7 +17,7 @@ module.exports = {
   async selectHearingScheduled(hearingScheduled) {
     await I.waitForElement(this.fields.generalAppHearingSchedule.id);
     await I.waitInUrl('INITIATE_GENERAL_APPLICATIONGAHearingDate');
-    await I.see('Is there a hearing scheduled related to this application?');
+    await I.see('Hearing scheduled related to this application');
     await within(this.fields.generalAppHearingSchedule.id, () => {
       I.click(this.fields.generalAppHearingSchedule.options[hearingScheduled]);
     });
