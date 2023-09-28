@@ -31,7 +31,7 @@ module.exports = {
     costs: {
       defCostBase: 'input[id*="assistedCostTypes-COSTS_RESERVED"]',
       costReserved: 'textarea[id*="costReservedDetails_detailsRepresentationText"]',
-      isPartyCostProtection: 'input[id="defendantCostStandardBase_isPartyCostProtection_Yes"]',
+      isPartyCostProtection: 'input[id="publicFundingCostsProtection_Yes"]',
     },
     furtherHearing: {
       furtherHearingShowCheckBox: '#assistedOrderFurtherHearingToggle-SHOW',
@@ -43,7 +43,7 @@ module.exports = {
       appealShowCheckBox: '#assistedOrderAppealToggle-SHOW',
       appealOrigin: 'input[id*="appealOrigin-CLAIMANT"]',
       appealDecision: 'input[id*="permissionToAppeal-GRANTED"]',
-      appealReasonText: 'textarea[id="assistedOrderAppealDetails_reasonsText"]',
+      appealJudgeSelection: 'select[id*="assistedOrderAppealJudgeSelection"]',
     },
     courtsOrder: {
       id: '#orderMadeOnOption',
@@ -133,7 +133,7 @@ module.exports = {
     await I.waitForText('Reasons');
     await I.click(this.fields.appeal.appealOrigin);
     await I.click(this.fields.appeal.appealDecision);
-    await I.fillField(this.fields.appeal.appealReasonText, 'Test reasons');
+    await I.selectOption(this.fields.appeal.appealJudgeSelection, 'a Circuit Judge of the County Court');
   },
 
   async selectOrderType(order) {
