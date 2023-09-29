@@ -44,11 +44,20 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "assistedOrderAppealDropdown",
+    "ListElementCode": "assistedOrderAppealDropdownGranted",
     "ID": "AssistedOrderAppealDetails",
     "ElementLabel": " ",
-    "FieldType": "AssistedOrderAppealChoiceList",
+    "FieldType": "AssistedOrderAppealChoiceListGranted",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "permissionToAppeal = \"GRANTED\" OR permissionToAppeal = \"REFUSED\""
+    "FieldShowCondition": "permissionToAppeal = \"GRANTED\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "assistedOrderAppealDropdownRefused",
+    "ID": "AssistedOrderAppealDetails",
+    "ElementLabel": " ",
+    "FieldType": "AssistedOrderAppealChoiceListRefuse",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "permissionToAppeal = \"REFUSED\""
   }
 ]

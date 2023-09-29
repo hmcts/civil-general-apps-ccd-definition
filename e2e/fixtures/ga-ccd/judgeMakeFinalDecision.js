@@ -28,7 +28,7 @@ module.exports = {
                 reasonsText: 'asdfasd asdf',
                 appealOrigin: 'CLAIMANT',
                 permissionToAppeal: 'GRANTED',
-                assistedOrderAppealDropdown: {
+                assistedOrderAppealDropdownGranted: {
                   assistedOrderAppealFirstOption: {
                     assistedOrderAppealDate: date(21)
                   }
@@ -74,7 +74,7 @@ module.exports = {
             assistedOrderAppealDetails: {
                 appealOrigin: 'CLAIMANT',
                 permissionToAppeal: 'GRANTED',
-                assistedOrderAppealDropdown: {
+                assistedOrderAppealDropdownGranted: {
                   assistedOrderAppealFirstOption: {
                     assistedOrderAppealDate: date(21)
                 }
