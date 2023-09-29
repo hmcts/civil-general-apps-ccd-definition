@@ -296,7 +296,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "publicFundingCostsProtectionDropdown",
-    "Label": "The paying party has the benefit of cost protection under section 26 of the Legal Aid, Sentencing and Punishment Offenders Act 2012. The amount of costs that the paying party shall pay shall be determined on an application by the receiving party under rule 16 of the Civil Legal Aid (Costs) Regulations 2013. Any objection by the paying party to the amount of costs claimed shall be dealt with on that occasion.",
+    "Label": "The paying party has the benefit of cost protection under section 26 of the Legal Aid, Sentencing and Punishment of Offenders Act 2012. The amount of costs that the paying party shall pay shall be determined on an application by the receiving party under rule 16 of the Civil Legal Aid (Costs) Regulations 2013. Any objection by the paying party to the amount of costs claimed shall be dealt with on that occasion.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   }
