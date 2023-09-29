@@ -196,7 +196,7 @@
   {
     "ID": "CostReservedDetails",
     "ListElementCode": "makeAnOrderForCostsQOCSText",
-    "ElementLabel": "Other than by way of permitted set off, there shall be no enforcement of any costs assessed under this order without permission of the court",
+    "ElementLabel": "Other than by way of permitted set off, there shall be no enforcement of any costs assessed under this order without permission of the Court.",
     "FieldType": "Label",
     "FieldShowCondition": "makeAnOrderForCostsQOCSYesOrNo = \"Yes\"",
     "SecurityClassification": "Public"
