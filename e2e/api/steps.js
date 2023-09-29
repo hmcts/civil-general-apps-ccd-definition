@@ -424,7 +424,7 @@ module.exports = {
     const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT, parentCaseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have submitted an application');
     await waitForFinishedBusinessProcess(parentCaseId, user);
     await waitForGAFinishedBusinessProcess(parentCaseId, user);
 
@@ -466,7 +466,7 @@ module.exports = {
     assert.equal(response.status, 201);
 
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have submitted an application');
     await waitForFinishedBusinessProcess(parentCaseId, user);
     await waitForGAFinishedBusinessProcess(parentCaseId, user);
 
@@ -497,7 +497,7 @@ module.exports = {
     assert.equal(response.status, 201);
 
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have submitted an application');
     await waitForFinishedBusinessProcess(parentCaseId, user);
     await waitForGAFinishedBusinessProcess(parentCaseId, user);
 
@@ -533,7 +533,7 @@ module.exports = {
     assert.equal(response.status, 201);
     assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have submitted an application');
     if (freeGa) {
       assert.include(responseBody.after_submit_callback_response.confirmation_body, 'The court will make a decision');
     } else {
@@ -1979,7 +1979,7 @@ const initiateGaWithState = async (user, parentCaseId, expectState, payload) => 
   assert.equal(response.status, 201);
   console.log('General application case state : ' + responseBody.state);
   assert.equal(responseBody.callback_response_status_code, 200);
-  assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+  assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have submitted an application');
   await waitForFinishedBusinessProcess(parentCaseId, user);
   await waitForGAFinishedBusinessProcess(parentCaseId, user);
 
@@ -2048,7 +2048,7 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   assert.equal(response.status, 201);
   console.log('General application case state : ' + responseBody.state);
   assert.equal(responseBody.callback_response_status_code, 200);
-  assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
+  assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have submitted an application');
   await waitForFinishedBusinessProcess(parentCaseId, user);
   await waitForGAFinishedBusinessProcess(parentCaseId, user);
 
@@ -2109,7 +2109,7 @@ const initiateGeneralApplicationWithOutNotice = async (user, parentCaseId, gaDat
   console.log('General application case state : ' + responseBody.state);
   assert.equal(responseBody.callback_response_status_code, 200);
   assert.include(responseBody.after_submit_callback_response.confirmation_header,
-    '# You have made an application');
+    '# You have submitted an application');
 
   await waitForFinishedBusinessProcess(parentCaseId, user);
   await waitForGAFinishedBusinessProcess(parentCaseId, user);
