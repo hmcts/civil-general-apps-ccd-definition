@@ -321,7 +321,7 @@
     "CaseFieldID": "costReservedDetails",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 18,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "COMPLEX",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "assistedCostTypes=\"COSTS_RESERVED\""
@@ -329,57 +329,55 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "defendantCostStandardBase",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 19,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "COMPLEX",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "assistedCostTypes=\"DEFENDANT_COST_STANDARD_BASE\""
+    "FieldShowCondition": "assistedCostTypes=\"MAKE_AN_ORDER_FOR_DETAILED_COSTS\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "claimantCostStandardBase",
+    "CaseFieldID": "assistedOrderCostsBespoke",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 20,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "FinalOrderAssistedOrder",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "assistedCostTypes=\"CLAIMANT_COST_STANDARD_BASE\""
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "defendantCostSummarilyBase",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 21,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "FinalOrderAssistedOrder",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "assistedCostTypes=\"DEFENDANT_COST_SUMMARILY_BASE\""
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "claimantCostSummarilyBase",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 22,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "FinalOrderAssistedOrder",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "assistedCostTypes=\"CLAIMANT_COST_SUMMARILY_BASE\""
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "bespokeCostDetails",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 23,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "assistedCostTypes=\"BESPOKE_COSTS_ORDER\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "publicFundingCostsProtectionLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 21,
+    "DisplayContext": "READONLY",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "publicFundingCostsProtection",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 22,
+    "DisplayContext": "MANDATORY",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "publicFundingCostsProtectionDropdown",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 23,
+    "DisplayContext": "READONLY",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "publicFundingCostsProtection=\"Yes\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -438,7 +436,7 @@
     "CaseFieldID": "assistedOrderAppealDetails",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 29,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "FinalOrderAssistedOrder",
     "FieldShowCondition": "assistedOrderAppealToggle=\"SHOW\"",
     "ShowSummaryChangeOption": "Y"
