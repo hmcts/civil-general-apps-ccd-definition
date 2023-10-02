@@ -27,7 +27,12 @@ module.exports = {
             assistedOrderAppealDetails: {
                 reasonsText: 'asdfasd asdf',
                 appealOrigin: 'CLAIMANT',
-                permissionToAppeal: 'GRANTED'
+                permissionToAppeal: 'GRANTED',
+                assistedOrderAppealDropdownGranted: {
+                  assistedOrderAppealFirstOption: {
+                    assistedOrderAppealDate: date(21)
+                  }
+                }
             },
             assistedOrderMadeSelection: 'Yes',
             assistedOrderJudgeHeardFrom: [
@@ -67,9 +72,13 @@ module.exports = {
             ],
             orderMadeOnOption: 'NONE',
             assistedOrderAppealDetails: {
-                reasonsText: 'asdfasd asdf',
                 appealOrigin: 'CLAIMANT',
-                permissionToAppeal: 'GRANTED'
+                permissionToAppeal: 'GRANTED',
+                assistedOrderAppealDropdownGranted: {
+                  assistedOrderAppealFirstOption: {
+                    assistedOrderAppealDate: date(21)
+                }
+              }
             },
             assistedOrderMadeSelection: 'Yes',
             assistedOrderJudgeHeardFrom: [
