@@ -19,7 +19,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "assistedOrderAppealSecondOptionDateLabelB",
     "ID": "AssistedOrderAppealSecondOptionRefused",
-    "ElementLabel": "### The appellant's notice shall be filed at the appeal centre no later than 4pm on",
+    "ElementLabel": "### The appellant's notice, including any further application for permission to appeal, shall be filed no later than 4pm on",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
