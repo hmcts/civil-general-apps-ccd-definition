@@ -1114,7 +1114,7 @@ module.exports = function () {
         ...fillHearingDetails(hearingScheduled, 'no', 'no', 'no', 'yes', 'disabledAccess'),
         ...verifyApplicationFee(consentCheck, 'no', appTypes),
         ...verifyCheckAnswerForm(caseId, consentCheck),
-        ...submitApplication('You have made an application'),
+        ...submitApplication('You have submitted an application'),
         ...verifyGAConfirmationPage(caseId, consentCheck, 'no', appTypes),
       ]);
     },
@@ -1148,7 +1148,7 @@ module.exports = function () {
         ...verifyCheckAnswerForm(caseId, consentCheck),
         ...clickOnHearingDetailsChangeLink(consentCheck),
         ...updateHearingDetails(),
-        ...submitApplication('You have made an application'),
+        ...submitApplication('You have submitted an application'),
         ...verifyGAConfirmationPage(caseId, consentCheck, notice, appTypes),
       ]);
       await this.takeScreenshot();

@@ -50,11 +50,11 @@ module.exports = {
 
   verifyJudgeRecitalText: async (actualJudgeRecitalText, notice) => {
     if (notice === 'no') {
-      await expect(actualJudgeRecitalText).to.equals(`The judge considered the without notice application of claimant dated ${fullDate}\n\nAnd the judge considered the information provided by the claimant`);
+      await expect(actualJudgeRecitalText).to.equals(`The Judge considered the without notice application of claimant dated ${fullDate}\n\nAnd the Judge considered the information provided by the claimant`);
     } else if (notice === 'yes') {
-      await expect(actualJudgeRecitalText).to.equals(`The judge considered the application of claimant dated ${fullDate}\n\nAnd the judge considered the information provided by the parties`);
+      await expect(actualJudgeRecitalText).to.equals(`The Judge considered the application of claimant dated ${fullDate}\n\n`);
     } else {
-      await expect(actualJudgeRecitalText).to.equals(`The judge considered the application of defendant dated ${fullDate}\n\nAnd the judge considered the information provided by the parties`);
+      await expect(actualJudgeRecitalText).to.equals(`The Judge considered the application of defendant dated ${fullDate}\n\n`);
     }
   },
 
