@@ -44,18 +44,20 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "reasonsLabel",
+    "ListElementCode": "assistedOrderAppealDropdownGranted",
     "ID": "AssistedOrderAppealDetails",
-    "ElementLabel": "### Reasons",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "ElementLabel": " ",
+    "FieldType": "AssistedOrderAppealChoiceListGranted",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "permissionToAppeal = \"GRANTED\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "reasonsText",
+    "ListElementCode": "assistedOrderAppealDropdownRefused",
     "ID": "AssistedOrderAppealDetails",
     "ElementLabel": " ",
-    "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "FieldType": "AssistedOrderAppealChoiceListRefuse",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "permissionToAppeal = \"REFUSED\""
   }
 ]

@@ -38,21 +38,5 @@
     "ListElementCode": "permissionToAppeal",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "AssistedOrderAppeal",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderAppealDetails",
-    "ListElementCode": "reasonsLabel",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "AssistedOrderAppeal",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderAppealDetails",
-    "ListElementCode": "reasonsText",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
   }
 ]
