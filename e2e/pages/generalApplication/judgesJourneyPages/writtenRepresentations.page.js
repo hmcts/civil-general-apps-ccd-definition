@@ -39,7 +39,7 @@ module.exports = {
         I.fillField(this.fields.applicantSequentialRepYear, '2024');
         break;
       case 'concurrentRep':
-        I.see('Any written representations may be uploaded by 4pm on');
+        I.see('The applicant and respondent may upload any written submissions and evidence by 4pm on');
         I.fillField(this.fields.concurrentRepDay, '01');
         I.fillField(this.fields.concurrentRepMonth, '01');
         I.fillField(this.fields.concurrentRepYear, '2024');
