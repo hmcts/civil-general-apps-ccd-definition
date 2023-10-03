@@ -7,7 +7,7 @@ const date = new Date();
 const twoDigitDate = ((date.getDate()) >= 10) ? (date.getDate()) : '0' + (date.getDate());
 const ownInitiativeOrder = 'Order on court\'s own initiative';
 const withOutNoticeOrder = 'Order without notice';
-const noneOrder = 'None';
+const noneOrder = 'Not applicable';
 const initiativeOrderText = 'As this order was made on the court\'s own initiative, any party affected ' +
   'by the order may apply to set aside, vary, or stay the order. Any such application must be made by 4pm on';
 const withOutNoticeOrderText = 'If you were not notified of the application before this order was made, ' +
@@ -50,11 +50,11 @@ module.exports = {
 
   verifyJudgeRecitalText: async (actualJudgeRecitalText, notice) => {
     if (notice === 'no') {
-      await expect(actualJudgeRecitalText).to.equals(`The judge considered the without notice application of claimant dated ${fullDate}\n\nAnd the judge considered the information provided by the claimant`);
+      await expect(actualJudgeRecitalText).to.equals(`The Judge considered the without notice application of the claimant dated ${fullDate}\n\nAnd the Judge considered the information provided by the claimant`);
     } else if (notice === 'yes') {
-      await expect(actualJudgeRecitalText).to.equals(`The judge considered the application of claimant dated ${fullDate}\n\nAnd the judge considered the information provided by the parties`);
+      await expect(actualJudgeRecitalText).to.equals(`The Judge considered the application of the claimant dated ${fullDate}\n\n`);
     } else {
-      await expect(actualJudgeRecitalText).to.equals(`The judge considered the application of defendant dated ${fullDate}\n\nAnd the judge considered the information provided by the parties`);
+      await expect(actualJudgeRecitalText).to.equals(`The Judge considered the application of the defendant dated ${fullDate}\n\n`);
     }
   },
 
