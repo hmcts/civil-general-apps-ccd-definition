@@ -2,13 +2,13 @@
   {
     "ID": "FinalOrdersRepresentationList",
     "ListElementCode": "CLAIMANT_AND_DEFENDANT",
-    "ListElement": "Claimant and Defendant",
+    "ListElement": "Claimant(s) and defendant(s)",
     "DisplayOrder": 1
   },
   {
     "ID": "FinalOrdersRepresentationList",
     "ListElementCode": "OTHER_REPRESENTATION",
-    "ListElement": "Other representation",
+    "ListElement": "Other representation (free text)",
     "DisplayOrder": 2
   },
   {
