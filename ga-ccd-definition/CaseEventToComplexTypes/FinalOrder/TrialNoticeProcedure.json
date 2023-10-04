@@ -62,5 +62,37 @@
     "ListElementCode": "claimantDefendantRepresentation.heardFromDefendantNotAttend.label3Def",
     "FieldDisplayOrder": 4,
     "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "TrialNoticeProcedure",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderRepresentation",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromDefTwoNotAttend.listDefTwo",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "TrialNoticeProcedure",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderRepresentation",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromDefTwoNotAttend.label1DefTwo",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "TrialNoticeProcedure",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderRepresentation",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromDefTwoNotAttend.label2DefTwo",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "TrialNoticeProcedure",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderRepresentation",
+    "ListElementCode": "claimantDefendantRepresentation.heardFromDefTwoNotAttend.label3DefTwo",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "READONLY"
   }
 ]

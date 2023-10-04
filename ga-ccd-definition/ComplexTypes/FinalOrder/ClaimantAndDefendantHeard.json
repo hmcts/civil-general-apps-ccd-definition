@@ -81,7 +81,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "typeRepresentationLayRepresentativeList",
+    "ListElementCode": "layRepresentativeforClaimant",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "A lay representative for ${claimantPartyName}, the claimant.",
     "FieldType": "Label",
@@ -234,7 +234,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "heardFromDefendantTwoNotAttend",
+    "ListElementCode": "heardFromDefTwoNotAttend",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
     "FieldType": "TrialNoticeProcedure",
