@@ -155,7 +155,7 @@
     "ID": "ClaimantAndDefendantHeard",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "claimantDefendantRepresentation.defendantRepresentationLabel",
+    "ListElementCode": "claimantDefendantRepresentation.defendantTwoRepresentationLabel",
     "FieldDisplayOrder": 13,
     "DisplayContext": "READONLY"
   },
