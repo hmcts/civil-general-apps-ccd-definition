@@ -175,6 +175,7 @@
     "ElementLabel": "### Defendant: ${defendantTwoPartyName}",
     "FieldType": "Label",
     "FieldShowCondition": "defendantTwoPartyName=\"*\"",
+    "RetainHiddenValue": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -185,6 +186,7 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "DefendantRepresentationType",
     "FieldShowCondition": "defendantTwoPartyName=\"*\"",
+    "RetainHiddenValue": "Y",
     "SecurityClassification": "Public"
   },
   {
