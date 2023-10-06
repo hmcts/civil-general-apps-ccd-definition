@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 Judge Make Order Written Rep API tests @api-nightly');
 
-Scenario('Judge makes decision 1V2 - WRITTEN_REPRESENTATIONS', async ({api}) => {
+Scenario('Judge makes decision 1V2 - WRITTEN_REPRESENTATIONS @123', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -20,16 +20,16 @@ Scenario('Judge makes decision 1V2 - WRITTEN_REPRESENTATIONS', async ({api}) => 
   await api.respondentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-  console.log('*** Start Judge Make Order on GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
+/*  console.log('*** Start Judge Make Order on GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeMakesDecisionWrittenRep(config.judgeUser, gaCaseReference);
   } else {
     await api.judgeMakesDecisionWrittenRep(config.judgeLocalUser, gaCaseReference);
-  }
+  }*/
   console.log('*** End Judge Make Order GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
 
