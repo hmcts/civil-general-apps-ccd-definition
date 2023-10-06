@@ -251,8 +251,7 @@
     "HintText": "For example, the judge heard from the claimant in person and counsel for the defendant",
     "FieldType": "Label",
     "SecurityClassification": "Public"
-  }
-,
+  },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "detailsRepresentationText",
