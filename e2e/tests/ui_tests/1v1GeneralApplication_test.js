@@ -20,7 +20,7 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('GA CCD 1v1 - General Application Journey  @ui-nightly');
 
-Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
+Scenario('GA for 1v1 - Make an order journey @e2e-testss', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
