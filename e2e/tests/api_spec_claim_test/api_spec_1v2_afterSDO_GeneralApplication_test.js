@@ -34,7 +34,7 @@ Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) =>
     'JUDICIAL_REFERRAL');
   await I.wait(10);
   console.log('Civil Case created for general application: ' + civilCaseReference);
-
+  
   console.log('Create SDO');
   await api.createSDO(civilCaseReference, config.judgeUserWithRegionId1, 'CREATE_FAST');
   await I.wait(10);
