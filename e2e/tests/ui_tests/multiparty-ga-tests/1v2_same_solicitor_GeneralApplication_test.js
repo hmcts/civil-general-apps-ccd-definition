@@ -23,8 +23,7 @@ BeforeSuite(async ({api}) => {
   console.log('Civil Case created for general application: ' + civilCaseReference);
 });
 
-// skipped due to CIV-10926
-Scenario.skip('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey',
+Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey',
   async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
