@@ -37,7 +37,7 @@
     "CaseFieldID": "assistedOrderRepresentation",
     "ListElementCode": "claimantDefendantRepresentation.claimantRepresentation",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "ClaimantAndDefendantHeard",
@@ -85,7 +85,7 @@
     "CaseFieldID": "assistedOrderRepresentation",
     "ListElementCode": "claimantDefendantRepresentation.heardFromClaimantNotAttend",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "COMPLEX"
+    "DisplayContext": "MANDATORY"
     },
   {
     "ID": "ClaimantAndDefendantHeard",
@@ -101,7 +101,7 @@
     "CaseFieldID": "assistedOrderRepresentation",
     "ListElementCode": "claimantDefendantRepresentation.defendantRepresentation",
     "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "ClaimantAndDefendantHeard",
@@ -149,7 +149,7 @@
     "CaseFieldID": "assistedOrderRepresentation",
     "ListElementCode": "claimantDefendantRepresentation.heardFromDefendantNotAttend",
     "FieldDisplayOrder": 11,
-    "DisplayContext": "COMPLEX"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "ClaimantAndDefendantHeard",
@@ -165,7 +165,7 @@
     "CaseFieldID": "assistedOrderRepresentation",
     "ListElementCode": "claimantDefendantRepresentation.defendantTwoRepresentation",
     "FieldDisplayOrder": 13,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "ClaimantAndDefendantHeard",
@@ -213,7 +213,7 @@
     "CaseFieldID": "assistedOrderRepresentation",
     "ListElementCode": "claimantDefendantRepresentation.heardFromDefTwoNotAttend",
     "FieldDisplayOrder": 15,
-    "DisplayContext": "COMPLEX"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "ClaimantAndDefendantHeard",
