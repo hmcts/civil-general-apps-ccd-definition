@@ -67,7 +67,7 @@ Scenario('Defendant of main claim initiates Vary Judgement application @regressi
   await I.verifyCaseFileAppDocument(civilCaseReference, 'N245 Evidence');
 });
 
-Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regression2', async ({I, api}) => {
+Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regression3', async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(

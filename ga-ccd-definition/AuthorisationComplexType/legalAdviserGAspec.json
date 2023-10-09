@@ -728,6 +728,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "showReasonForDecision",
+    "UserRole": "legal-adviser",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "reasonForDecisionText",
     "UserRole": "legal-adviser",
     "CRUD": "CRU"

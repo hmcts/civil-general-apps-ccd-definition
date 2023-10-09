@@ -1,8 +1,30 @@
 [
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "judgeRecitalLabel",
+    "ElementLabel": "### Recitals",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "showJudgeRecitalText",
+    "ElementLabel": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "judgeOrderLabel",
+    "ElementLabel": "### Order",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "judgeRecitalText",
-    "ElementLabel": "Judge’s recital",
+    "ElementLabel": "The court records that:",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
@@ -17,7 +39,7 @@
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "orderText",
-    "ElementLabel": "Order",
+    "ElementLabel": "The court orders that:",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 4000,
@@ -57,7 +79,7 @@
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "dismissalOrderText",
-    "ElementLabel": "Dismissal order",
+    "ElementLabel": "The court orders that:",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 4000,
@@ -66,7 +88,7 @@
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "directionsText",
-    "ElementLabel": "Directions",
+    "ElementLabel": "The court orders that:",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 4000,
@@ -82,8 +104,22 @@
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "reasonForDecisionLabel",
+    "ElementLabel": "### Reasons",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "showReasonForDecision",
+    "ElementLabel": "Do you want to give reasons for the order?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "reasonForDecisionText",
-    "ElementLabel": "Reasons for decision",
+    "ElementLabel": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Max": 400

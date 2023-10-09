@@ -27,7 +27,12 @@ module.exports = {
             assistedOrderAppealDetails: {
                 reasonsText: 'asdfasd asdf',
                 appealOrigin: 'CLAIMANT',
-                permissionToAppeal: 'GRANTED'
+                permissionToAppeal: 'GRANTED',
+                assistedOrderAppealDropdownGranted: {
+                  assistedOrderAppealFirstOption: {
+                    assistedOrderAppealDate: date(21)
+                  }
+                }
             },
             assistedOrderMadeSelection: 'Yes',
             assistedOrderJudgeHeardFrom: [
@@ -53,8 +58,10 @@ module.exports = {
 
             ],
             assistedOrderMadeDateHeardDetails: {
-                date: date(1)
-            },
+              singleDateSelection: {
+                singleDateHeard:  date(1)
+            }
+          },
         };
     },
     judgeMakesDecisionAssistedWithHearing: () => {
@@ -65,9 +72,13 @@ module.exports = {
             ],
             orderMadeOnOption: 'NONE',
             assistedOrderAppealDetails: {
-                reasonsText: 'asdfasd asdf',
                 appealOrigin: 'CLAIMANT',
-                permissionToAppeal: 'GRANTED'
+                permissionToAppeal: 'GRANTED',
+                assistedOrderAppealDropdownGranted: {
+                  assistedOrderAppealFirstOption: {
+                    assistedOrderAppealDate: date(21)
+                }
+              }
             },
             assistedOrderMadeSelection: 'Yes',
             assistedOrderJudgeHeardFrom: [
@@ -93,7 +104,9 @@ module.exports = {
                 'SHOW'
             ],
             assistedOrderMadeDateHeardDetails: {
-                date: date(1)
+              singleDateSelection: {
+                singleDateHeard:  date(1)
+              }
             },
             assistedOrderFurtherHearingDetails: {
                 listFromDate: date(1),

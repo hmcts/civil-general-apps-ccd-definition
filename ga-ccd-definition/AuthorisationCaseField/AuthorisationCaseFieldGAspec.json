@@ -3276,13 +3276,18 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser"
         ],

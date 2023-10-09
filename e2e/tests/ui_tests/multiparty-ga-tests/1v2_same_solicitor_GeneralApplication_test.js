@@ -61,21 +61,20 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
     await I.login(user);
   }
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations',
-    'sequentialRep', gaCaseReference, 'yes', 'Order_Written_Representation_Sequential', 'noneOrder', user);
+    'sequentialRep', gaCaseReference, 'yes', 'Order_Written_Representation_Sequential', 'noneOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_WRITTEN_REPRESENTATIONS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Sequential representations', 'yes', 'Claimant', user);
+  await I.verifyJudgesSummaryPage('Sequential representations', 'yes', 'Claimant');
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'Written representation sequential');
   console.log('Judges made an order for Sequential written representations on case: ' + gaCaseReference);
 
-  // Skipped due to CIV-9804
- /* await I.login(config.applicantSolicitorUser);
+  await I.login(config.applicantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(writtenRepStatus);
   await I.respondToJudgesWrittenRep(gaCaseReference, 'Written Representation Documents');
   console.log('Responded to Judges written representations on case: ' + gaCaseReference);
 
-  await I.verifyCaseFileAppDocument(civilCaseReference, 'Sequential order document');*/
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Sequential order document');
 });
 
 Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
@@ -106,7 +105,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     await I.judgeRequestMoreInfo('requestMoreInfo', 'sendApplicationToOtherParty', gaCaseReference, 'no', 'sendApplicationToOtherParty');
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.APPLICATION_ADD_PAYMENT.id, config.applicantSolicitorUser);
     await I.judgeCloseAndReturnToCaseDetails();
-    await I.verifyJudgesSummaryPage('Send application to other party', 'no', 'Claimant', user);
+    await I.verifyJudgesSummaryPage('Send application to other party', 'no', 'Claimant');
     console.log('Judges sent application to other party and requested hearing details on case: ' + gaCaseReference);
 
     await I.login(config.applicantSolicitorUser);

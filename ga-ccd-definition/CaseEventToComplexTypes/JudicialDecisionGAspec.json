@@ -13,18 +13,9 @@
     "ID": "GAJudicialMakeADecisionScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionMakeOrder",
-    "ListElementCode": "judgeRecitalText",
-    "EventElementLabel": " ",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "GAJudicialMakeADecisionScreen",
-    "CaseEventID": "MAKE_DECISION",
-    "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "makeAnOrder",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 2,
+    "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -33,8 +24,45 @@
     "CaseFieldID": "makeAppVisibleToRespondents",
     "ListElementCode": "makeAppAvailableCheck",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "GAJudicialMakeADecisionScreen",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "judgeRecitalLabel",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "GAJudicialMakeADecisionScreen",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "showJudgeRecitalText",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "GAJudicialMakeADecisionScreen",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "judgeRecitalText",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "judicialDecisionMakeOrder.showJudgeRecitalText=\"SHOW\""
+  },
+  {
+    "ID": "GAJudicialMakeADecisionScreen",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "judgeOrderLabel",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
@@ -42,7 +70,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "orderText",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -51,7 +79,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "judgeApproveEditOptionDoc",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 5,
+    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY",
     "FieldShowCondition": "judicialDecisionMakeOrder.makeAnOrder=\"APPROVE_OR_EDIT\" AND judicialDecisionMakeOrder.displayjudgeApproveEditOptionDoc=\"Yes\""
   },
@@ -61,7 +89,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "judgeApproveEditOptionDate",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 9,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "judicialDecisionMakeOrder.makeAnOrder=\"APPROVE_OR_EDIT\" AND judicialDecisionMakeOrder.displayjudgeApproveEditOptionDate=\"Yes\""
   },
@@ -71,7 +99,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "judgeApproveEditOptionDateForUnlessOrder",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 7,
+    "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "judicialDecisionMakeOrder.makeAnOrder=\"APPROVE_OR_EDIT\" AND judicialDecisionMakeOrder.displayjudgeApproveEditOptionDateForUnlessOrder=\"Yes\""
   },
@@ -81,7 +109,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "dismissalOrderText",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -90,7 +118,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "directionsText",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -99,7 +127,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "directionsResponseByDate",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 10,
+    "FieldDisplayOrder": 13,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -108,7 +136,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "judicialByCourtsInitiativeLabel",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 11,
+    "FieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -117,7 +145,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "judicialByCourtsInitiative",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 12,
+    "FieldDisplayOrder": 15,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -126,7 +154,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "orderCourtOwnInitiative",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 13,
+    "FieldDisplayOrder": 16,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -135,7 +163,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "orderCourtOwnInitiativeDate",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 14,
+    "FieldDisplayOrder": 17,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -144,7 +172,7 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "orderWithoutNotice",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 15,
+    "FieldDisplayOrder": 18,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -153,7 +181,25 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "orderWithoutNoticeDate",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 16,
+    "FieldDisplayOrder": 19,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialMakeADecisionScreen",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "reasonForDecisionLabel",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 20,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "GAJudicialMakeADecisionScreen",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialDecisionMakeOrder",
+    "ListElementCode": "showReasonForDecision",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 21,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -162,32 +208,15 @@
     "CaseFieldID": "judicialDecisionMakeOrder",
     "ListElementCode": "reasonForDecisionText",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 17,
-    "DisplayContext": "OPTIONAL"
+    "FieldDisplayOrder": 22,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "judicialDecisionMakeOrder.showReasonForDecision=\"Yes\""
   },
   {
     "ID": "GAJudicialRequestMoreInfoScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "ListElementCode": "requestMoreInfoOption",
-    "EventElementLabel": " ",
-    "FieldDisplayOrder": 11,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "GAJudicialRequestMoreInfoScreen",
-    "CaseEventID": "MAKE_DECISION",
-    "CaseFieldID": "judicialDecisionRequestMoreInfo",
-    "ListElementCode": "judgeRecitalText",
-    "EventElementLabel": " ",
-    "FieldDisplayOrder": 12,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "GAJudicialRequestMoreInfoScreen",
-    "CaseEventID": "MAKE_DECISION",
-    "CaseFieldID": "judicialDecisionRequestMoreInfo",
-    "ListElementCode": "judgeRequestMoreInfoText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 13,
     "DisplayContext": "MANDATORY"
@@ -196,9 +225,27 @@
     "ID": "GAJudicialRequestMoreInfoScreen",
     "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
-    "ListElementCode": "judgeRequestMoreInfoByDate",
+    "ListElementCode": "judgeRecitalText",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 14,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialRequestMoreInfoScreen",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
+    "ListElementCode": "judgeRequestMoreInfoText",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 15,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAJudicialRequestMoreInfoScreen",
+    "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judicialDecisionRequestMoreInfo",
+    "ListElementCode": "judgeRequestMoreInfoByDate",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 16,
     "DisplayContext": "MANDATORY"
   },
   {
