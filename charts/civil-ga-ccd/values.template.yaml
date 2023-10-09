@@ -1,6 +1,6 @@
 civil-general-applications:
   java:
-    image: 'hmctspublic.azurecr.io/civil/service:pr-3033'
+    image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
     imagePullPolicy: Always
     keyVaults:
       civil:
@@ -84,7 +84,7 @@ civil-service:
   java:
     applicationPort: 4000
     releaseNameOverride: ${SERVICE_NAME}-civil-service
-    image: 'hmctspublic.azurecr.io/civil/service:latest'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3033'
     imagePullPolicy: Always
     devmemoryRequests: 2048Mi
     devcpuRequests: 2000m
