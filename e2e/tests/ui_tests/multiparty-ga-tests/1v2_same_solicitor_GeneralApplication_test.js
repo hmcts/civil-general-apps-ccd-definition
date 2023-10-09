@@ -12,7 +12,7 @@ const additionalPaymentStatus = states.APPLICATION_ADD_PAYMENT.name;
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly  @regression1');
+Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly @regression3');
 
 BeforeSuite(async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
