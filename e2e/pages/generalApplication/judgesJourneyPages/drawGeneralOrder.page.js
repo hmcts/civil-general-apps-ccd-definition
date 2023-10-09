@@ -54,7 +54,7 @@ module.exports = {
       await I.see('The respondent may upload any written responses or evidence by 4pm on');
       await I.see('The applicant may upload any written responses or evidence in reply by 4pm on');
     } else {
-      await I.see('The applicant and respondent may respond with written representations by 4pm on');
+      await I.see('The applicant and respondent may upload any written submissions and evidence by 4pm on');
     }
 
     switch (orderType) {
