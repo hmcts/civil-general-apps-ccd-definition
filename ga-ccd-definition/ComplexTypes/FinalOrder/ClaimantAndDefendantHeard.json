@@ -227,7 +227,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "layRepresentativeDefTwo",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Lay representative for ${defendantTwoPartyName}, the defendant",
+    "ElementLabel": "A lay representative for ${defendantTwoPartyName}, the defendant",
     "FieldType": "Label",
     "FieldShowCondition": "defendantTwoRepresentation=\"LAY_REPRESENTATIVE_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public"
