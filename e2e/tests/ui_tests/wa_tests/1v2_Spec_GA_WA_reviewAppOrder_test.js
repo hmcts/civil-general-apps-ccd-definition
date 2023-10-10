@@ -64,7 +64,7 @@ Scenario('LA refer to judge - R4 Judge Make decision - NBC admin schedule Hearin
   }
   await I.login(judgeUser);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
-  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order', judgeUser);
+  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, judgeUser);
   await wa.verifyNoActiveTask(gaCaseReference);
 
@@ -119,7 +119,7 @@ Scenario('After SDO GA - Change court location  - HC admin review application or
   }
   await I.login(config.judgeUserWithRegionId1);
   await wa.goToTask(gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
-  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order', config.judgeUserWithRegionId1);
+  await I.judgeListForAHearingDecisionWA('listForAHearing', gaCaseReference, 'no', 'Hearing_order');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, config.judgeUserWithRegionId1);
   await wa.verifyNoActiveTask(gaCaseReference);
 

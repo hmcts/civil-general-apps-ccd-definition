@@ -10,7 +10,7 @@ module.exports = {
     },
     applicationFeeLink: '#confirmation-body a',
     feeTextInfo: '#confirmation-body p:nth-child(2)',
-    paymentNavigationInfo: '#confirmation-body p:nth-child(3)'
+    paymentNavigationInfo: '#confirmation-body p:nth-child(4)'
   },
 
   async verifyConfirmationPage(parentCaseId, consentCheck, notice, type) {
@@ -24,11 +24,11 @@ module.exports = {
       fee = '£108.00';
     }
 
-    let confirmation_msg = `Your application fee of ${fee} is now due for payment. Your application will not be reviewed by the court until this fee has been paid.`;
+    let confirmation_msg = `Your application fee of ${fee} is now due for payment. Your application will not be processed further until this fee is paid.`;
     I.waitForElement(this.fields.confirmation.id);
     I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATION/confirm');
     await I.seeTextEquals(confirmation_msg, this.fields.feeTextInfo);
-    I.seeTextEquals('To pay this fee, you will need to open your application from the Applications tab of this case listing.', this.fields.paymentNavigationInfo);
+    I.seeTextEquals('To pay this fee, click the link below, or else open your application from the Applications tab of this case listing and then click on the service request tab.', this.fields.paymentNavigationInfo);
     I.seeTextEquals('Pay your application fee', this.fields.applicationFeeLink);
     await waitForFinishedBusinessProcess(parentCaseId, config.applicantSolicitorUser);
     await waitForGAFinishedBusinessProcess(parentCaseId, config.applicantSolicitorUser);

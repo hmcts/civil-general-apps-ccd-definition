@@ -51,6 +51,7 @@ module.exports = {
         makeAnOrder: 'GIVE_DIRECTIONS_WITHOUT_HEARING',
         judicialByCourtsInitiative: 'OPTION_3',
         directionsText: 'sample text',
+        showReasonForDecision: 'Yes',
         reasonForDecisionText: 'sample text',
         directionsResponseByDate: current_date,
         displayjudgeApproveEditOptionDoc: 'No',
@@ -69,6 +70,7 @@ module.exports = {
         orderText: 'sample text',
         judgeApproveEditOptionDoc: 'DEFENCE_FORM',
         judgeApproveEditOptionDate: '2023-06-05',
+        showReasonForDecision: 'Yes',
         reasonForDecisionText: 'sample text',
         isOrderProcessedByStayScheduler: 'No',
         judicialByCourtsInitiative: 'OPTION_3'
@@ -85,6 +87,7 @@ module.exports = {
         orderText: 'sample text',
         judgeApproveEditOptionDoc: 'DEFENCE_FORM',
         judgeApproveEditOptionDate: current_date,
+        showReasonForDecision: 'Yes',
         reasonForDecisionText: 'sample text',
         isOrderProcessedByStayScheduler: 'No',
         judicialByCourtsInitiative: 'OPTION_3'
@@ -102,6 +105,7 @@ module.exports = {
         judgeApproveEditOptionDoc: 'DEFENCE_FORM',
         displayjudgeApproveEditOptionDateForUnlessOrder: 'Yes',
         judgeApproveEditOptionDateForUnlessOrder: current_date,
+        showReasonForDecision: 'Yes',
         reasonForDecisionText: 'sample text',
         isOrderProcessedByUnlessScheduler: 'No',
         judicialByCourtsInitiative: 'OPTION_3'
@@ -188,6 +192,7 @@ module.exports = {
       },
       judicialDecisionMakeOrder: {
         makeAnOrder: 'DISMISS_THE_APPLICATION',
+        showReasonForDecision: 'Yes',
         reasonForDecisionText: 'sample text',
         directionsResponseByDate: '2023-06-05',
         displayjudgeApproveEditOptionDoc: 'No',
@@ -207,6 +212,7 @@ module.exports = {
         judgeRecitalText:'sample text',
         orderText:'sample text',
         dismissalOrderText:'sample text',
+        showReasonForDecision: 'Yes',
         reasonForDecisionText:'sample text',
         displayjudgeApproveEditOptionDoc: 'No',
         displayjudgeApproveEditOptionDate: 'No',
@@ -226,6 +232,7 @@ module.exports = {
         judgeApproveEditOptionDate : '2023-06-05',
         judgeRecitalText:'sample text',
         orderText: 'order sample text',
+        showReasonForDecision: 'Yes',
         reasonForDecisionText: 'sample text',
         isOrderProcessedByStayScheduler: 'No',
         judicialByCourtsInitiative: 'OPTION_3'

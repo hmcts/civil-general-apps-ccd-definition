@@ -13,6 +13,7 @@ module.exports = {
         no: 'No'
       },
       dateId: 'date',
+      singleDate: 'input[id*="SINGLE_DATE"]',
     },
     judgeHeardFrom: {
       judgeHeardFromCheckBox: '#assistedOrderJudgeHeardFrom-SHOW',
@@ -28,9 +29,9 @@ module.exports = {
       recitalsRecordedTextArea: '#assistedOrderRecitalsRecorded_text',
     },
     costs: {
-      defCostBase: 'input[id*="DEFENDANT_COST_STANDARD_BASE"]',
-      costAmount: 'input[id*="defendantCostStandardBase_costAmount"]',
-      isPartyCostProtection: 'input[id="defendantCostStandardBase_isPartyCostProtection_Yes"]',
+      defCostBase: 'input[id*="assistedCostTypes-COSTS_RESERVED"]',
+      costReserved: 'textarea[id*="costReservedDetails_detailsRepresentationText"]',
+      isPartyCostProtection: 'input[id="publicFundingCostsProtection_Yes"]',
     },
     furtherHearing: {
       furtherHearingShowCheckBox: '#assistedOrderFurtherHearingToggle-SHOW',
@@ -42,7 +43,7 @@ module.exports = {
       appealShowCheckBox: '#assistedOrderAppealToggle-SHOW',
       appealOrigin: 'input[id*="appealOrigin-CLAIMANT"]',
       appealDecision: 'input[id*="permissionToAppeal-GRANTED"]',
-      appealReasonText: 'textarea[id="assistedOrderAppealDetails_reasonsText"]',
+      appealJudgeSelection: 'select[id*="assistedOrderAppealJudgeSelection"]',
     },
     courtsOrder: {
       id: '#orderMadeOnOption',
@@ -70,7 +71,8 @@ module.exports = {
     await within(this.fields.orderMade.id, () => {
       I.click(this.fields.orderMade.options[orderMade]);
     });
-    await I.see('Date heard');
+    await I.see('Enter date(s) of hearing');
+    await I.forceClick(this.fields.orderMade.singleDate);
     await date.verifyPrePopulatedDate(this.fields.orderMade.dateId, orderType);
   },
 
@@ -107,10 +109,10 @@ module.exports = {
   async selectCosts() {
     await I.see('Costs');
     await I.click(this.fields.costs.defCostBase);
-    await I.waitForText('To be paid by');
-    await I.fillField(this.fields.costs.costAmount, '300.00');
+    await I.waitForText('Costs reserved');
+    await I.fillField(this.fields.costs.costReserved, 'to the hearing judge');
     await I.click(this.fields.costs.isPartyCostProtection);
-    await I.see('Does the paying party have cost protection?');
+    await I.see('Does the paying party have public funding costs protection?');
   },
 
   async selectFurtherHearing() {
@@ -131,7 +133,7 @@ module.exports = {
     await I.waitForText('Reasons');
     await I.click(this.fields.appeal.appealOrigin);
     await I.click(this.fields.appeal.appealDecision);
-    await I.fillField(this.fields.appeal.appealReasonText, 'Test reasons');
+    await I.selectOption(this.fields.appeal.appealJudgeSelection, 'a Circuit Judge of the County Court');
   },
 
   async selectOrderType(order) {

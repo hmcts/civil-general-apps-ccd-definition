@@ -58,10 +58,10 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
 
   await I.login(user);
-  await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'no', gaCaseReference, 'General_order', 'courtOwnInitiativeOrder', user);
+  await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'no', gaCaseReference, 'General_order', 'courtOwnInitiativeOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.ORDER_MADE.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Approve order', 'no', 'Claimant', user);
+  await I.verifyJudgesSummaryPage('Approve order', 'no', 'Claimant');
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'General order');
   console.log('Judges made a decision on case: ' + gaCaseReference);
   await I.login(config.applicantSolicitorUser);
@@ -74,8 +74,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Applicant Evidence');
 });
 
-// Skipped due to CIV-9804
-Scenario.skip('GA for 1v1 - Direction order journey @regression2', async ({I, api}) => {
+Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -104,10 +103,10 @@ Scenario.skip('GA for 1v1 - Direction order journey @regression2', async ({I, ap
     user = config.judgeLocalUser;
     await I.login(user);
   }
-  await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', gaCaseReference, 'Directions_order', 'withoutNoticeOrder', user);
+  await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', gaCaseReference, 'Directions_order', 'withoutNoticeOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Judges Directions', 'no', 'Claimant', user);
+  await I.verifyJudgesSummaryPage('Judges Directions', 'no', 'Claimant');
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'Directions order');
   console.log('Judges Directions Order Made on case: ' + gaCaseReference);
   await I.login(config.applicantSolicitorUser);
@@ -150,10 +149,10 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @regression2', asy
     user = config.judgeLocalUser;
     await I.login(user);
   }
-  await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'no', gaCaseReference, 'Dismissal_order', 'noneOrder', user);
+  await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'no', gaCaseReference, 'Dismissal_order', 'noneOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.APPLICATION_DISMISSED.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Dismissal order', 'no', 'Claimant', user);
+  await I.verifyJudgesSummaryPage('Dismissal order', 'no', 'Claimant');
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'Dismissal order');
   await I.dontSee('Go');
   await I.dontSee('Next step');
@@ -171,8 +170,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @regression2', asy
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
-// Skipped due to CIV-9804
-Scenario.skip('GA for 1v1- respond to application - Request more information @regression2', async ({I, api}) => {
+Scenario('GA for 1v1- respond to application - Request more information @regression2', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -218,7 +216,7 @@ Scenario.skip('GA for 1v1- respond to application - Request more information @re
   await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', gaCaseReference, 'yes', 'Request_for_information');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id, config.defendantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Request more information', 'yes', 'Claimant', user);
+  await I.verifyJudgesSummaryPage('Request more information', 'yes', 'Claimant');
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'Request for information');
   console.log('Judges requested more information on case: ' + gaCaseReference);
   await I.login(config.applicantSolicitorUser);

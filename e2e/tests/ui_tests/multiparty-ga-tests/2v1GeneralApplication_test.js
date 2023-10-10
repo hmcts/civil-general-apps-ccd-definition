@@ -13,8 +13,7 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('GA CCD 2v1 - General Application Journey @multiparty-e2e-tests @ui-nightly  @regression2');
 
-// Skipped due to CIV-9804
-Scenario.skip('GA for 2v1 - Concurrent written representations - without notice to with notice journey',
+Scenario('GA for 2v1 - Concurrent written representations - without notice to with notice journey',
   async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -46,7 +45,7 @@ Scenario.skip('GA for 2v1 - Concurrent written representations - without notice 
   }
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations',
     'concurrentRep', gaCaseReference, 'withOutNotice', 'Order_Written_Representation_Concurrent',
-    'courtOwnInitiativeOrder', user);
+    'courtOwnInitiativeOrder');
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
@@ -71,10 +70,10 @@ Scenario.skip('GA for 2v1 - Concurrent written representations - without notice 
   }
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations',
     'concurrentRep', gaCaseReference, 'no', 'Order_Written_Representation_Concurrent',
-    'withoutNoticeOrder', user);
+    'withoutNoticeOrder');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_WRITTEN_REPRESENTATIONS.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
-  await I.verifyJudgesSummaryPage('Concurrent representations', 'no', 'Claimant', user);
+  await I.verifyJudgesSummaryPage('Concurrent representations', 'no', 'Claimant');
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'Written representation concurrent');
   console.log('Judges made an order for Concurrent written representations on case: ' + gaCaseReference);
 

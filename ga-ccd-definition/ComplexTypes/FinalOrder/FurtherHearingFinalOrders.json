@@ -69,11 +69,54 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "alternativeHearingLabel",
+    "ListElementCode": "datesToAvoidLabel",
     "ID": "FinalOrderFurtherHearing",
-    "ElementLabel": "### Alternative hearing location (Optional)",
+    "ElementLabel": "### Do you want the parties to provide dates to avoid?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "datesToAvoidYesNo",
+    "ID": "FinalOrderFurtherHearing",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "datesToAvoidDateDropdown",
+    "ID": "FinalOrderFurtherHearing",
+    "ElementLabel": " ",
+    "FieldType": "FinalOrderFurtherHearingDatesAvoid",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "datesToAvoidYesNo=\"Yes\""
+  },
+
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "alternativeHearingLabel",
+    "ID": "FinalOrderFurtherHearing",
+    "ElementLabel": "### Hearing location",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "hearingLocationList",
+    "ID": "FinalOrderFurtherHearing",
+    "ElementLabel": " ",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ListElementCode": "alternativeHearingDropdownLabel",
+    "ID": "FinalOrderFurtherHearing",
+    "ElementLabel": "### Alternative hearing location",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "hearingLocationList=\"OTHER_LOCATION\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -81,7 +124,8 @@
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
     "FieldType": "DynamicList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "hearingLocationList=\"OTHER_LOCATION\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
