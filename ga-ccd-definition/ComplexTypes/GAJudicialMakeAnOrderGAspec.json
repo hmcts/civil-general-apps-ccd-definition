@@ -8,21 +8,6 @@
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
-    "ListElementCode": "showJudgeRecitalText",
-    "ElementLabel": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAJudicialMakeAnOrderGAspec",
-    "ListElementCode": "judgeOrderLabel",
-    "ElementLabel": "### Order",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "judgeRecitalText",
     "ElementLabel": "The court records that:",
     "FieldType": "TextArea",
@@ -34,6 +19,13 @@
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAJudgeMakeAnOrderOptionGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "judgeOrderLabel",
+    "ElementLabel": "### Order",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -101,20 +93,6 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "FieldShowCondition": "makeAnOrder = \"GIVE_DIRECTIONS_WITHOUT_HEARING\""
-  },
-  {
-    "ID": "GAJudicialMakeAnOrderGAspec",
-    "ListElementCode": "reasonForDecisionLabel",
-    "ElementLabel": "### Reasons",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAJudicialMakeAnOrderGAspec",
-    "ListElementCode": "showReasonForDecision",
-    "ElementLabel": "Do you want to give reasons for the order?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
@@ -204,6 +182,28 @@
     "FieldType": "Date",
     "HintText": "For example, 16 4 2021",
     "FieldShowCondition": "judicialByCourtsInitiative=\"OPTION_2\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "reasonForDecisionLabel",
+    "ElementLabel": "### Reasons",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "showReasonForDecision",
+    "ElementLabel": "Do you want to give reasons for the order?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "showJudgeRecitalText",
+    "ElementLabel": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
     "SecurityClassification": "Public"
   }
 ]
