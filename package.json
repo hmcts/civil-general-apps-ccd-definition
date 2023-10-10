@@ -19,7 +19,7 @@
     "test:api": "run-script-os",
     "test:api:win32": "npx codeceptjs run-workers --suites 4 --grep @api-tests --reporter mocha-multi --verbose",
     "test:api:darwin:linux": "MOCHAWESOME_REPORTFILENAME=api PROCEED_ON_FAILURE=true npx codeceptjs run --grep @api-tests --reporter mocha-multi --verbose",
-    "test:e2e": "MOCHAWESOME_REPORTFILENAME=e2e npx codeceptjs run --grep @e2e-tests --reporter mocha-multi --verbose",
+    "test:e2e": "MOCHAWESOME_REPORTFILENAME=e2e PROCEED_ON_FAILURE=true npx codeceptjs run --grep @e2e-tests --reporter mocha-multi --verbose",
     "test:e2e-multiparty": "MOCHAWESOME_REPORTFILENAME=e2e-multiparty npx codeceptjs run --grep @multiparty-e2e-tests --reporter mocha-multi --verbose",
     "test:functional": "./e2e/run-functional-tests.sh",
     "test:functionallocal": "run-script-os",
