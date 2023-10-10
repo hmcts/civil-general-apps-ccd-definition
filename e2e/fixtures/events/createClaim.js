@@ -130,6 +130,9 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
         baseLocation: '000000'
       }
       },
+      applicant1DQRemoteHearing: {
+        remoteHearingRequested: 'No'
+      },
       applicant1OrganisationPolicy: {
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
         Organisation: {
