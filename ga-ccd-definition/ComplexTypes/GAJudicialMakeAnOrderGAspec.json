@@ -1,6 +1,14 @@
 [
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "makeAnOrder",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "GAJudgeMakeAnOrderOptionGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "judgeRecitalLabel",
     "ElementLabel": "### Recitals",
     "FieldType": "Label",
@@ -11,14 +19,6 @@
     "ListElementCode": "judgeRecitalText",
     "ElementLabel": "The court records that:",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAJudicialMakeAnOrderGAspec",
-    "ListElementCode": "makeAnOrder",
-    "ElementLabel": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "GAJudgeMakeAnOrderOptionGAspec",
     "SecurityClassification": "Public"
   },
   {
@@ -93,14 +93,6 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "FieldShowCondition": "makeAnOrder = \"GIVE_DIRECTIONS_WITHOUT_HEARING\""
-  },
-  {
-    "ID": "GAJudicialMakeAnOrderGAspec",
-    "ListElementCode": "reasonForDecisionText",
-    "ElementLabel": " ",
-    "FieldType": "TextArea",
-    "SecurityClassification": "Public",
-    "Max": 400
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
@@ -197,6 +189,14 @@
     "ElementLabel": "Do you want to give reasons for the order?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAJudicialMakeAnOrderGAspec",
+    "ListElementCode": "reasonForDecisionText",
+    "ElementLabel": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Max": 400
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
