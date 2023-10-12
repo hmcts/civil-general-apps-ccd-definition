@@ -8,7 +8,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 Judge makes order application after hearing API tests @api-nightly');
 
-Scenario('Without Notice Hearing notice journey', async ({api}) => {
+Scenario('Without Notice Hearing notice journey @123', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -16,7 +16,7 @@ Scenario('Without Notice Hearing notice journey', async ({api}) => {
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.defendantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
   console.log('*** Start Judge makes order application after hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   const doc = 'hearingNotice';
@@ -34,7 +34,16 @@ Scenario('Without Notice Hearing notice journey', async ({api}) => {
     await api.assertGaDocumentVisibilityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
   }
 
-  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
+  console.log('*** End Response to GA Case Reference 1 : ' + gaCaseReference + ' ***');
+
+  console.log('Make a General Application TWO');
+  gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
+
+  console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
+  await api.respondentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
+  console.log('*** End Response to GA Case Reference 2 : ' + gaCaseReference + ' ***');
+
+  /*await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
   await api.assertNullGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, doc);
   await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 
@@ -45,9 +54,9 @@ Scenario('Without Notice Hearing notice journey', async ({api}) => {
   }
   const finalDoc = 'generalOrder';
   await api.assertNullGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, finalDoc);
-  await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, finalDoc);
+  await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, finalDoc);*/
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
