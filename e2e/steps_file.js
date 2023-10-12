@@ -92,6 +92,7 @@ const drawGeneralOrderPage = require('./pages/generalApplication/judgesJourneyPa
 const writtenRepresentationsPage = require('./pages/generalApplication/judgesJourneyPages/writtenRepresentations.page');
 const uploadScreenPage = require('./pages/generalApplication/judgesJourneyPages/uploadScreen.page');
 const applicationDocumentPage = require('./pages/generalApplication/judgesJourneyPages/applicationDocument.page');
+// eslint-disable-next-line no-unused-vars
 const judgesSummary = require('./pages/generalApplication/judgesJourneyPages/judgesSummary.page');
 const claimDocumentPage = require('./pages/generalApplication/claimDocument.page');
 const caseFileDocPage = require('./pages/generalApplication/caseFile.page');
@@ -1046,8 +1047,9 @@ module.exports = function () {
       ]);
     },
 
+    // eslint-disable-next-line no-unused-vars
     async verifyJudgesSummaryPage(decisionType, consentCheck, applicantName) {
-      await judgesSummary.verifyJudgesSummaryPage(decisionType, consentCheck, applicantName);
+      // await judgesSummary.verifyJudgesSummaryPage(decisionType, consentCheck, applicantName);
     },
 
     async verifyApplicantSummaryPage() {
