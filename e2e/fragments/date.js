@@ -20,25 +20,16 @@ module.exports = {
     I.fillField(this.fields(fieldId).year, date.getFullYear());
   },
 
-  async verifyPrePopulatedDate(fieldId, orderType) {
+  async verifyPrePopulatedDate(fieldId) {
     I.waitForElement(this.fields(fieldId).day);
     const date = new Date();
+
+    date.setDate(date.getDate() + 7);
     let docMonth = ((date.getMonth() + 1) >= 10) ? (date.getMonth() + 1) : '0' + (date.getMonth() + 1);
     let twoDigitDate = ((date.getDate()) >= 10) ? (date.getDate()) : '0' + (date.getDate());
 
     let expectedDay = await I.grabValueFrom(this.fields(fieldId).day);
-
-    switch (orderType) {
-      case 'freeFromOrder':
-        date.setDate(date.getDate() + 7);
-        docMonth = ((date.getMonth() + 1) >= 10) ? (date.getMonth() + 1) : '0' + (date.getMonth() + 1);
-        twoDigitDate = ((date.getDate()) >= 10) ? (date.getDate()) : '0' + (date.getDate());
-        await expect(expectedDay).to.equals((twoDigitDate).toString());
-        break;
-      case 'assistedOrder':
-        await expect(expectedDay).to.equals(twoDigitDate.toString());
-        break;
-    }
+    await expect(expectedDay).to.equals(twoDigitDate.toString());
 
     let expectedMonth = await I.grabValueFrom(this.fields(fieldId).month);
     await expect(expectedMonth).to.equals(docMonth.toString());
