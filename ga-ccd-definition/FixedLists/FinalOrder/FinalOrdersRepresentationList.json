@@ -84,21 +84,51 @@
     "DisplayOrder": 6
   },
   {
-    "ID": "FinalOrdersClaimantDefendantNotAttending",
+    "ID": "FinalOrdersClaimantNotAttending",
+    "ListElementCode": "SATISFIED_REASONABLE_TO_PROCEED_CLAIMANT",
+    "ListElement": "Satisfied reasonable to proceed",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "FinalOrdersClaimantNotAttending",
+    "ListElementCode": "SATISFIED_NOTICE_OF_TRIAL_CLAIMANT",
+    "ListElement": "Satisfied notice of trial received, not reasonable to proceed",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "FinalOrdersClaimantNotAttending",
+    "ListElementCode": "NOT_SATISFIED_NOTICE_OF_TRIAL_CLAIMANT",
+    "ListElement": "Not satisfied notice of trial received, not reasonable to proceed",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "FinalOrdersClaimantNotAttending",
+    "ListElementCode": "NOT_GIVEN_NOTICE_OF_APPLICATION_CLAIMANT",
+    "ListElement": "The claimant was not given notice of this application.",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "FinalOrdersDefendantNotAttending",
     "ListElementCode": "SATISFIED_REASONABLE_TO_PROCEED",
     "ListElement": "Satisfied reasonable to proceed",
     "DisplayOrder": 1
   },
   {
-    "ID": "FinalOrdersClaimantDefendantNotAttending",
+    "ID": "FinalOrdersDefendantNotAttending",
     "ListElementCode": "SATISFIED_NOTICE_OF_TRIAL",
     "ListElement": "Satisfied notice of trial received, not reasonable to proceed",
     "DisplayOrder": 2
   },
   {
-    "ID": "FinalOrdersClaimantDefendantNotAttending",
+    "ID": "FinalOrdersDefendantNotAttending",
     "ListElementCode": "NOT_SATISFIED_NOTICE_OF_TRIAL",
     "ListElement": "Not satisfied notice of trial received, not reasonable to proceed",
     "DisplayOrder": 3
+  },
+  {
+    "ID": "FinalOrdersDefendantNotAttending",
+    "ListElementCode": "NOT_GIVEN_NOTICE_OF_APPLICATION",
+    "ListElement": "The defendant was not given notice of this application",
+    "DisplayOrder": 4
   }
 ]
