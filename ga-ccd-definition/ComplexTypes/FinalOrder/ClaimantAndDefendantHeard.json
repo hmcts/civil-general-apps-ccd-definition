@@ -118,7 +118,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "CounselForDefendant",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Counsel for ${defendantOnePartyName}, the defendant",
+    "ElementLabel": "Counsel for ${defendantOnePartyName}, the defendant.",
     "FieldType": "Label",
     "FieldShowCondition": "defendantRepresentation=\"COUNSEL_FOR_DEFENDANT\"",
     "SecurityClassification": "Public"
@@ -127,7 +127,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "solicitorForDefendant",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Solicitor for ${defendantOnePartyName}, the defendant",
+    "ElementLabel": "Solicitor for ${defendantOnePartyName}, the defendant.",
     "FieldType": "Label",
     "FieldShowCondition": "defendantRepresentation=\"SOLICITOR_FOR_DEFENDANT\"",
     "SecurityClassification": "Public"
@@ -136,7 +136,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "costDraftsmanDef",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Costs draftsman for ${defendantOnePartyName}, the defendant",
+    "ElementLabel": "Costs draftsman for ${defendantOnePartyName}, the defendant.",
     "FieldType": "Label",
     "FieldShowCondition": "defendantRepresentation=\"COST_DRAFTSMAN_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public"
@@ -145,7 +145,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "defendantInPerson",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "${defendantOnePartyName}, the defendant, in person",
+    "ElementLabel": "${defendantOnePartyName}, the defendant, in person.",
     "FieldType": "Label",
     "FieldShowCondition": "defendantRepresentation=\"THE_DEFENDANT_IN_PERSON\"",
     "SecurityClassification": "Public"
@@ -154,7 +154,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "layRepresentativeDef",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Lay representative for ${defendantOnePartyName}, the defendant",
+    "ElementLabel": "Lay representative for ${defendantOnePartyName}, the defendant.",
     "FieldType": "Label",
     "FieldShowCondition": "defendantRepresentation=\"LAY_REPRESENTATIVE_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public"
@@ -191,7 +191,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "CounselForDefendantTwo",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Counsel for ${defendantTwoPartyName}, the defendant",
+    "ElementLabel": "Counsel for ${defendantTwoPartyName}, the defendant.",
     "FieldType": "Label",
     "FieldShowCondition": "defendantTwoRepresentation=\"COUNSEL_FOR_DEFENDANT\"",
     "SecurityClassification": "Public"
@@ -200,7 +200,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "solicitorForDefendantTwo",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Solicitor for ${defendantTwoPartyName}, the defendant",
+    "ElementLabel": "Solicitor for ${defendantTwoPartyName}, the defendant.",
     "FieldType": "Label",
     "FieldShowCondition": "defendantTwoRepresentation=\"SOLICITOR_FOR_DEFENDANT\"",
     "SecurityClassification": "Public"
@@ -209,7 +209,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "costDraftsmanDefTwo",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Costs draftsman for ${defendantTwoPartyName}, the defendant",
+    "ElementLabel": "Costs draftsman for ${defendantTwoPartyName}, the defendant.",
     "FieldType": "Label",
     "FieldShowCondition": "defendantTwoRepresentation=\"COST_DRAFTSMAN_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public"
@@ -218,7 +218,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "defendantTwoInPerson",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "${defendantTwoPartyName}, the defendant, in person",
+    "ElementLabel": "${defendantTwoPartyName}, the defendant, in person.",
     "FieldType": "Label",
     "FieldShowCondition": "defendantTwoRepresentation=\"THE_DEFENDANT_IN_PERSON\"",
     "SecurityClassification": "Public"
@@ -227,7 +227,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "layRepresentativeDefTwo",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "A lay representative for ${defendantTwoPartyName}, the defendant",
+    "ElementLabel": "A lay representative for ${defendantTwoPartyName}, the defendant.",
     "FieldType": "Label",
     "FieldShowCondition": "defendantTwoRepresentation=\"LAY_REPRESENTATIVE_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public"
@@ -246,7 +246,7 @@
     "ListElementCode": "detailsRepresentationLabel",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "### Enter details of representation",
-    "HintText": "For example, the judge heard from the claimant in person and counsel for the defendant",
+    "HintText": "For example, the Judge heard from Mr Smith, a director of the claimant company and Miss Smith as lay representative for the defendant",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   }
