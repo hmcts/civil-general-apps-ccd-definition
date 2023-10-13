@@ -20,7 +20,7 @@ module.exports = {
     I.fillField(this.fields(fieldId).year, date.getFullYear());
   },
 
-  async verifyPrePopulatedDate(fieldId, orderType) {
+  async verifyPrePopulatedDate(fieldId) {
     I.waitForElement(this.fields(fieldId).day);
     const date = new Date();
 
