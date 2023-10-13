@@ -86,7 +86,7 @@
     "ID": "TrialNoticeProcedure",
     "ElementLabel": "${defendantOnePartyName}, the defendant, did not attend the hearing as they were not given notice of the application.",
     "FieldType": "Label",
-    "FieldShowCondition": "listClaim=\"NOT_GIVEN_NOTICE_OF_APPLICATION\"",
+    "FieldShowCondition": "listDef=\"NOT_GIVEN_NOTICE_OF_APPLICATION\"",
     "SecurityClassification": "Public"
   },
   {
@@ -131,7 +131,7 @@
     "ID": "TrialNoticeProcedure",
     "ElementLabel": "${defendantTwoPartyName}, the defendant, did not attend the hearing as they were not given notice of the application.",
     "FieldType": "Label",
-    "FieldShowCondition": "listClaim=\"NOT_GIVEN_NOTICE_OF_APPLICATION\"",
+    "FieldShowCondition": "listDefTwo=\"NOT_GIVEN_NOTICE_OF_APPLICATION\"",
     "SecurityClassification": "Public"
   }
 ]
