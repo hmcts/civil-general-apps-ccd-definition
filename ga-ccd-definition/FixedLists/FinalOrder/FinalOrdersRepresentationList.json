@@ -104,7 +104,7 @@
   {
     "ID": "FinalOrdersClaimantNotAttending",
     "ListElementCode": "NOT_GIVEN_NOTICE_OF_APPLICATION_CLAIMANT",
-    "ListElement": "The claimant was not given notice of this application.",
+    "ListElement": "The claimant was not given notice of this application",
     "DisplayOrder": 4
   },
   {
