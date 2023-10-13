@@ -61,7 +61,7 @@ module.exports = {
     }
   },
 
-  async isOrderMade(orderMade, orderType) {
+  async isOrderMade(orderMade) {
     await I.waitInUrl('/GENERATE_DIRECTIONS_ORDER/GENERATE_DIRECTIONS_ORDERFinalOrderAssistedOrder', 5);
     await I.see('Test Inc v Sir John Doe, Dr Foo Bar');
     await I.see('Order Made');
@@ -73,7 +73,7 @@ module.exports = {
     });
     await I.see('Enter date(s) of hearing');
     await I.forceClick(this.fields.orderMade.singleDate);
-    await date.verifyPrePopulatedDate(this.fields.orderMade.dateId, orderType);
+    await date.verifyPrePopulatedDate(this.fields.orderMade.dateId);
   },
 
   async fillJudgeHeardForm() {
