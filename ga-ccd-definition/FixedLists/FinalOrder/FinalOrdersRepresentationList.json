@@ -2,103 +2,133 @@
   {
     "ID": "FinalOrdersRepresentationList",
     "ListElementCode": "CLAIMANT_AND_DEFENDANT",
-    "ListElement": "Claimant and Defendant",
+    "ListElement": "Claimant(s) and defendant(s)",
     "DisplayOrder": 1
   },
   {
     "ID": "FinalOrdersRepresentationList",
     "ListElementCode": "OTHER_REPRESENTATION",
-    "ListElement": "Other representation",
+    "ListElement": "Other representation (free text)",
     "DisplayOrder": 2
   },
   {
     "ID": "ClaimantRepresentationType",
     "ListElementCode": "COUNSEL_FOR_CLAIMANT",
-    "ListElement": "Counsel for claimant",
+    "ListElement": "Counsel for the claimant",
     "DisplayOrder": 1
   },
   {
     "ID": "ClaimantRepresentationType",
     "ListElementCode": "SOLICITOR_FOR_CLAIMANT",
-    "ListElement": "Solicitor for claimant",
+    "ListElement": "Solicitor for the claimant",
     "DisplayOrder": 2
   },
   {
     "ID": "ClaimantRepresentationType",
     "ListElementCode": "COST_DRAFTSMAN_FOR_THE_CLAIMANT",
-    "ListElement": "Cost draftsman for the claimant",
+    "ListElement": "Costs draftsman for the claimant",
     "DisplayOrder": 3
   },
   {
     "ID": "ClaimantRepresentationType",
     "ListElementCode": "THE_CLAIMANT_IN_PERSON",
-    "ListElement": "The claimant in person",
+    "ListElement":"Claimant in person",
     "DisplayOrder": 4
   },
   {
     "ID": "ClaimantRepresentationType",
     "ListElementCode": "LAY_REPRESENTATIVE_FOR_THE_CLAIMANT",
-    "ListElement": "Lay representative for the claimant",
+    "ListElement": "A lay representative for the claimant",
     "DisplayOrder": 5
   },
   {
     "ID": "ClaimantRepresentationType",
     "ListElementCode": "CLAIMANT_NOT_ATTENDING",
-    "ListElement": "The claimant not attending",
+    "ListElement": "Claimant not attending",
     "DisplayOrder": 6
   },
   {
     "ID": "DefendantRepresentationType",
     "ListElementCode": "COUNSEL_FOR_DEFENDANT",
-    "ListElement": "Counsel for defendant",
+    "ListElement": "Counsel for the defendant",
     "DisplayOrder": 1
   },
   {
     "ID": "DefendantRepresentationType",
     "ListElementCode": "SOLICITOR_FOR_DEFENDANT",
-    "ListElement": "Solicitor for defendant",
+    "ListElement": "Solicitor for the defendant",
     "DisplayOrder": 2
   },
   {
     "ID": "DefendantRepresentationType",
     "ListElementCode": "COST_DRAFTSMAN_FOR_THE_DEFENDANT",
-    "ListElement": "Cost draftsman for the defendant",
+    "ListElement": "Costs draftsman for the defendant",
     "DisplayOrder": 3
   },
   {
     "ID": "DefendantRepresentationType",
     "ListElementCode": "THE_DEFENDANT_IN_PERSON",
-    "ListElement": "The defendant in person",
+    "ListElement": "Defendant in person",
     "DisplayOrder": 4
   },
   {
     "ID": "DefendantRepresentationType",
     "ListElementCode": "LAY_REPRESENTATIVE_FOR_THE_DEFENDANT",
-    "ListElement": "Lay representative for the defendant",
+    "ListElement": "A lay representative for the defendant",
     "DisplayOrder": 5
   },
   {
     "ID": "DefendantRepresentationType",
     "ListElementCode": "DEFENDANT_NOT_ATTENDING",
-    "ListElement": "The defendant not attending",
+    "ListElement": "Defendant not attending",
     "DisplayOrder": 6
   },
   {
-    "ID": "FinalOrdersClaimantDefendantNotAttending",
+    "ID": "FinalOrdersClaimantNotAttending",
+    "ListElementCode": "SATISFIED_REASONABLE_TO_PROCEED_CLAIMANT",
+    "ListElement": "Satisfied reasonable to proceed",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "FinalOrdersClaimantNotAttending",
+    "ListElementCode": "SATISFIED_NOTICE_OF_TRIAL_CLAIMANT",
+    "ListElement": "Satisfied notice of trial received, not reasonable to proceed",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "FinalOrdersClaimantNotAttending",
+    "ListElementCode": "NOT_SATISFIED_NOTICE_OF_TRIAL_CLAIMANT",
+    "ListElement": "Not satisfied notice of trial received, not reasonable to proceed",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "FinalOrdersClaimantNotAttending",
+    "ListElementCode": "NOT_GIVEN_NOTICE_OF_APPLICATION_CLAIMANT",
+    "ListElement": "The claimant was not given notice of this application",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "FinalOrdersDefendantNotAttending",
     "ListElementCode": "SATISFIED_REASONABLE_TO_PROCEED",
     "ListElement": "Satisfied reasonable to proceed",
     "DisplayOrder": 1
   },
   {
-    "ID": "FinalOrdersClaimantDefendantNotAttending",
+    "ID": "FinalOrdersDefendantNotAttending",
     "ListElementCode": "SATISFIED_NOTICE_OF_TRIAL",
     "ListElement": "Satisfied notice of trial received, not reasonable to proceed",
     "DisplayOrder": 2
   },
   {
-    "ID": "FinalOrdersClaimantDefendantNotAttending",
+    "ID": "FinalOrdersDefendantNotAttending",
     "ListElementCode": "NOT_SATISFIED_NOTICE_OF_TRIAL",
     "ListElement": "Not satisfied notice of trial received, not reasonable to proceed",
     "DisplayOrder": 3
+  },
+  {
+    "ID": "FinalOrdersDefendantNotAttending",
+    "ListElementCode": "NOT_GIVEN_NOTICE_OF_APPLICATION",
+    "ListElement": "The defendant was not given notice of this application",
+    "DisplayOrder": 4
   }
 ]
