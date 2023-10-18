@@ -16,5 +16,11 @@
     "ListElementCode": "IN_PERSON",
     "ListElement": "In person",
     "DisplayOrder": 3
+  },
+  {
+    "ID": "GAJudicialHearingListOptionsGAspec",
+    "ListElementCode": "PAPER_HEARING",
+    "ListElement": "Paper hearing",
+    "DisplayOrder": 4
   }
 ]
