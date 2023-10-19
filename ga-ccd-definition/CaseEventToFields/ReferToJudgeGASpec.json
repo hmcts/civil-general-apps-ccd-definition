@@ -52,7 +52,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "REFER_TO_JUDGE",
-    "CaseFieldID": "isCcmccLocation",
+    "CaseFieldID": "isCtscLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",

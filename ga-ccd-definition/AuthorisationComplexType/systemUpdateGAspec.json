@@ -560,7 +560,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "isCcmccLocation",
+    "ListElementCode": "isCtscLocation",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },

@@ -502,7 +502,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "isCcmccLocation",
+    "ListElementCode": "isCtscLocation",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },

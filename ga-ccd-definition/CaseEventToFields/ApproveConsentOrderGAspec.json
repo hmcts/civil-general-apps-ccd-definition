@@ -65,7 +65,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "APPROVE_CONSENT_ORDER",
-    "CaseFieldID": "isCcmccLocation",
+    "CaseFieldID": "isCtscLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",

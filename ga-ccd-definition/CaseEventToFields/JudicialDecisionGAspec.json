@@ -617,7 +617,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAKE_DECISION",
-    "CaseFieldID": "isCcmccLocation",
+    "CaseFieldID": "isCtscLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",
