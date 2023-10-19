@@ -9,7 +9,7 @@ run:
 ```
 ## Testing
 
-The repo uses codeceptjs framework for e2e tests.
+The repoo uses codeceptjs framework for e2e tests.
 
 To install dependencies enter `yarn install`.
 
