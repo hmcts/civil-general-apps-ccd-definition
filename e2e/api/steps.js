@@ -1355,6 +1355,7 @@ module.exports = {
     const updatedCivilCaseDataResponse = await apiRequest.fetchUpdatedCivilCaseData(civilCaseId, user);
     const updatedCivilCaseData = await updatedCivilCaseDataResponse.json();
     console.log('ctscLocation After SDO on general application :'+updatedGACaseData.isCtscLocation);
+    assert.equal(updatedGACaseData.isCtscLocation, updatedCivilCaseData.generalApplications[0].value.isCtscLocation);
     assert.equal(updatedGACaseData.caseManagementLocation.region, updatedCivilCaseData.generalApplications[0].value.caseManagementLocation.region);
     assert.equal(updatedGACaseData.caseManagementLocation.baseLocation, updatedCivilCaseData.generalApplications[0].value.caseManagementLocation.baseLocation);
   },
