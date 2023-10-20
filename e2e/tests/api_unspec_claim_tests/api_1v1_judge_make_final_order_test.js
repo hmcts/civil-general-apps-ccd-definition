@@ -28,7 +28,7 @@ Scenario('Judge decides Free Form Order', async ({api}) => {
   console.log('*** End Judge decides Free Form Order: ' + gaCaseReference + ' ***');
 });
 
-Scenario('Defendant Hearing notice journey', async ({api}) => {
+Scenario('Defendant Hearing notice journey @123', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -65,14 +65,14 @@ Scenario('Defendant Hearing notice journey', async ({api}) => {
   await api.assertGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, doc);
   await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+ /* if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeMakeFinalOrder(config.judgeUser, gaCaseReference, 'ASSISTED_ORDER', true);
   } else {
     await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'ASSISTED_ORDER', true);
   }
-
+*/
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+//  await api.cleanUp();
 });
