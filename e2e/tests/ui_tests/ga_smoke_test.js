@@ -15,7 +15,7 @@ Scenario('GA 1v2  - Judge Makes Decision Order Made @smoke-tests', async ({api, 
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.secondDefendantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.defendantSolicitorUser, civilCaseReference);
   console.log('Without Notice General Application Initiated by Defendant2 : ' + gaCaseReference);
 
   console.log('*** Start Judge makes decision order made: ' + gaCaseReference + ' ***');
