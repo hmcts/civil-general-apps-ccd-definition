@@ -114,6 +114,11 @@ module.exports = {
                 hearingNotesText: 'asdf',
                 lengthOfNewHearing: 'MINUTES_30',
                 datesToAvoidYesNo: 'No',
+                hearingLocationList: {
+                    list_items:[
+                      listElement("Other location")
+                    ]
+                },
                 alternativeHearingLocation: {
                     list_items: [
                         listElement(config.defendantSelectedCourt)
