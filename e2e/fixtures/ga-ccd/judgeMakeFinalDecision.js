@@ -27,11 +27,11 @@ module.exports = {
             assistedOrderAppealDetails: {
               appealOrigin: 'CLAIMANT',
               permissionToAppeal: 'GRANTED',
-              appealTypeChoicesForGranted: {
-                appealChoiceOptionA: {
-                  appealGrantedRefusedDate: date(21)
-                },
-                assistedOrderAppealJudgeSelection: 'CIRCUIT_COURT_JUDGE'
+              assistedOrderAppealDropdownGranted: {
+                assistedOrderAppealJudgeSelection: 'CIRCUIT_COURT_JUDGE',
+                assistedOrderAppealFirstOption: {
+                  assistedOrderAppealDate: date(21)
+                }
               }
             },
             assistedOrderMadeSelection: 'Yes',
@@ -76,11 +76,11 @@ module.exports = {
             assistedOrderAppealDetails: {
                 appealOrigin: 'CLAIMANT',
                 permissionToAppeal: 'GRANTED',
-                appealTypeChoicesForGranted: {
-                  appealChoiceOptionA: {
-                    appealGrantedRefusedDate: date(21)
-                  },
-                assistedOrderAppealJudgeSelection: 'CIRCUIT_COURT_JUDGE'
+                assistedOrderAppealDropdownGranted: {
+                  assistedOrderAppealJudgeSelection: 'CIRCUIT_COURT_JUDGE',
+                  assistedOrderAppealFirstOption: {
+                    assistedOrderAppealDate: date(21)
+                  }
                 }
             },
             assistedOrderMadeSelection: 'Yes',
