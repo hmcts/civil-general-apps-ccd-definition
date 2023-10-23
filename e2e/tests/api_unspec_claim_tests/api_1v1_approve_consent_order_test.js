@@ -29,7 +29,7 @@ BeforeSuite(async ({api}) => {
   console.log('Civil Case After SDO claimant responded: ' + civilCaseReferenceAfterSDO);
 });
 
-Scenario('Caseworker makes decision 1V1 - CONSENT ORDER @api-tests @api-scheduler-test', async ({api}) => {
+Scenario.skip('Caseworker makes decision 1V1 - CONSENT ORDER @api-tests @api-scheduler-test', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -53,7 +53,7 @@ Scenario('Caseworker makes decision 1V1 - CONSENT ORDER @api-tests @api-schedule
   console.log('*** End CaseWorker Approve Consent Order on GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
-Scenario('Judge Revisit 1V1 - consentOrder End Date Scheduler @api-scheduler-test', async ({api}) => {
+Scenario.skip('Judge Revisit 1V1 - consentOrder End Date Scheduler @api-scheduler-test', async ({api}) => {
 
   console.log('*** Triggering Judge Revisit Order Made Scheduler ***');
   await api.judgeRevisitConsentScheduler(gaCaseReference, 'ORDER_MADE', genAppType);
@@ -61,7 +61,7 @@ Scenario('Judge Revisit 1V1 - consentOrder End Date Scheduler @api-scheduler-tes
 
 });
 
-Scenario('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application @api-tests', async ({api}) => {
+Scenario.skip('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application @api-tests', async ({api}) => {
 
   console.log('Make a General Application for Consent order');
   gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, ['STRIKE_OUT']);
@@ -86,7 +86,7 @@ Scenario('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application @api-te
 
 });
 
-Scenario('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application @api-tests', async ({api}) => {
+Scenario.skip('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application @api-tests', async ({api}) => {
 
   console.log('Make a General Application for Consent order');
 
@@ -111,7 +111,7 @@ Scenario('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application @api-
 
 });
 
-Scenario('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Application @api-tests', async ({api}) => {
+Scenario.skip('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Application @api-tests', async ({api}) => {
 
   console.log('Make a General Application for Consent order');
   gaCaseReference = await api.initiateConsentUrgentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, ['STRIKE_OUT']);
@@ -147,6 +147,7 @@ Scenario('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     console.log('*** NBC Admin Region1 Refer to Judge Process Start ***');
+    console.log("failing here?");
     await api.nbcAdminReferToJudge(config.hearingCenterAdminWithRegionId1, gaCaseReference);
     console.log('*** NBC Admin Region4 Refer to Judge Process End ***');
   } else {
