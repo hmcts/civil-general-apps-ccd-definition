@@ -117,7 +117,8 @@ module.exports = {
                 hearingLocationList: {
                     list_items:[
                       listElement("Other location")
-                    ]
+                    ],
+                    value: listElement("Other location")
                 },
                 alternativeHearingLocation: {
                     list_items: [
