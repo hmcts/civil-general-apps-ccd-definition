@@ -147,7 +147,7 @@ Scenario('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     console.log('*** NBC Admin Region1 Refer to Judge Process Start ***');
-    console.log("failing here?");
+    console.log('failing here?');
     await api.nbcAdminReferToJudge(config.hearingCenterAdminWithRegionId1, gaCaseReference);
     console.log('*** NBC Admin Region4 Refer to Judge Process End ***');
   } else {
