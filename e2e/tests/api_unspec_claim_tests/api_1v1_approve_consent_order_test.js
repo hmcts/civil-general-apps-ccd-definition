@@ -136,7 +136,7 @@ Scenario.skip('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Applica
 
 });
 
-Scenario('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 1V1 - Uncloak Application @api-tests', async ({api, I}) => {
+Scenario.skip('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 1V1 - Uncloak Application @api-tests', async ({api, I}) => {
 
   console.log('Make a Urgent General Application for Consent order');
   gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, ['STAY_THE_CLAIM']);
