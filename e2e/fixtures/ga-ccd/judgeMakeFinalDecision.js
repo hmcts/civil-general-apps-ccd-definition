@@ -119,9 +119,9 @@ module.exports = {
                 datesToAvoidYesNo: 'No',
                 hearingLocationList: {
                     list_items:[
-                      listElement("Other location")
+                      listElement('Other location')
                     ],
-                    value: listElement("Other location")
+                    value: listElement('Other location')
                 },
                 alternativeHearingLocation: {
                     list_items: [
