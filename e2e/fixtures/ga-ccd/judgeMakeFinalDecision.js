@@ -113,6 +113,7 @@ module.exports = {
                 hearingMethods: 'VIDEO',
                 hearingNotesText: 'asdf',
                 lengthOfNewHearing: 'MINUTES_30',
+                datesToAvoidYesNo: 'No',
                 alternativeHearingLocation: {
                     list_items: [
                         listElement(config.defendantSelectedCourt)
