@@ -29,7 +29,7 @@ BeforeSuite(async ({api}) => {
   console.log('Civil Case After SDO claimant responded: ' + civilCaseReferenceAfterSDO);
 });
 
-Scenario.skip('Caseworker makes decision 1V1 - CONSENT ORDER @api-tests @api-scheduler-test', async ({api}) => {
+Scenario('Caseworker makes decision 1V1 - CONSENT ORDER @api-tests @api-scheduler-test', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -53,7 +53,7 @@ Scenario.skip('Caseworker makes decision 1V1 - CONSENT ORDER @api-tests @api-sch
   console.log('*** End CaseWorker Approve Consent Order on GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
-Scenario.skip('Judge Revisit 1V1 - consentOrder End Date Scheduler @api-scheduler-test', async ({api}) => {
+Scenario('Judge Revisit 1V1 - consentOrder End Date Scheduler @api-scheduler-test', async ({api}) => {
 
   console.log('*** Triggering Judge Revisit Order Made Scheduler ***');
   await api.judgeRevisitConsentScheduler(gaCaseReference, 'ORDER_MADE', genAppType);
@@ -61,7 +61,7 @@ Scenario.skip('Judge Revisit 1V1 - consentOrder End Date Scheduler @api-schedule
 
 });
 
-Scenario.skip('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application @api-tests', async ({api}) => {
+Scenario('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application @api-tests', async ({api}) => {
 
   console.log('Make a General Application for Consent order');
   gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, ['STRIKE_OUT']);
@@ -86,7 +86,7 @@ Scenario.skip('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application @a
 
 });
 
-Scenario.skip('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application @api-tests', async ({api}) => {
+Scenario('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application @api-tests', async ({api}) => {
 
   console.log('Make a General Application for Consent order');
 
@@ -111,7 +111,7 @@ Scenario.skip('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application 
 
 });
 
-Scenario.skip('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Application @api-tests', async ({api}) => {
+Scenario('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Application @api-tests', async ({api}) => {
 
   console.log('Make a General Application for Consent order');
   gaCaseReference = await api.initiateConsentUrgentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, ['STRIKE_OUT']);
@@ -136,7 +136,7 @@ Scenario.skip('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Applica
 
 });
 
-Scenario.skip('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 1V1 - Uncloak Application @api-tests', async ({api, I}) => {
+Scenario('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 1V1 - Uncloak Application @api-tests', async ({api, I}) => {
 
   console.log('Make a Urgent General Application for Consent order');
   gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, ['STAY_THE_CLAIM']);
@@ -168,7 +168,7 @@ Scenario.skip('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes deci
 
 });
 
-Scenario.skip('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1V1 -- URGENT - Uncloak Application @api-tests', async ({api, I}) => {
+Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1V1 -- URGENT - Uncloak Application @api-tests', async ({api, I}) => {
 
   console.log('Make a Urgent General Application for Consent order');
   gaCaseReference = await api.initiateConsentUrgentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, ['STAY_THE_CLAIM']);
