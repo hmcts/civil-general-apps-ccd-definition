@@ -59,6 +59,7 @@ civil-service:
             alias: robotics.notification.specRecipient
     environment:
       LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
+      WA_TOGGLE: WA3.5
 idam-pr:
   redirect_uris:
     XUI:
