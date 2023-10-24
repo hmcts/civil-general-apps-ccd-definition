@@ -24,7 +24,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "ListElementCode": "assistedOrderAppealDate",
     "ID": "AssistedOrderAppealFirstOptionRefused",
     "ElementLabel": " ",
