@@ -9,7 +9,7 @@ def component = "ga-ccd"
 def camundaBranch = "master"
 def ccddefbranch = "CIV-6122-PR-to-test-Civil-service-changes"
 def dmnBranch = "master"
-def waStandaloneBranch = "master"
+def waStandaloneBranch = "CIV-6122-Update-default-case-management-location-for-Civil-claims"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
