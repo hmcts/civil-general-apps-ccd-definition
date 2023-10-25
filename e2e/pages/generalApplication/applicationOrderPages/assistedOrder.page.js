@@ -38,6 +38,7 @@ module.exports = {
       listFromDateId: 'listFromDate',
       hearingLength: 'input[id*="HOURS_2"]',
       hearingMethod: 'input[id*="VIDEO"]',
+      datesToAvoidYesNo: 'input[id="assistedOrderFurtherHearingDetails_datesToAvoidYesNo_No"]',
     },
     appeal: {
       appealShowCheckBox: '#assistedOrderAppealToggle-SHOW',
