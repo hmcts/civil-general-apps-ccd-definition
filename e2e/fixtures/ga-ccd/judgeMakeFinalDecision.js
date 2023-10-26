@@ -25,14 +25,14 @@ module.exports = {
             ],
             orderMadeOnOption: 'NONE',
             assistedOrderAppealDetails: {
-                reasonsText: 'asdfasd asdf',
-                appealOrigin: 'CLAIMANT',
-                permissionToAppeal: 'GRANTED',
-                assistedOrderAppealDropdownGranted: {
-                  assistedOrderAppealFirstOption: {
-                    assistedOrderAppealDate: date(21)
-                  }
+              appealOrigin: 'CLAIMANT',
+              permissionToAppeal: 'GRANTED',
+              assistedOrderAppealDropdownGranted: {
+                assistedOrderAppealJudgeSelection: 'CIRCUIT_COURT_JUDGE',
+                assistedOrderAppealFirstOption: {
+                  assistedOrderAppealDate: date(21)
                 }
+              }
             },
             assistedOrderMadeSelection: 'Yes',
             assistedOrderJudgeHeardFrom: [
@@ -50,6 +50,7 @@ module.exports = {
                 ]
             },
             assistedOrderOrderedThatText: 'Test Order details',
+            assistedCostTypes: 'COSTS_IN_CASE',
             assistedOrderGiveReasonsYesNo: 'No',
             assistedOrderRecitalsRecorded: {
                 text: 'dsfads fasdf'
@@ -71,14 +72,16 @@ module.exports = {
                 'SHOW'
             ],
             orderMadeOnOption: 'NONE',
+            assistedCostTypes: 'COSTS_IN_CASE',
             assistedOrderAppealDetails: {
                 appealOrigin: 'CLAIMANT',
                 permissionToAppeal: 'GRANTED',
                 assistedOrderAppealDropdownGranted: {
+                  assistedOrderAppealJudgeSelection: 'CIRCUIT_COURT_JUDGE',
                   assistedOrderAppealFirstOption: {
                     assistedOrderAppealDate: date(21)
+                  }
                 }
-              }
             },
             assistedOrderMadeSelection: 'Yes',
             assistedOrderJudgeHeardFrom: [
@@ -114,6 +117,12 @@ module.exports = {
                 hearingNotesText: 'asdf',
                 lengthOfNewHearing: 'MINUTES_30',
                 datesToAvoidYesNo: 'No',
+                hearingLocationList: {
+                    list_items:[
+                      listElement('Other location')
+                    ],
+                    value: listElement('Other location')
+                },
                 alternativeHearingLocation: {
                     list_items: [
                         listElement(config.defendantSelectedCourt)
