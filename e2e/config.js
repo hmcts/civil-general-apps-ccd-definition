@@ -48,14 +48,14 @@ module.exports = {
     email: '4924246EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
-    regionId: '1'
+    regionId: '4'
   },
   judgeUser: {
     password: judgePassword,
     email: '4924246EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
-    regionId: '1'
+    regionId: '4'
   },
   applicantSolicitorUser: {
     password: defaultPassword,
