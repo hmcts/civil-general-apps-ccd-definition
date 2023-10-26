@@ -3,7 +3,7 @@ module.exports = {
   type: 'LegalAdvisorRevisitApplication',
   task_title: 'Application for multiple types - revisited make order for written representations',
   location_name: 'County Court Money Claims Centre',
-  location: '192280',
+  location: '366774',
   execution_type: 'Case Management Task',
   jurisdiction: 'CIVIL',
   region: '4',
