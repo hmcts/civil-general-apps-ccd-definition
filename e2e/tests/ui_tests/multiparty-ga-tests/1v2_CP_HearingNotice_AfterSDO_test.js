@@ -27,9 +27,9 @@ Scenario.skip('Claimant Hearing notice - Without notice journey @e2e-tests', asy
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeListApplicationForHearingInPerson(config.judgeUserWithRegionId1, gaCaseReference);
+    await api.judgeListApplicationForHearingInPerson(config.judgeUserWithRegionId4, gaCaseReference);
   } else {
-    await api.judgeListApplicationForHearingInPerson(config.judgeUserWithRegionId1, gaCaseReference);
+    await api.judgeListApplicationForHearingInPerson(config.judgeUserWithRegionId4, gaCaseReference);
   }
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.LISTING_FOR_A_HEARING.id);
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.LISTING_FOR_A_HEARING.id);
