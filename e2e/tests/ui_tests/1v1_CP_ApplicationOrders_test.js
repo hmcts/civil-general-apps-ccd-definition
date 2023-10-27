@@ -44,7 +44,7 @@ Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, ap
 
   console.log('Judge making Free form application order for: ' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser;
+    user = config.judgeUserWithRegionId1;
     await I.login(user);
   } else {
     user = config.judgeLocalUser;
