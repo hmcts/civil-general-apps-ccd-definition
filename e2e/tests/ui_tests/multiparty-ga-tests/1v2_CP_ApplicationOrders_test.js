@@ -21,7 +21,7 @@ Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, ap
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeListApplicationForHearing(config.judgeUserWithRegionId1, gaCaseReference);
+    await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
   } else {
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
   }
@@ -29,7 +29,7 @@ Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, ap
   console.log('Hearing Notice creation');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
-    await api.assertGaDocumentVisibilityToUser(config.judgeUserWithRegionId1, civilCaseReference, gaCaseReference, doc);
+    await api.assertGaDocumentVisibilityToUser(config.judgeUser, civilCaseReference, gaCaseReference, doc);
   } else {
     await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
     await api.assertGaDocumentVisibilityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
@@ -38,7 +38,7 @@ Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, ap
 
   console.log('Judge making Assisted order for: ' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUserWithRegionId1;
+    user = config.judgeUser;
     await I.login(user);
   } else {
     user = config.judgeLocalUser;
