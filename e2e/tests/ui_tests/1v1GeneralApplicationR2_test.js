@@ -37,7 +37,7 @@ Scenario('Defendant of main claim initiates Vary Judgement application @regressi
   await I.verifyN245FormElements();
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser;
+    user = config.judgeUserWithRegionId1;
     await I.login(user);
   } else {
     user = config.judgeLocalUser;
@@ -86,7 +86,7 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionOrderMade(config.judgeUser, gaCaseReference);
+    await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
   } else {
     await api.judgeMakesDecisionOrderMade(config.judgeLocalUser, gaCaseReference);
   }

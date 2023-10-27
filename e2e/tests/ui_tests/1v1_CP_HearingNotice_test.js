@@ -29,7 +29,7 @@ Scenario('Claimant and Defendant Hearing notice - With notice journey', async ({
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
+    await api.judgeListApplicationForHearing(config.judgeUserWithRegionId1, gaCaseReference);
   } else {
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
   }
@@ -63,7 +63,7 @@ Scenario('Claimant and Defendant Hearing notice - With notice journey', async ({
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.assertGaAppCollectionVisiblityToUser(config.nbcAdminWithRegionId4, civilCaseReference, gaCaseReference, 'Y');
-    await api.assertGaAppCollectionVisiblityToUser(config.judgeUser, civilCaseReference, gaCaseReference, 'Y');
+    await api.assertGaAppCollectionVisiblityToUser(config.judgeUserWithRegionId1, civilCaseReference, gaCaseReference, 'Y');
   } else {
     await api.assertGaAppCollectionVisiblityToUser(config.nbcAdminWithRegionId4, civilCaseReference, gaCaseReference, 'Y');
     await api.assertGaAppCollectionVisiblityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, 'Y');
