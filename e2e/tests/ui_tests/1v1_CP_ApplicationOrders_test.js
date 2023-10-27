@@ -34,7 +34,7 @@ Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, ap
 
   console.log('Hearing Notice creation');
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
+    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId1, gaCaseReference);
     await api.assertGaDocumentVisibilityToUser( config.judgeUser, civilCaseReference, gaCaseReference, doc);
   } else {
     await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
@@ -78,7 +78,7 @@ Scenario('1v1 - Assisted order - Without Further Hearing @regression2', async ({
   }
   console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
+    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId1, gaCaseReference);
     await api.assertGaDocumentVisibilityToUser(config.judgeUser, civilCaseReference, gaCaseReference, doc);
   } else {
     await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
