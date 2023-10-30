@@ -302,5 +302,21 @@
       "judge-profile"
     ],
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "typeRepresentationJudgePapersList",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judgeAssistedOrderPapersLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
   }
 ]
