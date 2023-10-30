@@ -42,7 +42,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.see(awaitingPaymentStatus);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser;
+    user = config.judgeUserWithRegionId1;
     await I.login(user);
   } else {
     user = config.judgeLocalUser;
@@ -97,7 +97,7 @@ Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) =
     states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser, judgeDecisionStatus);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser;
+    user = config.judgeUserWithRegionId1;
     await I.login(user);
   } else {
     user = config.judgeLocalUser;
@@ -143,7 +143,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @regression2', asy
     states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser, judgeDecisionStatus);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser;
+    user = config.judgeUserWithRegionId1;
     await I.login(user);
   } else {
     user = config.judgeLocalUser;
@@ -207,7 +207,7 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
   await I.see(judgeDecisionStatus);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser;
+    user = config.judgeUserWithRegionId1;
     await I.login(user);
   } else {
     user = config.judgeLocalUser;
