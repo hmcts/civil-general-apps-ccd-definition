@@ -1432,7 +1432,6 @@ module.exports = {
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     let defendantResponseData = eventData['defendantResponsesSpec'][scenario][response];
-    defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
 
     caseData = returnedCaseData;
     for (let pageId of Object.keys(defendantResponseData.userInput)) {
@@ -1489,7 +1488,6 @@ module.exports = {
     deleteCaseFields('respondentSolGaAppDetails');
     deleteCaseFields('generalApplications');
     let claimantResponseData = eventData['claimantResponsesSpec'][scenario][response];
-    claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
 
     const document = await testingSupport.uploadDocument();
 
@@ -1498,7 +1496,12 @@ module.exports = {
       await assertValidClaimData(claimantResponseData, pageId);
     }
 
-    await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    if ((response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
+      validState = 'JUDICIAL_REFERRAL';
+    }
+
+    await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId, user);
   },
@@ -2301,25 +2304,6 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
   return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
 };
-
-async function replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
-  // let isCourtListEnabled = false;
-  // // work around for the api  tests
-  // //console.log(`Court location selected in Env: ${config.runningEnv}`);
-  // if (false) {
-  //   responseData = {
-  //     ...responseData,
-  //     userInput: {
-  //       ...responseData.userInput,
-  //       RequestedCourtLocationLRspec: {
-  //         responseClaimCourtLocationRequired: 'No'
-  //       }
-  //     }
-  //   };
-  // }
-  return responseData;
-}
-
 async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
   // let isCourtListEnabled = false;
   // // work around for the api  tests
