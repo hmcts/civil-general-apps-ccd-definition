@@ -36,15 +36,24 @@ Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) =>
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Create SDO');
-  await api.createSDO(civilCaseReference, config.judgeUserWithRegionId1, 'CREATE_FAST');
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.createSDO(civilCaseReference, config.judgeUserWithRegionId1, 'CREATE_FAST');
+  } else {
+    await api.createSDO(civilCaseReference, config.judgeUserWithRegionId1Local, 'CREATE_FAST');
+  }
   await I.wait(10);
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.scheduleCivilHearing(civilCaseReference, config.hearingCenterAdminWithRegionId1, 'OTHER');
+  } else {
+    await api.scheduleCivilHearing(civilCaseReference, config.hearingCenterAdminLocal, 'OTHER');
+  }
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeMakesDecisionWrittenRep(config.judgeUserWithRegionId1, gaCaseReference);
   } else {
-    await api.judgeMakesDecisionWrittenRep(config.judgeUserWithRegionId1, gaCaseReference);
+    await api.judgeMakesDecisionWrittenRep(config.judgeUserWithRegionId1Local, gaCaseReference);
   }
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'AWAITING_WRITTEN_REPRESENTATIONS');
 });

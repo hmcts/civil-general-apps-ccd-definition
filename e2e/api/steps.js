@@ -35,6 +35,7 @@ const { replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForClai
 const {checkPBAv3ToggleEnabled} = require('./testingSupport');
 const {createGeneralAppN245FormUpload} = require('../fixtures/ga-ccd/createGeneralApplication');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const {expect} = require('chai');
 const gaTypesList = {
   'LATypes': ['STAY_THE_CLAIM','EXTEND_TIME', 'AMEND_A_STMT_OF_CASE'],
@@ -133,6 +134,8 @@ const data = {
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
+
+  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
 };
 
 const eventData = {
@@ -1584,6 +1587,25 @@ module.exports = {
     } else {
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     }
+  },
+
+  scheduleCivilHearing: async (caseId, user, allocatedTrack) => {
+    console.log('Hearing Scheduled for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'HEARING_SCHEDULED';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
+
+    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+
+    for (let pageId of Object.keys(scheduleData.valid)) {
+      await assertValidData(scheduleData, pageId);
+    }
+
+    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
   retrieveTaskDetails:  async(user, caseNumber, taskId) => {
