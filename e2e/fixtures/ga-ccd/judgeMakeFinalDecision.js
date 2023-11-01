@@ -44,11 +44,11 @@ module.exports = {
                     detailsRepresentationText: 'something',
                     claimantRepresentation: null,
                     defendantRepresentation: null
-                },
-                typeRepresentationJudgePapersList: [
-                    'CONSIDERED'
-                ]
+                }
             },
+          typeRepresentationJudgePapersList: [
+            'CONSIDERED'
+          ],
             assistedOrderOrderedThatText: 'Test Order details',
             assistedCostTypes: 'COSTS_IN_CASE',
             assistedOrderGiveReasonsYesNo: 'No',
@@ -93,11 +93,11 @@ module.exports = {
                     detailsRepresentationText: 'something',
                     claimantRepresentation: null,
                     defendantRepresentation: null
-                },
-                typeRepresentationJudgePapersList: [
-                    'CONSIDERED'
-                ]
+                }
             },
+          typeRepresentationJudgePapersList: [
+            'CONSIDERED'
+          ],
             assistedOrderOrderedThatText: 'Test Order details',
             assistedOrderGiveReasonsYesNo: 'No',
             assistedOrderRecitalsRecorded: {
