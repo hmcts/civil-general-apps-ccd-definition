@@ -58,7 +58,7 @@ Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA C
 
 });
 
-Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case initiated by Defendant2 @123', async ({api}) => {
+Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case initiated by Defendant2', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -133,6 +133,6 @@ Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Deci
 });
 
 AfterSuite(async ({api}) => {
-  // await api.cleanUp();
+  await api.cleanUp();
 });
 
