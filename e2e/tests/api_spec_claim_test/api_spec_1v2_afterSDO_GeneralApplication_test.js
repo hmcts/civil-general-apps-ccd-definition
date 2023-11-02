@@ -26,7 +26,7 @@ Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
 });
 
-Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) => {
+Scenario.only('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
   await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
@@ -46,6 +46,12 @@ Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) =>
     await api.scheduleCivilHearing(civilCaseReference, config.hearingCenterAdminWithRegionId1, 'OTHER');
   } else {
     await api.scheduleCivilHearing(civilCaseReference, config.hearingCenterAdminLocal, 'OTHER');
+  }
+  await api.amendHearingDueDate(civilCaseReference, config.systemupdate);
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.hearingFeePaid(civilCaseReference, config.hearingCenterAdminWithRegionId1);
+  } else {
+    await api.hearingFeePaid(civilCaseReference, config.hearingCenterAdminLocal);
   }
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);

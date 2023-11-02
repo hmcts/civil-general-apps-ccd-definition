@@ -1608,6 +1608,28 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId, user);
   },
 
+  amendHearingDueDate: async (caseId, user) => {
+    let hearingDueDate = {};
+    hearingDueDate = {'hearingDueDate': '2022-01-10'};
+    await testingSupport.updateCaseData(caseId, hearingDueDate, user);
+  },
+
+  hearingFeePaid: async (caseId, user) => {
+    await apiRequest.setupTokens(user);
+
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+                                   claimData.serviceUpdateDto(caseId, 'paid'));
+
+    const response_msg = await apiRequest.hearingFeePaidEvent(caseId, user);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Paid');
+
+    //await apiRequest.setupTokens(user);
+    // const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'TRIAL_READINESS');
+    // assert.equal(updatedCaseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
+    // console.log('State moved to:'+updatedCaseState);
+  },
+
   retrieveTaskDetails:  async(user, caseNumber, taskId) => {
     return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
   },
