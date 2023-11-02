@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "END_SCHEDULER_CHECK_UNLESS_ORDER_DEADLINE",
-    "CaseFieldID": "isCcmccLocation",
+    "CaseFieldID": "isCtscLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",

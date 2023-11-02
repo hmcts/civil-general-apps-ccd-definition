@@ -28,7 +28,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "CHANGE_STATE_TO_AWAITING_JUDICIAL_DECISION",
-    "CaseFieldID": "isCcmccLocation",
+    "CaseFieldID": "isCtscLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",

@@ -198,7 +198,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "RESPOND_TO_APPLICATION",
-    "CaseFieldID": "isCcmccLocation",
+    "CaseFieldID": "isCtscLocation",
     "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",
     "PageDisplayOrder": 7,

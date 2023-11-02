@@ -28,7 +28,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
-    "CaseFieldID": "isCcmccLocation",
+    "CaseFieldID": "isCtscLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",
