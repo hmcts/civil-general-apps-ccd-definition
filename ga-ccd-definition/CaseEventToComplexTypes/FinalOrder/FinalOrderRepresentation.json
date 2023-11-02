@@ -22,21 +22,5 @@
     "ListElementCode": "otherRepresentation",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "assistedOrderRepresentation",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "typeRepresentationJudgePapersLabel",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "assistedOrderRepresentation",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderRepresentation",
-    "ListElementCode": "typeRepresentationJudgePapersList",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
   }
 ]

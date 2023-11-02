@@ -25,22 +25,5 @@
     "FieldType": "ClaimantAndDefendantHeard",
     "FieldShowCondition": "representationType=\"OTHER_REPRESENTATION\"",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "typeRepresentationJudgePapersLabel",
-    "ID": "assistedOrderRepresentation",
-    "ElementLabel": "### Judge considered the papers",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ListElementCode": "typeRepresentationJudgePapersList",
-    "ID": "assistedOrderRepresentation",
-    "ElementLabel": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "FinalOrdersJudgePapers",
-    "SecurityClassification": "Public"
   }
 ]
