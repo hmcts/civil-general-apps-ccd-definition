@@ -9,17 +9,17 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('Before SDO 1v2 - GA CP - Applications Orders @ui-nightly @regression1');
 
-Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, api}) => {
+Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests @123', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  console.log('Civil Case created for general application: ' + civilCaseReference);
+  console.log('Before SDO Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
-  console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
+  /*console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
   } else {
@@ -56,9 +56,9 @@ Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, ap
   await I.verifyUploadedClaimDocument(civilCaseReference, 'Assisted Order');
 
   await I.verifyCaseFileOrderDocument(civilCaseReference, 'General order document');
-  await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');*/
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

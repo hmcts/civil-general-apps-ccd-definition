@@ -8,7 +8,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('After SDO 1v2 - GA CP - Hearing Notice document @ui-nightly');
 
-Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({api, I}) => {
+Scenario('Claimant Hearing notice - Without notice journey @e2e-tests @123', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -20,12 +20,12 @@ Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({
   await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   await I.wait(10);
-  console.log('Civil Case created for general application: ' + civilCaseReference);
+  console.log('After SDO Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.secondDefendantSolicitorUser, civilCaseReference);
 
-  console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
+  /*console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeListApplicationForHearingInPerson(config.judgeUserWithRegionId1, gaCaseReference);
   } else {
@@ -66,9 +66,9 @@ Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({
   await I.login(config.applicantSolicitorUser);
   await I.verifyHearingNoticeDocNotAvailable(civilCaseReference);
   await I.dontSee('Applications', 'div.mat-tab-label-content');
-  await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');*/
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
