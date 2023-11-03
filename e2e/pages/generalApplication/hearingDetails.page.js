@@ -82,8 +82,8 @@ module.exports = {
       options: {
         disabledAccess: 'Disabled access',
         hearingLoop: 'Hearing loop',
-        signLanguageInterpreter: 'Sign language interpreter',
-        languageInterpreter: 'Language interpreter',
+        signLanguageInterpreter: 'Sign language interpreter (you will have to arrange this)',
+        languageInterpreter: 'Language interpreter (you will have to arrange this)',
         otherSupport: 'Other support'
       }
     },
