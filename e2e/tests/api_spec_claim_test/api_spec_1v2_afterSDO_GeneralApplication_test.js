@@ -24,6 +24,20 @@ Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
     await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
   }
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
+
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminWithRegionId1, gaCaseReference);
+  } else {
+    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
+  }
+
+  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED');
+
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeMakeFinalOrder(config.judgeUserWithRegionId1, gaCaseReference, 'ASSISTED_ORDER', true);
+  } else {
+    await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'ASSISTED_ORDER', true);
+  }
 });
 
 Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) => {
