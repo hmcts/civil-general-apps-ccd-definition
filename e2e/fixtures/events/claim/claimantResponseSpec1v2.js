@@ -1,5 +1,5 @@
-const {listElement} = require('../../../api/dataHelper');
-const config = require('../../../config');
+const {listElement, element} = require('../../../api/dataHelper');
+const config = require('../../../config.js');
 module.exports = {
   claimantResponse: (response = 'FULL_DEFENCE') => {
     const responseData = {
@@ -17,14 +17,38 @@ module.exports = {
             }
           },
           SmallClaimExperts: {
-            applicant1ClaimExpertSpecRequired: 'No'
+            applicant1DQExperts: {
+              expertRequired: 'Yes',
+              expertReportsSent: 'NOT_OBTAINED',
+              jointExpertSuitable: 'Yes',
+              details: [
+                element({
+                  firstName: 'John',
+                  lastName: 'Doe',
+                  emailAddress: 'john@doemail.com',
+                  phoneNumber: '07111111111',
+                  fieldOfExpertise: 'None',
+                  whyRequired: 'Testing',
+                  estimatedCost: '10000'
+                })
+              ]
+            }
           },
           SmallClaimWitnesses: {
-            applicant1ClaimWitnesses: '10'
+            applicant1DQWitnessesSmallClaim: {
+              details: [
+                element({
+                  firstName: 'John',
+                  lastName: 'Smith',
+                  phoneNumber: '07012345678',
+                  emailAddress: 'johnsmith@email.com',
+                  reasonForWitness: 'None'
+                })
+              ],
+              witnessesToAppear: 'Yes'}
           },
           Language: {
             applicant1DQLanguage: {
-              evidence: 'ENGLISH',
               court: 'ENGLISH',
               documents: 'ENGLISH'
             }
@@ -38,11 +62,21 @@ module.exports = {
             applicant1DQRequestedCourt: {
               responseCourtLocations: {
                 list_items: [
-                  listElement(config.defendant2SelectedCourt)
+                  listElement(config.claimantSelectedCourt)
                 ],
-                value:  listElement(config.defendant2SelectedCourt)
+                value: listElement(config.claimantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            applicant1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
+            }
+          },
+          HearingSupport: {
+            applicant1DQHearingSupport: {
+              supportRequirements: 'Yes',
+              supportRequirementsAdditional: 'Additional support reasons'
             }
           },
           VulnerabilityQuestions: {
@@ -63,10 +97,6 @@ module.exports = {
             sameSolicitorSameResponse: 'Yes',
             respondent2SameLegalRepresentative: 'Yes',
             respondentResponseIsSame: 'Yes',
-            respondent1DQVulnerabilityQuestions: {
-              vulnerabilityAdjustmentsRequired: 'Yes',
-              vulnerabilityAdjustments: 'test'
-            },
             respondent1DQStatementOfTruth: {
               name: 'Test',
               role: 'Worker'
