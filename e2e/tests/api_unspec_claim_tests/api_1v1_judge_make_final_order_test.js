@@ -26,6 +26,14 @@ Scenario('Judge decides Free Form Order', async ({api}) => {
     await api.judgeListApplicationForFreeFormOrder(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge decides Free Form Order: ' + gaCaseReference + ' ***');
+
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
+  } else {
+    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
+  }
+
+  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED');
 });
 
 Scenario('Defendant Hearing notice journey', async ({api}) => {
@@ -71,6 +79,13 @@ Scenario('Defendant Hearing notice journey', async ({api}) => {
     await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'ASSISTED_ORDER', true);
   }
 
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
+  } else {
+    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
+  }
+
+  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED');
 });
 
 AfterSuite(async ({api}) => {

@@ -162,7 +162,7 @@ module.exports = {
   async verifyAssistedOrderErrorMessage() {
     await I.waitInUrl('/GENERATE_DIRECTIONS_ORDER/GENERATE_DIRECTIONS_ORDERFinalOrderAssistedOrder', 5);
     await I.click('Continue');
-    await I.seeNumberOfVisibleElements('.error-message', 4);
+    await I.seeNumberOfVisibleElements('.error-message', 3);
   },
 };
 

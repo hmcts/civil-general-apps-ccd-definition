@@ -46,6 +46,14 @@ Scenario('Without Notice Hearing notice journey', async ({api}) => {
   const finalDoc = 'generalOrder';
   await api.assertNullGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, finalDoc);
   await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, finalDoc);
+
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
+  } else {
+    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
+  }
+
+  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED');
 });
 
 AfterSuite(async ({api}) => {
