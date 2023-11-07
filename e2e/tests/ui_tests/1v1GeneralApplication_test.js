@@ -18,7 +18,7 @@ const claimantType = 'Company';
 
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA CCD 1v1 - General Application Journey  @ui-nightly');
+Feature('GA CCD 1v1 - General Application Journey  @ui-nightly @123 ');
 
 Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -227,5 +227,5 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+//  await api.cleanUp();
 });
