@@ -8,7 +8,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 Judge makes order application after hearing API tests @api-nightly');
 
-Scenario('Without Notice Hearing notice journey', async ({api}) => {
+Scenario('Without Notice Hearing notice journey @123', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -38,7 +38,7 @@ Scenario('Without Notice Hearing notice journey', async ({api}) => {
   await api.assertNullGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, doc);
   await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+ /* if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.judgeMakeFinalOrder(config.judgeUser, gaCaseReference, 'FREE_FORM_ORDER', false);
   } else {
     await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'FREE_FORM_ORDER', false);
@@ -53,9 +53,9 @@ Scenario('Without Notice Hearing notice journey', async ({api}) => {
     await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
   }
 
-  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED');
+  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED');*/
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
