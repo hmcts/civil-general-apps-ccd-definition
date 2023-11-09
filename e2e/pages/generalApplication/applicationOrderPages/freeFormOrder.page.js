@@ -26,7 +26,7 @@ module.exports = {
     await I.see('Test Inc v Sir John Doe');
     await I.see('Recitals and order');
     await I.fillField(this.fields.insertRecitals, 'Test Recitals');
-    await I.see('Ordered');
+    await I.see('Order');
     await I.fillField(this.fields.orderText, 'Test Order');
 
     switch (formType) {
