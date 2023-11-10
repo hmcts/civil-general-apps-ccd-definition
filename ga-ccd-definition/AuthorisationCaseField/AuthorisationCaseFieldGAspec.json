@@ -34,7 +34,7 @@
           "judge-profile",
           "legal-adviser"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
