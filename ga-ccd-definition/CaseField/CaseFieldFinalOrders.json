@@ -103,7 +103,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "assistedOrderOrdered",
-    "Label": "**** \n ## Ordered",
+    "Label": "**** \n ## Order",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
