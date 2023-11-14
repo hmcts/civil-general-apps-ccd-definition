@@ -19,5 +19,19 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GACaseLocationGAspec",
+    "ListElementCode": "address",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GACaseLocationGAspec",
+    "ListElementCode": "postcode",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
