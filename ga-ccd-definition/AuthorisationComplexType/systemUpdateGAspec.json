@@ -560,6 +560,20 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
+    "ListElementCode": "caseManagementLocation.address",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "caseManagementLocation.postcode",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
     "ListElementCode": "isCcmccLocation",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
