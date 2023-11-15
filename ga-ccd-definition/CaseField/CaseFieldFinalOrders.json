@@ -118,6 +118,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "assistedOrderOrderedThatText",
     "Label": " ",
+    "HintText": "Please insert paragraph numbers before each term of the Order as you wish them to appear, as they will not be automatically generated",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
