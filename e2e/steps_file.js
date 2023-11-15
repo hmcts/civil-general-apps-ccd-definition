@@ -867,7 +867,8 @@ module.exports = function () {
         await this.waitForElement('#event');
         await this.forceClick('#action_claim');
         await this.waitForElement('#action_reassign');
-        await this.waitForText('ReviewApplication', 5);
+        await this.waitForText('ReviewApplication', 8);
+        await this.wait(3);
       }
 
       await caseViewPage.startEvent(eventName, gaCaseNumber);
