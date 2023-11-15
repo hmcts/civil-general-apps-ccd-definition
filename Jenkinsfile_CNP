@@ -141,6 +141,11 @@ withPipeline(type, product, component) {
         env.ENVIRONMENT = "perftest"
     }
 
+    onIthc{
+      env.YARN_ENABLE_IMMUTABLE_INSTALLS = false
+      env.ENVIRONMENT = "ithc"
+    }
+
     before('highleveldatasetup') {
       yarnBuilder.yarn('setup')
       archiveCoreCaseDataDefinitions()
