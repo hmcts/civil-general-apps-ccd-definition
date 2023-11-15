@@ -952,7 +952,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "freeFormOrderedLabel",
-    "Label": "**** \n ## Ordered \n ### The court orders that:",
+    "Label": "**** \n ## Order \n ### The court orders that:",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

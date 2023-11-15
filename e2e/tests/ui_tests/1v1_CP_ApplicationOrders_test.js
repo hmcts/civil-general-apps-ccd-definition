@@ -9,16 +9,13 @@ const judgeApproveOrderStatus = states.ORDER_MADE.name;
 
 Feature('Before SDO 1v1 - GA CP - Applications Orders @ui-nightly');
 
-BeforeSuite(async ({api}) => {
+Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
-});
-
-Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, api}) => {
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
 
@@ -62,6 +59,13 @@ Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, ap
 });
 
 Scenario('1v1 - Assisted order - Without Further Hearing @regression2', async ({api, I}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(
+    config.applicantSolicitorUser, mpScenario, 'SoleTrader');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+  
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
 

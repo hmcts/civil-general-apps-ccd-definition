@@ -214,7 +214,7 @@
     "Name": "Hearing Scheduled",
     "Description": "listing officer notify hearing",
     "DisplayOrder": 11,
-    "PreConditionState(s)": "LISTING_FOR_A_HEARING",
+    "PreConditionState(s)": "LISTING_FOR_A_HEARING;ORDER_MADE",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "ShowSummary": "Y",
