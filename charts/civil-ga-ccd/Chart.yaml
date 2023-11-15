@@ -12,11 +12,11 @@ dependencies:
     version: 0.0.50
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: civil-service
-    version: 0.0.48
+    version: 0.0.46
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-service.enabled
   - name: ccd
-    version: 9.0.20
+    version: 8.0.29
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: ccd.enabled
   - name: xui-webapp
@@ -38,7 +38,7 @@ dependencies:
 
   # WA
   - name: wa
-    version: ~1.0.4
+    version: 0.1.7
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-wa.enabled
   # CCD message publisher
