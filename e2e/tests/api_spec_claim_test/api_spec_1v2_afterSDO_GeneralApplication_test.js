@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../config.js');
+const states = require('../../fixtures/ga-ccd/state');
 const mpScenario = 'ONE_V_TWO_SAME_SOL';
+const hnStateStatus = states.HEARING_SCHEDULED.id;
 
 let civilCaseReference, gaCaseReference;
 
@@ -40,7 +42,7 @@ Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
   }
 });
 
-Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) => {
+Scenario('Spec Claimant create GA - CASE_PROGRESSION state @123', async ({api, I}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
   await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
@@ -69,17 +71,33 @@ Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) =>
     await api.hearingFeePaid(civilCaseReference, config.hearingCenterAdminLocal);
     await api.createFinalOrder(civilCaseReference, config.judgeUserWithRegionId1Local, 'FREE_FORM_ORDER');
   }
+
+  await I.wait(10);
+
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
+  console.log('*** Start Judge makes order application after hearing on GA Case Reference: ' + gaCaseReference + ' ***');
+  const doc = 'hearingNotice';
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionWrittenRep(config.judgeUserWithRegionId1, gaCaseReference);
+    await api.judgeListApplicationForHearing(config.judgeUserWithRegionId1, gaCaseReference);
   } else {
-    await api.judgeMakesDecisionWrittenRep(config.judgeUserWithRegionId1Local, gaCaseReference);
+    await api.judgeListApplicationForHearing(config.judgeUserWithRegionId1, gaCaseReference);
   }
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'AWAITING_WRITTEN_REPRESENTATIONS');
+  console.log('*** End Judge makes order application after hearing GA Case Reference: ' + gaCaseReference + ' ***');
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminWithRegionId1, gaCaseReference);
+    await api.assertGaDocumentVisibilityToUser(config.judgeUserWithRegionId1, civilCaseReference, gaCaseReference, doc);
+  } else {
+    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminWithRegionId1, gaCaseReference);
+    await api.assertGaDocumentVisibilityToUser(config.judgeUserWithRegionId1, civilCaseReference, gaCaseReference, doc);
+  }
+
+  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
+  await api.assertNullGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, doc);
+  await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
