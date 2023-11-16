@@ -20,6 +20,7 @@ const getGaCaseDataUrl =(caseId) => `${config.url.generalApplication}/testing-su
 const getCivilServiceUrl = () => `${config.url.civilService}`;
 const getMainCivilServiceCaseDataUrl = () => `${config.url.civilService}/testing-support/case/`;
 const getCivilServiceCaseDataUrl = () => `${config.url.generalApplication}/testing-support/case/`;
+const getHearingFeePaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-paid`;
 
 
 const getRequestHeaders = (userAuth) => {
@@ -311,6 +312,27 @@ module.exports = {
       serviceRequestUpdateDto,'PUT');
 
     return response || {};
-  }
+  },
 
+  fetchCaseState: async (caseId, eventName) => {
+      let url = getCcdDataStoreBaseUrl();
+      url += `/cases/${caseId}`;
+
+      url += `/event-triggers/${eventName}/token`;
+
+      let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET')
+          .then(response => response.json());
+      return response.case_details.state || {};
+  },
+
+  hearingFeePaidEvent: async(caseId, user) => {
+      const authToken = await idamHelper.accessToken(user);
+      let url = getHearingFeePaidUrl(caseId);
+      let response_msg =  await restHelper.retriedRequest(url, {
+                                                              'Content-Type': 'application/json',
+                                                              'Authorization': `Bearer ${authToken}`,
+                                                          },null,
+                                                          'GET');
+      return response_msg || {};
+  },
 };
