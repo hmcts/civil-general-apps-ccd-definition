@@ -7,7 +7,7 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('Before SDO 1v2 - GA - Consent Orders @ui-nightly @regression2');
 
-Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
+Scenario('NBC admin Approve Consent Order @e2e-tests @123', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -54,5 +54,5 @@ Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
 }).retry(1);
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });

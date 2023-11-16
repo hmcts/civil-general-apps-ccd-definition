@@ -9,7 +9,7 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('Before SDO 1v2 - GA CP - Applications Orders @ui-nightly @regression1');
 
-Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, api}) => {
+Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests @123', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -60,5 +60,5 @@ Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, ap
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+ // await api.cleanUp();
 });
