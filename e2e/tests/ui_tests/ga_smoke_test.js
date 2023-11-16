@@ -20,7 +20,7 @@ Scenario('GA 1v2  - Judge Makes Decision Order Made @smoke-tests', async ({api, 
 
   console.log('*** Start Judge makes decision order made: ' + gaCaseReference + ' ***');
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
+    await api.judgeMakesDecisionOrderMade(config.judgeUser, gaCaseReference);
   }else {
     await api.judgeMakesDecisionOrderMade(config.judgeLocalUser, gaCaseReference);
   }
