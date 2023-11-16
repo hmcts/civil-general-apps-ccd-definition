@@ -96,10 +96,10 @@ ccd:
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
   ccd-definition-store-api:
     java:
-      devmemoryRequests: 3048Mi
-      devcpuRequests: 3000m
-      devmemoryLimits: 5096Mi
-      devcpuLimits: 5000m
+      devcpuRequests: 100m
+      devmemoryRequests: 512Mi
+      devcpuLimits: 2
+      devmemoryLimits: 1Gia
       disableKeyVaults: true
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
 camunda-bpm:
