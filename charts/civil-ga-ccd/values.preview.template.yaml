@@ -59,9 +59,17 @@ civil-service:
           - robotics-notification-multipartyrecipient
           - name: robotics-notification-recipient-spec
             alias: robotics.notification.specRecipient
+          - notification-caseworker-spec-receiver
+          - default-password
+          - judge-default-password
+          - iac-default-password
     environment:
       LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
       WA_TOGGLE: WA3.5
+      OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
+      SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
+      SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update-claim-issued
+      HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
 idam-pr:
   redirect_uris:
     XUI:
