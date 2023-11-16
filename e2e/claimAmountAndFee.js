@@ -22,7 +22,7 @@ module.exports = {
         };
       case '30000':
           return {
-            calculatedAmountInPence: '150000',
+            calculatedAmountInPence: '99999',
             code: 'FEE0209',
             version: '3'
           };
