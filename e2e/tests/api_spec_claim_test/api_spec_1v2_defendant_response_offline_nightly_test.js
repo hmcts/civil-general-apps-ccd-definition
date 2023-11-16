@@ -29,7 +29,7 @@ Scenario('Case offline ORDER_MADE', async ({api}) => {
   console.log('*** Start Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
     + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesOrderDecisionUncloak(config.judgeUser, gaCaseReference);
+    await api.judgeMakesOrderDecisionUncloak(config.judgeUserWithRegionId2, gaCaseReference);
   } else {
     await api.judgeMakesOrderDecisionUncloak(config.judgeLocalUser, gaCaseReference);
   }

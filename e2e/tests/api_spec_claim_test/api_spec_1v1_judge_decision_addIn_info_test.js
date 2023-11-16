@@ -18,7 +18,7 @@ Scenario('Judge makes decision 1V1 - AWAITING_ADDITIONAL_INFORMATION', async ({a
 
   console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionAdditionalInformation(config.judgeUser, gaCaseReference);
+    await api.judgeMakesDecisionAdditionalInformation(config.judgeUserWithRegionId2, gaCaseReference);
   } else {
     await api.judgeMakesDecisionAdditionalInformation(config.judgeLocalUser, gaCaseReference);
   }

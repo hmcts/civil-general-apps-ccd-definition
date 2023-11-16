@@ -19,14 +19,14 @@ Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
 
   console.log('*** Start Judge makes decision order made: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
+    await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId2, gaCaseReference);
   } else {
     await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
   }
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminWithRegionId1, gaCaseReference);
+    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminWithRegionId2, gaCaseReference);
   } else {
     await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
   }
@@ -34,7 +34,7 @@ Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED');
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakeFinalOrder(config.judgeUserWithRegionId1, gaCaseReference, 'ASSISTED_ORDER', true);
+    await api.judgeMakeFinalOrder(config.judgeUserWithRegionId2, gaCaseReference, 'ASSISTED_ORDER', true);
   } else {
     await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'ASSISTED_ORDER', true);
   }
@@ -50,13 +50,13 @@ Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) =>
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Create SDO');
-  await api.createSDO(civilCaseReference, config.judgeUserWithRegionId1, 'CREATE_FAST');
+  await api.createSDO(civilCaseReference, config.judgeUserWithRegionId2, 'CREATE_FAST');
   await I.wait(10);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionWrittenRep(config.judgeUserWithRegionId1, gaCaseReference);
+    await api.judgeMakesDecisionWrittenRep(config.judgeUserWithRegionId2, gaCaseReference);
   } else {
     await api.judgeMakesDecisionWrittenRep(config.judgeUserWithRegionId1, gaCaseReference);
   }

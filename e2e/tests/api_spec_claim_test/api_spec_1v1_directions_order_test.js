@@ -20,7 +20,7 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
   console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
   console.log('config.runningEnv: ' + config.runningEnv + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionDirectionsOrder(config.judgeUser, gaCaseReference);
+    await api.judgeMakesDecisionDirectionsOrder(config.judgeUserWithRegionId2, gaCaseReference);
   } else {
     await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
   }
