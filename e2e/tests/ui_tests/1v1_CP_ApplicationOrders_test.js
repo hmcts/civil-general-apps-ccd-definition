@@ -24,15 +24,15 @@ Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, ap
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeListApplicationForHearing(config.judgeUserWithRegionId1, gaCaseReference);
+    await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
   }else {
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
   }
 
   console.log('Hearing Notice creation');
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId1, gaCaseReference);
-    await api.assertGaDocumentVisibilityToUser( config.judgeUserWithRegionId1, civilCaseReference, gaCaseReference, doc);
+    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
+    await api.assertGaDocumentVisibilityToUser( config.judgeUser, civilCaseReference, gaCaseReference, doc);
   } else {
     await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
     await api.assertGaDocumentVisibilityToUser( config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
@@ -41,7 +41,7 @@ Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, ap
 
   console.log('Judge making Free form application order for: ' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUserWithRegionId1;
+    user = config.judgeUser;
     await I.login(user);
   } else {
     user = config.judgeLocalUser;
@@ -65,7 +65,7 @@ Scenario('1v1 - Assisted order - Without Further Hearing @regression2', async ({
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  
+
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
 
@@ -76,27 +76,27 @@ Scenario('1v1 - Assisted order - Without Further Hearing @regression2', async ({
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   const doc = 'hearingNotice';
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeListApplicationForHearing(config.judgeUserWithRegionId1, gaCaseReference);
+    await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
   } else {
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId1, gaCaseReference);
-    await api.assertGaDocumentVisibilityToUser(config.judgeUserWithRegionId1, civilCaseReference, gaCaseReference, doc);
+    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
+    await api.assertGaDocumentVisibilityToUser(config.judgeUser, civilCaseReference, gaCaseReference, doc);
   } else {
     await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
     await api.assertGaDocumentVisibilityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
   }
 
   if(['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakeFinalOrder(config.judgeUserWithRegionId1, gaCaseReference, 'ASSISTED_ORDER', false);
+    await api.judgeMakeFinalOrder(config.judgeUser, gaCaseReference, 'ASSISTED_ORDER', false);
   }else {
     await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'ASSISTED_ORDER', false);
   }
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await I.login(config.judgeUserWithRegionId1);
+    await I.login(config.judgeUser);
   } else {
     await I.login(config.judgeLocalUser);
   }
