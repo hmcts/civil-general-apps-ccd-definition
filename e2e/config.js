@@ -84,7 +84,7 @@ module.exports = {
   },
   judgeUserWithRegionId2: {
     password: judgePassword,
-    email: '4915631EMP-@ejudiciary.net',
+    email: 'EMP42506@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '2'
