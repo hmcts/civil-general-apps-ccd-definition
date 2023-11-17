@@ -35,7 +35,10 @@ const { replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForClai
 const {checkPBAv3ToggleEnabled} = require('./testingSupport');
 const {createGeneralAppN245FormUpload} = require('../fixtures/ga-ccd/createGeneralApplication');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
+const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const {expect} = require('chai');
+const {cloneDeep} = require('lodash');
 const gaTypesList = {
   'LATypes': ['STAY_THE_CLAIM','EXTEND_TIME', 'AMEND_A_STMT_OF_CASE'],
   'JudgeGaTypes': ['SET_ASIDE_JUDGEMENT']
@@ -133,6 +136,9 @@ const data = {
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
+
+  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
 };
 
 const eventData = {
@@ -1586,6 +1592,69 @@ module.exports = {
     }
   },
 
+  scheduleCivilHearing: async (caseId, user, allocatedTrack) => {
+    console.log('Hearing Scheduled for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'HEARING_SCHEDULED';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
+
+    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+
+    for (let pageId of Object.keys(scheduleData.valid)) {
+      await assertValidData(scheduleData, pageId);
+    }
+
+    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
+  amendHearingDueDate: async (caseId, user) => {
+    let hearingDueDate = {};
+    hearingDueDate = {'hearingDueDate': '2022-01-10'};
+    await testingSupport.updateCaseData(caseId, hearingDueDate, user);
+  },
+
+  hearingFeePaid: async (caseId, user) => {
+    await apiRequest.setupTokens(user);
+
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+                                   claimData.serviceUpdateDto(caseId, 'paid'));
+
+    const response_msg = await apiRequest.hearingFeePaidEvent(caseId, user);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Paid');
+
+    //await apiRequest.setupTokens(user);
+    // const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'TRIAL_READINESS');
+    // assert.equal(updatedCaseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
+    // console.log('State moved to:'+updatedCaseState);
+  },
+
+  createFinalOrder: async (caseId, user, finalOrderRequestType) => {
+    console.log(`case in Final Order ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'GENERATE_DIRECTIONS_ORDER';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    if (finalOrderRequestType === 'ASSISTED_ORDER') {
+      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER'));
+    } else {
+      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER'));
+    }
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '',
+      body: ''
+    }, true);
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
   retrieveTaskDetails:  async(user, caseNumber, taskId) => {
     return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
   },
@@ -2401,23 +2470,28 @@ const solicitorSetup = (isFirst) => {
 //   return defendantResponseData;
 // }
 
-//const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
-  //const  fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
-  // for (let populatedCaseField of Object.keys(fixture)) {
-  //   //assert.property(returnedCaseData, populatedCaseField);
-  // }
-// };
+const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
+  const fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
+  for (let populatedCaseField of Object.keys(fixture)) {
+    // this property won't be here until civil service is merged
+    if (populatedCaseField !== 'applicant1DQRemoteHearing') {
+      assert.property(returnedCaseData, populatedCaseField);
+    }
+  }
+};
 
-// const adjustDataForSolicitor = (user, data) => {
-//   let fixtureClone = cloneDeep(data);
-//   if(user === 'solicitorOne') {
-//     delete fixtureClone['respondent2ResponseDeadline'];
-//   }
-//   else if (user === 'solicitorTwo') {
-//     delete fixtureClone['respondent1ResponseDeadline'];
-//   }
-//   return fixtureClone;
-// };
+const adjustDataForSolicitor = (user, data) => {
+  let fixtureClone = cloneDeep(data);
+  if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
+    delete fixtureClone['defendantSolicitorNotifyClaimOptions'];
+  }
+  if (user === 'solicitorOne') {
+    delete fixtureClone['respondent2ResponseDeadline'];
+  } else if (user === 'solicitorTwo') {
+    delete fixtureClone['respondent1ResponseDeadline'];
+  }
+  return fixtureClone;
+};
 
 const assertGaDocVisibilityToUser = async ( user, parentCaseId, gaCaseId, doc) => {
   let docGaTitle = doc + 'Document';
