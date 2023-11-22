@@ -215,7 +215,7 @@ module.exports = {
   claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU',
   defendant2SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0',
-  claimantSelectedCourt: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-  defendantSelectedCourt: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-  defendant2SelectedCourt: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+  claimantSelectedCourt: 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ',
+  defendantSelectedCourt: 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ',
+  defendant2SelectedCourt: 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ',
 };
