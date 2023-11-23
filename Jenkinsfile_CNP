@@ -6,9 +6,9 @@ import uk.gov.hmcts.contino.GithubAPI
 def type = "nodejs"
 def product = "civil"
 def component = "ga-ccd"
-def camundaBranch = "feat/CIV-10568"
-def ccddefbranch = "feat/CIV-10568"
-def dmnBranch = "feat/CIV-10568"
+def camundaBranch = "master"
+def ccddefbranch = "master"
+def dmnBranch = "master"
 def waStandaloneBranch = "master"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
