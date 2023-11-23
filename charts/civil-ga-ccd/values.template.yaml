@@ -84,7 +84,7 @@ civil-service:
   java:
     applicationPort: 4000
     releaseNameOverride: ${SERVICE_NAME}-civil-service
-    image: 'hmctspublic.azurecr.io/civil/service:latest'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3495'
     imagePullPolicy: Always
     devmemoryRequests: 2048Mi
     devcpuRequests: 2000m
@@ -154,6 +154,7 @@ civil-service:
       PAYMENTS_CALLBACK_URL: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
       RD_COMMONDATA_API_URL: http://rd-commondata-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
       RELEASE_REVISION: "{{ .Release.Revision }}"
+      CIVIL_S2S_AUTHORISED_SERVICES: payment_app,ccd_data,civil_service,civil-citizen-ui
 
 idam-pr:
   releaseNameOverride: ${SERVICE_NAME}-idam-pr
