@@ -11,7 +11,7 @@ Feature('Before SDO 1v1 - GA CP - Applications Orders @ui-nightly');
 
 Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'SoleTrader');
+    config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
