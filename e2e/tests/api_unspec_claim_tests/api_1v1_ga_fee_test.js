@@ -12,6 +12,9 @@ Scenario('MixTypesWithVary - 14 pounds', async ({api}) => {
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGaWithTypes(
@@ -20,7 +23,7 @@ Scenario('MixTypesWithVary - 14 pounds', async ({api}) => {
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
               + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, false, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser2WithRegionId2, gaCaseReference, false, true);
   } else {
     await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, false, true);
   }
@@ -34,6 +37,9 @@ Scenario('MixTypesWithSetAside - 108 pounds', async ({api}) => {
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGaWithTypes(

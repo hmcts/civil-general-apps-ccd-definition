@@ -17,13 +17,13 @@ module.exports = {
     generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL || 'http://localhost:4550',
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
 
-    /*manageCase: 'https://xui-civil-ga-ccd-pr-787.preview.platform.hmcts.net',
+   /* manageCase: 'https://xui-civil-ga-ccd-pr-970.preview.platform.hmcts.net',
     authProviderApi: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: 'https://ccd-data-store-api-civil-ga-ccd-pr-787.preview.platform.hmcts.net',
+    ccdDataStore: 'https://ccd-data-store-api-civil-ga-ccd-pr-970.preview.platform.hmcts.net',
     dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
     idamApi:  'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'https://civil-service-civil-ga-ccd-pr-787.preview.platform.hmcts.net',
-    generalApplication: 'https://civil-ga-ccd-pr-787.preview.platform.hmcts.net'*/
+    civilService: 'https://civil-service-civil-ga-ccd-pr-970.preview.platform.hmcts.net',
+    generalApplication: 'https://civil-ga-ccd-pr-970.preview.platform.hmcts.net'*/
 
     // wa demo url's
     /* manageCase:  'https://manage-case.demo.platform.hmcts.net',
@@ -49,6 +49,13 @@ module.exports = {
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '4'
+  },
+  judgeUser2WithRegionId2: {
+    password: judgePassword,
+    email: 'EMP42506@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '2'
   },
   judgeUserWithRegionId1Local: {
     password: defaultPassword,
@@ -114,6 +121,13 @@ module.exports = {
     password: defaultPassword,
     type: 'hearing-center-admin',
     roleCategory: 'ADMIN'
+  },
+  hearingCenterAdminWithRegionId2: {
+    email: 'hearing_center_admin_reg2@justice.gov.uk',
+    password: defaultPassword,
+    type: 'hearing-center-admin',
+    roleCategory: 'ADMIN',
+    regionId: '2'
   },
   tribunalCaseworkerWithRegionId4: {
     email: 'tribunal_legal_caseworker_reg4@justice.gov.uk',

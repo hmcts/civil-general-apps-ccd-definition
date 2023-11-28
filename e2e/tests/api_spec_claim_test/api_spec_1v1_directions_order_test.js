@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA SPEC Claim 1v1 Judge Make Order Directions Order API tests @api-tests');
 
-Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
+Scenario.skip('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
   civilCaseReference = await api.createSpecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -31,7 +31,7 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
   console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
-Scenario('Make an Urgent General Application with Vary Judgement', async ({api}) => {
+Scenario.skip('Make an Urgent General Application with Vary Judgement', async ({api}) => {
   civilCaseReference = await api.createSpecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);

@@ -13,6 +13,9 @@ Scenario('Judge makes decision 1V1 - unless order  @api-tests @api-scheduler-tes
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithUnlessOrder(config.applicantSolicitorUser, civilCaseReference);
@@ -23,7 +26,7 @@ Scenario('Judge makes decision 1V1 - unless order  @api-tests @api-scheduler-tes
 
   console.log('*** Start Judge makes decision unless order: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    state = await api.judgeMakesDecisionOrderMadeUnlessOrderAppln(config.judgeUser, gaCaseReference);
+    state = await api.judgeMakesDecisionOrderMadeUnlessOrderAppln(config.judgeUser2WithRegionId2, gaCaseReference);
   } else {
     state = await api.judgeMakesDecisionOrderMadeUnlessOrderAppln(config.judgeLocalUser, gaCaseReference);
   }

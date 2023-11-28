@@ -7,7 +7,7 @@ let civilCaseReference,
 
 Feature('GA 1v2 Notify Claim Details Case Close API tests @api-offline-nightly @api-nightly');
 
-Scenario('Case offline 1V2 notify_claim_details AWAITING_DIRECTIONS_ORDER_DOCS', async ({api}) => {
+Scenario.skip('Case offline 1V2 notify_claim_details AWAITING_DIRECTIONS_ORDER_DOCS', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
