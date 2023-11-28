@@ -6,9 +6,10 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 Judge Dismiss Application API tests @api-nightly');
 
-Scenario('Judge makes decision 1V2 - DISMISS_THE_APPLICATION', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Company');
+Scenario('Judge makes decision 1V2 - DISMISS_THE_APPLICATION @123', async ({api}) => {
+
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
+    mpScenario, 'SoleTrader', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);

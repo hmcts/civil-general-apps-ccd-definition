@@ -10,8 +10,7 @@ const judgeApproveOrderStatus = states.ORDER_MADE.name;
 Feature('Before SDO 1v1 - GA CP - Applications Orders @ui-nightly');
 
 Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Company');
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -62,8 +61,7 @@ Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({I, ap
 });
 
 Scenario('1v1 - Assisted order - Without Further Hearing @regression2', async ({api, I}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'SoleTrader');
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);

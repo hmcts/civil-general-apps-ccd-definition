@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature(' GA - WA Specific Access @api-wa');
 
-Scenario('Verify Specific access check for NBC Admin @123', async ({I, wa, api}) => {
+Scenario('Verify Specific access check for NBC Admin', async ({I, wa, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);

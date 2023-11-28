@@ -7,7 +7,7 @@ let civilCaseReference, gaCaseReference;
 Feature('GA 1v1 Judge Make Decision Additional Information Required API tests @api-tests');
 
 Scenario('Judge makes decision 1V1 - AWAITING_ADDITIONAL_INFORMATION', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
