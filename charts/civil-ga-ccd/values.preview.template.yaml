@@ -38,6 +38,8 @@ civil-general-applications:
         secretRef: postgres
         key: PASSWORD
         disabled: false
+    postgresql:
+      enabled: false
 civil-service:
   enabled: true
   java:

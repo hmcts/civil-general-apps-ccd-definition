@@ -14,5 +14,3 @@ wa:
   enabled: false
 servicebus:
   enabled: false
-postgresql:
-  enabled: false
