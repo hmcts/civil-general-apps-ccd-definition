@@ -19,9 +19,9 @@ module.exports = {
     if (documentType === 'After SDO - Hearing Notice') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 5);
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 4);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 6);
     } else {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 5);
     }
     let draftAppURL = await I.grabTextFrom(locate(this.fields.links).last());
     expect(draftAppURL).to.contains(`Draft_application_${docFullDate}`);
@@ -60,8 +60,8 @@ module.exports = {
       await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(5));
       await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).last());
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
-      await I.seeTextEquals('General order document', locate(this.fields.docLabel).at(3));
-      await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(4));
+      await I.seeTextEquals('General order document', locate(this.fields.docLabel).at(5));
+      await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(6));
       await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).last());
     } else {
       expect(docType).to.equals('Draft Application document');
