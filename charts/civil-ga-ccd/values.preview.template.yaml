@@ -125,6 +125,7 @@ ccd:
 camunda-bpm:
   enabled: true
   java:
+    ingressHost: camunda-${SERVICE_FQDN}
     disableKeyVaults: true
     environment:
       CAMUNDA_DB_HOST: civil-preview.postgres.database.azure.com
