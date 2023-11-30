@@ -191,7 +191,6 @@ xui-webapp:
       RELEASE_REVISION: "{{ .Release.Revision }}"
 
 ccd:
-  enabled: true
   ccd:
     adminWeb:
       enabled: false
