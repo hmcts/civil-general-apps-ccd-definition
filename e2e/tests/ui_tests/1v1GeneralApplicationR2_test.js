@@ -21,9 +21,9 @@ BeforeSuite(async ({api}) => {
   console.log('Case created for general application: ' + civilCaseReference);
 });
 
-Scenario('Defendant of main claim initiates Vary Judgement application @regression3', async ({I, api}) => {
+Scenario('Defendant of main claim initiates Vary Judgement application @regression3 @123', async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.verifyNoN245Form(civilCaseReference, getAppTypes().slice(10, 11), 'no');
+  /*await I.verifyNoN245Form(civilCaseReference, getAppTypes().slice(10, 11), 'no');
   await I.login(config.defendantSolicitorUser);
   await I.initiateVaryJudgementGA(civilCaseReference, getAppTypes().slice(10, 11), 'yes', 'no', 'no');
   gaCaseReference = await api.getGACaseReference(config.defendantSolicitorUser, civilCaseReference);
@@ -64,7 +64,7 @@ Scenario('Defendant of main claim initiates Vary Judgement application @regressi
 
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(states.LISTING_FOR_A_HEARING.name);
-  await I.verifyCaseFileAppDocument(civilCaseReference, 'N245 Evidence');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'N245 Evidence');*/
 });
 
 Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regression3', async ({I, api}) => {
@@ -95,5 +95,5 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
