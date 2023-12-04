@@ -215,7 +215,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "judicialGeneralHearingOrderRecital",
+    "CaseFieldID": "judicialListForHearing",
     "TabFieldDisplayOrder": 9,
     "FieldShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\""
   },
@@ -224,7 +224,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "judicialGOHearingDirections",
+    "CaseFieldID": "judicialGeneralHearingOrderRecital",
     "TabFieldDisplayOrder": 9,
     "FieldShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\""
   },
@@ -233,7 +233,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 3,
-    "CaseFieldID": "orderMadeCourtsInitiativeLabelForHearing",
+    "CaseFieldID": "judicialGOHearingDirections",
     "TabFieldDisplayOrder": 9,
     "FieldShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\""
   },
@@ -242,7 +242,7 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 4,
-    "CaseFieldID": "judicialByCourtsInitiativeListForHearing",
+    "CaseFieldID": "orderMadeCourtsInitiativeLabelForHearing",
     "TabFieldDisplayOrder": 9,
     "FieldShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\""
   },
@@ -251,6 +251,15 @@
     "TabID": "Application",
     "TabLabel": "Application",
     "TabDisplayOrder": 5,
+    "CaseFieldID": "judicialByCourtsInitiativeListForHearing",
+    "TabFieldDisplayOrder": 9,
+    "FieldShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application",
+    "TabLabel": "Application",
+    "TabDisplayOrder": 6,
     "CaseFieldID": "orderCourtOwnInitiativeListForHearing",
     "TabFieldDisplayOrder": 9,
     "FieldShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\" AND judicialByCourtsInitiativeListForHearing=\"OPTION_1\""
@@ -259,7 +268,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "Application",
     "TabLabel": "Application",
-    "TabDisplayOrder": 6,
+    "TabDisplayOrder": 7,
     "CaseFieldID": "orderWithoutNoticeListForHearing",
     "TabFieldDisplayOrder": 9,
     "FieldShowCondition": "judicialDecision.decision = \"LIST_FOR_A_HEARING\" AND judicialByCourtsInitiativeListForHearing=\"OPTION_2\""

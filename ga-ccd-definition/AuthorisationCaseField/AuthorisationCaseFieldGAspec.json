@@ -2175,7 +2175,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser",
           "caseworker-civil-systemupdate"
