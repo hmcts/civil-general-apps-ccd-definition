@@ -27,12 +27,5 @@
     "FieldType": "Text",
     "ElementLabel": "Camunda event name used to trigger business process by sending message",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "BusinessProcess",
-    "ListElementCode": "failedExternalTaskId",
-    "FieldType": "Text",
-    "ElementLabel": "failed external task Id",
-    "SecurityClassification": "Public"
   }
 ]
