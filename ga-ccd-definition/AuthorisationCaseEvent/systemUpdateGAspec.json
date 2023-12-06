@@ -229,12 +229,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "UPDATE_BUSINESS_PROCESS_STATE",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

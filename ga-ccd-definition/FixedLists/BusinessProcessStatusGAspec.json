@@ -22,11 +22,5 @@
     "ListElementCode": "FINISHED",
     "ListElement": "Business process finished",
     "DisplayOrder": 4
-  },
-  {
-    "ID": "BusinessProcessStatus",
-    "ListElementCode": "FAILED",
-    "ListElement": "Business process failed",
-    "DisplayOrder": 5
   }
 ]
