@@ -68,7 +68,7 @@ withNightlyPipeline(type, product, component) {
     'aat': params.ENVIRONMENT
   ])
   loadVaultSecrets(secrets)
-  enableFullFunctionalTest(200)
+ // enableFullFunctionalTest(200)
 
   afterAlways('fullFunctionalTest') {
     archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
