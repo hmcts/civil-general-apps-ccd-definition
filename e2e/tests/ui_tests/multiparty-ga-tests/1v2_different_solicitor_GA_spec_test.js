@@ -12,6 +12,8 @@ const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 let gaCaseReference, civilCaseReference, user;
 
 Feature('1v2 Different Solicitor Spec claim - GA Journey @multiparty-e2e-tests @ui-nightly');
+// This test should be enabled after early adopters goes live for all regions
+
 Scenario.skip('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey @regression3',
   async ({api, I}) => {
     civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);

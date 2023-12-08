@@ -25,6 +25,7 @@ if (config.runWAApiTest) {
 }
 
 Feature('1v2 Spec claim: GA - WA Scenarios @e2e-wa');
+// This test should be enabled after early adopters goes live for all regions
 
 Scenario.skip('LA refer to judge - R4 Judge Make decision - NBC admin schedule Hearing', async ({I, api, wa}) => {
   civilCaseReference = await api.createSpecifiedClaim(

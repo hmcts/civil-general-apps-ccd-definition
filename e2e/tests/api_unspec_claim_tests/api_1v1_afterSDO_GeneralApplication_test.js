@@ -6,6 +6,7 @@ const claimAmountJudge = '11000';
 let civilCaseReference, gaCaseReference;
 
 Feature('Unspec 1v1 - General Application after SDO Journey @api-nightly');
+// This test should be enabled after early adopters goes live for all regions
 
 Scenario.skip('Claimant create GA - JUDICIAL_REFERRAL state', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', claimAmountJudge);

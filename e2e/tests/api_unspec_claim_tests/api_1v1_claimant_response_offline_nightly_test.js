@@ -6,6 +6,7 @@ let civilCaseReference,
   gaCaseReference;
 
 Feature('GA Claim 1v1 Claimant Response Case Close API tests @api-offline-nightly @api-nightly');
+// This test should be enabled after early adopters goes live for all regions
 
 Scenario.skip('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');

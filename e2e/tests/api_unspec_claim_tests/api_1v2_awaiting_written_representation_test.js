@@ -5,6 +5,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 Judge Make Order Written Rep API tests @api-nightly');
+// This test should be enabled after early adopters goes live for all regions
 
 Scenario.skip('Judge makes decision 1V2 - WRITTEN_REPRESENTATIONS', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(

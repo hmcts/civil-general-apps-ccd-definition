@@ -6,6 +6,7 @@ let civilCaseReference,
   gaCaseReference;
 
 Feature('GA Claim 1v2 Notify Claim Case Close API tests @api-offline-nightly @api-nightly');
+// This test should be enabled after early adopters goes live for all regions
 
 Scenario.skip('Case offline 1V2 notify_claim_details AWAITING_ADDITIONAL_INFORMATION', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
