@@ -212,7 +212,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostsBespoke",
     "ListElementCode": "beSpokeCostDetailsLabel",
-    "FieldDisplayOrder": 1,
+    "FieldDisplayOrder": 22,
     "DisplayContext": "READONLY"
   },
   {
@@ -220,7 +220,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostsBespoke",
     "ListElementCode": "beSpokeCostDetailsSecondLabel",
-    "FieldDisplayOrder": 2,
+    "FieldDisplayOrder": 23,
     "DisplayContext": "READONLY"
   },
   {
@@ -228,7 +228,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostsBespoke",
     "ListElementCode": "beSpokeCostDetailsText",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 24,
     "DisplayContext": "MANDATORY"
   }
 ]
