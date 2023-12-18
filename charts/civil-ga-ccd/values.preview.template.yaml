@@ -1,6 +1,7 @@
 civil-general-applications:
   java:
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
+    image: 'hmctspublic.azurecr.io/civil/general-applications:pr-1209'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -33,6 +34,7 @@ civil-service:
   enabled: true
   java:
     ingressHost: civil-service-${SERVICE_FQDN}
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3768'
     keyVaults:
       civil:
         resourceGroup: civil
