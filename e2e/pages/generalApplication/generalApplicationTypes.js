@@ -11,7 +11,7 @@ module.exports = {
       'Vary order',
       'Adjourn a hearing',
       'Unless order',
-      'Vary judgment',
+      'Vary payment terms of judgment',
       'Other'
     ];
   }

@@ -3,7 +3,7 @@
     "ID": "GAHearingDetailsRespGAspec",
     "ListElementCode": "hearingYesorNo",
     "FieldType": "YesOrNo",
-    "ElementLabel": "Do you have a hearing scheduled?",
+    "ElementLabel": "Do you have any other hearing scheduled?",
     "SecurityClassification": "Public"
   },
   {

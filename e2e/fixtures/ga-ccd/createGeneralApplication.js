@@ -83,7 +83,7 @@ module.exports = {
     return {
       generalAppType: {
         types: [
-          'VARY_JUDGEMENT'
+          'VARY_PAYMENT_TERMS_OF_JUDGMENT'
         ]
       },
       generalAppRespondentAgreement: {
