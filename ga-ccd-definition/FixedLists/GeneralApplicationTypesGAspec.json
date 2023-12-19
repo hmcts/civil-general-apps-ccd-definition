@@ -73,7 +73,7 @@
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
-    "ListElementCode": "VARY_JUDGEMENT",
+    "ListElementCode": "VARY_PAYMENT_TERMS_OF_JUDGMENT",
     "ListElement": "Application to Vary payment terms of judgment",
     "DisplayOrder": 13
   }
