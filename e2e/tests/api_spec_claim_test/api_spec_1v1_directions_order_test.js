@@ -31,7 +31,7 @@ Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
   console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
-Scenario('Make an Urgent General Application with Vary payment terms of judgment', async ({api}) => {
+Scenario('Make an Urgent General Application with Vary Judgement', async ({api}) => {
   civilCaseReference = await api.createSpecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);

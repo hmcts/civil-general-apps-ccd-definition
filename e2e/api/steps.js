@@ -62,7 +62,7 @@ const data = {
   INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
   INITIATE_GENERAL_APPLICATION_STAY_CLAIM: genAppData.gaTypeWithStayClaim(),
   INITIATE_GENERAL_APPLICATION_UNLESS_ORDER: genAppData.gaTypeWithUnlessOrder(),
-  INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT: (isWithNotice, generalAppN245FormUpload, urgency) => genAppData.createGADataVaryJudgement(isWithNotice,null,
+  INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT: (isWithNotice, generalAppN245FormUpload, urgency) => genAppData.createGADataVaryJudgement(isWithNotice,null,
     '1400','FEE0458', generalAppN245FormUpload, urgency),
   INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
   RESPOND_TO_APPLICATION: (agree) => genAppRespondentResponseData.respondGAData(agree),
@@ -2112,9 +2112,9 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
 
   if(!isClaimant) {
     const document = await testingSupport.uploadDocument();
-    initiateData = data.INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT('Yes',createGeneralAppN245FormUpload(document), urgency);
+    initiateData = data.INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT('Yes',createGeneralAppN245FormUpload(document), urgency);
   } else {
-    initiateData = data.INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT('Yes', null,  urgency);
+    initiateData = data.INITIATE_GENERAL_APPLICATION_VARY_JUDGEMENT('Yes', null,  urgency);
   }
   const response = await apiRequest.submitEvent(eventName, initiateData ,parentCaseId);
   const responseBody = await response.json();
