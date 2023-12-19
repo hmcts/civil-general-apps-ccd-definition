@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA SPEC Claim 1v1 Judge Make Order Directions Order API tests @api-tests');
+Feature('GA SPEC Claim 1v1 Judge Make Order Directions Order API tests @wa-test');
 
 Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
   civilCaseReference = await api.createSpecifiedClaim(
