@@ -29,6 +29,8 @@ Scenario('Judge decides Free Form Order', async ({api}) => {
   }
   console.log('*** End Judge decides Free Form Order: ' + gaCaseReference + ' ***');
 
+  await api.assertGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'generalOrder');
+  
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminWithRegionId2, gaCaseReference);
   } else {
