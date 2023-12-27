@@ -173,6 +173,11 @@ const selectApplicationType = (eventName, applicationType) => [
   () => applicationTypePage.selectApplicationType(applicationType),
 ];
 
+const selectGAAndVerifyErrorMessage = (eventName, errorMessage) => [
+  () => caseViewPage.start(eventName, errorMessage),
+  () => applicationTypePage.verifyErrorMessage(errorMessage),
+];
+
 const selectConsentCheck = (consentCheck) => [
   () => consentCheckPage.selectConsentCheck(consentCheck)
 ];
@@ -1153,6 +1158,13 @@ module.exports = function () {
         ...updateHearingDetails(),
         ...submitApplication('You have submitted an application'),
         ...verifyGAConfirmationPage(caseId, consentCheck, notice, appTypes),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async verifyGAAccessToNonEARegion(errorMsg) {
+      await this.triggerStepsWithScreenshot([
+        ...selectGAAndVerifyErrorMessage('Create GA', errorMsg),
       ]);
       await this.takeScreenshot();
     }
