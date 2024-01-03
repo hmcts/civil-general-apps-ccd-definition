@@ -17,6 +17,14 @@
   },
   {
     "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judgeHearingCourtLocationLabel",
+    "ElementLabel": "### Where do you want to list for a hearing?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "hearingPreferencesPreferredType = \"IN_PERSON\""
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
     "ListElementCode": "hearingPreferredLocationLabel",
     "ElementLabel": "### Select a location",
     "FieldType": "Label",
@@ -110,14 +118,6 @@
     "HintText": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAJudgesHearingListGAspec",
-    "ListElementCode": "judgeHearingCourtLocationLabel",
-    "ElementLabel": "### Where do you want to list for a hearing?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "hearingPreferencesPreferredType = \"IN_PERSON\""
   },
   {
     "ID": "GAJudgesHearingListGAspec",
