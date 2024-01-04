@@ -8,11 +8,17 @@ Feature('GA 1v2 application collection for different solicitor API tests @api-ni
 
 
 Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Decision List for Hearing  @api-tests', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Company');
+
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
+    mpScenario, 'SoleTrader', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
@@ -21,8 +27,8 @@ Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Deci
 
   console.log('*** Start Judge makes decision List for Hearing: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
-    await api.assertGaAppCollectionVisiblityToUser(config.judgeUser, civilCaseReference, gaCaseReference, 'Y');
+    await api.judgeListApplicationForHearing(config.judgeUser2WithRegionId2, gaCaseReference);
+    await api.assertGaAppCollectionVisiblityToUser(config.judgeUser2WithRegionId2, civilCaseReference, gaCaseReference, 'Y');
   } else {
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
     await api.assertGaAppCollectionVisiblityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, 'Y');
@@ -39,11 +45,17 @@ Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Deci
 });
 
 Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case Test  @api-tests', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Company');
+
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
+    mpScenario, 'SoleTrader', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
@@ -59,11 +71,17 @@ Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA C
 });
 
 Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case initiated by Defendant2', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Company');
+
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
+    mpScenario, 'SoleTrader', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
@@ -77,7 +95,7 @@ Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA C
   console.log('*** End of Validating  GA Case Visibility in all Collections: ' + gaCaseReference + ' ***');
   console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionAdditionalInformation(config.judgeUser, gaCaseReference);
+    await api.judgeMakesDecisionAdditionalInformation(config.judgeUser2WithRegionId2, gaCaseReference);
   } else {
     await api.judgeMakesDecisionAdditionalInformation(config.judgeLocalUser, gaCaseReference);
   }
@@ -92,7 +110,7 @@ Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA C
   await api.assertNullGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, doc);
   await api.assertNullGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, doc);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.assertGaDocumentVisibilityToUser(config.judgeUser, civilCaseReference, gaCaseReference, doc);
+    await api.assertGaDocumentVisibilityToUser(config.judgeUser2WithRegionId2, civilCaseReference, gaCaseReference, doc);
   } else {
     await api.assertGaDocumentVisibilityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
   }
@@ -100,11 +118,17 @@ Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA C
 });
 
 Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Decision Order Made', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Company');
+
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
+    mpScenario, 'SoleTrader', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');

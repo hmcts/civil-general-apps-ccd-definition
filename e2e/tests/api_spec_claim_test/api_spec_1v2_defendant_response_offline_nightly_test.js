@@ -5,8 +5,9 @@ let civilCaseReference,
   gaCaseReference;
 
 Feature('GA SPEC Claim 1v2 Defendant Response Case Close API tests @api-offline-nightly @api-nightly');
+// This test should be enabled after early adopters goes live for all regions
 
-Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api}) => {
+Scenario.skip('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
@@ -19,7 +20,7 @@ Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async 
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
-Scenario('Case offline ORDER_MADE', async ({api}) => {
+Scenario.skip('Case offline ORDER_MADE', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 

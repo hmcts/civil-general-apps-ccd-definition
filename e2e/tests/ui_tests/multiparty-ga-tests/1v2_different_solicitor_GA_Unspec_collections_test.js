@@ -12,11 +12,16 @@ Feature('1v2 Different Solicitor - General Application Collections test Journey 
 
 Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations @regression1',
   async ({api, I}) => {
-    civilCaseReference = await api.createUnspecifiedClaim(
-      config.applicantSolicitorUser, mpScenario, 'SoleTrader');
+    civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
+      mpScenario, 'SoleTrader', '11000');
     await api.amendClaimDocuments(config.applicantSolicitorUser);
     await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
     await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+    await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+    console.log('Civil Case created for general application: ' + civilCaseReference);
+    await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+    await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+    await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
     console.log('Civil Case created for general application: ' + civilCaseReference);
 
     gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.defendantSolicitorUser, civilCaseReference);
@@ -25,7 +30,7 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
     await I.see(judgeDecisionStatus);
 
     if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-      await api.judgeMakesDecisionWrittenRep(config.judgeUser, gaCaseReference);
+      await api.judgeMakesDecisionWrittenRep(config.judgeUser2WithRegionId2, gaCaseReference);
     } else {
       await api.judgeMakesDecisionWrittenRep(config.judgeLocalUser, gaCaseReference);
     }
@@ -42,11 +47,16 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
   });
 
 Scenario('With Notice application - Org3 Solicitor Initiate GA @regression1', async ({api, I}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'SoleTrader');
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
+    mpScenario, 'SoleTrader', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   gaCaseReference = await api.initiateGeneralApplicationWithNoStrikeOut(config.secondDefendantSolicitorUser,
     civilCaseReference);

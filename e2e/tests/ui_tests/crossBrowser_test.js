@@ -22,6 +22,9 @@ Scenario('GA - Make an order journey', async ({I, api}) => {
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, 'ONE_V_ONE', civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Case created for general application: ' + civilCaseReference);
 /*  await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
@@ -64,21 +67,24 @@ Scenario('GA - Case progression journey', async ({I, api}) => {
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
+    await api.judgeListApplicationForHearing(config.judgeUser2WithRegionId2, gaCaseReference);
   } else {
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
   }
 
   console.log('Hearing Notice creation');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
-    await api.assertGaDocumentVisibilityToUser(config.judgeUser, civilCaseReference, gaCaseReference, doc);
+    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminWithRegionId2, gaCaseReference);
+    await api.assertGaDocumentVisibilityToUser(config.judgeUser2WithRegionId2, civilCaseReference, gaCaseReference, doc);
   } else {
     await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
     await api.assertGaDocumentVisibilityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
