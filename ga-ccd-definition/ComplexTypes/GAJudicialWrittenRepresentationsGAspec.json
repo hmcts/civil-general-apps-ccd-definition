@@ -10,7 +10,7 @@
   {
     "ID": "GAJudicialWrittenRepresentationsGAspec",
     "ListElementCode": "writtenSequentailRepresentationsBy",
-    "ElementLabel": "The respondent may upload any written responses or evidence by 4pm on",
+    "ElementLabel": "The defendant should upload any written responses or evidence by 4pm on",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "DisplayContextParameter": "#DATETIMEDISPLAY(d LLLL yyyy)",
@@ -19,7 +19,7 @@
   {
     "ID": "GAJudicialWrittenRepresentationsGAspec",
     "ListElementCode": "sequentialApplicantMustRespondWithin",
-    "ElementLabel": "The applicant may upload any written responses or evidence in reply by 4pm on",
+    "ElementLabel": "The claimant should upload any written responses or evidence in reply by 4pm on",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "DisplayContextParameter": "#DATETIMEDISPLAY(d LLLL yyyy)",
@@ -28,7 +28,7 @@
   {
     "ID": "GAJudicialWrittenRepresentationsGAspec",
     "ListElementCode": "writtenConcurrentRepresentationsBy",
-    "ElementLabel": "The applicant and respondent may upload any written submissions and evidence by 4pm on",
+    "ElementLabel": "The claimant and defendant should upload any written submissions and evidence by 4pm on",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "DisplayContextParameter": "#DATETIMEDISPLAY(d LLLL yyyy)",
