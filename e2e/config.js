@@ -17,7 +17,7 @@ module.exports = {
     generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL || 'http://localhost:4550',
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
 
-    /*manageCase: 'https://xui-civil-ga-ccd-pr-787.preview.platform.hmcts.net',
+   /* manageCase: 'https://xui-civil-ga-ccd-pr-787.preview.platform.hmcts.net',
     authProviderApi: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
     ccdDataStore: 'https://ccd-data-store-api-civil-ga-ccd-pr-787.preview.platform.hmcts.net',
     dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
@@ -49,6 +49,13 @@ module.exports = {
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '4'
+  },
+  judgeUser2WithRegionId2: {
+    password: judgePassword,
+    email: 'EMP42506@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '2'
   },
   judgeUserWithRegionId1Local: {
     password: defaultPassword,
@@ -114,6 +121,13 @@ module.exports = {
     password: defaultPassword,
     type: 'hearing-center-admin',
     roleCategory: 'ADMIN'
+  },
+  hearingCenterAdminWithRegionId2: {
+    email: 'hearing_center_admin_reg2@justice.gov.uk',
+    password: defaultPassword,
+    type: 'hearing-center-admin',
+    roleCategory: 'ADMIN',
+    regionId: '2'
   },
   tribunalCaseworkerWithRegionId4: {
     email: 'tribunal_legal_caseworker_reg4@justice.gov.uk',
@@ -215,7 +229,7 @@ module.exports = {
   claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU',
   defendant2SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0',
-  claimantSelectedCourt: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-  defendantSelectedCourt: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-  defendant2SelectedCourt: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+  claimantSelectedCourt: 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ',
+  defendantSelectedCourt: 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ',
+  defendant2SelectedCourt: 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ',
 };

@@ -12,18 +12,22 @@ let gaCaseReference, civilCaseReference;
 Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly');
 
 BeforeSuite(async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'SoleTrader');
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
+    mpScenario, 'SoleTrader', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
   console.log('Civil Case created for general application: ' + civilCaseReference);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
 });
 
 Scenario('Without Notice application for a hearing @regression1', async ({api, I}) => {
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeListApplicationForHearing(config.judgeUser, gaCaseReference);
+    await api.judgeListApplicationForHearing(config.judgeUser2WithRegionId2, gaCaseReference);
   } else {
     await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
   }
@@ -50,7 +54,7 @@ Scenario('Without Notice application to With Notice application - Directions Ord
       civilCaseReference, gaCaseReference, null);
 
     if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-      await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
+      await api.judgeRequestMoreInformationUncloak(config.judgeUser2WithRegionId2, gaCaseReference, true, true);
     } else {
       await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true, true);
     }
@@ -67,7 +71,7 @@ Scenario('Without Notice application to With Notice application - Directions Ord
     await api.respondentResponse1v2(config.defendantSolicitorUser, config.applicantSolicitorUser, gaCaseReference);
 
     if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-      await api.judgeMakesDecisionDirectionsOrder(config.judgeUser, gaCaseReference);
+      await api.judgeMakesDecisionDirectionsOrder(config.judgeUser2WithRegionId2, gaCaseReference);
     } else {
       await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
     }

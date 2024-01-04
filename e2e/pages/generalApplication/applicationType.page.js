@@ -26,6 +26,10 @@ module.exports = {
     await I.clickContinue();
   },
 
+  async verifyErrorMessage(errorMsg) {
+    await I.see(errorMsg);
+  },
+
   async verifyAllApplicationTypes(applicationTypes, caseNumber) {
     I.waitForElement(this.fields.applicationType.id);
     I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATIONGATypePage');

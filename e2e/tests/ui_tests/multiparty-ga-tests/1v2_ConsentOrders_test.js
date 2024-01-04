@@ -4,15 +4,21 @@ const states = require('../../../fixtures/ga-ccd/state');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference, user;
+const claimAmountJudge = '11000';
 
 Feature('Before SDO 1v2 - GA - Consent Orders @ui-nightly @regression2');
 
 Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Company');
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
+    mpScenario, 'SoleTrader', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
@@ -25,7 +31,7 @@ Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   if (config.runWAApiTest || ['demo'].includes(config.runningEnv)) {
-    await api.retrieveTaskDetails(config.nbcAdminWithRegionId4, gaCaseReference, config.waTaskIds.nbcUserReviewGA);
+    await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId2, gaCaseReference, config.waTaskIds.nbcUserReviewGA);
   } else {
     console.log('WA flag is not enabled');
     return;
@@ -33,7 +39,7 @@ Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
 
   console.log('NBC admin Approves Consent order' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.nbcAdminWithRegionId4;
+    user = config.hearingCenterAdminWithRegionId2;
     await I.login(user);
   } else {
     user = config.nbcAdminWithRegionId4;

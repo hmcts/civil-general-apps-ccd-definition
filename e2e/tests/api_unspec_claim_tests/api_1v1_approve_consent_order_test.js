@@ -9,12 +9,12 @@ const claimAmountJudge = '11000';
 Feature('GA 1v1 Consent Order API tests');
 
 BeforeSuite(async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
+ /* civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'SoleTrader');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  console.log('Civil Case created for general application: ' + civilCaseReference);
+  console.log('Civil Case created for general application: ' + civilCaseReference);*/
 
 
   civilCaseReferenceAfterSDO =await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', claimAmountJudge);
@@ -30,15 +30,9 @@ BeforeSuite(async ({api}) => {
 });
 
 Scenario('Caseworker makes decision 1V1 - CONSENT ORDER @api-tests @api-scheduler-test', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Company');
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, ['STAY_THE_CLAIM']);
+  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, ['STAY_THE_CLAIM']);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
@@ -46,7 +40,7 @@ Scenario('Caseworker makes decision 1V1 - CONSENT ORDER @api-tests @api-schedule
 
   console.log('*** Start CaseWorker Approve Consent Order on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.nbcAdminApproveConsentOrder(config.nbcAdminWithRegionId4, gaCaseReference);
+    await api.nbcAdminApproveConsentOrder(config.hearingCenterAdminWithRegionId2, gaCaseReference);
   } else {
     await api.nbcAdminApproveConsentOrder(config.hearingCenterAdminLocal, gaCaseReference);
   }
@@ -64,7 +58,7 @@ Scenario('Judge Revisit 1V1 - consentOrder End Date Scheduler @api-scheduler-tes
 Scenario('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application @api-tests', async ({api}) => {
 
   console.log('Make a General Application for Consent order');
-  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, ['STRIKE_OUT']);
+  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, ['STRIKE_OUT']);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
@@ -73,7 +67,7 @@ Scenario('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application @api-te
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser2WithRegionId2, gaCaseReference, true, true);
   } else {
     await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true, true);
   }
@@ -90,7 +84,7 @@ Scenario('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application @api-
 
   console.log('Make a General Application for Consent order');
 
-  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, ['EXTEND_TIME']);
+  gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, ['EXTEND_TIME']);
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
@@ -98,7 +92,7 @@ Scenario('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application @api-
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
     + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser2WithRegionId2, gaCaseReference, true, true);
   } else {
     await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true, true);
   }
@@ -114,12 +108,12 @@ Scenario('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application @api-
 Scenario('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Application @api-tests', async ({api}) => {
 
   console.log('Make a General Application for Consent order');
-  gaCaseReference = await api.initiateConsentUrgentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, ['STRIKE_OUT']);
+  gaCaseReference = await api.initiateConsentUrgentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, ['STRIKE_OUT']);
 
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '+ gaCaseReference + ' ***');
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser2WithRegionId2, gaCaseReference, true, true);
   } else {
     await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true, true);
   }
@@ -147,7 +141,7 @@ Scenario('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     console.log('*** NBC Admin Region1 Refer to Judge Process Start ***');
-    await api.nbcAdminReferToJudge(config.hearingCenterAdminWithRegionId1, gaCaseReference);
+    await api.nbcAdminReferToJudge(config.hearingCenterAdminWithRegionId2, gaCaseReference);
     console.log('*** NBC Admin Region4 Refer to Judge Process End ***');
   } else {
     console.log('*** NBC local Admin Region Refer to Judge Process Start ***');
@@ -156,7 +150,7 @@ Scenario('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 
   }
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-      await api.judgeRequestMoreInformationUncloak(config.judgeUserWithRegionId1, gaCaseReference, true, true);
+      await api.judgeRequestMoreInformationUncloak(config.judgeUser2WithRegionId2, gaCaseReference, true, true);
     } else {
       await api.judgeRequestMoreInformationUncloak(config.judgeUserWithRegionId1, gaCaseReference, true, true);
     }
@@ -174,7 +168,7 @@ Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
     console.log('*** NBC Admin Region1 Refer to Judge Process Start ***');
-    await api.nbcAdminReferToJudge(config.hearingCenterAdminWithRegionId1, gaCaseReference);
+    await api.nbcAdminReferToJudge(config.hearingCenterAdminWithRegionId2, gaCaseReference);
     console.log('*** NBC Admin Region4 Refer to Judge Process End ***');
   } else {
     console.log('*** NBC local Admin Region Refer to Judge Process Start ***');
@@ -183,7 +177,7 @@ Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1
   }
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUserWithRegionId1, gaCaseReference, true, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser2WithRegionId2, gaCaseReference, true, true);
   } else {
     await api.judgeRequestMoreInformationUncloak(config.judgeUserWithRegionId1, gaCaseReference, true, true);
   }
