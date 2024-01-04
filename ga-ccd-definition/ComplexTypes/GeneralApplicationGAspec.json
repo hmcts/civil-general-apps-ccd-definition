@@ -48,7 +48,7 @@
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppVaryJudgementType",
-    "ElementLabel": "Vary Judgment GA Type",
+    "ElementLabel": "Vary payment terms of judgment GA Type",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
