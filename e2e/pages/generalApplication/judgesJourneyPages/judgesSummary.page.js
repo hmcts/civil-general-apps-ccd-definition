@@ -36,8 +36,8 @@ module.exports = {
         await I.see('Make an order for written representations');
         await I.see('Sequential representations');
         await I.see('Order in relation to written representations');
-        await I.see('The respondent may upload any written responses or evidence by 4pm on');
-        await I.see('The applicant may upload any written responses or evidence in reply by 4pm on');
+        await I.see('The defendant should upload any written responses or evidence by 4pm on');
+        await I.see('The claimant should upload any written responses or evidence in reply by 4pm on');
         break;
       case 'Request more information':
         await I.see('Judge’s recital');

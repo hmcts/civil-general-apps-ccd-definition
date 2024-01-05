@@ -51,10 +51,10 @@ module.exports = {
     I.see('Judge’s recital');
     await verifyJudgeRecitalText(await I.grabValueFrom(this.fields.writtenRepresentationsJudgeRecitalTextArea), notice);
     if ('sequentialRep' === representationsType) {
-      await I.see('The respondent may upload any written responses or evidence by 4pm on');
-      await I.see('The applicant may upload any written responses or evidence in reply by 4pm on');
+      await I.see('The defendant should upload any written responses or evidence by 4pm on');
+      await I.see('The claimant should upload any written responses or evidence in reply by 4pm on');
     } else {
-      await I.see('The applicant and respondent may upload any written submissions and evidence by 4pm on');
+      await I.see('The claimant and defendant should upload any written submissions and evidence by 4pm on');
     }
 
     switch (orderType) {
