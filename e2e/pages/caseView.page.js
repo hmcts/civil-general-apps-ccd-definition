@@ -19,6 +19,7 @@ module.exports = {
     selectedTab: 'div[aria-selected="true"] div[class*="content"]',
     caseViewerLabel: '.Summary .case-viewer-label',
     signOutLink: 'ul[class*="navigation-list"] a',
+    errorMessage: 'ul#errors li',
   },
   goButton: 'button[type="submit"]',
 
@@ -40,6 +41,13 @@ module.exports = {
         await I.retryUntilExists(async () => {
           await I.forceClick(this.goButton);
         }, this.fields.generalApps);
+        break;
+      case 'Create GA':
+        await I.waitForSelector(this.fields.eventDropdown, 20);
+        await I.selectOption(this.fields.eventDropdown, 'Make an application');
+        await I.retryUntilExists(async () => {
+          await I.forceClick(this.goButton);
+        }, this.fields.errorMessage);
         break;
       default:
         await I.waitForClickable('.event-trigger .button', 10);

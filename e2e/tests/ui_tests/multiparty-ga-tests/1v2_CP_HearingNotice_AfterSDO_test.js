@@ -27,7 +27,7 @@ Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeListApplicationForHearingInPerson(config.judgeUserWithRegionId1, gaCaseReference);
+    await api.judgeListApplicationForHearingInPerson(config.judgeUser2WithRegionId2, gaCaseReference);
   } else {
     await api.judgeListApplicationForHearingInPerson(config.judgeUserWithRegionId1, gaCaseReference);
   }
@@ -36,7 +36,7 @@ Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({
 
   console.log('Hearing Notice creation');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await I.login(config.hearingCenterAdminWithRegionId1);
+    await I.login(config.hearingCenterAdminWithRegionId2);
   } else {
     await I.login(config.hearingCenterAdminLocal);
   }
@@ -45,7 +45,7 @@ Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({
   await I.see(states.LISTING_FOR_A_HEARING.name);
   await I.navigateToHearingNoticePage(gaCaseReference);
   await I.fillHearingNotice(gaCaseReference, 'claimant', 'default', 'IN_PERSON');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.HEARING_SCHEDULED.id, config.hearingCenterAdminWithRegionId1);
+  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.HEARING_SCHEDULED.id, config.hearingCenterAdminWithRegionId2);
   console.log('After SDO Hearing Notice created for: ' + gaCaseReference);
   await I.click('Close and Return to case details');
 

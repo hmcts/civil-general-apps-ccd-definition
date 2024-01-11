@@ -1,5 +1,6 @@
 const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
+const claimAmountJudge = '11000';
 
 let civilCaseReference, gaCaseReference,expectedJudgeDecideOnApplicationBeforeSDOTask,expectedLADecideOnApplicationBeforeSDOTask;
 if (config.runWAApiTest) {
@@ -10,11 +11,13 @@ if (config.runWAApiTest) {
 Feature('GA - WA Challenged Access @api-wa');
 
 Scenario('GA - Challenged Access test - NBCAdmin & judge', async ({I, api, wa}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Company');
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
@@ -22,7 +25,7 @@ Scenario('GA - Challenged Access test - NBCAdmin & judge', async ({I, api, wa}) 
   console.log('*** General Application case created ***' + gaCaseReference);
 
   console.log('*** Challenged Access steps for nbcAdmin - Start ***');
-  await I.login(config.nbcAdminWithRegionId1);
+  await I.login(config.hearingCenterAdminWithRegionId2);
   await wa.runChallengedAccessSteps(gaCaseReference);
   console.log('*** Challenged Access steps for nbcAdmin - End ***');
 
@@ -36,7 +39,7 @@ Scenario('GA - Challenged Access test - NBCAdmin & judge', async ({I, api, wa}) 
   console.log('*** Validate Task Initiation for Judge Decide On Application - End ***');
 
   console.log('*** Challenged Access steps for Judge - Start ***');
-  await I.login(config.judgeUserWithRegionId1);
+  await I.login(config.judgeUser2WithRegionId2);
   await wa.runChallengedAccessSteps(gaCaseReference);
   console.log('*** Challenged Access steps for Judge - End ***');
 

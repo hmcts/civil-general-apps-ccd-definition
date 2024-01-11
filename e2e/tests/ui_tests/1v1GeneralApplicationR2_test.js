@@ -13,15 +13,17 @@ let civilCaseReference, gaCaseReference, user;
 Feature('GA R2 1v1 - General Application Journey @ui-nightly');
 
 BeforeSuite(async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, claimantType);
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Case created for general application: ' + civilCaseReference);
 });
 
-Scenario('Defendant of main claim initiates Vary Judgement application @regression3', async ({I, api}) => {
+Scenario('Defendant of main claim initiates Vary payment terms of judgment application @regression3', async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.verifyNoN245Form(civilCaseReference, getAppTypes().slice(10, 11), 'no');
   await I.login(config.defendantSolicitorUser);
@@ -37,7 +39,7 @@ Scenario('Defendant of main claim initiates Vary Judgement application @regressi
   await I.verifyN245FormElements();
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser;
+    user = config.judgeUser2WithRegionId2;
     await I.login(user);
   } else {
     user = config.judgeLocalUser;
@@ -86,7 +88,7 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionOrderMade(config.judgeUser, gaCaseReference);
+    await api.judgeMakesDecisionOrderMade(config.judgeUser2WithRegionId2, gaCaseReference);
   } else {
     await api.judgeMakesDecisionOrderMade(config.judgeLocalUser, gaCaseReference);
   }

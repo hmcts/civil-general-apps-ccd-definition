@@ -19,13 +19,16 @@ const claimantType = 'Company';
 let civilCaseReference, gaCaseReference, user;
 
 Feature('GA CCD 1v1 - General Application Journey  @ui-nightly');
+// This test should be enabled after early adopters goes live for all regions
 
 Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, claimantType);
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
@@ -42,7 +45,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.see(awaitingPaymentStatus);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser;
+    user = config.judgeUser2WithRegionId2;
     await I.login(user);
   } else {
     user = config.judgeLocalUser;
@@ -75,10 +78,13 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
 });
 
 Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
@@ -97,7 +103,7 @@ Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) =
     states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser, judgeDecisionStatus);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser;
+    user = config.judgeUser2WithRegionId2;
     await I.login(user);
   } else {
     user = config.judgeLocalUser;
@@ -123,7 +129,7 @@ Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) =
   await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
 });
 
-Scenario('GA for 1v1 Specified Claim- Dismissal order journey @regression2', async ({I, api}) => {
+Scenario.skip('GA for 1v1 Specified Claim- Dismissal order journey @regression2', async ({I, api}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
@@ -171,11 +177,13 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey @regression2', asy
 });
 
 Scenario('GA for 1v1- respond to application - Request more information @regression2', async ({I, api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Company');
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
@@ -207,7 +215,7 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
   await I.see(judgeDecisionStatus);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser;
+    user = config.judgeUser2WithRegionId2;
     await I.login(user);
   } else {
     user = config.judgeLocalUser;
