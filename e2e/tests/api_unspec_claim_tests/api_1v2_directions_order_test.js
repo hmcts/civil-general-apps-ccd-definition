@@ -5,7 +5,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 Judge Make Order Directions Order API tests @api-nightly');
 
-Scenario('Judge makes decision 1V2 - DIRECTIONS ORDER', async ({api}) => {
+Scenario('Judge makes decision 1V2 - DIRECTIONS ORDER @123', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
@@ -34,6 +34,6 @@ Scenario('Judge makes decision 1V2 - DIRECTIONS ORDER', async ({api}) => {
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
 
