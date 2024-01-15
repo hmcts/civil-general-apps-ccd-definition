@@ -1,6 +1,14 @@
 [
   {
     "ID": "GAHearingDetailsRespGAspec",
+    "ListElementCode": "respondentResponsePartyName",
+    "ElementLabel": "Respondent",
+    "FieldType": "Text",
+    "Max": 40,
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAHearingDetailsRespGAspec",
     "ListElementCode": "hearingYesorNo",
     "FieldType": "YesOrNo",
     "ElementLabel": "Do you have any other hearing scheduled?",
