@@ -4,9 +4,9 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 Judge Dismiss Application API tests @api-nightly');
+Feature('GA 1v2 Judge Dismiss Application API tests @mm');
 
-Scenario('Judge makes decision 1V2 - DISMISS_THE_APPLICATION @123', async ({api}) => {
+Scenario('Judge makes decision 1V2 - DISMISS_THE_APPLICATION @mm', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
@@ -20,19 +20,12 @@ Scenario('Judge makes decision 1V2 - DISMISS_THE_APPLICATION @123', async ({api}
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api.initiateGeneralApplication(config.defendantSolicitorUser, civilCaseReference);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
+  await api.respondentResponse1v2(config.applicantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-  console.log('*** Start Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReference + ' ***');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeDismissApplication(config.judgeUser2WithRegionId2, gaCaseReference);
-  } else {
-    await api.judgeDismissApplication(config.judgeLocalUser, gaCaseReference);
-  }
-  console.log('*** End Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
 AfterSuite(async ({api}) => {
