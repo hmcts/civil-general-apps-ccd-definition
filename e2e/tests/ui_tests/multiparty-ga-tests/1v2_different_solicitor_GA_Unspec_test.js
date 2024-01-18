@@ -85,7 +85,8 @@ Scenario('Without Notice application to With Notice application - Directions Ord
       civilCaseReference, gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id);
   });
 
-Scenario('With Notice application - Org2 Solicitor Initiate GA @regression1', async ({api, I}) => {
+//  Skipped due to CIV-12233
+Scenario.skip('With Notice application - Org2 Solicitor Initiate GA @regression1', async ({api, I}) => {
   gaCaseReference = await api.initiateGeneralApplicationWithNoStrikeOut(config.defendantSolicitorUser, civilCaseReference);
   await I.login(config.defendantSolicitorUser);
   await I.navigateToApplicationsTab(civilCaseReference);

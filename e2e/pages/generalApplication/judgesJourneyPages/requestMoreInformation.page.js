@@ -1,3 +1,4 @@
+const date = require('../../../fragments/date');
 const {I} = inject();
 
 module.exports = {
@@ -12,9 +13,7 @@ module.exports = {
     },
     judgeRequestMoreInfoTextArea: '#judicialDecisionRequestMoreInfo_judgeRequestMoreInfoText',
     judgeRequestMoreInfoRecitalTextArea: '#judicialDecisionRequestMoreInfo_judgeRecitalText',
-    judgeRequestMoreInfoDay: '#judgeRequestMoreInfoByDate-day',
-    judgeRequestMoreInfoMonth: '#judgeRequestMoreInfoByDate-month',
-    judgeRequestMoreInfoYear: '#judgeRequestMoreInfoByDate-year',
+    judgeRequestMoreInfoDate: 'judgeRequestMoreInfoByDate',
     requestInfoRadioButton: '#judicialDecisionRequestMoreInfo_requestMoreInfoOption input',
   },
 
@@ -32,9 +31,7 @@ module.exports = {
     if ('requestMoreInformation' === info) {
       I.fillField(this.fields.judgeRequestMoreInfoTextArea, 'Judges request more information');
       I.see('When should this application be referred to a Judge again?');
-      I.fillField(this.fields.judgeRequestMoreInfoDay, '01');
-      I.fillField(this.fields.judgeRequestMoreInfoMonth, '01');
-      I.fillField(this.fields.judgeRequestMoreInfoYear, '2024');
+      await date.enterDate(this.fields.judgeRequestMoreInfoDate, +2);
       I.fillField(this.fields.judgeRequestMoreInfoRecitalTextArea, 'Request more Info - Judge recital text');
     }
     await I.clickContinue();

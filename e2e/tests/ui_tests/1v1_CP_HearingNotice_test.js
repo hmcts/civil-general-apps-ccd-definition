@@ -2,7 +2,6 @@
 const config = require('../../config.js');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
 const states = require('../../fixtures/ga-ccd/state');
-const claimAmountJudge = '11000';
 const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 const hnStatus = states.HEARING_SCHEDULED.name;
 const mpScenario = 'ONE_V_ONE';
@@ -19,7 +18,6 @@ BeforeSuite(async ({api}) => {
   await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
   console.log('Civil Case created for general application: ' + civilCaseReference);
   await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-  await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 });

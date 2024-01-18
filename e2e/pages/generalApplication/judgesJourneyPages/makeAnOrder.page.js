@@ -2,6 +2,7 @@
 const {I} = inject();
 const expect = require('chai').expect;
 const {verifyJudgeRecitalText, selectCourtsOrderType} = require('../../generalAppCommons');
+const date = require('../../../fragments/date');
 
 module.exports = {
 
@@ -33,9 +34,7 @@ module.exports = {
     },
     reasonForDecisionTextArea: '#judicialDecisionMakeOrder_reasonForDecisionText',
     consentAgreementCheckBox: '#makeAppVisibleToRespondents_makeAppAvailableCheck-CONSENT_AGREEMENT_CHECKBOX',
-    directionsResponseDay: '#directionsResponseByDate-day',
-    directionsResponseMonth: '#directionsResponseByDate-month',
-    directionsResponseYear: '#directionsResponseByDate-year',
+    directionsResponseDate: 'directionsResponseByDate',
     documentDropdown: '#judicialDecisionMakeOrder_judgeApproveEditOptionDoc',
     judgeApproveEditOptionDateDay: '#judgeApproveEditOptionDate-day',
     judgeApproveEditOptionDateMonth: '#judgeApproveEditOptionDate-month',
@@ -71,9 +70,7 @@ module.exports = {
       case 'giveDirections':
         I.fillField(this.fields.directionsTextArea, 'Judges directions');
         I.see('When should this application be referred to a Judge again?');
-        I.fillField(this.fields.directionsResponseDay, '01');
-        I.fillField(this.fields.directionsResponseMonth, '01');
-        I.fillField(this.fields.directionsResponseYear, '2024');
+        await date.enterDate(this.fields.directionsResponseDate, +2);
         break;
     }
 
