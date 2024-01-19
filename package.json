@@ -31,7 +31,7 @@
     "test:api-ga-wa": "MOCHAWESOME_REPORTFILENAME=wa-api npx codeceptjs run-workers --suites 4 --grep @api-wa --reporter mocha-multi --verbose",
     "test:nightly-api-tests": "MOCHAWESOME_REPORTFILENAME=nightly-api-tests PROCEED_ON_FAILURE=true npx codeceptjs run-workers --suites 4 --grep '@api-tests|@api-nightly|@api-scheduler-test' --reporter mocha-multi --verbose",
     "test:nightly-e2e-tests": "MOCHAWESOME_REPORTFILENAME=nightly-e2e-tests PROCEED_ON_FAILURE=true npx codeceptjs run-workers --suites 2 --grep @ui-nightly --reporter mocha-multi --verbose",
-    "test:master-e2e-tests": "MOCHAWESOME_REPORTFILENAME=master-e2e-tests npx codeceptjs run-workers --suites 2 --grep @regression3 --reporter mocha-multi --verbose",
+    "test:master-e2e-tests": "MOCHAWESOME_REPORTFILENAME=master-e2e-tests npx codeceptjs run-workers --suites 2 --grep @regression1 --reporter mocha-multi --verbose",
     "test:fullfunctional": "./e2e/run-nightly-functional-tests.sh",
     "prepare": "husky install",
     "yarn-update": "yarn set version 3.x",
