@@ -16,7 +16,7 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-service.enabled
   - name: ccd
-    version: 9.0.3
+    version: 9.0.21-alpha
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: ccd.enabled
   - name: xui-webapp
@@ -39,9 +39,6 @@ dependencies:
     version: 0.0.42
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-camunda-bpm.enabled
-  - name: java
-    version: 5.0.0
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
 
   # WA
   - name: wa
