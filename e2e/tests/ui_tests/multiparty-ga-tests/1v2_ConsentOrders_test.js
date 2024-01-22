@@ -6,7 +6,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference, user;
 const claimAmountJudge = '11000';
 
-Feature('Before SDO 1v2 - GA - Consent Orders @ui-nightly @regression2');
+Feature('Before SDO 1v2 - GA - Consent Orders @ui-nightly');
 
 Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,

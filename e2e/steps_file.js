@@ -896,7 +896,7 @@ module.exports = function () {
         ]),
         ...conditionalSteps(orderType === 'assistedOrder', [
           () => assistedOrderPage.verifyAssistedOrderErrorMessage(),
-          () => assistedOrderPage.isOrderMade('yes'),
+          () => assistedOrderPage.isOrderMade('yes', orderType),
           () => assistedOrderPage.fillJudgeHeardForm(),
           () => assistedOrderPage.fillRecitals(),
           () => assistedOrderPage.selectCosts(),

@@ -12,7 +12,7 @@ const additionalPaymentStatus = states.APPLICATION_ADD_PAYMENT.name;
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly @regression3');
+Feature('GA CCD 1v2 Same Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly');
 
 BeforeSuite(async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
@@ -27,7 +27,8 @@ BeforeSuite(async ({api}) => {
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
 });
 
-Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey',
+// Skipped due to CIV-12299
+Scenario.skip('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey',
   async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
@@ -81,7 +82,8 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Sequential order document');
 });
 
-Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
+// Skipped due to CIV-12299
+Scenario.skip('GA for 1v2 Same Solicitor - Send application to other party journey',
   async ({I, api}) => {
     await I.login(config.applicantSolicitorUser);
     await I.navigateToCaseDetails(civilCaseReference);

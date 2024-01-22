@@ -12,7 +12,7 @@ module.exports = {
         yes: 'Yes',
         no: 'No'
       },
-      dateId: 'date',
+      dateId: 'singleDateHeard',
       singleDate: 'input[id*="SINGLE_DATE"]',
     },
     judgeHeardFrom: {
@@ -62,7 +62,7 @@ module.exports = {
     }
   },
 
-  async isOrderMade(orderMade) {
+  async isOrderMade(orderMade, orderType) {
     await I.waitInUrl('/GENERATE_DIRECTIONS_ORDER/GENERATE_DIRECTIONS_ORDERFinalOrderAssistedOrder', 5);
     await I.see('Test Inc v Sir John Doe, Dr Foo Bar');
     await I.see('Order Made');
@@ -74,7 +74,7 @@ module.exports = {
     });
     await I.see('Enter date(s) of hearing');
     await I.forceClick(this.fields.orderMade.singleDate);
-    await date.verifyPrePopulatedDate(this.fields.orderMade.dateId);
+    await date.verifyPrePopulatedDate(this.fields.orderMade.dateId, orderType);
   },
 
   async fillJudgeHeardForm() {

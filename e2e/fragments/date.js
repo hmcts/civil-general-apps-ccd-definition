@@ -20,11 +20,14 @@ module.exports = {
     I.fillField(this.fields(fieldId).year, date.getFullYear());
   },
 
-  async verifyPrePopulatedDate(fieldId) {
+  async verifyPrePopulatedDate(fieldId, orderType) {
     I.waitForElement(this.fields(fieldId).day);
     const date = new Date();
 
-    date.setDate(date.getDate() + 7);
+    if (orderType !== 'assistedOrder') {
+      date.setDate(date.getDate() + 7);
+    }
+
     let docMonth = ((date.getMonth() + 1) >= 10) ? (date.getMonth() + 1) : '0' + (date.getMonth() + 1);
     let twoDigitDate = ((date.getDate()) >= 10) ? (date.getDate()) : '0' + (date.getDate());
 
