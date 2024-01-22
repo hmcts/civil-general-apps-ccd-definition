@@ -20,10 +20,13 @@ Scenario('Defendants response 1V2', async ({api}) => {
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
     console.log('Civil Case created for general application: ' + civilCaseReference);
     console.log('Make a General Application');
-    gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReference, ['STAY_THE_CLAIM']);
+    gaCaseReference = await api.initiateConsentGeneralApplication(config.defendantSolicitorUser, civilCaseReference, ['STAY_THE_CLAIM']);
+
+    console.log('*** Verify Collections creation in Civil Claim ***');
+    await api.verifyCivilClaimGACollections(config.defendantSolicitorUser, civilCaseReference, gaCaseReference);
 
     console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-    await api.respondentConsentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference, false);
+    await api.respondentConsentResponse1v2(config.applicantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference, false);
     console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
     console.log('*** NBC Admin Region4 Refer to Judge Process Start ***');
     if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
