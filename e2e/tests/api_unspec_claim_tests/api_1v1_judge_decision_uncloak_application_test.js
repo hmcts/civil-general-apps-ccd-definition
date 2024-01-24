@@ -7,15 +7,15 @@ let civilCaseReference, gaCaseReference;
 Feature('GA 1v1 Uncloak application API  @api-nightly');
 
 Scenario('Judge makes decision 1V1 - ORDER_MADE - Uncloak and Application Approved @fail', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
   await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
-
   console.log('Civil Case created for general application: ' + civilCaseReference);
+
   console.log('Make a General Application without notice');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser,
     civilCaseReference);
@@ -36,7 +36,7 @@ Scenario('Judge makes decision 1V1 - ORDER_MADE - Uncloak and Application Approv
 });
 
 Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Application @fail', async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -67,7 +67,7 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
 
 Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Payment fails @fail', async ({api}) => {
 
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
@@ -105,8 +105,8 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
   await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
   await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
-
   console.log('Civil Case created for general application: ' + civilCaseReference);
+
   console.log('Make a General Application without notice');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser,
     civilCaseReference);
