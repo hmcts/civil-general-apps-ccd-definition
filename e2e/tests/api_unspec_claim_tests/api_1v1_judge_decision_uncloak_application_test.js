@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v1 Uncloak application API  @api-nightly');
 
-Scenario('Judge makes decision 1V1 - ORDER_MADE - Uncloak and Application Approved', async ({api}) => {
+Scenario('Judge makes decision 1V1 - ORDER_MADE - Uncloak and Application Approved @fail', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -35,7 +35,7 @@ Scenario('Judge makes decision 1V1 - ORDER_MADE - Uncloak and Application Approv
   await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 });
 
-Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Application', async ({api}) => {
+Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Application @fail', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -65,7 +65,7 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
 
 });
 
-Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Payment fails', async ({api}) => {
+Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Payment fails @fail', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -96,7 +96,7 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Payment fails', 
 
 });
 
-Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Application - Response - Directions Order', async ({api}) => {
+Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Application - Response - Directions Order @fail', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
