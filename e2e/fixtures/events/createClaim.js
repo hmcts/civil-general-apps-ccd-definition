@@ -107,7 +107,7 @@ const claimant = (claimantType) => {
   }
 };
 
-const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType, claimAmount = '30000') => {
+const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType, claimAmount = '30000',sdoR2) => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
@@ -213,7 +213,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
       SecondDefendantSolicitorEmail: {},
       SameLegalRepresentative: {},
     } : {},
-    ...(1 === 1) ? {
+    ...(sdoR2 === true) ? {
       ClaimTypeUnSpec: {
         claimTypeUnSpec: 'CONSUMER_CREDIT'
       }
