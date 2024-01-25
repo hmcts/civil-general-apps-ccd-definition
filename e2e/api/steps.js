@@ -1,5 +1,5 @@
 const config = require('../config.js');
-const {PBAv3} = require('../fixtures/featureKeys');
+const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
@@ -88,7 +88,7 @@ const data = {
   SCHEDULE_HEARING: genAppHearingData.scheduleHearing(),
   APPLICATION_DISMISSED: genAppJudgeMakeDecisionData.applicationsDismiss(),
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
-  CREATE_CLAIM: (mpScenario, claimantType, claimAmount) => claimData.createClaim(mpScenario, claimantType, claimAmount),
+  CREATE_CLAIM: (mpScenario, claimantType, claimAmount, sdo2) => claimData.createClaim(mpScenario, claimantType, claimAmount, sdo2),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
   UPDATE_CLAIMANT_SOLICITOR_EMAILID: claimSpecData.updateClaimantSolicitorEmailId(),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
@@ -267,7 +267,10 @@ module.exports = {
     caseData = {};
     mpScenario = multipartyScenario;
 
-    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType, claimAmount);
+    const sdo2 = await checkPBAv3ToggleEnabled(SDOR2);
+    console.log('Is sdo2 toggle on?: ' + sdo2);
+
+    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType, claimAmount, sdo2);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
