@@ -138,8 +138,8 @@ Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Deci
   const doc = 'generalOrder';
   console.log('*** Start Judge makes decision order made: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionOrderMade(config.judgeUser2WithRegionId2, gaCaseReference);
-    await api.assertGaDocumentVisibilityToUser(config.judgeUser2WithRegionId2, civilCaseReference, gaCaseReference, doc);
+    await api.judgeMakesDecisionOrderMade(config.judgeUser, gaCaseReference);
+    await api.assertGaDocumentVisibilityToUser(config.judgeUser, civilCaseReference, gaCaseReference, doc);
   } else {
     await api.judgeMakesDecisionOrderMade(config.judgeLocalUser, gaCaseReference);
     await api.assertGaDocumentVisibilityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
