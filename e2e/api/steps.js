@@ -196,6 +196,7 @@ const eventData = {
   },
   defendantResponses:{
     ONE_V_ONE: data.DEFENDANT_RESPONSE,
+    ONE_V_TWO_ONE_LEGAL_REP: data.DEFENDANT_RESPONSE_SAME_SOLICITOR,
     ONE_V_TWO_TWO_LEGAL_REP: {
       solicitorOne: data.DEFENDANT_RESPONSE_SOLICITOR_ONE,
       solicitorTwo: data.DEFENDANT_RESPONSE_SOLICITOR_TWO
@@ -1707,8 +1708,9 @@ module.exports = {
       deleteCaseFields('respondent1ClaimResponseIntentionType');
       deleteCaseFields('respondent1ResponseDeadline');
     }
-
-    if (isFirst) {
+    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
+      await validateEventPages(data['ACKNOWLEDGE_CLAIM_SAME_SOLICITOR']);
+    } else if (isFirst) {
       await validateEventPages(data['ACKNOWLEDGE_CLAIM_SOLICITOR_ONE']);
     } else {
       await validateEventPages(data['ACKNOWLEDGE_CLAIM_SOLICITOR_TWO']);
@@ -1741,7 +1743,9 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     solicitorSetup(solicitor === 'solicitorOne');
     let defendantResponseData;
-    if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
+    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
+      defendantResponseData = eventData['defendantResponses'][mpScenario];
+    } else if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
       defendantResponseData = eventData['defendantResponses'][mpScenario];
     } else {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor];
@@ -2310,7 +2314,7 @@ const assignCase = async (caseId, mpScenario) => {
       break;
     }
     case 'ONE_V_TWO_ONE_LEGAL_REP': {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
       break;
     }
   }
