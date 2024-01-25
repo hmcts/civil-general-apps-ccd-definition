@@ -349,7 +349,7 @@ const hasRespondent2 = (mpScenario) => {
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE', claimantType, claimAmount = '30000', sdo2) => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimantType, claimAmount = '30000', sdoR2) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -382,7 +382,7 @@ module.exports = {
         },
       },
       valid: {
-        ...createClaimData('Yes', true, mpScenario, 'Company', claimAmount, sdo2),
+        ...createClaimData('Yes', true, mpScenario, 'Company', claimAmount, sdoR2),
       },
       invalid: {
         Upload: {

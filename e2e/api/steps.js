@@ -88,7 +88,7 @@ const data = {
   SCHEDULE_HEARING: genAppHearingData.scheduleHearing(),
   APPLICATION_DISMISSED: genAppJudgeMakeDecisionData.applicationsDismiss(),
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
-  CREATE_CLAIM: (mpScenario, claimantType, claimAmount, sdo2) => claimData.createClaim(mpScenario, claimantType, claimAmount, sdo2),
+  CREATE_CLAIM: (mpScenario, claimantType, claimAmount, sdoR2) => claimData.createClaim(mpScenario, claimantType, claimAmount, sdoR2),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
   UPDATE_CLAIMANT_SOLICITOR_EMAILID: claimSpecData.updateClaimantSolicitorEmailId(),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
@@ -267,10 +267,10 @@ module.exports = {
     caseData = {};
     mpScenario = multipartyScenario;
 
-    const sdo2 = await checkPBAv3ToggleEnabled(SDOR2);
-    console.log('Is sdo2 toggle on?: ' + sdo2);
+    const sdoR2 = await checkPBAv3ToggleEnabled(SDOR2);
+    console.log('Is sdoR2 toggle on?: ' + sdoR2);
 
-    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType, claimAmount, sdo2);
+    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType, claimAmount, sdoR2);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
