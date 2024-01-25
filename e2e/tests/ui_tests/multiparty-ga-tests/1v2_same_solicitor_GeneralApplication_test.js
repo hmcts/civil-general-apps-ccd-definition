@@ -26,7 +26,7 @@ BeforeSuite(async ({api}) => {
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
 });
 
-Scenario.only('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey',
+Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey',
   async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
