@@ -107,7 +107,7 @@ const claimant = (claimantType) => {
   }
 };
 
-const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType, claimAmount = '30000',sdoR2) => {
+const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType, claimAmount = '30000', sdoR2) => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
