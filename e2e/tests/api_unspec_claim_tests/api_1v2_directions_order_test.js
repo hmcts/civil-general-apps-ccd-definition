@@ -19,10 +19,13 @@ Scenario('Judge makes decision 1V2 - DIRECTIONS ORDER', async ({api}) => {
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api.initiateGeneralApplication(config.defendantSolicitorUser, civilCaseReference);
+
+  console.log('*** Verify Collections creation in Civil Claim ***');
+  await api.verifyCivilClaimGACollections(config.defendantSolicitorUser, civilCaseReference, gaCaseReference);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
+  await api.respondentResponse1v2(config.applicantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
   console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {

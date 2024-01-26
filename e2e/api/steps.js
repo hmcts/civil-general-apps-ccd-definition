@@ -388,16 +388,16 @@ module.exports = {
     return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', data.INITIATE_GENERAL_APPLICATION);
   },
 
+  verifyCivilClaimGACollections: async (user, parentCaseId, gaCaseReference) => {
+    return await verifyNoOfGAsInCivilClaim(user, parentCaseId, gaCaseReference);
+  },
+
   initiateConsentGeneralApplication: async (user, parentCaseId, gaAppType) => {
     return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', data.INITIATE_GENERAL_APPLICATION_CONSENT(gaAppType));
   },
 
   initiateConsentUrgentGeneralApplication: async (user, parentCaseId, gaAppType ) => {
     return await initiateGaWithState(user, parentCaseId, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', data.INITIATE_GENERAL_APPLICATION_CONSENT_URGENT(gaAppType));
-  },
-
-  checkGeneralApplication: async (user, parentCaseId) => {
-    return await checkNoOfGeneralApplications(user, parentCaseId,);
   },
 
   updateCivilClaimClaimantSolEmailID: async (user, parentCaseId) => {
@@ -2107,12 +2107,27 @@ const updateCivilClaimSolEmailID = async (user, parentCaseId) => {
   assert.equal(response.status, 201);
 };
 
-const checkNoOfGeneralApplications = async (user, parentCaseId) => {
+const verifyNoOfGAsInCivilClaim = async (user, parentCaseId, gaCaseReference) => {
 
-  const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
-  const updatedCivilCaseData = await response.json();
-  let totalGeneralApplication = updatedCivilCaseData.claimantGaAppDetails.length;
-  assert.equal(totalGeneralApplication, 2);
+  // Verify GA is added into right collection
+  const updatedCivilCaseDataResponse = await apiRequest.fetchUpdatedCivilCaseData(parentCaseId, user);
+  const civilClaimData = await updatedCivilCaseDataResponse.json();
+
+  const updatedGACaseDataResponse = await apiRequest.fetchUpdatedCaseData(gaCaseReference, user);
+  const updatedGACaseData = await updatedGACaseDataResponse.json();
+
+  assert.equal(civilClaimData.gaDetailsMasterCollection.length, 1);
+
+  if ((updatedGACaseData.generalAppRespondentAgreement.hasAgreed === 'No'
+    && updatedGACaseData.generalAppInformOtherParty != null
+    && updatedGACaseData.generalAppInformOtherParty.isWithNotice === 'Yes') || updatedGACaseData.generalAppRespondentAgreement.hasAgreed === 'Yes') {
+
+    assert.equal(civilClaimData.claimantGaAppDetails.length, 1);
+    assert.equal(civilClaimData.respondentSolGaAppDetails.length, 1);
+    if (updatedGACaseData.isMultiParty === 'yes') {
+      assert.equal(civilClaimData.respondentSolTwoGaAppDetails.length, 1);
+    }
+  }
 };
 
 const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency) => {
