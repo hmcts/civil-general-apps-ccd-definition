@@ -20,15 +20,13 @@ BeforeSuite(async ({api}) => {
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario, true);
   console.log('Civil Case created for general application: ' + civilCaseReference);
   await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-  await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
 });
 
-// Skipped due to CIV-12299
-Scenario.skip('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey',
+Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey',
   async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
@@ -82,8 +80,7 @@ Scenario.skip('GA for 1v2 Same Solicitor - respond to application - Sequential w
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Sequential order document');
 });
 
-// Skipped due to CIV-12299
-Scenario.skip('GA for 1v2 Same Solicitor - Send application to other party journey',
+Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
   async ({I, api}) => {
     await I.login(config.applicantSolicitorUser);
     await I.navigateToCaseDetails(civilCaseReference);
