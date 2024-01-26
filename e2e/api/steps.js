@@ -1650,11 +1650,14 @@ module.exports = {
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
+    const document = await testingSupport.uploadDocument();
 
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
-      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER'));
+      let updatedData = await updateCaseDataWithPlaceholders(data.FINAL_ORDERS('ASSISTED_ORDER'), document);
+      await validateEventPages(updatedData);
     } else {
-      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER'));
+      let updatedData = await updateCaseDataWithPlaceholders(data.FINAL_ORDERS('FREE_FORM_ORDER'), document);
+      await validateEventPages(updatedData);
     }
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
       header: '',
