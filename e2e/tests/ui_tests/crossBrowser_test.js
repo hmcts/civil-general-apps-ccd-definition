@@ -14,7 +14,7 @@ const claimantType = 'Company';
 const doc = 'hearingNotice';
 
 let civilCaseReference, gaCaseReference, user;
-Feature('End-to-end General application journey @cross-browser-tests @888');
+Feature('End-to-end General application journey @cross-browser-tests');
 
 Scenario('GA - Make an order journey', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
