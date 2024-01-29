@@ -4,10 +4,10 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 application collection for different solicitor API tests @api-nightly');
+Feature('GA 1v2 application collection for different solicitor API tests @e2e-tests');
 
 
-Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Decision List for Hearing  @api-tests @fail', async ({api}) => {
+Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Decision List for Hearing', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
@@ -44,7 +44,7 @@ Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Deci
 
 });
 
-Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case Test  @api-tests @fail', async ({api}) => {
+Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case Test', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
@@ -70,7 +70,7 @@ Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA C
 
 });
 
-Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case initiated by Defendant2 @fail', async ({api}) => {
+Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case initiated by Defendant2', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
@@ -117,7 +117,7 @@ Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA C
   await api.assertGaDocumentVisibilityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 });
 
-Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Decision Order Made @fail', async ({api}) => {
+Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Decision Order Made', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
