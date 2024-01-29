@@ -5,7 +5,7 @@ const genAppType = 'UNLESS_ORDER';
 
 let civilCaseReference, gaCaseReference, state;
 
-Feature('GA 1v1 Judge make decision unless order API tests');
+Feature('GA 1v1 Judge make decision unless order API tests @runonly');
 
 Scenario('Judge makes decision 1V1 - unless order  @api-tests @api-scheduler-test', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
