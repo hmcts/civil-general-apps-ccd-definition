@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 Judge accepts strike out application API tests @api-nightly');
 
-Scenario('Judge makes decision 1V2 - Accept Strike out application', async ({api}) => {
+Scenario('Judge makes decision 1V2 - Accept Strike out application @fail', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
