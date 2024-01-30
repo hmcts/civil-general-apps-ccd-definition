@@ -61,7 +61,7 @@
     "uuid": "^3.4.0",
     "webdriverio": "^6.12.1"
   },
-  "packageManager": "yarn@3.3.1",
+  "packageManager": "yarn@4.1.0",
   "dependencies": {
     "@codeceptjs/helper": "^2.0.1"
   }
