@@ -32,9 +32,10 @@ Scenario('Judge makes decision 1V1 - unless order  @api-tests @api-scheduler-tes
   console.log('*** End Judge makes decision unless order - GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
-Scenario('Judge Revisit 1V1 - unless order End Date Scheduler @api-scheduler-test', async ({api}) => {
+Scenario('Judge Revisit 1V1 - unless order End Date Scheduler @api-scheduler-test', async ({api, I}) => {
 
   console.log('*** Triggering Judge Revisit unless order Scheduler ***');
+  await I.wait(30);
   await api.judgeRevisitScheduler(gaCaseReference, state, genAppType);
   console.log('*** End of Judge Revisit unless order Scheduler ***');
 
