@@ -177,7 +177,7 @@ Scenario.skip('GA for 1v1 Specified Claim- Dismissal order journey @regression2'
 });
 
 // Skipped due to CIV-12514
-Scenario.only('GA for 1v1- respond to application - Request more information @regression2', async ({I, api}) => {
+Scenario('GA for 1v1- respond to application - Request more information @regression2 @oldXUI', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);

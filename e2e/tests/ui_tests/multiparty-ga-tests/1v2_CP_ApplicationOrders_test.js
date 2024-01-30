@@ -10,7 +10,7 @@ let civilCaseReference, gaCaseReference, user;
 Feature('Before SDO 1v2 - GA CP - Applications Orders @ui-nightly @regression1');
 
 // Skipped due to CIV-12514
-Scenario.skip('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({I, api}) => {
+Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests @oldXUI', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
