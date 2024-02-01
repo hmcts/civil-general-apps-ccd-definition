@@ -19,10 +19,8 @@ civil-general-applications:
           - gov-notify-api-key
           - sendgrid-api-key
           - robotics-notification-sender
-          - robotics-notification-recipient
           - name: launch-darkly-sdk-key-non-prod
             alias: launch-darkly-sdk-key
-          - robotics-notification-multipartyrecipient
       civil-gen-apps:
         resourceGroup: civil
         secrets:
@@ -84,7 +82,7 @@ civil-service:
   java:
     applicationPort: 4000
     releaseNameOverride: ${SERVICE_NAME}-civil-service
-    image: 'hmctspublic.azurecr.io/civil/service:latest'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3977'
     imagePullPolicy: Always
     devmemoryRequests: 2048Mi
     devcpuRequests: 2000m
@@ -107,13 +105,9 @@ civil-service:
           - gov-notify-api-key
           - sendgrid-api-key
           - robotics-notification-sender
-          - robotics-notification-recipient
           - name: launch-darkly-sdk-key-non-prod
             alias: launch-darkly-sdk-key
           - ordnance-survey-api-key
-          - robotics-notification-multipartyrecipient
-          - name: robotics-notification-recipient-spec
-            alias: robotics.notification.specRecipient
     environment:
       IDAM_CLIENT_ID: civil-service
       IDAM_CLIENT_REDIRECT_URI: https://civil-ccd-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/oauth2/callback

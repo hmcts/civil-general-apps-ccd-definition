@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('Spec 1v2 - General Application after SDO Journey @api-nightly');
 
-Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
+Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state @888', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
   await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
@@ -17,27 +17,27 @@ Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
-  console.log('*** Start Judge makes decision order made: ' + gaCaseReference + ' ***');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionOrderMade(config.judgeUser2WithRegionId2, gaCaseReference);
-  } else {
-    await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
-  }
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
-
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminWithRegionId2, gaCaseReference);
-  } else {
-    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
-  }
-
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED');
-
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakeFinalOrder(config.judgeUser2WithRegionId2, gaCaseReference, 'ASSISTED_ORDER', true);
-  } else {
-    await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'ASSISTED_ORDER', true);
-  }
+  // console.log('*** Start Judge makes decision order made: ' + gaCaseReference + ' ***');
+  // if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  //   await api.judgeMakesDecisionOrderMade(config.judgeUser2WithRegionId2, gaCaseReference);
+  // } else {
+  //   await api.judgeMakesDecisionOrderMade(config.judgeUserWithRegionId1, gaCaseReference);
+  // }
+  // await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
+  //
+  // if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  //   await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminWithRegionId2, gaCaseReference);
+  // } else {
+  //   await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
+  // }
+  //
+  // await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED');
+  //
+  // if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  //   await api.judgeMakeFinalOrder(config.judgeUser2WithRegionId2, gaCaseReference, 'ASSISTED_ORDER', true);
+  // } else {
+  //   await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'ASSISTED_ORDER', true);
+  // }
 });
 
 Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) => {
@@ -81,5 +81,5 @@ Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) =>
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

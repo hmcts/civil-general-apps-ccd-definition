@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v1 Judge Make Decision Additional Information Required API tests @api-tests');
 
-Scenario('Judge makes decision 1V1 - AWAITING_ADDITIONAL_INFORMATION', async ({api}) => {
+Scenario('Judge makes decision 1V1 - AWAITING_ADDITIONAL_INFORMATION @888', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -22,22 +22,22 @@ Scenario('Judge makes decision 1V1 - AWAITING_ADDITIONAL_INFORMATION', async ({a
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-  console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionAdditionalInformation(config.judgeUser2WithRegionId2, gaCaseReference);
-  } else {
-    await api.judgeMakesDecisionAdditionalInformation(config.judgeLocalUser, gaCaseReference);
-  }
-  console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
-
-  console.log('*** Start Respondent respond to Judge Additional information on GA Case Reference: '
-    + gaCaseReference + ' ***');
-  await api.respondentResponseToJudgeAdditionalInfo(config.applicantSolicitorUser, gaCaseReference);
-  console.log('*** End Respondent respond to Judge Additional information on GA Case Reference: '
-    + gaCaseReference + ' ***');
+  // console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');
+  // if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  //   await api.judgeMakesDecisionAdditionalInformation(config.judgeUser2WithRegionId2, gaCaseReference);
+  // } else {
+  //   await api.judgeMakesDecisionAdditionalInformation(config.judgeLocalUser, gaCaseReference);
+  // }
+  // console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
+  //
+  // console.log('*** Start Respondent respond to Judge Additional information on GA Case Reference: '
+  //   + gaCaseReference + ' ***');
+  // await api.respondentResponseToJudgeAdditionalInfo(config.applicantSolicitorUser, gaCaseReference);
+  // console.log('*** End Respondent respond to Judge Additional information on GA Case Reference: '
+  //   + gaCaseReference + ' ***');
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
 

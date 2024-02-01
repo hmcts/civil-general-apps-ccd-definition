@@ -160,7 +160,7 @@ module.exports = {
       generalAppType: {
         types: [
           'SUMMARY_JUDGEMENT',
-          'EXTEND_TIME'
+          'STRIKE_OUT',
         ]
       },
       generalAppRespondentAgreement: {
