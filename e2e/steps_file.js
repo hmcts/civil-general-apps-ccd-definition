@@ -238,18 +238,15 @@ module.exports = function () {
     // Define custom steps here, use 'this' to access default methods of I.
     // It is recommended to place a general 'login' function here.
     async login(user) {
-      if (loggedInUser !== user) {
-        if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
-          await this.waitForSelector(SIGN_OUT_LINK, 30);
-          await this.signOut();
+        if (loggedInUser !== user) {
+          if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+            await this.waitForSelector(SIGN_OUT_LINK, 30);
+            await this.signOut();
+          }
         }
+        
         await this.retryUntilExists(async () => {
           this.amOnPage(config.url.manageCase, 90);
-
-          if (await this.waitForSelector(LOGIN_FORM, 15) === null) {
-            this.amOnPage(config.url.manageCase, 90);
-            await this.waitForSelector(LOGIN_FORM, 15);
-          }
 
           if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
             console.log(`Signing in user: ${user.type}`);
@@ -260,7 +257,6 @@ module.exports = function () {
 
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
-      }
     },
 
     grabCaseNumber: async function () {
