@@ -2,31 +2,25 @@ exports.config = {
   tests: './e2e/tests/**/*_test.js',
   output: process.env.REPORT_DIR || 'test-results/functional',
   helpers: {
-    Puppeteer: {
-      restart: false,
-      keepCookies: true,
-      keepBrowserState: true,
-      waitForNavigation: ['networkidle2'],
+    Playwright: {
+      url: process.env.URL || 'http://localhost:3333',
       show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
-      getPageTimeout: 120000,
+      waitForAction: 500,
       waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 90000),
-      chrome: {
-        ignoreHTTPSErrors: true,
-        'ignore-certificate-errors': true,
-        'defaultViewport': {
-          'width': 1280,
-          'height': 960
-        },
-      }
+      windowSize: '1280x960',
+      browser: 'chromium',
+      timeout: 20000,
+      bypassCSP: true,
+      ignoreHTTPSErrors: true,
     },
     BrowserHelpers: {
       require: './e2e/helpers/browser_helper.js',
     },
-    PuppeteerHelper: {
-      'require': './e2e/helpers/PuppeteerHelper.js'
+    PlaywrightHelper: {
+      require: './e2e/helpers/PlaywrightHelper.js',
     },
     GenerateReportHelper: {
-      require: './e2e/helpers/generate_report_helper.js'
+      require: './e2e/helpers/generate_report_helper.js',
     },
   },
   include: {

@@ -2,8 +2,8 @@
 
 // eslint-disable-next-line no-undef
 const Helper = codecept_helper;
-const helperName = 'Puppeteer';
-class PuppeteerHelper extends Helper {
+const helperName = 'Playwright';
+class PlaywrightHelper extends Helper {
 
   async waitForNavigationToComplete(locator) {
     const page = this.helpers[helperName].page;
@@ -24,4 +24,4 @@ class PuppeteerHelper extends Helper {
     }
   }
 }
-module.exports = PuppeteerHelper;
+module.exports = PlaywrightHelper;
