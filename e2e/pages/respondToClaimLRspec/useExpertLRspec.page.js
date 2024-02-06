@@ -5,8 +5,8 @@ module.exports = {
     useExpert: {
       id: '#responseClaimExpertSpecRequired_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#responseClaimExpertSpecRequired_Yes',
+        no: '#responseClaimExpertSpecRequired_No'
       },
       expertName: '#respondToClaim_experts_expertName',
       expertField: '#respondToClaim_experts_fieldofExpertise',

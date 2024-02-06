@@ -6,8 +6,8 @@ module.exports = {
     hearingScheduled: {
       id: '#generalAppHearingDetails_hearingYesorNo',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#generalAppHearingDetails_hearingYesorNo_Yes',
+        no: '#generalAppHearingDetails_hearingYesorNo_No'
       }
     },
     hearingDateDay: '#hearingDate-day',
@@ -16,16 +16,16 @@ module.exports = {
     judgeRequired: {
       id: '#generalAppHearingDetails_judgeRequiredYesOrNo',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#generalAppHearingDetails_judgeRequiredYesOrNo_Yes',
+        no: '#generalAppHearingDetails_judgeRequiredYesOrNo_No'
       }
     },
     judgeName: '#generalAppHearingDetails_judgeName',
     trialRequired: {
       id: '#generalAppHearingDetails_trialRequiredYesOrNo',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#generalAppHearingDetails_trialRequiredYesOrNo_Yes',
+        no: '#generalAppHearingDetails_trialRequiredYesOrNo_No'
       }
     },
     trialDateFromDay: '#trialDateFrom-day',
@@ -59,8 +59,8 @@ module.exports = {
     unavailableTrailRequired: {
       id: '#generalAppHearingDetails_unavailableTrialRequiredYesOrNo_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#generalAppHearingDetails_unavailableTrialRequiredYesOrNo_Yes',
+        no: '#generalAppHearingDetails_unavailableTrialRequiredYesOrNo_No'
       }
     },
     unavailableDateFromDay: '#unavailableTrialDateFrom-day',
@@ -72,8 +72,8 @@ module.exports = {
     vulnerabilityQuestions: {
       id: '#generalAppHearingDetails_vulnerabilityQuestionsYesOrNo',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#generalAppHearingDetails_vulnerabilityQuestionsYesOrNo_Yes',
+        no: '#generalAppHearingDetails_vulnerabilityQuestionsYesOrNo_No'
       }
     },
     vulnerabilityQuestionTextArea: '#generalAppHearingDetails_vulnerabilityQuestion',

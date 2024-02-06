@@ -6,8 +6,8 @@ module.exports = {
     informOtherPartyWithNotice: {
       id: '#generalAppInformOtherParty_isWithNotice',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#generalAppInformOtherParty_isWithNotice_Yes',
+        no: '#generalAppInformOtherParty_isWithNotice_No'
       }
     },
     reasonsForWithoutNotice: '#generalAppInformOtherParty_reasonsForWithoutNotice'

@@ -9,8 +9,8 @@ module.exports = {
     orderMade: {
       id: '#assistedOrderMadeSelection',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#assistedOrderMadeSelection_Yes',
+        no: '#assistedOrderMadeSelection_No'
       },
       dateId: 'singleDateHeard',
       singleDate: 'input[id*="SINGLE_DATE"]',
