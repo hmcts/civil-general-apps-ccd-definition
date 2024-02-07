@@ -1,5 +1,21 @@
 const {date} = require('../../api/dataHelper');
 
+const finalOrderDocument = {
+  FinalOrderPreview: {
+    finalOrderDocument: {
+      documentLink: {
+        document_url: '${TEST_DOCUMENT_URL}',
+        document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+        document_filename: '${TEST_DOCUMENT_FILENAME}'
+      },
+      documentName: 'test document',
+      documentSize: 1234,
+      createdDatetime: '2023-02-06T13:11:52.466Z',
+      createdBy: 'CIVIL',
+    }
+  },
+};
+
 const createAssistedOrder = () => {
   return  {
     FinalOrderSelect: {
@@ -51,6 +67,7 @@ const createAssistedOrder = () => {
       },
       finalOrderGiveReasonsYesNo: 'No'
     },
+    ...finalOrderDocument
   };
 };
 
@@ -70,6 +87,7 @@ const createFreeFormOrder = () => {
 
       }
     },
+    ...finalOrderDocument
   };
 };
 

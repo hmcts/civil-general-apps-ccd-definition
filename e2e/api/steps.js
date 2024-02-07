@@ -1,5 +1,5 @@
 const config = require('../config.js');
-const {PBAv3} = require('../fixtures/featureKeys');
+const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
@@ -88,7 +88,7 @@ const data = {
   SCHEDULE_HEARING: genAppHearingData.scheduleHearing(),
   APPLICATION_DISMISSED: genAppJudgeMakeDecisionData.applicationsDismiss(),
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
-  CREATE_CLAIM: (mpScenario, claimantType, claimAmount) => claimData.createClaim(mpScenario, claimantType, claimAmount),
+  CREATE_CLAIM: (mpScenario, claimantType, claimAmount, sdoR2) => claimData.createClaim(mpScenario, claimantType, claimAmount, sdoR2),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
   UPDATE_CLAIMANT_SOLICITOR_EMAILID: claimSpecData.updateClaimantSolicitorEmailId(),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
@@ -196,6 +196,7 @@ const eventData = {
   },
   defendantResponses:{
     ONE_V_ONE: data.DEFENDANT_RESPONSE,
+    ONE_V_TWO_ONE_LEGAL_REP: data.DEFENDANT_RESPONSE_SAME_SOLICITOR,
     ONE_V_TWO_TWO_LEGAL_REP: {
       solicitorOne: data.DEFENDANT_RESPONSE_SOLICITOR_ONE,
       solicitorTwo: data.DEFENDANT_RESPONSE_SOLICITOR_TWO
@@ -266,7 +267,10 @@ module.exports = {
     caseData = {};
     mpScenario = multipartyScenario;
 
-    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType, claimAmount);
+    const sdoR2 = await checkPBAv3ToggleEnabled(SDOR2);
+    console.log('Is sdoR2 toggle on?: ' + sdoR2);
+
+    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType, claimAmount, sdoR2);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -384,16 +388,16 @@ module.exports = {
     return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', data.INITIATE_GENERAL_APPLICATION);
   },
 
+  verifyCivilClaimGACollections: async (user, parentCaseId, gaCaseReference) => {
+    return await verifyNoOfGAsInCivilClaim(user, parentCaseId, gaCaseReference);
+  },
+
   initiateConsentGeneralApplication: async (user, parentCaseId, gaAppType) => {
     return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', data.INITIATE_GENERAL_APPLICATION_CONSENT(gaAppType));
   },
 
   initiateConsentUrgentGeneralApplication: async (user, parentCaseId, gaAppType ) => {
     return await initiateGaWithState(user, parentCaseId, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', data.INITIATE_GENERAL_APPLICATION_CONSENT_URGENT(gaAppType));
-  },
-
-  checkGeneralApplication: async (user, parentCaseId) => {
-    return await checkNoOfGeneralApplications(user, parentCaseId,);
   },
 
   updateCivilClaimClaimantSolEmailID: async (user, parentCaseId) => {
@@ -1646,11 +1650,14 @@ module.exports = {
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
+    const document = await testingSupport.uploadDocument();
 
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
-      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER'));
+      let updatedData = await updateCaseDataWithPlaceholders(data.FINAL_ORDERS('ASSISTED_ORDER'), document);
+      await validateEventPages(updatedData);
     } else {
-      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER'));
+      let updatedData = await updateCaseDataWithPlaceholders(data.FINAL_ORDERS('FREE_FORM_ORDER'), document);
+      await validateEventPages(updatedData);
     }
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
       header: '',
@@ -1707,8 +1714,9 @@ module.exports = {
       deleteCaseFields('respondent1ClaimResponseIntentionType');
       deleteCaseFields('respondent1ResponseDeadline');
     }
-
-    if (isFirst) {
+    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
+      await validateEventPages(data['ACKNOWLEDGE_CLAIM_SAME_SOLICITOR']);
+    } else if (isFirst) {
       await validateEventPages(data['ACKNOWLEDGE_CLAIM_SOLICITOR_ONE']);
     } else {
       await validateEventPages(data['ACKNOWLEDGE_CLAIM_SOLICITOR_TWO']);
@@ -1741,7 +1749,9 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     solicitorSetup(solicitor === 'solicitorOne');
     let defendantResponseData;
-    if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
+    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
+      defendantResponseData = eventData['defendantResponses'][mpScenario];
+    } else if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
       defendantResponseData = eventData['defendantResponses'][mpScenario];
     } else {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor];
@@ -2100,12 +2110,27 @@ const updateCivilClaimSolEmailID = async (user, parentCaseId) => {
   assert.equal(response.status, 201);
 };
 
-const checkNoOfGeneralApplications = async (user, parentCaseId) => {
+const verifyNoOfGAsInCivilClaim = async (user, parentCaseId, gaCaseReference) => {
 
-  const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
-  const updatedCivilCaseData = await response.json();
-  let totalGeneralApplication = updatedCivilCaseData.claimantGaAppDetails.length;
-  assert.equal(totalGeneralApplication, 2);
+  // Verify GA is added into right collection
+  const updatedCivilCaseDataResponse = await apiRequest.fetchUpdatedCivilCaseData(parentCaseId, user);
+  const civilClaimData = await updatedCivilCaseDataResponse.json();
+
+  const updatedGACaseDataResponse = await apiRequest.fetchUpdatedCaseData(gaCaseReference, user);
+  const updatedGACaseData = await updatedGACaseDataResponse.json();
+
+  assert.equal(civilClaimData.gaDetailsMasterCollection.length, 1);
+
+  if ((updatedGACaseData.generalAppRespondentAgreement.hasAgreed === 'No'
+    && updatedGACaseData.generalAppInformOtherParty != null
+    && updatedGACaseData.generalAppInformOtherParty.isWithNotice === 'Yes') || updatedGACaseData.generalAppRespondentAgreement.hasAgreed === 'Yes') {
+
+    assert.equal(civilClaimData.claimantGaAppDetails.length, 1);
+    assert.equal(civilClaimData.respondentSolGaAppDetails.length, 1);
+    if (updatedGACaseData.isMultiParty === 'yes') {
+      assert.equal(civilClaimData.respondentSolTwoGaAppDetails.length, 1);
+    }
+  }
 };
 
 const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency) => {
@@ -2310,7 +2335,7 @@ const assignCase = async (caseId, mpScenario) => {
       break;
     }
     case 'ONE_V_TWO_ONE_LEGAL_REP': {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
       break;
     }
   }

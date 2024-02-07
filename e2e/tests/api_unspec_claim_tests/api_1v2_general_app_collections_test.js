@@ -4,10 +4,10 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 application collection for different solicitor API tests @api-nightly');
+Feature('GA 1v2 application collection for different solicitor API tests @api-tests');
 
 
-Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Decision List for Hearing  @api-tests', async ({api}) => {
+Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Decision List for Hearing', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
@@ -44,7 +44,7 @@ Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Deci
 
 });
 
-Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case Test  @api-tests', async ({api}) => {
+Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case Test', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
@@ -138,8 +138,8 @@ Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Deci
   const doc = 'generalOrder';
   console.log('*** Start Judge makes decision order made: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionOrderMade(config.judgeUser, gaCaseReference);
-    await api.assertGaDocumentVisibilityToUser(config.judgeUser, civilCaseReference, gaCaseReference, doc);
+    await api.judgeMakesDecisionOrderMade(config.judgeUser2WithRegionId2, gaCaseReference);
+    await api.assertGaDocumentVisibilityToUser(config.judgeUser2WithRegionId2, civilCaseReference, gaCaseReference, doc);
   } else {
     await api.judgeMakesDecisionOrderMade(config.judgeLocalUser, gaCaseReference);
     await api.assertGaDocumentVisibilityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);

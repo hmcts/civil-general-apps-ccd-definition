@@ -6,7 +6,7 @@ const {
 const {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
 const states = require('../../fixtures/ga-ccd/state.js');
 
-const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
+const mpScenario = 'ONE_V_ONE';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 const respondentStatus = states.AWAITING_RESPONDENT_RESPONSE.name;
 const judgeApproveOrderStatus = states.ORDER_MADE.name;
@@ -17,10 +17,9 @@ let civilCaseReference, gaCaseReference, user;
 Feature('End-to-end General application journey @cross-browser-tests');
 
 Scenario('GA - Make an order journey', async ({I, api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, 'ONE_V_ONE', claimantType);
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser, 'ONE_V_ONE', civilCaseReference);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
   await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
@@ -62,15 +61,14 @@ Scenario('GA - Make an order journey', async ({I, api}) => {
 }).retry(1);
 
 Scenario('GA - Case progression journey', async ({I, api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(
-    config.applicantSolicitorUser, mpScenario, 'Company');
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
   await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
-  console.log('Civil Case created for general application: ' + civilCaseReference);
+  console.log('Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
