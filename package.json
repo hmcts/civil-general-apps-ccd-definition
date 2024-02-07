@@ -35,6 +35,7 @@
     "test:fullfunctional": "./e2e/run-nightly-functional-tests.sh",
     "prepare": "husky install",
     "yarn-update": "yarn set version 3.x",
+    "playwright-install": "yarn playwright install",
     "install-dependencies": "/usr/bin/yarn install --immutable --silent"
   },
   "license": "MIT",
