@@ -242,19 +242,19 @@ module.exports = function () {
             await this.waitForSelector(SIGN_OUT_LINK, 30);
             await this.signOut();
           }
+
+          await this.retryUntilExists(async () => {
+            this.amOnPage(config.url.manageCase, 90);
+
+            if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
+              console.log(`Signing in user: ${user.type}`);
+              await loginPage.signIn(user);
+            }
+            await this.waitForSelector(SIGN_OUT_LINK, 15);
+          }, SIGNED_IN_SELECTOR);
+
+          loggedInUser = user;
         }
-
-        await this.retryUntilExists(async () => {
-          this.amOnPage(config.url.manageCase, 90);
-
-          if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
-            console.log(`Signing in user: ${user.type}`);
-            await loginPage.signIn(user);
-          }
-          await this.waitForSelector(SIGN_OUT_LINK, 15);
-        }, SIGNED_IN_SELECTOR);
-
-        loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
     },
 
