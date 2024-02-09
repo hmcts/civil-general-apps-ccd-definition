@@ -3382,6 +3382,30 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaAddlDoc",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondConsentReason",
     "AccessControl": [
       {
@@ -3489,6 +3513,28 @@
       "legal-adviser",
       "civil-administrator-standard",
       "civil-administrator-basic",
+      "caseworker-ras-validation",
+      "ga-basic-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "addnDocumentLabel",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-systemupdate",
+      "caseworker-ras-validation",
+      "ga-basic-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "uploadDocument",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-systemupdate",
       "caseworker-ras-validation",
       "ga-basic-access"
     ],
