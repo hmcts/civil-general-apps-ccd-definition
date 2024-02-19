@@ -67,5 +67,19 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseDocumentUploadDate",
+    "Label": "upload date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseDocumentUploadDateRes",
+    "Label": "upload date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
   }
 ]

@@ -36,6 +36,28 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "caseDocumentUploadDate",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-systemupdate",
+      "caseworker-ras-validation",
+      "ga-basic-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "caseDocumentUploadRes",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-systemupdate",
+      "caseworker-ras-validation",
+      "ga-basic-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "uploadDocument",
     "UserRoles": [
       "caseworker-civil-solicitor",

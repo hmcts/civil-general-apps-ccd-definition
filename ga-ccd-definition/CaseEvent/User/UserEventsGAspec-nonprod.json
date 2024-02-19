@@ -4,7 +4,7 @@
     "ID": "UPLOAD_ADDL_DOCUMENTS",
     "Name": "Upload additional documents",
     "Description": "Upload additional documents",
-    "PreConditionState(s)": "*",
+    "PreConditionState(s)": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION;AWAITING_RESPONDENT_RESPONSE;AWAITING_DIRECTIONS_ORDER_DOCS;AWAITING_WRITTEN_REPRESENTATIONS;AWAITING_ADDITIONAL_INFORMATION;APPLICATION_ADD_PAYMENT;LISTING_FOR_A_HEARING;HEARING_SCHEDULED",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "ShowSummary": "Y",
