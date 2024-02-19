@@ -1,0 +1,71 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "addnDocumentLabel",
+    "Label": "### Uploading additional documents \n This screen is to enable you to upload documents relevant to the application including court ordered bundle and any schedule of costs.\n\t\n\tIf the court has ordered written representations, please use \"Respond to judges written rep\" from the next steps menu on the top right of the application screen.\n\t\n\tIf the court has requested additional information, please use \"Respond to addn info\" from the next steps menu on the top right of the application screen\n\n ### How to upload your documents \n If a document has multiple pages, upload them as one file rather than multiple files. \n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith dated DD/MM/YYYY\". \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP. TIF, TIFF.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "uploadDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "uploadDocumentByType",
+    "Label": "Add document",
+    "HintText": "Upload a document to the system",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaAddlDoc",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "upload additional Document",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaAddlDocStaff",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Uploaded additional documents",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaAddlDocClaimant",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Applicant uploaded documents",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaAddlDocRespondentSol",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Respondent uploaded documents",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaAddlDocRespondentSolTwo",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Respondent Two uploaded documents",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "isDocumentVisible",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  }
+]

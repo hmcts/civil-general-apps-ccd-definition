@@ -1,0 +1,17 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "UPLOAD_ADDL_DOCUMENTS",
+    "Name": "Upload additional documents",
+    "Description": "Upload additional documents",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted"
+  }
+]

@@ -126,7 +126,6 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
         ],
@@ -134,6 +133,7 @@
       },
       {
         "UserRoles": [
+          "caseworker-civil-solicitor",
           "caseworker-ras-validation",
           "ga-basic-access",
           "civil-administrator-basic"

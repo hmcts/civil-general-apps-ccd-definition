@@ -238,11 +238,5 @@
     "CaseEventID": "TRIGGER_TASK_RECONFIG",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "UPLOAD_ADDL_DOCUMENTS",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
   }
 ]

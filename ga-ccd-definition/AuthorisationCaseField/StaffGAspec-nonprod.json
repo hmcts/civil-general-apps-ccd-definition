@@ -1,0 +1,8 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaAddlDoc",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  }
+]

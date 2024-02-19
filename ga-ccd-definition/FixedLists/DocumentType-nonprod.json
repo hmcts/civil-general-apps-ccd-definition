@@ -1,0 +1,20 @@
+[
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "WITNESS",
+    "ListElement": "Witness Statement",
+    "DisplayOrder": 13
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "BUNDLE",
+    "ListElement": "Bundle",
+    "DisplayOrder": 14
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "COSTS_SCHEDULE",
+    "ListElement": "Costs Schedule",
+    "DisplayOrder": 15
+  }
+]
