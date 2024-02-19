@@ -47,7 +47,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "caseDocumentUploadRes",
+    "CaseFieldID": "caseDocumentUploadDateRes",
     "UserRoles": [
       "caseworker-civil-solicitor",
       "caseworker-civil-systemupdate",
