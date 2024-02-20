@@ -52,7 +52,6 @@ Scenario('Defendant of main claim initiates Vary payment terms of judgment appli
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
     states.AWAITING_RESPONDENT_RESPONSE.id, config.defendantSolicitorUser, respondentStatus);
 
-  await I.login(config.applicantSolicitorUser);
   await I.respondToVaryJudgementApp(gaCaseReference, getAppTypes().slice(10, 11), 'doNotAccept', 'fullPayment');
   await I.respCloseAndReturnToCaseDetails();
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,

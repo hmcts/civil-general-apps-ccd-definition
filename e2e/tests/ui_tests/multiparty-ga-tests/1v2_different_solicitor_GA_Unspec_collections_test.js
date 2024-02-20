@@ -34,7 +34,7 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
     } else {
       await api.judgeMakesDecisionWrittenRep(config.judgeLocalUser, gaCaseReference);
     }
-    await I.login(config.defendantSolicitorUser);
+
     await I.navigateToApplicationsTab(civilCaseReference);
     await I.see(writtenRepStatus);
 

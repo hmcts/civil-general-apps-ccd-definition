@@ -158,6 +158,8 @@ const CASE_HEADER = 'ccd-case-header > h1';
 const GA_CASE_HEADER = '.heading-h2';
 const SIGN_OUT_LINK = 'ul[class*="navigation-list"] a';
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
+const CONTINUE_BUTTON = 'button[type="submit"]';
+const LOGIN_FORM = 'form[name="loginForm"]';
 
 let caseId, screenshotNumber, eventName, loggedInUser;
 let eventNumber = 0;
@@ -243,6 +245,11 @@ module.exports = function () {
       }
       await this.retryUntilExists(async () => {
         this.amOnPage(config.url.manageCase, 90);
+
+        if (await this.waitForSelector(LOGIN_FORM, 15) === null) {
+          this.amOnPage(config.url.manageCase, 90);
+          await this.waitForSelector(LOGIN_FORM, 15);
+        }
 
         if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
           console.log(`Signing in user: ${user.type}`);
@@ -476,7 +483,7 @@ module.exports = function () {
 
     async clickContinue() {
       let urlBefore = await this.grabCurrentUrl();
-      await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
+      await this.retryUntilUrlChanges(() => this.waitForNavigationToComplete(CONTINUE_BUTTON), urlBefore);
     },
 
     async clickOnElement(element) {
