@@ -14,6 +14,11 @@ class PlaywrightHelper extends Helper {
     ]);
   }
 
+  async reloadPage() {
+    const page = this.helpers[helperName].page;
+    await page.reload({waitUntil:'commit'});
+  }
+
   async clickTab(tabTitle) {
     const page = this.helpers[helperName].page;
     const tabXPath = `//div[text()='${tabTitle}']`;
