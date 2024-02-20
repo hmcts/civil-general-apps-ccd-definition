@@ -237,25 +237,25 @@ module.exports = function () {
     // Define custom steps here, use 'this' to access default methods of I.
     // It is recommended to place a general 'login' function here.
     async login(user) {
-        if (loggedInUser !== user) {
-          if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
-            await this.waitForSelector(SIGN_OUT_LINK, 30);
-            await this.signOut();
-          }
-
-          await this.retryUntilExists(async () => {
-            this.amOnPage(config.url.manageCase, 90);
-
-            if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
-              console.log(`Signing in user: ${user.type}`);
-              await loginPage.signIn(user);
-            }
-            await this.waitForSelector(SIGN_OUT_LINK, 15);
-          }, SIGNED_IN_SELECTOR);
-
-          loggedInUser = user;
+      if (loggedInUser !== user) {
+        if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+          await this.reloadPage();
+          await this.waitForSelector(SIGN_OUT_LINK, 30);
+          await this.signOut();
         }
-        console.log('Logged in user..', loggedInUser);
+      }
+      await this.retryUntilExists(async () => {
+        this.amOnPage(config.url.manageCase, 90);
+
+        if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
+          console.log(`Signing in user: ${user.type}`);
+          await loginPage.signIn(user);
+        }
+        await this.waitForSelector(SIGNED_IN_SELECTOR);
+      }, SIGNED_IN_SELECTOR);
+
+      loggedInUser = user;
+      console.log('Logged in user..', loggedInUser);
     },
 
     grabCaseNumber: async function () {
@@ -479,7 +479,7 @@ module.exports = function () {
 
     async clickContinue() {
       let urlBefore = await this.grabCurrentUrl();
-      await this.retryUntilUrlChanges(() => this.waitForNavigationToComplete(CONTINUE_BUTTON), urlBefore);
+      await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
     },
 
     async clickOnElement(element) {
