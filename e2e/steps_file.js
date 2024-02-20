@@ -237,7 +237,6 @@ module.exports = function () {
     async login(user) {
       if (loggedInUser !== user) {
         if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
-          await this.reloadPage();
           await this.waitForSelector(SIGN_OUT_LINK, 30);
           await this.signOut();
         }
