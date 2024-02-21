@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-const config = require('../../config.js');
-const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../api/testingSupport');
-const {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
-const states = require('../../fixtures/ga-ccd/state.js');
+const config = require('./../../../config.js');
+const {waitForGACamundaEventsFinishedBusinessProcess} = require('./../../../api/testingSupport');
+const {getAppTypes} = require('./../../../pages/generalApplication/generalApplicationTypes');
+const states = require('./../../../fixtures/ga-ccd/state.js');
 
 const mpScenario = 'ONE_V_ONE';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
@@ -23,7 +23,7 @@ BeforeSuite(async ({api}) => {
   console.log('Case created for general application: ' + civilCaseReference);
 });
 
-Scenario('Defendant of main claim initiates Vary payment terms of judgment application @regression3', async ({I, api}) => {
+Scenario('Defendant of main claim initiates Vary payment terms of judgment application @regression4', async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.verifyNoN245Form(civilCaseReference, getAppTypes().slice(10, 11), 'no');
   await I.login(config.defendantSolicitorUser);
@@ -52,7 +52,6 @@ Scenario('Defendant of main claim initiates Vary payment terms of judgment appli
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
     states.AWAITING_RESPONDENT_RESPONSE.id, config.defendantSolicitorUser, respondentStatus);
 
-  await I.login(config.applicantSolicitorUser);
   await I.respondToVaryJudgementApp(gaCaseReference, getAppTypes().slice(10, 11), 'doNotAccept', 'fullPayment');
   await I.respCloseAndReturnToCaseDetails();
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,

@@ -1,6 +1,8 @@
 #!/bin/bash
 set -ex
 
+export CCD_UI_TESTS=true
+
 if [[ "$BROWSER_GROUP" == "" ]]
 then
     EXIT_STATUS=0

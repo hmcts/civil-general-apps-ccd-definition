@@ -6,8 +6,8 @@ module.exports = {
      chooseCourtLocation: {
           id: '#responseClaimCourtLocationRequired_radio',
           options: {
-            yes: 'Yes',
-            no: 'No',
+            yes: '#responseClaimCourtLocationRequired_Yes',
+            no: '#responseClaimCourtLocationRequired_No',
           }
     },
     courtCode: '#respondToCourtLocation_responseCourtCode',
