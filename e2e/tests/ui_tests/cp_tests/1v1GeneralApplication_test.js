@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
-const config = require('../../config.js');
+const config = require('./../../../config.js');
 const {
   waitForGACamundaEventsFinishedBusinessProcess
-} = require('../../api/testingSupport');
-const {getAppTypes} = require('../../pages/generalApplication/generalApplicationTypes');
-const states = require('../../fixtures/ga-ccd/state.js');
+} = require('./../../../api/testingSupport');
+const {getAppTypes} = require('./../../../pages/generalApplication/generalApplicationTypes');
+const states = require('./../../../fixtures/ga-ccd/state.js');
 
 const mpScenario = 'ONE_V_ONE';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
@@ -77,7 +77,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Applicant Evidence');
 });
 
-Scenario('GA for 1v1 - Direction order journey @regression2', async ({I, api}) => {
+Scenario('GA for 1v1 - Direction order journey @regression4', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);

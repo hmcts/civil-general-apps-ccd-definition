@@ -7,8 +7,8 @@ module.exports = {
       requestHearingAtSpecificCourt: {
         id: `#${party}DQRequestedCourt_requestHearingAtSpecificCourt`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQRequestedCourt_requestHearingAtSpecificCourt_Yes`,
+          no: `#${party}DQRequestedCourt_requestHearingAtSpecificCourt_No`
         }
       },
       responseCourtCode: `#${party}DQRequestedCourt_responseCourtCode`,

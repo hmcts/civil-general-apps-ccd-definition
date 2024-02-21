@@ -6,8 +6,8 @@ module.exports = {
     respondentAgreementHasAgreed: {
       id: '#generalAppRespondentAgreement_hasAgreed',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#generalAppRespondentAgreement_hasAgreed_Yes',
+        no: '#generalAppRespondentAgreement_hasAgreed_No'
       }
     },
   },

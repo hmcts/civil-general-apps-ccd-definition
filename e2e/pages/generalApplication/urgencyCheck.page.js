@@ -4,10 +4,10 @@ module.exports = {
 
   fields: {
     generalAppUrgencyRequirement: {
-      id: '#generalAppUrgencyRequirement_generalAppUrgencyRequirement',
+      id: '#generalAppUrgencyRequirement_generalAppUrgency_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#generalAppUrgencyRequirement_generalAppUrgency_Yes',
+        no: '#generalAppUrgencyRequirement_generalAppUrgency_No'
       }
     },
     considerationDay: '#urgentAppConsiderationDate-day',

@@ -7,8 +7,8 @@ module.exports = {
     generalAppHearingSchedule: {
       id: '#generalAppHearingDate_hearingScheduledPreferenceYesNo',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#generalAppHearingDate_hearingScheduledPreferenceYesNo-Yes',
+        no: '#generalAppHearingDate_hearingScheduledPreferenceYesNo-No'
       }
     },
     hearingScheduledDate: 'hearingScheduledDate',
