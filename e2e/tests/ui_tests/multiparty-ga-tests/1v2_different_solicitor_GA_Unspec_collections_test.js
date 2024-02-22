@@ -10,7 +10,7 @@ let gaCaseReference, civilCaseReference;
 
 Feature('1v2 Different Solicitor - General Application Collections test Journey @multiparty-e2e-tests @ui-nightly');
 
-Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations @regression1',
+Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations @regression4',
   async ({api, I}) => {
     civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
       mpScenario, 'SoleTrader', '11000');
@@ -34,7 +34,7 @@ Scenario('Without Notice application - Org2 Solicitor Initiate GA - Awaiting Wri
     } else {
       await api.judgeMakesDecisionWrittenRep(config.judgeLocalUser, gaCaseReference);
     }
-    await I.login(config.defendantSolicitorUser);
+
     await I.navigateToApplicationsTab(civilCaseReference);
     await I.see(writtenRepStatus);
 

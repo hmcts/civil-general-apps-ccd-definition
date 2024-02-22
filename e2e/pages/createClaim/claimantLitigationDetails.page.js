@@ -7,8 +7,8 @@ module.exports = {
     childApplicant: {
       id: '#applicant1LitigationFriendRequired',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#applicant1LitigationFriendRequired_Yes',
+        no: '#applicant1LitigationFriendRequired_No'
       }
     },
   },

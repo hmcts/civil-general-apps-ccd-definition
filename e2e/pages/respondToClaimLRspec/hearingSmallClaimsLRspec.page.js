@@ -12,8 +12,8 @@ module.exports = {
     interpreterType: {
           id: '#SmallClaimHearingInterpreterRequired_radio',
           options: {
-            yes: 'Yes',
-            no: 'No',
+            yes: '#SmallClaimHearingInterpreterRequired_Yes',
+            no: '#SmallClaimHearingInterpreterRequired_No',
           }
      }
   },
