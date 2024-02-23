@@ -111,9 +111,20 @@
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "caseworker-civil-solicitor",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -126,9 +137,20 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "caseworker-civil-solicitor",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -141,9 +163,20 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-solicitor",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
       }
     ]
   }
