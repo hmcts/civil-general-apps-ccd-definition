@@ -25,8 +25,21 @@ module.exports = {
     }
   },
 
-  async verifyUploadedDocumentPDF(documentType) {
+  async verifyUploadedFileSolicitor(expectedLabel, uploadedDoc) {
     await I.waitForElement(this.fields.appDocTable);
+    I.seeInCurrentUrl('Documents');
+    I.see(uploadedDoc);
+    I.see(expectedLabel);
+    //  Concurrent written representations journey is now without notice to with notice hence added this logic
+    if (expectedLabel !== 'Written representation concurrent document') {
+      I.seeNumberOfVisibleElements(this.fields.links, 4);
+    } else {
+      I.seeNumberOfVisibleElements(this.fields.links, 4);
+    }
+  },
+
+  async verifyUploadedDocumentPDF(documentType) {
+   // await I.waitForElement(this.fields.appDocTable);
     await I.seeInCurrentUrl('Documents');
     if (documentType === 'Hearing Notice') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);
