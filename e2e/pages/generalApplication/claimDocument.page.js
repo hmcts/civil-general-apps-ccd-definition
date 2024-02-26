@@ -64,7 +64,7 @@ module.exports = {
       await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(6));
       await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).last());
     } else {
-      expect(docType).to.equals('Draft Application document');
+      expect(docType).to.equals(' Draft Application document');
     }
   }
 };

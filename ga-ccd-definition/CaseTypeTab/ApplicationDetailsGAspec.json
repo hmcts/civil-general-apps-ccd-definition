@@ -304,6 +304,7 @@
     "TabLabel": "Application",
     "TabDisplayOrder": 1,
     "CaseFieldID": "generalAppInformOtherParty",
+    "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed = \"No\"",
     "TabFieldDisplayOrder": 13
   },
   {
