@@ -149,7 +149,7 @@
     "CaseFieldID": "gaAddlDocClaimant",
     "TabFieldDisplayOrder": 17,
     "FieldShowCondition": "isDocumentVisible = \"*\"",
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -159,7 +159,7 @@
     "CaseFieldID": "gaAddlDocRespondentSol",
     "TabFieldDisplayOrder": 18,
     "FieldShowCondition": "isDocumentVisible = \"Yes\"",
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -169,7 +169,7 @@
     "CaseFieldID": "gaAddlDocRespondentSolTwo",
     "TabFieldDisplayOrder": 19,
     "FieldShowCondition": "isDocumentVisible = \"Yes\"",
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
