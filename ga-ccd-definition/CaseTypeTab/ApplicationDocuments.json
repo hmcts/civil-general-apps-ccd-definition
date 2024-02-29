@@ -137,5 +137,14 @@
     "CaseFieldID": "gaRespondDoc",
     "TabFieldDisplayOrder": 16,
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application Documents",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "gaAddlDocBundle",
+    "TabFieldDisplayOrder": 20,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
   }
 ]
