@@ -1,0 +1,11 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "UserRole": "caseworker-caa",
+    "CaseFieldID": "[CASE_REFERENCE]",
+    "Label": "Case Reference",
+    "DisplayOrder": 1,
+    "ResultsOrdering": "1:ASC",
+    "UseCase": "orgcases"
+  }
+]
