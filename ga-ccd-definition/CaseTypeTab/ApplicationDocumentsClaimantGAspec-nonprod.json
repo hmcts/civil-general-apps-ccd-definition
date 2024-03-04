@@ -178,7 +178,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlDocBundle",
     "TabFieldDisplayOrder": 20,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
