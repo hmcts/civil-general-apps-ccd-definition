@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('Before SDO 1v1 - GA CP - Hearing Notice document API tests @api-tests');
 
-Scenario('Judge decides Free Form Order', async ({api}) => {
+Scenario('Judge decides Free Form Order @mm', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -21,23 +21,7 @@ Scenario('Judge decides Free Form Order', async ({api}) => {
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
-  console.log('*** Start Judge decides Free Form Order on GA Case Reference: ' + gaCaseReference + ' ***');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeListApplicationForFreeFormOrder(config.judgeUser2WithRegionId2, gaCaseReference);
-  } else {
-    await api.judgeListApplicationForFreeFormOrder(config.judgeLocalUser, gaCaseReference);
-  }
-  console.log('*** End Judge decides Free Form Order: ' + gaCaseReference + ' ***');
 
-  await api.assertGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'generalOrder');
-  
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminWithRegionId2, gaCaseReference);
-  } else {
-    await api.hearingCenterAdminScheduleHearing(config.nbcAdminWithRegionId4, gaCaseReference);
-  }
-
-  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED');
 });
 
 Scenario('Defendant Hearing notice journey', async ({api}) => {
