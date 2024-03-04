@@ -13,12 +13,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseStateID": "CASE_DISMISSED",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseStateID": "AWAITING_WRITTEN_REPRESENTATIONS",
     "UserRole": "caseworker-caa",
     "CRUD": "CRUD"
