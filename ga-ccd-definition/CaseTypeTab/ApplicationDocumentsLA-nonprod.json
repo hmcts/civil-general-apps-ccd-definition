@@ -148,7 +148,7 @@
   "UserRoles": [
     "legal-adviser"
 ],
-  "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+  "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -157,7 +157,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlDocRespondentSol",
     "TabFieldDisplayOrder": 18,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -166,7 +166,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlDocRespondentSolTwo",
     "TabFieldDisplayOrder": 19,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -175,7 +175,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlDocBundle",
     "TabFieldDisplayOrder": 20,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink)"
   }
 ]
 

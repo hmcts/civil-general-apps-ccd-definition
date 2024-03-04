@@ -2,7 +2,7 @@
   {
     "ID": "uploadDocumentByType",
     "ListElementCode": "typeOfDocument",
-    "FieldType": "FixedList",
+    "FieldType": "Text",
     "FieldTypeParameter": "UploadDocumentType",
     "ElementLabel": "Type of document",
     "HintText": "For example, Bundle, costs schedule, witness statement",
