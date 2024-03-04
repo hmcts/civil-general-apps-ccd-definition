@@ -8,43 +8,50 @@ module.exports = {
     url: 'http://localhost:5555'
   },
   url: {
-    manageCase: process.env.URL || 'http://localhost:3333',
-    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
-    ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
-    dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
-    idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
-    civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
-    generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL || 'http://localhost:4550',
-    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
+    // manageCase: process.env.URL || 'https://manage-case.aat.platform.hmcts.net/',
+    // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
+    // dmStore:process.env.DM_STORE_URL || 'http://dm-store-aat.service.core-compute-aat.internal',
+    // idamApi: process.env.IDAM_API_URL || 'https://idam-api.aat.platform.hmcts.net',
+    // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-aat.service.core-compute-aat.internal',
+    // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
+    // generalApplication: 'http://civil-general-applications-aat.service.core-compute-aat.internal'
 
-    // aat url's
-    /*manageCase:  'https://manage-case.aat.platform.hmcts.net',
-    authProviderApi: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
-    dmStore:'http://dm-store-aat.service.core-compute-aat.internal',
-    idamApi: 'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'http://civil-service-aat.service.core-compute-aat.internal',
-    waTaskMgmtApi: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
-    generalApplication: 'http://civil-general-applications-aat.service.core-compute-aat.internal'*/
+    // manageCase: 'https://xui-civil-ga-ccd-pr-787.preview.platform.hmcts.net',
+    // authProviderApi: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    // ccdDataStore: 'https://ccd-data-store-api-civil-ga-ccd-pr-787.preview.platform.hmcts.net',
+    // dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
+    // idamApi:  'https://idam-api.aat.platform.hmcts.net',
+    // civilService: 'https://civil-service-civil-ga-ccd-pr-787.preview.platform.hmcts.net',
+    // generalApplication: 'https://civil-ga-ccd-pr-787.preview.platform.hmcts.net'
 
-    // preview url's
-   /* manageCase: 'https://xui-civil-ga-ccd-pr-787.preview.platform.hmcts.net',
-    authProviderApi: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: 'https://ccd-data-store-api-civil-ga-ccd-pr-787.preview.platform.hmcts.net',
-    dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
-    idamApi:  'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'https://civil-service-civil-ga-ccd-pr-787.preview.platform.hmcts.net',
-    generalApplication: 'https://civil-ga-ccd-pr-787.preview.platform.hmcts.net'*/
-
-    // wa demo url's
-    /* manageCase:  'https://manage-case.demo.platform.hmcts.net',
+     manageCase:  'https://manage-case.demo.platform.hmcts.net',
      authProviderApi: 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
      ccdDataStore: 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
      dmStore:'http://dm-store-demo.service.core-compute-demo.internal',
      idamApi: 'https://idam-api.demo.platform.hmcts.net',
      civilService: 'http://civil-service-demo.service.core-compute-demo.internal',
      waTaskMgmtApi: 'http://wa-task-management-api-demo.service.core-compute-demo.internal',
-     generalApplication: 'http://civil-general-applications-demo.service.core-compute-demo.internal'*/
+     generalApplication: 'http://civil-general-applications-demo.service.core-compute-demo.internal'
+
+    // manageCase: process.env.URL || 'https://manage-case-int1.demo.platform.hmcts.net/',
+    // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
+    // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
+    // dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',
+    // idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
+    // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
+    // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal',
+    // paymentApi: process.env.PAYMENT_API_URL || 'http://payment-api-demo.service.core-compute-demo.internal',
+    // generalApplication: 'http://civil-general-applications-demo.service.core-compute-demo.internal'
+
+      // manageCase: process.env.URL || 'http://localhost:3333',
+      // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
+      // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
+      // dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
+      // idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
+      // civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
+      // generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL || 'http://localhost:4550',
+      // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
   },
   s2s: {
     microservice: 'civil_service',
