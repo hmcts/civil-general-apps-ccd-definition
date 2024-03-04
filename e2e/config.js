@@ -1,6 +1,6 @@
-const defaultPassword = process.env.DEFAULT_PASSWORD
-const judgePassword = process.env.JUDGE_DEFAULT_PASSWORD
-const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD
+const defaultPassword = process.env.DEFAULT_PASSWORD;
+const judgePassword = process.env.JUDGE_DEFAULT_PASSWORD;
+const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
 
 module.exports = {
   idamStub: {
