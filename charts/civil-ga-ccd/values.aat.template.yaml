@@ -20,8 +20,8 @@ civil-general-applications:
           - sendgrid-api-key
           - robotics-notification-sender
           - robotics-notification-recipient
-          - name: launch-darkly-sdk-key-non-prod
-            alias: launch-darkly-sdk-key
+          - name: launch-darkly-sdk-key
+            alias: LAUNCH_DARKLY_SDK_KEY
           - robotics-notification-multipartyrecipient
       civil-gen-apps:
         resourceGroup: civil
@@ -55,8 +55,12 @@ civil-service:
             alias: CIVIL_PRD_ADMIN_PASSWORD
           - name: docmosis-api-key
             alias: docmosis.tornado.key
-          - name: cmc-db-password-v11
+          - name: cmc-db-password-v15
             alias: CMC_DB_PASSWORD
+          - name: cmc-db-username-v15
+            alias: CMC_DB_USERNAME
+          - name: cmc-db-host-v15
+            alias: CMC_DB_HOST
           - name: gov-notify-api-key
             alias: GOV_NOTIFY_API_KEY
           - name: sendgrid-api-key
@@ -65,7 +69,7 @@ civil-service:
             alias: robotics.notification.sender
           - name: robotics-notification-recipient
             alias: robotics.notification.recipient
-          - name: launch-darkly-sdk-key-non-prod
+          - name: launch-darkly-sdk-key
             alias: LAUNCH_DARKLY_SDK_KEY
           - name: robotics-notification-multipartyrecipient
             alias: robotics.notification.multipartyrecipient
