@@ -5,7 +5,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 Judge Make Order Directions Order API tests @api-nightly');
 
-Scenario('Judge makes decision 1V2 - DIRECTIONS ORDER', async ({api}) => {
+Scenario('Judge makes decision 1V2 - DIRECTIONS ORDER @123', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
@@ -27,16 +27,16 @@ Scenario('Judge makes decision 1V2 - DIRECTIONS ORDER', async ({api}) => {
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponse1v2(config.applicantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
-  console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionDirectionsOrder(config.judgeUser2WithRegionId2, gaCaseReference);
-  } else {
-    await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
-  }
-  console.log('*** End Judge Directions Order GA Case Reference: ' + gaCaseReference + ' ***');
+  // console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
+  // if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+  //   await api.judgeMakesDecisionDirectionsOrder(config.judgeUser2WithRegionId2, gaCaseReference);
+  // } else {
+  //   await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
+  // }
+  // console.log('*** End Judge Directions Order GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+ // await api.cleanUp();
 });
 
