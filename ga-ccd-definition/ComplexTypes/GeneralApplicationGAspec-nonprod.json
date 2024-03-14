@@ -1,9 +1,0 @@
-[
-  {
-    "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "isDocumentVisible",
-    "FieldType": "YesOrNo",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  }
-]
