@@ -211,8 +211,8 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "forename",
-    "ListElementCode": "organisationIdentifier",
+    "CaseFieldID": "generalAppApplicantAddlSolicitors",
+    "ListElementCode": "forename",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
