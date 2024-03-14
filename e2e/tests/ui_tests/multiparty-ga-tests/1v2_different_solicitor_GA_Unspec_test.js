@@ -76,9 +76,8 @@ Scenario('Without Notice application to With Notice application - Directions Ord
       await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
     }
 
-    await I.login(config.defendantSolicitorUser);
-    await I.navigateToApplicationsTab(civilCaseReference);
-    await I.see(judgeDirectionsOrderStatus);
+    await api.verifyGAState(config.defendantSolicitorUser,
+      civilCaseReference, gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id);
     await api.verifyGAState(config.applicantSolicitorUser,
       civilCaseReference, gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id);
     await api.verifyGAState(config.secondDefendantSolicitorUser,

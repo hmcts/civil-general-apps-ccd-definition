@@ -7,15 +7,15 @@ module.exports = {
       directionsForDisclosureProposed: {
         id: `#${party}DQDisclosureOfNonElectronicDocuments_directionsForDisclosureProposed`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQDisclosureOfNonElectronicDocuments_directionsForDisclosureProposed_Yes`,
+          no: `#${party}DQDisclosureOfNonElectronicDocuments_directionsForDisclosureProposed_No`
         }
       },
       standardDirectionsRequired: {
         id: `#${party}DQDisclosureOfNonElectronicDocuments_standardDirectionsRequired`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQDisclosureOfNonElectronicDocuments_standardDirectionsRequired_Yes`,
+          no: `#${party}DQDisclosureOfNonElectronicDocuments_standardDirectionsRequired_No`
         }
       },
       bespokeDirections: `#${party}DQDisclosureOfNonElectronicDocuments_bespokeDirections`

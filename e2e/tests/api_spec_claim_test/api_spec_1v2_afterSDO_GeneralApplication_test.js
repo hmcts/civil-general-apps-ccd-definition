@@ -57,9 +57,9 @@ Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) =>
   }
   await I.wait(10);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.scheduleCivilHearing(civilCaseReference, config.hearingCenterAdminWithRegionId2, 'OTHER');
+    await api.scheduleCivilHearing(civilCaseReference, config.hearingCenterAdminWithRegionId2, 'FAST_TRACK_TRIAL');
   } else {
-    await api.scheduleCivilHearing(civilCaseReference, config.hearingCenterAdminLocal, 'OTHER');
+    await api.scheduleCivilHearing(civilCaseReference, config.hearingCenterAdminLocal, 'FAST_TRACK_TRIAL');
   }
   await api.amendHearingDueDate(civilCaseReference, config.systemUpdate);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {

@@ -127,13 +127,13 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
           "caseworker-ras-validation",
           "ga-basic-access",
           "civil-administrator-basic"
@@ -377,7 +377,8 @@
         "UserRoles": [
           "hearing-schedule-access",
           "caseworker-civil-systemupdate",
-          "judge-profile"
+          "judge-profile",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -387,8 +388,7 @@
           "civil-administrator-standard",
           "civil-administrator-basic",
           "caseworker-ras-validation",
-          "ga-basic-access",
-          "caseworker-civil-solicitor"
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }

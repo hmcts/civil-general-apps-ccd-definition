@@ -6,8 +6,8 @@ module.exports = {
     proceed: {
       id: '#applicant1ProceedWithClaim',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#applicant1ProceedWithClaim_Yes',
+        no: '#applicant1ProceedWithClaim_No'
       }
     }
   },

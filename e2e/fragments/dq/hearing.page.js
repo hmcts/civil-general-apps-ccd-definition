@@ -18,8 +18,8 @@ module.exports = {
       unavailableDatesRequired: {
         id: `#${party}DQHearing_unavailableDatesRequired`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQHearing_unavailableDatesRequired_Yes`,
+          no: `#${party}DQHearing_unavailableDatesRequired_No`
         }
       },
       unavailableDates: {

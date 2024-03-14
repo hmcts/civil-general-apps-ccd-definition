@@ -5,8 +5,8 @@ module.exports = {
     mediationType: {
       id: '#responseClaimMediationSpecRequired_radio',
       options: {
-        yes: 'Yes',
-        no: 'No',
+        yes: '#responseClaimMediationSpecRequired_Yes',
+        no: '#responseClaimMediationSpecRequired_No',
       }
     }
   },
