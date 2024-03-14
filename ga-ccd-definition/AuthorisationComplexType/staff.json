@@ -1150,35 +1150,35 @@
     "CaseFieldID": "generalAppApplicantAddlSolicitors",
     "ListElementCode": "id",
     "UserRole": "civil-administrator-standard",
-    "CRUD": "CRU"
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppApplicantAddlSolicitors",
     "ListElementCode": "email",
     "UserRole": "civil-administrator-standard",
-    "CRUD": "CRU"
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppApplicantAddlSolicitors",
     "ListElementCode": "surname",
     "UserRole": "civil-administrator-standard",
-    "CRUD": "CRU"
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppApplicantAddlSolicitors",
     "ListElementCode": "forename",
     "UserRole": "civil-administrator-standard",
-    "CRUD": "CRU"
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppApplicantAddlSolicitors",
     "ListElementCode": "organisationIdentifier",
     "UserRole": "civil-administrator-standard",
-    "CRUD": "CRU"
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
