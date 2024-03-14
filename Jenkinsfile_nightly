@@ -46,7 +46,10 @@ def secrets = [
    secret('microservicekey-xui-webapp', 'XUI_S2S_SECRET'),
   ],
   'civil-${env}': [
-    secret('microservicekey-civil-service', 'S2S_SECRET')
+    secret('microservicekey-civil-service', 'S2S_SECRET'),
+    secret('default-password','DEFAULT_PASSWORD'),
+    secret('judge-default-password','JUDGE_DEFAULT_PASSWORD'),
+    secret('iac-default-password','IAC_DEFAULT_PASSWORD')
   ]
 ]
 
