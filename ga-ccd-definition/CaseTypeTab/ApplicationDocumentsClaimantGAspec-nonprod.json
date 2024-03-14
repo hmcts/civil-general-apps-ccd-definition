@@ -178,6 +178,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlDocBundle",
     "TabFieldDisplayOrder": 20,
+    "FieldShowCondition": "isDocumentVisible = \"Yes\"",
     "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink, createdBy)"
   },
   {
