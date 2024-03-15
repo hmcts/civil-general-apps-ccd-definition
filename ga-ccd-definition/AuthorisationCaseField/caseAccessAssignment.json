@@ -25,12 +25,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppType",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "defendant1PartyName",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"

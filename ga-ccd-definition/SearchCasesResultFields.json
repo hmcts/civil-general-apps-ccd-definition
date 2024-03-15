@@ -11,18 +11,9 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "UserRole": "caseworker-caa",
-    "CaseFieldID": "generalAppType",
-    "ListElementCode": "types",
-    "Label": "Application types",
-    "DisplayOrder": 2,
-    "UseCase": "orgcases"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "UserRole": "caseworker-caa",
     "CaseFieldID": "[STATE]",
     "Label": "State",
-    "DisplayOrder": 3,
+    "DisplayOrder": 2,
     "UseCase": "orgcases"
   },
   {

@@ -7,32 +7,26 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppType",
-    "Label": "Application types",
-    "DisplayOrder": 2
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "[STATE]",
     "Label": "State",
-    "DisplayOrder": 3
+    "DisplayOrder": 2
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "claimant1PartyName",
     "Label": "Claimant Name",
-    "DisplayOrder": 4
+    "DisplayOrder": 3
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "defendant1PartyName",
     "Label": "Defendant 1 Name",
-    "DisplayOrder": 5
+    "DisplayOrder": 4
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "defendant2PartyName",
     "Label": "Defendant 2 Name",
-    "DisplayOrder": 6
+    "DisplayOrder": 5
   }
 ]
