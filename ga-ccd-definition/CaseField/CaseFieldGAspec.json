@@ -211,6 +211,16 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppApplicantAddlSolicitors",
+    "Label": "Applicant Addl Solicitor Details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GASolicitorDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "This fields holds applicant's Solicitor details.",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppEvidenceDocument",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
