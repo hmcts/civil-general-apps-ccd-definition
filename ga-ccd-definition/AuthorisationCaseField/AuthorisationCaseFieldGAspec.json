@@ -3710,7 +3710,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -3730,13 +3731,16 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -3748,7 +3752,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
