@@ -22,17 +22,20 @@
     "CaseFieldID": "claimant1PartyName",
     "Label": "Claimant Name",
     "DisplayOrder": 4
+
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "defendant1PartyName",
     "Label": "Defendant 1 Name",
     "DisplayOrder": 5
+
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "defendant2PartyName",
     "Label": "Defendant 2 Name",
     "DisplayOrder": 6
+
   }
 ]

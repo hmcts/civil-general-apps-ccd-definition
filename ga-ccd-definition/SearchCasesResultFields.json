@@ -21,8 +21,16 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "[STATE]",
-    "Label": "State",
+    "Label": "Main case reference",
     "DisplayOrder": 3,
+    "UseCase": "orgcases"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "UserRole": "caseworker-caa",
+    "CaseFieldID": "[STATE]",
+    "Label": "State",
+    "DisplayOrder": 4,
     "UseCase": "orgcases"
   },
   {
@@ -30,7 +38,7 @@
     "UserRole": "caseworker-caa",
     "CaseFieldID": "claimant1PartyName",
     "Label": "Claimant Name",
-    "DisplayOrder": 4,
+    "DisplayOrder": 5,
     "UseCase": "orgcases"
   },
   {
@@ -38,7 +46,7 @@
     "UserRole": "caseworker-caa",
     "CaseFieldID": "defendant1PartyName",
     "Label": "Defendant 1 Name",
-    "DisplayOrder": 5,
+    "DisplayOrder": 6,
     "UseCase": "orgcases"
   },
   {
@@ -46,7 +54,7 @@
     "UserRole": "caseworker-caa",
     "CaseFieldID": "defendant2PartyName",
     "Label": "Defendant 2 Name",
-    "DisplayOrder": 6,
+    "DisplayOrder": 7,
     "UseCase": "orgcases"
   }
 ]
