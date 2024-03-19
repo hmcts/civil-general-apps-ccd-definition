@@ -22,5 +22,17 @@
     "CaseFieldID": "respondentSolTwoGaAppDetails",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "applicationTypes",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "parentCaseReference",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
   }
 ]
