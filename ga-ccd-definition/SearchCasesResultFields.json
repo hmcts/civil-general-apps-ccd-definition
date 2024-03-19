@@ -20,7 +20,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "UserRole": "caseworker-caa",
-    "CaseFieldID": "[STATE]",
+    "CaseFieldID": "generalAppParentCaseLink",
     "Label": "Main case reference",
     "DisplayOrder": 3,
     "UseCase": "orgcases"

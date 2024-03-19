@@ -9,17 +9,5 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "applicant1OrganisationPolicy",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "ClaimantSolicitorOrganisation",
-    "PageLabel": "Search for the claimant's legal representative",
-    "PageDisplayOrder": 7,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
   }
 ]

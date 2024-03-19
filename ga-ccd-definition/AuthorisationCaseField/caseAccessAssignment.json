@@ -40,5 +40,11 @@
     "CaseFieldID": "defendant2PartyName",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppParentCaseLink",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
   }
 ]
