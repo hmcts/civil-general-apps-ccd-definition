@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "generalOrderDocument",
@@ -10,7 +10,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "dismissalOrderDocument",
@@ -19,7 +19,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "directionOrderDocument",
@@ -28,7 +28,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "requestForInformationDocument",
@@ -37,7 +37,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "hearingOrderDocument",
@@ -46,7 +46,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "writtenRepSequentialDocument",
@@ -55,7 +55,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "writtenRepConcurrentDocument",
@@ -64,7 +64,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaWrittenRepDocList",
@@ -72,7 +72,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaDirectionDocList",
@@ -80,7 +80,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlnInfoList",
@@ -88,7 +88,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "generalAppEvidenceDocument",
@@ -96,7 +96,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "generalAppN245FormUpload",
@@ -104,7 +104,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "hearingNoticeDocument",
@@ -113,7 +113,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "consentOrderDocument",
@@ -122,16 +122,19 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaDraftDocument",
     "TabFieldDisplayOrder": 15,
+    "UserRoles": [
+      "caseworker-civil-solicitor"
+    ],
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaRespondDoc",
@@ -140,32 +143,41 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlDocClaimant",
     "TabFieldDisplayOrder": 17,
-    "UserRoles": [
-      "judge-profile"
-    ],
+    "FieldShowCondition": "isDocumentVisible = \"*\"",
     "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlDocRespondentSol",
     "TabFieldDisplayOrder": 18,
-    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink)"
+    "FieldShowCondition": "isDocumentVisible = \"Yes\"",
+    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Application Documents",
+    "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlDocRespondentSolTwo",
     "TabFieldDisplayOrder": 19,
-    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink)"
+    "FieldShowCondition": "isDocumentVisible = \"Yes\"",
+    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink, createdBy)"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDocumentsMain",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "isDocumentVisible",
+    "TabFieldDisplayOrder": 20,
+    "FieldShowCondition": "gaDraftDocument = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

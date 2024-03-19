@@ -132,6 +132,14 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppApplicantAddlSolicitors",
+    "ElementLabel": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GASolicitorDetailsGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppRespondentSolicitors",
     "ElementLabel": " ",
     "FieldType": "Collection",
@@ -363,5 +371,12 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "FieldShowCondition": "gaFinalOrderDocPreview = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "isDocumentVisible",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
   }
 ]

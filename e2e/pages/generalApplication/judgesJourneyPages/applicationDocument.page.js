@@ -26,7 +26,6 @@ module.exports = {
   },
 
   async verifyUploadedDocumentPDF(documentType) {
-    await I.waitForElement(this.fields.appDocTable);
     await I.seeInCurrentUrl('Documents');
     if (documentType === 'Hearing Notice') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);

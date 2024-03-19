@@ -1,5 +1,14 @@
 [
   {
+    "RoleName" : "idam:caseworker-caa",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "caseworker-caa",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName": "idam:caseworker-civil-solicitor",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
