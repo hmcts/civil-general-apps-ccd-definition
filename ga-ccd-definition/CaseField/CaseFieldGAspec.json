@@ -11,6 +11,30 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "applicant1OrganisationPolicy",
+    "Label": "Claimant's legal representative",
+    "FieldType": "OrganisationPolicy",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "respondent1OrganisationPolicy",
+    "Label": "Defendant's legal representative",
+    "FieldType": "OrganisationPolicy",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "respondent2OrganisationPolicy",
+    "Label": "Defendant 2's legal representative",
+    "FieldType": "OrganisationPolicy",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalApplicationCaseListLabel",
     "Label": "Application Type",
     "HintText": "  ",
