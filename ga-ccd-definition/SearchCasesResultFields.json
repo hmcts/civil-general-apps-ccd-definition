@@ -22,6 +22,7 @@
     "UserRole": "caseworker-caa",
     "CaseFieldID": "generalAppParentCaseLink",
     "Label": "Main case reference",
+    "ListElementCode": "caseReference",
     "DisplayOrder": 3,
     "UseCase": "orgcases"
   },
