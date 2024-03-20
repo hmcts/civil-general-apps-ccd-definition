@@ -34,7 +34,6 @@
     "ElementLabel": "The court orders that:",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
-    "Max": 4000,
     "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\""
   },
   {
@@ -74,7 +73,6 @@
     "ElementLabel": "The court orders that:",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
-    "Max": 4000,
     "FieldShowCondition": "makeAnOrder = \"DISMISS_THE_APPLICATION\""
   },
   {
@@ -83,7 +81,6 @@
     "ElementLabel": "The court orders that:",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
-    "Max": 4000,
     "FieldShowCondition": "makeAnOrder = \"GIVE_DIRECTIONS_WITHOUT_HEARING\""
   },
   {
@@ -146,8 +143,7 @@
     "ElementLabel": "Order on court's own initiative",
     "FieldType": "TextArea",
     "FieldShowCondition": "judicialByCourtsInitiative=\"OPTION_1\"",
-    "SecurityClassification": "Public",
-    "Max": 400
+    "SecurityClassification": "Public"
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
@@ -164,8 +160,7 @@
     "ElementLabel": "Order without notice",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "judicialByCourtsInitiative=\"OPTION_2\"",
-    "Max": 400
+    "FieldShowCondition": "judicialByCourtsInitiative=\"OPTION_2\""
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
@@ -195,8 +190,7 @@
     "ListElementCode": "reasonForDecisionText",
     "ElementLabel": " ",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public",
-    "Max": 400
+    "SecurityClassification": "Public"
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
