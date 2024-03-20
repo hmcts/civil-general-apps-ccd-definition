@@ -139,30 +139,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "GENERALAPPLICATION",
-    "ListElementCode": "applicant1OrganisationPolicy",
-    "ElementLabel": "Claimant's legal representative",
-    "FieldType": "OrganisationPolicy",
-    "SecurityClassification": "Public",
-    "Searchable": "Y"
-  },
-  {
-    "ID": "GENERALAPPLICATION",
-    "ListElementCode": "respondent1OrganisationPolicy",
-    "ElementLabel": "Claimant's legal representative",
-    "FieldType": "OrganisationPolicy",
-    "SecurityClassification": "Public",
-    "Searchable": "Y"
-  },
-  {
-    "ID": "GENERALAPPLICATION",
-    "ListElementCode": "respondent2OrganisationPolicy",
-    "ElementLabel": "Claimant's legal representative",
-    "FieldType": "OrganisationPolicy",
-    "SecurityClassification": "Public",
-    "Searchable": "Y"
-  },
-  {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppRespondentSolicitors",
     "ElementLabel": " ",
