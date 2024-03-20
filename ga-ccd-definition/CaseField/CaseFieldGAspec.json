@@ -1250,6 +1250,20 @@
     "Label": "upload date",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "applicationTypes",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "parentCaseReference",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
 
