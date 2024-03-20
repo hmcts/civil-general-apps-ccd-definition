@@ -21,6 +21,7 @@
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
