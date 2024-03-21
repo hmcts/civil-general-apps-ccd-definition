@@ -3620,7 +3620,8 @@
       {
         "UserRoles": [
           "judge-profile",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -3637,7 +3638,8 @@
           "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
