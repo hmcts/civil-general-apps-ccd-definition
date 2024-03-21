@@ -32,7 +32,7 @@ module.exports = {
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 4);
     } else {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 2);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);
     }
     let docURL = await I.grabTextFrom(locate(this.fields.links).first());
     switch (documentType) {
