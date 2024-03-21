@@ -2173,7 +2173,7 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
 
-  let doc = 'gaEvidence';
+  let doc = 'gaAddlDoc';
   if (user.email === config.defendantSolicitorUser.email
       || user.email === config.secondDefendantSolicitorUser.email ) {
     await assertGaDocVisibilityToUser(user, parentCaseId, gaCaseReference, doc);

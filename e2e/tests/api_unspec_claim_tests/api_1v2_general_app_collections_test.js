@@ -106,7 +106,7 @@ Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA C
   await api.respondentResponseToJudgeAdditionalInfo(config.secondDefendantSolicitorUser, gaCaseReference);
   console.log('*** End Respondent respond to Judge Additional information on GA Case Reference: '
               + gaCaseReference + ' ***');
-  let doc = 'gaResp';
+  let doc = 'gaAddlDoc';
   await api.assertNullGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, doc);
   await api.assertNullGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, doc);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
