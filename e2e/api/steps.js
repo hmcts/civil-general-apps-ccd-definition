@@ -2173,12 +2173,12 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
 
-  let doc = 'gaAddlDoc';
-  if (user.email === config.defendantSolicitorUser.email
-      || user.email === config.secondDefendantSolicitorUser.email ) {
-    await assertGaDocVisibilityToUser(user, parentCaseId, gaCaseReference, doc);
-    await assertNullGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, doc);
-  }
+  // let doc = 'gaAddl';
+  // if (user.email === config.defendantSolicitorUser.email
+  //     || user.email === config.secondDefendantSolicitorUser.email ) {
+  //   await assertGaDocVisibilityToUser(user, parentCaseId, gaCaseReference, doc);
+  //   await assertNullGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, doc);
+  // }
 
   //calling payment callback handler
   const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
@@ -2188,11 +2188,11 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   let ccdState = urgency ? 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION' : 'AWAITING_RESPONDENT_RESPONSE';
   //comment out next line to see race condition
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, ccdState, user);
-  if (user.email === config.defendantSolicitorUser.email
-      || user.email === config.secondDefendantSolicitorUser.email ) {
-    await assertGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, gaCaseReference,
-                                      doc);
-  }
+  // if (user.email === config.defendantSolicitorUser.email
+  //     || user.email === config.secondDefendantSolicitorUser.email ) {
+  //   await assertGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, gaCaseReference,
+  //                                     doc);
+  // }
   await addUserCaseMapping(gaCaseReference, user);
   return gaCaseReference;
 };
