@@ -66,7 +66,7 @@ module.exports = {
         await I.see(`Consent_order_for_application_${docFullDate}`);
         break;
     }
-    let draftAppURL = await I.grabTextFrom(locate(this.fields.links).last());
+    // let draftAppURL = await I.grabTextFrom(locate(this.fields.links).last());
     // expect(draftAppURL).to.contains(`Draft_application_${docFullDate}`);
     // await I.see('Type');
     // await I.see('Uploaded on');
