@@ -66,7 +66,7 @@ module.exports = {
         await I.see(`Consent_order_for_application_${docFullDate}`);
         break;
     }
-    let draftAppURL = await I.grabTextFrom(locate(this.fields.links).last());
+    let draftAppURL = await I.grabTextFrom(locate(this.fields.links).at(-2));
     expect(draftAppURL).to.contains(`Draft_application_${docFullDate}`);
     await I.see('Type');
     await I.see('Uploaded on');
@@ -84,6 +84,6 @@ module.exports = {
     } else {
       await I.seeTextEquals(documentType, locate(this.fields.docLabel).first());
     }
-    await I.seeTextEquals('Draft Application', locate(this.fields.docLabel).last());
+    await I.seeTextEquals('Draft Application', locate(this.fields.docLabel).at(-2));
   }
 };
