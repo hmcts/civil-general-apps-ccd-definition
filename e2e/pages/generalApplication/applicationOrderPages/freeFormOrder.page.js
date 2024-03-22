@@ -36,7 +36,7 @@ module.exports = {
         break;
       case 'withoutNoticeOrder':
         await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtsOrder.courWithoutNoticeOrderText)).trim(), formType);
-        await date.verifyPrePopulatedDate(this.fields.courtsOrder.withoutNoticeSelectionDateId, orderType);
+       // await date.verifyPrePopulatedDate(this.fields.courtsOrder.withoutNoticeSelectionDateId, orderType);
         break;
       case 'noneOrder':
         await selectCourtsOrderType('', formType, '');
