@@ -14,7 +14,7 @@ module.exports = {
         withoutNoticeOrder: 'Order without notice',
         noneOrder: 'None',
       },
-      onInitiativeSelectionDateId: 'onInitiativeSelectionDate',
+      onInitiativeSelectionDateId:  date(7),
       withoutNoticeSelectionDateId: 'withoutNoticeSelectionDate',
       courtInitiativeOrderText: 'textarea[id*="onInitiativeSelectionTextArea"]',
       courWithoutNoticeOrderText: 'textarea[id*="withoutNoticeSelectionTextArea"]',
