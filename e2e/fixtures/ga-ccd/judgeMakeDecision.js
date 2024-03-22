@@ -127,7 +127,7 @@ module.exports = {
           + 'initiative any party affected by the order '
           + 'may apply to set aside, vary or stay the order. '
           + 'Any such application must be made by 4pm on',
-        onInitiativeSelectionDate: date()
+        onInitiativeSelectionDate: date(7)
       }
     };
   },
