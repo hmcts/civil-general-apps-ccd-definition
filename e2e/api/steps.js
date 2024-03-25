@@ -2556,7 +2556,7 @@ const assertDocVisibilityToUser = async ( user, gaUserRole, parentCaseId, gaCase
 };
 
 const assertGaDocVisibilityToUser = async ( user, parentCaseId, gaCaseId, doc) => {
-  await assertDocVisibilityToUser( user, null, parentCaseId, gaCaseId, doc)
+  await assertDocVisibilityToUser( user, null, parentCaseId, gaCaseId, doc);
 };
 
 const assertNullGaDocVisibilityToUser = async ( user, parentCaseId, doc) => {
