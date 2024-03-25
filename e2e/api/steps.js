@@ -2177,13 +2177,6 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
 
-  let doc = 'gaAddl';
-  if (user.email === config.defendantSolicitorUser.email
-      || user.email === config.secondDefendantSolicitorUser.email ) {
-    await assertDocVisibilityToUser(user, 'Claimant', parentCaseId, gaCaseReference, doc);
-    await assertNullGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, doc);
-  }
-
   //calling payment callback handler
   const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
     genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
@@ -2192,12 +2185,20 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   let ccdState = urgency ? 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION' : 'AWAITING_RESPONDENT_RESPONSE';
   //comment out next line to see race condition
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, ccdState, user);
+
+  let doc = 'gaAddl';
+  if (user.email === config.defendantSolicitorUser.email
+      || user.email === config.secondDefendantSolicitorUser.email ) {
+    await assertDocVisibilityToUser(user, 'Claimant', parentCaseId, gaCaseReference, doc);
+    await assertNullGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, doc);
+  }
+
   if (user.email === config.defendantSolicitorUser.email) {
-    await assertDocVisibilityToUser(config.defendantSolicitorUser, 'RespondentSol', parentCaseId, gaCaseReference,
+    await assertDocVisibilityToUser(config.defendantSolicitorUser, 'Claimant', parentCaseId, gaCaseReference,
                                     doc);
   }
   if (user.email === config.secondDefendantSolicitorUser.email ) {
-    await assertDocVisibilityToUser(config.secondDefendantSolicitorUser, 'RespondentSolTwo', parentCaseId, gaCaseReference,
+    await assertDocVisibilityToUser(config.secondDefendantSolicitorUser, 'Claimant', parentCaseId, gaCaseReference,
                                     doc);
   }
   await addUserCaseMapping(gaCaseReference, user);
