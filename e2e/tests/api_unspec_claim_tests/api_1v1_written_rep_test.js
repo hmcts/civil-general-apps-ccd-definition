@@ -32,6 +32,8 @@ Scenario.skip('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS- Respondent up
   console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponseToWrittenRepresentations(config.applicantSolicitorUser, gaCaseReference);
   console.log('*** End Judge Make Decision GA Case Reference: ' + gaCaseReference + ' ***');
+  let doc = 'gaAddl';
+  await api.assertDocumentVisibilityToUser(config.applicantSolicitorUser, 'Claimant', civilCaseReference, gaCaseReference, doc);
 });
 
 Scenario.skip('Judge uncloaked the without notice application: Judge revisit makes decision 1V1 - WRITTEN_REPRESENTATIONS- Respondent upload Directions Document', async ({api}) => {
