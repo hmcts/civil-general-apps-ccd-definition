@@ -66,7 +66,7 @@ Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT  as DEFENDANT - DIRECTIONS O
   await api.respondentResponseToJudgeDirections(config.applicantSolicitorUser, gaCaseReference);
   console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
   let doc = 'gaAddl';
-  await api.assertDocumentVisibilityToUser(config.defendantSolicitorUser, 'Claimant', civilCaseReference, gaCaseReference, doc);
+  await api.assertDocumentVisibilityToUser(config.applicantSolicitorUser, 'RespondentSol', civilCaseReference, gaCaseReference, doc);
 });
 AfterSuite(async ({api}) => {
   await api.cleanUp();
