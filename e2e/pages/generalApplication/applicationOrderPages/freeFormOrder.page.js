@@ -1,4 +1,4 @@
-const date = require('../../../fragments/date');
+//const date = require('../../../fragments/date');
 const {selectCourtsOrderType} = require('../../generalAppCommons');
 const {I} = inject();
 
@@ -32,11 +32,11 @@ module.exports = {
     switch (formType) {
       case 'courtOwnInitiativeOrder':
         await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtsOrder.courtInitiativeOrderText)).trim(), formType);
-        await date.verifyPrePopulatedDate(this.fields.courtsOrder.onInitiativeSelectionDateId, orderType);
+        //await date.verifyPrePopulatedDate(this.fields.courtsOrder.onInitiativeSelectionDateId, orderType);
         break;
       case 'withoutNoticeOrder':
         await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtsOrder.courWithoutNoticeOrderText)).trim(), formType);
-       // await date.verifyPrePopulatedDate(this.fields.courtsOrder.withoutNoticeSelectionDateId, orderType);
+        //await date.verifyPrePopulatedDate(this.fields.courtsOrder.withoutNoticeSelectionDateId, orderType);
         break;
       case 'noneOrder':
         await selectCourtsOrderType('', formType, '');
