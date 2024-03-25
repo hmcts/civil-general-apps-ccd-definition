@@ -2180,7 +2180,7 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   let doc = 'gaAddl';
   if (user.email === config.defendantSolicitorUser.email
       || user.email === config.secondDefendantSolicitorUser.email ) {
-    await assertDocVisibilityToUser(user, "Claimant", parentCaseId, gaCaseReference, doc);
+    await assertDocVisibilityToUser(user, 'Claimant', parentCaseId, gaCaseReference, doc);
     await assertNullGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, doc);
   }
 
@@ -2194,7 +2194,7 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, ccdState, user);
   if (user.email === config.defendantSolicitorUser.email
       || user.email === config.secondDefendantSolicitorUser.email ) {
-    await assertDocVisibilityToUser(config.applicantSolicitorUser, "RespondentSol", parentCaseId, gaCaseReference,
+    await assertDocVisibilityToUser(config.applicantSolicitorUser, 'RespondentSol', parentCaseId, gaCaseReference,
                                       doc);
   }
   await addUserCaseMapping(gaCaseReference, user);
