@@ -1264,6 +1264,13 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judgeTitle",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
 

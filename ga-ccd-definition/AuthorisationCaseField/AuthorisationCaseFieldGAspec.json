@@ -3814,5 +3814,28 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judgeTitle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
