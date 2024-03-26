@@ -883,6 +883,7 @@ module.exports = {
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.equal(responseBody.state, 'AWAITING_DIRECTIONS_ORDER_DOCS');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_DIRECTIONS_ORDER_DOCS', user);
   },
 
   judgeMakesDecisionWrittenRep: async (user, gaCaseId) => {
@@ -2556,7 +2557,7 @@ const assertDocVisibilityToUser = async ( user, gaUserRole, parentCaseId, gaCase
   else{
     docCivil = civilCaseData[doc + 'DocStaff'];
   }
-  assert.equal(docGa[0]['id'], docCivil[0]['id']);
+  assert.equal(docGa.at(-1)['id'], docCivil.at(-1)['id']);
 };
 
 const assertGaDocVisibilityToUser = async ( user, parentCaseId, gaCaseId, doc) => {
