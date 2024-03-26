@@ -14,6 +14,18 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAKE_DECISION",
+    "CaseFieldID": "judgeTitle",
+    "PageID": "GAJudicialDecision",
+    "PageFieldDisplayOrder": 2,
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAKE_DECISION",
     "CaseFieldID": "applicationIsCloaked",
     "PageID": "GAJudicialMakeADecisionScreen",
     "PageFieldDisplayOrder": 1,
