@@ -2,9 +2,10 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "UserRoles": [
-      "caseworker-civil-systemupdate"
+      "caseworker-civil-systemupdate",
+      "caseworker-caa"
     ],
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
