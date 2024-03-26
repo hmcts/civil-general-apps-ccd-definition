@@ -11,6 +11,30 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "applicant1OrganisationPolicy",
+    "Label": "Claimant's legal representative",
+    "FieldType": "OrganisationPolicy",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "respondent1OrganisationPolicy",
+    "Label": "Defendant's legal representative",
+    "FieldType": "OrganisationPolicy",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "respondent2OrganisationPolicy",
+    "Label": "Defendant 2's legal representative",
+    "FieldType": "OrganisationPolicy",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalApplicationCaseListLabel",
     "Label": "Application Type",
     "HintText": "  ",
@@ -183,6 +207,16 @@
     "FieldTypeParameter": "GASolicitorDetailsGAspec",
     "SecurityClassification": "Public",
     "_Definition":  "This fields holds respondent's Solicitor details.",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppApplicantAddlSolicitors",
+    "Label": "Applicant Addl Solicitor Details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GASolicitorDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "This fields holds applicant's Solicitor details.",
     "_Category":  "COMMON"
   },
   {
@@ -1215,6 +1249,27 @@
     "ID": "caseDocumentUploadDateRes",
     "Label": "upload date",
     "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "applicationTypes",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "parentCaseReference",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "judgeTitle",
+    "Label": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {

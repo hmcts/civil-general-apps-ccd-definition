@@ -13,7 +13,6 @@ module.exports = {
   },
 
   async verifyUploadedFile(expectedLabel, uploadedDoc) {
-    await I.waitForElement(this.fields.appDocTable);
     I.seeInCurrentUrl('Documents');
     I.see(uploadedDoc);
     I.see(expectedLabel);
