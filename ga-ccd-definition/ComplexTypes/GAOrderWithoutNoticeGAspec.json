@@ -4,8 +4,7 @@
     "ListElementCode": "orderWithoutNotice",
     "ElementLabel": "Order without notice",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public",
-    "Max": 400
+    "SecurityClassification": "Public"
   },
   {
     "ID": "GAOrderWithoutNoticeGAspec",
