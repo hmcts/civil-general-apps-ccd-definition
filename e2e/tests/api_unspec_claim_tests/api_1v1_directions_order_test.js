@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 Judge Make Order Directions Order API tests @api-tests');
+Feature('GA 1v1 Judge Make Order Directions Order API tests @mm');
 
 Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT - DIRECTIONS ORDER - Respondent upload Directions Document', async ({api}) => {
 
@@ -23,17 +23,6 @@ Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT - DIRECTIONS ORDER - Respond
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-  console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionDirectionsOrder(config.judgeUser2WithRegionId2, gaCaseReference);
-  } else {
-    await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
-  }
-  console.log('*** End Judge Directions Order GA Case Reference: ' + gaCaseReference + ' ***');
-
-  console.log('*** Start Respondent respond to Judge Directions on GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentResponseToJudgeDirections(config.applicantSolicitorUser, gaCaseReference);
-  console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
 });
 
 Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT  as DEFENDANT - DIRECTIONS ORDER - Respondent upload Directions Document', async ({api}) => {
@@ -52,19 +41,9 @@ Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT  as DEFENDANT - DIRECTIONS O
   await api.respondentDebtorResponse(config.applicantSolicitorUser, gaCaseReference, false);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-  console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionDirectionsOrder(config.judgeUser2WithRegionId2, gaCaseReference);
-  } else {
-    await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
-  }
-  console.log('*** End Judge Directions Order GA Case Reference: ' + gaCaseReference + ' ***');
 
-  console.log('*** Start Respondent respond to Judge Directions on GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentResponseToJudgeDirections(config.applicantSolicitorUser, gaCaseReference);
-  console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
 });
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
 
