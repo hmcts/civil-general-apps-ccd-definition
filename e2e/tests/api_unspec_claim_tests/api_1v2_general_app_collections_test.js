@@ -106,15 +106,15 @@ Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA C
   await api.respondentResponseToJudgeAdditionalInfo(config.secondDefendantSolicitorUser, gaCaseReference);
   console.log('*** End Respondent respond to Judge Additional information on GA Case Reference: '
               + gaCaseReference + ' ***');
-  let doc = 'gaResp';
+  let doc = 'gaAddl';
   await api.assertNullGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, doc);
   await api.assertNullGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, doc);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.assertGaDocumentVisibilityToUser(config.judgeUser2WithRegionId2, civilCaseReference, gaCaseReference, doc);
+    await api.assertDocumentVisibilityToUser(config.judgeUser2WithRegionId2, 'Staff', civilCaseReference, gaCaseReference, doc);
   } else {
-    await api.assertGaDocumentVisibilityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
+    await api.assertDocumentVisibilityToUser(config.judgeLocalUser, 'Staff', civilCaseReference, gaCaseReference, doc);
   }
-  await api.assertGaDocumentVisibilityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
+  await api.assertDocumentVisibilityToUser(config.secondDefendantSolicitorUser, 'Claimant', civilCaseReference, gaCaseReference, doc);
 });
 
 Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Decision Order Made', async ({api}) => {
