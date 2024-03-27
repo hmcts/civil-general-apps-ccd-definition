@@ -864,6 +864,7 @@ module.exports = {
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.equal(responseBody.state, 'AWAITING_WRITTEN_REPRESENTATIONS');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_WRITTEN_REPRESENTATIONS', user);
   },
 
   respondentResponseToJudgeDirections: async (user, gaCaseId) => {
@@ -883,6 +884,7 @@ module.exports = {
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.equal(responseBody.state, 'AWAITING_DIRECTIONS_ORDER_DOCS');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_DIRECTIONS_ORDER_DOCS', user);
   },
 
   judgeMakesDecisionWrittenRep: async (user, gaCaseId) => {
@@ -1028,6 +1030,10 @@ module.exports = {
 
   assertNullGaDocumentVisibilityToUser: async ( user, parentCaseId, doc) => {
     await assertNullGaDocVisibilityToUser( user, parentCaseId, doc);
+  },
+
+  assertDocumentVisibilityToUser: async ( user, gaUserRole, parentCaseId, gaCaseId, doc) => {
+    await assertDocVisibilityToUser( user, gaUserRole, parentCaseId, gaCaseId, doc);
   },
 
   judgeMakesDecisionOrderMade: async (user, gaCaseId) => {
@@ -2173,13 +2179,6 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
 
-  let doc = 'gaEvidence';
-  if (user.email === config.defendantSolicitorUser.email
-      || user.email === config.secondDefendantSolicitorUser.email ) {
-    await assertGaDocVisibilityToUser(user, parentCaseId, gaCaseReference, doc);
-    await assertNullGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, doc);
-  }
-
   //calling payment callback handler
   const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
     genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
@@ -2188,10 +2187,21 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   let ccdState = urgency ? 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION' : 'AWAITING_RESPONDENT_RESPONSE';
   //comment out next line to see race condition
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, ccdState, user);
+
+  let doc = 'gaAddl';
   if (user.email === config.defendantSolicitorUser.email
       || user.email === config.secondDefendantSolicitorUser.email ) {
-    await assertGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, gaCaseReference,
-                                      doc);
+    await assertDocVisibilityToUser(user, 'Claimant', parentCaseId, gaCaseReference, doc);
+    await assertNullGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, doc);
+  }
+
+  if (user.email === config.defendantSolicitorUser.email) {
+    await assertDocVisibilityToUser(config.defendantSolicitorUser, 'Claimant', parentCaseId, gaCaseReference,
+                                    doc);
+  }
+  if (user.email === config.secondDefendantSolicitorUser.email ) {
+    await assertDocVisibilityToUser(config.secondDefendantSolicitorUser, 'Claimant', parentCaseId, gaCaseReference,
+                                    doc);
   }
   await addUserCaseMapping(gaCaseReference, user);
   return gaCaseReference;
@@ -2522,10 +2532,13 @@ const adjustDataForSolicitor = (user, data) => {
   return fixtureClone;
 };
 
-const assertGaDocVisibilityToUser = async ( user, parentCaseId, gaCaseId, doc) => {
+const assertDocVisibilityToUser = async ( user, gaUserRole, parentCaseId, gaCaseId, doc) => {
   let docGaTitle = doc + 'Document';
   if (doc === 'gaEvidence') {
     docGaTitle = 'generalAppEvidence' + 'Document';
+  }
+  if (gaUserRole != null) {
+    docGaTitle = doc + 'Doc' + gaUserRole;
   }
   let docCivil = '';
   const response = await apiRequest.fetchMainCivilCaseData(parentCaseId, user);
@@ -2545,7 +2558,11 @@ const assertGaDocVisibilityToUser = async ( user, parentCaseId, gaCaseId, doc) =
   else{
     docCivil = civilCaseData[doc + 'DocStaff'];
   }
-  assert.equal(docGa[0]['id'], docCivil[0]['id']);
+  assert.equal(docGa.at(-1)['id'], docCivil.at(-1)['id']);
+};
+
+const assertGaDocVisibilityToUser = async ( user, parentCaseId, gaCaseId, doc) => {
+  await assertDocVisibilityToUser( user, null, parentCaseId, gaCaseId, doc);
 };
 
 const assertNullGaDocVisibilityToUser = async ( user, parentCaseId, doc) => {
