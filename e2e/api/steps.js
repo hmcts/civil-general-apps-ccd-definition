@@ -864,6 +864,7 @@ module.exports = {
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.equal(responseBody.state, 'AWAITING_WRITTEN_REPRESENTATIONS');
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'AWAITING_WRITTEN_REPRESENTATIONS', user);
   },
 
   respondentResponseToJudgeDirections: async (user, gaCaseId) => {
