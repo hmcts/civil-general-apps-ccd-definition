@@ -176,8 +176,18 @@
     "TabID": "ApplicationDocumentsMain",
     "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
-    "CaseFieldID": "isDocumentVisible",
+    "CaseFieldID": "gaAddlDocBundle",
     "TabFieldDisplayOrder": 20,
+    "FieldShowCondition": "isDocumentVisible = \"Yes\"",
+    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink, createdBy)"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDocumentsMain",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "isDocumentVisible",
+    "TabFieldDisplayOrder": 21,
     "FieldShowCondition": "gaDraftDocument = \"DO_NOT_SHOW_IN_UI\""
   }
 ]
