@@ -7,7 +7,7 @@ let civilCaseReference, gaCaseReference;
 Feature('GA 1v1 Judge Make Order Written Rep API tests @api-nightly');
 // This test should be enabled after early adopters goes live for all regions
 
-Scenario.only('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS- Respondent upload Directions Document', async ({api}) => {
+Scenario.skip('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS- Respondent upload Directions Document', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -57,5 +57,5 @@ Scenario.skip('Judge uncloaked the without notice application: Judge revisit mak
 });
 
 AfterSuite(async ({api}) => {
-  //await api.cleanUp();
+  await api.cleanUp();
 });
