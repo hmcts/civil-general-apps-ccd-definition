@@ -49,9 +49,14 @@ module.exports = {
 
   async verifyPrePopulatedDate(fieldId, orderType, workingDay) {
     I.waitForElement(this.fields(fieldId).day);
+    let date = new Date();
 
-    let docMonth = ((workingDay.getMonth() + 1) >= 10) ? (workingDay.getMonth() + 1) : '0' + (workingDay.getMonth() + 1);
-    let twoDigitDate = ((workingDay.getDate()) >= 10) ? (workingDay.getDate()) : '0' + (workingDay.getDate());
+    if (orderType !== 'assistedOrder') {
+      date = new Date(workingDay);
+    }
+
+    let docMonth = ((date.getMonth() + 1) >= 10) ? (date.getMonth() + 1) : '0' + (date.getMonth() + 1);
+    let twoDigitDate = ((date.getDate()) >= 10) ? (date.getDate()) : '0' + (date.getDate());
 
     let expectedDay = await I.grabValueFrom(this.fields(fieldId).day);
     await expect(expectedDay).to.equals(twoDigitDate.toString());
@@ -60,6 +65,6 @@ module.exports = {
     await expect(expectedMonth).to.equals(docMonth.toString());
 
     let expectedYear = await I.grabValueFrom(this.fields(fieldId).year);
-    await expect(expectedYear).to.equals(workingDay.getFullYear().toString());
+    await expect(expectedYear).to.equals(date.getFullYear().toString());
   },
 };
