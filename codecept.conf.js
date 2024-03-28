@@ -1,12 +1,13 @@
 exports.config = {
-  tests: process.env.CCD_UI_TESTS =='true' 
+  tests: process.env.CCD_UI_TESTS =='true'
     ? ['./e2e/tests/ui_tests/cp_tests/**/*_test.js',
         './e2e/tests/ui_tests/multiparty-ga-tests/**/*_test.js',
         './e2e/tests/ui_tests/wa_tests/**/*_test.js',
         './e2e/tests/ui_tests/*_test.js',
-        './e2e/tests/api*/**/*_test.js'] 
+        './e2e/tests/api*/**/*_test.js']
     : [ './e2e/tests/ui_tests/*_test.js',
-        './e2e/tests/api*/**/*_test.js'],
+      './e2e/tests/ui_tests/cp_tests/**/*_test.js',
+      './e2e/tests/api*/**/*_test.js'],
   output: process.env.REPORT_DIR || 'test-results/functional',
   helpers: {
     Playwright: {
