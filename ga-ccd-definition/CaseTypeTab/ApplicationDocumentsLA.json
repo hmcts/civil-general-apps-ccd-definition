@@ -167,6 +167,15 @@
     "CaseFieldID": "gaAddlDocRespondentSolTwo",
     "TabFieldDisplayOrder": 19,
     "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDocumentsLA",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "gaAddlDocBundle",
+    "TabFieldDisplayOrder": 20,
+    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink)"
   }
 ]
 
