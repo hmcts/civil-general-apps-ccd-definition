@@ -37,6 +37,7 @@
 ./bin/utils/ccd-add-role.sh "hearing-centre-admin"
 ./bin/utils/ccd-add-role.sh "national-business-centre"
 ./bin/utils/ccd-add-role.sh "hearing-centre-team-leader"
+./bin/utils/ccd-add-role.sh "court-officer-order"
 
 
 roles=("solicitor" "systemupdate" "admin" "staff" "judge")
