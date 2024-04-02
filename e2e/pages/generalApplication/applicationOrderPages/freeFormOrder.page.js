@@ -1,4 +1,4 @@
-//const date = require('../../../fragments/date');
+const date = require('../../../fragments/date');
 const {selectCourtsOrderType} = require('../../generalAppCommons');
 const {I} = inject();
 
@@ -21,7 +21,7 @@ module.exports = {
     },
   },
 
-  async fillFreeFormOrder(orderType, formType) {
+  async fillFreeFormOrder(orderType, formType, workingDay) {
     await I.waitInUrl('/GENERATE_DIRECTIONS_ORDER/GENERATE_DIRECTIONS_ORDERFreeFormOrder', 5);
     await I.see('Test Inc v Sir John Doe');
     await I.see('Recitals and order');
@@ -32,11 +32,11 @@ module.exports = {
     switch (formType) {
       case 'courtOwnInitiativeOrder':
         await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtsOrder.courtInitiativeOrderText)).trim(), formType);
-        //await date.verifyPrePopulatedDate(this.fields.courtsOrder.onInitiativeSelectionDateId, orderType);
+        await date.verifyPrePopulatedDate(this.fields.courtsOrder.onInitiativeSelectionDateId, orderType, workingDay);
         break;
       case 'withoutNoticeOrder':
         await selectCourtsOrderType((await I.grabValueFrom(this.fields.courtsOrder.courWithoutNoticeOrderText)).trim(), formType);
-        //await date.verifyPrePopulatedDate(this.fields.courtsOrder.withoutNoticeSelectionDateId, orderType);
+        await date.verifyPrePopulatedDate(this.fields.courtsOrder.withoutNoticeSelectionDateId, orderType, workingDay);
         break;
       case 'noneOrder':
         await selectCourtsOrderType('', formType, '');
