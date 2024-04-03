@@ -4,8 +4,7 @@
     "ListElementCode": "orderCourtOwnInitiative",
     "ElementLabel": "Order on court's own initiative",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public",
-    "Max": 400
+    "SecurityClassification": "Public"
   },
   {
     "ID": "GAOrderCourtOwnInitiativeGAspec",

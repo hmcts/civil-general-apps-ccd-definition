@@ -552,8 +552,7 @@
     "ID": "judicialGOHearingDirections",
     "Label": "Directions in relation to hearing",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public",
-    "Max": 400
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -647,8 +646,7 @@
     "Label": "Order in relation to written representations",
     "ElementLabel": "Order in relation to written representations",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public",
-    "Max": 1000
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
