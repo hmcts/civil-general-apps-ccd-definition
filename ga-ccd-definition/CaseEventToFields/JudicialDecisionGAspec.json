@@ -337,8 +337,7 @@
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
-    "Comment": "Draw a General Order",
-    "Max": 400
+    "Comment": "Draw a General Order"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
