@@ -51,6 +51,7 @@ const party = require('./fragments/party');
 const event = require('./fragments/event');
 const respondentDetails = require('./fragments/respondentDetails.page');
 const confirmDetailsPage = require('./fragments/confirmDetails.page');
+const {dateNoWeekendsBankHolidayNextDay} = require('./fragments/date');
 
 const applicationTypePage = require('./pages/generalApplication/applicationType.page');
 const hearingDatePage = require('./pages/generalApplication/hearingDate.page');
@@ -884,6 +885,11 @@ module.exports = function () {
     },
 
     async judgeMakeAppOrder(gaCaseNumber, orderType, formType) {
+      let workingDay = await dateNoWeekendsBankHolidayNextDay(0);
+
+      if (orderType === 'freeFromOrder') {
+        workingDay = await dateNoWeekendsBankHolidayNextDay(7);
+      }
       eventName = events.GENERATE_DIRECTIONS_ORDER.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, gaCaseNumber),
@@ -891,7 +897,7 @@ module.exports = function () {
         () => judgeOrderPage.selectOrderType(orderType),
         ...conditionalSteps(orderType === 'freeFromOrder', [
           () => freeFormOrderPage.verifyFreeFromErrorMessage(),
-          () => freeFormOrderPage.fillFreeFormOrder(orderType, formType),
+          () => freeFormOrderPage.fillFreeFormOrder(orderType, formType, workingDay),
         ]),
         ...conditionalSteps(orderType === 'assistedOrder', [
           () => assistedOrderPage.verifyAssistedOrderErrorMessage(),

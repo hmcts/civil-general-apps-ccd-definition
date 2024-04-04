@@ -108,7 +108,6 @@
     "ListElementCode": "addlnInfoCourtStaff",
     "ElementLabel": " ",
     "FieldType": "TextArea",
-    "Max": 400,
     "SecurityClassification": "Public"
   },
   {

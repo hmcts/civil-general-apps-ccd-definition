@@ -14,7 +14,6 @@
     "ElementLabel": "Enter the information required",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
-    "Max": 1000,
     "FieldShowCondition": "requestMoreInfoOption=\"REQUEST_MORE_INFORMATION\" OR isWithNotice=\"Yes\""
   },
   {
