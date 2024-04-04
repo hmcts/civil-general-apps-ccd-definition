@@ -214,5 +214,11 @@
     "CaseFieldID": "gaAddlDocRespondentSolTwo",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaAddlDocBundle",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
   }
 ]
