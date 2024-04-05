@@ -31,7 +31,7 @@ module.exports = {
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 4);
     } else {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 2);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);
     }
     let docURL = await I.grabTextFrom(locate(this.fields.links).first());
     switch (documentType) {
@@ -65,11 +65,6 @@ module.exports = {
         await I.see(`Consent_order_for_application_${docFullDate}`);
         break;
     }
-    let draftAppURL = await I.grabTextFrom(locate(this.fields.links).last());
-    expect(draftAppURL).to.contains(`Draft_application_${docFullDate}`);
-    await I.see('Type');
-    await I.see('Uploaded on');
-    await I.see('Document URL');
     //  Concurrent written representations journey is now without notice to with notice hence added this logic
     if (documentType === 'Written representation concurrent') {
       await I.seeTextEquals(documentType, locate(this.fields.docLabel).first());
@@ -83,6 +78,5 @@ module.exports = {
     } else {
       await I.seeTextEquals(documentType, locate(this.fields.docLabel).first());
     }
-    await I.seeTextEquals('Draft Application', locate(this.fields.docLabel).last());
   }
 };

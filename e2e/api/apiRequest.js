@@ -99,7 +99,7 @@ module.exports = {
 
   fetchGaCaseData: async (caseId) => {
 
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    const authToken = await idamHelper.accessToken(config.systemUpdate);
 
     let url = getGaCaseDataUrl(caseId);
     console.log('*** GA Case Reference: '  + caseId + ' ***');
