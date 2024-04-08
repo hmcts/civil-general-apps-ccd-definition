@@ -931,7 +931,7 @@ module.exports = function () {
         () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_ADDITIONAL_INFO.id, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
         () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
-        () => applicationDocumentPage.verifyUploadedFile('Additional Information Documents', 'examplePDF.pdf'),
+        () => applicationDocumentPage.verifyUploadedFile('Additional information', 'examplePDF.pdf'),
       ]);
     },
 
@@ -978,7 +978,7 @@ module.exports = function () {
         () => uploadScreenPage.uploadSupportingFile(events.RESPOND_TO_JUDGE_DIRECTIONS.id, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
         () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
-        () => applicationDocumentPage.verifyUploadedFile('Directions Order Documents', 'examplePDF.pdf'),
+        () => applicationDocumentPage.verifyUploadedFile('Directions order', 'examplePDF.pdf'),
       ]);
     },
 
