@@ -81,7 +81,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "[CLAIMANT]",
+    "ID": "[APPLICANT]",
     "Name": "CUI Claimant",
     "Description": "CUI Claimant role spec",
     "JurisdictionID": "CIVIL",
@@ -89,7 +89,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "[DEFENDANT]",
+    "ID": "[RESPONDENT]",
     "Name": "CUI Defendant",
     "Description": "CUI Defendant role spec",
     "JurisdictionID": "CIVIL",
