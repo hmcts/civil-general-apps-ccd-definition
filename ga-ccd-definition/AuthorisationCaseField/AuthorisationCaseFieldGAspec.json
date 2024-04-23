@@ -3309,7 +3309,8 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RESPONDENT-ONE-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3666,7 +3667,8 @@
           "judge-profile",
           "legal-adviser",
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "RESPONDENT-ONE-PROFILE"
         ],
         "CRUD": "CRU"
       },
