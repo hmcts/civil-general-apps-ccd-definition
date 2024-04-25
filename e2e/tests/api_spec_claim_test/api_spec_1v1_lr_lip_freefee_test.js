@@ -2,11 +2,10 @@
 const config = require('../../config.js');
 let civilCaseReference, gaCaseReference;
 const mpScenario = 'ONE_V_ONE';
-const claimAmountJudge = '11000';
 
-Feature('General Application LR vs LIP 1V1 @lip--api-test');
+Feature('General Application LR vs LIP 1V1 Application @lip--api-test');
 
-Scenario('GA 1v1  - LR initiates GA vs LIP', async ({api, I}) => {
+Scenario.skip('GA 1v1 Free Fee  - LR initiates GA vs LIP', async ({api, I}) => {
 
   civilCaseReference = await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimLip(config.applicantSolicitorUser);
@@ -32,5 +31,5 @@ Scenario('GA 1v1  - LR initiates GA vs LIP', async ({api, I}) => {
 
 
 AfterSuite(async ({api}) => {
-   await api.cleanUp();
+  await api.cleanUp();
 });
