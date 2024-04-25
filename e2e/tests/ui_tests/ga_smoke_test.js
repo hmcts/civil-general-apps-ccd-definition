@@ -5,9 +5,9 @@ const mpScenario = 'ONE_V_ONE';
 const claimAmountJudge = '11000';
 const errorMsg = 'Sorry this service is not available in the current case management location, please raise an application manually.';
 
-Feature('General Application Smoke tests @ga-smoke-tests');
+Feature('General Application Smoke tests @karthick');
 
-Scenario.skip('GA 1v1  - Judge Makes Decision Order Made @smoke-tests', async ({api, I}) => {
+Scenario.skip('GA 1v1  - Judge Makes Decision Order Made @karthick', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);

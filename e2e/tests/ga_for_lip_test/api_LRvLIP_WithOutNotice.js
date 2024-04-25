@@ -7,12 +7,11 @@ const errorMsg = 'Sorry this service is not available in the current case manage
 
 Feature('General Application LR vs LIP 1V1 @ga-smoke-tests');
 
-Scenario('GA 1v1  - Judge Makes Decision Order Made @karthick', async ({api, I}) => {
+Scenario('GA 1v1  - Judge Makes Decision Order Made @smoke-tests @lrvslip', async ({api, I}) => {
 
   civilCaseReference = await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimLip(config.applicantSolicitorUser);
   await api.notifyClaimDetailsLip(config.applicantSolicitorUser, mpScenario);
-
 
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
@@ -29,4 +28,8 @@ Scenario('GA 1v1  - Judge Makes Decision Order Made @karthick', async ({api, I})
   await I.login(config.defendantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see('Order Made');*/
+});
+
+AfterSuite(async ({api}) => {
+  //await api.cleanUp();
 });
