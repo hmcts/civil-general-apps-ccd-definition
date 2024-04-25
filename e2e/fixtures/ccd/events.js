@@ -88,5 +88,23 @@ module.exports = {
     id: 'CHANGE_SOLICITOR_EMAIL',
     name: 'Change solicitor email',
     order: 17
+  },
+  INITIATE_GENERAL_APPLICATION: {
+    id: 'INITIATE_GENERAL_APPLICATION',
+    name: 'Make an application',
+    description: 'Application created, post actions triggered',
+    order: 18
+  },
+  DEFAULT_JUDGEMENT: {
+    id: 'DEFAULT_JUDGEMENT',
+    name: 'Request Default Judgment',
+    description: 'Request Default Judgment',
+    order: 19
+  },
+  MANAGE_CONTACT_INFORMATION: {
+    id: 'MANAGE_CONTACT_INFORMATION',
+    name: 'Manage Contact Information',
+    description: 'Updated party contact details',
+    order: 20
   }
 };
