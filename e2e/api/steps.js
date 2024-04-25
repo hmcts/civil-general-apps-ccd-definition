@@ -20,8 +20,8 @@ const {
 
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
-const expectedEventsLIP = require('../fixtures/ccd/expectedEventsLIP.js');
-const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
+//const expectedEventsLIP = require('../fixtures/ccd/expectedEventsLIP.js');
+//const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const claimDataSpec = require('../fixtures/events/claim/createClaimSpec.js');
 const claimSpecData = require('../fixtures/events/createClaimSpec.js');
