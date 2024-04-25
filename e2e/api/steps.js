@@ -1418,7 +1418,7 @@ module.exports = {
       body: 'The defendant(s) must'
     });
 
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
 
     //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
