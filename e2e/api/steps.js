@@ -41,7 +41,7 @@ const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const {expect} = require('chai');
 const {cloneDeep} = require('lodash');
-const idamHelper = require('./idamHelper');
+//const idamHelper = require('./idamHelper');
 const gaTypesList = {
   'LATypes': ['STAY_THE_CLAIM','EXTEND_TIME', 'AMEND_A_STMT_OF_CASE'],
   'JudgeGaTypes': ['SET_ASIDE_JUDGEMENT']
