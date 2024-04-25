@@ -306,7 +306,7 @@ module.exports = {
       body: 'Your claim will not be issued until payment is confirmed'
     });
 
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
@@ -320,7 +320,7 @@ module.exports = {
       await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
     }
     console.log('***waitForFinishedBusinessProcess');
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
     console.log('***assertCorrectEventsAreAvailableToUser');
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     console.log('***assertCorrectEventsAreAvailableToUser');
@@ -1379,7 +1379,7 @@ module.exports = {
       body: 'You must serve the claim details and'
     });
 
-    await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
   },
