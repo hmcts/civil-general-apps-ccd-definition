@@ -59,6 +59,17 @@ Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Consent Order');
 }).retry(1);
 
+Scenario('GA 1v1  - General Application LR vs LIP 1V1 @e2e-tests', async ({api, I}) => {
+
+  civilCaseReference = await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario);
+  await api.notifyClaimLip(config.applicantSolicitorUser);
+  await api.notifyClaimDetailsLip(config.applicantSolicitorUser, mpScenario);
+
+  console.log('Civil Case created for general application: ' + civilCaseReference);
+  console.log('Make a General Application');
+  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
+});
+
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
