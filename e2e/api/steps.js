@@ -41,6 +41,7 @@ const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const {expect} = require('chai');
 const {cloneDeep} = require('lodash');
+const idamHelper = require('./idamHelper');
 const gaTypesList = {
   'LATypes': ['STAY_THE_CLAIM','EXTEND_TIME', 'AMEND_A_STMT_OF_CASE'],
   'JudgeGaTypes': ['SET_ASIDE_JUDGEMENT']
@@ -93,7 +94,7 @@ const data = {
   CREATE_CLAIM: (mpScenario, claimantType, claimAmount, sdoR2) => claimData.createClaim(mpScenario, claimantType, claimAmount, sdoR2),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
   UPDATE_CLAIMANT_SOLICITOR_EMAILID: claimSpecData.updateClaimantSolicitorEmailId(),
-  CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
+  CREATE_CLAIM_RESPONDENT_LIP: (eventUserId) => claimData.createClaimLitigantInPerson(eventUserId),
   COS_NOTIFY_CLAIM: (lip1, lip2) => claimData.cosNotifyClaim(lip1, lip2),
   COS_NOTIFY_CLAIM_DETAILS: (lip1, lip2) => claimData.cosNotifyClaimDetails(lip1, lip2),
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
@@ -283,9 +284,13 @@ module.exports = {
     console.log('Is sdoR2 toggle on?: ' + sdoR2);
 
     let createClaimData;
+
+    let eventUserAuth = await idamHelper.accessToken(config.defendantSolicitorUser);
+    let eventUserId = await idamHelper.userId(eventUserAuth);
+
     switch (mpScenario){
       case 'ONE_V_ONE':
-        createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
+        createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP(eventUserId);
         break;
     }
 
