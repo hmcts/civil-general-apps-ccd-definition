@@ -4,9 +4,9 @@ let civilCaseReference, gaCaseReference;
 const mpScenario = 'ONE_V_ONE';
 const claimAmountJudge = '11000';
 
-Feature('General Application LR vs LIP 1V1 @lrvslip ');
+Feature('General Application LR vs LIP 1V1  @ui-nightly');
 
-Scenario('GA 1v1  - Judge Makes Decision Order Made @lrvslip ', async ({api, I}) => {
+Scenario('GA 1v1  - General Application LR vs LIP 1V1 @e2e-tests', async ({api, I}) => {
 
   civilCaseReference = await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimLip(config.applicantSolicitorUser);

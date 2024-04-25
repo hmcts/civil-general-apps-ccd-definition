@@ -7,7 +7,7 @@ const errorMsg = 'Sorry this service is not available in the current case manage
 
 Feature('General Application Smoke tests @ga-smoke-tests');
 
-Scenario.skip('GA 1v1  - Judge Makes Decision Order Made @smoke-tests', async ({api, I}) => {
+Scenario('GA 1v1  - Judge Makes Decision Order Made @smoke-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
