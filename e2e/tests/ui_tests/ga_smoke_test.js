@@ -7,7 +7,7 @@ const errorMsg = 'Sorry this service is not available in the current case manage
 
 Feature('General Application Smoke tests @ga-smoke-tests');
 
-Scenario('GA 1v1  - Judge Makes Decision Order Made @smoke-tests', async ({api, I}) => {
+Scenario.skip('GA 1v1  - Judge Makes Decision Order Made @smoke-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -30,6 +30,18 @@ Scenario('GA 1v1  - Judge Makes Decision Order Made @smoke-tests', async ({api, 
   await I.login(config.defendantSolicitorUser);
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see('Order Made');
+});
+
+Scenario.skip('Non EA Region Cases should not have access to the GA Feature @smoke-tests', async ({I, api}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await I.login(config.applicantSolicitorUser);
+  await I.navigateToCaseDetails(civilCaseReference);
+  await I.verifyGAAccessToNonEARegion(errorMsg);
 });
 
 AfterSuite(async ({api}) => {
