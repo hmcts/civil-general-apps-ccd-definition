@@ -12,6 +12,7 @@ Scenario('GA 1v1  - Judge Makes Decision Order Made @smoke-tests', async ({api, 
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  
   await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
   await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
