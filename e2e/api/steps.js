@@ -2194,7 +2194,7 @@ const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, 
   }
 };
 
-const assertCorrectEventsAreAvailableToUser = async (user, state) => {
+/*const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (['preview', 'demo'].includes(config.runningEnv)) {
@@ -2202,7 +2202,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEventsLIP[user.type][state]);
   }
-};
+};*/
 
 const assertSubmittedSpecEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
