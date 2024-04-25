@@ -136,7 +136,7 @@ const claimant = (claimantType) => {
   }
 };
 
-const createClaimDataLIP = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000',sdoR2, eventUserId) => {
+const createClaimDataLIP = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000',sdoR2) => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
@@ -154,10 +154,6 @@ const createClaimDataLIP = (pbaV3, legalRepresentation, useValidPba, mpScenario,
           ],
           value: listElement(config.claimantSelectedCourt)
         }
-      },
-      defendantUserDetails : {
-        email: 'hmcts.civil+organisation.2.solicitor.1@gmail.com',
-        id: eventUserId
       },
       applicant1DQRemoteHearing: {
         remoteHearingRequested: 'No'
@@ -839,10 +835,8 @@ module.exports = {
     };
   },
 
-  createClaimLitigantInPerson: (eventUserId) => {
-    return {
-      valid: createClaimDataLIP(false,'No', true, 'ONE_V_ONE', eventUserId)
-    };
+  createClaimLitigantInPerson: {
+    valid: createClaimDataLIP(false,'No', true, 'ONE_V_ONE')
   },
   createClaimWithTerminatedPBAAccount: {
     valid: createClaimData('Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP', 'Company')

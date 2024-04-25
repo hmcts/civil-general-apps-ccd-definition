@@ -95,7 +95,7 @@ const data = {
   CREATE_CLAIM: (mpScenario, claimantType, claimAmount, sdoR2) => claimData.createClaim(mpScenario, claimantType, claimAmount, sdoR2),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
   UPDATE_CLAIMANT_SOLICITOR_EMAILID: claimSpecData.updateClaimantSolicitorEmailId(),
-  CREATE_CLAIM_RESPONDENT_LIP: (eventUserId) => claimData.createClaimLitigantInPerson(eventUserId),
+  CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   COS_NOTIFY_CLAIM: (lip1, lip2) => claimData.cosNotifyClaim(lip1, lip2),
   COS_NOTIFY_CLAIM_DETAILS: (lip1, lip2) => claimData.cosNotifyClaimDetails(lip1, lip2),
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
@@ -286,12 +286,12 @@ module.exports = {
 
     let createClaimData;
 
-    let eventUserAuth = await idamHelper.accessToken(config.defendantSolicitorUser);
-    let eventUserId = await idamHelper.userId(eventUserAuth);
+    /*let eventUserAuth = await idamHelper.accessToken(config.defendantSolicitorUser);
+    let eventUserId = await idamHelper.userId(eventUserAuth);*/
 
     switch (mpScenario){
       case 'ONE_V_ONE':
-        createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP(eventUserId);
+        createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
         break;
     }
 
