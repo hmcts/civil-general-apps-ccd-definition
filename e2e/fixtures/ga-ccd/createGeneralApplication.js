@@ -490,6 +490,88 @@ module.exports = {
       }
     };
   },
+  createGaAdjournVacateDataLip: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => {
+    return {
+      generalAppType: {
+        types: [
+          'ADJOURN_HEARING'
+        ]
+      },
+      generalAppRespondentAgreement: {
+        hasAgreed: isWithConsent
+      },
+      isGaApplicantLip: 'No',
+      isGaRespondentOneLip: 'Yes',
+      isGaRespondentTwoLip: 'No',
+      generalAppUrgencyRequirement: {
+        generalAppUrgency: 'No',
+        urgentAppConsiderationDate: null,
+        reasonsForUrgency: null,
+        ConsentAgreementCheckBox: []
+      },
+      generalAppHearingDate: {
+        hearingScheduledDate: hearingDate,
+        hearingScheduledPreferenceYesNo: 'Yes'
+      },
+      generalAppDetailsOfOrder: 'Test Order details',
+      generalAppReasonsOfOrder: 'Test reason for order',
+      generalAppEvidenceDocument: [],
+      generalAppStatementOfTruthConsent: [
+        'ConsentAgreementCheckBox'
+      ],
+      generalAppStatementOfTruth: {
+        name: 'John Doe',
+        role: 'Test Solicitor'
+      },
+      generalAppInformOtherParty: {
+        isWithNotice: isWithNotice,
+        reasonsForWithoutNotice: 'reason'
+      },
+      generalAppHearingDetails: {
+        hearingYesorNo: 'No',
+        hearingDate: null,
+        judgeRequiredYesOrNo: 'No',
+        judgeName: null,
+        trialRequiredYesOrNo: 'No',
+        trialDateFrom: null,
+        trialDateTo: null,
+        HearingPreferencesPreferredType: 'IN_PERSON',
+        TelephoneHearingPreferredType: null,
+        ReasonForPreferredHearingType: 'sdsd',
+        HearingPreferredLocation: null,
+        HearingDetailsTelephoneNumber: '07446778166',
+        HearingDetailsEmailID: 'update@gh.com',
+        HearingDuration: 'MINUTES_15',
+        generalAppHearingDays: null,
+        generalAppHearingHours: null,
+        generalAppHearingMinutes: null,
+        unavailableTrialRequiredYesOrNo: 'No',
+        vulnerabilityQuestionsYesOrNo: 'Yes',
+        vulnerabilityQuestion: 'Test Answer',
+        SupportRequirementSignLanguage: null,
+        SupportRequirementLanguageInterpreter: null,
+        SupportRequirementOther: null,
+        generalAppUnavailableDates: [],
+        SupportRequirement: []
+      },
+      generalAppPBADetails: {
+        paymentSuccessfulDate: null,
+        fee: {
+          calculatedAmountInPence: calculatedAmount,
+          code: code,
+          version: version
+        },
+        paymentDetails: {
+          status: null,
+          reference: null,
+          errorMessage: null,
+          errorCode: null,
+          customerReference: null
+        },
+        serviceRequestReference: null
+      }
+    };
+  },
   createGaAdjournVacateData: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => {
     return {
       generalAppType: {

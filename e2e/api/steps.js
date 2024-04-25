@@ -68,6 +68,7 @@ const data = {
   INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT: (isWithNotice, generalAppN245FormUpload, urgency) => genAppData.createGADataVaryJudgement(isWithNotice,null,
     '1400','FEE0458', generalAppN245FormUpload, urgency),
   INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
+  INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE_LIP: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateDataLip(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
   RESPOND_TO_APPLICATION: (agree) => genAppRespondentResponseData.respondGAData(agree),
   RESPOND_DEBTOR_TO_APPLICATION: (agree) => genAppRespondentResponseData.respondDebtorGAData(agree),
   RESPOND_TO_CONSENT_APPLICATION: (agree) => genAppRespondentResponseData.respondConsentGAData(agree),
@@ -616,6 +617,46 @@ module.exports = {
     const response = await apiRequest.submitEvent(eventName,
          data.INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE(isWithNotice, isWithConsent, hearingDate, calculatedAmount, feeCode, feeVersion),
          parentCaseId);
+    const responseBody = await response.json();
+    assert.equal(response.status, 201);
+    //assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have submitted an application');
+    if (freeGa) {
+      assert.include(responseBody.after_submit_callback_response.confirmation_body, 'The court will make a decision');
+    } else {
+      assert.include(responseBody.after_submit_callback_response.confirmation_body, 'Your application fee');
+    }
+    await waitForFinishedBusinessProcess(parentCaseId, user);
+    await waitForGAFinishedBusinessProcess(parentCaseId, user);
+
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
+    const updatedCivilCaseData = await updatedResponse.json();
+    let gaCaseReference = updatedCivilCaseData.claimantGaAppDetails[0].value.caseLink.CaseReference;
+    console.log('*** GA Case Reference: '  + gaCaseReference + ' ***');
+
+    if (!freeGa) {
+      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
+      //Payment callback handler response after the payment from service request tab
+      const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+        genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+      assert.equal(payment_response.status, 200);
+      console.log('General application case state : AWAITING_RESPONDENT_ACKNOWLEDGEMENT ');
+    }
+    return gaCaseReference;
+  },
+
+  initiateAdjournVacateGeneralApplicationLip: async (user, parentCaseId,
+                                                  isWithNotice, isWithConsent, hearingDate,
+                                                  calculatedAmount, feeCode,
+                                                  feeVersion) => {
+    eventName = events.INITIATE_GENERAL_APPLICATION.id;
+    let freeGa = calculatedAmount==='0';
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName, parentCaseId);
+    const response = await apiRequest.submitEvent(eventName,
+      data.INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE_LIP(isWithNotice, isWithConsent, hearingDate, calculatedAmount, feeCode, feeVersion),
+      parentCaseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
     //assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');

@@ -67,7 +67,10 @@ Scenario.only('GA 1v1  - General Application LR vs LIP 1V1 @e2e-tests', async ({
 
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
+  let hearingDate = await api.createDateString(20);
+  gaCaseReference = await api.initiateAdjournVacateGeneralApplicationLip(
+    config.applicantSolicitorUser, civilCaseReference, 'No',
+    'Yes', hearingDate, '0', 'FEE0414', '1');
 });
 
 AfterSuite(async ({api}) => {
