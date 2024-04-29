@@ -63,7 +63,7 @@
     "CaseAccessCategories": "UNSPEC_CLAIM"
   },
   {
-    "RoleName": "[APPLICANT]",
+    "RoleName": "[CLAIMANT]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "APPLICANT-PROFILE",
@@ -72,7 +72,7 @@
     "CaseAccessCategories": "UNSPEC_CLAIM"
   },
   {
-    "RoleName": "[RESPONDENT]",
+    "RoleName": "[DEFENDANT]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "RESPONDENT-ONE-PROFILE",
@@ -81,7 +81,7 @@
     "CaseAccessCategories": "UNSPEC_CLAIM"
   },
   {
-    "RoleName": "[APPLICANT]",
+    "RoleName": "[CLAIMANT]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "APPLICANT-PROFILE-SPEC",
@@ -90,7 +90,7 @@
     "CaseAccessCategories": "SPEC_CLAIM"
   },
   {
-    "RoleName": "[RESPONDENT]",
+    "RoleName": "[DEFENDANT]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "RESPONDENT-ONE-PROFILE-SPEC",
