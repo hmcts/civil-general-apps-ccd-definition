@@ -259,9 +259,7 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "RESPONDENT-ONE-PROFILE",
-          "RESPONDENT-ONE-PROFILE-SPEC"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
 	    	"CRUD": "CRU"
       },
@@ -287,9 +285,7 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "RESPONDENT-ONE-PROFILE",
-          "RESPONDENT-ONE-PROFILE-SPEC"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -315,9 +311,7 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "RESPONDENT-ONE-PROFILE",
-          "RESPONDENT-ONE-PROFILE-SPEC"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -343,9 +337,7 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "RESPONDENT-ONE-PROFILE",
-          "RESPONDENT-ONE-PROFILE-SPEC"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -581,9 +573,7 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "RESPONDENT-ONE-PROFILE",
-          "RESPONDENT-ONE-PROFILE-SPEC"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
