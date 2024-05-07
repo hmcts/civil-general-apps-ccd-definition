@@ -197,9 +197,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APPLICANT-PROFILE",
           "APPLICANT-PROFILE-SPEC",
-          "RESPONDENT-ONE-PROFILE",
           "RESPONDENT-ONE-PROFILE-SPEC"
         ],
         "CRUD": "CRU"
@@ -212,9 +210,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APPLICANT-PROFILE",
           "APPLICANT-PROFILE-SPEC",
-          "RESPONDENT-ONE-PROFILE",
           "RESPONDENT-ONE-PROFILE-SPEC"
         ],
         "CRUD": "CRU"
@@ -227,9 +223,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APPLICANT-PROFILE",
           "APPLICANT-PROFILE-SPEC",
-          "RESPONDENT-ONE-PROFILE",
           "RESPONDENT-ONE-PROFILE-SPEC"
         ],
         "CRUD": "CRU"
@@ -242,9 +236,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APPLICANT-PROFILE",
           "APPLICANT-PROFILE-SPEC",
-          "RESPONDENT-ONE-PROFILE",
           "RESPONDENT-ONE-PROFILE-SPEC"
         ],
         "CRUD": "CRU"
@@ -293,9 +285,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APPLICANT-PROFILE",
           "APPLICANT-PROFILE-SPEC",
-          "RESPONDENT-ONE-PROFILE",
           "RESPONDENT-ONE-PROFILE-SPEC"
         ],
         "CRUD": "CRU"

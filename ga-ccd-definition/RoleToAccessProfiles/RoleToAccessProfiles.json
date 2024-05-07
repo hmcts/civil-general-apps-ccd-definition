@@ -66,24 +66,6 @@
     "RoleName": "[CLAIMANT]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "APPLICANT-PROFILE",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": "UNSPEC_CLAIM"
-  },
-  {
-    "RoleName": "[DEFENDANT]",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "RESPONDENT-ONE-PROFILE",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": "UNSPEC_CLAIM"
-  },
-  {
-    "RoleName": "[CLAIMANT]",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "APPLICANT-PROFILE-SPEC",
     "ReadOnly": "N",
     "Disabled": "F",

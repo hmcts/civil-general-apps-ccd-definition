@@ -1369,7 +1369,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APPLICANT-PROFILE",
           "APPLICANT-PROFILE-SPEC"
         ],
         "CRUD": "CRU"
@@ -1382,7 +1381,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RESPONDENT-ONE-PROFILE",
           "RESPONDENT-ONE-PROFILE-SPEC"
         ],
         "CRUD": "CRU"
