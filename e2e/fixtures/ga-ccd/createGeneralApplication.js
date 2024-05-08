@@ -305,7 +305,7 @@ module.exports = {
       generalAppPBADetails: {
         paymentSuccessfulDate: null,
         fee: {
-          calculatedAmountInPence: '27500',
+          calculatedAmountInPence: '30300',
           code: 'FEE0442',
           version: '2'
         },
@@ -381,7 +381,7 @@ module.exports = {
       generalAppPBADetails: {
         paymentSuccessfulDate: null,
         fee: {
-          calculatedAmountInPence: '27500',
+          calculatedAmountInPence: '30300',
           code: 'FEE0442',
           version: '2'
         },
@@ -457,7 +457,7 @@ module.exports = {
       generalAppPBADetails: {
         paymentSuccessfulDate: null,
         fee: {
-          calculatedAmountInPence: '27500',
+          calculatedAmountInPence: '30300',
           code: 'FEE0442',
           version: '2'
         },
