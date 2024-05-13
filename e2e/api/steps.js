@@ -20,11 +20,10 @@ const {
 
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
-const expectedEventsLIP = require('../fixtures/ccd/expectedEventsLIP.js');
-const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const claimDataSpec = require('../fixtures/events/claim/createClaimSpec.js');
 const claimSpecData = require('../fixtures/events/createClaimSpec.js');
+const claimDataSpecSmallLRvLiP = require('../fixtures/events/createClaimSpecSmallCui.js');
 const genAppData = require('../fixtures/ga-ccd/createGeneralApplication.js');
 const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentResponse.js');
 const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
@@ -92,6 +91,7 @@ const data = {
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
   CREATE_CLAIM: (mpScenario, claimantType, claimAmount, sdoR2) => claimData.createClaim(mpScenario, claimantType, claimAmount, sdoR2),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
+  CREATE_SPEC_CLAIM_LIP: (mpScenario) => claimDataSpecSmallLRvLiP.createClaim(mpScenario),
   UPDATE_CLAIMANT_SOLICITOR_EMAILID: claimSpecData.updateClaimantSolicitorEmailId(),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   COS_NOTIFY_CLAIM: (lip1, lip2) => claimData.cosNotifyClaim(lip1, lip2),
@@ -258,77 +258,44 @@ const midEventFieldForPage = {
   }
 };
 
-let caseId, eventName, legacyCaseReference;
+let caseId, eventName;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
-  getLegacyCaseReference: async () => {
-    return legacyCaseReference;
-  },
-
-  createClaimWithRespondentLitigantInPerson: async (user, multipartyScenario) => {
-    eventName = 'CREATE_CLAIM';
+  createSpecifiedClaimWithUnrepresentedRespondent: async (user, mpScenario) => {
+    console.log(' Creating specified claim');
+    eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
-    mpScenario = multipartyScenario;
+    let createClaimSpecData;
+
+    console.log('Creating small claims...');
+    createClaimSpecData = data.CREATE_SPEC_CLAIM_LIP(mpScenario);
+
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
-
-    const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
-    console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-    const sdoR2 = await checkPBAv3ToggleEnabled(SDOR2);
-    console.log('Is sdoR2 toggle on?: ' + sdoR2);
-
-    let createClaimData;
-    switch (mpScenario){
-      case 'ONE_V_ONE':
-        createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
-        break;
+    for (let pageId of Object.keys(createClaimSpecData.userInput)) {
+       await assertValidDataLip(createClaimSpecData, pageId);
     }
 
-    //==============================================================
-    if (pbaV3) {
-      createClaimData.valid.ClaimValue.paymentTypePBA = 'PBAv3';
-    }
-    if (sdoR2) {
-      createClaimData.valid.ClaimTypeUnSpec = {
-        claimTypeUnSpec: 'CONSUMER_CREDIT'
-      };
-    }
-    await validateEventPages(createClaimData);
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
-    console.log('comparing assertSubmittedEvent');
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Please now pay your claim',
-      body: 'Your claim will not be issued until payment is confirmed'
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
+    var pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
+    await waitForFinishedBusinessProcess(caseId, user);
 
     if (pbaV3) {
       await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
         claimData.serviceUpdateDto(caseId, 'paid'));
       console.log('Service request update sent to callback URL');
     }
+    await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser1);
 
-    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    }
-    console.log('***waitForFinishedBusinessProcess');
-    await waitForFinishedBusinessProcess(caseId);
-    console.log('***assertCorrectEventsAreAvailableToUser');
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    console.log('***assertCorrectEventsAreAvailableToUser');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser,  'CASE_ISSUED');
-
+    //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
-    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
-
     return caseId;
   },
 
@@ -1353,77 +1320,6 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId, user);
   },
 
-  notifyClaimLip: async (user, multipartyScenario) => {
-
-    eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
-    mpScenario = multipartyScenario;
-
-    await apiRequest.setupTokens(user);
-
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    legacyCaseReference = returnedCaseData['legacyCaseReference'];
-    // assertContainsPopulatedFields(returnedCaseData);
-
-    await validateEventPages(data[eventName]);
-    returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
-
-    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
-      returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(false, true)};
-    } else if (mpScenario === 'ONE_V_TWO_LIPS') {
-      returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(false, true), ...data.COS_NOTIFY_CLAIM(true, false)};
-    } else {
-      returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(true, false)};
-    }
-    await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_CASE_DETAILS_NOTIFICATION', {
-      header: 'Certificate of Service',
-      body: 'You must serve the claim details and'
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
-  },
-
-  notifyClaimDetailsLip: async (user, multipartyScenario) => {
-
-    eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
-    mpScenario = multipartyScenario;
-
-    await apiRequest.setupTokens(user);
-
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    legacyCaseReference = returnedCaseData['legacyCaseReference'];
-    // assertContainsPopulatedFields(returnedCaseData);
-
-    await validateEventPages(data[eventName]);
-    returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
-    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
-      returnedCaseData = {};
-      returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM_DETAILS(false, true)};
-      const document = await testingSupport.uploadDocument();
-      returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
-    } else if (mpScenario === 'ONE_V_TWO_LIPS') {
-      returnedCaseData = {};
-      returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM_DETAILS(false, true), ...data.COS_NOTIFY_CLAIM_DETAILS(true, false)};
-      const document = await testingSupport.uploadDocument();
-      returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
-    } else {
-      returnedCaseData = {};
-      returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM_DETAILS(true, false)};
-      const document = await testingSupport.uploadDocument();
-      returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
-    }
-    await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'Certificate of Service',
-      body: 'The defendant(s) must'
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
-
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-  },
-
   partialNotifyClaim: async (user, multipartyScenario, caseId) => {
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
     mpScenario = multipartyScenario;
@@ -2133,6 +2029,34 @@ const assertValidData = async (data, pageId, solicitor, check) => {
   }
 };
 
+// Functions
+const assertValidDataLip = async (data, pageId) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+
+  const userData = data.userInput[pageId];
+  caseData = update(caseData, userData);
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    caseId
+  );
+  let responseBody = await response.json();
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+
+  assert.equal(response.status, 200);
+
+  if (data.midEventData && data.midEventData[pageId]) {
+    checkExpected(responseBody.data, data.midEventData[pageId]);
+  }
+
+  if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
+    checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
+  }
+
+  caseData = update(caseData, responseBody.data);
+};
+
 function removeUiFields(pageId, caseData) {
   const midEventField = midEventFieldForPage[pageId];
 
@@ -2177,30 +2101,6 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
     caseId = responseBody.id;
     await addUserCaseMapping(caseId, config.applicantSolicitorUser);
     console.log('Case created: ' + caseId);
-  }
-};
-
-const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
-  await apiRequest.startEvent(eventName, caseId);
-
-  const response = await apiRequest.submitEvent(eventName, updatedCaseData, caseId);
-  const responseBody = await response.json();
-  assert.equal(response.status, 201);
-  assert.equal(responseBody.state, expectedState);
-  if (hasSubmittedCallback) {
-    assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
-    assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
-  }
-};
-
-const assertCorrectEventsAreAvailableToUser = async (user, state) => {
-  console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
-  const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state]);
-  } else {
-    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEventsLIP[user.type][state]);
   }
 };
 
