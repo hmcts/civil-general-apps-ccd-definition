@@ -17,11 +17,11 @@ module.exports = {
     let appType = type.toString();
     let fee;
     if (('no' === consentCheck && 'yes' === notice) && ('Vary payment terms of judgment' !== appType || 'Vary order' !== appType)) {
-      fee = '£275.00';
+      fee = '£303.00';
     } else if ('Vary payment terms of judgment' === appType || 'Vary order' === appType) {
-      fee = '£14.00';
+      fee = '£15.00';
     } else {
-      fee = '£108.00';
+      fee = '£119.00';
     }
 
     let confirmation_msg = `Your application fee of ${fee} is now due for payment. Your application will not be processed further until this fee is paid.`;

@@ -34,7 +34,7 @@ Scenario.skip('AC 3 - 14 Days with consent', async ({api}) => {
   console.log('Make a General Application');
   gaCaseReference = await api.initiateAdjournVacateGeneralApplication(
     config.applicantSolicitorUser, civilCaseReference, 'No',
-    'Yes', hearingDate, '10800', 'FEE0443', '2');
+    'Yes', hearingDate, '11900', 'FEE0443', '2');
 });
 
 Scenario.skip('AC 2 - 14 Days without consent, without notice', async ({api}) => {
@@ -48,7 +48,7 @@ Scenario.skip('AC 2 - 14 Days without consent, without notice', async ({api}) =>
   console.log('Make a General Application');
   gaCaseReference = await api.initiateAdjournVacateGeneralApplication(
     config.applicantSolicitorUser, civilCaseReference, 'No',
-    'No', hearingDate, '10800', 'FEE0443', '2');
+    'No', hearingDate, '11900', 'FEE0443', '2');
 });
 
 Scenario('AC 1 - 14 Days without consent, with notice', async ({api}) => {
@@ -64,7 +64,7 @@ Scenario('AC 1 - 14 Days without consent, with notice', async ({api}) => {
   console.log('Make a General Application');
   gaCaseReference = await api.initiateAdjournVacateGeneralApplication(
     config.applicantSolicitorUser, civilCaseReference, 'Yes',
-    'No', hearingDate, '27500', 'FEE0442', '2');
+    'No', hearingDate, '30300', 'FEE0442', '2');
 });
 
 AfterSuite(async ({api}) => {
