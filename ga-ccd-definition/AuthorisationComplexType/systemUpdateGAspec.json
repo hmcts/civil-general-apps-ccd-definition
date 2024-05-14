@@ -226,14 +226,14 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "generalAppFeeToPayLabel108",
+    "ListElementCode": "generalAppFeeToPayLabel119",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "generalAppFeeToPayLabel275",
+    "ListElementCode": "generalAppFeeToPayLabel303",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },

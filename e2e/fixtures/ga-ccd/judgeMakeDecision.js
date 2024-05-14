@@ -296,7 +296,7 @@ module.exports = {
     return {
       service_request_reference: '1324646546456',
       ccd_case_number: gaCaseId,
-      service_request_amount: '275.00',
+      service_request_amount: '303.00',
       service_request_status: paymentStatus,
       payment: {
         _links: null,
@@ -332,7 +332,7 @@ module.exports = {
     return {
       service_request_reference: '1324646546456',
       ccd_case_number: gaCaseId,
-      service_request_amount: '108.00',
+      service_request_amount: '119.00',
       service_request_status: paymentStatus,
       payment: {
         _links: null,
