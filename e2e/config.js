@@ -44,7 +44,7 @@ module.exports = {
     // paymentApi: process.env.PAYMENT_API_URL || 'http://payment-api-demo.service.core-compute-demo.internal',
     // generalApplication: 'http://civil-general-applications-demo.service.core-compute-demo.internal'
 
-      // manageCase: process.env.URL || 'http://localhost:3333',
+      // manageCase: process.env.URL || 'https://localhost:3333',
       // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
       // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
       // dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
