@@ -191,14 +191,14 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "generalAppFeeToPayLabel108",
+    "ListElementCode": "generalAppFeeToPayLabel119",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "generalAppFeeToPayLabel275",
+    "ListElementCode": "generalAppFeeToPayLabel303",
     "UserRole": "civil-administrator-standard",
     "CRUD": "R"
   },
@@ -1204,14 +1204,14 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "generalAppFeeToPayLabel108",
+    "ListElementCode": "generalAppFeeToPayLabel119",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "generalAppFeeToPayLabel275",
+    "ListElementCode": "generalAppFeeToPayLabel303",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"
   },
