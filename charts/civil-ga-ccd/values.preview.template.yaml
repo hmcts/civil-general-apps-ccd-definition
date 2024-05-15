@@ -1,6 +1,6 @@
 civil-general-applications:
   java:
-    image: 'hmctspublic.azurecr.io/civil/general-applications:pr-1313'
+    image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
       civil:
