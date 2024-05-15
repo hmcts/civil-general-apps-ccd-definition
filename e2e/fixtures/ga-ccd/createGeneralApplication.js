@@ -11,6 +11,9 @@ module.exports = {
           'EXTEND_TIME'
         ]
       },
+      isGaApplicantLip: 'No',
+      isGaRespondentOneLip: 'No',
+      isGaRespondentTwoLip: 'No',
       generalAppRespondentAgreement: {
         hasAgreed: 'No'
       },
@@ -86,6 +89,9 @@ module.exports = {
           'VARY_PAYMENT_TERMS_OF_JUDGMENT'
         ]
       },
+      isGaApplicantLip: 'No',
+      isGaRespondentOneLip: 'No',
+      isGaRespondentTwoLip: 'No',
       generalAppRespondentAgreement: {
         hasAgreed: 'No'
       },
@@ -163,6 +169,9 @@ module.exports = {
           'EXTEND_TIME'
         ]
       },
+      isGaApplicantLip: 'No',
+      isGaRespondentOneLip: 'No',
+      isGaRespondentTwoLip: 'No',
       generalAppRespondentAgreement: {
         hasAgreed: 'No'
       },
@@ -255,6 +264,9 @@ module.exports = {
       generalAppRespondentAgreement: {
         hasAgreed: 'No'
       },
+      isGaApplicantLip: 'No',
+      isGaRespondentOneLip: 'No',
+      isGaRespondentTwoLip: 'No',
       generalAppUrgencyRequirement: {
         generalAppUrgency: 'No',
         urgentAppConsiderationDate: null,
@@ -305,7 +317,7 @@ module.exports = {
       generalAppPBADetails: {
         paymentSuccessfulDate: null,
         fee: {
-          calculatedAmountInPence: '27500',
+          calculatedAmountInPence: '30300',
           code: 'FEE0442',
           version: '2'
         },
@@ -331,6 +343,9 @@ module.exports = {
       generalAppRespondentAgreement: {
         hasAgreed: 'No'
       },
+      isGaApplicantLip: 'No',
+      isGaRespondentOneLip: 'No',
+      isGaRespondentTwoLip: 'No',
       generalAppUrgencyRequirement: {
         generalAppUrgency: 'No',
         urgentAppConsiderationDate: null,
@@ -381,7 +396,7 @@ module.exports = {
       generalAppPBADetails: {
         paymentSuccessfulDate: null,
         fee: {
-          calculatedAmountInPence: '27500',
+          calculatedAmountInPence: '30300',
           code: 'FEE0442',
           version: '2'
         },
@@ -407,6 +422,9 @@ module.exports = {
       generalAppRespondentAgreement: {
         hasAgreed: 'No'
       },
+      isGaApplicantLip: 'No',
+      isGaRespondentOneLip: 'No',
+      isGaRespondentTwoLip: 'No',
       generalAppUrgencyRequirement: {
         generalAppUrgency: 'No',
         urgentAppConsiderationDate: null,
@@ -457,7 +475,7 @@ module.exports = {
       generalAppPBADetails: {
         paymentSuccessfulDate: null,
         fee: {
-          calculatedAmountInPence: '27500',
+          calculatedAmountInPence: '30300',
           code: 'FEE0442',
           version: '2'
         },
@@ -482,6 +500,9 @@ module.exports = {
       generalAppRespondentAgreement: {
         hasAgreed: isWithConsent
       },
+      isGaApplicantLip: 'No',
+      isGaRespondentOneLip: 'No',
+      isGaRespondentTwoLip: 'No',
       generalAppUrgencyRequirement: {
         generalAppUrgency: 'No',
         urgentAppConsiderationDate: null,
@@ -560,6 +581,9 @@ module.exports = {
       generalAppRespondentAgreement: {
         hasAgreed: 'No'
       },
+      isGaApplicantLip: 'No',
+      isGaRespondentOneLip: 'No',
+      isGaRespondentTwoLip: 'No',
       generalAppUrgencyRequirement: {
         generalAppUrgency: 'No',
         urgentAppConsiderationDate: null,
@@ -640,6 +664,9 @@ module.exports = {
       generalAppType: {
         types: gaTypes,
       },
+      isGaApplicantLip: 'No',
+      isGaRespondentOneLip: 'No',
+      isGaRespondentTwoLip: 'No',
       generalAppRespondentAgreement: {
         hasAgreed: consent ? 'Yes':'No'
       },
