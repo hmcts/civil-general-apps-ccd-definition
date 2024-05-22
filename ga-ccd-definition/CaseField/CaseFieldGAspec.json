@@ -1278,30 +1278,6 @@
     "Label": "Application bundle",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "isGaApplicantLip",
-    "FieldType": "YesOrNo",
-    "Label": "Is GA for LIP",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "isGaRespondentOneLip",
-    "FieldType": "YesOrNo",
-    "Label": "Is GA for LIP",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "isGaRespondentTwoLip",
-    "FieldType": "YesOrNo",
-    "Label": "Is GA for LIP",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]
 
