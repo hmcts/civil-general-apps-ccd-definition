@@ -16,9 +16,9 @@ module.exports = {
                     value: listElement(config.defendantSelectedCourt)
                 },
                 hearingDate: date(1),
-                hearingTimeHourMinute: '0800',
+                hearingTimeHourMinute: '0805',
                 channel: 'TELEPHONE',
-                hearingDuration: 'MINUTES_15',
+                hearingDuration: 'MINUTES_25',
             },
             gaHearingNoticeInformation: 'info'
         };
