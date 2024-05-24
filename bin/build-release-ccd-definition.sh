@@ -20,7 +20,7 @@ elif [ ${environment} == ithc ]; then
 elif [ ${excludeNonProdFiles} == true ]; then
     excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*LRspec.json"
 else
-   excludedFilenamePatterns="-e *-prod.json,*LRspec.json,-CUI-nonprod.json"
+   excludedFilenamePatterns="-e *-prod.json,*LRspec.json,*-CUI-nonprod.json"
 fi
 
 
