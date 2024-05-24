@@ -6,21 +6,21 @@ environment=${1:-prod}
 excludeNonProdFiles=${2:-true}
 
 if [ ${environment} == preview ]; then
-  excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
+  excludedFilenamePatterns="-e *LRspec.json"
 elif [ ${environment} == demo ]; then
-  excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
+  excludedFilenamePatterns="-e *LRspec.json"
 elif [ ${environment} == staging ]; then
-  excludedFilenamePatterns="-e *-prod.json,*LRspec.json,*-CUI-nonprod.json"
+  excludedFilenamePatterns="-e *LRspec.json,*-CUI-nonprod.json"
 elif [ ${environment} == local ]; then
-  excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
+  excludedFilenamePatterns="-e *LRspec.json"
 elif [ ${environment} == perftest ]; then
-  excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
+  excludedFilenamePatterns="-e *LRspec.json"
 elif [ ${environment} == ithc ]; then
-  excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
+  excludedFilenamePatterns="-e *LRspec.json"
 elif [ ${excludeNonProdFiles} == true ]; then
     excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*LRspec.json"
 else
-   excludedFilenamePatterns="-e *-prod.json,*LRspec.json,*-CUI-nonprod.json"
+   excludedFilenamePatterns="-e *LRspec.json,*-CUI-nonprod.json"
 fi
 
 
