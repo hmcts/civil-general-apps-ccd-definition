@@ -1,0 +1,26 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "isGaApplicantLip",
+    "FieldType": "YesOrNo",
+    "Label": "Is GA for LIP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "isGaRespondentOneLip",
+    "FieldType": "YesOrNo",
+    "Label": "Is GA for LIP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "isGaRespondentTwoLip",
+    "FieldType": "YesOrNo",
+    "Label": "Is GA for LIP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

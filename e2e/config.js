@@ -77,6 +77,16 @@ module.exports = {
     type: 'applicant_solicitor',
     orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
   },
+  defendantCitizenUser1: {
+    password: defaultPassword,
+    email: 'civilmoneyclaimsdemo@gmail.com',
+    type: 'defendant',
+  },
+  defendantCitizenUser2: {
+    password: defaultPassword,
+    email: `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`,
+    type: 'defendant',
+  },
   defendantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.2.solicitor.1@gmail.com',
