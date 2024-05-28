@@ -329,7 +329,7 @@
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDetails.HearingPreferencesPreferredType",
     "UserRole": "citizen-profile",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
 
   {
@@ -345,7 +345,7 @@
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDetails.ReasonForPreferredHearingType",
     "UserRole": "citizen-profile",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
 
   {
@@ -353,7 +353,7 @@
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDetails.HearingPreferredLocation",
     "UserRole": "citizen-profile",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
 
   {
@@ -361,7 +361,7 @@
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDetails.HearingDetailsTelephoneNumber",
     "UserRole": "citizen-profile",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
 
   {
@@ -369,7 +369,7 @@
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDetails.HearingDetailsEmailID",
     "UserRole": "citizen-profile",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
 
   {
@@ -409,7 +409,7 @@
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDetails.unavailableTrialRequiredYesOrNo",
     "UserRole": "citizen-profile",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
 
   {
@@ -417,7 +417,7 @@
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDetails.generalAppUnavailableDates",
     "UserRole": "citizen-profile",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
 
   {
@@ -425,7 +425,7 @@
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDetails.generalAppUnavailableDates.unavailableTrialDateFrom",
     "UserRole": "citizen-profile",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
 
   {
@@ -433,7 +433,7 @@
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDetails.generalAppUnavailableDates.unavailableTrialDateTo",
     "UserRole": "citizen-profile",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -454,14 +454,14 @@
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDetails.SupportRequirement",
     "UserRole": "citizen-profile",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDetails.SupportRequirementSignLanguage",
     "UserRole": "citizen-profile",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
 
   {
@@ -469,14 +469,14 @@
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDetails.SupportRequirementLanguageInterpreter",
     "UserRole": "citizen-profile",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppHearingDetails.SupportRequirementOther",
     "UserRole": "citizen-profile",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",

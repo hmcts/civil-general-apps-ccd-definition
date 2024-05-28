@@ -4,6 +4,6 @@
     "UserRoles": [
       "citizen-profile"
     ],
-    "CRUD": "RU"
+    "CRUD": "CRU"
   }
 ]

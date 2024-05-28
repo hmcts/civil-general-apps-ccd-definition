@@ -211,7 +211,7 @@
         "UserRoles": [
           "citizen-profile"
         ],
-        "CRUD": "RU"
+        "CRUD": "CRU"
       }
     ]
   },
@@ -235,7 +235,7 @@
         "UserRoles": [
           "citizen-profile"
         ],
-        "CRUD": "RU"
+        "CRUD": "CRU"
       }
     ]
   },
@@ -367,7 +367,7 @@
         "UserRoles": [
           "citizen-profile"
         ],
-        "CRUD": "RU"
+        "CRUD": "CRU"
       }
     ]
   },
