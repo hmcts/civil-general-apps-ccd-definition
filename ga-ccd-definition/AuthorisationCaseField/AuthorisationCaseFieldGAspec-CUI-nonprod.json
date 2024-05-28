@@ -1533,5 +1533,17 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppAskForCosts",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
