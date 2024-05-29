@@ -56,7 +56,7 @@ Scenario.skip('Before SDO GA - Directions Order Additional Response time Expired
 
 }).retry(0);
 
-Scenario.skip('Before SDO GA 1v1 spec - Written Representations Additional Response time Expired', async ({api, wa}) => {
+Scenario.only('Before SDO GA 1v1 spec - Written Representations Additional Response time Expired', async ({api, wa}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
