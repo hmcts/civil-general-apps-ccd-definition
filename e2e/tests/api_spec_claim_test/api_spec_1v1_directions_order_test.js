@@ -7,7 +7,7 @@ let civilCaseReference, gaCaseReference;
 Feature('GA SPEC Claim 1v1 Judge Make Order Directions Order API tests @api-tests');
 // This test should be enabled after early adopters goes live for all regions
 
-Scenario('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
+Scenario.only('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
   civilCaseReference = await api.createSpecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
