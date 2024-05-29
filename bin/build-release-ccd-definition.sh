@@ -6,7 +6,7 @@ environment=${1:-prod}
 excludeNonProdFiles=${2:-true}
 
 if [ ${environment} == preview ]; then
-  excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
+  excludedFilenamePatterns="-e *LRspec.json,*-nonprod.json"
 elif [ ${environment} == demo ]; then
   excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
 elif [ ${environment} == staging ]; then

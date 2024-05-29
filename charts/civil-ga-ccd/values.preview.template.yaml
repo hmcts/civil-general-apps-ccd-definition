@@ -20,8 +20,8 @@ civil-general-applications:
           - sendgrid-api-key
           - robotics-notification-sender
           - robotics-notification-recipient
-          - name: launch-darkly-sdk-key-non-prod
-            alias: launch-darkly-sdk-key
+          - name: launch-darkly-sdk-key
+            alias: LAUNCH_DARKLY_SDK_KEY
           - robotics-notification-multipartyrecipient
       civil-gen-apps:
         resourceGroup: civil
