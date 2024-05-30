@@ -6,7 +6,7 @@ environment=${1:-prod}
 excludeNonProdFiles=${2:-true}
 
 if [ ${environment} == preview ]; then
-  excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
+  excludedFilenamePatterns="-e *LRspec.json,*-nonprod.json"
 elif [ ${environment} == demo ]; then
   excludedFilenamePatterns="-e *-prod.json,*LRspec.json"
 elif [ ${environment} == staging ]; then
@@ -38,4 +38,3 @@ mkdir -p ${github_dir}
 ${root_dir}/bin/utils/process-definition.sh ${config_dir} ${release_definition_output_file} "${excludedFilenamePatterns}"
 
 cp ${release_definition_output_file} ${github_file}
-
