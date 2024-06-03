@@ -16,7 +16,8 @@ civil-general-applications:
           - name: AppInsightsInstrumentationKeyGeneralApplications
             alias: azure.application-insights.instrumentation-key
           - docmosis-api-key
-          - gov-notify-api-key
+          - name: gov-notify-guest-list-api-key
+            alias: GOV_NOTIFY_API_KEY
           - sendgrid-api-key
           - robotics-notification-sender
           - robotics-notification-recipient
