@@ -16,8 +16,7 @@ civil-general-applications:
           - name: AppInsightsInstrumentationKeyGeneralApplications
             alias: azure.application-insights.instrumentation-key
           - docmosis-api-key
-          - name: gov-notify-guest-list-api-key
-            alias: GOV_NOTIFY_API_KEY
+          - gov-notify-api-key
           - sendgrid-api-key
           - robotics-notification-sender
           - robotics-notification-recipient
@@ -62,7 +61,7 @@ civil-service:
             alias: CMC_DB_USERNAME
           - name: cmc-db-host-v15
             alias: CMC_DB_HOST
-          - name: gov-notify-guest-list-api-key
+          - name: gov-notify-api-key
             alias: GOV_NOTIFY_API_KEY
           - name: sendgrid-api-key
             alias: SENDGRID_API_KEY
