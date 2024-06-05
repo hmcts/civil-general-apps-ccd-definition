@@ -175,7 +175,7 @@
         "UserRoles": [
           "citizen-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "RU"
       }
     ]
   },
@@ -211,7 +211,7 @@
         "UserRoles": [
           "citizen-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "RU"
       }
     ]
   },
@@ -235,7 +235,7 @@
         "UserRoles": [
           "citizen-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "RU"
       }
     ]
   },
@@ -367,7 +367,7 @@
         "UserRoles": [
           "citizen-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "RU"
       }
     ]
   },
@@ -1540,10 +1540,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "citizen-profile"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "citizen-profile"
+        ],
+        "CRUD": "RU"
       }
     ]
   }
