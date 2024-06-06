@@ -19,5 +19,13 @@
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppHelpWithFees",
+    "FieldType": "GAHelpWithFees",
+    "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
