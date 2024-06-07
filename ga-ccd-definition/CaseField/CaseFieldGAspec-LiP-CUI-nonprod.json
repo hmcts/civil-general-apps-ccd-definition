@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppAskForCosts",
+    "FieldType": "YesOrNo",
+    "Label": "LIP asked for costs back",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
