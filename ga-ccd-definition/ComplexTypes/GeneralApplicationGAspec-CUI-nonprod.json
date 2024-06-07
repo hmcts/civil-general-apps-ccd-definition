@@ -21,11 +21,17 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "generalAppHelpWithFees",
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppAskForCosts",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppHelpWithFees",
     "FieldType": "GAHelpWithFees",
-    "Label": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
   }
 ]
