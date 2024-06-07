@@ -1,0 +1,9 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "UserRoles": [
+      "citizen-profile"
+    ],
+    "CRUD": "RU"
+  }
+]

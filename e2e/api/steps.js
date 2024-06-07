@@ -23,6 +23,7 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const claimDataSpec = require('../fixtures/events/claim/createClaimSpec.js');
 const claimSpecData = require('../fixtures/events/createClaimSpec.js');
+const claimDataSpecSmallLRvLiP = require('../fixtures/events/createClaimSpecSmallCui.js');
 const genAppData = require('../fixtures/ga-ccd/createGeneralApplication.js');
 const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentResponse.js');
 const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
@@ -90,8 +91,11 @@ const data = {
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
   CREATE_CLAIM: (mpScenario, claimantType, claimAmount, sdoR2) => claimData.createClaim(mpScenario, claimantType, claimAmount, sdoR2),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
+  CREATE_SPEC_CLAIM_LIP: (mpScenario) => claimDataSpecSmallLRvLiP.createClaim(mpScenario),
   UPDATE_CLAIMANT_SOLICITOR_EMAILID: claimSpecData.updateClaimantSolicitorEmailId(),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
+  COS_NOTIFY_CLAIM: (lip1, lip2) => claimData.cosNotifyClaim(lip1, lip2),
+  COS_NOTIFY_CLAIM_DETAILS: (lip1, lip2) => claimData.cosNotifyClaimDetails(lip1, lip2),
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
   CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS: claimData.createClaimRespondentSolFirmNotInMyHmcts,
   JUDGE_MAKES_ORDER_UNCLOAK: genAppJudgeMakeDecisionData.judgeMakeOrderUncloakApplication(),
@@ -259,6 +263,41 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
+
+  createSpecifiedClaimWithUnrepresentedRespondent: async (user, mpScenario) => {
+    console.log(' Creating specified claim');
+    eventName = 'CREATE_CLAIM_SPEC';
+    caseId = null;
+    caseData = {};
+    let createClaimSpecData;
+
+    console.log('Creating small claims...');
+    createClaimSpecData = data.CREATE_SPEC_CLAIM_LIP(mpScenario);
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName);
+    for (let pageId of Object.keys(createClaimSpecData.userInput)) {
+       await assertValidDataLip(createClaimSpecData, pageId);
+    }
+
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
+
+    var pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+    await waitForFinishedBusinessProcess(caseId, user);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+    await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser1);
+
+    //field is deleted in about to submit callback
+    deleteCaseFields('applicantSolicitor1CheckEmail');
+    return caseId;
+  },
 
   createUnspecifiedClaim: async (user, multipartyScenario, claimantType, claimAmount= '30000') => {
 
@@ -1988,6 +2027,34 @@ const assertValidData = async (data, pageId, solicitor, check) => {
       // console.log('Valid data is failed with mismatch ..', err);
     }
   }
+};
+
+// Functions
+const assertValidDataLip = async (data, pageId) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+
+  const userData = data.userInput[pageId];
+  caseData = update(caseData, userData);
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    caseId
+  );
+  let responseBody = await response.json();
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+
+  assert.equal(response.status, 200);
+
+  if (data.midEventData && data.midEventData[pageId]) {
+    checkExpected(responseBody.data, data.midEventData[pageId]);
+  }
+
+  if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
+    checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
+  }
+
+  caseData = update(caseData, responseBody.data);
 };
 
 function removeUiFields(pageId, caseData) {
