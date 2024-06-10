@@ -3,7 +3,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "UserRoles": [
       "citizen-profile",
-      "caseworker-civil-admin"
+      "cui-admin-profile"
     ],
     "CRUD": "RU"
   }

@@ -6,7 +6,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -19,7 +19,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -32,7 +32,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -45,7 +45,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -58,7 +58,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -71,7 +71,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "R"
       }
@@ -84,7 +84,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -97,7 +97,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "R"
       }
@@ -110,7 +110,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "R"
       }
@@ -123,7 +123,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "R"
       }
@@ -136,7 +136,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -149,7 +149,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "R"
       }
@@ -162,7 +162,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "R"
       }
@@ -175,7 +175,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -188,7 +188,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -201,7 +201,7 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
