@@ -7,7 +7,7 @@ let civilCaseReference, gaCaseReference;
 Feature('GA SPEC Claim 1v1 Judge Make Order Directions Order API tests @api-tests');
 // This test should be enabled after early adopters goes live for all regions
 
-Scenario.only('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
+Scenario.only('Judge makes decision 1V1 Specified case- DIRECTIONS ORDER', async ({api}) => {
   civilCaseReference = await api.createSpecifiedClaim(
     config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -21,7 +21,7 @@ Scenario.only('Judge makes decision 1V1 - DIRECTIONS ORDER', async ({api}) => {
   console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
   console.log('config.runningEnv: ' + config.runningEnv + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionDirectionsOrder(config.judgeUser, gaCaseReference);
+    await api.judgeMakesDecisionDirectionsOrder(config.judgeUser2WithRegionId2, gaCaseReference);
   } else {
     await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
   }
