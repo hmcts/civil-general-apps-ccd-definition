@@ -7,7 +7,7 @@
     "UserRoles": [
       "cui-admin-profile"
     ],
-    "CaseFieldID": "generalApplications",
+    "CaseFieldID": "claimantGaAppDetails",
     "TabFieldDisplayOrder": 1
   }
 ]
