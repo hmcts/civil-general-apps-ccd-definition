@@ -7,7 +7,7 @@ let civilCaseReference,
 Feature('GA SPEC Claim 1v2 Move to Case Man Case Close API tests @api-offline-nightly @api-nightly');
 // These tests should be enabled after early adopters goes live for all regions
 
-Scenario.skip('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api}) => {
+Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
@@ -20,7 +20,7 @@ Scenario.skip('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', a
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
-Scenario.skip('Case offline ORDER_MADE', async ({api}) => {
+Scenario('Case offline ORDER_MADE', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
@@ -30,7 +30,7 @@ Scenario.skip('Case offline ORDER_MADE', async ({api}) => {
   console.log('*** Start Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
     + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesOrderDecisionUncloak(config.judgeUser, gaCaseReference);
+    await api.judgeMakesOrderDecisionUncloak(config.judgeUser2WithRegionId2, gaCaseReference);
   } else {
     await api.judgeMakesOrderDecisionUncloak(config.judgeLocalUser, gaCaseReference);
   }
@@ -42,7 +42,7 @@ Scenario.skip('Case offline ORDER_MADE', async ({api}) => {
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
 });
 
-Scenario.skip('Case offline APPLICATION_DISMISSED', async ({api}) => {
+Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
@@ -52,7 +52,7 @@ Scenario.skip('Case offline APPLICATION_DISMISSED', async ({api}) => {
   console.log('*** Start Judge Make Decision Application Dismiss on GA Case Reference: '
     + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeDismissApplication(config.judgeUser, gaCaseReference);
+    await api.judgeDismissApplication(config.judgeUser2WithRegionId2, gaCaseReference);
   } else {
     await api.judgeDismissApplication(config.judgeLocalUser, gaCaseReference);
   }
