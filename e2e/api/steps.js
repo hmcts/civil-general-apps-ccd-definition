@@ -292,6 +292,12 @@ module.exports = {
         claimData.serviceUpdateDto(caseId, 'paid'));
       console.log('Service request update sent to callback URL');
     }
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    // Pause for 10 seconds
+    await delay(15000);
+
     await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser1);
 
     //field is deleted in about to submit callback
