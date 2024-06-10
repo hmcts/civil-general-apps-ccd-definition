@@ -27,36 +27,36 @@ if (config.runWAApiTest) {
 Feature('1v2 Spec claim: GA - WA Scenarios @e2e-wa');
 // This test should be enabled after early adopters goes live for all regions
 
-Scenario.skip('LA refer to judge - R4 Judge Make decision - NBC admin schedule Hearing', async ({I, api, wa}) => {
+Scenario('LA refer to judge - R2 Judge Make decision - NBC admin schedule Hearing', async ({I, api, wa}) => {
   civilCaseReference = await api.createSpecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGaForJudge(config.applicantSolicitorUser, civilCaseReference);
 
-  console.log('Region 4 LA referring to Judge');
+  console.log('Region 2 LA referring to Judge');
   if (config.runWAApiTest) {
-    const actualLADecideOnApplicationTask = await api.retrieveTaskDetails(config.tribunalCaseworkerWithRegionId4,
+    const actualLADecideOnApplicationTask = await api.retrieveTaskDetails(config.tribunalCaseworkerWithRegionId2,
       gaCaseReference, config.waTaskIds.legalAdvisorDecideOnApplication);
     console.log('actualLADecideOnApplicationTask...', actualLADecideOnApplicationTask);
     wa.validateTaskInfo(actualLADecideOnApplicationTask, expectedLADecideOnApplicationBeforeSDOTask);
   }
 
-  await I.login(config.tribunalCaseworkerWithRegionId4);
+  await I.login(config.hearingCenterAdminWithRegionId2);
   await wa.verifyAdminTask(gaCaseReference, config.waTaskIds.legalAdvisorDecideOnApplication);
   await wa.goToEvent('Refer to Judge');
   await wa.referToJudge();
   await wa.verifyNoActiveTask(gaCaseReference);
 
   if (['preview', 'aat'].includes(config.runningEnv)) {
-    judgeUser = config.judgeUser;
+    judgeUser = config.judgeUser2WithRegionId2;
   } else if (['demo'].includes(config.runningEnv)) {
-    judgeUser = config.judgeUserWithRegionId4;
+    judgeUser = config.judgeUser2WithRegionId2;
   } else {
     judgeUser = config.judgeLocalUser;
   }
 
-  console.log('Region 4 Judge List for a hearing');
+  console.log('Region 2 Judge List for a hearing');
   if (config.runWAApiTest) {
     const actualJudgeDecideOnApplicationTask = await api.retrieveTaskDetails(judgeUser,
       gaCaseReference, config.waTaskIds.judgeDecideOnApplication);
@@ -69,14 +69,14 @@ Scenario.skip('LA refer to judge - R4 Judge Make decision - NBC admin schedule H
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, listForHearingStatus, judgeUser);
   await wa.verifyNoActiveTask(gaCaseReference);
 
-  console.log('Region 4 NBC admin review scheduled Application Hearing');
+  console.log('Region 2 NBC admin review scheduled Application Hearing');
   if (config.runWAApiTest) {
-    const actualScheduleApplicationHearingTask = await api.retrieveTaskDetails(config.nbcAdminWithRegionId4, gaCaseReference, config.waTaskIds.scheduleApplicationHearing);
+    const actualScheduleApplicationHearingTask = await api.retrieveTaskDetails(config.nbcAdminWithRegionId2, gaCaseReference, config.waTaskIds.scheduleApplicationHearing);
     console.log('actualScheduleApplicationHearingTask...', actualScheduleApplicationHearingTask);
     wa.validateTaskInfo(actualScheduleApplicationHearingTask, expectedScheduleAppHearingBeforeSDOTask);
   }
 
-  await I.login(config.nbcAdminWithRegionId4);
+  await I.login(config.nbcAdminWithRegionId2);
   await wa.goToTask(gaCaseReference, config.waTaskIds.scheduleApplicationHearing);
   await I.fillHearingNotice(gaCaseReference, 'claimAndDef', 'basildon', 'VIDEO');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.HEARING_SCHEDULED.id, config.nbcAdminWithRegionId4);
@@ -93,15 +93,15 @@ Scenario('After SDO GA - Change court location  - HC admin review application or
 
   gaCaseReference = await api.initiateGaForJudge(config.applicantSolicitorUser, civilCaseReference);
 
-  console.log('Region 4 LA referring to Judge');
+  console.log('Region 2 LA referring to Judge');
   if (config.runWAApiTest) {
-    const actualLADecideOnApplicationTask = await api.retrieveTaskDetails(config.tribunalCaseworkerWithRegionId4,
+    const actualLADecideOnApplicationTask = await api.retrieveTaskDetails(config.tribunalCaseworkerWithRegionId2,
       gaCaseReference, config.waTaskIds.legalAdvisorDecideOnApplication);
     console.log('actualLADecideOnApplicationTask...', actualLADecideOnApplicationTask);
     wa.validateTaskInfo(actualLADecideOnApplicationTask, expectedLADecideOnApplicationBeforeSDOTask);
   }
 
-  await I.login(config.tribunalCaseworkerWithRegionId4);
+  await I.login(config.tribunalCaseworkerWithRegionId2);
   await wa.verifyAdminTask(gaCaseReference, config.waTaskIds.legalAdvisorDecideOnApplication);
   await wa.goToEvent('Refer to Judge');
   await wa.referToJudge();
