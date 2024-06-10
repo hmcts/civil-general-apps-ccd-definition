@@ -22,5 +22,29 @@
     "Label": "Is GA for LIP",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "claimantUserDetails",
+    "Label": " ",
+    "FieldType": "GAUserDetailsGAspec",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "defendantUserDetails",
+    "Label": " ",
+    "FieldType": "GAUserDetailsGAspec",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppAskForCosts",
+    "FieldType": "YesOrNo",
+    "Label": "LIP asked for costs back",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
