@@ -23,7 +23,7 @@ Scenario('AC 4 - 15 Days with consent', async ({api}) => {
     'Yes', hearingDate, '0', 'FEE0414', '1');
 });
 
-Scenario.skip('AC 3 - 14 Days with consent', async ({api}) => {
+Scenario('AC 3 - 14 Days with consent', async ({api}) => {
   let hearingDate = await api.createDateString(14);
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
@@ -37,7 +37,7 @@ Scenario.skip('AC 3 - 14 Days with consent', async ({api}) => {
     'Yes', hearingDate, '11900', 'FEE0443', '2');
 });
 
-Scenario.skip('AC 2 - 14 Days without consent, without notice', async ({api}) => {
+Scenario('AC 2 - 14 Days without consent, without notice', async ({api}) => {
   let hearingDate = await api.createDateString(14);
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
