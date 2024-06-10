@@ -2,7 +2,8 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "UserRoles": [
-      "citizen-profile"
+      "citizen-profile",
+      "caseworker-civil-admin"
     ],
     "CRUD": "RU"
   }

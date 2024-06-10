@@ -5,7 +5,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
@@ -17,7 +18,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
@@ -29,7 +31,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
@@ -41,7 +44,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
@@ -53,7 +57,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
@@ -65,7 +70,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -77,7 +83,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
@@ -89,7 +96,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -101,7 +109,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -113,7 +122,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -125,7 +135,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
@@ -137,7 +148,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -149,7 +161,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -161,7 +174,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
@@ -173,7 +187,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
@@ -185,7 +200,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
