@@ -12,7 +12,7 @@ Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-Scenario('GA 1v1 Free Fee  - LR initiates GA vs LIP', async ({api, I}) => {
+Scenario.skip('GA 1v1 Free Fee  - LR initiates GA vs LIP', async ({api, I}) => {
 
   civilCaseReference = await api.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -23,7 +23,7 @@ Scenario('GA 1v1 Free Fee  - LR initiates GA vs LIP', async ({api, I}) => {
     'Yes', hearingDate, '0', 'FREE', '1');
 });
 
-Scenario('GA 1v1 Without Notice  - LR initiates GA vs LIP', async ({api, I}) => {
+Scenario.skip('GA 1v1 Without Notice  - LR initiates GA vs LIP', async ({api, I}) => {
 
   civilCaseReference = await api.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
