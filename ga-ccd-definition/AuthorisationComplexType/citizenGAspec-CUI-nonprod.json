@@ -5,7 +5,7 @@
     "ListElementCode": "generalAppType",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -15,7 +15,7 @@
     "ListElementCode": "generalAppType.types",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -25,7 +25,7 @@
     "ListElementCode": "generalAppRespondentAgreement",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -35,7 +35,7 @@
     "ListElementCode": "generalAppRespondentAgreement.hasAgreed",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -45,7 +45,7 @@
     "ListElementCode": "generalAppUrgencyRequirement",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -55,7 +55,7 @@
     "ListElementCode": "generalAppInformOtherParty",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -65,7 +65,7 @@
     "ListElementCode": "generalAppUrgencyRequirement.urgentAppConsiderationDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -75,7 +75,7 @@
     "ListElementCode": "generalAppUrgencyRequirement.generalAppUrgency",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -85,7 +85,7 @@
     "ListElementCode": "generalAppUrgencyRequirement.reasonsForUrgency",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -95,7 +95,7 @@
     "ListElementCode": "generalAppUrgencyRequirement.ConsentAgreementCheckBox",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -105,7 +105,7 @@
     "ListElementCode": "id",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -115,7 +115,7 @@
     "ListElementCode": "email",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -125,7 +125,7 @@
     "ListElementCode": "forename",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -135,7 +135,7 @@
     "ListElementCode": "surname",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -145,7 +145,7 @@
     "ListElementCode": "organisationIdentifier",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -155,7 +155,7 @@
     "ListElementCode": "id",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -165,7 +165,7 @@
     "ListElementCode": "email",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -175,7 +175,7 @@
     "ListElementCode": "forename",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -185,7 +185,7 @@
     "ListElementCode": "surname",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -195,7 +195,7 @@
     "ListElementCode": "organisationIdentifier",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -205,7 +205,7 @@
     "ListElementCode": "id",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -215,7 +215,7 @@
     "ListElementCode": "email",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -225,7 +225,7 @@
     "ListElementCode": "surname",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -235,7 +235,7 @@
     "ListElementCode": "forename",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -245,7 +245,7 @@
     "ListElementCode": "organisationIdentifier",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -255,7 +255,7 @@
     "ListElementCode": "generalAppFeeToPayLabel119",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -265,7 +265,7 @@
     "ListElementCode": "generalAppFeeToPayLabel303",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -275,7 +275,7 @@
     "ListElementCode": "fee",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -285,7 +285,7 @@
     "ListElementCode": "paymentDetails",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -295,7 +295,7 @@
     "ListElementCode": "additionalPaymentDetails",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -305,7 +305,7 @@
     "ListElementCode": "paymentSuccessfulDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -315,7 +315,7 @@
     "ListElementCode": "additionalPaymentServiceRef",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -325,7 +325,7 @@
     "ListElementCode": "serviceRequestReference",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -335,7 +335,7 @@
     "ListElementCode": "generalAppStatementOfTruth",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -345,7 +345,7 @@
     "ListElementCode": "generalAppStatementOfTruth.name",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -355,7 +355,7 @@
     "ListElementCode": "generalAppStatementOfTruth.role",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -365,7 +365,7 @@
     "ListElementCode": "generalAppDetailsOfOrder",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -375,7 +375,7 @@
     "ListElementCode": "generalAppReasonsOfOrder",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -385,7 +385,7 @@
     "ListElementCode": "generalAppHearingDetails",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -395,7 +395,7 @@
     "ListElementCode": "generalAppHearingDetails.hearingYesorNo",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -405,7 +405,7 @@
     "ListElementCode": "generalAppHearingDetails.hearingDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -415,7 +415,7 @@
     "ListElementCode": "generalAppHearingDetails.judgeRequiredYesOrNo",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -425,7 +425,7 @@
     "ListElementCode": "generalAppHearingDetails.judgeName",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -435,7 +435,7 @@
     "ListElementCode": "generalAppHearingDetails.trialRequiredYesOrNo",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -445,7 +445,7 @@
     "ListElementCode": "generalAppHearingDetails.trialDateFrom",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -455,7 +455,7 @@
     "ListElementCode": "generalAppHearingDetails.trialDateTo",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -465,7 +465,7 @@
     "ListElementCode": "generalAppHearingDetails.HearingPreferencesPreferredType",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -475,7 +475,7 @@
     "ListElementCode": "generalAppHearingDetails.TelephoneHearingPreferredType",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -485,7 +485,7 @@
     "ListElementCode": "generalAppHearingDetails.ReasonForPreferredHearingType",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -495,7 +495,7 @@
     "ListElementCode": "generalAppHearingDetails.HearingPreferredLocation",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -505,7 +505,7 @@
     "ListElementCode": "generalAppHearingDetails.HearingDetailsTelephoneNumber",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -515,7 +515,7 @@
     "ListElementCode": "generalAppHearingDetails.HearingDetailsEmailID",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -525,7 +525,7 @@
     "ListElementCode": "generalAppHearingDetails.HearingDuration",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -535,7 +535,7 @@
     "ListElementCode": "generalAppHearingDetails.generalAppHearingDays",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -545,7 +545,7 @@
     "ListElementCode": "generalAppHearingDetails.generalAppHearingHours",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -555,7 +555,7 @@
     "ListElementCode": "generalAppHearingDetails.generalAppHearingMinutes",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -565,7 +565,7 @@
     "ListElementCode": "generalAppHearingDetails.unavailableTrialRequiredYesOrNo",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -575,7 +575,7 @@
     "ListElementCode": "generalAppHearingDetails.generalAppUnavailableDates",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -585,7 +585,7 @@
     "ListElementCode": "generalAppHearingDetails.generalAppUnavailableDates.unavailableTrialDateFrom",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -595,7 +595,7 @@
     "ListElementCode": "generalAppHearingDetails.generalAppUnavailableDates.unavailableTrialDateTo",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -605,7 +605,7 @@
     "ListElementCode": "generalAppHearingDetails.vulnerabilityQuestionsYesOrNo",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -615,7 +615,7 @@
     "ListElementCode": "generalAppHearingDetails.vulnerabilityQuestion",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -625,7 +625,7 @@
     "ListElementCode": "generalAppHearingDetails.SupportRequirement",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -635,7 +635,7 @@
     "ListElementCode": "generalAppHearingDetails.SupportRequirementSignLanguage",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -645,7 +645,7 @@
     "ListElementCode": "generalAppHearingDetails.SupportRequirementLanguageInterpreter",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -655,7 +655,7 @@
     "ListElementCode": "generalAppHearingDetails.SupportRequirementOther",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -665,7 +665,7 @@
     "ListElementCode": "generalAppEvidenceDocument",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -675,7 +675,7 @@
     "ListElementCode": "isGaApplicantLip",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -685,7 +685,7 @@
     "ListElementCode": "isGaRespondentOneLip",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -695,7 +695,7 @@
     "ListElementCode": "isGaRespondentTwoLip",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -705,7 +705,7 @@
     "ListElementCode": "isMultiParty",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -715,7 +715,7 @@
     "ListElementCode": "applicantPartyName",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -725,7 +725,7 @@
     "ListElementCode": "claimant1PartyName",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -735,7 +735,7 @@
     "ListElementCode": "claimant2PartyName",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -745,7 +745,7 @@
     "ListElementCode": "defendant1PartyName",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -755,7 +755,7 @@
     "ListElementCode": "defendant2PartyName",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -765,7 +765,7 @@
     "ListElementCode": "caseManagementLocation",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -775,7 +775,7 @@
     "ListElementCode": "isCcmccLocation",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -785,7 +785,7 @@
     "ListElementCode": "caseManagementCategory",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -795,7 +795,7 @@
     "ListElementCode": "parentClaimantIsApplicant",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -805,7 +805,7 @@
     "ListElementCode": "generalAppParentCaseLink",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -815,7 +815,7 @@
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -825,7 +825,7 @@
     "ListElementCode": "generalAppSuperClaimType",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -835,7 +835,7 @@
     "ListElementCode": "locationName",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -845,7 +845,7 @@
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -855,7 +855,7 @@
     "ListElementCode": "caseLink",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -865,7 +865,7 @@
     "ListElementCode": "caseState",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -875,7 +875,7 @@
     "ListElementCode": "generalApplicationType",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -885,7 +885,7 @@
     "ListElementCode": "generalAppDateDeadline",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -895,7 +895,7 @@
     "ListElementCode": "applicantSolicitors",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -905,7 +905,7 @@
     "ListElementCode": "defendantSolicitors",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -915,7 +915,7 @@
     "ListElementCode": "respondentsResponses",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -925,7 +925,7 @@
     "ListElementCode": "generalAppRespondent1Representative",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -935,7 +935,7 @@
     "ListElementCode": "gaRespondentDetails",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -945,7 +945,7 @@
     "ListElementCode": "gaRespondentResponseReason",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -955,7 +955,7 @@
     "ListElementCode": "gaHearingDetails",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -965,7 +965,7 @@
     "ListElementCode": "judgeRecitalText",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -975,7 +975,7 @@
     "ListElementCode": "makeAnOrder",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -985,7 +985,7 @@
     "ListElementCode": "orderText",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -995,7 +995,7 @@
     "ListElementCode": "judgeApproveEditOptionDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1005,7 +1005,7 @@
     "ListElementCode": "judgeApproveEditOptionDateForUnlessOrder",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1015,7 +1015,7 @@
     "ListElementCode": "judgeApproveEditOptionDoc",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1025,7 +1025,7 @@
     "ListElementCode": "displayjudgeApproveEditOptionDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1035,7 +1035,7 @@
     "ListElementCode": "displayjudgeApproveEditOptionDateForUnlessOrder",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1045,7 +1045,7 @@
     "ListElementCode": "displayjudgeApproveEditOptionDoc",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1055,7 +1055,7 @@
     "ListElementCode": "dismissalOrderText",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1065,7 +1065,7 @@
     "ListElementCode": "directionsText",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1075,7 +1075,7 @@
     "ListElementCode": "directionsResponseByDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1085,7 +1085,7 @@
     "ListElementCode": "showReasonForDecision",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1095,7 +1095,7 @@
     "ListElementCode": "reasonForDecisionText",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1105,7 +1105,7 @@
     "ListElementCode": "judicialByCourtsInitiative",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1115,7 +1115,7 @@
     "ListElementCode": "requestMoreInfoOption",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1125,7 +1125,7 @@
     "ListElementCode": "deadlineForMoreInfoSubmission",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1135,7 +1135,7 @@
     "ListElementCode": "isWithNotice",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1145,7 +1145,7 @@
     "ListElementCode": "judgeRequestMoreInfoText",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1155,7 +1155,7 @@
     "ListElementCode": "judgeRequestMoreInfoByDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1165,7 +1165,7 @@
     "ListElementCode": "judgeRecitalText",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1175,7 +1175,7 @@
     "ListElementCode": "makeAnOrderForWrittenRepresentations",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1185,7 +1185,7 @@
     "ListElementCode": "writtenSequentailRepresentationsBy",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1195,7 +1195,7 @@
     "ListElementCode": "sequentialApplicantMustRespondWithin",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1205,7 +1205,7 @@
     "ListElementCode": "writtenConcurrentRepresentationsBy",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1215,7 +1215,7 @@
     "ListElementCode": "judgeRecitalText",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1225,7 +1225,7 @@
     "ListElementCode": "directionInRelationToHearingText",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1235,7 +1235,7 @@
     "ListElementCode": "CaseAccessCategory",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "R"
   },
@@ -1245,7 +1245,7 @@
     "ListElementCode": "generalAppVaryJudgementType",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1255,7 +1255,7 @@
     "ListElementCode": "generalAppN245FormUpload",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1265,7 +1265,7 @@
     "ListElementCode": "generalAppHearingDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1275,7 +1275,7 @@
     "ListElementCode": "generalAppHearingDate.hearingScheduledPreferenceYesNo",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1285,7 +1285,7 @@
     "ListElementCode": "generalAppHearingDate.hearingScheduledDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1295,7 +1295,7 @@
     "ListElementCode": "generalAppHearingDate.hearingScheduledDateLabel",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1305,7 +1305,7 @@
     "ListElementCode": "generalAppHearingDate.hearingScheduledPreferenceYesNoLabel",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1315,7 +1315,7 @@
     "ListElementCode": "orderCourtOwnInitiative",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1325,7 +1325,7 @@
     "ListElementCode": "orderCourtOwnInitiativeDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1335,7 +1335,7 @@
     "ListElementCode": "orderWithoutNotice",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1345,7 +1345,7 @@
     "ListElementCode": "orderWithoutNoticeDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1355,7 +1355,7 @@
     "ListElementCode": "orderCourtOwnInitiative",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1365,7 +1365,7 @@
     "ListElementCode": "orderCourtOwnInitiativeDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1375,7 +1375,7 @@
     "ListElementCode": "orderWithoutNotice",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1385,7 +1385,7 @@
     "ListElementCode": "orderWithoutNoticeDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1395,7 +1395,7 @@
     "ListElementCode": "orderCourtOwnInitiative",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1405,7 +1405,7 @@
     "ListElementCode": "orderCourtOwnInitiativeDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1415,7 +1415,7 @@
     "ListElementCode": "orderWithoutNotice",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1425,7 +1425,7 @@
     "ListElementCode": "orderWithoutNoticeDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1435,7 +1435,7 @@
     "ListElementCode": "respondentDebtorOffer",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1445,7 +1445,7 @@
     "ListElementCode": "debtorOfferAccept",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1455,7 +1455,7 @@
     "ListElementCode": "paymentPlan",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1465,7 +1465,7 @@
     "ListElementCode": "monthlyInstalment",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1475,7 +1475,7 @@
     "ListElementCode": "paymentSetDate",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1485,7 +1485,7 @@
     "ListElementCode": "debtorObjections",
     "UserRoles": [
       "citizen-profile",
-      "cui-admin-profile"
+      "cui-admin-profile","caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   }
