@@ -1,0 +1,19 @@
+[
+  {
+    "ID": "GAHelpWithFees",
+    "ListElementCode": "helpWithFee",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "GAHelpWithFees",
+    "ListElementCode": "helpWithFeesReferenceNumber",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
+  }
+]
