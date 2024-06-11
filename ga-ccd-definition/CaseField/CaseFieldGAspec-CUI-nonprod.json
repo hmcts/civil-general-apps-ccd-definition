@@ -46,5 +46,13 @@
     "Label": "LIP asked for costs back",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppHelpWithFees",
+    "FieldType": "GAHelpWithFees",
+    "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

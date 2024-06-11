@@ -26,5 +26,12 @@
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppHelpWithFees",
+    "FieldType": "GAHelpWithFees",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
   }
 ]
