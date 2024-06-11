@@ -50,7 +50,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppHelpWithFees",
-    "FieldType": "GAHelpWithFees",
+    "FieldType": "HelpWithFees",
     "Label": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

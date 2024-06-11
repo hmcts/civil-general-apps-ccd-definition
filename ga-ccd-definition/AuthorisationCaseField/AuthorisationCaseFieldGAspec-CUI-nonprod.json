@@ -1706,7 +1706,8 @@
       },
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "cui-admin-profile"
         ],
         "CRUD": "RU"
       }
