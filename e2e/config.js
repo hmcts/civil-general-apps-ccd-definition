@@ -17,6 +17,17 @@ module.exports = {
     generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL || 'http://localhost:4550',
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
 
+    // aat url's
+    /*manageCase:  'https://manage-case.aat.platform.hmcts.net',
+    authProviderApi: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    ccdDataStore: 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
+    dmStore:'http://dm-store-aat.service.core-compute-aat.internal',
+    idamApi: 'https://idam-api.aat.platform.hmcts.net',
+    civilService: 'http://civil-service-aat.service.core-compute-aat.internal',
+    waTaskMgmtApi: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
+    generalApplication: 'http://civil-general-applications-aat.service.core-compute-aat.internal'*/
+
+    // preview url's
    /* manageCase: 'https://xui-civil-ga-ccd-pr-787.preview.platform.hmcts.net',
     authProviderApi: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
     ccdDataStore: 'https://ccd-data-store-api-civil-ga-ccd-pr-787.preview.platform.hmcts.net',
@@ -76,6 +87,16 @@ module.exports = {
     email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
     type: 'applicant_solicitor',
     orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
+  },
+  defendantCitizenUser1: {
+    password: defaultPassword,
+    email: 'civilmoneyclaimsdemo@gmail.com',
+    type: 'defendant',
+  },
+  defendantCitizenUser2: {
+    password: defaultPassword,
+    email: `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`,
+    type: 'defendant',
   },
   defendantSolicitorUser: {
     password: defaultPassword,

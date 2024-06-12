@@ -63,6 +63,24 @@
     "CaseAccessCategories": "UNSPEC_CLAIM"
   },
   {
+    "RoleName": "[CLAIMANT]",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "APPLICANT-PROFILE-SPEC",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "SPEC_CLAIM"
+  },
+  {
+    "RoleName": "[DEFENDANT]",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "RESPONDENT-ONE-PROFILE-SPEC",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "SPEC_CLAIM"
+  },
+  {
     "RoleName": "[APPLICANTSOLICITORONE]",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
@@ -364,6 +382,15 @@
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "caseworker-wa-task-configuration",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "idam:citizen",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "citizen-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
