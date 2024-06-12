@@ -1110,7 +1110,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -1122,7 +1123,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -1134,7 +1136,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -1146,7 +1149,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -1262,7 +1266,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -1504,7 +1509,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -1516,7 +1522,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -1528,7 +1535,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
