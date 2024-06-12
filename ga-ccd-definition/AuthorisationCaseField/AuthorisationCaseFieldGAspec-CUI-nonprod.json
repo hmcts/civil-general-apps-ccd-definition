@@ -1583,84 +1583,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "isGaApplicantLip",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate",
-          "judge-profile",
-          "legal-adviser",
-          "citizen-profile",
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "civil-administrator-standard",
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "isGaRespondentOneLip",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate",
-          "judge-profile",
-          "legal-adviser",
-          "citizen-profile",
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "civil-administrator-standard",
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "isGaRespondentTwoLip",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate",
-          "judge-profile",
-          "legal-adviser",
-          "citizen-profile",
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "civil-administrator-standard",
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "claimantUserDetails",
     "AccessControl": [
       {
@@ -1686,25 +1608,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppAskForCosts",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "citizen-profile",
-          "cui-admin-profile"
-        ],
-        "CRUD": "RU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppHelpWithFees",
     "AccessControl": [
       {
         "UserRoles": [
