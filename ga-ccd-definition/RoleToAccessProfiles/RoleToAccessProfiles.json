@@ -385,23 +385,5 @@
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "idam:citizen",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "citizen-profile,cui-admin-profile",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "idam:caseworker-civil-admin",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "caseworker-civil-admin",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
   }
 ]

@@ -1,0 +1,11 @@
+[
+  {
+    "RoleName" : "idam:citizen",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "citizen-profile,cui-admin-profile",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  }
+]
