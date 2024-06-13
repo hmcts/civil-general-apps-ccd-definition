@@ -6,7 +6,7 @@ let civilCaseReference,
   gaCaseReference;
 
 Feature('GA 1v2 Defendant Response Case Close API tests');
-// This test should be enabled after early adopters goes live for all regions
+// This test will be enabled to run on nightly as part of this ticket CIV-14206
 
 Scenario('Case offline AWAITING_WRITTEN_REPRESENTATIONS', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');

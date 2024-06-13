@@ -4,9 +4,10 @@ const config = require('../../config.js');
 let civilCaseReference,
   gaCaseReference;
 
-Feature('GA SPEC Claim 1v2 Claimant Response Case Close API tests @api-nonprod  ');
+Feature('GA SPEC Claim 1v2 Claimant Response Case Close API tests');
+// This test will be enabled to run on nightly as part of this ticket CIV-14206
 
-Scenario('Case offline LISTING_FOR_A_HEARING @TEST1', async ({api}) => {
+Scenario('Case offline LISTING_FOR_A_HEARING', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   gaCaseReference
