@@ -291,5 +291,18 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "NO_REMISSION_HWF_GA",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "hearing-schedule-access",
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
