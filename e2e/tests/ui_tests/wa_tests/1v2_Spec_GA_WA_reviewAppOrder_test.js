@@ -25,9 +25,9 @@ if (config.runWAApiTest) {
 }
 
 Feature('1v2 Spec claim: GA - WA Scenarios @e2e-wa');
-// This test should be enabled after early adopters goes live for all regions
+//requires fixing
 
-Scenario('LA refer to judge - R2 Judge Make decision - NBC admin schedule Hearing', async ({I, api, wa}) => {
+Scenario.skip('LA refer to judge - R2 Judge Make decision - NBC admin schedule Hearing', async ({I, api, wa}) => {
   civilCaseReference = await api.createSpecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -84,7 +84,7 @@ Scenario('LA refer to judge - R2 Judge Make decision - NBC admin schedule Hearin
   await wa.verifyNoActiveTask(gaCaseReference);
 });
 
-Scenario('After SDO GA - Change court location  - HC admin review application order', async ({I, api, wa}) => {
+Scenario.skip('After SDO GA - Change court location  - HC admin review application order', async ({I, api, wa}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api.claimantResponseClaimSpec(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',

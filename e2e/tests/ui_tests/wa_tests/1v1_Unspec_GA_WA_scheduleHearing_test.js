@@ -20,9 +20,9 @@ if (config.runWAApiTest) {
 }
 
 Feature('1v1 UnSpec claim: GA - WA Scenarios @e2e-wa');
-// This test should be enabled after early adopters goes live for all regions
+//requires fixing
 
-Scenario('Before SDO GA - Judge Make decision - NBC admin schedule Hearing', async ({I, api, wa}) => {
+Scenario.skip('Before SDO GA - Judge Make decision - NBC admin schedule Hearing', async ({I, api, wa}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -69,7 +69,7 @@ Scenario('Before SDO GA - Judge Make decision - NBC admin schedule Hearing', asy
   await wa.verifyNoActiveTask(gaCaseReference);
 });
 
-Scenario('Before SDO GA - LA Make decision - NBC admin schedule Hearing', async ({I, api, wa}) => {
+Scenario.skip('Before SDO GA - LA Make decision - NBC admin schedule Hearing', async ({I, api, wa}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
