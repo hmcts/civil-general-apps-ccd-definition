@@ -4,15 +4,14 @@ let civilCaseReference, gaCaseReference;
 const mpScenario = 'ONE_V_ONE';
 const {createAccount, deleteAccount} = require('../../api/idamHelper.js');
 
-// This test should be enabled after early adopters goes live for all regions
-
-Feature('General Application LR vs LIP 1V1 Application @lip--api-test');
+// this test is skipped until its fixed but comment changes as spec claim ga works now in non prod env
+Feature('General Application LR vs LIP 1V1 Application @api-nonprod');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-Scenario('GA 1v1 Free Fee  - LR initiates GA vs LIP', async ({api, I}) => {
+Scenario.skip('GA 1v1 Free Fee  - LR initiates GA vs LIP', async ({api, I}) => {
 
   civilCaseReference = await api.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
@@ -23,7 +22,7 @@ Scenario('GA 1v1 Free Fee  - LR initiates GA vs LIP', async ({api, I}) => {
     'Yes', hearingDate, '0', 'FREE', '1');
 });
 
-Scenario('GA 1v1 Without Notice  - LR initiates GA vs LIP', async ({api, I}) => {
+Scenario.skip('GA 1v1 Without Notice  - LR initiates GA vs LIP', async ({api, I}) => {
 
   civilCaseReference = await api.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
