@@ -4,10 +4,10 @@ const config = require('../../config.js');
 let civilCaseReference,
   gaCaseReference;
 
-Feature('GA SPEC Claim 1v2 Claimant Response Case Close API tests @api-nonprod');
+Feature('GA SPEC Claim 1v2 Claimant Response Case Close API tests @api-nonprod  ');
 
-Scenario('Case offline LISTING_FOR_A_HEARING', async ({api}) => {
-  civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
+Scenario('Case offline LISTING_FOR_A_HEARING @TEST1', async ({api}) => {
+  civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   gaCaseReference
     = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
