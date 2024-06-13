@@ -4,8 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA SPEC Claim 1v1 Judge Make Order Directions Order API tests @api-tests');
-// This test should be enabled after early adopters goes live for all regions
+Feature('GA SPEC Claim 1v1 Judge Make Order Directions Order API tests @api-nonprod');
 
 Scenario('Judge makes decision 1V1 Specified case- DIRECTIONS ORDER', async ({api}) => {
   civilCaseReference = await api.createSpecifiedClaim(
