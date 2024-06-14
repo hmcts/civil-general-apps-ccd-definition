@@ -695,7 +695,8 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "cui-admin-profile"
+          "cui-admin-profile",
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       }
@@ -721,7 +722,8 @@
       {
         "UserRoles": [
           "citizen-profile",
-          "cui-admin-profile"
+          "cui-admin-profile",
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       }
