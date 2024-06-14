@@ -89,7 +89,7 @@ const data = {
   SCHEDULE_HEARING: genAppHearingData.scheduleHearing(),
   APPLICATION_DISMISSED: genAppJudgeMakeDecisionData.applicationsDismiss(),
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
-  CREATE_CLAIM: (mpScenario, claimantType, claimAmount, sdoR2) => claimData.createClaim(mpScenario, claimantType, claimAmount, sdoR2),
+  CREATE_CLAIM: (mpScenario, claimantType, claimAmount, sdoR2, useBirminghamCourt) => claimData.createClaim(mpScenario, claimantType, claimAmount, sdoR2, useBirminghamCourt),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
   CREATE_SPEC_CLAIM_LIP: (mpScenario) => claimDataSpecSmallLRvLiP.createClaim(mpScenario),
   UPDATE_CLAIMANT_SOLICITOR_EMAILID: claimSpecData.updateClaimantSolicitorEmailId(),
@@ -305,7 +305,7 @@ module.exports = {
     return caseId;
   },
 
-  createUnspecifiedClaim: async (user, multipartyScenario, claimantType, claimAmount= '30000') => {
+  createUnspecifiedClaim: async (user, multipartyScenario, claimantType, claimAmount= '30000', useBirminghamCourt = false) => {
 
     eventName = 'CREATE_CLAIM';
     caseId = null;
@@ -315,7 +315,7 @@ module.exports = {
     const sdoR2 = await checkPBAv3ToggleEnabled(SDOR2);
     console.log('Is sdoR2 toggle on?: ' + sdoR2);
 
-    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType, claimAmount, sdoR2);
+    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType, claimAmount, sdoR2, useBirminghamCourt);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
