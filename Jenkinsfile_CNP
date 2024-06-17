@@ -125,7 +125,7 @@ withPipeline(type, product, component) {
         env.YARN_ENABLE_IMMUTABLE_INSTALLS = false
         env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
         env.TEST_DATA_LOAD_SKIP_PERIOD = 3.0
-        env.ENVIRONMENT = "preview"
+        env.ENVIRONMENT="aat"
         loadVaultSecrets(secrets);
     }
     onMaster {
