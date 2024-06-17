@@ -1,6 +1,6 @@
 civil-general-applications:
   java:
-    image: 'hmctspublic.azurecr.io/civil/general-applications:pr-1353'
+    image: 'hmctspublic.azurecr.io/civil/general-applications:pr-1355'
     imagePullPolicy: Always
     keyVaults:
       civil:
@@ -82,7 +82,7 @@ civil-service:
   java:
     applicationPort: 4000
     releaseNameOverride: ${SERVICE_NAME}-civil-service
-    image: 'hmctspublic.azurecr.io/civil/service:prod-dcccb5c-20240614145912'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-4940'
     imagePullPolicy: Always
     devmemoryRequests: 2048Mi
     devcpuRequests: 2000m
@@ -106,6 +106,8 @@ civil-service:
           - sendgrid-api-key
           - robotics-notification-sender
           - robotics-notification-recipient
+          - name: launch-darkly-sdk-key-non-prod
+            alias: launch-darkly-sdk-key
           - ordnance-survey-api-key
           - robotics-notification-multipartyrecipient
           - name: robotics-notification-recipient-spec
