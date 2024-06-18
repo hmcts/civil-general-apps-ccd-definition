@@ -7,7 +7,6 @@
         "UserRoles": [
           "citizen-profile",
           "cui-admin-profile",
-          "hearing-schedule-access",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
@@ -26,8 +25,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -39,8 +37,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -52,8 +49,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -65,8 +61,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -80,8 +75,7 @@
         "UserRoles": [
           "cui-admin-profile",
           "citizen-profile",
-          "caseworker-civil-systemupdate",
-          "hearing-schedule-access"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -93,8 +87,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -106,8 +99,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -121,8 +113,7 @@
         "UserRoles": [
           "cui-admin-profile",
           "caseworker-civil-systemupdate",
-          "citizen-profile",
-          "hearing-schedule-access"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -136,8 +127,7 @@
         "UserRoles": [
           "cui-admin-profile",
           "citizen-profile",
-          "caseworker-civil-systemupdate",
-          "hearing-schedule-access"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -149,8 +139,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
@@ -168,8 +157,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -181,8 +169,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -194,8 +181,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -207,8 +193,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -220,8 +205,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -234,8 +218,7 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -247,8 +230,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -260,8 +242,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -273,8 +254,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }

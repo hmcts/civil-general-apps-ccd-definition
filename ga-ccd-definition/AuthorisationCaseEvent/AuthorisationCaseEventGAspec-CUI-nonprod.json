@@ -298,7 +298,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "hearing-schedule-access",
           "cui-admin-profile"
         ],
         "CRUD": "CRU"
