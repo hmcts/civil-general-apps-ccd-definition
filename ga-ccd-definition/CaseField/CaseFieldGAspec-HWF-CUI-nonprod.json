@@ -19,24 +19,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "additionalHelpFeesReferenceNumber",
-    "Label": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "Searchable": "N",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "caseLabelAdditionalReference",
-    "Label": "${additionalHelpFeesReferenceNumber}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "caseLabelGaReference",
     "Label": "${generalAppHelpWithFees.helpWithFeesReferenceNumber}",
     "FieldType": "Label",
@@ -47,14 +29,6 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "caseTitleWithHWFGaFeeNumber",
     "Label": "<h2 class=\"govuk-heading-1\">  ${generalAppHelpWithFees.helpWithFeesReferenceNumber} ${claimant1PartyName} Vs ${defendant1PartyName}</h2>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "caseTitleWithHWFAdditionalNumber",
-    "Label": "<h2 class=\"govuk-heading-1\"> ${additionalHelpFeesReferenceNumber} ${claimant1PartyName} Vs ${defendant1PartyName} </h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"

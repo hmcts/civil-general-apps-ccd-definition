@@ -30,16 +30,6 @@
     "FieldShowCondition": "caseTitleWithHWFGaFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "_CaseTypeID": "GENERALAPPLICATION",
-    "_CaseEventID": "NO_REMISSION_HWF_GA",
-    "_CaseFieldID": "additionalHelpFeesReferenceNumber",
-    "_DisplayContext": "READONLY",
-    "_PageID": "NoRemissionHWF",
-    "_PageDisplayOrder": 1,
-    "_PageFieldDisplayOrder": 4,
-    "_FieldShowCondition": "caseTitleWithHWFGaFeeNumber=\"DO_NOT_SHOW_IN_UI\""
-  },
-  {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "NO_REMISSION_HWF_GA",
     "CaseFieldID": "caseTitleWithHWFGaFeeNumber",
@@ -47,19 +37,7 @@
     "PageID": "NoRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 5,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "hwfFeeType = \"APPLICATION\""
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "NO_REMISSION_HWF_GA",
-    "CaseFieldID": "caseTitleWithHWFAdditionalNumber",
-    "DisplayContext": "READONLY",
-    "PageID": "NoRemissionHWF",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 5,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "hwfFeeType = \"ADDITIONAL\""
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
