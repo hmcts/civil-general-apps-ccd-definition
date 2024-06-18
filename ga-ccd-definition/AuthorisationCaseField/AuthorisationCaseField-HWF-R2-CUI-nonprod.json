@@ -279,31 +279,5 @@
         "CRUD": "CRU"
       }
     ]
-  },
-  {
-    "_CaseTypeID": "GENERALAPPLICATION",
-    "_CaseFieldID": "gaHwfForTab",
-    "_AccessControl": [
-      {
-        "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "_CaseTypeID": "GENERALAPPLICATION",
-    "_CaseFieldID": "additionalHwfForTab",
-    "_AccessControl": [
-      {
-        "UserRoles": [
-          "cui-admin-profile",
-          "hearing-schedule-access"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
   }
 ]
