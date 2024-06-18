@@ -1625,24 +1625,5 @@
         "CRUD": "RU"
       }
     ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppHelpWithFees",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "citizen-profile",
-          "cui-admin-profile"
-        ],
-        "CRUD": "RU"
-      }
-    ]
   }
 ]

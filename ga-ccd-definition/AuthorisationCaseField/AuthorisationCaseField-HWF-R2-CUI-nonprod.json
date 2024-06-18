@@ -7,13 +7,13 @@
         "UserRoles": [
           "citizen-profile",
           "cui-admin-profile",
-          "hearing-schedule-access"
+          "hearing-schedule-access",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
