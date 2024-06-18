@@ -182,21 +182,5 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "_CaseTypeID": "GENERALAPPLICATION",
-    "_ID": "gaHwfForTab",
-    "_Label": " ",
-    "_FieldType": "HelpWithFeesForTab",
-    "_SecurityClassification": "Public",
-    "_Searchable": "N"
-  },
-  {
-    "_CaseTypeID": "GENERALAPPLICATION",
-    "_ID": "additionalHwfForTab",
-    "_Label": " ",
-    "_FieldType": "HelpWithFeesForTab",
-    "_SecurityClassification": "Public",
-    "_Searchable": "N"
   }
 ]
