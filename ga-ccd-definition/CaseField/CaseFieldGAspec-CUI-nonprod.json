@@ -25,14 +25,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "generalAppHelpWithFees",
-    "FieldType": "HelpWithFees",
-    "Label": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppPaymentDetails",
     "Label": "Details of PBA payment",
     "FieldType": "PaymentDetails",
