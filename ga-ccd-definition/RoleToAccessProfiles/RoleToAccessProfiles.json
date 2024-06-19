@@ -300,7 +300,7 @@
     "RoleName": "hearing-centre-admin",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "civil-administrator-standard,ga-basic-access,hearing-schedule-access",
+    "AccessProfiles": "civil-administrator-standard,ga-basic-access,hearing-schedule-access,cui-admin-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
