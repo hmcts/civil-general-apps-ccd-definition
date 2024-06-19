@@ -1,6 +1,6 @@
 [
   {
-    "ID": "GAHelpWithFees",
+    "ID": "HelpWithFees",
     "ListElementCode": "helpWithFee",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "GAHelpWithFees",
+    "ID": "HelpWithFees",
     "ListElementCode": "helpWithFeesReferenceNumber",
     "ElementLabel": " ",
     "FieldType": "Text",

@@ -9,7 +9,7 @@
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppHelpWithFees",
-    "FieldType": "GAHelpWithFees",
+    "FieldType": "HelpWithFees",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   }

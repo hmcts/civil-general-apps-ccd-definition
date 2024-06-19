@@ -26,8 +26,24 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppHelpWithFees",
-    "FieldType": "GAHelpWithFees",
+    "FieldType": "HelpWithFees",
     "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppPaymentDetails",
+    "Label": "Details of PBA payment",
+    "FieldType": "PaymentDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "issueDate",
+    "Label": "Date general application issued",
+    "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
