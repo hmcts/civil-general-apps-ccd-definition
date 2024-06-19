@@ -291,5 +291,18 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "CITIZEN_GENERAL_APP_PAYMENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APPLICANT-PROFILE-SPEC",
+          "RESPONDENT-ONE-PROFILE-SPEC"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
