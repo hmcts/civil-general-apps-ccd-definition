@@ -54,7 +54,7 @@
     "ID": "INVALID_HWF_REFERENCE_GA",
     "Name": "Invalid HwF Reference",
     "Description": "Invalid HwF Reference",
-    "PreConditionState(s)": "*",
+    "PreConditionState(s)": "AWAITING_APPLICATION_PAYMENT;APPLICATION_ADD_PAYMENT",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "CallBackURLAboutToStartEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
