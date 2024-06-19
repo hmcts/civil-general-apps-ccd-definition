@@ -15,7 +15,6 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0,
-    "_EventEnablingCondition": "hwfFeeType = \"CLAIMISSUED\" OR hwfFeeType = \"HEARING\""
+    "RetriesTimeoutURLSubmittedEvent": 0
   }
 ]
