@@ -1,6 +1,20 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "CITIZEN_GENERAL_APP_PAYMENT",
+    "Name": "Citizen Ga Issue Payment",
+    "Description": "Citizen Ga Issue Payment",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "NO_REMISSION_HWF_GA",
     "Name": "No remission HwF",
     "Description": "No remission HWF",
