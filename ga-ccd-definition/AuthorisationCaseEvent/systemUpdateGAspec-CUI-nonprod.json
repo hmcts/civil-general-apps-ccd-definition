@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "UPDATE_TASK_LIST_GA_COMPLETE",
+    "CaseEventID": "CITIZEN_GENERAL_APP_PAYMENT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
