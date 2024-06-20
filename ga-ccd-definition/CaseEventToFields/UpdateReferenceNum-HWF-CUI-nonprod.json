@@ -57,7 +57,7 @@
     "DisplayContext": "READONLY",
     "PageID": "updateHwfNumber",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 4,
+    "PageFieldDisplayOrder": 6,
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -67,7 +67,7 @@
     "DisplayContext": "READONLY",
     "PageID": "updateHwfNumber",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 6,
+    "PageFieldDisplayOrder": 7,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "hwfFeeType=\"APPLICATION\""
   },
@@ -78,7 +78,7 @@
     "DisplayContext": "READONLY",
     "PageID": "updateHwfNumber",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 6,
+    "PageFieldDisplayOrder": 7,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "hwfFeeType=\"ADDITIONAL\""
   },
@@ -89,7 +89,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "updateHwfNumber",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 7,
+    "PageFieldDisplayOrder": 8,
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -99,7 +99,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "updateHwfNumber",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 7,
+    "PageFieldDisplayOrder": 8,
     "ShowSummaryChangeOption": "Y"
   }
 ]
