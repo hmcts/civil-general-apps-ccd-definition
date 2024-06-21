@@ -220,5 +220,23 @@
     "CaseFieldID": "gaAddlDocBundle",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "isGaApplicantLip",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "isGaRespondentOneLip",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "isGaRespondentTwoLip",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
   }
 ]
