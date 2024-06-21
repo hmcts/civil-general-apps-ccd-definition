@@ -4,9 +4,8 @@ let civilCaseReference, gaCaseReference;
 const mpScenario = 'ONE_V_ONE';
 const {createAccount, deleteAccount} = require('../../api/idamHelper.js');
 
-// This test should be enabled after early adopters goes live for all regions
-
-Feature('General Application LR vs LIP 1V1 Application @lip--api-test');
+// this test is skipped until its fixed but comment changes as spec claim ga works now in non prod env
+Feature('General Application LR vs LIP 1V1 Application @api-nonprod');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
