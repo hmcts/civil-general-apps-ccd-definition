@@ -428,7 +428,7 @@ const createClaimDataLIP = (pbaV3, legalRepresentation, useValidPba, mpScenario,
   }
 };
 
-const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType, claimAmount = '30000', sdoR2) => {
+const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType, claimAmount = '30000', sdoR2, useBirminghamCourt) => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
@@ -438,26 +438,50 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
         respondentSolicitor1Reference: 'Respondent reference'
       }
     },
-    Court: {
-      courtLocation: {
-        applicantPreferredCourtLocationList: {
-          list_items: [
-            listElement(config.claimantSelectedCourt)
-          ],
-          value: listElement(config.claimantSelectedCourt)
+    ...(useBirminghamCourt === false) ? {
+      Court: {
+        courtLocation: {
+          applicantPreferredCourtLocationList: {
+            list_items: [
+              listElement(config.claimantSelectedCourt)
+            ],
+            value: listElement(config.claimantSelectedCourt)
+          },
+          caseLocation: {
+            region: '2',
+            baseLocation: '000000'
+          }
         },
-      caseLocation: {
-        region: '2',
-        baseLocation: '000000'
-      }
-      },
-      applicant1OrganisationPolicy: {
-        OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
-        Organisation: {
-          OrganisationID: config.claimantSolicitorOrgId,
+        applicant1OrganisationPolicy: {
+          OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
+          Organisation: {
+            OrganisationID: config.claimantSolicitorOrgId,
+          }
         }
-      }
-    },
+      },
+    }: {},
+    ...(useBirminghamCourt === true) ? {
+      Court: {
+        courtLocation: {
+          applicantPreferredCourtLocationList: {
+            list_items: [
+              listElement(config.claimantSelectedCourtBirmingham)
+            ],
+            value: listElement(config.claimantSelectedCourtBirmingham)
+          },
+          caseLocation: {
+            region: '2',
+            baseLocation: '231596'
+          }
+        },
+        applicant1OrganisationPolicy: {
+          OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
+          Organisation: {
+            OrganisationID: config.claimantSolicitorOrgId,
+          }
+        }
+      },
+    }: {},
     Claimant: {
       applicant1: claimant(claimantType),
     },
@@ -670,7 +694,7 @@ const hasRespondent2 = (mpScenario) => {
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE', claimantType, claimAmount = '30000', sdoR2) => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimantType, claimAmount = '30000', sdoR2, useBirminghamCourt = false) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -703,7 +727,7 @@ module.exports = {
         },
       },
       valid: {
-        ...createClaimData('Yes', true, mpScenario, 'Company', claimAmount, sdoR2),
+        ...createClaimData('Yes', true, mpScenario, 'Company', claimAmount, sdoR2, useBirminghamCourt),
       },
       invalid: {
         Upload: {
