@@ -70,7 +70,7 @@ Scenario.skip('GA for Specified Claim 1v2 different Solicitor - respond to appli
 
     console.log('Judge Making decision:' + gaCaseReference);
     if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-      user = config.judgeUser;
+      user = config.judgeUser2WithRegionId2;
       await I.login(user);
     } else {
       user = config.judgeLocalUser;
