@@ -102,7 +102,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "helpWithFeesMoreInformationAdditional",
     "Label": " ",
-    "FieldType": "HelpWithFees",
+    "FieldType": "HelpWithFeesMoreInformation",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
