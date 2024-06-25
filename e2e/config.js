@@ -185,6 +185,13 @@ module.exports = {
     roleCategory: 'ADMIN',
     regionId: '1'
   },
+  nbcAdminWithRegionId2: {
+    password: defaultPassword,
+    email: 'nbc_admin_region2@justice.gov.uk',
+    type: 'national-business-centre',
+    roleCategory: 'ADMIN',
+    regionId: '1'
+  },
   adminUser: {
     password: defaultPassword,
     email: 'civil-admin@mailnesia.com',
@@ -260,4 +267,6 @@ module.exports = {
   claimantSelectedCourt: 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ',
   defendantSelectedCourt: 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ',
   defendant2SelectedCourt: 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ',
+  claimantSelectedCourtBirmingham: 'Birmingham Civil and Family Justice Centre - Priory Courts, 33 Bull Street - B4 6DS',
+  defendantSelectedCourtBirmingham: 'Birmingham Civil and Family Justice Centre - Priory Courts, 33 Bull Street - B4 6DS',
 };
