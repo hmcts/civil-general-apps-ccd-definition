@@ -304,5 +304,17 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "NO_REMISSION_HWF_GA",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]

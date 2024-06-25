@@ -12,5 +12,23 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "NO_REMISSION_HWF_GA",
+    "Name": "No remission HwF",
+    "Description": "No remission HWF",
+    "PreConditionState(s)": "AWAITING_APPLICATION_PAYMENT;APPLICATION_ADD_PAYMENT",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToStartEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "RetriesTimeoutURLSubmittedEvent": 0
   }
 ]
