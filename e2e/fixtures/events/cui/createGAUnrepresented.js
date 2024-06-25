@@ -1,48 +1,48 @@
 const TypOfApplication = {
     multiple: {
-        event: "INITIATE_GENERAL_APPLICATION",
+        event: 'INITIATE_GENERAL_APPLICATION',
         caseDataUpdate: {
             generalAppType: {
                 types: [
-                    "STRIKE_OUT",
-                    "AMEND_A_STMT_OF_CASE",
+                    'STRIKE_OUT',
+                    'AMEND_A_STMT_OF_CASE',
                 ],
             },
             generalAppRespondentAgreement: {
-                hasAgreed: "Yes",
+                hasAgreed: 'Yes',
             },
             generalAppInformOtherParty: undefined,
-            generalAppAskForCosts: "Yes",
-            generalAppDetailsOfOrder: "test\n\nI'm asking for permission to make a change to test document.",
-            generalAppReasonsOfOrder: "test\n\ntest",
+            generalAppAskForCosts: 'Yes',
+            generalAppDetailsOfOrder: 'I am asking for permission to make a change to test document.',
+            generalAppReasonsOfOrder: 'test\n\ntest',
             generalAppEvidenceDocument: undefined,
             generalAppHearingDetails: {
-                HearingPreferencesPreferredType: "IN_PERSON",
-                ReasonForPreferredHearingType: "test",
+                HearingPreferencesPreferredType: 'IN_PERSON',
+                ReasonForPreferredHearingType: 'test',
                 HearingPreferredLocation: {
                     value: {
-                        label: "Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL",
+                        label: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
                     },
                 },
-                HearingDetailsTelephoneNumber: "07000000000",
-                HearingDetailsEmailID: "civilmoneyclaimsdemo@gmail.com",
-                unavailableTrialRequiredYesOrNo: "No",
+                HearingDetailsTelephoneNumber: '07000000000',
+                HearingDetailsEmailID: 'civilmoneyclaimsdemo@gmail.com',
+                unavailableTrialRequiredYesOrNo: 'No',
                 generalAppUnavailableDates: [
                 ],
                 SupportRequirement: [
-                    "OTHER_SUPPORT",
+                    'OTHER_SUPPORT',
                 ],
-                SupportRequirementSignLanguage: "",
-                SupportRequirementLanguageInterpreter: "",
-                SupportRequirementOther: "wheel chair",
+                SupportRequirementSignLanguage: '',
+                SupportRequirementLanguageInterpreter: '',
+                SupportRequirementOther: 'wheel chair',
             },
             generalAppStatementOfTruth: {
-                name: "mutiple applications",
+                name: 'mutiple applications',
             },
             generalAppHelpWithFees: undefined,
         },
     }
-}
+};
 
 module.exports = {
     getPayloadForGALiP: (type = '') => {
@@ -50,46 +50,46 @@ module.exports = {
             return TypOfApplication[type];
         }
         return {
-            event: "INITIATE_GENERAL_APPLICATION",
+            event: 'INITIATE_GENERAL_APPLICATION',
             caseDataUpdate: {
                 generalAppType: {
                     types: [
-                        "EXTEND_TIME",
+                        'EXTEND_TIME',
                     ],
                 },
                 generalAppRespondentAgreement: {
-                    hasAgreed: "Yes",
+                    hasAgreed: 'Yes',
                 },
                 generalAppInformOtherParty: undefined,
-                generalAppAskForCosts: "No",
-                generalAppDetailsOfOrder: "The time by which I must [specify what needs to be done] be extended to [enter the date you can do this by].",
-                generalAppReasonsOfOrder: "test",
+                generalAppAskForCosts: 'No',
+                generalAppDetailsOfOrder: 'The time by which I must [specify what needs to be done] be extended to [enter the date you can do this by].',
+                generalAppReasonsOfOrder: 'test',
                 generalAppEvidenceDocument: undefined,
                 generalAppHearingDetails: {
-                    HearingPreferencesPreferredType: "IN_PERSON",
-                    ReasonForPreferredHearingType: "test",
+                    HearingPreferencesPreferredType: 'IN_PERSON',
+                    ReasonForPreferredHearingType: 'test',
                     HearingPreferredLocation: {
                         value: {
-                            label: "Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL",
+                            label: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
                         },
                     },
-                    HearingDetailsTelephoneNumber: "07000000000",
-                    HearingDetailsEmailID: "civilmoneyclaimsdemo@gmail.com",
-                    unavailableTrialRequiredYesOrNo: "No",
+                    HearingDetailsTelephoneNumber: '07000000000',
+                    HearingDetailsEmailID: 'civilmoneyclaimsdemo@gmail.com',
+                    unavailableTrialRequiredYesOrNo: 'No',
                     generalAppUnavailableDates: [
                     ],
                     SupportRequirement: [
-                        "OTHER_SUPPORT",
+                        'OTHER_SUPPORT',
                     ],
-                    SupportRequirementSignLanguage: "",
-                    SupportRequirementLanguageInterpreter: "",
-                    SupportRequirementOther: "test",
+                    SupportRequirementSignLanguage: '',
+                    SupportRequirementLanguageInterpreter: '',
+                    SupportRequirementOther: 'test',
                 },
                 generalAppStatementOfTruth: {
-                    name: "test",
+                    name: 'test',
                 },
                 generalAppHelpWithFees: undefined,
             },
-        }
+        };
     }
 };
