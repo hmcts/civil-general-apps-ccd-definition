@@ -1500,7 +1500,6 @@ module.exports = {
     } else {
       console.log('SmallClaim...');
       payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('1500', userId, typeOfData);
-      console.log(payload);
     }
     const caseData = await apiRequest.startCreateCaseForCitizen(payload);
     caseId = caseData.id;
