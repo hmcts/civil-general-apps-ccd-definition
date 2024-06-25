@@ -204,9 +204,9 @@ module.exports = {
       event: 'CREATE_CLAIM_SPEC_AFTER_PAYMENT',
       caseDataUpdate: {
         issueDate: date(0),
-        "caseManagementLocation": {
-          "region": "2",
-          "baseLocation": "201339"
+        caseManagementLocation: {
+          region: '2',
+          baseLocation: '201339'
         },
       }
     };

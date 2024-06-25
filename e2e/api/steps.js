@@ -1489,7 +1489,7 @@ module.exports = {
     return caseId;
   },
 
-  createClaimWithUnrepresentedClaimant: async (user, claimType = 'SmallClaims', carmEnabled = false, typeOfData = '') => {
+  createClaimWithUnrepresentedClaimant: async (user, claimType = 'SmallClaims', typeOfData = '') => {
     console.log('Starting to create claim');
     let payload = {};
     await apiRequest.setupTokens(user);
@@ -1522,7 +1522,7 @@ module.exports = {
   },
 
   createGAApplicationWithUnrepresented: async (user, caseId,typeOfApplication) => {
-    console.log('start create a GA application')
+    console.log('start create a GA application');
     const payload = getPayloadForGALiP(typeOfApplication);
     await apiRequest.setupTokens(user);
     const caseData = await apiRequest.startCreateCaseForCitizen(payload, caseId);

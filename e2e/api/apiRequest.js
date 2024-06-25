@@ -347,8 +347,6 @@ module.exports = {
 
     let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), payload, 'POST',200)
       .then(response => response.json());
-      console.log('response ***********')
-      console.log(response);
     tokens.ccdEvent = response.token;
     return response;
   },
