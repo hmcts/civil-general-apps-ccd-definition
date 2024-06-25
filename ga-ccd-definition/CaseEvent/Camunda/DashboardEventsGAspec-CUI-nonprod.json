@@ -1,0 +1,28 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "UPDATE_TASK_LIST_GA_CREATED",
+    "Name": "Update task list - GA created",
+    "Description": "Notify applicant that general applications can be viewed",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "UPDATE_TASK_LIST_GA_COMPLETE",
+    "Name": "Update task list - GA complete",
+    "Description": "Notify applicant that general applications available",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  }
+]
