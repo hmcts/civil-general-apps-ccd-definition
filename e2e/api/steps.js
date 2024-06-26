@@ -30,6 +30,7 @@ const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecisio
 const genAppJudgeMakeFinalOrderData = require('../fixtures/ga-ccd/judgeMakeFinalDecision.js');
 const genAppHearingData = require('../fixtures/ga-ccd/genAppHearing.js');
 const genAppNbcAdminTask = require('../fixtures/ga-ccd/nbcAdminTask.js');
+const createClaimLipClaimant = require('../fixtures/events/cui/createClaimUnrepresentedClaimant.js');
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
 const { replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
@@ -40,6 +41,7 @@ const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const {expect} = require('chai');
 const {cloneDeep} = require('lodash');
+const { getPayloadForGALiP } = require('../fixtures/events/cui/createGAUnrepresented.js');
 const gaTypesList = {
   'LATypes': ['STAY_THE_CLAIM','EXTEND_TIME', 'AMEND_A_STMT_OF_CASE'],
   'JudgeGaTypes': ['SET_ASIDE_JUDGEMENT']
@@ -1439,6 +1441,7 @@ module.exports = {
   cleanUp: async () => {
     await unAssignAllUsers();
   },
+
   //below is claim functions
   createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE') => {
     eventName = 'CREATE_CLAIM_SPEC';
@@ -1484,6 +1487,54 @@ module.exports = {
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
     return caseId;
+  },
+
+  createClaimWithUnrepresentedClaimant: async (user, claimType = 'SmallClaims', typeOfData = '') => {
+    console.log('Starting to create claim');
+    let payload = {};
+    await apiRequest.setupTokens(user);
+    let userId = await apiRequest.fetchUserId();
+    if (claimType === 'FastTrack') {
+      console.log('FastTrack claim...');
+      payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('15000', userId);
+    } else {
+      console.log('SmallClaim...');
+      payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('1500', userId, typeOfData);
+    }
+    const caseData = await apiRequest.startCreateCaseForCitizen(payload);
+    caseId = caseData.id;
+    await waitForFinishedBusinessProcess(caseId, user);
+    console.log('Claim submitted');
+
+    // issue claim
+    payload = createClaimLipClaimant.issueClaim();
+    await apiRequest.startCreateCaseForCitizen(payload, caseId);
+    await waitForFinishedBusinessProcess(caseId, user);
+    console.log('Claim issued');
+    await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
+    // update submit date
+    console.log('carm not enabled, updating submitted date');
+    await apiRequest.setupTokens(config.systemUpdate);
+    const submittedDate = { 'submittedDate': '2023-08-10T15:59:50' };
+    await testingSupport.updateCaseData(caseId, submittedDate);
+    console.log('submitted date update to before carm date');
+    return caseId;
+  },
+
+  createGAApplicationWithUnrepresented: async (user, caseId,typeOfApplication) => {
+    console.log('start create a GA application');
+    const payload = getPayloadForGALiP(typeOfApplication);
+    await apiRequest.setupTokens(user);
+    const caseData = await apiRequest.startCreateCaseForCitizen(payload, caseId);
+    await waitForFinishedBusinessProcess(caseData.id, user);
+    await waitForGAFinishedBusinessProcess(caseData.id, user);
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(caseData.id, user).then(res => res.json());
+    const ccdGeneralApplications = updatedResponse.generalApplications;
+    const generalApplicationId = ccdGeneralApplications[ccdGeneralApplications.length - 1]?.value?.caseLink?.CaseReference;
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(generalApplicationId, user);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    console.log('ccd state ' + updatedGABusinessProcessData.ccdState);
+    return { gaCaseReference: generalApplicationId, gaCaseState: updatedGABusinessProcessData.ccdState };
   },
 
   defendantResponseSpecClaim: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
