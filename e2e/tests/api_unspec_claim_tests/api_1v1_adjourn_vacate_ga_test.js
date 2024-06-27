@@ -4,10 +4,9 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 Make Adjourn Vacate API tests @api-tests');
-// This test should be enabled after early adopters goes live for all regions
+Feature('GA 1v1 Make Adjourn Vacate API tests');
 
-Scenario('AC 4 - 15 Days with consent', async ({api}) => {
+Scenario('AC 4 - 15 Days with consent @api-tests', async ({api}) => {
   let hearingDate = await api.createDateString(15);
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -23,7 +22,7 @@ Scenario('AC 4 - 15 Days with consent', async ({api}) => {
     'Yes', hearingDate, '0', 'FEE0414', '1');
 });
 
-Scenario.skip('AC 3 - 14 Days with consent', async ({api}) => {
+Scenario('AC 3 - 14 Days with consent @api-nonprod', async ({api}) => {
   let hearingDate = await api.createDateString(14);
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
@@ -37,7 +36,7 @@ Scenario.skip('AC 3 - 14 Days with consent', async ({api}) => {
     'Yes', hearingDate, '11900', 'FEE0443', '2');
 });
 
-Scenario.skip('AC 2 - 14 Days without consent, without notice', async ({api}) => {
+Scenario('AC 2 - 14 Days without consent, without notice @api-nonprod', async ({api}) => {
   let hearingDate = await api.createDateString(14);
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
