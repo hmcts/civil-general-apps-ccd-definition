@@ -4,7 +4,7 @@
     "CaseEventID": "PARTIAL_REMISSION_HWF_GA",
     "CaseFieldID": "claimant1PartyName",
     "DisplayContext": "READONLY",
-    "PageID": "NoRemissionHWF",
+    "PageID": "partRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "FieldShowCondition": "caseTitleWithHWFGaFeeNumber=\"DO_NOT_SHOW_IN_UI\""
@@ -14,7 +14,7 @@
     "CaseEventID": "PARTIAL_REMISSION_HWF_GA",
     "CaseFieldID": "defendant1PartyName",
     "DisplayContext": "READONLY",
-    "PageID": "NoRemissionHWF",
+    "PageID": "partRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
     "FieldShowCondition": "caseTitleWithHWFGaFeeNumber=\"DO_NOT_SHOW_IN_UI\""
