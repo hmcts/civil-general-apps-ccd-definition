@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for civil-general-apps-ccd-definition App
 name: civil-ga-ccd
 home: https://github.com/hmcts/civil-general-apps-ccd-definition
-version: 0.0.55
+version: 0.0.56
 maintainers:
   - name: HMCTS Civil team
 
@@ -46,3 +46,7 @@ dependencies:
     version: ~0.1.7
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-wa.enabled
+  - name: aac-manage-case-assignment
+    version: ~0.2.9
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: aac-manage-case-assignment.enabled
