@@ -155,7 +155,17 @@ withPipeline(type, product, component) {
     }
 
     before('smoketest:preview') {
-      sh """
+      retry (3) {
+        env.URL = "https://xui-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+        env.CIVIL_SERVICE_URL = "https://civil-service-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+        env.CIVIL_GENERAL_APPLICATIONS_URL = "https://civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+        env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
+        env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
+        env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+        env.WA_TASK_MGMT_URL = "https://wa-task-management-api-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+        env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
+        env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+        sh """
           eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
           ./bin/add-roles.sh
           ./bin/import-ccd-definition.sh "-e *-prod.json,*HNL-nonprod.json,*-shuttered.json" ${ccddefbranch}
@@ -163,15 +173,7 @@ withPipeline(type, product, component) {
           ./bin/pull-latest-dmn-files.sh ${dmnBranch}
           ./bin/pull-latest-camunda-wa-files.sh ${waStandaloneBranch}
         """
-        env.URL="https://xui-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-        env.CIVIL_SERVICE_URL="https://civil-service-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-        env.CIVIL_GENERAL_APPLICATIONS_URL="https://civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-        env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
-        env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
-        env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-        env.WA_TASK_MGMT_URL = "https://wa-task-management-api-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-        env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
-        env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+      }
     }
 
   afterAlways('smoketest:preview') {
