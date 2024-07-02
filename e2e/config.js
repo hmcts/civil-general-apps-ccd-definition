@@ -239,6 +239,11 @@ module.exports = {
     type: 'JUDICIAL',
     roleCategory: 'JUDICIAL'
   },
+  applicantCitizenUser: {
+    password: defaultPassword,
+    email: 'civilmoneyclaimsdemo@gmail.com',
+    type: 'claimant',
+  },
   systemUpdate: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.superuser@gmail.com',
