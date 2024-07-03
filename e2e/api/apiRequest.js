@@ -335,4 +335,21 @@ module.exports = {
                                                           'GET');
       return response_msg || {};
   },
+
+  fetchUserId: async () => {
+    return await idamHelper.userId(tokens.userAuth);
+  },
+
+  startCreateCaseForCitizen: async (payload, caseId = 'draft') => {
+    let url = getCivilServiceUrl();
+    const userId = await idamHelper.userId(tokens.userAuth);
+    url += `/cases/${caseId}/citizen/${userId}/event`;
+
+    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), payload, 'POST',200)
+      .then(response => response.json());
+    tokens.ccdEvent = response.token;
+    return response;
+  },
 };
+
+
