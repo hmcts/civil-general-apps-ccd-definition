@@ -50,7 +50,7 @@
     "DisplayContext": "READONLY",
     "PageID": "FeePaymentOutcome",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -60,7 +60,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "FeePaymentOutcome",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "CaseEventFieldLabel": "Is there a Help with Fees reference number?"
   },
@@ -71,7 +71,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "FeePaymentOutcome",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 5,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "hwfNumberAvailable = \"Yes\""
   },
