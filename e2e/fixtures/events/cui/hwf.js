@@ -8,11 +8,11 @@ module.exports = {
         if (type === 'APPLICATION') {
             return {
                 hwfFullRemissionGrantedForGa: 'Yes'
-            }
+            };
         } else {
             return {
                 hwfFullRemissionGrantedForAdditional: 'Yes'
-            }
+            };
         }
     },
 };
