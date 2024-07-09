@@ -4,10 +4,15 @@ module.exports = {
             hwfFeeType: type
         };
     },
-    outcome: (type = 'application') => {
-        return {
-            hwfFullRemissionGrantedForGa: type === 'application' ? 'Yes' : null,
-            hwfFullRemissionGrantedForAdditional: type === 'additional' ? 'Yes' : null,
-        };
+    outcome: (type = 'APPLICATION') => {
+        if (type === 'APPLICATION') {
+            return {
+                hwfFullRemissionGrantedForGa: 'Yes'
+            }
+        } else {
+            return {
+                hwfFullRemissionGrantedForAdditional: 'Yes'
+            }
+        }
     },
 };
