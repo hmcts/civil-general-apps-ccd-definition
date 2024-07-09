@@ -6,7 +6,8 @@ module.exports = {
     },
     outcome: (type = 'application') => {
         return {
-            hwfFullRemissionGrantedForGa: 'Yes'
+            hwfFullRemissionGrantedForGa: type === 'application' ? 'Yes' : null,
+            hwfFullRemissionGrantedForAdditional: type === 'additional' ? 'Yes' : null,
         };
     },
 };
