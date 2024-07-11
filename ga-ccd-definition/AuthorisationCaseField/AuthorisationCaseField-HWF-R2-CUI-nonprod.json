@@ -195,6 +195,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-systemupdate",
           "cui-admin-profile"
         ],
         "CRUD": "CRU"

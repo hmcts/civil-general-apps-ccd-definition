@@ -124,6 +124,15 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseTitle",
+    "Label": "### ${claimant1PartyName} Vs ${defendant1PartyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "caseTitle2",
     "Label": "### ${claimant1PartyName} Vs ${defendant1PartyName}",
     "FieldType": "Label",

@@ -45,7 +45,7 @@ const TypOfApplication = {
 };
 
 module.exports = {
-    getPayloadForGALiP: (type = '') => {
+    getPayloadForGALiP: (type = '', hwf = false) => {
         if (TypOfApplication[type]) {
             return TypOfApplication[type];
         }
@@ -88,7 +88,10 @@ module.exports = {
                 generalAppStatementOfTruth: {
                     name: 'test',
                 },
-                generalAppHelpWithFees: undefined,
+                generalAppHelpWithFees: hwf ? {
+                    helpWithFee:'Yes',
+                    helpWithFeesReferenceNumber:'HWF-A1B-23C'
+                } : null,
             },
         };
     }

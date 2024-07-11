@@ -41,7 +41,8 @@ const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const {expect} = require('chai');
 const {cloneDeep} = require('lodash');
-const { getPayloadForGALiP } = require('../fixtures/events/cui/createGAUnrepresented.js');
+const genLipAppData = require('../fixtures/events/cui/createGAUnrepresented.js');
+const genLipHwf = require('../fixtures/events/cui/hwf.js');
 const gaTypesList = {
   'LATypes': ['STAY_THE_CLAIM','EXTEND_TIME', 'AMEND_A_STMT_OF_CASE'],
   'JudgeGaTypes': ['SET_ASIDE_JUDGEMENT']
@@ -68,6 +69,7 @@ const data = {
   INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT: (isWithNotice, generalAppN245FormUpload, urgency) => genAppData.createGADataVaryJudgement(isWithNotice,null,
     '1500','FEE0458', generalAppN245FormUpload, urgency),
   INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
+  INITIATE_GENERAL_APPLICATION_LIP: (typeOfApplication, hwf) => genLipAppData.getPayloadForGALiP(typeOfApplication, hwf),
   RESPOND_TO_APPLICATION: (agree) => genAppRespondentResponseData.respondGAData(agree),
   RESPOND_DEBTOR_TO_APPLICATION: (agree) => genAppRespondentResponseData.respondDebtorGAData(agree),
   RESPOND_TO_CONSENT_APPLICATION: (agree) => genAppRespondentResponseData.respondConsentGAData(agree),
@@ -85,6 +87,8 @@ const data = {
   JUDGE_APPROVES_STAYCLAIM_APPLN: (current_date) => genAppJudgeMakeDecisionData.judgeApprovesStayClaimAppl(current_date),
   JUDGE_APPROVES_UNLESSORDER_APPLN: (current_date) => genAppJudgeMakeDecisionData.judgeApprovesUnlessOrderAppl(current_date),
   PAYMENT_SERVICE_REQUEST_UPDATED: genAppJudgeMakeDecisionData.serviceUpdateDto(),
+  HWF_FULL: (type) => genLipHwf.full(type),
+  HWF_OUTCOME: (type) => genLipHwf.outcome(type),
   LIST_FOR_A_HEARING: genAppJudgeMakeDecisionData.listingForHearing(),
   JUDGE_DECIDES_FREE_FORM_ORDER: genAppJudgeMakeDecisionData.freeFormOrder(),
   LIST_FOR_A_HEARING_InPerson: genAppJudgeMakeDecisionData.listingForHearingInPerson(),
@@ -1521,20 +1525,22 @@ module.exports = {
     return caseId;
   },
 
-  createGAApplicationWithUnrepresented: async (user, caseId,typeOfApplication) => {
+  createGAApplicationWithUnrepresented: async (user, caseId, typeOfApplication, hwf = false) => {
     console.log('start create a GA application');
-    const payload = getPayloadForGALiP(typeOfApplication);
+    const payload = data.INITIATE_GENERAL_APPLICATION_LIP(typeOfApplication, hwf);
     await apiRequest.setupTokens(user);
     const caseData = await apiRequest.startCreateCaseForCitizen(payload, caseId);
     await waitForFinishedBusinessProcess(caseData.id, user);
     await waitForGAFinishedBusinessProcess(caseData.id, user);
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(caseData.id, user).then(res => res.json());
     const ccdGeneralApplications = updatedResponse.generalApplications;
-    const generalApplicationId = ccdGeneralApplications[ccdGeneralApplications.length - 1]?.value?.caseLink?.CaseReference;
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(generalApplicationId, user);
-    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
-    console.log('ccd state ' + updatedGABusinessProcessData.ccdState);
-    return { gaCaseReference: generalApplicationId, gaCaseState: updatedGABusinessProcessData.ccdState };
+    const gaCaseReference = ccdGeneralApplications[ccdGeneralApplications.length - 1]?.value?.caseLink?.CaseReference;
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
+    if (hwf) {
+      await processHwf(gaCaseReference);
+      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', user);
+    }
+    return gaCaseReference;
   },
 
   defendantResponseSpecClaim: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
@@ -2706,4 +2712,19 @@ const assertNullGaDocVisibilityToUser = async ( user, parentCaseId, doc) => {
     docCivil = civilCaseData[doc + 'DocStaff'];
   }
   assert.equal(typeof(docCivil), 'undefined');
+};
+
+const processHwf = async (gaCaseReference) => {
+  await apiRequest.setupTokens(config.ctscAdmin);
+  eventName = 'FULL_REMISSION_HWF_GA';
+  let returnedCaseData = await apiRequest.startEvent(eventName, gaCaseReference);
+  let hwfData = data.HWF_FULL('APPLICATION');
+  caseData = {...returnedCaseData, ...hwfData};
+  await apiRequest.submitGAEvent(eventName, caseData, gaCaseReference);
+
+  eventName = 'FEE_PAYMENT_OUTCOME_GA';
+  returnedCaseData = await apiRequest.startEvent(eventName, gaCaseReference);
+  hwfData = data.HWF_OUTCOME('APPLICATION');
+  caseData = {...returnedCaseData, ...hwfData};
+  await apiRequest.submitGAEvent(eventName, caseData, gaCaseReference);
 };
