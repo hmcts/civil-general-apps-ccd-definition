@@ -19,7 +19,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "END_GA_BUSINESS_PROCESS",
+    "CaseEventID": "END_GA_HWF_NOTIFY_PROCESS",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },

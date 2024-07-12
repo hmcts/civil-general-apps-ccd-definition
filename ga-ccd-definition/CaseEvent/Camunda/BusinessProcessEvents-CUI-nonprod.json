@@ -1,9 +1,9 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "END_GA_BUSINESS_PROCESS",
-    "Name": "End md business process",
-    "Description": "End md business process",
+    "ID": "END_GA_HWF_NOTIFY_PROCESS",
+    "Name": "End hwf notify process",
+    "Description": "End hwf notify process",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
