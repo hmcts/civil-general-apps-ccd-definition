@@ -1186,6 +1186,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "isWaTaskRequired",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "gaAddlDoc",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",

@@ -3593,6 +3593,17 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "isWaTaskRequired",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-systemupdate",
+      "caseworker-ras-validation",
+      "ga-basic-access"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "isDocumentVisible",
     "AccessControl": [
       {
