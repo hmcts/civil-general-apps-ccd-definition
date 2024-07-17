@@ -25,7 +25,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "UPLOAD_ADDL_DOCUMENTS",
-    "CaseFieldID": "isWaTaskRequired",
+    "CaseFieldID": "isGaTypeTaskRequired",
     "DisplayContext": "OPTIONAL",
     "PageID": "GAUploadDocumentsScreen",
     "PageDisplayOrder": 1,

@@ -1186,7 +1186,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "isWaTaskRequired",
+    "ID": "isGaTypeTaskRequired",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"

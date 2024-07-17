@@ -3593,7 +3593,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "isWaTaskRequired",
+    "CaseFieldID": "isGaTypeTaskRequired",
     "UserRoles": [
       "caseworker-civil-solicitor",
       "caseworker-civil-systemupdate",
