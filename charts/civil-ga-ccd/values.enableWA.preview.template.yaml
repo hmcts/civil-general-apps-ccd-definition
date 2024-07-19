@@ -61,7 +61,7 @@ ccd-message-publisher:
     ingressHost: ccd-message-publisher-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
     keyVaults:
-      civil:
+      ccd:
         secrets:
           - name: AppInsightsInstrumentationKey
             alias: azure.application-insights.instrumentation-key
