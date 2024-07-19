@@ -63,7 +63,7 @@ ccd-message-publisher:
     keyVaults:
       ccd:
         secrets:
-          - name: AppInsightsInstrumentationKey
+          - name: AppInsightsInstrumentationKeyGeneralApplications
             alias: azure.application-insights.instrumentation-key
     environment:
       DATA_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
