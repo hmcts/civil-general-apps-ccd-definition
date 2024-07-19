@@ -61,9 +61,9 @@ ccd-message-publisher:
     ingressHost: ccd-message-publisher-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
     keyVaults:
-      ccd:
+      civil:
         secrets:
-          - name: AppInsightsInstrumentationKeyGeneralApplications
+          - name: AppInsightsInstrumentationKey
             alias: azure.application-insights.instrumentation-key
     environment:
       DATA_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
