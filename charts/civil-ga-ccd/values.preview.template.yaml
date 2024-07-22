@@ -119,7 +119,14 @@ xui-webapp:
     environment:
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
       SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-${SERVICE_FQDN}
+
 ccd:
+  global:
+    postgresUsername: hmcts
+    postgresPassword: ${POSTGRES_PASSWORD}
+    postgresSecret: postgres
+  #    postgresHostname: civil-preview.postgres.database.azure.com
+  #    databaseNamePrefix: "pr-${CHANGE_ID}-"
   ccd-api-gateway-web:
     nodejs:
       ingressHost: gateway-${SERVICE_FQDN}
@@ -142,10 +149,6 @@ ccd:
           disabled: true
   ccd-definition-store-api:
     java:
-      devmemoryRequests: 2048Mi
-      devcpuRequests: 2000m
-      devmemoryLimits: 4096Mi
-      devcpuLimits: 4000m
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
       environment:
         DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
@@ -155,6 +158,17 @@ ccd:
           secretRef: "{{ .Values.global.postgresSecret }}"
           key: PASSWORD
           disabled: true
+  ccd-user-profile-api:
+    java:
+      environment:
+        USER_PROFILE_DB_OPTIONS: "?stringtype=unspecified"
+        USER_PROFILE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      secrets:
+        USER_PROFILE_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
+
 camunda-bpm:
   java:
     ingressHost: camunda-${SERVICE_FQDN}
