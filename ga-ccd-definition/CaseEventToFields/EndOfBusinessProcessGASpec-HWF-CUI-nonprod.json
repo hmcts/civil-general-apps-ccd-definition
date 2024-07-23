@@ -1,0 +1,15 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
+    "CaseFieldID": "generalAppHelpWithFees",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "isMultiPartyPage5",
+    "PageDisplayOrder": 9,
+    "PageColumnNumber": 1,
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  }
+]
