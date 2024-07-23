@@ -79,7 +79,6 @@ wa:
           secretRef: "{{ .Values.global.postgresSecret }}"
           key: PASSWORD
           disabled: true
-
   wa-workflow-api:
     java:
       environment:
