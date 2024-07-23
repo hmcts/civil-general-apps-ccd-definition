@@ -119,7 +119,6 @@ xui-webapp:
     environment:
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
       SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-${SERVICE_FQDN}
-
 ccd:
   global:
     postgresUsername: hmcts
