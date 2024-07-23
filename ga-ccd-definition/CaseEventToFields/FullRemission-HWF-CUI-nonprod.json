@@ -61,7 +61,19 @@
     "PageID": "FullRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 4,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "hwfFeeType=\"APPLICATION\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "FULL_REMISSION_HWF_GA",
+    "CaseFieldID": "caseTitleWithHWFGaAddlFeeNumber",
+    "DisplayContext": "READONLY",
+    "PageID": "FullRemissionHWF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "hwfFeeType=\"ADDITIONAL\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
