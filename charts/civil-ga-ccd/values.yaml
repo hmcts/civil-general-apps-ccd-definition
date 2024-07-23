@@ -1,4 +1,4 @@
-ccd:
+civil-ga-ccd-stack:
   enabled: false
 postgresql:
   enabled: false
