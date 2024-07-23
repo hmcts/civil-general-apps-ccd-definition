@@ -18,6 +18,7 @@
     "ListElementCode": "version",
     "FieldType": "Text",
     "ElementLabel": "Version",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "calculatedAmountInPence = \"DONT_SHOW_UI\""
   }
 ]
