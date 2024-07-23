@@ -32,34 +32,12 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "INVALID_HWF_REFERENCE_GA",
-    "CaseFieldID": "gaAdditionalHelpWithFees",
-    "DisplayContext": "READONLY",
-    "PageID": "InValidHWF",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 4,
-    "FieldShowCondition": "caseTitleWithHWFGaFeeNumber=\"DO_NOT_SHOW_IN_UI\""
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "INVALID_HWF_REFERENCE_GA",
     "CaseFieldID": "caseTitleWithHWFGaFeeNumber",
     "DisplayContext": "READONLY",
     "PageID": "InValidHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 5,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "hwfFeeType=\"APPLICATION\""
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "INVALID_HWF_REFERENCE_GA",
-    "CaseFieldID": "caseTitleWithHWFGaAddlFeeNumber",
-    "DisplayContext": "READONLY",
-    "PageID": "InValidHWF",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 5,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "hwfFeeType=\"ADDITIONAL\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -112,18 +90,6 @@
     "PageID": "InValidHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 10,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "hwfFeeType=\"APPLICATION\""
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "INVALID_HWF_REFERENCE_GA",
-    "CaseFieldID": "caseLabelGaAddlReference",
-    "DisplayContext": "READONLY",
-    "PageID": "InValidHWF",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 10,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "hwfFeeType=\"ADDITIONAL\""
+    "ShowSummaryChangeOption": "N"
   }
 ]

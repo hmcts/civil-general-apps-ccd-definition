@@ -13,17 +13,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MORE_INFORMATION_HWF_GA",
-    "CaseFieldID": "gaAdditionalHelpWithFees",
-    "DisplayContext": "READONLY",
-    "PageID": "moreInformationHwf",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseTitleWithHWFGaFeeNumber=\"DO_NOT_SHOW_IN_UI\""
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "MORE_INFORMATION_HWF_GA",
     "CaseFieldID": "hwfFeeType",
     "DisplayContext": "READONLY",
     "PageID": "moreInformationHwf",
@@ -61,18 +50,7 @@
     "DisplayContext": "READONLY",
     "PageID": "moreInformationHwf",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 6,
-    "FieldShowCondition": "hwfFeeType = \"APPLICATION\""
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "MORE_INFORMATION_HWF_GA",
-    "CaseFieldID": "caseTitleWithHWFGaAddlFeeNumber",
-    "DisplayContext": "READONLY",
-    "PageID": "moreInformationHwf",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 6,
-    "FieldShowCondition": "hwfFeeType = \"ADDITIONAL\""
+    "PageFieldDisplayOrder": 6
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",

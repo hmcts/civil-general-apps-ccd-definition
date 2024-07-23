@@ -8,15 +8,5 @@
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
-  },
-  {
-    "ID": "GAUrgencyRecordPage",
-    "CaseEventID": "END_JUDGE_BUSINESS_PROCESS_GASPEC",
-    "CaseFieldID": "generalAppHelpWithFees",
-    "ListElementCode": "HelpWithFees",
-    "EventElementLabel": " ",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL",
-    "Publish": "Y"
   }
 ]

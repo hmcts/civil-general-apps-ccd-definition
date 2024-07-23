@@ -21,26 +21,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaAdditionalHelpWithFees",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile",
-          "cui-admin-profile",
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "helpWithFeesReferenceNumber",
     "AccessControl": [
       {
@@ -65,31 +45,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "caseTitleWithHWFGaAddlFeeNumber",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseLabelGaReference",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "caseLabelGaAddlReference",
     "AccessControl": [
       {
         "UserRoles": [
