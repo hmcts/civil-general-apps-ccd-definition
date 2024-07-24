@@ -81,7 +81,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "END_DOC_UPLOAD_BUSINESS_PROCESS_GASPEC",
-    "Name": "End doc upload business process",
+    "Name": "End doc upload bus process",
     "Description": "End doc upload business process",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
