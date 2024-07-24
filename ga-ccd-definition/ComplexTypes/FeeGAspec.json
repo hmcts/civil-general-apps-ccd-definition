@@ -10,7 +10,7 @@
     "ID": "Fee",
     "ListElementCode": "code",
     "FieldType": "Text",
-    "ElementLabel": "Code",
+    "ElementLabel": "Fee Code",
     "SecurityClassification": "Public"
   },
   {
