@@ -292,7 +292,6 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
-    "Publish": "Y"
+    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted"
   }
 ]

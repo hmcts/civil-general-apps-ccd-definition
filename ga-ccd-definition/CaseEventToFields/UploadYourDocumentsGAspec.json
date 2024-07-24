@@ -21,18 +21,5 @@
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "UPLOAD_ADDL_DOCUMENTS",
-    "CaseFieldID": "isGaTypeTaskRequired",
-    "DisplayContext": "OPTIONAL",
-    "PageID": "GAUploadDocumentsScreen",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 3,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addnDocumentLabel=\"DO_NOT_SHOW_IN_UI\"",
-    "Publish": "Y"
   }
 ]
