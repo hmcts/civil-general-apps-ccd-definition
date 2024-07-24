@@ -137,4 +137,4 @@ ccd-message-publisher:
 xui-webapp:
   nodejs:
     environment:
-      WA_SUPPORTED_JURISDICTIONS: "IA,PRIVATELAW,CIVIL"
+      WA_SUPPORTED_JURISDICTIONS: "IA,PRIVATELAW,CIVIL,GENERALAPPLICATION"
