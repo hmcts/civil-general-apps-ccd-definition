@@ -6,9 +6,9 @@ import uk.gov.hmcts.contino.GithubAPI
 def type = "nodejs"
 def product = "civil"
 def component = "ga-ccd"
-def camundaBranch = "master"
+def camundaBranch = "SNI-5921-stop-creating-task-on-upload-doc-order-event"
 def ccddefbranch = "master"
-def dmnBranch = "SNI-5921-stop-creating-task-on-upload-order-event"
+def dmnBranch = "master"
 def waStandaloneBranch = "master"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
