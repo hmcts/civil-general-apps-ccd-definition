@@ -349,7 +349,6 @@ module.exports = {
       console.log('Service request update sent to callback URL');
     }
 
-    await assignCase(caseId, multipartyScenario);
     await waitForFinishedBusinessProcess(caseId, user);
 
     //field is deleted in about to submit callback
@@ -1330,6 +1329,8 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId, user);
+
+    await assignCase(caseId, multipartyScenario);
   },
 
   partialNotifyClaim: async (user, multipartyScenario, caseId) => {

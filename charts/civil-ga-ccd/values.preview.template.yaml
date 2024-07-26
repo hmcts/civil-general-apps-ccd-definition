@@ -48,6 +48,7 @@ civil-service:
   enabled: true
   java:
     ingressHost: civil-service-${SERVICE_FQDN}
+    image: 'hmctspublic.azurecr.io/civil/general-applications:pr-5181'
     keyVaults:
       civil:
         resourceGroup: civil
