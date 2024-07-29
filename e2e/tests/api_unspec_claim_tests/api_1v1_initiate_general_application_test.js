@@ -7,7 +7,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('1v1 unspecified assert general application unavailable before respondent assigned @api-tests');
 
-Scenario.only('1v1 unspecified assert general application unavailable before respondent assigned @api-tests', async ({I,api}) => {
+Scenario('1v1 unspecified assert general application unavailable before respondent assigned @api-tests', async ({I,api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   console.log('Assert Make a General Application fails, as respondent not assigned');
