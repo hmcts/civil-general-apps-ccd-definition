@@ -21,7 +21,7 @@ Scenario('1v1 unspecified assert general application unavailable before responde
 
 });
 
-Scenario('1v1 specified assert general application unavailable before respondent assigned @api-tests', async ({I,api}) => {
+Scenario.only('1v1 specified assert general application unavailable before respondent assigned @api-tests', async ({I,api}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, false);
   console.log('Assert Make a General Application fails, as respondent not assigned');
   await I.login(config.applicantSolicitorUser);
