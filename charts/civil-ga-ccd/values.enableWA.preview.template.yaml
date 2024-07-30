@@ -57,6 +57,7 @@ wa:
       environment:
         WA_TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
+        INITIATION_TIME_LIMIT: 540
 
   wa-task-management-api:
     java:
