@@ -349,7 +349,6 @@ module.exports = {
       console.log('Service request update sent to callback URL');
     }
 
-    await assignCase(caseId, multipartyScenario);
     await waitForFinishedBusinessProcess(caseId, user);
 
     //field is deleted in about to submit callback
@@ -397,7 +396,7 @@ module.exports = {
     await testingSupport.updateCaseData(caseId, deadlineDate);
   },
 
-  createSpecifiedClaim: async (user, multipartyScenario) => {
+  createSpecifiedClaim: async (user, multipartyScenario, assignTheSpecCase = true) => {
 
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
@@ -423,7 +422,10 @@ module.exports = {
       console.log('Service request update sent to callback URL');
     }
 
-    await assignSpecCase(caseId, multipartyScenario);
+    if (assignTheSpecCase) {
+      await assignSpecCase(caseId, multipartyScenario);
+    }
+
     await waitForFinishedBusinessProcess(caseId, user);
 
     //field is deleted in about to submit callback
@@ -1330,6 +1332,8 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId, user);
+
+    await assignCase(caseId, multipartyScenario);
   },
 
   partialNotifyClaim: async (user, multipartyScenario, caseId) => {
