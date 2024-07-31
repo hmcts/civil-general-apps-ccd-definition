@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A Helm chart for civil-general-apps-ccd-definition App
 name: civil-ga-ccd
 home: https://github.com/hmcts/civil-general-apps-ccd-definition
-version: 0.0.59
+version: 0.0.60
 maintainers:
   - name: HMCTS Civil team
 
@@ -32,13 +32,13 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: camunda-bpm.enabled
   - name: servicebus
-    version: 1.0.4
+    version: 1.0.7
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: servicebus.enabled
 
   # WA
   - name: wa
-    version: 1.0.5
+    version: 1.0.6
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-wa.enabled
   # CCD message publisher
