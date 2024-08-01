@@ -1,0 +1,15 @@
+[
+    {
+      "CaseTypeID": "GENERALAPPLICATION",
+      "ID": "NOTIFY_APPLICANT_LIP_HWF",
+      "Name": "Notify lip app help with fees",
+      "Description": "Notify lip app help with fees",
+      "PreConditionState(s)": "*",
+      "PostConditionState": "*",
+      "SecurityClassification": "Public",
+      "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+      "ShowSummary": "N",
+      "ShowEventNotes": "N",
+      "RetriesTimeoutURLAboutToSubmitEvent": 0
+    }
+]
