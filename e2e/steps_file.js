@@ -1172,6 +1172,13 @@ module.exports = function () {
         ...selectGAAndVerifyErrorMessage('Create GA', errorMsg),
       ]);
       await this.takeScreenshot();
+    },
+
+    async verifyNoAccessToGeneralApplications(errorMsg) {
+      await this.triggerStepsWithScreenshot([
+        ...selectGAAndVerifyErrorMessage('Create GA', errorMsg),
+      ]);
+      await this.takeScreenshot();
     }
   });
 };
