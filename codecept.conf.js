@@ -59,7 +59,7 @@ exports.config = {
     },
   },
   mocha: {
-    bail: process.env.PROCEED_ON_FAILURE === true || false,
+    bail: false,
     reporterOptions: {
       'codeceptjs-cli-reporter': {
         stdout: '-',
