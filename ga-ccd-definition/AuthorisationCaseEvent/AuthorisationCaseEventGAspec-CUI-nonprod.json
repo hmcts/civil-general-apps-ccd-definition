@@ -388,5 +388,18 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "NOTIFY_HELP_WITH_FEE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile",
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
