@@ -17,13 +17,28 @@ module.exports = {
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
     // generalApplication: 'http://civil-general-applications-aat.service.core-compute-aat.internal'
 
-    manageCase: 'https://xui-civil-ga-ccd-pr-1125.preview.platform.hmcts.net',
-    authProviderApi: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: 'https://ccd-data-store-api-civil-ga-ccd-pr-1125.preview.platform.hmcts.net',
+    manageCase: 'https://xui-civil-ccd-pr-4675.preview.platform.hmcts.net',
+    authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-4675.preview.platform.hmcts.net',
     dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
-    idamApi:  'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'https://civil-service-civil-ga-ccd-pr-1125.preview.platform.hmcts.net',
-    generalApplication: 'https://civil-ga-ccd-pr-1125.preview.platform.hmcts.net'
+    idamApi: 'https://idam-api.aat.platform.hmcts.net',
+    civilService: 'https://civil-ccd-pr-4675.preview.platform.hmcts.net', 
+
+    // manageCase: 'https://xui-civil-ga-ccd-pr-1203.preview.platform.hmcts.net',
+    // authProviderApi: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    // ccdDataStore: 'https://ccd-data-store-api-civil-ga-ccd-pr-1203.preview.platform.hmcts.net',
+    // dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
+    // idamApi:  'https://idam-api.aat.platform.hmcts.net',
+    // civilService: 'https://civil-service-civil-ga-ccd-pr-1203.preview.platform.hmcts.net',
+    // generalApplication: 'https://civil-ga-ccd-pr-1203.preview.platform.hmcts.net'
+
+    // manageCase: process.env.URL || 'https://xui-civil-citizen-ui-pr-4290.preview.platform.hmcts.net',
+    // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'https://ccd-data-store-api-civil-citizen-ui-pr-4290.preview.platform.hmcts.net',
+    // dmStore:process.env.DM_STORE_URL || 'http://dm-store-aat.service.core-compute-aat.internal',
+    // idamApi:  'https://idam-api.aat.platform.hmcts.net',
+    // civilService: process.env.CIVIL_SERVICE_URL || 'https://civil-citizen-ui-pr-4290-civil-service.preview.platform.hmcts.net',
+    // generalApplication: 'https://civil-citizen-ui-pr-4290-general-applications.preview.platform.hmcts.net'
 
     //  manageCase:  'https://manage-case.demo.platform.hmcts.net',
     //  authProviderApi: 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
