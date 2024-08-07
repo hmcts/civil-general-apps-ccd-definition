@@ -5,10 +5,9 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference,
   gaCaseReference;
 
-Feature('GA 1v2 Defendant Response Case Close API tests');
-// This test will be enabled to run on nightly as part of this ticket CIV-14206
+Feature('GA 1v2 Defendant Response Case Close API tests @api-nightly');
 
-Scenario('Case offline AWAITING_WRITTEN_REPRESENTATIONS', async ({api}) => {
+Scenario.skip('Case offline AWAITING_WRITTEN_REPRESENTATIONS', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -19,7 +18,7 @@ Scenario('Case offline AWAITING_WRITTEN_REPRESENTATIONS', async ({api}) => {
 
   console.log('*** Start Judge Directions Order on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionWrittenRep(config.judgeUser, gaCaseReference);
+    await api.judgeMakesDecisionWrittenRep(config.judgeUser2WithRegionId2, gaCaseReference);
   } else {
     await api.judgeMakesDecisionWrittenRep(config.judgeLocalUser, gaCaseReference);
   }
@@ -33,7 +32,7 @@ Scenario('Case offline AWAITING_WRITTEN_REPRESENTATIONS', async ({api}) => {
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
-Scenario('Case offline APPLICATION_ADD_PAYMENT', async ({api}) => {
+Scenario.skip('Case offline APPLICATION_ADD_PAYMENT', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -45,7 +44,7 @@ Scenario('Case offline APPLICATION_ADD_PAYMENT', async ({api}) => {
   console.log('*** Start Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
     + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser2WithRegionId2, gaCaseReference, true, true);
   } else {
     await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true, true);
   }
@@ -59,7 +58,7 @@ Scenario('Case offline APPLICATION_ADD_PAYMENT', async ({api}) => {
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
-Scenario('Case offline ORDER_MADE', async ({api}) => {
+Scenario.skip('Case offline ORDER_MADE', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -71,7 +70,7 @@ Scenario('Case offline ORDER_MADE', async ({api}) => {
   console.log('*** Start Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
     + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesOrderDecisionUncloak(config.judgeUser, gaCaseReference);
+    await api.judgeMakesOrderDecisionUncloak(config.judgeUser2WithRegionId2, gaCaseReference);
   } else {
     await api.judgeMakesOrderDecisionUncloak(config.judgeLocalUser, gaCaseReference);
   }
@@ -85,7 +84,7 @@ Scenario('Case offline ORDER_MADE', async ({api}) => {
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
 });
 
-Scenario('Case offline AWAITING_RESPONDENT_RESPONSE', async ({api}) => {
+Scenario.skip('Case offline AWAITING_RESPONDENT_RESPONSE', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);

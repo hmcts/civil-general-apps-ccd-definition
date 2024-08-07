@@ -11,10 +11,9 @@ const claimantType = 'Company';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA CCD 2v1 - General Application Journey @multiparty-e2e-tests @ui-nightly  @regression2');
-// This test will be enabled to run on nightly as part of this ticket CIV-14206
+Feature('GA CCD 2v1 - General Application Journey @multiparty-e2e-tests @ui-nightly @regression2');
 
-Scenario.skip('GA for 2v1 - Concurrent written representations - without notice to with notice journey',
+Scenario('GA for 2v1 - Concurrent written representations - without notice to with notice journey',
   async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -38,7 +37,7 @@ Scenario.skip('GA for 2v1 - Concurrent written representations - without notice 
 
   console.log('Judge Making decision:' + gaCaseReference);
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser;
+    user = config.judgeUser2WithRegionId2;
     await I.login(user);
   } else {
     user = config.judgeLocalUser;
@@ -49,7 +48,7 @@ Scenario.skip('GA for 2v1 - Concurrent written representations - without notice 
     'courtOwnInitiativeOrder');
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser, gaCaseReference, true, true);
+    await api.judgeRequestMoreInformationUncloak(config.judgeUser2WithRegionId2, gaCaseReference, true, true);
   } else {
     await api.judgeRequestMoreInformationUncloak(config.judgeLocalUser, gaCaseReference, true, true);
   }
@@ -65,7 +64,7 @@ Scenario.skip('GA for 2v1 - Concurrent written representations - without notice 
     + gaCaseReference + ' ***');
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await I.login(config.judgeUser);
+    await I.login(config.judgeUser2WithRegionId2);
   } else {
     await I.login(config.judgeLocalUser);
   }
