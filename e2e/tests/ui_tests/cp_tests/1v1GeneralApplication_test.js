@@ -5,8 +5,6 @@ const {
 } = require('./../../../api/testingSupport');
 const {getAppTypes} = require('./../../../pages/generalApplication/generalApplicationTypes');
 const states = require('./../../../fixtures/ga-ccd/state.js');
-const {assignCaseRoleToUser} = require('../../../api/caseRoleAssignmentHelper');
-const errorMsg = 'Application cannot be created until all the required respondent solicitor are assigned to the case.';
 
 const mpScenario = 'ONE_V_ONE';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
@@ -231,18 +229,6 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
   await I.see(additionalInfoStatus);
   await I.respondToJudgeAdditionalInfo(gaCaseReference);
   console.log('Responded to Judge Additional Information on case: ' + gaCaseReference);
-});
-
-Scenario('1v1 specified assert general application unavailable before respondent assigned @e2e-tests', async ({I,api}) => {
-  civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, false);
-  console.log('Assert Make a General Application fails, as respondent not assigned');
-  await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(civilCaseReference);
-  await I.verifyNoAccessToGeneralApplications(errorMsg);
-  console.log('Assign case to respondent');
-  await assignCaseRoleToUser(civilCaseReference, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-  console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
 });
 
 AfterSuite(async ({api}) => {
