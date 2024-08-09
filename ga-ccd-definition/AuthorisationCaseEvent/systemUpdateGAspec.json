@@ -250,5 +250,11 @@
     "CaseEventID": "GA_EVIDENCE_UPLOAD_CHECK",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_DOC_UPLOAD_BUSINESS_PROCESS_GASPEC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
