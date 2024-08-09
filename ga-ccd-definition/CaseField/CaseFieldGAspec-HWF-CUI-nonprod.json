@@ -52,7 +52,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "hwfFeeType",
-    "Label": " ",
+    "Label": "Type",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",

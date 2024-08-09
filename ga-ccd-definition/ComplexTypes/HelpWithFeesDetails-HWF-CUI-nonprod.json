@@ -1,26 +1,9 @@
 [
   {
     "ID": "HelpWithFeesDetails",
-    "ListElementCode": "noRemissionDetails",
-    "ElementLabel": "Details",
+    "ListElementCode": "hwfFeeType",
+    "ElementLabel": "Type",
     "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "HelpWithFeesDetails",
-    "ListElementCode": "noRemissionDetailsSummary",
-    "ElementLabel": "Summary",
-    "FieldType": "FixedList",
-    "FieldTypeParameter": "HWFFeesSummaryType",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "HelpWithFeesDetails",
-    "ListElementCode": "remissionAmount",
-    "ElementLabel": "Remission Amount",
-    "FieldType": "MoneyGBP",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -34,11 +17,45 @@
   },
   {
     "ID": "HelpWithFeesDetails",
-    "ListElementCode": "outstandingFeeInPounds",
+    "ListElementCode": "fee",
     "ElementLabel": " ",
+    "FieldType": "Fee",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "ListElementCode": "remissionAmount",
+    "ElementLabel": "Remission Amount",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "ListElementCode": "outstandingFeeInPounds",
+    "ElementLabel": "Applicant must pay",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "ListElementCode": "noRemissionDetails",
+    "ElementLabel": "Details",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "outstandingFeeInPounds = \"DONT_SHOW_UI\""
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "ListElementCode": "noRemissionDetailsSummary",
+    "ElementLabel": "Summary",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "HWFFeesSummaryType",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "outstandingFeeInPounds = \"DONT_SHOW_UI\""
   },
   {
     "ID": "HelpWithFeesDetails",
@@ -46,6 +63,7 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "outstandingFeeInPounds = \"DONT_SHOW_UI\""
   }
 ]
