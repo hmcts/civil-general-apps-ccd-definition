@@ -1,4 +1,4 @@
-ccd:
+civil-ga-ccd-stack:
   enabled: false
 postgresql:
   enabled: false
@@ -10,7 +10,7 @@ camunda-bpm:
   enabled: false
 civil-service:
   enabled: false
-wa:
+civil-wa:
   enabled: false
 servicebus:
   enabled: false
