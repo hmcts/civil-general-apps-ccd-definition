@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
-const config = require('../../config.js');
-const {assignCaseRoleToUser} = require('../../api/caseRoleAssignmentHelper');
+const config = require('../../../config.js');
+const {assignCaseRoleToUser} = require('../../../api/caseRoleAssignmentHelper');
 const mpScenario = 'ONE_V_ONE';
 const errorMsg = 'Application cannot be created until all the required respondent solicitor are assigned to the case.';
 let civilCaseReference, gaCaseReference;
 
-Feature('1v1 unspecified assert general application unavailable before respondent assigned @api-tests');
+Feature('1v1 unspecified assert general application unavailable before respondent assigned @e2e-tests');
 
-Scenario('1v1 unspecified assert general application unavailable before respondent assigned @api-tests', async ({I,api}) => {
+Scenario('1v1 unspecified assert general application unavailable before respondent assigned @e2e-tests', async ({I,api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   console.log('Assert Make a General Application fails, as respondent not assigned');
@@ -21,7 +21,7 @@ Scenario('1v1 unspecified assert general application unavailable before responde
 
 });
 
-Scenario('1v1 specified assert general application unavailable before respondent assigned @api-tests', async ({I,api}) => {
+Scenario('1v1 specified assert general application unavailable before respondent assigned @e2e-tests', async ({I,api}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, false);
   console.log('Assert Make a General Application fails, as respondent not assigned');
   await I.login(config.applicantSolicitorUser);
