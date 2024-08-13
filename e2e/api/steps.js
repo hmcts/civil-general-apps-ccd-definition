@@ -1426,7 +1426,8 @@ module.exports = {
     const updatedGACaseData = await updatedGACaseDataResponse.json();
     const updatedCivilCaseDataResponse = await apiRequest.fetchUpdatedCivilCaseData(civilCaseId, user);
     const updatedCivilCaseData = await updatedCivilCaseDataResponse.json();
-    console.log('ccmccLocation After SDO on general application :'+updatedGACaseData.isCcmccLocation);
+    console.log('cnbcLocation After SDO on general application :'+updatedGACaseData.isCcmccLocation);
+    // ccmcclocation field now uses/references CNBC
     assert.equal(updatedGACaseData.isCcmccLocation, updatedCivilCaseData.generalApplications[0].value.isCcmccLocation);
     assert.equal(updatedGACaseData.caseManagementLocation.region, updatedCivilCaseData.generalApplications[0].value.caseManagementLocation.region);
     assert.equal(updatedGACaseData.caseManagementLocation.baseLocation, updatedCivilCaseData.generalApplications[0].value.caseManagementLocation.baseLocation);
