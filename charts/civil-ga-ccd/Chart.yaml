@@ -3,13 +3,13 @@ appVersion: "1.0"
 description: A Helm chart for civil-general-apps-ccd-definition App
 name: civil-ga-ccd
 home: https://github.com/hmcts/civil-general-apps-ccd-definition
-version: 0.0.60
+version: 0.0.61
 maintainers:
   - name: HMCTS Civil team
 
 dependencies:
   - name: civil-general-applications
-    version: 0.0.60
+    version: 0.0.64
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: civil-service
     version: 0.0.67
@@ -28,7 +28,7 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: idam-pr.enabled
   - name: camunda-bpm
-    version: 0.0.44
+    version: 0.0.47
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: camunda-bpm.enabled
   - name: servicebus
