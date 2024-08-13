@@ -13,7 +13,7 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('GA CCD 2v1 - General Application Journey @api-nightly');
 
-Scenario('GA for 2v1 - Concurrent written representations - without notice to with notice  @api-nightly',
+Scenario.only('GA for 2v1 - Concurrent written representations - without notice to with notice  @api-nightly',
   async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
