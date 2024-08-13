@@ -30,8 +30,7 @@ Scenario('Claimant create GA - JUDICIAL_REFERRAL state', async ({api, I}) => {
   await api.verifyGALocation(config.applicantSolicitorUser, gaCaseReference, civilCaseReference);
 });
 
-Scenario('Birmingham should have access to the GA Feature post SDO (JUDICIAL REFERRAL) @api-nonprod', async ({I,api}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
+Scenario('Birmingham should have access to the GA Feature post SDO (JUDICIAL REFERRAL) @e2e-nonprod', async ({I,api}) => {
     civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario,
       'Company', '11000', true);
     await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -42,7 +41,6 @@ Scenario('Birmingham should have access to the GA Feature post SDO (JUDICIAL REF
     await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
     console.log('Make a General Application');
     gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
-  }
 });
 
 AfterSuite(async ({api}) => {
