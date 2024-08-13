@@ -38,7 +38,8 @@
     "prepare": "husky install",
     "yarn-update": "yarn set version 3.x",
     "playwright-install": "yarn playwright install",
-    "install-dependencies": "/usr/bin/yarn install --immutable --silent"
+    "install-dependencies": "/usr/bin/yarn install --immutable --silent",
+    "testccd": "echo test"
   },
   "license": "MIT",
   "devDependencies": {
