@@ -11,9 +11,9 @@ const claimantType = 'Company';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA CCD 2v1 - General Application Journey @api-nightly11');
+Feature('GA CCD 2v1 - General Application Journey @multiparty-e2e-tests @ui-nightly @regression2');
 
-Scenario.only('GA for 2v1 - Concurrent written representations - without notice to with notice  @api-nightly11',
+Scenario('GA for 2v1 - Concurrent written representations - without notice to with notice journey',
   async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -87,3 +87,6 @@ Scenario.only('GA for 2v1 - Concurrent written representations - without notice 
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Concurrent order document');
 });
 
+AfterSuite(async ({api}) => {
+  await api.cleanUp();
+});
