@@ -20,6 +20,12 @@
           "citizen-profile"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
       }
     ]
   },
@@ -128,6 +134,12 @@
           "citizen-profile"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
       }
     ]
   },
