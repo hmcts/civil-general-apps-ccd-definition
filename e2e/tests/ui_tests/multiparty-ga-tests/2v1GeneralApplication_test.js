@@ -64,8 +64,10 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
     + gaCaseReference + ' ***');
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await I.signOut();
     await I.login(config.judgeUser2WithRegionId2);
   } else {
+    await I.signOut();
     await I.login(config.judgeLocalUser);
   }
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations',
