@@ -2,7 +2,7 @@
 set -ex
 
 export CCD_UI_TESTS=true
-if [ ${ENVIRONMENT} == preview ]; then
+if [ ${ENVIRONMENT} == aat ]; then
   echo "Running FE tests on tests on ${ENVIRONMENT} env"
   yarn test:master-e2e-tests
   echo "Running non prod tests on tests on ${ENVIRONMENT} env"
@@ -10,8 +10,6 @@ if [ ${ENVIRONMENT} == preview ]; then
   echo "Running API tests on tests on ${ENVIRONMENT} env"
   yarn test:api
 else
-  echo "Running FE tests on tests on ${ENVIRONMENT} env"
-  yarn test:master-e2e-tests
-  echo "Running API tests on tests on ${ENVIRONMENT} env"
-  yarn test:api
+  echo "Running FE regression tests on ${ENVIRONMENT} env"
+  yarn test:regression-e2e-tests
 fi
