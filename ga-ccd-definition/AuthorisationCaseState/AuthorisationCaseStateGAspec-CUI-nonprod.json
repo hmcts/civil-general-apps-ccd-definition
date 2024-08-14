@@ -73,7 +73,7 @@
           "citizen-profile",
           "cui-admin-profile"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },

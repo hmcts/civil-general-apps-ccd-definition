@@ -4,8 +4,7 @@ const config = require('../../config.js');
 let civilCaseReference,
   gaCaseReference;
 
-Feature('GA SPEC Claim 1v2 Defendant Response Case Close API tests');
-// This test will be enabled to run on nightly as part of this ticket CIV-14206
+Feature('GA SPEC Claim 1v2 Defendant Response Case Close API tests @api-offline-nightly @api-nightly');
 
 Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
