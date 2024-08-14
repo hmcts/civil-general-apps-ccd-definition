@@ -70,9 +70,17 @@ civil-general-applications:
         registry: hmctspublic.azurecr.io
         repository: imported/bitnami/postgresql
         tag: '11.6.0'
+      auth:
+        username: ${POSTGRES_USER}
+        password: ${POSTGRES_PASSWORD}
+        database: cft_task_db
+        postgresPassword: ${POSTGRES_PASSWORD}
       primary:
         persistence:
           enabled: false
+        extraEnvVars:
+          - name: POSTGRESQL_WAL_LEVEL
+            value: "logical"
         resources:
           requests:
             cpu: 25m
@@ -90,10 +98,7 @@ civil-general-applications:
               CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "cft_task_db" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "cft_task_db_replica" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-      auth:
-        username: ${POSTGRES_USER}
-        password: ${POSTGRES_PASSWORD}
-        postgresPassword: ${POSTGRES_PASSWORD}
+
 
 civil-service:
   enabled: true
