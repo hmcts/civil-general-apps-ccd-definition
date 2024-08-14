@@ -65,12 +65,13 @@ Scenario.only('GA for 2v1 - Concurrent written representations - without notice 
       + gaCaseReference + ' ***');
 
     if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-
+      console.log('*** FAILING HERE 1');
       await I.login(config.judgeUser2WithRegionId2);
     } else {
       await I.login(config.judgeLocalUser);
     }
-    console.log('*** FAILING HERE');
+    console.log('*** FAILING HERE 2');
+
     await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations',
       'concurrentRep', gaCaseReference, 'no', 'Order_Written_Representation_Concurrent',
       'withoutNoticeOrder');
