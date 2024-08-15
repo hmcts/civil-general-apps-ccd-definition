@@ -33,8 +33,9 @@ Scenario('GA 1v1  - Judge Makes Decision Order Made @smoke-tests', async ({api, 
 });
 
 //this test will be removed after we do national rollout
-Scenario.skip('Non EA Region Cases should not have access to the GA Feature @smoke-tests', async ({I, api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
+Scenario('Non EA Region Cases should not have access to the GA Feature @smoke-tests', async ({I, api}) => {
+  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario,
+    'Company', '11000', true);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
