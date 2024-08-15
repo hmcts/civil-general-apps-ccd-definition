@@ -395,7 +395,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
           "citizen-profile"
         ],
         "CRUD": "CRU"
