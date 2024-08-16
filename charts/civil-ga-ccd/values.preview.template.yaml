@@ -44,39 +44,6 @@ civil-general-applications:
             alias: idam.s2s-auth.totp_secret
     environment:
       LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
-    postgresql:
-      enabled: true
-      releaseNameOverride: ${SERVICE_NAME}-postgresql
-      image:
-        registry: hmctspublic.azurecr.io
-        repository: imported/bitnami/postgresql
-        tag: '11.6.0'
-      auth:
-        username: ${POSTGRES_USER}
-        password: ${POSTGRES_PASSWORD}
-        database: cft_task_db
-        postgresPassword: ${POSTGRES_PASSWORD}
-      primary:
-        persistence:
-          enabled: false
-        extraEnvVars:
-          - name: POSTGRESQL_WAL_LEVEL
-            value: "logical"
-        resources:
-          requests:
-            cpu: 25m
-        initdb:
-          user: postgres
-          password: ${POSTGRES_PASSWORD}
-          scripts:
-            00_grant_superuser_role.sql: |
-              ALTER ROLE hmcts WITH SUPERUSER;
-            01_init_civil.sql: |
-              CREATE DATABASE cmc WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "data-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "definition-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "camunda" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-
 civil-service:
   enabled: true
   java:
@@ -157,8 +124,8 @@ ccd:
     postgresUsername: hmcts
     postgresPassword: ${POSTGRES_PASSWORD}
     postgresSecret: postgres
-    postgresHostname: civil-preview.postgres.database.azure.com
-    databaseNamePrefix: "pr-${CHANGE_ID}-"
+  #    postgresHostname: civil-preview.postgres.database.azure.com
+  #    databaseNamePrefix: "pr-${CHANGE_ID}-"
   ccd-api-gateway-web:
     nodejs:
       ingressHost: gateway-${SERVICE_FQDN}
@@ -205,39 +172,7 @@ ccd:
           disabled: true
 
 camunda-bpm:
-  enabled: true
   java:
-    disableKeyVaults: true
-    environment:
-      CAMUNDA_DB_HOST: civil-preview.postgres.database.azure.com
-      CAMUNDA_DB_USER_NAME: hmcts
-      CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
-      CAMUNDA_DB_NAME: "pr-${CHANGE_ID}-camunda"
-      CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
-      TEMP_VAR: false
-    secrets:
-      CAMUNDA_DB_PASSWORD:
-        secretRef: postgres
-        key: PASSWORD
-        disabled: true
-
-
-postgresql:
-  enabled: false
-  flexibleserver: civil-preview
-  setup:
-    databases:
-      - name: "pr-${CHANGE_ID}-data-store"
-      - name: "pr-${CHANGE_ID}-definition-store"
-      - name: "pr-${CHANGE_ID}-user-profile"
-      - name: "pr-${CHANGE_ID}-camunda"
-      - name: "pr-${CHANGE_ID}-cft_task_db"
-      - name: "pr-${CHANGE_ID}-wa-case-event-handler"
-      - name: "pr-${CHANGE_ID}-wa_workflow_api"
-      - name: "pr-${CHANGE_ID}-wa-task-management-api"
-      - name: "pr-${CHANGE_ID}-wa-case-event-handler"
-      - name: "pr-${CHANGE_ID}-wa_workflow_api"
-      - name: "pr-${CHANGE_ID}-org_role_mapping"
-
+    ingressHost: camunda-${SERVICE_FQDN}
 civil-wa:
   enabled: false

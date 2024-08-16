@@ -10,13 +10,7 @@ camunda-bpm:
   enabled: false
 civil-service:
   enabled: false
-wa:
+civil-wa:
   enabled: false
-  taskBatchCron:
-    enabled: false
-  reconfigurationBatchCron:
-    enabled: false
-  terminationBatchCron:
-    enabled: false
 servicebus:
   enabled: false
