@@ -58,7 +58,7 @@ wa:
         CAMUNDA_URL: http://{{ .Release.Name }}-camunda/engine-rest
         CCD_URL: http://{{ .Release.Name }}-ccd-data-store-api
         CCD_SEARCH_URL: http://{{ .Release.Name }}-ccd-data-store-api
-        ROLE_ASSIGNMENT_URL: "http://${SERVICE_NAME}-am-role-assignment-service"
+        ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
         WA_WORKFLOW_API_URL: http://{{ .Release.Name }}-wa-workflow-api
         WA_TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
         AZURE_SERVICE_BUS_TOPIC_NAME: "${SERVICE_NAME}-servicebus-ccd-events"
