@@ -30,18 +30,17 @@ Scenario('Claimant create GA - JUDICIAL_REFERRAL state', async ({api, I}) => {
   await api.verifyGALocation(config.applicantSolicitorUser, gaCaseReference, civilCaseReference);
 });
 
-Scenario('Non EA Cases (Birmingham) should not have access to the GA Feature post SDO (JUDICIAL REFERRAL) @api-nonprod', async ({I,api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario,
-    'Company', '11000', true);
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
-  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
-  await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(civilCaseReference);
-  await I.verifyGAAccessToNonEARegion(errorMsg);
+Scenario('Birmingham should have access to the GA Feature post SDO (JUDICIAL REFERRAL) @e2e-nonprod', async ({I,api}) => {
+    civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario,
+      'Company', '11000', true);
+    await api.amendClaimDocuments(config.applicantSolicitorUser);
+    await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+    await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+    await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+    await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+    await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
+    console.log('Make a General Application');
+    gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 });
 
 AfterSuite(async ({api}) => {
