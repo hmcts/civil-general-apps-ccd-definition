@@ -1,6 +1,3 @@
-civil-ga-ccd-stack:
-  enabled: true
-
 civil-general-applications:
   java:
     image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
