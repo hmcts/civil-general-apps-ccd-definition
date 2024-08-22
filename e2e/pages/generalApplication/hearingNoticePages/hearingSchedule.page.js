@@ -9,7 +9,7 @@ module.exports = {
       hearingLocation: {
         id: '#gaHearingNoticeDetail_hearingLocation',
         options: {
-          basildon: 'Basildon Combined Court - Regent House, The Gore - SS14 2EW',
+          basildon: 'Basildon Combined Court - The Gore, Basildon - SS14 2EW',
           barnsley: 'Barnsley Law Courts - The Court House, Westgate - S70 2DW',
         }
       },
