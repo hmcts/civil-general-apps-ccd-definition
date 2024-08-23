@@ -250,6 +250,7 @@ ccd:
 
   ccd-api-gateway-web:
     nodejs:
+      disableKeyVaults: true
       imagePullPolicy: Always
       environment:
         ADDRESS_LOOKUP_TOKEN: ${ADDRESS_LOOKUP_TOKEN}
@@ -257,7 +258,6 @@ ccd:
         IDAM_OAUTH2_CLIENT_SECRET: ${CCD_API_GATEWAY_IDAM_CLIENT_SECRET}
         PROXY_DOCUMENT_MANAGEMENT: http://dm-store-aat.service.core-compute-aat.internal
       ingressIP: ${INGRESS_IP}
-      keyVaults: []
   ccd-data-store-api:
     java:
       releaseNameOverride: ${SERVICE_NAME}-ccd-data-store-api

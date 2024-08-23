@@ -5,8 +5,7 @@ const mpScenario = 'ONE_V_ONE';
 let civilCaseReference,
   gaCaseReference;
 
-Feature('GA Claim 1v1 Claimant Response Case Close API tests');
-// This test will be enabled to run on nightly as part of this ticket CIV-14206
+Feature('GA Claim 1v1 Claimant Response Case Close API tests @api-offline-nightly @api-nightly');
 
 Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
@@ -41,7 +40,7 @@ Scenario('Case offline ORDER_MADE', async ({api}) => {
   console.log('*** Start Judge Make Decision Uncloak and Application Approved on GA Case Reference: '
     + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesOrderDecisionUncloak(config.judgeUser, gaCaseReference);
+    await api.judgeMakesOrderDecisionUncloak(config.judgeUser2WithRegionId2, gaCaseReference);
   } else {
     await api.judgeMakesOrderDecisionUncloak(config.judgeLocalUser, gaCaseReference);
   }
