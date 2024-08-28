@@ -111,6 +111,7 @@ idam-pr:
 xui-webapp:
   nodejs:
     ingressHost: civil-ga-ccd-xui-staging.aat.platform.hmcts.net
+
 ccd:
   ccd-api-gateway-web:
     nodejs:
@@ -118,9 +119,55 @@ ccd:
   ccd-data-store-api:
     java:
       ingressHost: civil-ga-ccd-data-store-staging.aat.platform.hmcts.net
+      environment:
+        DATA_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+        DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
+      secrets:
+        STORAGE_ACCOUNT_NAME:
+          secretRef: storage-secret-{{ .Release.Name }}-blobstorage
+          key: storageAccountName
+          disabled: true
+        STORAGE_ACCOUNT_KEY:
+          secretRef: storage-secret-{{ .Release.Name }}-blobstorage
+          key: accessKey
+          disabled: true
+        DATA_STORE_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
+
   ccd-definition-store-api:
     java:
       ingressHost: civil-ga-ccd-definition-store-staging.aat.platform.hmcts.net
+      environment:
+        DEFINITION_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+        DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
+      secrets:
+        STORAGE_ACCOUNT_NAME:
+          secretRef: storage-secret-{{ .Release.Name }}-blobstorage
+          key: storageAccountName
+          disabled: true
+        STORAGE_ACCOUNT_KEY:
+          secretRef: storage-secret-{{ .Release.Name }}-blobstorage
+          key: accessKey
+          disabled: true
+        DEFINITION_STORE_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
+
+  ccd-user-profile-api:
+    java:
+      ingressHost: civil-ga-ccd-xui-staging-aat.aat.platform.hmcts.net
+      environment:
+        USER_PROFILE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+        USER_PROFILE_DB_OPTIONS: "?stringtype=unspecified"
+      secrets:
+        USER_PROFILE_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
+
 camunda-bpm:
   java:
     ingressHost: civil-ga-ccd-camunda-staging.aat.platform.hmcts.net
