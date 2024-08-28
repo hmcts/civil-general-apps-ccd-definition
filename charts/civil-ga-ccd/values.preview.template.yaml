@@ -120,6 +120,12 @@ xui-webapp:
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
       SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-${SERVICE_FQDN}
 ccd:
+  global:
+    postgresUsername: hmcts
+    postgresPassword: ${POSTGRES_PASSWORD}
+    postgresSecret: postgres
+  #    postgresHostname: civil-preview.postgres.database.azure.com
+  #    databaseNamePrefix: "pr-${CHANGE_ID}-"
   ccd-api-gateway-web:
     nodejs:
       ingressHost: gateway-${SERVICE_FQDN}
@@ -127,9 +133,17 @@ ccd:
     java:
       environment:
         OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
-        DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_ps,bulk_scan_orchestrator,ccpay_bubble,ctsc_work_allocation,em_ccd_orchestrator,xui_webapp,civil_service,ccd_case_document_am_api,aac_manage_case_assignment,wa_task_management_api,wa_task_monitor,wa_case_event_handler,wa_workflow_api,civil_general_applications
         CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: civil_service,aac_manage_case_assignment,civil_general_applications
+        DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_ps,bulk_scan_orchestrator,ccpay_bubble,ctsc_work_allocation,em_ccd_orchestrator,xui_webapp,civil_service,ccd_case_document_am_api,aac_manage_case_assignment,wa_task_management_api,wa_task_monitor,wa_case_event_handler,wa_workflow_api,civil_general_applications
+        DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
+        DATA_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+        UPLOAD_TIMESTAMP_FEATURED_CASE_TYPES: CIVIL, GENERALAPPLICATION
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
+      secrets:
+        DATA_STORE_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
   ccd-definition-store-api:
     java:
       devmemoryRequests: 2048Mi
@@ -138,6 +152,25 @@ ccd:
       devcpuLimits: 4000m
       disableKeyVaults: true
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
+      environment:
+        DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
+        DEFINITION_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      secrets:
+        DEFINITION_STORE_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
+  ccd-user-profile-api:
+    java:
+      environment:
+        USER_PROFILE_DB_OPTIONS: "?stringtype=unspecified"
+        USER_PROFILE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      secrets:
+        USER_PROFILE_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
+
 camunda-bpm:
   java:
     ingressHost: camunda-${SERVICE_FQDN}
