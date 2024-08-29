@@ -108,7 +108,7 @@ module.exports = {
                     hasAgreed: 'No',
                 },
                 generalAppInformOtherParty: {
-                    isWithNotice: 'Yes',
+                    isWithNotice: 'No',
                     reasonsForWithoutNotice: 'reason'
                 },
                 generalAppAskForCosts: 'No',
