@@ -732,6 +732,16 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
+    "ListElementCode": "caseNameGaInternal",
+    "UserRoles": [
+      "citizen-profile",
+      "cui-admin-profile"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
     "ListElementCode": "claimant2PartyName",
     "UserRoles": [
       "citizen-profile",

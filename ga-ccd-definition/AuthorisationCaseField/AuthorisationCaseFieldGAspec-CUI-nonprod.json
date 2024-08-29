@@ -703,6 +703,19 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "caseNameGaInternal",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile",
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "claimant2PartyName",
     "AccessControl": [
       {

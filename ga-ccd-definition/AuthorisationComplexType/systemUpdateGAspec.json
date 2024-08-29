@@ -546,6 +546,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
+    "ListElementCode": "caseNameGaInternal",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
     "ListElementCode": "claimant2PartyName",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
