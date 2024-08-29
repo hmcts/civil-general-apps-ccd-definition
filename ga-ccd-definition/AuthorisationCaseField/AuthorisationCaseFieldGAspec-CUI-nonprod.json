@@ -1678,6 +1678,18 @@
           "citizen-profile"
         ],
         "CRUD": "CRU"
+    ]
+ },
+ {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "writtenRepSequentialDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -1690,6 +1702,18 @@
           "citizen-profile"
         ],
         "CRUD": "CRU"
+      ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "writtenRepConcurrentDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   }
