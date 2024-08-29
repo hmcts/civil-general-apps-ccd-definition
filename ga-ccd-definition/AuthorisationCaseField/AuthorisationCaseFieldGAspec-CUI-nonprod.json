@@ -1678,6 +1678,7 @@
           "citizen-profile"
         ],
         "CRUD": "CRU"
+      }
     ]
  },
  {
@@ -1702,7 +1703,8 @@
           "citizen-profile"
         ],
         "CRUD": "CRU"
-      ]
+      }
+    ]
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
