@@ -5,6 +5,7 @@
     "CaseFieldID": "isGaApplicantLip",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
+    "PageID": "WAFieldsCUI1",
     "PageShowCondition": "generalAppType = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
@@ -14,6 +15,8 @@
     "CaseEventID": "TRIGGER_LOCATION_UPDATE",
     "CaseFieldID": "isGaRespondentOneLip",
     "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "WAFieldsCUI2",
     "PageShowCondition": "generalAppType = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
