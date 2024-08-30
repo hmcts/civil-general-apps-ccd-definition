@@ -190,7 +190,6 @@ module.exports = {
         isWithNotice: isWithNotice,
         reasonsForWithoutNotice: reasonWithoutNotice
       },
-      caseNameGaInternal: 'Internal v Internal',
       generalAppDetailsOfOrder: 'Test Order details',
       generalAppReasonsOfOrder: 'Test reason for order',
       generalAppEvidenceDocument: [],
