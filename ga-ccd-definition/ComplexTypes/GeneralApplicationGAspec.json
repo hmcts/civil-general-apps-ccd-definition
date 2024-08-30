@@ -399,12 +399,5 @@
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "caseNameGaInternal",
-    "FieldType": "Text",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
   }
 ]

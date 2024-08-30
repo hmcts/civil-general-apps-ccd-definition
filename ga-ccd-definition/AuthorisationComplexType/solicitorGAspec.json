@@ -509,13 +509,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "caseNameGaInternal",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
     "ListElementCode": "claimant2PartyName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
@@ -587,13 +580,6 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "locationName",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
-    "ListElementCode": "caseNameGaInternal",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },

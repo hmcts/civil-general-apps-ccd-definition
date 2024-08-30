@@ -476,13 +476,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "caseNameGaInternal",
-    "UserRole": "judge-profile",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
     "ListElementCode": "claimant2PartyName",
     "UserRole": "judge-profile",
     "CRUD": "CRU"
