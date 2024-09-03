@@ -1308,7 +1308,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "caseNameGaInternal",
     "Label": " ",
-    "FieldType": "Text",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   }
 ]

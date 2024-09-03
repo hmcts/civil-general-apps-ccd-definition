@@ -403,7 +403,7 @@
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "caseNameGaInternal",
-    "FieldType": "Text",
+    "FieldType": "Label",
     "ElementLabel": " ",
     "FieldShowCondition": "gaFinalOrderDocPreview = \"DO_NOT_SHOW_IN_UI\"",
     "SecurityClassification": "Public"
