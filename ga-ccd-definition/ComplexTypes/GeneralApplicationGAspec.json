@@ -405,7 +405,6 @@
     "ListElementCode": "caseNameGaInternal",
     "FieldType": "Label",
     "ElementLabel": " ",
-    "FieldShowCondition": "gaFinalOrderDocPreview = \"DO_NOT_SHOW_IN_UI\"",
     "SecurityClassification": "Public"
   }
 ]
