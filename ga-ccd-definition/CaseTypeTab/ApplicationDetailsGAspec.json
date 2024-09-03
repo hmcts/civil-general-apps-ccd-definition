@@ -387,5 +387,14 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "referToLegalAdvisor",
     "TabFieldDisplayOrder": 23
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application",
+    "TabLabel": "Application",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "caseNameHmctsPublic",
+    "FieldShowCondition": "judicialDecision.decision = \"DO_NOT_SHOW_IN_UI\"",
+    "TabFieldDisplayOrder": 24
   }
 ]

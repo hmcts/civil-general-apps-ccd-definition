@@ -1303,6 +1303,14 @@
     "Label": "Is GA for LIP",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseNameHmctsPublic",
+    "FieldType": "Text",
+    "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
 
