@@ -403,7 +403,7 @@
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "caseNameGaInternal",
-    "FieldType": "Label",
+    "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   }
