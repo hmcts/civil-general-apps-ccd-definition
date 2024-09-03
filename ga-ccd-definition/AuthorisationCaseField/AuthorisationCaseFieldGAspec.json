@@ -3963,25 +3963,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "partyNames",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate",
-          "judge-profile",
-          "legal-adviser",
-          "civil-administrator-standard",
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "ga-basic-access",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
   }
 ]

@@ -1310,14 +1310,6 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "partyNames",
-    "Label": "**${caseNameGaInternal}**",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]
 
