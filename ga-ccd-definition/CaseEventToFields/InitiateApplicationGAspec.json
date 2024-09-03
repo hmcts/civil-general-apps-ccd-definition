@@ -13,7 +13,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERAL_APPLICATION_CREATION",
-    "CaseFieldID": "partNames",
+    "CaseFieldID": "partyNames",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "generalAppDeadlineNotificationPage",

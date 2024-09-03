@@ -1313,7 +1313,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "partiesNames",
+    "ID": "partyNames",
     "Label": "**${caseNameGaInternal}**",
     "FieldType": "Label",
     "SecurityClassification": "Public",

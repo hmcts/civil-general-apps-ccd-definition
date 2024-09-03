@@ -3966,7 +3966,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "caseNameGaInternal",
+    "CaseFieldID": "partyNames",
     "AccessControl": [
       {
         "UserRoles": [
