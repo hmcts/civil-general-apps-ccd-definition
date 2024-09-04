@@ -69,7 +69,7 @@ const data = {
   INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT: (isWithNotice, generalAppN245FormUpload, urgency) => genAppData.createGADataVaryJudgement(isWithNotice,null,
     '1500','FEE0458', generalAppN245FormUpload, urgency),
   INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
-  INITIATE_GENERAL_APPLICATION_LIP: (typeOfApplication, hwf) => genLipAppData.getPayloadForGALiP(typeOfApplication, hwf),
+  INITIATE_GENERAL_APPLICATION_LIP: (typeOfApplication, withNotice, hwf) => genLipAppData.getPayloadForGALiP(typeOfApplication, withNotice, hwf),
   RESPOND_TO_APPLICATION: (agree) => genAppRespondentResponseData.respondGAData(agree),
   RESPOND_DEBTOR_TO_APPLICATION: (agree) => genAppRespondentResponseData.respondDebtorGAData(agree),
   RESPOND_TO_CONSENT_APPLICATION: (agree) => genAppRespondentResponseData.respondConsentGAData(agree),
@@ -1530,9 +1530,9 @@ module.exports = {
     return caseId;
   },
 
-  createGAApplicationWithUnrepresented: async (user, caseId, typeOfApplication, hwf = false) => {
+  createGAApplicationWithUnrepresented: async (user, caseId, typeOfApplication, withNotice, hwf = false) => {
     console.log('start create a GA application');
-    const payload = data.INITIATE_GENERAL_APPLICATION_LIP(typeOfApplication, hwf);
+    const payload = data.INITIATE_GENERAL_APPLICATION_LIP(typeOfApplication, withNotice, hwf);
     await apiRequest.setupTokens(user);
     const caseData = await apiRequest.startCreateCaseForCitizen(payload, caseId);
     await waitForFinishedBusinessProcess(caseData.id, user);
@@ -1544,6 +1544,13 @@ module.exports = {
     if (hwf) {
       await processHwf(gaCaseReference);
       await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', user);
+    } else {
+      const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+        genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+      assert.equal(payment_response.status, 200);
+      let ccdState = 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION';
+      //comment out next line to see race condition
+      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, ccdState, user);
     }
     return gaCaseReference;
   },

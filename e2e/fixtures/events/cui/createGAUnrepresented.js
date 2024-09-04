@@ -4,7 +4,7 @@ const TypOfApplication = {
         caseDataUpdate: {
             generalAppType: {
                 types: [
-                    'STRIKE_OUT',
+                    'EXTEND_TIME',
                     'AMEND_A_STMT_OF_CASE',
                 ],
             },
@@ -45,7 +45,7 @@ const TypOfApplication = {
 };
 
 module.exports = {
-    getPayloadForGALiP: (type = '', hwf = false) => {
+    getPayloadForGALiP: (type = '', withNotice, hwf = false) => {
         if (TypOfApplication[type]) {
             return TypOfApplication[type];
         }
@@ -58,9 +58,12 @@ module.exports = {
                     ],
                 },
                 generalAppRespondentAgreement: {
-                    hasAgreed: 'Yes',
+                    hasAgreed: 'No',
                 },
-                generalAppInformOtherParty: undefined,
+                generalAppInformOtherParty: withNotice == null ? null : {
+                  isWithNotice: withNotice ? 'Yes':'No',
+                  reasonsForWithoutNotice: withNotice ? 'Reason':null,
+                },
                 generalAppAskForCosts: 'No',
                 generalAppDetailsOfOrder: 'The time by which I must [specify what needs to be done] be extended to [enter the date you can do this by].',
                 generalAppReasonsOfOrder: 'test',
