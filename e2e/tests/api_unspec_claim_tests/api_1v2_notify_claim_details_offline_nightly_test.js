@@ -5,8 +5,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference,
   gaCaseReference;
 
-Feature('GA 1v2 Notify Claim Details Case Close API tests');
-// This test will be enabled to run on nightly as part of this ticket CIV-14206
+Feature('GA 1v2 Notify Claim Details Case Close API tests @api-offline-nightly @api-nightly');
 
 Scenario('Case offline 1V2 notify_claim_details AWAITING_DIRECTIONS_ORDER_DOCS', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -22,7 +21,7 @@ Scenario('Case offline 1V2 notify_claim_details AWAITING_DIRECTIONS_ORDER_DOCS',
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeMakesDecisionDirectionsOrder(config.judgeUser, gaCaseReference);
+    await api.judgeMakesDecisionDirectionsOrder(config.judgeUser2WithRegionId2, gaCaseReference);
   } else {
     await api.judgeMakesDecisionDirectionsOrder(config.judgeLocalUser, gaCaseReference);
   }
