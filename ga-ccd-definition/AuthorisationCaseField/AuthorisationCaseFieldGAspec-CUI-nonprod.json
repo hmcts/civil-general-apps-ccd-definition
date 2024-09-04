@@ -1669,7 +1669,7 @@
       }
     ]
   },
-  {
+ {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "writtenRepSequentialDocument",
     "AccessControl": [
@@ -1679,6 +1679,18 @@
           "cui-admin-profile"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppWrittenRepText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
       }
     ]
   },
