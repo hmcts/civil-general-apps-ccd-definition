@@ -400,5 +400,17 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "UPDATE_GA_DASHBOARD_NOTIFICATION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
