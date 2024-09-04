@@ -1669,18 +1669,6 @@
       }
     ]
   },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalAppAddlnInfoText",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
- },
  {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "writtenRepSequentialDocument",
