@@ -54,7 +54,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "UPDATE_GA_DASHBOARD_NOTIFICATION",
-    "Name": "Update ga dashboard Notification",
+    "Name": "Update ga dashboard Notify",
     "Description": "Update ga dashboard Notification",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
