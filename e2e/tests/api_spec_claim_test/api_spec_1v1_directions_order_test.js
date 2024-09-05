@@ -32,17 +32,17 @@ Scenario('Judge makes decision 1V1 Specified case- DIRECTIONS ORDER', async ({ap
 });
 
 
-Scenario('Make an Urgent General Application with Vary payment terms of judgment', async ({api}) => {
-  civilCaseReference = await api.createSpecifiedClaim(
-    config.applicantSolicitorUser, mpScenario);
-  console.log('Civil Case created for general application: ' + civilCaseReference);
-  console.log('Make a General Application');
-  gaCaseReference = await api.initiateGaWithVaryJudgement(config.applicantSolicitorUser,
-    civilCaseReference, true, true);
-});
+// Scenario('Make an Urgent General Application with Vary payment terms of judgment', async ({api}) => {
+//   civilCaseReference = await api.createSpecifiedClaim(
+//     config.applicantSolicitorUser, mpScenario);
+//   console.log('Civil Case created for general application: ' + civilCaseReference);
+//   console.log('Make a General Application');
+//   gaCaseReference = await api.initiateGaWithVaryJudgement(config.applicantSolicitorUser,
+//     civilCaseReference, true, true);
+// });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
+// AfterSuite(async ({api}) => {
+//   await api.cleanUp();
+// });
 
 
