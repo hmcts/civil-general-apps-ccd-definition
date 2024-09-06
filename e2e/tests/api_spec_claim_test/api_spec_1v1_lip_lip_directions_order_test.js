@@ -21,7 +21,7 @@ Scenario('Spec Claimant create GA with multiple application types', async ({ api
   gaCaseReference = await api.createGAApplicationWithUnrepresented(config.applicantCitizenUser, civilCaseReference, 'multiple', false, false);
 });
 
-Scenario.only('Spec Claimant create GA without notice', async ({ api }) => {
+Scenario('Spec Claimant create GA without notice judge make order', async ({ api }) => {
   civilCaseReference = await api.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', 'INDIVIDUAL');
   gaCaseReference = await api.createGAApplicationWithUnrepresented(config.applicantCitizenUser, civilCaseReference, '', false, false);
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
@@ -42,6 +42,30 @@ Scenario.only('Spec Claimant create GA without notice', async ({ api }) => {
     await api.judgeMakesOrderDecisionUncloak(config.judgeUser2WithRegionId2, gaCaseReference);
   } else {
     await api.judgeMakesOrderDecisionUncloak(config.judgeLocalUser, gaCaseReference);
+  }
+});
+
+Scenario('Spec Claimant create GA without notice judge make final order', async ({ api }) => {
+  civilCaseReference = await api.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', 'INDIVIDUAL');
+  gaCaseReference = await api.createGAApplicationWithUnrepresentedWithout(config.applicantCitizenUser, civilCaseReference, 'multiple', false);
+  console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
+    + gaCaseReference + ' ***');
+  console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeListApplicationForHearing(config.judgeUser2WithRegionId2, gaCaseReference);
+  } else {
+    await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
+  }
+  console.log('*** End Judge makes order application after hearing GA Case Reference: ' + gaCaseReference + ' ***');
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminWithRegionId2, gaCaseReference);
+  } else {
+    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
+  }
+  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+    await api.judgeMakeFinalOrder(config.judgeUser2WithRegionId2, gaCaseReference, 'FREE_FORM_ORDER', false);
+  } else {
+    await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'FREE_FORM_ORDER', false);
   }
 });
 
