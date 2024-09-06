@@ -154,7 +154,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "RESPONDENT_RESPONSE_DEADLINE_CHECK",
-    "Name": "Check respondent response deadline",
+    "Name": "Check response deadline",
     "Description": "Respondent response deadline check",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
