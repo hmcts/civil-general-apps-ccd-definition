@@ -150,5 +150,19 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "RESPONDENT_RESPONSE_DEADLINE_CHECK",
+    "Name": "Check respondent response deadline",
+    "Description": "Respondent response deadline check",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "Publish": "Y"
   }
 ]

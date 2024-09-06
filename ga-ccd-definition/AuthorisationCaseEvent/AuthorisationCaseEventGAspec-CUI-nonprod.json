@@ -400,5 +400,17 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPONDENT_RESPONSE_DEADLINE_CHECK",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
