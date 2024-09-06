@@ -4,7 +4,7 @@ const TypOfApplication = {
         caseDataUpdate: {
             generalAppType: {
                 types: [
-                    'STRIKE_OUT',
+                    'EXTEND_TIME',
                     'AMEND_A_STMT_OF_CASE',
                 ],
             },
