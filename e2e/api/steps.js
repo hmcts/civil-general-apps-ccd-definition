@@ -1544,7 +1544,7 @@ module.exports = {
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
     if (hwf) {
       await processHwf(gaCaseReference);
-      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', user);
+      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
     }
     return gaCaseReference;
   },

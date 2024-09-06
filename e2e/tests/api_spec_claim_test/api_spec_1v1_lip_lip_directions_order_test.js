@@ -13,17 +13,17 @@ Before(async () => {
 Scenario('Spec Claimant create GA with single application type and HWF', async ({ api }) => {
   civilCaseReference = await api.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', 'INDIVIDUAL');
   console.log(civilCaseReference);
-  gaCaseReference = await api.createGAApplicationWithUnrepresented(config.applicantCitizenUser, civilCaseReference, '', true, true);
+  gaCaseReference = await api.createGAApplicationWithUnrepresented(config.applicantCitizenUser, civilCaseReference, '', true);
 });
 
 Scenario('Spec Claimant create GA with multiple application types', async ({ api }) => {
   civilCaseReference = await api.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', 'INDIVIDUAL');
-  gaCaseReference = await api.createGAApplicationWithUnrepresented(config.applicantCitizenUser, civilCaseReference, 'multiple', false, false);
+  gaCaseReference = await api.createGAApplicationWithUnrepresented(config.applicantCitizenUser, civilCaseReference, 'multiple', false);
 });
 
 Scenario('Spec Claimant create GA without notice judge make order', async ({ api }) => {
   civilCaseReference = await api.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', 'INDIVIDUAL');
-  gaCaseReference = await api.createGAApplicationWithUnrepresented(config.applicantCitizenUser, civilCaseReference, '', false, false);
+  gaCaseReference = await api.createGAApplicationWithUnrepresented(config.applicantCitizenUser, civilCaseReference, '', false);
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '
               + gaCaseReference + ' ***');
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
@@ -33,7 +33,7 @@ Scenario('Spec Claimant create GA without notice judge make order', async ({ api
   }
 });
 
-Scenario.only('Spec Claimant create GA without notice', async ({ api }) => {
+Scenario('Spec Claimant create GA without notice', async ({ api }) => {
   civilCaseReference = await api.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', 'INDIVIDUAL');
   gaCaseReference = await api.createGAApplicationWithUnrepresentedWithout(config.applicantCitizenUser, civilCaseReference, 'multiple', false);
   console.log('*** Start Judge Request More Information and Uncloak Application on GA Case Reference: '

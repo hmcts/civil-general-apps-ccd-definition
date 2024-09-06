@@ -45,7 +45,7 @@ const TypOfApplication = {
 };
 
 module.exports = {
-    getPayloadForGALiP: (type = '', withNotice, hwf = false) => {
+    getPayloadForGALiP: (type = '', hwf = false) => {
         if (TypOfApplication[type]) {
             return TypOfApplication[type];
         }
@@ -60,9 +60,9 @@ module.exports = {
                 generalAppRespondentAgreement: {
                     hasAgreed: 'No',
                 },
-                generalAppInformOtherParty: withNotice == null ? null : {
-                  isWithNotice: withNotice ? 'Yes':'No',
-                  reasonsForWithoutNotice: withNotice ? 'Reason':null,
+                generalAppInformOtherParty: {
+                  isWithNotice: 'Yes',
+                  reasonsForWithoutNotice: 'Reason',
                 },
                 generalAppAskForCosts: 'No',
                 generalAppDetailsOfOrder: 'The time by which I must [specify what needs to be done] be extended to [enter the date you can do this by].',
