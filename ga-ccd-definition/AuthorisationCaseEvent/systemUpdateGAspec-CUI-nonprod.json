@@ -7,13 +7,49 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "UPDATE_TASK_LIST_GA_CREATED",
+    "CaseEventID": "UPDATE_CLAIMANT_TASK_LIST_GA_CREATED",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "UPDATE_TASK_LIST_GA_COMPLETE",
+    "CaseEventID": "UPDATE_RESPONDENT_TASK_LIST_GA_CREATED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "UPDATE_CLAIMANT_TASK_LIST_GA_COMPLETE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "UPDATE_RESPONDENT_TASK_LIST_GA_COMPLETE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_GA_HWF_NOTIFY_PROCESS",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "NOTIFY_HELP_WITH_FEE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "NOTIFY_APPLICANT_LIP_HWF",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_FOR_GA_APPLICANT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }

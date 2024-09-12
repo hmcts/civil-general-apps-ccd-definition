@@ -3,7 +3,25 @@
     "RoleName" : "idam:citizen",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "citizen-profile,cui-admin-profile",
+    "AccessProfiles": "citizen-profile",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName": "ctsc-team-leader",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "ga-basic-access,cui-admin-profile",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName": "ctsc",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "ga-basic-access,cui-admin-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""

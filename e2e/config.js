@@ -192,6 +192,12 @@ module.exports = {
     roleCategory: 'ADMIN',
     regionId: '1'
   },
+  ctscAdmin: {
+    password: defaultPassword,
+    email: 'ga_ctsc_team_leader_national@justice.gov.uk',
+    type: 'national-business-centre',
+    roleCategory: 'ADMIN'
+  },
   adminUser: {
     password: defaultPassword,
     email: 'civil-admin@mailnesia.com',
@@ -238,6 +244,11 @@ module.exports = {
     email: 'EMP47622@ejudiciary.net',
     type: 'JUDICIAL',
     roleCategory: 'JUDICIAL'
+  },
+  applicantCitizenUser: {
+    password: defaultPassword,
+    email: 'civilmoneyclaimsdemo@gmail.com',
+    type: 'claimant',
   },
   systemUpdate: {
     password: defaultPassword,

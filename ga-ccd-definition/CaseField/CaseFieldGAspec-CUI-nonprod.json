@@ -25,14 +25,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "generalAppHelpWithFees",
-    "FieldType": "HelpWithFees",
-    "Label": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppPaymentDetails",
     "Label": "Details of PBA payment",
     "FieldType": "PaymentDetails",
@@ -46,5 +38,27 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "applicationFeeAmountInPence",
+    "FieldType": "MoneyGBP",
+    "Label": "Original application fee",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppAddlnInfoText",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppWrittenRepText",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]

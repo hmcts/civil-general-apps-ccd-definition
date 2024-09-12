@@ -234,24 +234,6 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName": "ctsc-team-leader",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "ga-basic-access",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName": "ctsc",
-    "Authorisation": "",
-    "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "ga-basic-access",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
     "RoleName" : "hmcts-ctsc",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",

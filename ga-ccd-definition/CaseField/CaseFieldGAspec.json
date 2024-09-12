@@ -47,7 +47,8 @@
     "Label": "Parent Case ID",
     "HintText": "  ",
     "FieldType": "CaseLink",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
