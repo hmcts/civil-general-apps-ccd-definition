@@ -106,8 +106,8 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "APPLICANT_LIP_HWF_DASHBOARD_NOTIFICATION",
-    "Name": "respondent notification",
-    "Description": "respondent notification",
+    "Name": "applicant hwf notification",
+    "Description": "applicant hwf notification",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
