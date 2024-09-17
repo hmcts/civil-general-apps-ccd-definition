@@ -365,6 +365,7 @@ module.exports = {
     eventName = 'ADD_OR_AMEND_CLAIM_DOCUMENTS';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
+    console.log(returnedCaseData)
 
     await validateEventPages(data[eventName]);
 
