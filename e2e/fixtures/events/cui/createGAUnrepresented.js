@@ -4,7 +4,7 @@ const TypOfApplication = {
         caseDataUpdate: {
             generalAppType: {
                 types: [
-                    'STRIKE_OUT',
+                    'EXTEND_TIME',
                     'AMEND_A_STMT_OF_CASE',
                 ],
             },
@@ -58,9 +58,12 @@ module.exports = {
                     ],
                 },
                 generalAppRespondentAgreement: {
-                    hasAgreed: 'Yes',
+                    hasAgreed: 'No',
                 },
-                generalAppInformOtherParty: undefined,
+                generalAppInformOtherParty: {
+                  isWithNotice: 'Yes',
+                  reasonsForWithoutNotice: 'Reason',
+                },
                 generalAppAskForCosts: 'No',
                 generalAppDetailsOfOrder: 'The time by which I must [specify what needs to be done] be extended to [enter the date you can do this by].',
                 generalAppReasonsOfOrder: 'test',
@@ -92,6 +95,52 @@ module.exports = {
                     helpWithFee:'Yes',
                     helpWithFeesReferenceNumber:'HWF-A1B-23C'
                 } : null,
+            },
+        };
+    },
+    getPayloadForGALiPWithout: () => {
+        return {
+            event: 'INITIATE_GENERAL_APPLICATION',
+            caseDataUpdate: {
+                generalAppType: {
+                    types: [
+                        'EXTEND_TIME',
+                    ],
+                },
+                generalAppRespondentAgreement: {
+                    hasAgreed: 'No',
+                },
+                generalAppInformOtherParty: {
+                    isWithNotice: 'No',
+                    reasonsForWithoutNotice: 'reason'
+                },
+                generalAppAskForCosts: 'No',
+                generalAppDetailsOfOrder: 'The time by which I must [specify what needs to be done] be extended to [enter the date you can do this by].',
+                generalAppReasonsOfOrder: 'test',
+                generalAppEvidenceDocument: undefined,
+                generalAppHearingDetails: {
+                    HearingPreferencesPreferredType: 'IN_PERSON',
+                    ReasonForPreferredHearingType: 'test',
+                    HearingPreferredLocation: {
+                        value: {
+                            label: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
+                        },
+                    },
+                    HearingDetailsTelephoneNumber: '07000000000',
+                    HearingDetailsEmailID: 'civilmoneyclaimsdemo@gmail.com',
+                    unavailableTrialRequiredYesOrNo: 'No',
+                    generalAppUnavailableDates: [
+                    ],
+                    SupportRequirement: [
+                        'OTHER_SUPPORT',
+                    ],
+                    SupportRequirementSignLanguage: '',
+                    SupportRequirementLanguageInterpreter: '',
+                    SupportRequirementOther: 'test',
+                },
+                generalAppStatementOfTruth: {
+                    name: 'test',
+                },
             },
         };
     }
