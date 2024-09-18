@@ -46,5 +46,29 @@
     "CaseEventID": "NOTIFY_APPLICANT_LIP_HWF",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+  "CaseTypeID": "GENERALAPPLICATION",
+  "CaseEventID": "UPDATE_GA_DASHBOARD_NOTIFICATION",
+  "UserRole": "caseworker-civil-systemupdate",
+  "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_FOR_GA_APPLICANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  { 
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "CREATE_APPLICANT_DASHBOARD_NOTIFICATION_FOR_MAKE_DECISION",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "CREATE_RESPONDENT_DASHBOARD_NOTIFICATION_FOR_MAKE_DECISION",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
