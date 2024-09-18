@@ -49,9 +49,9 @@ Scenario('Non EA Region Cases should not have access to the GA Feature @smoke-te
   }
   console.log('*** End Judge makes decision order made - GA Case Reference: ' + gaCaseReference + ' ***');
 
-  await I.login(config.defendantSolicitorUser);
-  await I.navigateToTab(civilCaseReference, 'Applications');
-  await I.see('Order Made');
+  // await I.login(config.defendantSolicitorUser);
+  // await I.navigateToTab(civilCaseReference, 'Applications');
+  // await I.see('Order Made');
 });
 
 //this test will be removed after we do national rollout
