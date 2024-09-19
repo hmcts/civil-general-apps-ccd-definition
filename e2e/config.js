@@ -48,7 +48,7 @@ module.exports = {
   },
   s2s: {
     microservice: 'civil_service',
-    secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
+    secret:'AABBCCDDEEFFGGHH'
   },
   s2sForXUI: {
     microservice: 'xui_webapp',
@@ -95,7 +95,7 @@ module.exports = {
   },
   defendantCitizenUser2: {
     password: defaultPassword,
-    email: `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`,
+    email: `jane.smith@gmail.com`,
     type: 'defendant',
   },
   defendantSolicitorUser: {

@@ -4,16 +4,16 @@ const { assert } = require('chai');
 let civilCaseReference, gaCaseReference;
 const { createAccount, deleteAccount } = require('../../api/idamHelper.js');
 
-Feature('Create Lip v Lip claim -  Default Judgment @api-cui');
+Feature('Create Lip v Lip claim -  Default Judgment @api-neeta');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-Scenario('Spec Claimant create GA with single application type and HWF', async ({ api }) => {
-  civilCaseReference = await api.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', 'INDIVIDUAL');
-  console.log(civilCaseReference);
-  gaCaseReference = await api.createGAApplicationWithUnrepresented(config.applicantCitizenUser, civilCaseReference, '', true);
+Scenario.only('Spec Claimant create GA with single application type and HWF', async ({ api }) => {
+  //civilCaseReference = await api.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', 'INDIVIDUAL');
+  //console.log(civilCaseReference);
+  gaCaseReference = await api.createGAApplicationWithUnrepresented(config.applicantCitizenUser, '1726653366052824', '', false);
 });
 
 Scenario('Spec Claimant create GA with multiple application types', async ({ api }) => {
@@ -70,6 +70,6 @@ Scenario('Spec Claimant create GA without notice judge make final order', async 
 });
 
 AfterSuite(async ({ api }) => {
-  await api.cleanUp();
-  await deleteAccount(config.defendantCitizenUser2.email);
+  //await api.cleanUp();
+ // await deleteAccount(config.defendantCitizenUser2.email);
 });
