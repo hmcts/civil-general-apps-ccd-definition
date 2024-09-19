@@ -400,5 +400,29 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION_URGENT_LIP",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RESPONDENT-ONE-PROFILE-SPEC"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPONDENT_RESPONSE_DEADLINE_CHECK",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

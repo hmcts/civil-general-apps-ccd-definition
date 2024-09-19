@@ -70,6 +70,7 @@ const data = {
     '1500','FEE0458', generalAppN245FormUpload, urgency),
   INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
   INITIATE_GENERAL_APPLICATION_LIP: (typeOfApplication, hwf) => genLipAppData.getPayloadForGALiP(typeOfApplication, hwf),
+  INITIATE_GENERAL_APPLICATION_LIP_WITHOUT :() => genLipAppData.getPayloadForGALiPWithout(),
   RESPOND_TO_APPLICATION: (agree) => genAppRespondentResponseData.respondGAData(agree),
   RESPOND_DEBTOR_TO_APPLICATION: (agree) => genAppRespondentResponseData.respondDebtorGAData(agree),
   RESPOND_TO_CONSENT_APPLICATION: (agree) => genAppRespondentResponseData.respondConsentGAData(agree),
@@ -1543,8 +1544,37 @@ module.exports = {
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
     if (hwf) {
       await processHwf(gaCaseReference);
-      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', user);
+      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
     }
+    return gaCaseReference;
+  },
+
+  createGAApplicationWithUnrepresentedWithout: async (user, caseId) => {
+    console.log('start create a GA application');
+    const payload = data.INITIATE_GENERAL_APPLICATION_LIP_WITHOUT();
+    await apiRequest.setupTokens(user);
+    const caseData = await apiRequest.startCreateCaseForCitizen(payload, caseId);
+    await waitForFinishedBusinessProcess(caseData.id, user);
+    await waitForGAFinishedBusinessProcess(caseData.id, user);
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(caseData.id, user).then(res => res.json());
+    const ccdGeneralApplications = updatedResponse.generalApplications;
+    const gaCaseReference = ccdGeneralApplications[ccdGeneralApplications.length - 1]?.value?.caseLink?.CaseReference;
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
+    const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+        genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference, 'Paid'));
+
+    assert.equal(payment_response.status, 200);
+
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
+                                                        'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', user);
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseReference, user);
+    const updatedGABusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+
+    console.log('General application case state : APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+    console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
+    await addUserCaseMapping(gaCaseReference, user);
     return gaCaseReference;
   },
 
