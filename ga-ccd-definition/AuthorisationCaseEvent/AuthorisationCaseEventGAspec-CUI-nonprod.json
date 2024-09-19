@@ -415,6 +415,18 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPONDENT_RESPONSE_DEADLINE_CHECK",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "DELETE_CLAIMANT_WRITTEN_REPS_NOTIFICATION",
     "AccessControl": [
       {
