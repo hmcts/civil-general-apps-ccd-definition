@@ -94,5 +94,11 @@
     "CaseEventID": "DELETE_DEFENDANT_WRITTEN_REPS_NOTIFICATION",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "APPLICANT_LIP_HWF_DASHBOARD_NOTIFICATION",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
