@@ -1488,6 +1488,16 @@
       "cui-admin-profile"
     ],
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "caseNameGaInternal",
+    "UserRoles": [
+      "citizen-profile",
+      "cui-admin-profile"
+    ],
+    "CRUD": "R"
   }
 ]
 
