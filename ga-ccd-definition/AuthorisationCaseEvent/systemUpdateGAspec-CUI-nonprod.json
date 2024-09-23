@@ -59,7 +59,7 @@
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
-  { 
+  {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "CREATE_APPLICANT_DASHBOARD_NOTIFICATION_FOR_MAKE_DECISION",
     "UserRole": "caseworker-civil-systemupdate",
@@ -77,9 +77,15 @@
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
-  { 
+  {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "RESPONDENT_RESPONSE_DEADLINE_CHECK",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "APPLICANT_LIP_HWF_DASHBOARD_NOTIFICATION",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
