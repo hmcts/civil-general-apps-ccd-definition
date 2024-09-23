@@ -1,0 +1,28 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "PRINT_ORDER_DOCUMENT_APPLICANT",
+    "Name": "Order Document For Applicant",
+    "Description": "",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "PRINT_ORDER_DOCUMENT_RESPONDENT",
+    "Name": "applicant hwf notification",
+    "Description": "Order Document For Respondent",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  }
+]
