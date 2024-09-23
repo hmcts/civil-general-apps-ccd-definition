@@ -1102,5 +1102,12 @@
     "ListElementCode": "isGaRespondentTwoLip",
     "UserRole": "legal-adviser",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "caseNameGaInternal",
+    "UserRole": "legal-adviser",
+    "CRUD": "CRU"
   }
 ]
