@@ -1286,7 +1286,8 @@
     "FieldType": "YesOrNo",
     "Label": "Is GA for LIP",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -1294,7 +1295,8 @@
     "FieldType": "YesOrNo",
     "Label": "Is GA for LIP",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
