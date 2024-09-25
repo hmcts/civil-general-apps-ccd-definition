@@ -145,6 +145,7 @@
     "Description": "Notify caseworker for HWF",
     "PreConditionState(s)": "AWAITING_APPLICATION_PAYMENT;APPLICATION_ADD_PAYMENT",
     "PostConditionState": "*",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
     "SecurityClassification": "Public",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
