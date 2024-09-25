@@ -1060,6 +1060,13 @@
     "ListElementCode": "isGaRespondentTwoLip",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "caseNameGaInternal",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
   }
 ]
 

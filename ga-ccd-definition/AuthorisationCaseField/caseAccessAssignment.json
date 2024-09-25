@@ -46,5 +46,11 @@
     "CaseFieldID": "parentCaseReference",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "caseNameGaInternal",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
   }
 ]

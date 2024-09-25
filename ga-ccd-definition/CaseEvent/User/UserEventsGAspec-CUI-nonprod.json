@@ -185,6 +185,20 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "UPLOAD_TRANSLATED_DOCUMENT",
+    "Name": "Upload translated document",
+    "Description": "Upload Translated Document",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "Y",
+    "EventEnablingCondition": "CaseAccessCategory=\"DO_NOT_SHOW\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "DELETE_CLAIMANT_WRITTEN_REPS_NOTIFICATION",
     "Name": "Delete claimant notification",
     "Description": "Delete claimant written rep notification",
