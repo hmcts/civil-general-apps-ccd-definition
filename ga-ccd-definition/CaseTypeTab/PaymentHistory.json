@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "GENERALAPPLICATION",
+    "TabLabel": "Payment History",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "casePaymentHistoryViewer",
+    "TabFieldDisplayOrder": 1
+  }
+]
