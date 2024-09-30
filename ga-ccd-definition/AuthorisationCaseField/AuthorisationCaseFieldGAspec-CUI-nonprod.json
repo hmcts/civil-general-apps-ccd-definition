@@ -1808,7 +1808,7 @@
           "judge-profile",
           "legal-adviser"
         ],
-        "CRUD": "R"
+        "CRUD": "CRUD"
       }
     ]
   },
