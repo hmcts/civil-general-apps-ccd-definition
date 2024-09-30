@@ -134,5 +134,21 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "bilingualHintTextWrittenR",
+    "Label": "<h2>There is a Welsh speaking party on this application. Please adjust deadlines accordingly to allow for translation of the order.</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "bilingualHintTextWrittenDraw",
+    "Label": "<h2>There is a Welsh speaking party on this application. Please adjust deadlines accordingly to allow for translation of the order.</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
