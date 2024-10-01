@@ -1770,7 +1770,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "certOfSC",
     "AccessControl": [
       {
