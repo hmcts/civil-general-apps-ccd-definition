@@ -88,5 +88,17 @@
     "CaseEventID": "APPLICANT_LIP_HWF_DASHBOARD_NOTIFICATION",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "NOTIFY_APPLICANT_TRANSLATED_DOCUMENT_UPLOADED_GA",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "NOTIFY_RESPONDENT_TRANSLATED_DOCUMENT_UPLOADED_GA",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
