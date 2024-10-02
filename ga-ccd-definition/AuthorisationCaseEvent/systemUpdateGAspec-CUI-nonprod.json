@@ -85,18 +85,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "DELETE_CLAIMANT_WRITTEN_REPS_NOTIFICATION",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "DELETE_DEFENDANT_WRITTEN_REPS_NOTIFICATION",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "APPLICANT_LIP_HWF_DASHBOARD_NOTIFICATION",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
@@ -119,9 +107,15 @@
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
- {
+  {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "CREATE_RESPONDENT_DASHBOARD_NOTIFICATION_ORDER_MADE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_UPLOADED_TRANSLATED_DOC_BUSINESS_PROCESS_GASPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
