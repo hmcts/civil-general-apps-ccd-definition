@@ -76,5 +76,11 @@
     "ListElementCode": "VARY_PAYMENT_TERMS_OF_JUDGMENT",
     "ListElement": "Application to Vary payment terms of judgment",
     "DisplayOrder": 13
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "CONFIRM_CCJ_DEBT_PAID",
+    "ListElement": "Confirm you've paid a judgment debt",
+    "DisplayOrder": 14
   }
 ]
