@@ -118,7 +118,7 @@
     "CaseEventID": "NOTIFY_RESPONDENT_TRANSLATED_DOCUMENT_UPLOADED_GA",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
-  }
+  },
  {
     "CaseTypeID": "GENERALAPPLICATION"
     "CaseEventID": "CREATE_RESPONDENT_DASHBOARD_NOTIFICATION_ORDER_MADE",
