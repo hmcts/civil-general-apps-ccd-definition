@@ -120,7 +120,7 @@
     "CRUD": "CRU"
   },
  {
-    "CaseTypeID": "GENERALAPPLICATION"
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "CREATE_RESPONDENT_DASHBOARD_NOTIFICATION_ORDER_MADE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
