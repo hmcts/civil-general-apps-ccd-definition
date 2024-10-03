@@ -14,9 +14,9 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "END_UPLOADED_TRANSLATED_DOC_BUSINESS_PROCESS_GASPEC",
-    "Name": "End translated doc process",
-    "Description": "End translated doc process",
+    "ID": "END_BUSINESS_PROCESS_GASPEC_WITHOUT_WA_TASK",
+    "Name": "End GA business process",
+    "Description": "End GA business process",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",

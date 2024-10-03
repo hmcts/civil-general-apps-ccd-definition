@@ -115,7 +115,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "END_UPLOADED_TRANSLATED_DOC_BUSINESS_PROCESS_GASPEC",
+    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC_WITHOUT_WA_TASK",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
