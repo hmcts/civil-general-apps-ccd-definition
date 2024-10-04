@@ -69,6 +69,6 @@ Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT  as DEFENDANT - DIRECTIONS O
   await api.assertDocumentVisibilityToUser(config.applicantSolicitorUser, 'RespondentSol', civilCaseReference, gaCaseReference, doc);
 });
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
 

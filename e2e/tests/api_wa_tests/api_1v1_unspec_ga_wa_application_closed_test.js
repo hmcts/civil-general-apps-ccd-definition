@@ -24,7 +24,7 @@ Scenario.skip('1v1 Unspec GA-WA Application closed test', async ({api}) => {
 }).retry(0);
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
 
 

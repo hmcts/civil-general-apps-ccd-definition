@@ -43,5 +43,5 @@ Scenario('Birmingham should have access to the GA Feature post SDO (JUDICIAL REF
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

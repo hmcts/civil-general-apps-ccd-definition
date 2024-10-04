@@ -70,5 +70,5 @@ Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

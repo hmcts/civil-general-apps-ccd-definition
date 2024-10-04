@@ -69,7 +69,7 @@ Scenario('GA - Challenged Access test - LegalAdvisor', async ({I, api, wa}) => {
 }).retry(0);
 
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
+// AfterSuite(async ({api}) => {
+//   // await api.cleanUp();
+// });
 

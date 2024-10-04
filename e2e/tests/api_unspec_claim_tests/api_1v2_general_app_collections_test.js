@@ -157,6 +157,6 @@ Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Deci
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
 

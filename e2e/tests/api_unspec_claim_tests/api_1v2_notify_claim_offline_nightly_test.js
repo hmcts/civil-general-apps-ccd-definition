@@ -36,6 +36,6 @@ Scenario('Case offline 1V2 notify_claim_details AWAITING_ADDITIONAL_INFORMATION'
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
+// AfterSuite(async ({api}) => {
+//   // await api.cleanUp();
+// });

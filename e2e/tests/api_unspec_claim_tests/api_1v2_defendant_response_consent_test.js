@@ -39,6 +39,6 @@ Scenario('Defendants response 1V2', async ({api}) => {
 });
 
 AfterSuite(async ({api}) => {
-    await api.cleanUp();
+    // await api.cleanUp();
 });
 

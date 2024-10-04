@@ -36,5 +36,5 @@ Scenario('Judge makes decision 1V2 - Accept Strike out application', async ({api
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

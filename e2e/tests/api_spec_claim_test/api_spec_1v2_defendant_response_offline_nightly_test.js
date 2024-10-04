@@ -42,5 +42,5 @@ Scenario('Case offline ORDER_MADE', async ({api}) => {
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

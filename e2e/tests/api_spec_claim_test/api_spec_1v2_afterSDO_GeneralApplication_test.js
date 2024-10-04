@@ -81,5 +81,5 @@ Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) =>
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

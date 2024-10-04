@@ -142,5 +142,5 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

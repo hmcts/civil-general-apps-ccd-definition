@@ -144,7 +144,7 @@ Scenario.skip('After SDO GA - Change court location  - HC admin review applicati
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
 
 

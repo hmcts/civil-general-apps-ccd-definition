@@ -70,6 +70,6 @@ Scenario('Spec Claimant create GA without notice judge make final order', async 
 });
 
 AfterSuite(async ({ api }) => {
-  await api.cleanUp();
+  // await api.cleanUp();
   await deleteAccount(config.defendantCitizenUser2.email);
 });

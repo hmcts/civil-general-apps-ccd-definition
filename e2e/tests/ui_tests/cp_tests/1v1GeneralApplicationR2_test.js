@@ -96,5 +96,5 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

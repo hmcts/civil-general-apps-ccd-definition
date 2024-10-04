@@ -34,6 +34,6 @@ Scenario('1v1 specified assert general application unavailable before respondent
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
 

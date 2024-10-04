@@ -107,6 +107,6 @@ Scenario('GA - Case progression journey', async ({I, api}) => {
 }).retry(1);
 
 AfterSuite(async ({api}) => {
-   await api.cleanUp();
+   // await api.cleanUp();
 });
 

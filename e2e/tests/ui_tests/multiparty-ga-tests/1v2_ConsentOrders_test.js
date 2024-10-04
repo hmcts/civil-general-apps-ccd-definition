@@ -60,5 +60,5 @@ Scenario('NBC admin Approve Consent Order @e2e-tests', async ({I, api}) => {
 }).retry(1);
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

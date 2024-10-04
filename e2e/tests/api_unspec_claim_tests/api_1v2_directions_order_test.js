@@ -37,6 +37,6 @@ Scenario('Judge makes decision 1V2 - DIRECTIONS ORDER', async ({api}) => {
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
 

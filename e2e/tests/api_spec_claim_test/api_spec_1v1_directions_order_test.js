@@ -42,7 +42,7 @@ Scenario('Make an Urgent General Application with Vary payment terms of judgment
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
 
 

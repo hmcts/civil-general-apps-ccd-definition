@@ -30,6 +30,6 @@ Scenario('Judge makes decision 1V2 - WRITTEN_REPRESENTATIONS', async ({api}) => 
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
 

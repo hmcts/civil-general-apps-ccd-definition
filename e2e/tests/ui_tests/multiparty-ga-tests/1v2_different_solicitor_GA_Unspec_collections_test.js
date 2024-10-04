@@ -74,5 +74,5 @@ Scenario('With Notice application - Org3 Solicitor Initiate GA @regression1', as
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

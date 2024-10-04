@@ -64,5 +64,5 @@ Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });

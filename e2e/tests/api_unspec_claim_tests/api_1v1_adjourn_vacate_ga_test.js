@@ -67,5 +67,5 @@ Scenario('AC 1 - 14 Days without consent, with notice', async ({api}) => {
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
