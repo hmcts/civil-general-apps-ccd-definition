@@ -91,6 +91,6 @@ Scenario('Verify Specific access check for Legal Ops', async ({I, wa, api}) => {
   await api.verifySpecificAccessForGaCaseData(config.iacLegalOpsUser, gaCaseReference);
 });
 
-AfterSuite(async ({api}) => {
+//AfterSuite(async ({api}) => {
   // await api.cleanUp();
-});
+//});

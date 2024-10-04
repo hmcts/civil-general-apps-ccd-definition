@@ -23,8 +23,8 @@ Scenario.skip('1v1 Unspec GA-WA Application closed test', async ({api}) => {
   await api.caseDismisalScheduler(civilCaseReference, gaCaseReference, systemUpdate);*/
 }).retry(0);
 
-AfterSuite(async ({api}) => {
+//AfterSuite(async ({api}) => {
   // await api.cleanUp();
-});
+//});
 
 
