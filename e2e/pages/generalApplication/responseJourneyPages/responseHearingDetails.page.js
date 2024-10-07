@@ -1,4 +1,4 @@
-const {nextYear} = require("../../../api/dataHelper");
+const {nextYear} = require('../../../api/dataHelper');
 const {I} = inject();
 
 module.exports = {

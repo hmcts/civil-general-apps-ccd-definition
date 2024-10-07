@@ -11,7 +11,7 @@ const getDateTimeISOString = days => {
 const getNextYear = () => {
   const currentYear = new Date().getFullYear();
   return currentYear + 1;
-}
+};
 
 module.exports = {
   date: (days = 0) => {
