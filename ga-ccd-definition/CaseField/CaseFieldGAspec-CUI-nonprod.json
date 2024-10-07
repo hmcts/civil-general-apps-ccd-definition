@@ -86,13 +86,5 @@
     "FieldTypeParameter": "TranslatedDocument",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "certOfSC",
-    "Label": " ",
-    "FieldType": "CertOfSC",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]
