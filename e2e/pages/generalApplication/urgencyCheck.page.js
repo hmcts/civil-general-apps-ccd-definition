@@ -1,3 +1,4 @@
+const {nextYear} = require("../../api/dataHelper");
 const {I} = inject();
 
 module.exports = {
@@ -26,7 +27,7 @@ module.exports = {
       });
       await I.fillField(this.fields.considerationDay, 1);
       await I.fillField(this.fields.considerationMonth, 10);
-      await I.fillField(this.fields.considerationYear, 2024);
+      await I.fillField(this.fields.considerationYear, nextYear());
       await I.fillField(this.fields.reasonsForUrgency, 'Test Reason for Urgency');
       await I.click(this.fields.consentAgreementCheckBox);
     } else {
