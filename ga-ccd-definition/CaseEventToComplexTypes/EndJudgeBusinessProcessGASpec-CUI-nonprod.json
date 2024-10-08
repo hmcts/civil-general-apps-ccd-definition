@@ -1,6 +1,6 @@
 [
   {
-    "ID": "GAInformOtherParty",
+    "ID": "WAFieldsCUI6",
     "CaseEventID": "END_JUDGE_BUSINESS_PROCESS_GASPEC",
     "CaseFieldID": "generalAppInformOtherParty",
     "ListElementCode": "informOtherParty",
