@@ -34,6 +34,22 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "INITIATE_COSC_APPLICATION_AFTER_PAYMENT",
+    "Name": "Cosc after Payment",
+    "Description": "Applicant response after payment",
+    "PreConditionState(s)": "AWAITING_APPLICATION_PAYMENT",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "RetriesTimeoutURLSubmittedEvent": 0
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "RESPOND_TO_APPLICATION",
     "Name": "Respond to application",
     "Description": "Applicant response",
