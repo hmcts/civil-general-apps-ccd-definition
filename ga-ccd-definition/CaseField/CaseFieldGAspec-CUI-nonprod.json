@@ -86,13 +86,5 @@
     "FieldTypeParameter": "TranslatedDocument",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "coSCApplicationStatus",
-    "Label": "CoSC Application Status",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]
