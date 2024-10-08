@@ -489,7 +489,8 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "GAResondentResponseGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
