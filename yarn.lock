@@ -1479,7 +1479,7 @@ __metadata:
     node-fetch: ^2.6.7
     playwright: ^1.41.1
     run-script-os: ^1.1.6
-    totp-generator: ^0.0.7
+    totp-generator: ^1.0.0
     uuid: ^3.4.0
     webdriverio: ^6.12.1
   languageName: unknown
@@ -3549,10 +3549,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jssha@npm:^2.3.0":
-  version: 2.4.2
-  resolution: "jssha@npm:2.4.2"
-  checksum: d723629cf7393c35ae9baa560979e79e466a85bd90e872027514e86b0e020127c8487e27c16af86ff811538db19155038e3d2cf704e3bf87a4edfd100092ee58
+"jssha@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "jssha@npm:3.3.1"
+  checksum: 4f2b636305710d5275d5e48a323ceaed80b6400fd545321fccdb4e904392a7b808fa79cdf355073766a290d731756eb5bd5ceb2341cc53e57b686c7bb3a18488
   languageName: node
   linkType: hard
 
@@ -5723,12 +5723,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"totp-generator@npm:^0.0.7":
-  version: 0.0.7
-  resolution: "totp-generator@npm:0.0.7"
+"totp-generator@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "totp-generator@npm:1.0.0"
   dependencies:
-    jssha: ^2.3.0
-  checksum: 959c6025b5da10004f3202af471487b6f0d1be99df20daf44f41466e52dc5f1e38c03201826a6ed49528770794a538c6789b7375b601d99f485548631370e001
+    jssha: ^3.3.1
+  checksum: 5d8865c4683ddadb8934b4b871cc3090972f8b782fc9c0c017bef3932336846d51d6359bed4b1afe1600149c26f123f9aa257738387a877e2ca828b3c64e7b60
   languageName: node
   linkType: hard
 
