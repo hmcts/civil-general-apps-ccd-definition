@@ -520,7 +520,8 @@
     "Label": "Hide applicationIsCloakedLabel",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "Comment": "workaround field to show applicationIsCloakedLabel when applicationIsCloaked is Yes. Also hides ConsentAgreementCheckBox"
+    "Comment": "workaround field to show applicationIsCloakedLabel when applicationIsCloaked is Yes. Also hides ConsentAgreementCheckBox",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
