@@ -12,8 +12,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GARadioYesOrNo",
     "ElementLabel": "With notice",
-    "SecurityClassification": "Public",
-    "Publish": "Y"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "GAWithOrWithoutNotice",

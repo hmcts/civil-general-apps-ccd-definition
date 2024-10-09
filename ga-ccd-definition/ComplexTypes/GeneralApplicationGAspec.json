@@ -86,8 +86,7 @@
     "FieldType": "GAWithOrWithoutNotice",
     "ElementLabel": " ",
     "FieldShowCondition": "generalAppConsentOrder = \"\"",
-    "SecurityClassification": "Public",
-    "Publish": "Y"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "GeneralApplicationGAspec",

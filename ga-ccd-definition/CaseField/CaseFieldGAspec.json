@@ -143,8 +143,7 @@
     "FieldType": "GAWithOrWithoutNotice",
     "SecurityClassification": "Public",
     "_Definition":  "This fields holds whether or not the other party should be notified of this application. If no, then reasons behind not notifying.",
-    "_Category":  "COMMON",
-    "Publish": "Y"
+    "_Category":  "COMMON"
   },
 
   {
@@ -490,8 +489,7 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "GAResondentResponseGAspec",
-    "SecurityClassification": "Public",
-    "Publish": "Y"
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -520,8 +518,7 @@
     "Label": "Hide applicationIsCloakedLabel",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "Comment": "workaround field to show applicationIsCloakedLabel when applicationIsCloaked is Yes. Also hides ConsentAgreementCheckBox",
-    "Publish": "Y"
+    "Comment": "workaround field to show applicationIsCloakedLabel when applicationIsCloaked is Yes. Also hides ConsentAgreementCheckBox"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
