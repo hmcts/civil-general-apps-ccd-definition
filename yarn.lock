@@ -1469,7 +1469,7 @@ __metadata:
     eslint-plugin-codeceptjs: ^1.3.0
     faker: ^6.6.6
     html_codesniffer: ^2.5.1
-    husky: ^7.0.2
+    husky: ^9.0.0
     lodash: ^4.17.21
     mocha: 10.2.0
     mocha-junit-reporter: ^2.0.2
@@ -3144,12 +3144,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:^7.0.2":
-  version: 7.0.4
-  resolution: "husky@npm:7.0.4"
+"husky@npm:^9.0.0":
+  version: 9.1.6
+  resolution: "husky@npm:9.1.6"
   bin:
-    husky: lib/bin.js
-  checksum: c6ec4af63da2c9522da8674a20ad9b48362cc92704896cc8a58c6a2a39d797feb2b806f93fbd83a6d653fbdceb2c3b6e0b602c6b2e8565206ffc2882ef7db9e9
+    husky: bin.js
+  checksum: 421ccd8850378231aaefd70dbe9e4f1549b84ffe3a6897f93a202242bbc04e48bd498169aef43849411105d9fcf7c192b757d42661e28d06b934a609a4eb8771
   languageName: node
   linkType: hard
 
