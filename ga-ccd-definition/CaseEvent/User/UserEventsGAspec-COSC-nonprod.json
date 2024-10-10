@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "INITIATE_COSC_APPLICATION_AFTER_PAYMENT",
-    "Name": "Cosc Applic After Payment",
+    "Name": "Cosc Application After Payment",
     "Description": "Cosc Applicant response after payment",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
