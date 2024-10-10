@@ -2229,8 +2229,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor",
           "judge-profile",
-          "legal-adviser",
-          "caseworker-civil-systemupdate"
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       },
@@ -2242,6 +2241,12 @@
           "ga-basic-access"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
       }
     ]
   },
