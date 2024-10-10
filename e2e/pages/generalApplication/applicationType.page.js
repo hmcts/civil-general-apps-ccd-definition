@@ -4,7 +4,7 @@ module.exports = {
 
   fields: {
     applicationType: {
-      id: '#generalAppType_types',
+      id: '#generalAppTypeLR_types',
       options: {
         strikeOut: 'Strike out',
         summaryJudgement: 'Summary judgment',
