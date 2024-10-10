@@ -1,0 +1,12 @@
+[
+  {
+    "ID": "GAInformOtherParty",
+    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
+    "CaseFieldID": "generalAppInformOtherParty",
+    "ListElementCode": "informOtherParty",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+  }
+]
