@@ -17,7 +17,6 @@ const {
   waitForGAFinishedBusinessProcess,
   waitForGACamundaEventsFinishedBusinessProcess
 } = require('../api/testingSupport');
-const isProd = ['prod', 'demo', 'aat'].includes(config.runningEnv) ? true : false;
 
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
@@ -26,7 +25,6 @@ const claimDataSpec = require('../fixtures/events/claim/createClaimSpec.js');
 const claimSpecData = require('../fixtures/events/createClaimSpec.js');
 const claimDataSpecSmallLRvLiP = require('../fixtures/events/createClaimSpecSmallCui.js');
 const genAppData = require('../fixtures/ga-ccd/createGeneralApplication.js');
-const genAppDataLR = require('../fixtures/ga-ccd/createGeneralApplicationLR.js');
 const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentResponse.js');
 const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
 const genAppJudgeMakeFinalOrderData = require('../fixtures/ga-ccd/judgeMakeFinalDecision.js');
@@ -51,34 +49,26 @@ const gaTypesList = {
 };
 
 const data = {
-  INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES: (types, isWithNotice, reason, calculatedAmount, code) => isProd ? genAppData.createGA(types,
-    isWithNotice, reason, calculatedAmount, code) : genAppDataLR.createGA(types,
+  INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES: (types, isWithNotice, reason, calculatedAmount, code) => genAppData.createGA(types,
     isWithNotice, reason, calculatedAmount, code),
-  INITIATE_GENERAL_APPLICATION: isProd ? genAppData.createGAData('Yes', null,
-    '30300', 'FEE0442') : genAppDataLR.createGAData('Yes', null,
+  INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes', null,
     '30300', 'FEE0442'),
-  INITIATE_GENERAL_APPLICATION_FOR_LA: isProd ? genAppData.createGA(gaTypesList.LATypes, 'No', null,
-    '11900', 'FEE0443') : genAppDataLR.createGA(gaTypesList.LATypes, 'No', null,
+  INITIATE_GENERAL_APPLICATION_FOR_LA: genAppData.createGA(gaTypesList.LATypes, 'No', null,
     '11900', 'FEE0443'),
-  INITIATE_GENERAL_APPLICATION_FOR_JUDGE: isProd ? genAppData.createGA(gaTypesList.JudgeGaTypes, 'No', null,
-    '11900', 'FEE0443') : genAppDataLR.createGA(gaTypesList.JudgeGaTypes, 'No', null,
+  INITIATE_GENERAL_APPLICATION_FOR_JUDGE: genAppData.createGA(gaTypesList.JudgeGaTypes, 'No', null,
     '11900', 'FEE0443'),
-  INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE: isProd ? genAppData.createGADataWithoutNotice('No','Test 123',
-    '11900','FEE0443') : genAppDataLR.createGADataWithoutNotice('No','Test 123',
+  INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE: genAppData.createGADataWithoutNotice('No','Test 123',
     '11900','FEE0443'),
-  INITIATE_GENERAL_APPLICATION_CONSENT: (genAppType) => isProd ? genAppData.createGaWithConsentAndNotice(genAppType, true, false,null,
-    '11900','FEE0443') : genAppDataLR.createGaWithConsentAndNotice(genAppType, true, false,null,
+  INITIATE_GENERAL_APPLICATION_CONSENT: (genAppType) => genAppData.createGaWithConsentAndNotice(genAppType, true, false,null,
     '11900','FEE0443'),
-  INITIATE_GENERAL_APPLICATION_CONSENT_URGENT:(genAppType) => isProd ? genAppData.createGaWithConsentAndNotice(genAppType, true, true,null,
-    '11900','FEE0443') : genAppDataLR.createGaWithConsentAndNotice(genAppType, true, true,null,
+  INITIATE_GENERAL_APPLICATION_CONSENT_URGENT:(genAppType) => genAppData.createGaWithConsentAndNotice(genAppType, true, true,null,
     '11900','FEE0443'),
-  INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: isProd ? genAppData.gaTypeWithNoStrikeOut() : genAppDataLR.gaTypeWithNoStrikeOut(),
-  INITIATE_GENERAL_APPLICATION_STAY_CLAIM: isProd ? genAppData.gaTypeWithStayClaim() : genAppDataLR.gaTypeWithStayClaim(),
-  INITIATE_GENERAL_APPLICATION_UNLESS_ORDER: isProd ? genAppData.gaTypeWithUnlessOrder() : genAppDataLR.gaTypeWithUnlessOrder(),
-  INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT: (isWithNotice, generalAppN245FormUpload, urgency) => isProd ? genAppData.createGADataVaryJudgement(isWithNotice,null,
-    '1500','FEE0458', generalAppN245FormUpload, urgency) : genAppDataLR.createGADataVaryJudgement(isWithNotice,null,
+  INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
+  INITIATE_GENERAL_APPLICATION_STAY_CLAIM: genAppData.gaTypeWithStayClaim(),
+  INITIATE_GENERAL_APPLICATION_UNLESS_ORDER: genAppData.gaTypeWithUnlessOrder(),
+  INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT: (isWithNotice, generalAppN245FormUpload, urgency) => genAppData.createGADataVaryJudgement(isWithNotice,null,
     '1500','FEE0458', generalAppN245FormUpload, urgency),
-  INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => isProd ? genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) : genAppDataLR.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
+  INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
   INITIATE_GENERAL_APPLICATION_LIP: (typeOfApplication, hwf) => genLipAppData.getPayloadForGALiP(typeOfApplication, hwf),
   INITIATE_GENERAL_APPLICATION_LIP_WITHOUT :() => genLipAppData.getPayloadForGALiPWithout(),
   RESPOND_TO_APPLICATION: (agree) => genAppRespondentResponseData.respondGAData(agree),
