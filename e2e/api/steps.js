@@ -17,7 +17,8 @@ const {
   waitForGAFinishedBusinessProcess,
   waitForGACamundaEventsFinishedBusinessProcess
 } = require('../api/testingSupport');
-const isProd = ['prod', 'demo', 'aat'].includes(config.runningEnv) ? true : false;
+//const isProd = ['prod', 'demo', 'aat'].includes(config.runningEnv) ? true : false;
+const isProd = true;
 
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
