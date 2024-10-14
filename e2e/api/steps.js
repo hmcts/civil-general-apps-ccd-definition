@@ -480,7 +480,7 @@ module.exports = {
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_CONSENT_LR(gaAppType)
       : data.INITIATE_GENERAL_APPLICATION_CONSENT(gaAppType);
 
-    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', );
+    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', gaData);
   },
 
   initiateConsentUrgentGeneralApplication: async (user, parentCaseId, gaAppType ) => {
