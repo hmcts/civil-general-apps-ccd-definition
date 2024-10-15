@@ -86,5 +86,23 @@
     "FieldTypeParameter": "TranslatedDocument",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "applicantBilingualLanguagePreference",
+    "FieldType": "YesOrNo",
+    "Label": "LIP bilingual flag",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "respondentBilingualLanguagePreference",
+    "FieldType": "YesOrNo",
+    "Label": "LIP bilingual flag",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
   }
 ]
