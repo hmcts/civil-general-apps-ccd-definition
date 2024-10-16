@@ -7,7 +7,7 @@ def type = "nodejs"
 def product = "civil"
 def component = "ga-ccd"
 def camundaBranch = "master"
-def ccddefbranch = "DTSCCI-865-eslint-and-lint-staged-and-husky-setup"
+def ccddefbranch = "DTSCCI-1013-playwright-setup-bootstrap-projects"
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
 
