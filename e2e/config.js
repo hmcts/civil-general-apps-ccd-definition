@@ -275,9 +275,9 @@ module.exports = {
   claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU',
   defendant2SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0',
-  claimantSelectedCourt: 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ',
-  defendantSelectedCourt: 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ',
-  defendant2SelectedCourt: 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ',
+  claimantSelectedCourt: 'Nottingham County Court And Family Court - Canal Street - NG1 7EJ',
+  defendantSelectedCourt: 'Nottingham County Court And Family Court - Canal Street - NG1 7EJ',
+  defendant2SelectedCourt: 'Nottingham County Court And Family Court - Canal Street - NG1 7EJ',
   claimantSelectedCourtBirmingham: 'Birmingham Civil and Family Justice Centre - Priory Courts, 33 Bull Street - B4 6DS',
   defendantSelectedCourtBirmingham: 'Birmingham Civil and Family Justice Centre - Priory Courts, 33 Bull Street - B4 6DS',
 };
