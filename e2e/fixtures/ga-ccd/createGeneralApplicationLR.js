@@ -4,13 +4,6 @@ const config = require('../../config.js');
 module.exports = {
   createGAData: (isWithNotice, reasonWithoutNotice, calculatedAmount, code) => {
     return {
-      generalAppType: {
-        types: [
-          'STRIKE_OUT',
-          'SUMMARY_JUDGEMENT',
-          'EXTEND_TIME'
-        ]
-      },
       generalAppTypeLR: {
         types: [
           'STRIKE_OUT',
