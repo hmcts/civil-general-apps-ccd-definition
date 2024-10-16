@@ -458,14 +458,14 @@ module.exports = {
   },
 
   initiateGeneralApplicationWithState: async (user, parentCaseId, expectState) => {
-    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var isCoscEnabled = false; //await checkToggleEnabled(COSC);;
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_LR
       : data.INITIATE_GENERAL_APPLICATION;
     return await initiateGaWithState(user, parentCaseId, expectState, gaData);
   },
 
   initiateGeneralApplication: async (user, parentCaseId) => {
-    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var isCoscEnabled = false; //await checkToggleEnabled(COSC);;
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_LR
       : data.INITIATE_GENERAL_APPLICATION;
     return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', gaData);
@@ -476,7 +476,7 @@ module.exports = {
   },
 
   initiateConsentGeneralApplication: async (user, parentCaseId, gaAppType) => {
-    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var isCoscEnabled = false; //await checkToggleEnabled(COSC);;
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_CONSENT_LR(gaAppType)
       : data.INITIATE_GENERAL_APPLICATION_CONSENT(gaAppType);
 
@@ -484,7 +484,7 @@ module.exports = {
   },
 
   initiateConsentUrgentGeneralApplication: async (user, parentCaseId, gaAppType ) => {
-    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var isCoscEnabled = false; //await checkToggleEnabled(COSC);;
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_CONSENT_URGENT_LR(gaAppType)
       : data.INITIATE_GENERAL_APPLICATION_CONSENT_URGENT(gaAppType);
 
@@ -500,7 +500,7 @@ module.exports = {
   },
 
   initiateGeneralApplicationWithOutNotice: async (user, parentCaseId) => {
-    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var isCoscEnabled = false; //await checkToggleEnabled(COSC);;
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE_LR
       : data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE;
 
@@ -508,7 +508,7 @@ module.exports = {
   },
 
   initiateGaWithTypes: async (user, parentCaseId, types, calculatedAmount, code) => {
-    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var isCoscEnabled = false; //await checkToggleEnabled(COSC);;
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES_LR(types, 'No', null, calculatedAmount, code)
       : data.INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES(types, 'No', null, calculatedAmount, code);
     return await initiateGeneralApplicationWithOutNotice(user, parentCaseId,
@@ -516,7 +516,7 @@ module.exports = {
   },
 
   initiateGaForLA: async (user, parentCaseId) => {
-    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var isCoscEnabled = false; //await checkToggleEnabled(COSC);;
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_FOR_LA_LR
       : data.INITIATE_GENERAL_APPLICATION_FOR_LA;
 
@@ -524,7 +524,7 @@ module.exports = {
   },
 
   initiateGaForJudge: async (user, parentCaseId) => {
-    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var isCoscEnabled = false; //await checkToggleEnabled(COSC);;
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_FOR_JUDGE_LR
       : data.INITIATE_GENERAL_APPLICATION_FOR_JUDGE;
 
@@ -534,7 +534,7 @@ module.exports = {
   initiateGeneralApplicationWithNoStrikeOut: async (user, parentCaseId) => {
     eventName = events.INITIATE_GENERAL_APPLICATION.id;
     let gaCaseReference;
-    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var isCoscEnabled = false; //await checkToggleEnabled(COSC);;
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT_LR
       : data.INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT;
 
@@ -580,7 +580,7 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, parentCaseId);
-    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var isCoscEnabled = false; //await checkToggleEnabled(COSC);;
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_STAY_CLAIM_LR
       : data.INITIATE_GENERAL_APPLICATION_STAY_CLAIM;
 
@@ -615,7 +615,7 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, parentCaseId);
-    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var isCoscEnabled = false; //await checkToggleEnabled(COSC);;
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_UNLESS_ORDER_LR
       : data.INITIATE_GENERAL_APPLICATION_UNLESS_ORDER;
 
@@ -653,7 +653,7 @@ module.exports = {
     let freeGa = calculatedAmount==='0';
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, parentCaseId);
-    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var isCoscEnabled = false; //await checkToggleEnabled(COSC);;
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE_LR(isWithNotice, isWithConsent, hearingDate, calculatedAmount, feeCode, feeVersion)
       : data.INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE(isWithNotice, isWithConsent, hearingDate, calculatedAmount, feeCode, feeVersion);
 
@@ -2375,7 +2375,7 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   await apiRequest.startEvent(eventName, parentCaseId);
   let initiateData;
 
-  var isCoscEnabled = await checkToggleEnabled(COSC);
+  var isCoscEnabled = false; //await checkToggleEnabled(COSC);;
   if(!isClaimant) {
     const document = await testingSupport.uploadDocument();
 
