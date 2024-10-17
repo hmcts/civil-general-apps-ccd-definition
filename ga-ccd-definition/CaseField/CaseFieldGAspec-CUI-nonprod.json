@@ -86,5 +86,87 @@
     "FieldTypeParameter": "TranslatedDocument",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "applicantBilingualLanguagePreference",
+    "FieldType": "YesOrNo",
+    "Label": "LIP bilingual flag",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "respondentBilingualLanguagePreference",
+    "FieldType": "YesOrNo",
+    "Label": "LIP bilingual flag",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "bilingualHint",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "bilingualHintTextFreeForm",
+    "Label": "<h2>There is a Welsh speaking party on this application. Please adjust deadlines accordingly to allow for translation of the order.</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "bilingualHintTextDecision",
+    "Label": "<h2>There is a Welsh speaking party on this application. Please adjust deadlines accordingly to allow for translation of the order.</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "bilingualHintTextHearing",
+    "Label": "<h2>There is a Welsh speaking party on this application. Please adjust deadlines accordingly to allow for translation of the order.</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "bilingualHintTextGeneralOrder",
+    "Label": "<h2>There is a Welsh speaking party on this application. Please adjust deadlines accordingly to allow for translation of the order.</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "bilingualHintTextMoreInfo",
+    "Label": "<h2>There is a Welsh speaking party on this application. Please adjust deadlines accordingly to allow for translation of the order.</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "bilingualHintTextWrittenR",
+    "Label": "<h2>There is a Welsh speaking party on this application. Please adjust deadlines accordingly to allow for translation of the order.</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "bilingualHintTextWrittenDraw",
+    "Label": "<h2>There is a Welsh speaking party on this application. Please adjust deadlines accordingly to allow for translation of the order.</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
