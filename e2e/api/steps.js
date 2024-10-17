@@ -1590,7 +1590,7 @@ module.exports = {
     // update submit date
     console.log('carm not enabled, updating submitted date');
     await apiRequest.setupTokens(config.systemUpdate);
-    const submittedDate = { 'submittedDate': '2023-08-10T15:59:50' };
+    const submittedDate = { 'submittedDate': '2024-09-10T15:59:50' };
     await testingSupport.updateCaseData(caseId, submittedDate);
     console.log('submitted date update to before carm date');
     return caseId;
