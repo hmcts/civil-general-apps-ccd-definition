@@ -4,13 +4,6 @@ const config = require('../../config.js');
 module.exports = {
   createGAData: (isWithNotice, reasonWithoutNotice, calculatedAmount, code) => {
     return {
-      generalAppType: {
-        types: [
-          'STRIKE_OUT',
-          'SUMMARY_JUDGEMENT',
-          'EXTEND_TIME'
-        ]
-      },
       generalAppTypeLR: {
         types: [
           'STRIKE_OUT',
@@ -88,11 +81,6 @@ module.exports = {
   },
   createGADataVaryJudgement: (isWithNotice, reasonWithoutNotice, calculatedAmount, code, linkGAN245FormUpload, urgency) => {
     return {
-      generalAppType: {
-        types: [
-          'VARY_PAYMENT_TERMS_OF_JUDGMENT'
-        ]
-      },
       generalAppTypeLR: {
         types: [
           'VARY_PAYMENT_TERMS_OF_JUDGMENT'
@@ -169,12 +157,6 @@ module.exports = {
   },
   createGADataWithoutNotice: (isWithNotice, reasonWithoutNotice, calculatedAmount, code) => {
     return {
-      generalAppType: {
-        types: [
-          'SUMMARY_JUDGEMENT',
-          'EXTEND_TIME'
-        ]
-      },
       generalAppTypeLR: {
         types: [
           'SUMMARY_JUDGEMENT',
@@ -265,11 +247,6 @@ module.exports = {
   },
   gaTypeWithStayClaim: () => {
     return {
-      generalAppType: {
-        types: [
-          'STAY_THE_CLAIM'
-        ]
-      },
       generalAppTypeLR: {
         types: [
           'STAY_THE_CLAIM'
@@ -346,11 +323,6 @@ module.exports = {
 
   gaTypeWithUnlessOrder: () => {
     return {
-      generalAppType: {
-        types: [
-          'UNLESS_ORDER'
-        ]
-      },
       generalAppTypeLR: {
         types: [
           'UNLESS_ORDER'
@@ -427,11 +399,6 @@ module.exports = {
 
   gaTypeWithNoStrikeOut: () => {
     return {
-      generalAppType: {
-        types: [
-          'EXTEND_TIME'
-        ]
-      },
       generalAppTypeLR: {
         types: [
           'EXTEND_TIME'
@@ -507,12 +474,7 @@ module.exports = {
   },
   createGaAdjournVacateData: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => {
     return {
-      generalAppType: {
-        types: [
-          'ADJOURN_HEARING'
-        ]
-      },
-      generalAppTypeLR: {
+       generalAppTypeLR: {
         types: [
           'ADJOURN_HEARING'
         ]
@@ -592,10 +554,7 @@ module.exports = {
 
   createGA: (gaTypes, isWithNotice, reasonWithoutNotice, calculatedAmount, code) => {
     return {
-      generalAppType: {
-        types: gaTypes,
-      },
-      generalAppTypeLR: {
+       generalAppTypeLR: {
         types: gaTypes,
       },
       generalAppRespondentAgreement: {
@@ -678,9 +637,6 @@ module.exports = {
 
   createGaWithConsentAndNotice: (gaTypes, consent, urgency, withNotice, calculatedAmount, code) => {
     return {
-      generalAppType: {
-        types: gaTypes,
-      },
       generalAppTypeLR: {
         types: gaTypes,
       },
