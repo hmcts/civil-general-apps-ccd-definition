@@ -440,6 +440,7 @@ module.exports = {
     var isCoscEnabled = await checkToggleEnabled(COSC);
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION
       : data.INITIATE_GENERAL_APPLICATION;
+    console.log('Toggle for COSC is ' + isCoscEnabled + ' the data payload is ' + JSON.stringify(gaData));
     return await initiateGaWithState(user, parentCaseId, expectState, gaData);
   },
 
@@ -447,6 +448,7 @@ module.exports = {
     var isCoscEnabled = await checkToggleEnabled(COSC);
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION
       : data.INITIATE_GENERAL_APPLICATION;
+    console.log('Toggle for COSC is ' + isCoscEnabled + ' the data payload is ' + JSON.stringify(gaData));
     return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', gaData);
   },
 
@@ -458,7 +460,7 @@ module.exports = {
     var isCoscEnabled = await checkToggleEnabled(COSC);
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_CONSENT(gaAppType)
       : data.INITIATE_GENERAL_APPLICATION_CONSENT(gaAppType);
-
+    console.log('Toggle for COSC is ' + isCoscEnabled + ' the data payload is ' + JSON.stringify(gaData));
     return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', gaData);
   },
 
@@ -466,7 +468,7 @@ module.exports = {
     var isCoscEnabled = await checkToggleEnabled(COSC);
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_CONSENT_URGENT(gaAppType)
       : data.INITIATE_GENERAL_APPLICATION_CONSENT_URGENT(gaAppType);
-
+    console.log('Toggle for COSC is ' + isCoscEnabled + ' the data payload is ' + JSON.stringify(gaData));
     return await initiateGaWithState(user, parentCaseId, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', gaData);
   },
 
@@ -482,7 +484,7 @@ module.exports = {
     var isCoscEnabled = await checkToggleEnabled(COSC);
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE
       : data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE;
-
+    console.log('Toggle for COSC is ' + isCoscEnabled + ' the data payload is ' + JSON.stringify(gaData));
     return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, gaData);
   },
 
@@ -490,6 +492,7 @@ module.exports = {
     var isCoscEnabled = await checkToggleEnabled(COSC);
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES(types, 'No', null, calculatedAmount, code)
       : data.INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES(types, 'No', null, calculatedAmount, code);
+    console.log('Toggle for COSC is ' + isCoscEnabled + ' the data payload is ' + JSON.stringify(gaData));
     return await initiateGeneralApplicationWithOutNotice(user, parentCaseId,
       gaData);
   },
@@ -498,7 +501,7 @@ module.exports = {
     var isCoscEnabled = await checkToggleEnabled(COSC);
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_FOR_LA
       : data.INITIATE_GENERAL_APPLICATION_FOR_LA;
-
+    console.log('Toggle for COSC is ' + isCoscEnabled + ' the data payload is ' + JSON.stringify(gaData));
     return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, gaData) ;
   },
 
@@ -506,7 +509,7 @@ module.exports = {
     var isCoscEnabled = await checkToggleEnabled(COSC);
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_FOR_JUDGE
       : data.INITIATE_GENERAL_APPLICATION_FOR_JUDGE;
-
+    console.log('Toggle for COSC is ' + isCoscEnabled + ' the data payload is ' + JSON.stringify(gaData));
     return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, gaData) ;
   },
 
@@ -516,7 +519,7 @@ module.exports = {
     var isCoscEnabled = await checkToggleEnabled(COSC);
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT
       : data.INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT;
-
+    console.log('Toggle for COSC is ' + isCoscEnabled + ' the data payload is ' + JSON.stringify(gaData));
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, parentCaseId);
     const response = await apiRequest.submitEvent(eventName, gaData, parentCaseId);
@@ -562,7 +565,7 @@ module.exports = {
     var isCoscEnabled = await checkToggleEnabled(COSC);
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_STAY_CLAIM
       : data.INITIATE_GENERAL_APPLICATION_STAY_CLAIM;
-
+    console.log('Toggle for COSC is ' + isCoscEnabled + ' the data payload is ' + JSON.stringify(gaData));
     const response = await apiRequest.submitEvent(eventName, gaData, parentCaseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
@@ -597,7 +600,7 @@ module.exports = {
     var isCoscEnabled = await checkToggleEnabled(COSC);
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_UNLESS_ORDER
       : data.INITIATE_GENERAL_APPLICATION_UNLESS_ORDER;
-
+    console.log('Toggle for COSC is ' + isCoscEnabled + ' the data payload is ' + JSON.stringify(gaData));
     const response = await apiRequest.submitEvent(eventName, gaData, parentCaseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
@@ -635,7 +638,7 @@ module.exports = {
     var isCoscEnabled = await checkToggleEnabled(COSC);
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE(isWithNotice, isWithConsent, hearingDate, calculatedAmount, feeCode, feeVersion)
       : data.INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE(isWithNotice, isWithConsent, hearingDate, calculatedAmount, feeCode, feeVersion);
-
+    console.log('Toggle for COSC is ' + isCoscEnabled + ' the data payload is ' + JSON.stringify(gaData));
     const response = await apiRequest.submitEvent(eventName, gaData, parentCaseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
@@ -2360,10 +2363,13 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
 
     initiateData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT('Yes',createGeneralAppN245FormUpload(document), urgency)
     : data.INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT('Yes',createGeneralAppN245FormUpload(document), urgency);
+    console.log('Toggle for COSC is ' + isCoscEnabled + ' the data payload is ' + JSON.stringify(initiateData));
   } else {
     initiateData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT('Yes', null,  urgency)
       : data.INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT('Yes', null,  urgency);
+    console.log('Toggle for COSC is ' + isCoscEnabled + ' the data payload is ' + JSON.stringify(initiateData));
   }
+
   const response = await apiRequest.submitEvent(eventName, initiateData ,parentCaseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);
