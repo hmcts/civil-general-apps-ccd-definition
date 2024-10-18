@@ -103,12 +103,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "WAIT_GA_DRAFT",
-     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "CREATE_APPLICANT_DASHBOARD_NOTIFICATION_ORDER_MADE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
