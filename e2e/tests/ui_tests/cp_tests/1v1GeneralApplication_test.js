@@ -231,6 +231,6 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
   console.log('Responded to Judge Additional Information on case: ' + gaCaseReference);
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
+// AfterSuite(async ({api}) => {
+//   await api.cleanUp();
+// });
