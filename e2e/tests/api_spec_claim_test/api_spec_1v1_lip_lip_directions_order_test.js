@@ -12,6 +12,7 @@ Before(async () => {
 
 Scenario('Spec Claimant create GA with single application type and HWF', async ({ api }) => {
   civilCaseReference = await api.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', 'INDIVIDUAL');
+  
   console.log(civilCaseReference);
   gaCaseReference = await api.createGAApplicationWithUnrepresented(config.applicantCitizenUser, civilCaseReference, '', true);
 });
