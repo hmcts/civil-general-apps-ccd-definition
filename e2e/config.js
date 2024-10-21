@@ -95,7 +95,7 @@ module.exports = {
   },
   defendantCitizenUser2: {
     password: defaultPassword,
-    email: `civiluatdefendant@gmail.com`,
+    email: 'civiluatdefendant@gmail.com',
     type: 'defendant',
   },
   defendantSolicitorUser: {
