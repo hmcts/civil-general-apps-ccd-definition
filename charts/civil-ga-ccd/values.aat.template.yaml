@@ -45,6 +45,7 @@ civil-general-applications:
     environment:
       LAUNCH_DARKLY_ENV: service-staging
       PAY_CALLBACK_URL: https://civil-ga-ccd-staging.aat.platform.hmcts.net/service-request-update
+      SEND_LETTER_URL: http://rpe-send-letter-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
 civil-service:
   java:
     ingressHost: civil-ga-ccd-civil-service-staging.aat.platform.hmcts.net
