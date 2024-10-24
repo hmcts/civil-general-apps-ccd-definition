@@ -48,10 +48,10 @@
     "CRUD": "CRU"
   },
   {
-  "CaseTypeID": "GENERALAPPLICATION",
-  "CaseEventID": "UPDATE_GA_DASHBOARD_NOTIFICATION",
-  "UserRole": "caseworker-civil-systemupdate",
-  "CRUD": "CRU"
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "UPDATE_GA_DASHBOARD_NOTIFICATION",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -110,6 +110,36 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "CREATE_RESPONDENT_DASHBOARD_NOTIFICATION_ORDER_MADE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC_WITHOUT_WA_TASK",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "NOTIFY_RESPONDENT_TRANSLATED_DOCUMENT_UPLOADED_GA",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "NOTIFY_APPLICANT_TRANSLATED_DOCUMENT_UPLOADED_GA",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "CREATE_APPLICANT_DASHBOARD_NOTIFICATION_TRANSLATED_DOC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "CREATE_RESPONDENT_DASHBOARD_NOTIFICATION_TRANSLATED_DOC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
