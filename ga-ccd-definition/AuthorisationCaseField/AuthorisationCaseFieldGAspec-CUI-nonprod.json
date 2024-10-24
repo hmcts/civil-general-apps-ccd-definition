@@ -1909,14 +1909,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "citizen-profile",
-          "cui-admin-profile"
+          "citizen-profile"
         ],
         "CRUD": "RU"
       }
@@ -1928,14 +1928,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "citizen-profile",
-          "cui-admin-profile"
+          "citizen-profile"
         ],
         "CRUD": "RU"
       }
