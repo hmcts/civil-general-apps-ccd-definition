@@ -173,3 +173,6 @@ camunda-bpm:
     ingressHost: civil-ga-ccd-camunda-staging.aat.platform.hmcts.net
 civil-wa:
   enabled: false
+
+postgresql:
+  enabled: false
