@@ -1424,6 +1424,10 @@ module.exports = {
 
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    assertContainsPopulatedFields(returnedCaseData);
+    caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
+        value: listElement('Both')
+      }};
 
     await validateEventPages(data[eventName]);
 
@@ -1431,10 +1435,6 @@ module.exports = {
       header: 'Defendant notified',
       body: 'The defendant legal representative\'s organisation has been notified of the claim details.'
     });
-
-    caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
-        value: listElement('Both')
-      }};
 
     await waitForFinishedBusinessProcess(caseId, user);
   },
