@@ -36,6 +36,7 @@
     "SecurityClassification": "Public",
     "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\""
   },
+
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "judgeApproveEditOptionDoc",
