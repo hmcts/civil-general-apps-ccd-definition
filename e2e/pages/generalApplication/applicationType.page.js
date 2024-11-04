@@ -4,7 +4,7 @@ module.exports = {
 
   fields: {
     applicationType: {
-      id: '#generalAppType_types',
+      id: 'div[id*="_types"]',
       options: {
         strikeOut: 'Strike out',
         summaryJudgement: 'Summary judgment',
