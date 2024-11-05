@@ -36,14 +36,14 @@
     "SecurityClassification": "Public",
     "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\""
   },
-
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
     "ListElementCode": "judgeApproveEditOptionDoc",
     "ElementLabel": "For which document?",
     "FieldType": "FixedList",
     "FieldTypeParameter": "GAJudgeOrderClaimantOrDefenseFixedList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "makeAnOrder=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "GAJudicialMakeAnOrderGAspec",
