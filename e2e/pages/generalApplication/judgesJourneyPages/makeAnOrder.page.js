@@ -59,7 +59,6 @@ module.exports = {
       case 'approveOrEditTheOrder':
         let orderText = await I.grabValueFrom(this.fields.orderTextArea);
         expect(orderText).to.contains('Test Order details');
-        I.see('For which document?');
         let documentDropdownValues = await I.grabTextFromAll(this.fields.documentDropdown);
         expect(documentDropdownValues.toString().replace(/(\r\n|\n|\r)/gm, ', ').trim()).to.equals('--Select a value--, Claim Form, Defence Form');
         I.selectOption(this.fields.documentDropdown, 'Claim Form');
