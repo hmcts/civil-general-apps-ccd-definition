@@ -73,3 +73,4 @@ AfterSuite(async ({ api }) => {
   await api.cleanUp();
   await deleteAccount(config.defendantCitizenUser2.email);
 });
+
