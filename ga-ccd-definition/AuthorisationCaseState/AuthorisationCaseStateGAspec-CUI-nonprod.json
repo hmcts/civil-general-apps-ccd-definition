@@ -164,7 +164,7 @@
           "citizen-profile",
           "cui-admin-profile"
         ],
-        "CRUD": "RU"
+        "CRUD": "CRU"
       }
     ]
   },
