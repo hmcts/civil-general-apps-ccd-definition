@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "UPDATE_CLAIMANT_TASK_LIST_GA_CREATED",
+    "ID": "UPDATE_CLAIMANT_TASK_LIST_GA",
     "Name": "Update claimant task list",
     "Description": "Notify applicant that general applications can be viewed",
     "PreConditionState(s)": "*",
@@ -14,7 +14,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "UPDATE_RESPONDENT_TASK_LIST_GA_CREATED",
+    "ID": "UPDATE_RESPONDENT_TASK_LIST_GA",
     "Name": "Update respondent task list",
     "Description": "Notify respondent that general applications can be viewed",
     "PreConditionState(s)": "*",
@@ -26,32 +26,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "UPDATE_CLAIMANT_TASK_LIST_GA_COMPLETE",
-    "Name": "Update claimant - complete",
-    "Description": "Notify applicant that general applications is complete",
-    "PreConditionState(s)": "*",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "UPDATE_RESPONDENT_TASK_LIST_GA_COMPLETE",
-    "Name": "Update respondent - complete",
-    "Description": "Notify respondent that general applications is complete",
-    "PreConditionState(s)": "*",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
-  },
-   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_GA_APPLICANT",
     "Name": "notify applicant",
