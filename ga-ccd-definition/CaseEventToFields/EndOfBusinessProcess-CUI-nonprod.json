@@ -82,5 +82,17 @@
     "PageShowCondition": "generalAppType = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
+    "CaseFieldID": "finalOrderSelection",
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "WAFieldsCUI8",
+    "PageDisplayOrder": 8,
+    "PageShowCondition": "generalAppType = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   }
 ]
