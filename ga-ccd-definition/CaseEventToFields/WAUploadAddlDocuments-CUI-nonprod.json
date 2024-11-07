@@ -6,6 +6,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "WAFieldsCUI1",
+    "PageDisplayOrder": 1,
     "PageShowCondition": "uploadDocument = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
@@ -17,6 +18,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "PageID": "WAFieldsCUI2",
+    "PageDisplayOrder": 2,
     "PageShowCondition": "uploadDocument = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
@@ -28,6 +30,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "PageID": "WAFieldsCUI3",
+    "PageDisplayOrder": 3,
     "PageShowCondition": "uploadDocument = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
@@ -39,6 +42,7 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL",
     "PageID": "WAFieldsCUI4",
+    "PageDisplayOrder": 4,
     "PageShowCondition": "uploadDocument = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
