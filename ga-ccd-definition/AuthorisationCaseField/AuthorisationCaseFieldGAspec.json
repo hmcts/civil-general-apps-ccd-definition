@@ -3975,16 +3975,20 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-solicitor",
           "caseworker-civil-systemupdate",
-          "legal-adviser",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic",
           "caseworker-ras-validation",
-          "ga-basic-access"
+          "ga-basic-access",
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
