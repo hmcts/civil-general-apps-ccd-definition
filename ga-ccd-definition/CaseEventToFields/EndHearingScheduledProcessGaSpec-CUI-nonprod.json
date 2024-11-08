@@ -7,7 +7,6 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "WAFieldsCUI1",
     "PageDisplayOrder": 1,
-    "PageShowCondition": "generalAppType = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -19,7 +18,6 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "WAFieldsCUI2",
     "PageDisplayOrder": 2,
-    "PageShowCondition": "generalAppType = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -31,7 +29,6 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "WAFieldsCUI3",
     "PageDisplayOrder": 3,
-    "PageShowCondition": "generalAppType = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -43,7 +40,6 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "WAFieldsCUI4",
     "PageDisplayOrder": 4,
-    "PageShowCondition": "generalAppType = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
