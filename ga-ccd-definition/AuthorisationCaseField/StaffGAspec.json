@@ -245,7 +245,7 @@
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   },
-    {
+  {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaWaTrackLabel",
     "CRUD": "R",

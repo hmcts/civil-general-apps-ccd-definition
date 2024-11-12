@@ -52,11 +52,5 @@
     "CaseFieldID": "caseNameGaInternal",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
-  },
-    {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "gaWaTrackLabel",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
   }
 ]

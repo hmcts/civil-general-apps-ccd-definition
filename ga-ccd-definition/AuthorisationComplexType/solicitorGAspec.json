@@ -1067,13 +1067,6 @@
     "ListElementCode": "caseNameGaInternal",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "generalApplications",
-    "ListElementCode": "gaWaTrackLabel",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "R"
   }
 ]
 
