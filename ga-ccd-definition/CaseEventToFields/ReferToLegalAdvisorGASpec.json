@@ -84,7 +84,7 @@
     "PageID": "isMultiPartyPage2",
     "PageDisplayOrder": 10,
     "PageColumnNumber": 1,
-    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
+    "FieldShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
