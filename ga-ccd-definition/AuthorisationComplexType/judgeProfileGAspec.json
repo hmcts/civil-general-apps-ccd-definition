@@ -1239,7 +1239,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "caseNameGaInternal",
+    "ListElementCode": "gaWaTrackLabel",
     "UserRole": "judge-profile",
     "CRUD": "CRU"
   }
