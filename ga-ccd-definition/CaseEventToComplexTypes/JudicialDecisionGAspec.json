@@ -80,8 +80,8 @@
     "ListElementCode": "judgeApproveEditOptionDoc",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 8,
-    "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "judicialDecisionMakeOrder.makeAnOrder=\"APPROVE_OR_EDIT\" AND judicialDecisionMakeOrder.displayjudgeApproveEditOptionDoc=\"Yes\""
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "judicialDecisionMakeOrder.makeAnOrder=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
