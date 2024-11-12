@@ -74,17 +74,5 @@
     "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "REFER_TO_LEGAL_ADVISOR",
-    "CaseFieldID": "gaWaTrackLabel",
-    "DisplayContext": "READONLY",
-    "PageID": "GATypePage",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "Publish": "Y"
   }
 ]

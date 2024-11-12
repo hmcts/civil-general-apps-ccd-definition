@@ -156,6 +156,13 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaWaTrackLabel",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppReasonsOfOrder",
     "Label": "Reason",
     "FieldType": "TextArea",
@@ -1309,13 +1316,6 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "caseNameGaInternal",
-    "Label": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "gaWaTrackLabel",
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"

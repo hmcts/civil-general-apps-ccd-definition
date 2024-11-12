@@ -240,6 +240,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
+    "ListElementCode": "gaWaTrackLabel",
+    "UserRole": "legal-adviser",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppReasonsOfOrder",
     "UserRole": "legal-adviser",
     "CRUD": "CRU"

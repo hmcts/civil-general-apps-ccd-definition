@@ -261,6 +261,13 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
+    "ListElementCode": "gaWaTrackLabel",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppReasonsOfOrder",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
