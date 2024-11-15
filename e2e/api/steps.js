@@ -1559,8 +1559,15 @@ module.exports = {
     }
     await waitForFinishedBusinessProcess(caseId, user);
 
+    console.log('carm not enabled, updating submitted date');
+    await apiRequest.setupTokens(config.systemUpdate);
+    const submittedDate = { 'submittedDate': '2024-09-10T15:59:50' };
+    await testingSupport.updateCaseData(caseId, submittedDate);
+    console.log('submitted date update to before carm date');
+
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+
     return caseId;
   },
 
