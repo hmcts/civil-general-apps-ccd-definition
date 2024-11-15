@@ -44,6 +44,7 @@ civil-general-applications:
             alias: idam.s2s-auth.totp_secret
     environment:
       LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
+      EM_CCD_ORCHESTRATOR_URL: http://em-ccd-orchestrator-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
 civil-service:
   enabled: true
   java:
