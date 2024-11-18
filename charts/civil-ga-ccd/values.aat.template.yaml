@@ -45,7 +45,6 @@ civil-general-applications:
     environment:
       LAUNCH_DARKLY_ENV: service-staging
       PAY_CALLBACK_URL: https://civil-ga-ccd-staging.aat.platform.hmcts.net/service-request-update
-      EM_CCD_ORCHESTRATOR_URL: http://em-ccd-orchestrator-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
 civil-service:
   java:
     ingressHost: civil-ga-ccd-civil-service-staging.aat.platform.hmcts.net
