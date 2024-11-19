@@ -889,7 +889,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "isCcmccLocation",
+    "ListElementCode": "isCtscLocation",
     "UserRole": "legal-adviser",
     "CRUD": "R"
   },

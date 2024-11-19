@@ -28,7 +28,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
-    "CaseFieldID": "isCcmccLocation",
+    "CaseFieldID": "isCtscLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",

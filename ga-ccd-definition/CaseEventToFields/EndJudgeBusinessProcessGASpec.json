@@ -8,14 +8,14 @@
     "PageID": "GAUrgencyRecordPage",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "PageShowCondition": "isCcmccLocation = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "isCtscLocation = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "END_JUDGE_BUSINESS_PROCESS_GASPEC",
-    "CaseFieldID": "isCcmccLocation",
+    "CaseFieldID": "isCtscLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",

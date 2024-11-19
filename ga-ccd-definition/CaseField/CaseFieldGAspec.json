@@ -348,7 +348,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "isCcmccLocation",
+    "ID": "isCtscLocation",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"

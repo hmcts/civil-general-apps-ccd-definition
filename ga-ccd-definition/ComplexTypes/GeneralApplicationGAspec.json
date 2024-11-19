@@ -220,7 +220,7 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "isCcmccLocation",
+    "ListElementCode": "isCtscLocation",
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
     "SecurityClassification": "Public"

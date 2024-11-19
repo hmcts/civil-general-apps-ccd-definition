@@ -28,7 +28,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "TRIGGER_LOCATION_UPDATE",
-    "CaseFieldID": "isCcmccLocation",
+    "CaseFieldID": "isCtscLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",
