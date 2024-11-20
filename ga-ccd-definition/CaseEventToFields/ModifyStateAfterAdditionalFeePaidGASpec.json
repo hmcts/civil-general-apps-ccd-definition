@@ -102,5 +102,17 @@
     "DisplayContext": "OPTIONAL",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
+    "CaseFieldID": "gaWaTrackLabel",
+    "PageID": "isMultiPartyPage6",
+    "PageFieldDisplayOrder": 1,
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "DisplayContext": "OPTIONAL",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   }
 ]
