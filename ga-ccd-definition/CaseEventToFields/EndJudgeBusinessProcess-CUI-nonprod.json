@@ -6,6 +6,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "WAFieldsCUI1",
+    "PageDisplayOrder": 1,
     "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
