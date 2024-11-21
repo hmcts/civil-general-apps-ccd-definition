@@ -15,6 +15,15 @@
     "TabDisplayOrder": 6,
     "CaseFieldID": "ServiceRequest",
     "TabFieldDisplayOrder": 2,
-    "TabShowCondition": "businessProcess.status=\"FINISHED\""
+    "FieldShowCondition": "businessProcess.status=\"FINISHED\""
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ServiceRequestTab",
+    "TabLabel": "Service Request",
+    "TabDisplayOrder": 6,
+    "CaseFieldID": "unfinishedBackEndProcess",
+    "TabFieldDisplayOrder": 3,
+    "FieldShowCondition": "businessProcess.status!=\"FINISHED\""
   }
 ]
