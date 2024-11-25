@@ -3,7 +3,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "PaymentHistory",
     "TabLabel": "Payment History",
-    "TabDisplayOrder": 5,
+    "TabDisplayOrder": 9,
     "CaseFieldID": "casePaymentHistoryViewer",
     "TabFieldDisplayOrder": 1
   }
