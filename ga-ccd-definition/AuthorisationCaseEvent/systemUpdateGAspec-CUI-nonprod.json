@@ -130,5 +130,11 @@
     "CaseEventID": "CREATE_RESPONDENT_DASHBOARD_NOTIFICATION_TRANSLATED_DOC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "APPLICATION_UPDATE_AFTER_NOC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
