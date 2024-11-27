@@ -91,7 +91,6 @@
     "ListElementCode": "ReasonForPreferredHearingType",
     "ElementLabel": "Why would you prefer this type of hearing?",
     "FieldType": "TextArea",
-    "Max": 400,
     "SecurityClassification": "Public"
   },
   {
