@@ -1952,5 +1952,43 @@
         "CRUD": "RU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppDetailsOfOrderColl",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "citizen-profile",
+          "cui-admin-profile"
+        ],
+        "CRUD": "RU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppReasonsOfOrderColl",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "citizen-profile",
+          "cui-admin-profile"
+        ],
+        "CRUD": "RU"
+      }
+    ]
   }
 ]
