@@ -120,7 +120,6 @@
     "ListElementCode": "HearingDetailsEmailID",
     "ElementLabel": "Preferred email",
     "FieldType": "Text",
-    "Max": 40,
     "SecurityClassification": "Public"
   },
   {
