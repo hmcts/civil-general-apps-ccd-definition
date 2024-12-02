@@ -42,5 +42,16 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_HEARING_SCHEDULED_PROCESS_GASPEC",
+    "CaseFieldID": "gaWaTrackLabel",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "WAFieldsCUI4",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   }
 ]
