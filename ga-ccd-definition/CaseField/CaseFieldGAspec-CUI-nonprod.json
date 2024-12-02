@@ -168,5 +168,21 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppDetailsOfOrderColl",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppReasonsOfOrderColl",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TextArea",
+    "SecurityClassification": "Public"
   }
 ]
