@@ -1242,5 +1242,12 @@
     "ListElementCode": "caseNameGaInternal",
     "UserRole": "judge-profile",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "gaWaTrackLabel",
+    "UserRole": "judge-profile",
+    "CRUD": "CRU"
   }
 ]

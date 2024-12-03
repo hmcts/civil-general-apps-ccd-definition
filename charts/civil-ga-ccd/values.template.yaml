@@ -20,7 +20,7 @@ civil-general-applications:
             alias: CIVIL_PRD_ADMIN_USERNAME
           - name: prd-admin-user-password
             alias: CIVIL_PRD_ADMIN_PASSWORD
-          - name: AppInsightsInstrumentationKeyGeneralApplications
+          - name: appinsights-instrumentation-key
             alias: azure.application-insights.instrumentation-key
           - name: docmosis-api-key
             alias: docmosis.tornado.key
@@ -60,6 +60,7 @@ civil-general-applications:
       RD_PROFESSIONAL_API_URL: http://rd-professional-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
       RELEASE_REVISION: "{{ .Release.Revision }}"
       GA_S2S_AUTHORISED_SERVICES: payment_app,ccd_data,civil_service
+      SEND_LETTER_URL: http://rpe-send-letter-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     postgresql:
       enabled: true
       releaseNameOverride: ${SERVICE_NAME}-postgresql
