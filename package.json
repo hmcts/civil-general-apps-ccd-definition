@@ -60,7 +60,7 @@
     "playwright": "^1.41.1",
     "run-script-os": "^1.1.6",
     "totp-generator": "^0.0.7",
-    "uuid": "^3.4.0",
+    "uuid": "^11.0.0",
     "webdriverio": "^6.12.1"
   },
   "packageManager": "yarn@3.3.1",
