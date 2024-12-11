@@ -4,7 +4,6 @@
     "ListElementCode": "respondentResponsePartyName",
     "ElementLabel": "Respondent",
     "FieldType": "Text",
-    "Max": 40,
     "SecurityClassification": "Public"
   },
   {
