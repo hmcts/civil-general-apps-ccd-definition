@@ -11,10 +11,11 @@ Before(async () => {
 });
 
 Scenario('1v1 LR v LIP Spec case marked paid in full', async ({api}) => {
-  // civilCaseReference = await api.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-  // await api.amendRespondent1ResponseDeadline(config.systemUpdate);
-  // await api.defaultJudgmentXui(config.applicantSolicitorUser);
-  // await api.certificateOfSatisfactionCancellation(config.defendantCitizenUser2, civilCaseReference);
+  civilCaseReference = await api.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+  await api.amendRespondent1ResponseDeadline(config.systemUpdate);
+  await api.defaultJudgmentXuiPayImmediately(config.applicantSolicitorUser);
+  await api.markJudgmentPaid(config.applicantSolicitorUser);
+  await api.certificateOfSatisfactionCancellationCui(config.defendantCitizenUser1, civilCaseReference);
 });
 
 Scenario('1v1 LIP v LIP Spec Case marked paid in full', async ({api}) => {
@@ -30,4 +31,8 @@ Scenario('1v1 LIP v LIP Spec Case not marked paid in full', async ({api}) => {
   await api.defaultJudgmentCui(config.applicantCitizenUser);
   await api.judgmentPaidInFullCui(config.applicantCitizenUser);
   await api.certificateOfSatisfactionCancellationCui(config.defendantCitizenUser2, civilCaseReference);
+});
+
+AfterSuite(async ({api}) => {
+  await api.cleanUp();
 });

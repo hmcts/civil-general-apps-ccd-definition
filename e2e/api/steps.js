@@ -169,6 +169,7 @@ const data = {
   CLAIM_DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/claim/defaultJudgment1v2Spec.js'),
   CLAIM_DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/claim/defaultJudgment2v1Spec.js'),
   CREATE_CERTIFICATION_OF_SATISFACTION_CANCELLATION: require('../fixtures/ga-ccd/createCoscApplication.js'),
+  JUDGMENT_PAID_IN_FULL: require('../fixtures/events/claim/judgmentPaidInFull'),
 
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
@@ -1802,32 +1803,44 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId, user);
   },
 
-  defaultJudgmentXui: async (user) => {
+  defaultJudgmentXuiPayImmediately: async (user) => {
     await apiRequest.setupTokens(user);
-
     eventName = 'DEFAULT_JUDGEMENT_SPEC';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
-    const registrationData = {
-      registrationTypeRespondentOne: [
-        {
-          value: {
-            registrationType: 'R',
-            judgmentDateTime: dateTime(0)
-          },
-          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
-      registrationTypeRespondentTwo: []
-    };
     await validateEventPagesDefaultJudgments(data.CLAIM_DEFAULT_JUDGEMENT_SPEC);
-    caseData = update(caseData, registrationData);
+
+    if (isJOLive) {
+      state = 'All_FINAL_ORDERS_ISSUED';
+    } else {
+      state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    }
 
     await assertSubmittedEvent(state, {
       header: '',
       body: ''
     }, true);
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
 
-    await waitForFinishedBusinessProcess(caseId);
+  markJudgmentPaid: async (user) => {
+    console.log(`case in All final orders issued ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'JUDGMENT_PAID_IN_FULL';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    await validateEventPages(data.JUDGMENT_PAID_IN_FULL);
+
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# Judgment marked as paid in full',
+      body: 'The judgment has been marked as paid in full'
+    }, true);
+    await waitForFinishedBusinessProcess(caseId, user);
   },
 
   defaultJudgmentCui: async (user) => {
@@ -2924,6 +2937,7 @@ const assertValidDataDefaultJudgments = async (data, pageId) => {
   const userData = data.userInput[pageId];
 
   caseData = update(caseData, userData);
+  deleteCaseFields('flightDelayDetails');
 
   const response = await apiRequest.validatePage(
     eventName,
@@ -2935,13 +2949,24 @@ const assertValidDataDefaultJudgments = async (data, pageId) => {
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
 
   assert.equal(response.status, 200);
+  delete responseBody.data['flightDelayDetails'];
+  delete responseBody.data['defendantUserDetails'];
 
   if (pageId === 'defendantDetailsSpec') {
     delete responseBody.data['registrationTypeRespondentOne'];
     delete responseBody.data['registrationTypeRespondentTwo'];
   }
-  if (pageId === 'paymentConfirmationSpec') {
+  if (pageId === 'showCertifyStatementSpec') {
+    deleteCaseFields('currentDefendant');
+    deleteCaseFields('currentDefendantName');
+  }
+  if (pageId === 'claimPartialPayment') {
     responseBody.data.currentDefendantName = 'Sir John Doe';
+    deleteCaseFields('CPRAcceptance');
+  }
+  if (pageId === 'paymentConfirmationSpec') {
+    delete responseBody.data['repaymentSummaryObject'];
+    deleteCaseFields('currentDefendantName');
 
   } else if (pageId === 'paymentSetDate') {
     if (['preview', 'demo'].includes(config.runningEnv)) {
