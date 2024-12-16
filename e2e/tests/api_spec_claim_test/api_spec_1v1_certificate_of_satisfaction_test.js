@@ -2,7 +2,7 @@ const config = require('../../config.js');
 const { createAccount } = require('../../api/idamHelper.js');
 
 const mpScenario = 'ONE_V_ONE';
-let civilCaseReference, gaCaseReference;
+let civilCaseReference;
 
 Feature('GA SPEC Claim 1v1 Certification of Satisfaction/Cancellation @api-sher0');
 

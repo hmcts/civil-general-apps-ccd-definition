@@ -1805,6 +1805,7 @@ module.exports = {
 
   defaultJudgmentXuiPayImmediately: async (user) => {
     await apiRequest.setupTokens(user);
+    let state;
     eventName = 'DEFAULT_JUDGEMENT_SPEC';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
@@ -1863,7 +1864,7 @@ module.exports = {
     console.log('start create a COSC application');
     let payload = data.CREATE_CERTIFICATION_OF_SATISFACTION_CANCELLATION;
     await apiRequest.setupTokens(user);
-    const caseData = await apiRequest.startCreateCaseForCitizen(payload, parentCaseId);
+    await apiRequest.startCreateCaseForCitizen(payload, parentCaseId);
     await waitForFinishedBusinessProcess(parentCaseId, user);
     await waitForGAFinishedBusinessProcess(parentCaseId, user);
     const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user).then(res => res.json());

@@ -6,8 +6,8 @@ module.exports = {
     joJudgmentPaidInFull: {
       dateOfFullPaymentMade: date(),
       confirmFullPaymentMade: [
-        "CONFIRMED"
+        'CONFIRMED'
       ]
     }
   }
-}
+};

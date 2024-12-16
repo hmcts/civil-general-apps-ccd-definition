@@ -13,8 +13,8 @@ module.exports = {
     },
     certOfSC: {
       debtPaymentEvidence: {
-        provideDetails: "details",
-        debtPaymentOption: "UNABLE_TO_PROVIDE_EVIDENCE_OF_FULL_PAYMENT"
+        provideDetails: 'details',
+        debtPaymentOption: 'UNABLE_TO_PROVIDE_EVIDENCE_OF_FULL_PAYMENT'
       },
       defendantFinalPaymentDate: date()
     },
@@ -26,4 +26,4 @@ module.exports = {
       reasonsForWithoutNotice: 'reason'
     }
   }
-}
+};
