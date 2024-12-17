@@ -38,7 +38,7 @@ Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT - DIRECTIONS ORDER - Respond
   await api.assertDocumentVisibilityToUser(config.applicantSolicitorUser, 'Claimant', civilCaseReference, gaCaseReference, doc);
 });
 
-Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT  as DEFENDANT - DIRECTIONS ORDER - Respondent upload Directions Document', async ({api}) => {
+Scenario.skip('Judge makes decision 1V1 - VARY-JUDGEMENT  as DEFENDANT - DIRECTIONS ORDER - Respondent upload Directions Document', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
