@@ -21,5 +21,17 @@
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_JUDGE_DIRECTIONS",
+    "CaseFieldID": "gaWaTrackLabel",
+    "PageID": "GAUploadDocForDirectionOrderScreen",
+    "PageFieldDisplayOrder": 2,
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "generalAppDirOrderUpload = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "Y"
   }
 ]
