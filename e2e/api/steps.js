@@ -2822,6 +2822,8 @@ const assertNullGaDocVisibilityToUser = async ( user, parentCaseId, doc) => {
   else{
     docCivil = civilCaseData[doc + 'DocStaff'];
   }
+  console.log('document details')
+  console.log(JSON.stringify(docCivil));
   assert.equal(typeof(docCivil), 'undefined');
 };
 
