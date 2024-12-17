@@ -1,16 +1,16 @@
 const config = require('../../config.js');
-const { createAccount } = require('../../api/idamHelper.js');
+const { createAccount, deleteAccount} = require('../../api/idamHelper.js');
 
 const mpScenario = 'ONE_V_ONE';
 let civilCaseReference;
 
-Feature('GA SPEC Claim 1v1 Certification of Satisfaction/Cancellation @api-nonprod');
+Feature('GA SPEC Claim 1v1 Certification of Satisfaction/Cancellation @api-cui');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-Scenario('1v1 LR v LIP Spec case marked paid in full', async ({api}) => {
+Scenario('1v1 LR v LIP Spec case marked paid in full @api-nonprod', async ({api}) => {
   civilCaseReference = await api.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api.amendRespondent1ResponseDeadline(config.systemUpdate);
   await api.defaultJudgmentXuiPayImmediately(config.applicantSolicitorUser);
@@ -33,6 +33,7 @@ Scenario('1v1 LIP v LIP Spec Case not marked paid in full', async ({api}) => {
   await api.certificateOfSatisfactionCancellationCui(config.defendantCitizenUser2, civilCaseReference);
 });
 
-AfterSuite(async ({api}) => {
+AfterSuite(async ({ api }) => {
   await api.cleanUp();
+  await deleteAccount(config.defendantCitizenUser2.email);
 });
