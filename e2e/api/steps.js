@@ -2518,8 +2518,8 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   if (user.email === config.defendantSolicitorUser.email
       || user.email === config.secondDefendantSolicitorUser.email ) {
     await assertDocVisibilityToUser(user, 'Claimant', parentCaseId, gaCaseReference, doc);
-    // temporary commenting this as it fails
-    // await assertNullGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, doc);
+    //commented this due to cui pr failures
+    //await assertNullGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, doc);
   }
 
   if (user.email === config.defendantSolicitorUser.email) {
@@ -2908,7 +2908,7 @@ const assertNullGaDocVisibilityToUser = async ( user, parentCaseId, doc) => {
   else{
     docCivil = civilCaseData[doc + 'DocStaff'];
   }
-  assert.equal(typeof(docCivil), 'undefined');
+   assert.equal(typeof(docCivil), 'undefined');
 };
 
 const processHwf = async (gaCaseReference) => {
