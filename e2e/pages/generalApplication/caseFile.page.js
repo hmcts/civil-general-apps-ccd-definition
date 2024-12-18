@@ -62,7 +62,7 @@ module.exports = {
         expect(appCount).equals('1');
         break;
       case 'No document':
-        expect(appCount).equals('1');
+        expect(appCount).equals('0');
         break;
       case 'Hearing order':
         expect(docs.toString()).to.contains(`Hearing_order_for_application_${docFullDate}`);
