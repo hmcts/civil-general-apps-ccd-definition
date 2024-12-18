@@ -4,7 +4,7 @@ const { createAccount, deleteAccount} = require('../../api/idamHelper.js');
 const mpScenario = 'ONE_V_ONE';
 let civilCaseReference;
 
-Feature('GA SPEC Claim 1v1 Certification of Satisfaction/Cancellation @api-cui');
+Feature('GA SPEC Claim 1v1 Certification of Satisfaction/Cancellation @api-cui @api-nonprod');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
@@ -18,6 +18,7 @@ Scenario('1v1 LR v LIP Spec case marked paid in full @api-nonprod', async ({api}
   await api.certificateOfSatisfactionCancellationCui(config.defendantCitizenUser1, civilCaseReference);
 });
 
+//expecting this test to fail
 Scenario('1v1 LIP v LIP Spec Case marked paid in full', async ({api}) => {
   civilCaseReference = await api.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', 'INDIVIDUAL');
   await api.amendRespondent1ResponseDeadline(config.systemUpdate);
@@ -25,6 +26,7 @@ Scenario('1v1 LIP v LIP Spec Case marked paid in full', async ({api}) => {
   await api.certificateOfSatisfactionCancellationCui(config.defendantCitizenUser2, civilCaseReference);
 });
 
+//expecting this test to fail
 Scenario('1v1 LIP v LIP Spec Case not marked paid in full', async ({api}) => {
   civilCaseReference = await api.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', 'INDIVIDUAL');
   await api.amendRespondent1ResponseDeadline(config.systemUpdate);
