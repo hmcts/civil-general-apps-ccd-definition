@@ -89,6 +89,15 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "translatedDocumentsBulkPrint",
+    "Label": "Translated Document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TranslatedDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "applicantBilingualLanguagePreference",
     "FieldType": "YesOrNo",
     "Label": "LIP bilingual flag",

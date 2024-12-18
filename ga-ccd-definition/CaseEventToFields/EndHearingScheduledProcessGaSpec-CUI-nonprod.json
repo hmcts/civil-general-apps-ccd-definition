@@ -47,10 +47,32 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "END_HEARING_SCHEDULED_PROCESS_GASPEC",
     "CaseFieldID": "gaWaTrackLabel",
-    "PageFieldDisplayOrder": 4,
+    "PageFieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
-    "PageID": "WAFieldsCUI4",
-    "PageDisplayOrder": 4,
+    "PageID": "WAFieldsCUI5",
+    "PageDisplayOrder": 5,
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_HEARING_SCHEDULED_PROCESS_GASPEC",
+    "CaseFieldID": "generalAppInformOtherParty",
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "WAFieldsCUI6",
+    "PageDisplayOrder": 6,
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_HEARING_SCHEDULED_PROCESS_GASPEC",
+    "CaseFieldID": "applicationIsCloaked",
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "WAFieldsCUI7",
+    "PageDisplayOrder": 7,
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
