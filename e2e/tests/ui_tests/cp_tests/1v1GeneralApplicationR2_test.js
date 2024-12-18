@@ -45,7 +45,7 @@ Scenario('Defendant of main claim initiates Vary payment terms of judgment appli
     user = config.judgeLocalUser;
     await I.login(user);
   }
-  await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Supporting evidence');
   await I.login(config.applicantSolicitorUser);
   await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
 

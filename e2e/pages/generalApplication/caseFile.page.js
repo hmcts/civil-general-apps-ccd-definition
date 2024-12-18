@@ -61,6 +61,10 @@ module.exports = {
         expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
         expect(appCount).equals('1');
         break;
+      case 'Supporting evidence':
+        expect(docs.toString()).to.contains('examplePDF.pdf');
+        expect(appCount).equals('1');
+        break;
       case 'No document':
         expect(appCount).equals('0');
         break;

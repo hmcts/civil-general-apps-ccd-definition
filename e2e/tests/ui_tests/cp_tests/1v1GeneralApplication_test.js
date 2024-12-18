@@ -18,7 +18,7 @@ const claimantType = 'Company';
 
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA CCD 1v1 - General Application Journey  @ui-nightly');
+Feature('GA CCD 1v1 - General Application Journey  @ui-nightly @api-matt');
 // This test should be enabled after early adopters goes live for all regions
 
 Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
@@ -51,7 +51,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
     user = config.judgeLocalUser;
     await I.login(user);
   }
-  await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Supporting evidence');
   await I.login(config.defendantSolicitorUser);
   await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
 
