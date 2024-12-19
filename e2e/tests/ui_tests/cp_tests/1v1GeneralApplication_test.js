@@ -52,7 +52,7 @@ Scenario.skip('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) 
     user = config.judgeLocalUser;
     await I.login(user);
   }
-  await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Supporting evidence');
   await I.login(config.defendantSolicitorUser);
   await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
 
