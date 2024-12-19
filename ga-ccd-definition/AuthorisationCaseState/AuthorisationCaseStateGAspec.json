@@ -6,7 +6,8 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -30,7 +31,8 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -54,7 +56,8 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -78,7 +81,8 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -102,7 +106,8 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -128,7 +133,8 @@
           "caseworker-civil-systemupdate",
           "judge-profile",
           "legal-adviser",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -155,7 +161,8 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -180,7 +187,8 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -207,7 +215,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -232,7 +241,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -253,7 +263,8 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "civil-administrator-standard",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -287,7 +298,8 @@
           "caseworker-civil-solicitor",
           "civil-administrator-basic",
           "caseworker-ras-validation",
-          "ga-basic-access"
+          "ga-basic-access",
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -300,7 +312,8 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "hearing-schedule-access"
+          "hearing-schedule-access",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -325,7 +338,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -345,7 +359,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -378,7 +393,8 @@
           "hearing-schedule-access",
           "caseworker-civil-systemupdate",
           "judge-profile",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
