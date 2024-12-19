@@ -4002,5 +4002,18 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "casePaymentHistoryViewer",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-staff",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
