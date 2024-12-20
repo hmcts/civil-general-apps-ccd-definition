@@ -140,6 +140,19 @@ module.exports = {
     return response.case_details.case_data || {};
   },
 
+  startEventForCitizen: async (eventName, caseId, payload) => {
+    let url = getCivilServiceUrl();
+    const userId = await idamHelper.userId(tokens.userAuth);
+    if (caseId) {
+      url += `/cases/${caseId}`;
+    }
+    url += `/citizen/${userId}/event`;
+
+    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), payload, 'POST', 200)
+      .then(response => response.json());
+    tokens.ccdEvent = response.token;
+  },
+
   submitGAEvent: async (eventName, caseData, caseId) => {
     let url = `${getCcdDataStoreGABaseUrl()}/cases`;
     if (caseId) {
@@ -349,7 +362,7 @@ module.exports = {
       .then(response => response.json());
     tokens.ccdEvent = response.token;
     return response;
-  },
+  }
 };
 
 
