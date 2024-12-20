@@ -9,7 +9,7 @@ Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-Scenario('1v1 LR v LIP Spec case marked paid in full @api-nonprod', async ({api}) => {
+Scenario('1v1 LR v LIP Spec case marked paid in full', async ({api}) => {
   civilCaseReference = await api.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   await api.amendRespondent1ResponseDeadline(config.systemUpdate);
   await api.defaultJudgmentXuiPayImmediately(config.applicantSolicitorUser);
