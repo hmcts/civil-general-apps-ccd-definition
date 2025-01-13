@@ -157,7 +157,7 @@
     "ID": "RESPOND_TO_APPLICATION_URGENT_LIP",
     "Name": "Respond to application",
     "Description": "Applicant response",
-    "PreConditionState(s)": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION",
+    "PreConditionState(s)": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION;AWAITING_RESPONDENT_RESPONSE",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "EndButtonLabel": "Submit",
