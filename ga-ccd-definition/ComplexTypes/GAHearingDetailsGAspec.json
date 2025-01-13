@@ -176,7 +176,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "vulnerabilityQuestionsLabel",
-    "ElementLabel": "Vulnerability questions",
+    "ElementLabel": "#### Vulnerability questions",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
