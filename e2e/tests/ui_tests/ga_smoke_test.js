@@ -6,7 +6,7 @@ const claimAmountJudge = '11000';
 
 Feature('General Application Smoke tests @ga-smoke-tests');
 
-Scenario('GA 1v1  - Judge Makes Decision Order Made @smoke-tests', async ({api, I}) => {
+Scenario.only('GA 1v1  - Judge Makes Decision Order Made @smoke-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -31,6 +31,4 @@ Scenario('GA 1v1  - Judge Makes Decision Order Made @smoke-tests', async ({api, 
   await I.see('Order Made');
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
+
