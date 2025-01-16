@@ -120,6 +120,7 @@
     "ListElementCode": "HearingDetailsEmailID",
     "ElementLabel": "Preferred email",
     "FieldType": "Text",
+    "RegularExpression": "^([a-zA-Z0-9_\\.%+-]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
     "SecurityClassification": "Public"
   },
   {
@@ -176,7 +177,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "vulnerabilityQuestionsLabel",
-    "ElementLabel": "Vulnerability questions",
+    "ElementLabel": "#### Vulnerability questions",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
