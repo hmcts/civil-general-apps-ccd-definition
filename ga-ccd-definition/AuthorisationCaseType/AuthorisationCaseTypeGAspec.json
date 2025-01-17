@@ -10,6 +10,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "UserRoles": [
+      "caseworker-civil-admin",
       "caseworker-civil-solicitor",
       "judge-profile",
       "civil-administrator-standard",
@@ -22,7 +23,8 @@
     "UserRoles": [
       "civil-administrator-basic",
       "ga-basic-access",
-      "caseworker-ras-validation"
+      "caseworker-ras-validation",
+      "caseworker-civil-staff"
     ],
     "CRUD": "R"
   }

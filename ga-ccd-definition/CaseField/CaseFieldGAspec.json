@@ -1312,6 +1312,21 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaWaTrackLabel",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "casePaymentHistoryViewer",
+    "Label": "Custom Payment History Viewer",
+    "FieldType": "CasePaymentHistoryViewer",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
 

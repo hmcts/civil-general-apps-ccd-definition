@@ -33,6 +33,7 @@
 ./bin/utils/ccd-add-role.sh "cui-admin-profile"
 ./bin/utils/ccd-add-role.sh "cui-nbc-profile"
 ./bin/utils/ccd-add-role.sh "citizen-profile"
+./bin/utils/ccd-add-role.sh "citizen"
 ./bin/utils/ccd-add-role.sh "caseworker-civil-citizen-ui-pcqextractor"
 ./bin/utils/ccd-add-role.sh "next-hearing-date-admin"
 ./bin/utils/ccd-add-role.sh "judge"
@@ -40,6 +41,9 @@
 ./bin/utils/ccd-add-role.sh "national-business-centre"
 ./bin/utils/ccd-add-role.sh "hearing-centre-team-leader"
 ./bin/utils/ccd-add-role.sh "court-officer-order"
+./bin/utils/ccd-add-role.sh "ctsc"
+./bin/utils/ccd-add-role.sh "ctsc-team-leader"
+./bin/utils/ccd-add-role.sh "nbc-team-leader"
 
 
 roles=("solicitor" "systemupdate" "admin" "staff" "judge")

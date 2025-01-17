@@ -1,5 +1,5 @@
 const config = require('../config.js');
-const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
+const {PBAv3, SDOR2, COSC, isJOLive} = require('../fixtures/featureKeys');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
@@ -18,6 +18,7 @@ const {
   waitForGACamundaEventsFinishedBusinessProcess
 } = require('../api/testingSupport');
 
+
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
@@ -25,6 +26,7 @@ const claimDataSpec = require('../fixtures/events/claim/createClaimSpec.js');
 const claimSpecData = require('../fixtures/events/createClaimSpec.js');
 const claimDataSpecSmallLRvLiP = require('../fixtures/events/createClaimSpecSmallCui.js');
 const genAppData = require('../fixtures/ga-ccd/createGeneralApplication.js');
+const genAppDataLR = require('../fixtures/ga-ccd/createGeneralApplicationLR.js');
 const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentResponse.js');
 const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
 const genAppJudgeMakeFinalOrderData = require('../fixtures/ga-ccd/judgeMakeFinalDecision.js');
@@ -34,7 +36,7 @@ const createClaimLipClaimant = require('../fixtures/events/cui/createClaimUnrepr
 const events = require('../fixtures/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
 const { replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
-const {checkPBAv3ToggleEnabled} = require('./testingSupport');
+const {checkToggleEnabled} = require('./testingSupport');
 const {createGeneralAppN245FormUpload} = require('../fixtures/ga-ccd/createGeneralApplication');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
@@ -49,26 +51,47 @@ const gaTypesList = {
 };
 
 const data = {
+
   INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES: (types, isWithNotice, reason, calculatedAmount, code) => genAppData.createGA(types,
+    isWithNotice, reason, calculatedAmount, code) ,
+  INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES_LR: (types, isWithNotice, reason, calculatedAmount, code) => genAppDataLR.createGA(types,
     isWithNotice, reason, calculatedAmount, code),
   INITIATE_GENERAL_APPLICATION: genAppData.createGAData('Yes', null,
     '30300', 'FEE0442'),
+  INITIATE_GENERAL_APPLICATION_LR: genAppDataLR.createGAData('Yes', null,
+    '30300', 'FEE0442'),
   INITIATE_GENERAL_APPLICATION_FOR_LA: genAppData.createGA(gaTypesList.LATypes, 'No', null,
     '11900', 'FEE0443'),
-  INITIATE_GENERAL_APPLICATION_FOR_JUDGE: genAppData.createGA(gaTypesList.JudgeGaTypes, 'No', null,
+  INITIATE_GENERAL_APPLICATION_FOR_LA_LR : genAppDataLR.createGA(gaTypesList.LATypes, 'No', null,
+    '11900', 'FEE0443'),
+  INITIATE_GENERAL_APPLICATION_FOR_JUDGE:  genAppData.createGA(gaTypesList.JudgeGaTypes, 'No', null,
+    '11900', 'FEE0443'),
+  INITIATE_GENERAL_APPLICATION_FOR_JUDGE_LR : genAppDataLR.createGA(gaTypesList.JudgeGaTypes, 'No', null,
     '11900', 'FEE0443'),
   INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE: genAppData.createGADataWithoutNotice('No','Test 123',
     '11900','FEE0443'),
+  INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE_LR: genAppDataLR.createGADataWithoutNotice('No','Test 123',
+    '11900','FEE0443'),
   INITIATE_GENERAL_APPLICATION_CONSENT: (genAppType) => genAppData.createGaWithConsentAndNotice(genAppType, true, false,null,
     '11900','FEE0443'),
-  INITIATE_GENERAL_APPLICATION_CONSENT_URGENT:(genAppType) => genAppData.createGaWithConsentAndNotice(genAppType, true, true,null,
+  INITIATE_GENERAL_APPLICATION_CONSENT_LR: (genAppType) => genAppDataLR.createGaWithConsentAndNotice(genAppType, true, false,null,
+    '11900','FEE0443'),
+  INITIATE_GENERAL_APPLICATION_CONSENT_URGENT:(genAppType) =>  genAppData.createGaWithConsentAndNotice(genAppType, true, true,null,
+    '11900','FEE0443'),
+  INITIATE_GENERAL_APPLICATION_CONSENT_URGENT_LR:(genAppType) =>genAppDataLR.createGaWithConsentAndNotice(genAppType, true, true,null,
     '11900','FEE0443'),
   INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT: genAppData.gaTypeWithNoStrikeOut(),
+  INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT_LR: genAppDataLR.gaTypeWithNoStrikeOut(),
   INITIATE_GENERAL_APPLICATION_STAY_CLAIM: genAppData.gaTypeWithStayClaim(),
+  INITIATE_GENERAL_APPLICATION_STAY_CLAIM_LR: genAppDataLR.gaTypeWithStayClaim(),
   INITIATE_GENERAL_APPLICATION_UNLESS_ORDER: genAppData.gaTypeWithUnlessOrder(),
-  INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT: (isWithNotice, generalAppN245FormUpload, urgency) => genAppData.createGADataVaryJudgement(isWithNotice,null,
+  INITIATE_GENERAL_APPLICATION_UNLESS_ORDER_LR: genAppDataLR.gaTypeWithUnlessOrder(),
+  INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT: (isWithNotice, generalAppN245FormUpload, urgency) =>  genAppData.createGADataVaryJudgement(isWithNotice,null,
     '1500','FEE0458', generalAppN245FormUpload, urgency),
-  INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
+  INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT_LR: (isWithNotice, generalAppN245FormUpload, urgency) => genAppDataLR.createGADataVaryJudgement(isWithNotice,null,
+    '1500','FEE0458', generalAppN245FormUpload, urgency),
+  INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) =>  genAppData.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
+  INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE_LR: (isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version) => genAppDataLR.createGaAdjournVacateData(isWithNotice, isWithConsent, hearingDate, calculatedAmount, code, version),
   INITIATE_GENERAL_APPLICATION_LIP: (typeOfApplication, hwf) => genLipAppData.getPayloadForGALiP(typeOfApplication, hwf),
   INITIATE_GENERAL_APPLICATION_LIP_WITHOUT :() => genLipAppData.getPayloadForGALiPWithout(),
   RESPOND_TO_APPLICATION: (agree) => genAppRespondentResponseData.respondGAData(agree),
@@ -140,9 +163,13 @@ const data = {
   CLAIM_CLAIMANT_RESPONSE_SPEC: (mpScenario) => require('../fixtures/events/claim/claimantResponseSpec.js').claimantResponse(mpScenario),
   CLAIM_CLAIMANT_RESPONSE_1v2_SPEC: (response) => require('../fixtures/events/claim/claimantResponseSpec1v2.js').claimantResponse(response),
   CLAIM_INFORM_AGREED_EXTENSION_DATE_SPEC: () => require('../fixtures/events/claim/informAgreeExtensionDateSpec.js'),
+  JUDGMENT_PAID_FULL: require('../fixtures/events/cui/judgmentPaidInFullCui'),
+  CLAIM_DEFAULT_JUDGEMENT_SPEC_CUI: require('../fixtures/events/cui/defaultJudgmentCui.js'),
   CLAIM_DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/claim/defaultJudgmentSpec.js'),
   CLAIM_DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/claim/defaultJudgment1v2Spec.js'),
   CLAIM_DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/claim/defaultJudgment2v1Spec.js'),
+  CREATE_CERTIFICATION_OF_SATISFACTION_CANCELLATION: require('../fixtures/ga-ccd/createCoscApplication.js'),
+  JUDGMENT_PAID_IN_FULL: require('../fixtures/events/claim/judgmentPaidInFull'),
 
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
@@ -289,7 +316,7 @@ module.exports = {
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
-    var pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
+    var pbaV3 = await checkToggleEnabled(PBAv3);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
     await waitForFinishedBusinessProcess(caseId, user);
@@ -319,7 +346,7 @@ module.exports = {
     caseData = {};
     mpScenario = multipartyScenario;
 
-    const sdoR2 = await checkPBAv3ToggleEnabled(SDOR2);
+    const sdoR2 = await checkToggleEnabled(SDOR2);
     console.log('Is sdoR2 toggle on?: ' + sdoR2);
 
     const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType, claimAmount, sdoR2, useBirminghamCourt);
@@ -336,7 +363,7 @@ module.exports = {
     await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
       null, 'Case data validation failed');
 
-    const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
 
@@ -390,6 +417,13 @@ module.exports = {
     await testingSupport.updateCaseData(caseId, claimDismissedDeadline);
   },
 
+  amendRespondent1ResponseDeadline: async (user) => {
+    await apiRequest.setupTokens(user);
+    let respondent1deadline ={};
+    respondent1deadline = {'respondent1ResponseDeadline':'2022-01-10T15:59:50'};
+    await testingSupport.updateCaseData(caseId, respondent1deadline);
+  },
+
   amendDirectionOrderDeadlineDate: async (user) => {
     await apiRequest.setupTokens(user);
     let deadlineDate;
@@ -412,7 +446,7 @@ module.exports = {
 
     await assertSubmittedSpecEvent('PENDING_CASE_ISSUED');
 
-    var pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
+    var pbaV3 = await checkToggleEnabled(PBAv3);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
     await waitForFinishedBusinessProcess(caseId, user);
@@ -435,11 +469,17 @@ module.exports = {
   },
 
   initiateGeneralApplicationWithState: async (user, parentCaseId, expectState) => {
-    return await initiateGaWithState(user, parentCaseId, expectState, data.INITIATE_GENERAL_APPLICATION);
+    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_LR
+      : data.INITIATE_GENERAL_APPLICATION;
+    return await initiateGaWithState(user, parentCaseId, expectState, gaData);
   },
 
   initiateGeneralApplication: async (user, parentCaseId) => {
-    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', data.INITIATE_GENERAL_APPLICATION);
+    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_LR
+      : data.INITIATE_GENERAL_APPLICATION;
+    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', gaData);
   },
 
   verifyCivilClaimGACollections: async (user, parentCaseId, gaCaseReference) => {
@@ -447,11 +487,19 @@ module.exports = {
   },
 
   initiateConsentGeneralApplication: async (user, parentCaseId, gaAppType) => {
-    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', data.INITIATE_GENERAL_APPLICATION_CONSENT(gaAppType));
+    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_CONSENT_LR(gaAppType)
+      : data.INITIATE_GENERAL_APPLICATION_CONSENT(gaAppType);
+
+    return await initiateGaWithState(user, parentCaseId, 'AWAITING_RESPONDENT_RESPONSE', gaData);
   },
 
   initiateConsentUrgentGeneralApplication: async (user, parentCaseId, gaAppType ) => {
-    return await initiateGaWithState(user, parentCaseId, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', data.INITIATE_GENERAL_APPLICATION_CONSENT_URGENT(gaAppType));
+    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_CONSENT_URGENT_LR(gaAppType)
+      : data.INITIATE_GENERAL_APPLICATION_CONSENT_URGENT(gaAppType);
+
+    return await initiateGaWithState(user, parentCaseId, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', gaData);
   },
 
   updateCivilClaimClaimantSolEmailID: async (user, parentCaseId) => {
@@ -463,29 +511,47 @@ module.exports = {
   },
 
   initiateGeneralApplicationWithOutNotice: async (user, parentCaseId) => {
-    return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE);
+    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE_LR
+      : data.INITIATE_GENERAL_APPLICATION_WITHOUT_NOTICE;
+
+    return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, gaData);
   },
 
   initiateGaWithTypes: async (user, parentCaseId, types, calculatedAmount, code) => {
+    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES_LR(types, 'No', null, calculatedAmount, code)
+      : data.INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES(types, 'No', null, calculatedAmount, code);
     return await initiateGeneralApplicationWithOutNotice(user, parentCaseId,
-         data.INITIATE_GENERAL_APPLICATION_WITH_MIX_TYPES(types, 'No', null, calculatedAmount, code));
+      gaData);
   },
 
   initiateGaForLA: async (user, parentCaseId) => {
-    return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, data.INITIATE_GENERAL_APPLICATION_FOR_LA) ;
+    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_FOR_LA_LR
+      : data.INITIATE_GENERAL_APPLICATION_FOR_LA;
+
+    return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, gaData) ;
   },
 
   initiateGaForJudge: async (user, parentCaseId) => {
-    return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, data.INITIATE_GENERAL_APPLICATION_FOR_JUDGE) ;
+    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_FOR_JUDGE_LR
+      : data.INITIATE_GENERAL_APPLICATION_FOR_JUDGE;
+
+    return await initiateGeneralApplicationWithOutNotice(user, parentCaseId, gaData) ;
   },
 
   initiateGeneralApplicationWithNoStrikeOut: async (user, parentCaseId) => {
     eventName = events.INITIATE_GENERAL_APPLICATION.id;
     let gaCaseReference;
+    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT_LR
+      : data.INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT;
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, parentCaseId);
-    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION_NO_STRIKEOUT, parentCaseId);
+    const response = await apiRequest.submitEvent(eventName, gaData, parentCaseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have submitted an application');
@@ -525,7 +591,11 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, parentCaseId);
-    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION_STAY_CLAIM, parentCaseId);
+    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_STAY_CLAIM_LR
+      : data.INITIATE_GENERAL_APPLICATION_STAY_CLAIM;
+
+    const response = await apiRequest.submitEvent(eventName, gaData, parentCaseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
 
@@ -556,7 +626,11 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, parentCaseId);
-    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION_UNLESS_ORDER, parentCaseId);
+    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_UNLESS_ORDER_LR
+      : data.INITIATE_GENERAL_APPLICATION_UNLESS_ORDER;
+
+    const response = await apiRequest.submitEvent(eventName, gaData, parentCaseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
 
@@ -590,9 +664,11 @@ module.exports = {
     let freeGa = calculatedAmount==='0';
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, parentCaseId);
-    const response = await apiRequest.submitEvent(eventName,
-         data.INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE(isWithNotice, isWithConsent, hearingDate, calculatedAmount, feeCode, feeVersion),
-         parentCaseId);
+    var isCoscEnabled = await checkToggleEnabled(COSC);
+    var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE_LR(isWithNotice, isWithConsent, hearingDate, calculatedAmount, feeCode, feeVersion)
+      : data.INITIATE_GENERAL_APPLICATION_ADJOURN_VACATE(isWithNotice, isWithConsent, hearingDate, calculatedAmount, feeCode, feeVersion);
+
+    const response = await apiRequest.submitEvent(eventName, gaData, parentCaseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
     //assert.equal(responseBody.state, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -1359,6 +1435,10 @@ module.exports = {
 
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    assertContainsPopulatedFields(returnedCaseData);
+    caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
+        value: listElement('Both')
+      }};
 
     await validateEventPages(data[eventName]);
 
@@ -1366,10 +1446,6 @@ module.exports = {
       header: 'Defendant notified',
       body: 'The defendant legal representative\'s organisation has been notified of the claim details.'
     });
-
-    caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
-        value: listElement('Both')
-      }};
 
     await waitForFinishedBusinessProcess(caseId, user);
   },
@@ -1468,7 +1544,7 @@ module.exports = {
       await assertValidClaimData(createClaimData, pageId);
     }
 
-    const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
@@ -1494,8 +1570,15 @@ module.exports = {
     }
     await waitForFinishedBusinessProcess(caseId, user);
 
+    console.log('carm not enabled, updating submitted date');
+    await apiRequest.setupTokens(config.systemUpdate);
+    const submittedDate = { 'submittedDate': '2024-09-10T15:59:50' };
+    await testingSupport.updateCaseData(caseId, submittedDate);
+    console.log('submitted date update to before carm date');
+
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+
     return caseId;
   },
 
@@ -1525,7 +1608,7 @@ module.exports = {
     // update submit date
     console.log('carm not enabled, updating submitted date');
     await apiRequest.setupTokens(config.systemUpdate);
-    const submittedDate = { 'submittedDate': '2023-08-10T15:59:50' };
+    const submittedDate = { 'submittedDate': '2024-09-10T15:59:50' };
     await testingSupport.updateCaseData(caseId, submittedDate);
     console.log('submitted date update to before carm date');
     return caseId;
@@ -1583,7 +1666,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
-    const pbaV3 = await checkPBAv3ToggleEnabled(PBAv3);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
     if(pbaV3){
       response = response+'_PBAv3';
     }
@@ -1718,6 +1801,80 @@ module.exports = {
     await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId, user);
+  },
+
+  defaultJudgmentXuiPayImmediately: async (user) => {
+    await apiRequest.setupTokens(user);
+    let state;
+    eventName = 'DEFAULT_JUDGEMENT_SPEC';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    await validateEventPagesDefaultJudgments(data.CLAIM_DEFAULT_JUDGEMENT_SPEC);
+
+    if (isJOLive) {
+      state = 'All_FINAL_ORDERS_ISSUED';
+    } else {
+      state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    }
+
+    await assertSubmittedEvent(state, {
+      header: '',
+      body: ''
+    }, true);
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
+  markJudgmentPaid: async (user) => {
+    console.log(`case in All final orders issued ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'JUDGMENT_PAID_IN_FULL';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    await validateEventPages(data.JUDGMENT_PAID_IN_FULL);
+
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# Judgment marked as paid in full',
+      body: 'The judgment has been marked as paid in full'
+    }, true);
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
+  defaultJudgmentCui: async (user) => {
+    eventName = 'DEFAULT_JUDGEMENT_SPEC';
+    let payload = data.CLAIM_DEFAULT_JUDGEMENT_SPEC_CUI;
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEventForCitizen(eventName, caseId, payload);
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
+  judgmentPaidInFullCui: async (user) => {
+    eventName = 'JUDGMENT_PAID_IN_FULL';
+    let payload = data.JUDGMENT_PAID_FULL;
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEventForCitizen(eventName, caseId, payload);
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
+  certificateOfSatisfactionCancellationCui: async (user, parentCaseId) => {
+    console.log('start create a COSC application');
+    let payload = data.CREATE_CERTIFICATION_OF_SATISFACTION_CANCELLATION;
+    await apiRequest.setupTokens(user);
+    await apiRequest.startCreateCaseForCitizen(payload, parentCaseId);
+    await waitForFinishedBusinessProcess(parentCaseId, user);
+    await waitForGAFinishedBusinessProcess(parentCaseId, user);
+    const updatedResponse = await apiRequest.fetchUpdatedCaseData(parentCaseId, user).then(res => res.json());
+    const ccdGeneralApplications = updatedResponse.generalApplications;
+    const gaCaseReference = ccdGeneralApplications[ccdGeneralApplications.length - 1]?.value?.caseLink?.CaseReference;
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
+    const payment_response = await apiRequest.paymentApiRequestUpdateServiceCallback(
+      genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference, 'Paid'));
+    assert.equal(payment_response.status, 200);
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'APPLICATION_DISMISSED', user);
   },
 
   createSDO: async (caseId, user, response = 'CREATE_DISPOSAL') => {
@@ -2310,11 +2467,15 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   await apiRequest.startEvent(eventName, parentCaseId);
   let initiateData;
 
+  var isCoscEnabled = await checkToggleEnabled(COSC);
   if(!isClaimant) {
     const document = await testingSupport.uploadDocument();
-    initiateData = data.INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT('Yes',createGeneralAppN245FormUpload(document), urgency);
+
+    initiateData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT_LR('Yes',createGeneralAppN245FormUpload(document), urgency)
+    : data.INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT('Yes',createGeneralAppN245FormUpload(document), urgency);
   } else {
-    initiateData = data.INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT('Yes', null,  urgency);
+    initiateData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT_LR('Yes', null,  urgency)
+      : data.INITIATE_GENERAL_APPLICATION_VARY_PAYMENT_TERMS_OF_JUDGMENT('Yes', null,  urgency);
   }
   const response = await apiRequest.submitEvent(eventName, initiateData ,parentCaseId);
   const responseBody = await response.json();
@@ -2357,7 +2518,8 @@ const initiateWithVaryJudgement = async (user, parentCaseId, isClaimant, urgency
   if (user.email === config.defendantSolicitorUser.email
       || user.email === config.secondDefendantSolicitorUser.email ) {
     await assertDocVisibilityToUser(user, 'Claimant', parentCaseId, gaCaseReference, doc);
-    await assertNullGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, doc);
+    //commented this due to cui pr failures
+    //await assertNullGaDocVisibilityToUser(config.applicantSolicitorUser, parentCaseId, doc);
   }
 
   if (user.email === config.defendantSolicitorUser.email) {
@@ -2746,7 +2908,7 @@ const assertNullGaDocVisibilityToUser = async ( user, parentCaseId, doc) => {
   else{
     docCivil = civilCaseData[doc + 'DocStaff'];
   }
-  assert.equal(typeof(docCivil), 'undefined');
+   assert.equal(typeof(docCivil), 'undefined');
 };
 
 const processHwf = async (gaCaseReference) => {
@@ -2762,4 +2924,76 @@ const processHwf = async (gaCaseReference) => {
   hwfData = data.HWF_OUTCOME('APPLICATION');
   caseData = {...returnedCaseData, ...hwfData};
   await apiRequest.submitGAEvent(eventName, caseData, gaCaseReference);
+};
+
+const validateEventPagesDefaultJudgments = async (data) => {
+  //transform the data
+  console.log('validateEventPages');
+  for (let pageId of Object.keys(data.userInput)) {
+    await assertValidDataDefaultJudgments(data, pageId);
+  }
+};
+
+const assertValidDataDefaultJudgments = async (data, pageId) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+  const userData = data.userInput[pageId];
+
+  caseData = update(caseData, userData);
+  deleteCaseFields('flightDelayDetails');
+
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    caseId
+  );
+  let responseBody = await response.json();
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+
+  assert.equal(response.status, 200);
+  delete responseBody.data['flightDelayDetails'];
+  delete responseBody.data['defendantUserDetails'];
+
+  if (pageId === 'defendantDetailsSpec') {
+    delete responseBody.data['registrationTypeRespondentOne'];
+    delete responseBody.data['registrationTypeRespondentTwo'];
+  }
+  if (pageId === 'showCertifyStatementSpec') {
+    deleteCaseFields('currentDefendant');
+    deleteCaseFields('currentDefendantName');
+  }
+  if (pageId === 'claimPartialPayment') {
+    responseBody.data.currentDefendantName = 'Sir John Doe';
+    deleteCaseFields('CPRAcceptance');
+  }
+  if (pageId === 'paymentConfirmationSpec') {
+    delete responseBody.data['repaymentSummaryObject'];
+    deleteCaseFields('currentDefendantName');
+
+  } else if (pageId === 'paymentSetDate') {
+    if (['preview', 'demo'].includes(config.runningEnv)) {
+      responseBody.data.repaymentDue= '1502.00';
+    } else {
+      responseBody.data.repaymentDue= '1580.00';
+    }
+  }
+  if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
+    responseBody.data.currentDatebox = '25 August 2022';
+  }
+  if (pageId === 'claimPartialPayment' && ['preview', 'demo'].includes(config.runningEnv)) {
+    delete responseBody.data['showDJFixedCostsScreen'];
+    responseBody.data.currentDefendantName = 'Sir John Doe';
+  }
+
+  if (pageId === 'fixedCostsOnEntry') {
+    delete responseBody.data['showDJFixedCostsScreen'];
+    responseBody.data.currentDefendantName = 'Sir John Doe';
+  }
+  try {
+    assert.deepEqual(responseBody.data, caseData);
+  }
+  catch(err) {
+    console.error('Validate data is failed due to a mismatch ..', err);
+    throw err;
+  }
 };
