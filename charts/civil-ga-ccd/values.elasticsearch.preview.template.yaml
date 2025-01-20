@@ -28,6 +28,8 @@ ccd:
       requests:
         cpu: "25m"
         memory: "512Mi"
+    podAnnotations:
+      cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
   logstash:
     image: hmctspublic.azurecr.io/ccd/logstash
     imageTag: "latest"

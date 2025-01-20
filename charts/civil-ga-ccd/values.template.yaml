@@ -74,6 +74,8 @@ civil-general-applications:
         resources:
           requests:
             cpu: 25m
+        podAnnotations:
+          cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
         initdb:
           scripts:
             init.sql: |
