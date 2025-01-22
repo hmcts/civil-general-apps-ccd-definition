@@ -34,7 +34,7 @@
     "ID": "HelpWithFeesDetails",
     "ListElementCode": "outstandingFeeInPounds",
     "ElementLabel": "Applicant must pay",
-    "FieldType": "Text",
+    "FieldType": "MoneyGBP",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
