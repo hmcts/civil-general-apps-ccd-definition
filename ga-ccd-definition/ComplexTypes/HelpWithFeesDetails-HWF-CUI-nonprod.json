@@ -32,7 +32,7 @@
   },
   {
     "ID": "HelpWithFeesDetails",
-    "ListElementCode": "outstandingFeeInPounds",
+    "ListElementCode": "outstandingFee",
     "ElementLabel": "Applicant must pay",
     "FieldType": "MoneyGBP",
     "SecurityClassification": "Public",
@@ -45,7 +45,7 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "outstandingFeeInPounds = \"DONT_SHOW_UI\""
+    "FieldShowCondition": "outstandingFee = \"DONT_SHOW_UI\""
   },
   {
     "ID": "HelpWithFeesDetails",
@@ -55,7 +55,7 @@
     "FieldTypeParameter": "HWFFeesSummaryType",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "outstandingFeeInPounds = \"DONT_SHOW_UI\""
+    "FieldShowCondition": "outstandingFee = \"DONT_SHOW_UI\""
   },
   {
     "ID": "HelpWithFeesDetails",
@@ -64,6 +64,6 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "outstandingFeeInPounds = \"DONT_SHOW_UI\""
+    "FieldShowCondition": "outstandingFee = \"DONT_SHOW_UI\""
   }
 ]
