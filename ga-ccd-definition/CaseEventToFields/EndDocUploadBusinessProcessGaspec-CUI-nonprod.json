@@ -42,5 +42,16 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_DOC_UPLOAD_BUSINESS_PROCESS_GASPEC",
+    "CaseFieldID": "gaWaTrackLabel",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "WAFieldsCUI4",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   }
 ]

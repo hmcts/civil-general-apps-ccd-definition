@@ -89,6 +89,15 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "translatedDocumentsBulkPrint",
+    "Label": "Translated Document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TranslatedDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "applicantBilingualLanguagePreference",
     "FieldType": "YesOrNo",
     "Label": "LIP bilingual flag",
@@ -168,5 +177,21 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppDetailsOfOrderColl",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppReasonsOfOrderColl",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TextArea",
+    "SecurityClassification": "Public"
   }
 ]

@@ -4,6 +4,7 @@
     "ListElementCode": "name",
     "FieldType": "Text",
     "ElementLabel": "Name",
+    "Max": 70,
     "SecurityClassification": "Public"
   },
   {
