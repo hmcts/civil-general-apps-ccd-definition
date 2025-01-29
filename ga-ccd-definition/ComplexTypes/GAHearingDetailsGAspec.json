@@ -19,7 +19,8 @@
     "ListElementCode": "judgeRequiredYesOrNo",
     "FieldType": "YesOrNo",
     "ElementLabel": "Is your case reserved to a judge?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "judgeRequiredYesOrNo = \"DEPRECATED_DO_NOT_SHOW\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
