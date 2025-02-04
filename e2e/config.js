@@ -17,6 +17,14 @@ module.exports = {
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
     generalApplication: 'http://civil-general-applications-aat.service.core-compute-aat.internal'
 
+    // manageCase: 'https://xui-civil-general-applications-pr-1545.preview.platform.hmcts.net',
+    // authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    // ccdDataStore: 'https://ccd-data-store-api-civil-general-applications-pr-1545.preview.platform.hmcts.net',
+    // dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
+    // idamApi: 'https://idam-api.aat.platform.hmcts.net',
+    // civilService: 'https://civil-service-civil-general-applications-pr-1545.preview.platform.hmcts.net',
+    // generalApplication: 'http://civil-general-applications-pr-1545.preview.platform.hmcts.net'
+
     // manageCase: 'https://xui-civil-ccd-pr-4675.preview.platform.hmcts.net',
     // authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
     // ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-4675.preview.platform.hmcts.net',
