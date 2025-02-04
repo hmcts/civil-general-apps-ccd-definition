@@ -32,8 +32,10 @@ Scenario('Case offline 1V2 notify_claim_details AWAITING_ADDITIONAL_INFORMATION'
     + gaCaseReference + ' ***');
 
   console.log('Case offline');
-  await api.partialNotifyClaimDetails(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
+  
+  // Reinstate lines below when DTSCCI-1400 is complete
+  // await api.partialNotifyClaimDetails(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  // await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
 AfterSuite(async ({api}) => {

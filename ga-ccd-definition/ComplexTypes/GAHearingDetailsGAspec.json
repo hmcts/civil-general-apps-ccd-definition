@@ -91,7 +91,6 @@
     "ListElementCode": "ReasonForPreferredHearingType",
     "ElementLabel": "Why would you prefer this type of hearing?",
     "FieldType": "TextArea",
-    "Max": 400,
     "SecurityClassification": "Public"
   },
   {
@@ -121,7 +120,7 @@
     "ListElementCode": "HearingDetailsEmailID",
     "ElementLabel": "Preferred email",
     "FieldType": "Text",
-    "Max": 40,
+    "RegularExpression": "^([a-zA-Z0-9_\\.%+-]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
     "SecurityClassification": "Public"
   },
   {
@@ -178,7 +177,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "vulnerabilityQuestionsLabel",
-    "ElementLabel": "Vulnerability questions",
+    "ElementLabel": "#### Vulnerability questions",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
