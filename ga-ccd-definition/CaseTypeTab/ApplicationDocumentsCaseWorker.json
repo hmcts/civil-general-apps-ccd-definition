@@ -6,7 +6,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "generalOrderDocument",
     "TabFieldDisplayOrder": 1,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -15,7 +15,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "dismissalOrderDocument",
     "TabFieldDisplayOrder": 2,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -24,7 +24,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "directionOrderDocument",
     "TabFieldDisplayOrder": 3,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -33,7 +33,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "requestForInformationDocument",
     "TabFieldDisplayOrder": 4,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -42,7 +42,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "hearingOrderDocument",
     "TabFieldDisplayOrder": 5,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -51,7 +51,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "writtenRepSequentialDocument",
     "TabFieldDisplayOrder": 6,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -60,7 +60,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "writtenRepConcurrentDocument",
     "TabFieldDisplayOrder": 7,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -109,7 +109,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "hearingNoticeDocument",
     "TabFieldDisplayOrder": 13,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -118,7 +118,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "consentOrderDocument",
     "TabFieldDisplayOrder": 14,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -127,7 +127,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaDraftDocument",
     "TabFieldDisplayOrder": 15,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -136,7 +136,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaRespondDoc",
     "TabFieldDisplayOrder": 16,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
   },
   {
   "CaseTypeID": "GENERALAPPLICATION",
@@ -157,7 +157,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlDocRespondentSol",
     "TabFieldDisplayOrder": 18,
-    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -166,7 +166,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlDocRespondentSolTwo",
     "TabFieldDisplayOrder": 19,
-    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentName, createdDatetime, documentLink, createdBy)"
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -175,7 +175,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlDocBundle",
     "TabFieldDisplayOrder": 20,
-    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
   }
 ]
 

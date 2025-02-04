@@ -1,3 +1,4 @@
+const {nextYear} = require('../../api/dataHelper');
 const {I} = inject();
 
 module.exports = {
@@ -99,7 +100,7 @@ module.exports = {
     if ('yes' === hearingScheduledCheck) {
       await I.fillField(this.fields.hearingDateDay, 1);
       await I.fillField(this.fields.hearingDateMonth, 10);
-      await I.fillField(this.fields.hearingDateYear, 2024);
+      await I.fillField(this.fields.hearingDateYear, nextYear());
     }
   },
 
@@ -121,10 +122,10 @@ module.exports = {
     if ('yes' === trialRequired) {
       await I.fillField(this.fields.trialDateFromDay, 1);
       await I.fillField(this.fields.trialDateFromMonth, 10);
-      await I.fillField(this.fields.trialDateFromYear, 2024);
+      await I.fillField(this.fields.trialDateFromYear, nextYear());
       await I.fillField(this.fields.trialDateToDay, 1);
       await I.fillField(this.fields.trialDateToMonth, 12);
-      await I.fillField(this.fields.trialDateToYear, 2024);
+      await I.fillField(this.fields.trialDateToYear, nextYear());
     }
   },
 
@@ -157,10 +158,10 @@ module.exports = {
       I.waitForVisible(this.fields.unavailableDateFromDay);
       I.fillField(this.fields.unavailableDateFromDay, 1);
       I.fillField(this.fields.unavailableDateFromMonth, 10);
-      I.fillField(this.fields.unavailableDateFromYear, 2024);
+      I.fillField(this.fields.unavailableDateFromYear, nextYear());
       I.fillField(this.fields.unavailableDateToDay, 1);
       I.fillField(this.fields.unavailableDateToMonth, 12);
-      I.fillField(this.fields.unavailableDateToYear, 2024);
+      I.fillField(this.fields.unavailableDateToYear, nextYear());
     }
   },
 

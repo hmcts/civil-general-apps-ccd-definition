@@ -2,7 +2,6 @@
 const config = require('../../config.js');
 const mpScenario = 'ONE_V_ONE';
 const claimAmountJudge = '11000';
-const errorMsg = 'Sorry this service is not available in the current case management location, please raise an application manually.';
 let civilCaseReference, gaCaseReference;
 
 Feature('Unspec 1v1 - General Application after SDO Journey @api-nonprod');

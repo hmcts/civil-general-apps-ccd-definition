@@ -22,5 +22,17 @@
     "PageColumnNumber": 2,
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_SCHEDULER_CHECK_UNLESS_ORDER_DEADLINE",
+    "CaseFieldID": "gaWaTrackLabel",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "isMultiPartyPage",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 2,
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   }
 ]

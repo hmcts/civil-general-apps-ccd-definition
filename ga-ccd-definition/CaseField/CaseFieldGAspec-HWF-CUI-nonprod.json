@@ -169,7 +169,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "hwfOutstandingFeePaymentDoneForGa",
-    "Label": "Confirm payment of £${gaHwfDetails.outstandingFeeInPounds} has been taken.",
+    "Label": "Confirm payment of ${gaHwfDetails.outstandingFee} has been taken.",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "ConfirmPaymentMade",
     "SecurityClassification": "Public",
@@ -178,7 +178,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "hwfOutstandingFeePaymentDoneForAdditionalFee",
-    "Label": "Confirm payment of £${additionalHwfDetails.outstandingFeeInPounds} has been taken.",
+    "Label": "Confirm payment of ${additionalHwfDetails.outstandingFee} has been taken.",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "ConfirmPaymentMade",
     "SecurityClassification": "Public",
@@ -191,5 +191,23 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "claimantBilingualLanguagePreference",
+    "Label": "Claimant Language Preference",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "respondent1LiPResponse",
+    "Label": " ",
+    "FieldType": "RespondentLiPResponse",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
   }
 ]

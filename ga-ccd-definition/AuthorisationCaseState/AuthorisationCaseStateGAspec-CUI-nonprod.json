@@ -112,7 +112,7 @@
           "citizen-profile",
           "cui-admin-profile"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
@@ -164,7 +164,7 @@
           "citizen-profile",
           "cui-admin-profile"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },

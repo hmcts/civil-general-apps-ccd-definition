@@ -220,5 +220,18 @@
     "PageShowCondition": "generalAppRespondent1Representative = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RESPOND_TO_APPLICATION",
+    "CaseFieldID": "gaWaTrackLabel",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "isMultiPartyPage2",
+    "PageDisplayOrder": 8,
+    "PageColumnNumber": 1,
+    "PageFieldDisplayOrder": 1,
+    "FieldShowCondition": "generalAppRespondent1Representative = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   }
 ]

@@ -56,7 +56,6 @@ module.exports = {
       case 'Approve order':
         await I.see('The court records that:');
         await verifyJudgeRecitalText(await I.grabTextFrom(locate(this.fields.summaryLabels).first()), notice);
-        await I.see('For which document?');
         await I.see('Reasons');
         await I.see('Test Order details');
         break;

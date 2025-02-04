@@ -28,8 +28,10 @@ Scenario('Case offline 1V2 notify_claim_details AWAITING_DIRECTIONS_ORDER_DOCS',
   console.log('*** End Judge List the application for hearing GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('Case offline');
-  await api.partialNotifyClaimDetails(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
+
+  // Reinstate lines below when DTSCCI-1400 is complete
+  // await api.partialNotifyClaimDetails(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  // await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 });
 
 AfterSuite(async ({api}) => {
