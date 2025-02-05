@@ -92,6 +92,7 @@ wa:
         secretRef: "{{ .Values.global.postgresSecret }}"
         key: PASSWORD
         disabled: true
+
   camunda-bpm:
     java:
       image: hmctsprivatetemp.azurecr.io/camunda/bpm:latest
