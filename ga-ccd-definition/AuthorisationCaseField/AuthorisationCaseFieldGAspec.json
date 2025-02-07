@@ -4058,7 +4058,9 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "payment-access",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
