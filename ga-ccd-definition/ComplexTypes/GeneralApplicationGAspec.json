@@ -413,5 +413,12 @@
     "ElementLabel": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "emailPartyReference",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
   }
 ]
