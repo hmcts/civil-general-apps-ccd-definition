@@ -128,7 +128,7 @@
     "ListElementCode": "directionsResponseByDate",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 13,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "GAJudicialMakeADecisionScreen",
@@ -246,7 +246,7 @@
     "ListElementCode": "judgeRequestMoreInfoByDate",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 16,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "GAJudicialDecision",
