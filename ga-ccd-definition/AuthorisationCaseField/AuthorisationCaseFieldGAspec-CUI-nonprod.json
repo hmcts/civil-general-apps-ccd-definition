@@ -1993,5 +1993,97 @@
         "CRUD": "RU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "caseNameHmctsInternal",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "caseParticipantsFreeForm",
+    "UserRoles": [
+      "legal-adviser"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "freeFormRecitalAndOrderLabel",
+    "UserRoles": [
+      "legal-adviser"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "freeFormRecitalText",
+    "UserRoles": [
+      "legal-adviser"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "freeFormOrderedLabel",
+    "UserRoles": [
+      "legal-adviser"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "freeFormOrderedText",
+    "UserRoles": [
+      "legal-adviser"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderOnCourtsListLabel",
+    "UserRoles": [
+      "legal-adviser"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderOnCourtsList",
+    "UserRoles": [
+      "legal-adviser"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderOnCourtInitiative",
+    "UserRoles": [
+      "legal-adviser"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "orderWithoutNotice",
+    "UserRoles": [
+      "legal-adviser"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaFinalOrderDocPreview",
+    "UserRoles": [
+      "legal-adviser"
+    ],
+    "CRUD": "CRU"
   }
 ]
