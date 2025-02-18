@@ -2967,6 +2967,7 @@
       {
         "UserRoles": [
           "judge-profile",
+          "legal-adviser",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
@@ -2977,7 +2978,8 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseParticipantsFreeForm",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "legal-adviser"
     ],
     "CRUD": "CRU"
   },
@@ -2986,6 +2988,7 @@
     "CaseFieldID": "freeFormRecitalAndOrderLabel",
     "UserRoles": [
       "judge-profile",
+      "legal-adviser",
       "caseworker-civil-systemupdate"
     ],
     "CRUD": "CRU"
@@ -2994,7 +2997,8 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "freeFormRecitalText",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "legal-adviser"
     ],
     "CRUD": "CRU"
   },
@@ -3002,7 +3006,8 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "freeFormOrderedLabel",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "legal-adviser"
     ],
     "CRUD": "CRU"
   },
@@ -3010,7 +3015,8 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "freeFormOrderedText",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "legal-adviser"
     ],
     "CRUD": "CRU"
   },
@@ -3018,7 +3024,8 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderOnCourtsListLabel",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "legal-adviser"
     ],
     "CRUD": "CRU"
   },
@@ -3026,7 +3033,8 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderOnCourtsList",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "legal-adviser"
     ],
     "CRUD": "CRU"
   },
@@ -3034,7 +3042,8 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderOnCourtInitiative",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "legal-adviser"
     ],
     "CRUD": "CRU"
   },
@@ -3042,7 +3051,8 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderWithoutNotice",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "legal-adviser"
     ],
     "CRUD": "CRU"
   },
@@ -3204,7 +3214,8 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaFinalOrderDocPreview",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "legal-adviser"
     ],
     "CRUD": "CRU"
   },
