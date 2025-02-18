@@ -58,6 +58,33 @@
   },
   {
     "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judicialTimeEstimateDays",
+    "ElementLabel": "Day(s)",
+    "FieldType": "Number",
+    "Max": 9,
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "judicialTimeEstimate = \"OTHER\""
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judicialTimeEstimateHours",
+    "ElementLabel": "Hour(s)",
+    "FieldType": "Number",
+    "Max": 99,
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "judicialTimeEstimate = \"OTHER\""
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
+    "ListElementCode": "judicialTimeEstimateMinutes",
+    "ElementLabel": "Minute(s)",
+    "FieldType": "Number",
+    "Max": 99,
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "judicialTimeEstimate = \"OTHER\""
+  },
+  {
+    "ID": "GAJudgesHearingListGAspec",
     "ListElementCode": "judicialSupportRequirementLabel",
     "ElementLabel": "### Support requirements (optional)",
     "FieldType": "Label",
