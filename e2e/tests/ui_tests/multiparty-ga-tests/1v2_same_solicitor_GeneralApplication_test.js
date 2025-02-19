@@ -33,7 +33,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.createGeneralApplication(
     getAppTypes().slice(0, 1),
     civilCaseReference, '' +
-    'no', 'no', 'yes', 'no', 'no', 'no', 'no',
+    'no', 'no', 'yes', 'no', 'no', 'no',
     'disabledAccess');
   console.log('General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
@@ -87,7 +87,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     await I.createGeneralApplication(
       getAppTypes().slice(0, 5),
       civilCaseReference,
-      'no', 'no', 'no', 'yes', 'yes', 'yes', 'no',
+      'no', 'no', 'no', 'yes', 'yes', 'no',
       'signLanguageInterpreter');
     console.log('General Application created: ' + civilCaseReference);
     gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
