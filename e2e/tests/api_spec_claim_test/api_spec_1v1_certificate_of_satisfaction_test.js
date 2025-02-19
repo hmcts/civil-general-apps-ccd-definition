@@ -3,7 +3,7 @@ const { createAccount, deleteAccount} = require('../../api/idamHelper.js');
 
 let civilCaseReference;
 
-Feature('GA SPEC Claim 1v1 Certification of Satisfaction/Cancellation @api-cui @api-nonprod');
+Feature('GA SPEC Claim 1v1 Certification of Satisfaction/Cancellation @api-cui @api-nonprod-cos');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
