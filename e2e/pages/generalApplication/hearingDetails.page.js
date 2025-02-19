@@ -14,13 +14,6 @@ module.exports = {
     hearingDateDay: '#hearingDate-day',
     hearingDateMonth: '#hearingDate-month',
     hearingDateYear: '#hearingDate-year',
-    judgeRequired: {
-      id: '#generalAppHearingDetails_judgeRequiredYesOrNo',
-      options: {
-        yes: '#generalAppHearingDetails_judgeRequiredYesOrNo_Yes',
-        no: '#generalAppHearingDetails_judgeRequiredYesOrNo_No'
-      }
-    },
     judgeName: '#generalAppHearingDetails_judgeName',
     trialRequired: {
       id: '#generalAppHearingDetails_trialRequiredYesOrNo',
@@ -104,15 +97,6 @@ module.exports = {
     }
   },
 
-  async isJudgeRequired(judgeRequired) {
-    I.waitForElement(this.fields.judgeRequired.id);
-    await within(this.fields.judgeRequired.id, () => {
-      I.click(this.fields.judgeRequired.options[judgeRequired]);
-    });
-    if ('yes' === judgeRequired) {
-      await I.fillField(this.fields.judgeName, 'Steve Smith');
-    }
-  },
 
   async isTrialRequired(trialRequired) {
     I.waitForElement(this.fields.trialRequired.id);
