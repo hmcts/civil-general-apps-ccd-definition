@@ -25,7 +25,7 @@ Scenario('GA for 2v1 - Concurrent written representations - without notice to wi
   await I.createGeneralApplication(
     getAppTypes().slice(0, 4),
     civilCaseReference,
-    'no', 'no', 'no', 'yes', 'yes', 'yes', 'no',
+    'no', 'no', 'no', 'yes', 'yes', 'no',
     'signLanguageInterpreter');
   console.log('General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
