@@ -170,6 +170,7 @@ ccd:
 
 camunda-bpm:
   java:
+    image: hmctsprivatetemp.azurecr.io/camunda/bpm:latest
     ingressHost: civil-ga-ccd-camunda-staging.aat.platform.hmcts.net
 civil-wa:
   enabled: false
