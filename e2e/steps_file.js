@@ -194,9 +194,8 @@ const enterApplicationDetails = () => [
   () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH),
 ];
 
-const fillHearingDetails = (hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, vulnerabilityQuestions, supportRequirement) => [
+const fillHearingDetails = (hearingScheduled, trialRequired, unavailableTrailRequired, vulnerabilityQuestions, supportRequirement) => [
   () => hearingAndTrialPage.isHearingScheduled(hearingScheduled),
-  () => hearingAndTrialPage.isJudgeRequired(judgeRequired),
   () => hearingAndTrialPage.isTrialRequired(trialRequired),
   () => hearingAndTrialPage.selectHearingPreferences('inPerson'),
   () => hearingAndTrialPage.selectHearingDuration('fortyFiveMin'),
@@ -787,13 +786,12 @@ module.exports = function () {
       return await this.grabTextFrom('.collection-field-table a span');
     },
 
-    async respondToApplication(caseId, consentCheck, hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement, appTypes) {
+    async respondToApplication(caseId, consentCheck, hearingScheduled, trialRequired, unavailableTrailRequired, supportRequirement, appTypes) {
       eventName = events.RESPOND_TO_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName,caseId),
         () => respConsentCheckPage.selectConsentCheck(consentCheck),
         () => respHearingDetailsPage.isRespHearingScheduled(hearingScheduled),
-        () => respHearingDetailsPage.isRespJudgeRequired(judgeRequired),
         () => respHearingDetailsPage.isRespTrialRequired(trialRequired),
         () => respHearingDetailsPage.selectRespHearingPreferences('inPerson'),
         () => respHearingDetailsPage.selectRespHearingDuration('fortyFiveMin'),
@@ -813,7 +811,6 @@ module.exports = function () {
         () => caseViewPage.startEvent(eventName,caseId),
         () => respondentDebtorResponsePage.selectDebtorOffer(type, paymentPlanType),
         () => respHearingDetailsPage.isRespHearingScheduled('yes'),
-        () => respHearingDetailsPage.isRespJudgeRequired('yes'),
         () => respHearingDetailsPage.isRespTrialRequired('yes'),
         () => respHearingDetailsPage.selectRespHearingPreferences('inPerson'),
         () => respHearingDetailsPage.selectRespHearingDuration('fortyFiveMin'),
@@ -1145,7 +1142,7 @@ module.exports = function () {
        ]);
     },
 
-    async createGeneralApplication(appTypes, caseId, consentCheck, isUrgent, notice, hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, supportRequirement) {
+    async createGeneralApplication(appTypes, caseId, consentCheck, isUrgent, notice, hearingScheduled, trialRequired, unavailableTrailRequired, supportRequirement) {
       eventName = events.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
         ...selectApplicationType(eventName, appTypes),
@@ -1156,7 +1153,7 @@ module.exports = function () {
           ...selectNotice(notice),
         ]),
         ...enterApplicationDetails(),
-        ...fillHearingDetails(hearingScheduled, judgeRequired, trialRequired, unavailableTrailRequired, 'yes', supportRequirement),
+        ...fillHearingDetails(hearingScheduled, trialRequired, unavailableTrailRequired, 'yes', supportRequirement),
         ...verifyApplicationFee(consentCheck, notice, appTypes),
         ...verifyCheckAnswerForm(caseId, consentCheck),
         ...clickOnHearingDetailsChangeLink(consentCheck),
