@@ -17,6 +17,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "generalAppResponseStatementOfTruth",
+    "Label": " ",
+    "FieldType": "GAStatementOfTruthGAspec",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "generalAppAskForCosts",
     "FieldType": "YesOrNo",
     "Label": "LIP asked for costs back",

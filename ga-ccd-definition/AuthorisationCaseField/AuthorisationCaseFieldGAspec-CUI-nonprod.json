@@ -1264,6 +1264,32 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppResponseStatementOfTruth",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access",
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppConsentOrder",
     "AccessControl": [
       {
