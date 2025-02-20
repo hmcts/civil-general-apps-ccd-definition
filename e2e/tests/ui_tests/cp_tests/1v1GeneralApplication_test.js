@@ -35,7 +35,7 @@ Scenario('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
   await I.createGeneralApplication(
     getAppTypes().slice(3, 4),
     civilCaseReference, '' +
-    'yes', 'no', 'no', 'no', 'no', 'no', 'no',
+    'yes', 'no', 'no', 'no', 'no', 'no',
     'disabledAccess');
   console.log('1v1 General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
@@ -91,7 +91,7 @@ Scenario('GA for 1v1 - Direction order journey @regression4', async ({I, api}) =
   await I.createGeneralApplication(
     getAppTypes().slice(0, 4),
     civilCaseReference,
-    'no', 'no', 'no', 'yes', 'yes', 'yes', 'no',
+    'no', 'no', 'no', 'yes', 'yes', 'no',
     'signLanguageInterpreter');
   console.log('General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
@@ -137,7 +137,7 @@ Scenario.skip('GA for 1v1 Specified Claim- Dismissal order journey @regression2'
   await I.createGeneralApplication(
     getAppTypes().slice(0, 4),
     civilCaseReference,
-    'no', 'no', 'no', 'yes', 'yes', 'yes', 'no',
+    'no', 'no', 'no', 'yes', 'yes', 'no',
     'signLanguageInterpreter');
   console.log('General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
@@ -190,7 +190,7 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
   await I.createGeneralApplication(
     getAppTypes().slice(0, 5),
     civilCaseReference,
-    'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no',
+    'no', 'no', 'yes', 'yes', 'yes', 'no',
     'signLanguageInterpreter');
   console.log('General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
