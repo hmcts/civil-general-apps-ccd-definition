@@ -8,7 +8,7 @@ def product = "civil"
 def component = "ga-ccd"
 def camundaBranch = "master"
 def ccddefbranch = "master"
-def dmnBranch = "master"
+def dmnBranch = "DTSCCI-1191-amend-task-name"
 def waStandaloneBranch = "master"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
