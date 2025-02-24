@@ -263,7 +263,9 @@
           "caseworker-civil-solicitor",
           "caseworker-civil-systemupdate",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "citizen-profile",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
