@@ -121,7 +121,7 @@ Scenario('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Application 
     + gaCaseReference + ' ***');
 
   console.log('*** Start Callback for Additional Payment: ' + gaCaseReference + ' ***');
-  await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
+  await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   console.log('*** End uncloaking consent order: ' + gaCaseReference + ' ***');
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
@@ -183,7 +183,7 @@ Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1
   }
 
   console.log('*** Start Callback for Additional Payment: ' + gaCaseReference + ' ***');
-  await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
+  await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   console.log('*** End uncloaking consent order: ' + gaCaseReference + ' ***');
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
