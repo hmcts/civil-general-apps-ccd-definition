@@ -124,10 +124,6 @@ Scenario('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Application 
   await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   console.log('*** End uncloaking consent order: ' + gaCaseReference + ' ***');
 
-  console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
-  console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
-
 });
 
 Scenario('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 1V1 - Uncloak Application @api-tests', async ({api, I}) => {
@@ -161,7 +157,7 @@ Scenario('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 
 
 });
 
-Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1V1 -- URGENT - Uncloak Application @api-tests', async ({api, I}) => {
+Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1V1 MIKE -- URGENT - Uncloak Application @api-tests', async ({api, I}) => {
 
   console.log('Make a Urgent General Application for Consent order');
   gaCaseReference = await api.initiateConsentUrgentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, ['STAY_THE_CLAIM']);
@@ -185,10 +181,6 @@ Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1
   console.log('*** Start Callback for Additional Payment: ' + gaCaseReference + ' ***');
   await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   console.log('*** End uncloaking consent order: ' + gaCaseReference + ' ***');
-
-  console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
-  console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
 });
 
