@@ -787,10 +787,10 @@ module.exports = {
     assert.equal(response.status, 201);
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have provided the requested information');
-    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', user);
+    await waitForGACamundaEventsFinishedBusinessProcess(gaCaseId, 'PROCEEDS_IN_HERITAGE', user);
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
-    assert.equal(updatedGABusinessProcessData.ccdState, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
+    assert.equal(updatedGABusinessProcessData.ccdState, 'PROCEEDS_IN_HERITAGE');
     await addUserCaseMapping(gaCaseId, user);
   },
 
