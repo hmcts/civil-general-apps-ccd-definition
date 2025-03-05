@@ -14,13 +14,6 @@ module.exports = {
     hearingDateDay: '#hearingDate-day',
     hearingDateMonth: '#hearingDate-month',
     hearingDateYear: '#hearingDate-year',
-    judgeRequired: {
-      id: '#hearingDetailsResp_judgeRequiredYesOrNo',
-      options: {
-        yes: '#hearingDetailsResp_judgeRequiredYesOrNo_Yes',
-        no: '#hearingDetailsResp_judgeRequiredYesOrNo_No'
-      }
-    },
     judgeName: '#hearingDetailsResp_judgeName',
     trialRequired: {
       id: '#hearingDetailsResp_trialRequiredYesOrNo',
@@ -100,16 +93,6 @@ module.exports = {
       await I.fillField(this.fields.hearingDateDay, 1);
       await I.fillField(this.fields.hearingDateMonth, 10);
       await I.fillField(this.fields.hearingDateYear, nextYear());
-    }
-  },
-
-  async isRespJudgeRequired(judgeRequired) {
-    I.waitForElement(this.fields.judgeRequired.id);
-    await within(this.fields.judgeRequired.id, () => {
-      I.click(this.fields.judgeRequired.options[judgeRequired]);
-    });
-    if ('yes' === judgeRequired) {
-      await I.fillField(this.fields.judgeName, 'Steve Smith');
     }
   },
 
