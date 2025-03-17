@@ -1,306 +1,306 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppWrittenRepText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "helpWithFeesMoreInformationGa",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "respondent1LiPResponse",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppDetailsOfOrderColl",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseTitle2",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "headingHelpWithFeesDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaFeeLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "remissionFeeAmountWarningMessage",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "hwfNumberForFeePaymentOutcome",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "translatedDocuments",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppHelpWithFees",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "respondentBilingualLanguagePreference",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "helpWithFeesMoreInformationAdditional",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseTitleTranslatedDoc",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicationFeeAmountInPence",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "translatedDocumentsBulkPrint",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "additionalFeeLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "additionalHwfDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppPaymentDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicantBilingualLanguagePreference",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "bilingualHintTextFreeForm",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "hwfNumberAvailable",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "bilingualHintTextWrittenR",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "bilingualHintTextDecision",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "hwfFullRemissionGrantedForGa",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "bilingualHintTextHearing",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "hwfOutstandingFeePaymentDoneForAdditionalFee",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "bilingualHintTextMoreInfo",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "helpWithFeesReferenceNumber",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseTitleWithHWFGaFeeNumber",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppAskForCosts",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "hwfFeeType",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "claimantBilingualLanguagePreference",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "certOfSC",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppReasonsOfOrderColl",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "defendantUserDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "respondentResponseDeadlineChecked",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "bilingualHintTextWrittenDraw",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "issueDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "bilingualHint",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseTitleWithHwFDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "subTitleHwfDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaHwfDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppAddlnInfoText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseTitle",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "claimantUserDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "hwfFullRemissionGrantedForAdditionalFee",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseLabelGaReference",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "hwfOutstandingFeePaymentDoneForGa",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppResponseStatementOfTruth",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "bilingualHintTextGeneralOrder",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"

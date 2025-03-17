@@ -1,1308 +1,1308 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaWaTrackLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseDocumentUploadDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseLink",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "isGaApplicantLip",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicationClosedDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "publicFundingCostsProtectionLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "hearingNoticeDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "parentCaseReference",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppConsentOrder",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "hearingDetailsResp",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "finalOrderSelection",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseDocumentUploadDateRes",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaRespondentDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaRespDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "ServiceRequest",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderAppealDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderOnCourtsListLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialGeneralOrderHearingRequirement",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderMadeSelection",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderGiveReasonsYesNo",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppSubmittedDateGAspec",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "concurrentWrittenRepresentationUploadyBy",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppStatementOfTruth",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppHearingDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderFurtherHearingToggle",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "publicFundingCostsProtectionDropdown",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderRecitals",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondDebtorDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderMadeDateHeardDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "respondentSolTwoGaAppDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppWrittenRepUpload",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "requestForInformationDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "finalOrderSelectionLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialWrittenRepDocPreview",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderOrderedThat",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaHearingNoticeDetail",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicationIsCloakedLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicantSolicitors",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "hearingOrderDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderMadeOnOwnInitiative",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "casePaymentHistoryViewer",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "defendant1PartyName",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "dismissalOrderDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppReasonsOfOrder",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderWithoutNotice",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialMakeOrderDocPreview",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicationTypes",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaRespondentConsent",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderMadeLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "defendant2PartyName",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppNotificationDeadlineDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderMadeOnDetailsPrimeLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "writtenRepSequentialDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderGiveReasonsLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "freeFormRecitalText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderFurtherHearingLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderCost",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppParentCaseLink",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondentAgreement",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialApplicanSequentialDateText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "directionInRelationToHearingText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderRecitalsLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "claimant1PartyName",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppUploadEvidenceLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppEvidenceDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppStatementOfTruthConsent",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderRecitalsRecorded",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialGeneralOrderHeading",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalOrderDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaAddlDocRespondentSol",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondReason",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "publicFundingCostsProtection",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "addnDocumentLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecision",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "litigiousPartyID",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialGeneralHearingOrderRecital",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judgeAssistedOrderPapersLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondConsentReason",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialByCourtsInitiativeForWrittenRep",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "CaseAccessCategory",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderAppealLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicantPartyName",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "consentOrderDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "makeAppVisibleToRespondents",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "freeFormRecitalAndOrderLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeOrder",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "writtenRepresentationsDrawGeneralOrder",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseNameGaInternal",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppWrittenRepUploadLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicationTakenOfflineDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judgeTitle",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicationIsCloaked",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaRespondDoc",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppType",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseParticipantsFreeForm",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderOnCourtInitiative",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "isMultiParty",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderCourtOwnInitiativeListForHearing",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "freeFormOrderedLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "writtenRepConcurrentDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppApplnSolicitor",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondent1Representative",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialGeneralOrderHearingEstimationTimeText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppDateDeadline",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondConsentUploadLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "unfinishedBackEndProcess",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondConsentDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "emailPartyReference",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialListHearingDocPreview",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialListForHearing",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderMadeCourtsInitiativeLabelForHearing",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondentSolicitors",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "isDocumentVisible",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaUploadN245FormUploadLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondUploadLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaAddlDocBundle",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppPBADetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppDetailsOfOrder",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderReasonsLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialHearingGeneralOrderHearingType",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseParticipantsAssistedOrder",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderFurtherHearingDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialGOHearingDirections",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialGeneralOrderHearingEstimationTime",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppDirOrderUpload",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplicationCaseListLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppApplicantAddlSolicitors",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialHearingGeneralOrderHearingText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "freeFormOrderedText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaDirectionDocList",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialSequentialDateText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderJudgeHeardLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "directionOrderDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "consentOrderDocPreview",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "civilServiceUserRoles",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseNameLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseManagementLocation",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "respondentsResponses",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "claimantGaAppDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseManagementCategory",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "respondentSolGaAppDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderCourtOwnInitiativeForWrittenRep",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "sequentialWrittenRepresentationRespondWithin",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseParticipants",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderMadeOnOption",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderRepresentation",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderMadeCourtsInitiativeLabelForWrittenRep",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "claimant2PartyName",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "isGaRespondentTwoLip",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "locationName",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderCostSecondaryLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppN245FormUpload",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "businessProcess",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaRespondentDebtorOffer",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "defendantSolicitors",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaHearingNoticeApplication",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderGiveReasonsDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaDraftDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderWithoutNoticeListForHearing",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppStatementOfTruthLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderMadeOnWithOutNotice",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaDetailsMasterCollection",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialConcurrentDateText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "parentClaimantIsApplicant",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderJudgeHeardFrom",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaAddlnInfoList",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "costReservedDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "showRequestInfoPreviewDoc",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderWithoutNoticeForWrittenRep",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaFinalOrderDocPreview",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppVaryJudgementType",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppAddlnInfoUpload",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplicationType",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "sequentialWrittenRepresentationUploadyBy",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialHearingGOHearingReqText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "referToJudge",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "applicationIsUncloakedOnce",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "referToLegalAdvisor",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "uploadDocument",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderOrdered",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedCostTypes",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "approveConsentOrder",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaAddlDocStaff",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "orderOnCourtsList",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaAddlDoc",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppInformOtherParty",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaWrittenRepDocList",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppUrgencyRequirement",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judgeRecitalText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderMadeSelectionLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialRequestMoreInfoDocPreview",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderCostsBespoke",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "isApplicationUrgent",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppSuperClaimType",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialByCourtsInitiativeListForHearing",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaAddlDocClaimant",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaHearingNoticeInformation",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseNameHmctsInternal",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondDebtorUploadLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "typeRepresentationJudgePapersList",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "isGaRespondentOneLip",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "migrationId",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderOrderedThatText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicidalDecisionMakeAnOrderForWrittenRepresentationsLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderMadeOnDetailsSecondLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaAddlDocRespondentSolTwo",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "assistedOrderAppealToggle",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "isCcmccLocation",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "gaApplicantDisplayName",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
