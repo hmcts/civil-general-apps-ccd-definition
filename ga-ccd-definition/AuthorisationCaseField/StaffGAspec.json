@@ -246,7 +246,7 @@
     "UserRole": "caseworker-civil-staff"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseHistory",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
