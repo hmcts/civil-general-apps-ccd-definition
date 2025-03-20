@@ -1022,6 +1022,27 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judicialTimeEstimateDays",
+    "UserRole": "legal-adviser",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judicialTimeEstimateHours",
+    "UserRole": "legal-adviser",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judicialTimeEstimateMinutes",
+    "UserRole": "legal-adviser",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judicialSupportRequirement",
     "UserRole": "legal-adviser",
     "CRUD": "CRU"

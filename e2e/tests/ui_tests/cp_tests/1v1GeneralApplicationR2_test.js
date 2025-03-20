@@ -74,7 +74,7 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
   await I.createGeneralApplication(
     getAppTypes().slice(9, 10),
     civilCaseReference, '' +
-    'no', 'no', 'yes', 'no', 'no', 'no', 'no',
+    'no', 'no', 'yes', 'no', 'no', 'no',
     'disabledAccess');
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,

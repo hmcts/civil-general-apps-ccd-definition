@@ -23,7 +23,7 @@ Scenario.skip('GA for Specified Claim 1v2 different Solicitor - respond to appli
     await I.createGeneralApplication(
       getAppTypes().slice(0, 3),
       civilCaseReference,
-      'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no',
+      'no', 'no', 'yes', 'yes', 'yes', 'no',
       'signLanguageInterpreter');
     console.log('General Application created: ' + civilCaseReference);
     gaCaseReference = await api.getGACaseReference(config.defendantSolicitorUser, civilCaseReference);

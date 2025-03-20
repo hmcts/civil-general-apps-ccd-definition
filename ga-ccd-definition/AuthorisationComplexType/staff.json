@@ -2028,6 +2028,27 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judicialTimeEstimateDays",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judicialTimeEstimateHours",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialListForHearing",
+    "ListElementCode": "judicialTimeEstimateMinutes",
+    "UserRole": "civil-administrator-basic",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "judicialListForHearing",
     "ListElementCode": "judicialSupportRequirement",
     "UserRole": "civil-administrator-basic",
     "CRUD": "R"

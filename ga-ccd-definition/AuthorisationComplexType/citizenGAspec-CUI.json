@@ -1491,6 +1491,24 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppResponseStatementOfTruth",
+    "ListElementCode": "name",
+    "UserRoles": [
+      "citizen-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "generalAppResponseStatementOfTruth",
+    "ListElementCode": "role",
+    "UserRoles": [
+      "citizen-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "caseNameGaInternal",
     "UserRoles": [

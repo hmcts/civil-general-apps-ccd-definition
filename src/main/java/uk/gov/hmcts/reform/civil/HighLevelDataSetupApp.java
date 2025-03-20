@@ -45,7 +45,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("hearing-schedule-access", "PUBLIC"),
         new CcdRoleConfig("caseflags-admin", "PUBLIC"),
         new CcdRoleConfig("caseflags-viewer", "PUBLIC"),
-        new CcdRoleConfig("caseworker-wa-task-configuration","PUBLIC"),
+        new CcdRoleConfig("caseworker-wa-task-configuration","RESTRICTED"),
         new CcdRoleConfig("CITIZEN-DEFENDANT-PROFILE","PUBLIC"),
         new CcdRoleConfig("CITIZEN-CLAIMANT-PROFILE","PUBLIC"),
         new CcdRoleConfig("cui-admin-profile","PUBLIC"),
@@ -63,7 +63,8 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("RESPONDENT-ONE-PROFILE-SPEC", "PUBLIC"),
         new CcdRoleConfig("ctsc", "PUBLIC"),
         new CcdRoleConfig("ctsc-team-leader", "PUBLIC"),
-        new CcdRoleConfig("nbc-team-leader", "PUBLIC")
+        new CcdRoleConfig("nbc-team-leader", "PUBLIC"),
+        new CcdRoleConfig("caseworker-civil-doc-removal", "PUBLIC")
     };
 
     private final CcdEnvironment environment;

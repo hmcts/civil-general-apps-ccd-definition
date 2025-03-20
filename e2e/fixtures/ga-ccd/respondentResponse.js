@@ -20,7 +20,6 @@ module.exports = {
       hearingDetailsResp: {
         hearingYesorNo: 'No',
         hearingDate: null,
-        judgeRequiredYesOrNo: 'No',
         judgeName: null,
         trialRequiredYesOrNo: 'No',
         trialDateFrom: null,
@@ -70,7 +69,6 @@ module.exports = {
       hearingDetailsResp: {
         hearingYesorNo: 'No',
         hearingDate: null,
-        judgeRequiredYesOrNo: 'No',
         judgeName: null,
         trialRequiredYesOrNo: 'No',
         trialDateFrom: null,
@@ -115,7 +113,6 @@ module.exports = {
       hearingDetailsResp: {
         hearingYesorNo: 'No',
         hearingDate: null,
-        judgeRequiredYesOrNo: 'No',
         judgeName: null,
         trialRequiredYesOrNo: 'No',
         trialDateFrom: null,
