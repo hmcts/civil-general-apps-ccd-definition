@@ -1,5 +1,5 @@
 [
-   {
+  {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "civilServiceUserRoles",
     "CRUD": "R",
@@ -244,5 +244,11 @@
     "CaseFieldID": "isGaRespondentTwoLip",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "caseHistory",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
