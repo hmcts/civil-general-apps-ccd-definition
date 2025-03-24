@@ -43,7 +43,7 @@ civil-general-applications:
           - name: microservicekey-civil-general-applications
             alias: idam.s2s-auth.totp_secret
     environment:
-      LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
+      LAUNCH_DARKLY_ENV: aat
 civil-service:
   enabled: true
   java:
@@ -103,7 +103,7 @@ civil-service:
           - name: hmc-servicebus-shared-access-key-tf
             alias: HMC_HEARINGS_TOPIC_ACCESS_KEY
     environment:
-      LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
+      LAUNCH_DARKLY_ENV: aat
       WA_TOGGLE: WA3.5
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
