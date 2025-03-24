@@ -47,7 +47,6 @@
 ./bin/utils/ccd-add-role.sh "caseworker-civil-doc-removal"
 ./bin/utils/ccd-add-role.sh "caseworker-civil-system-field-reader"
 
-
 roles=("solicitor" "systemupdate" "admin" "staff" "judge")
 for role in "${roles[@]}"
 do
