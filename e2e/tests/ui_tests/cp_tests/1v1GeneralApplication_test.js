@@ -229,10 +229,10 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
   await I.see(additionalInfoStatus);
   await I.respondToJudgeAdditionalInfo(gaCaseReference);
   console.log('Responded to Judge Additional Information on case: ' + gaCaseReference);
-}).tag('@local-testing');
+});
 
-/*
+
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
-*/
+
