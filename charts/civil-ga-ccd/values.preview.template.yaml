@@ -44,6 +44,7 @@ civil-general-applications:
             alias: idam.s2s-auth.totp_secret
     environment:
       LAUNCH_DARKLY_ENV: aat
+
 civil-service:
   enabled: true
   java:
