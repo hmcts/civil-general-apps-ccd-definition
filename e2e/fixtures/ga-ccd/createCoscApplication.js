@@ -1,7 +1,7 @@
 const {date} = require('../../api/dataHelper');
 
 module.exports = {
-  event: 'INITIATE_GENERAL_APPLICATION',
+  event: 'INITIATE_GENERAL_APPLICATION_COSC',
   caseDataUpdate: {
     generalAppType: {
       types: [
