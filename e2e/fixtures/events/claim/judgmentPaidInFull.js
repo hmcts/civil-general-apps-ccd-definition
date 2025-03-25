@@ -4,7 +4,7 @@ module.exports = {
   valid: {
     MarkJudgmentPaidInFull: {
       joJudgmentPaidInFull: {
-        dateOfFullPaymentMade:  date,
+        dateOfFullPaymentMade:  date(0),
         confirmFullPaymentMade:['CONFIRMED']
       }
     }
