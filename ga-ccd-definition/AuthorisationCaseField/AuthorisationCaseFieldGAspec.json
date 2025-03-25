@@ -1,16 +1,6 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "caseHistory",
-    "UserRoles": [
-      "caseworker-civil-systemupdate",
-      "caseworker-civil-admin",
-      "judge-profile"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalApplications",
     "AccessControl": [
       {
@@ -4065,6 +4055,19 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "casePaymentHistoryViewer",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-staff",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "caseHistory",
     "AccessControl": [
       {
         "UserRoles": [

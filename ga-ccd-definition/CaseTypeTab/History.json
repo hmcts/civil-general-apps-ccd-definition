@@ -1,7 +1,6 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "Channel": "CaseWorker",
     "TabID": "History",
     "TabLabel": "History",
     "TabDisplayOrder": 3,
