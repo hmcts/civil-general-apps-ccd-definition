@@ -202,7 +202,7 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
     states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);
 
   await I.login(config.defendantSolicitorUser);
-  await I.respondToApplication(gaCaseReference, 'yes', 'yes', 'yes', 'yes', 'no',
+  await I.respondToApplication(gaCaseReference, 'yes', 'yes', 'yes', 'yes',
     'signLanguageInterpreter', getAppTypes().slice(0, 5));
   console.log('Org1 solicitor Responded to application: ' + gaCaseReference);
   await I.respCloseAndReturnToCaseDetails();
@@ -231,6 +231,8 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
   console.log('Responded to Judge Additional Information on case: ' + gaCaseReference);
 });
 
+
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
+
