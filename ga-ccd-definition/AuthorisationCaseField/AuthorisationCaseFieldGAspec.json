@@ -4072,7 +4072,8 @@
       {
         "UserRoles": [
           "caseworker-civil-staff",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "cui-admin-profile"
         ],
         "CRUD": "R"
       }
