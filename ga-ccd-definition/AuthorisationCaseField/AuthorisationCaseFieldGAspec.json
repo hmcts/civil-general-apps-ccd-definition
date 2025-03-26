@@ -4072,8 +4072,7 @@
       {
         "UserRoles": [
           "caseworker-civil-staff",
-          "caseworker-civil-admin",
-          "cui-admin-profile"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
