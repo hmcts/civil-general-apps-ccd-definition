@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "generalOrderDocument",
     "TabFieldDisplayOrder": 1,
@@ -11,7 +11,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "dismissalOrderDocument",
     "TabFieldDisplayOrder": 2,
@@ -20,7 +20,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "directionOrderDocument",
     "TabFieldDisplayOrder": 3,
@@ -29,7 +29,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "requestForInformationDocument",
     "TabFieldDisplayOrder": 4,
@@ -38,7 +38,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "hearingOrderDocument",
     "TabFieldDisplayOrder": 5,
@@ -47,7 +47,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "writtenRepSequentialDocument",
     "TabFieldDisplayOrder": 6,
@@ -56,7 +56,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "writtenRepConcurrentDocument",
     "TabFieldDisplayOrder": 7,
@@ -65,7 +65,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaWrittenRepDocList",
     "TabFieldDisplayOrder": 8
@@ -73,7 +73,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaDirectionDocList",
     "TabFieldDisplayOrder": 9
@@ -81,7 +81,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlnInfoList",
     "TabFieldDisplayOrder": 10
@@ -89,7 +89,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "generalAppEvidenceDocument",
     "TabFieldDisplayOrder": 11
@@ -97,7 +97,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "generalAppN245FormUpload",
     "TabFieldDisplayOrder": 12
@@ -105,7 +105,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "hearingNoticeDocument",
     "TabFieldDisplayOrder": 13,
@@ -114,7 +114,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "consentOrderDocument",
     "TabFieldDisplayOrder": 14,
@@ -123,7 +123,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaDraftDocument",
     "TabFieldDisplayOrder": 15,
@@ -133,7 +133,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaRespondDoc",
     "TabFieldDisplayOrder": 16,
@@ -142,7 +142,7 @@
   {
   "CaseTypeID": "GENERALAPPLICATION",
   "TabID": "ApplicationDocumentsCtsc",
-  "TabLabel": "Application Documents Test",
+  "TabLabel": "Application Documents",
   "TabDisplayOrder": 4,
   "CaseFieldID": "gaAddlDocClaimant",
   "TabFieldDisplayOrder": 17,
@@ -154,7 +154,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlDocRespondentSol",
     "TabFieldDisplayOrder": 18,
@@ -163,7 +163,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlDocRespondentSolTwo",
     "TabFieldDisplayOrder": 19,
@@ -172,7 +172,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "TabID": "ApplicationDocumentsCtsc",
-    "TabLabel": "Application Documents Test",
+    "TabLabel": "Application Documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "gaAddlDocBundle",
     "TabFieldDisplayOrder": 20,
