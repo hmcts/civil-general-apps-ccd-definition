@@ -170,6 +170,8 @@ const data = {
   CLAIM_DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/claim/defaultJudgment2v1Spec.js'),
   CREATE_CERTIFICATION_OF_SATISFACTION_CANCELLATION: require('../fixtures/ga-ccd/createCoscApplication.js'),
   JUDGMENT_PAID_IN_FULL: require('../fixtures/events/claim/judgmentPaidInFull'),
+  DEFENDANT_RESPONSE_SPEC_CUI: require('../fixtures/events/cui/defendantResponseCui.js').createDefendantResponse(),
+  REQUEST_JUDGEMENT: (response) => require('../fixtures/events/claim/requestJudgementSpec.js').createRequestJudgment(response),
 
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
@@ -241,12 +243,13 @@ const eventData = {
     },
   },
   claimantResponsesSpec: {
-    // ONE_V_ONE: {
+    ONE_V_ONE: {
     //   FULL_DEFENCE: data.CLAIMANT_RESPONSE_SPEC('FULL_DEFENCE'),
     //   FULL_ADMISSION: data.CLAIMANT_RESPONSE_SPEC('FULL_ADMISSION'),
     //   PART_ADMISSION: data.CLAIMANT_RESPONSE_SPEC('PART_ADMISSION'),
     //   COUNTER_CLAIM: data.CLAIMANT_RESPONSE_SPEC('COUNTER_CLAIM')
-    // },
+      PART_ADMISSION_IMMEDIATELY: data.CLAIM_CLAIMANT_RESPONSE_SPEC('PART_ADMISSION_IMMEDIATELY'),
+     },
     ONE_V_TWO: {
       FULL_DEFENCE: data.CLAIM_CLAIMANT_RESPONSE_1v2_SPEC('FULL_DEFENCE'),
       FULL_ADMISSION: data.CLAIM_CLAIMANT_RESPONSE_1v2_SPEC('FULL_ADMISSION'),
@@ -1852,6 +1855,36 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId, user);
   },
 
+  performCitizenDefendantResponse: async (user, caseId) => {
+    eventName = 'DEFENDANT_RESPONSE_CUI';
+    let payload = data.DEFENDANT_RESPONSE_SPEC_CUI;
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEventForCitizen(eventName, caseId, payload);
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
+  amendWhenWillThisAmountBePaidDeadLine: async (user) => {
+    await apiRequest.setupTokens(user);
+    let respondToClaimDeadLine ={};
+    respondToClaimDeadLine =   {'respondToClaimAdmitPartLRspec': {'whenWillThisAmountBePaid': '2025-03-26',} };
+    await testingSupport.updateCaseData(caseId, respondToClaimDeadLine);
+  },
+
+  requestJudgementXui: async (user, response = 'REQUEST_JUDGEMENT') => {
+    await apiRequest.setupTokens(user);
+    eventName = 'REQUEST_JUDGEMENT_ADMISSION_SPEC';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let requestJudgementData = data.REQUEST_JUDGEMENT(response);
+    for (let pageId of Object.keys(requestJudgementData.userInput)) {
+      await assertValidClaimData(requestJudgementData, pageId);
+    }
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# Judgment Submitted \r\n## A county court judgment(CCJ) has been submitted for case',
+      body: ''
+    }, true);
+    await waitForFinishedBusinessProcess(caseId, user);
+  },
+
   judgmentPaidInFullCui: async (user) => {
     eventName = 'JUDGMENT_PAID_IN_FULL';
     let payload = data.JUDGMENT_PAID_FULL;
@@ -2762,6 +2795,7 @@ async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListI
 }
 
 const assertValidClaimData = async (data, pageId) => {
+  console.log(`asserting page: ${pageId} has valid data`);
   const userData = data.userInput[pageId];
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(

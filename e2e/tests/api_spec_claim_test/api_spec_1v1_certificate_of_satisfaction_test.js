@@ -32,6 +32,17 @@ Scenario('1v1 LIP v LIP Spec Case not marked paid in full', async ({api}) => {
   await api.certificateOfSatisfactionCancellationCui(config.defendantCitizenUser2, civilCaseReference);
 });
 
+Scenario('1v1 LR v LIP Spec case JBA marked paid in full', async ({api}) => {
+  civilCaseReference = await api.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
+  await api.performCitizenDefendantResponse(config.defendantCitizenUser2, civilCaseReference);
+  await api.claimantResponseClaimSpec(config.applicantSolicitorUser, 'PART_ADMISSION_IMMEDIATELY', 'ONE_V_ONE',
+    'AWAITING_APPLICANT_INTENTION');
+  await api.amendWhenWillThisAmountBePaidDeadLine(config.systemUpdate);
+  await api.requestJudgementXui(config.applicantSolicitorUser, 'REQUEST_JUDGEMENT');
+  await api.markJudgmentPaid(config.applicantSolicitorUser);
+  await api.certificateOfSatisfactionCancellationCui(config.defendantCitizenUser2, civilCaseReference);
+});
+
 AfterSuite(async ({ api }) => {
   await api.cleanUp();
   await deleteAccount(config.defendantCitizenUser2.email);
