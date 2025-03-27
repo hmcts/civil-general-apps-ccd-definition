@@ -335,7 +335,7 @@ module.exports = {
     // Pause for 10 seconds
     await delay(15000);
 
-    await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser1);
+    await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
