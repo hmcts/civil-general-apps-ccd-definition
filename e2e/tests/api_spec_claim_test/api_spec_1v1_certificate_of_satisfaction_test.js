@@ -14,7 +14,7 @@ Scenario('1v1 LR v LIP Spec case marked paid in full', async ({api}) => {
   await api.amendRespondent1ResponseDeadline(config.systemUpdate);
   await api.defaultJudgmentXuiPayImmediately(config.applicantSolicitorUser);
   await api.markJudgmentPaid(config.applicantSolicitorUser);
-  await api.certificateOfSatisfactionCancellationCui(config.defendantCitizenUser1, civilCaseReference);
+  await api.certificateOfSatisfactionCancellationCui(config.defendantCitizenUser2, civilCaseReference);
 });
 
 Scenario('1v1 LIP v LIP Spec Case marked paid in full', async ({api}) => {
