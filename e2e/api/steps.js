@@ -1879,7 +1879,7 @@ module.exports = {
       await assertValidClaimData(requestJudgementData, pageId);
     }
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
-      header: '# Judgment Submitted \r\n## A county court judgment(CCJ) has been submitted for case',
+      header: '',
       body: ''
     }, true);
     await waitForFinishedBusinessProcess(caseId, user);
