@@ -1,3 +1,5 @@
+const config = require('../../../config.js');
+
 module.exports = {
   createDefendantResponse: () => {
     return {
@@ -85,7 +87,11 @@ module.exports = {
         respondent1DQRequestedCourt: {
           requestHearingAtSpecificCourt: 'No',
           otherPartyPreferredSite: '',
-          responseCourtCode: '',
+          responseCourtCode: '121',
+          caseLocation: {
+            region: config.defendantSelectedCourt,
+            baseLocation: config.defendantSelectedCourt
+          }
         },
         respondent1DQWitnesses: {
           witnessesToAppear: 'No'
@@ -93,7 +99,16 @@ module.exports = {
         respondent1DQHearingSmallClaim: {
           unavailableDatesRequired: 'No',
           smallClaimUnavailableDate: undefined,
-        }
+        },
+        respondent1LiPResponseCarm: {
+          isMediationContactNameCorrect: 'No',
+          alternativeMediationContactPerson: 'new defendant cp',
+          isMediationEmailCorrect: 'No',
+          alternativeMediationEmail: 'defendantmediation@email.com',
+          isMediationPhoneCorrect: 'No',
+          alternativeMediationTelephone: '07744444444',
+          hasUnavailabilityNextThreeMonths: 'No',
+        },
       },
     };
   }
