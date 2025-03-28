@@ -1,5 +1,5 @@
 const config = require('../config.js');
-const {PBAv3, SDOR2, COSC, isJOLive} = require('../fixtures/featureKeys');
+const {PBAv3, COSC, isJOLive} = require('../fixtures/featureKeys');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
@@ -119,7 +119,7 @@ const data = {
   SCHEDULE_HEARING: genAppHearingData.scheduleHearing(),
   APPLICATION_DISMISSED: genAppJudgeMakeDecisionData.applicationsDismiss(),
   JUDGE_MAKES_ORDER_DISMISS: genAppJudgeMakeDecisionData.judgeMakeDecisionDismissed(),
-  CREATE_CLAIM: (mpScenario, claimantType, claimAmount, sdoR2, useBirminghamCourt) => claimData.createClaim(mpScenario, claimantType, claimAmount, sdoR2, useBirminghamCourt),
+  CREATE_CLAIM: (mpScenario, claimantType, claimAmount, useBirminghamCourt) => claimData.createClaim(mpScenario, claimantType, claimAmount, useBirminghamCourt),
   CREATE_SPEC_CLAIM: (mpScenario) => claimSpecData.createClaim(mpScenario),
   CREATE_SPEC_CLAIM_LIP: (mpScenario) => claimDataSpecSmallLRvLiP.createClaim(mpScenario),
   UPDATE_CLAIMANT_SOLICITOR_EMAILID: claimSpecData.updateClaimantSolicitorEmailId(),
@@ -346,10 +346,7 @@ module.exports = {
     caseData = {};
     mpScenario = multipartyScenario;
 
-    const sdoR2 = await checkToggleEnabled(SDOR2);
-    console.log('Is sdoR2 toggle on?: ' + sdoR2);
-
-    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType, claimAmount, sdoR2, useBirminghamCourt);
+    const createClaimData = data.CREATE_CLAIM(mpScenario, claimantType, claimAmount, useBirminghamCourt);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
