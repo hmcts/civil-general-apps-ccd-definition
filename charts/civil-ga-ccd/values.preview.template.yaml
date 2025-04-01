@@ -118,6 +118,7 @@ idam-pr:
       - https://xui-${SERVICE_NAME}.preview.platform.hmcts.net/oauth2/callback
 xui-webapp:
   nodejs:
+    image: hmctspublic.azurecr.io/xui/webapp:pr-4183
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
