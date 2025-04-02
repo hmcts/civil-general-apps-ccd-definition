@@ -23,7 +23,8 @@ BeforeSuite(async ({api}) => {
   console.log('Case created for general application: ' + civilCaseReference);
 });
 
-Scenario('Defendant of main claim initiates Vary payment terms of judgment application @regression4', async ({I, api}) => {
+//Skipped the test as awaiting fix for https://tools.hmcts.net/jira/browse/DTSCCI-1910
+Scenario.skip('Defendant of main claim initiates Vary payment terms of judgment application @regression4', async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.verifyNoN245Form(civilCaseReference, getAppTypes().slice(10, 11), 'no');
   await I.login(config.defendantSolicitorUser);
@@ -95,6 +96,6 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.ORDER_MADE.id);
 });
 
-AfterSuite(async ({api}) => {
+/*AfterSuite(async ({api}) => {
   await api.cleanUp();
-});
+});*/
