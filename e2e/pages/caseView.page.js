@@ -61,6 +61,7 @@ module.exports = {
     await I.retryUntilExists(async () => {
       await I.navigateToCaseDetails(caseId);
       await this.start(event);
+      I.waitForInvisible('.spinner-container', 30);
     }, locate(this.fields.generalApps));
   },
 
