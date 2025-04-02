@@ -74,13 +74,13 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
   await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(
     getAppTypes().slice(9, 10),
-    civilCaseReference, '' +
+    civilCaseReference,
     'no', 'no', 'yes', 'no', 'no', 'no',
     'disabledAccess');
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
     states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
-  await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(9, 10), 2);
+  await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(9, 10), 1);
   await I.see(awaitingPaymentStatus);
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
     states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);
@@ -94,8 +94,8 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
   }
 
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.ORDER_MADE.id);
-});
+}).tag('@local-testing');
 
-/*AfterSuite(async ({api}) => {
+AfterSuite(async ({api}) => {
   await api.cleanUp();
-});*/
+});

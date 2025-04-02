@@ -40,6 +40,7 @@ module.exports = {
         await I.selectOption(this.fields.eventDropdown, event);
         await I.retryUntilExists(async () => {
           await I.forceClick(this.goButton);
+          I.waitForInvisible('.spinner-container', 30);
         }, this.fields.generalApps);
         break;
       case 'Create GA':
@@ -47,12 +48,14 @@ module.exports = {
         await I.selectOption(this.fields.eventDropdown, 'Make an application');
         await I.retryUntilExists(async () => {
           await I.forceClick(this.goButton);
+          I.waitForInvisible('.spinner-container', 30);
         }, this.fields.errorMessage);
         break;
       default:
         await I.waitForClickable('.event-trigger .button', 10);
         await I.retryUntilExists(async () => {
           await I.forceClick(this.goButton);
+          I.waitForInvisible('.spinner-container', 30);
         }, this.fields.generalApps);
     }
   },
