@@ -94,7 +94,7 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
   }
 
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.ORDER_MADE.id);
-}).tag('@local-testing');
+});
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
