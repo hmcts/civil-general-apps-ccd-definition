@@ -232,7 +232,7 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
 });
 
 
-/*AfterSuite(async ({api}) => {
+AfterSuite(async ({api}) => {
   await api.cleanUp();
-});*/
+});
 
