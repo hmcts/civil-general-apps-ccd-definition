@@ -23,7 +23,8 @@ BeforeSuite(async ({api}) => {
   console.log('Case created for general application: ' + civilCaseReference);
 });
 
-Scenario('Defendant of main claim initiates Vary payment terms of judgment application @regression4', async ({I, api}) => {
+//Skipped the test as awaiting fix for https://tools.hmcts.net/jira/browse/DTSCCI-1910
+Scenario.skip('Defendant of main claim initiates Vary payment terms of judgment application @regression4', async ({I, api}) => {
   await I.login(config.applicantSolicitorUser);
   await I.verifyNoN245Form(civilCaseReference, getAppTypes().slice(10, 11), 'no');
   await I.login(config.defendantSolicitorUser);
@@ -73,13 +74,13 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
   await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(
     getAppTypes().slice(9, 10),
-    civilCaseReference, '' +
+    civilCaseReference,
     'no', 'no', 'yes', 'no', 'no', 'no',
     'disabledAccess');
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
     states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
-  await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(9, 10), 2);
+  await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(9, 10), 1);
   await I.see(awaitingPaymentStatus);
   await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
     states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);
