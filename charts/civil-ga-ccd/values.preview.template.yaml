@@ -1,5 +1,6 @@
 civil-general-applications:
   java:
+    image: 'hmctspublic.azurecr.io/civil/general-applications:pr-1693'
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
       civil:
@@ -47,6 +48,7 @@ civil-general-applications:
 civil-service:
   enabled: true
   java:
+    image: 'hmctspublic.azurecr.io/civil/service:pr-6224'
     ingressHost: civil-service-${SERVICE_FQDN}
     keyVaults:
       civil:
@@ -116,6 +118,7 @@ idam-pr:
       - https://xui-${SERVICE_NAME}.preview.platform.hmcts.net/oauth2/callback
 xui-webapp:
   nodejs:
+    image: hmctspublic.azurecr.io/xui/webapp:pr-4398
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
