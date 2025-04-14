@@ -2,7 +2,7 @@
   {
     "RoleName" : "idam:wlu-admin",
     "Authorisation": "",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "wlu-admin",
     "ReadOnly": "N",
     "Disabled": "F",
