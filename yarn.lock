@@ -1946,12 +1946,12 @@ __metadata:
   linkType: hard
 
 "deep-equal-in-any-order@npm:^1.0.28":
-  version: 1.1.15
-  resolution: "deep-equal-in-any-order@npm:1.1.15"
+  version: 1.1.20
+  resolution: "deep-equal-in-any-order@npm:1.1.20"
   dependencies:
     lodash.mapvalues: ^4.6.0
     sort-any: ^2.0.0
-  checksum: a36f89499a682ec84a307678b99733b3d89d04c737cdc576bb82c2200666b482e87908cad54f3c52df1ddf296b64ad41c5636d64df42dbb18997316d27d4598a
+  checksum: 3fd4a571269e86f8958e797e4994df9f8aaa7c8cc438204a15b9c170e55b53f4b674e4609d8eaccb0b444a55c1932fd74026ef072f4a5412fd879599000e499f
   languageName: node
   linkType: hard
 
