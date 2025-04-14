@@ -4176,8 +4176,8 @@ __metadata:
   linkType: hard
 
 "mocha-multi@npm:^1.1.6":
-  version: 1.1.6
-  resolution: "mocha-multi@npm:1.1.6"
+  version: 1.1.7
+  resolution: "mocha-multi@npm:1.1.7"
   dependencies:
     debug: ^4.1.1
     is-string: ^1.0.4
@@ -4185,8 +4185,8 @@ __metadata:
     mkdirp: ^1.0.4
     object-assign: ^4.1.1
   peerDependencies:
-    mocha: ">=2.2.0 <7 || ^9"
-  checksum: c6b04f1f28a099a5d4d6e2222e643af659c0651032ff7191bc6e33dc852ecee14588bbea5a90f99c6ba7a43ebb69881646d10f5f28b2ff85d0949f0b1294dca1
+    mocha: ">=2.2.0 <7 || >=9"
+  checksum: 1718fccd9178ac38fad0fc63de436b3ece9e688818a1fe3a44bdea9ac26b4a3f6e731e35f19857fd6c769b01bb57b30f4f095902189031a372f1a556a96a1cbc
   languageName: node
   linkType: hard
 
