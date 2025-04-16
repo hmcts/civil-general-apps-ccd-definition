@@ -1,0 +1,74 @@
+[
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "caseTitleTranslatedDoc",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "wlu-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "translatedDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "wlu-admin-profile"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "translatedDocumentsBulkPrint",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "wlu-admin-profile"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "claimantBilingualLanguagePreference",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "wlu-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "applicantBilingualLanguagePreference",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "wlu-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+   },
+   {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "respondentBilingualLanguagePreference",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "wlu-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]

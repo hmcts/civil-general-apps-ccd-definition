@@ -3,7 +3,7 @@
     "RoleName" : "idam:wlu-admin",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "wlu-admin",
+    "AccessProfiles": "wlu-admin-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": "SPEC_CLAIM"

@@ -47,6 +47,7 @@
 ./bin/utils/ccd-add-role.sh "caseworker-civil-doc-removal"
 ./bin/utils/ccd-add-role.sh "caseworker-civil-system-field-reader"
 ./bin/utils/ccd-add-role.sh "caseworker-civil-rparobot"
+./bin/utils/ccd-add-role.sh "wlu-admin-profile"
 ./bin/utils/ccd-add-role.sh "wlu-admin"
 
 
