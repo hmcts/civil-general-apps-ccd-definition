@@ -1025,7 +1025,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1037,7 +1037,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1049,7 +1049,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1061,7 +1061,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1073,7 +1073,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1085,7 +1085,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1097,7 +1097,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
@@ -1109,7 +1109,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
@@ -1121,7 +1121,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1133,7 +1133,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
@@ -1145,7 +1145,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1157,7 +1157,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1169,7 +1169,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
@@ -1181,7 +1181,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1193,7 +1193,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1205,7 +1205,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1217,7 +1217,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1229,7 +1229,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1241,7 +1241,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1253,7 +1253,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1263,7 +1263,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondDebtorUploadLabel",
     "UserRoles": [
-      "wlu-admin-profile"
+      "wlu-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1271,7 +1271,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondUploadLabel",
     "UserRoles": [
-      "wlu-admin-profile"
+      "wlu-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1279,7 +1279,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppRespondConsentUploadLabel",
     "UserRoles": [
-      "wlu-admin-profile"
+      "wlu-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1289,7 +1289,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1299,7 +1299,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "addnDocumentLabel",
     "UserRoles": [
-      "wlu-admin-profile"
+      "wlu-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1307,7 +1307,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseDocumentUploadDate",
     "UserRoles": [
-      "wlu-admin-profile"
+      "wlu-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1315,7 +1315,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "caseDocumentUploadDateRes",
     "UserRoles": [
-      "wlu-admin-profile"
+      "wlu-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1323,7 +1323,7 @@
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "uploadDocument",
     "UserRoles": [
-      "wlu-admin-profile"
+      "wlu-admin"
     ],
     "CRUD": "CRU"
   },
@@ -1333,7 +1333,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1345,7 +1345,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1357,7 +1357,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1369,7 +1369,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1381,7 +1381,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
@@ -1393,7 +1393,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
@@ -1405,7 +1405,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1417,7 +1417,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "RU"
       }
@@ -1429,7 +1429,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "RU"
       }
@@ -1441,7 +1441,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
@@ -1453,7 +1453,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1465,7 +1465,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
@@ -1477,7 +1477,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1489,7 +1489,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1501,7 +1501,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRUD"
       }
@@ -1513,7 +1513,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRUD"
       }
@@ -1525,7 +1525,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
@@ -1537,7 +1537,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
@@ -1549,7 +1549,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1561,7 +1561,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -1573,7 +1573,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "RU"
       }
@@ -1585,7 +1585,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "RU"
       }
