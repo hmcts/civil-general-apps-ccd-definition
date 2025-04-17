@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "UserRoles": [
-      "wlu-admin-profile"
+      "wlu-admin"
     ],
     "CRUD": "RU"
   }

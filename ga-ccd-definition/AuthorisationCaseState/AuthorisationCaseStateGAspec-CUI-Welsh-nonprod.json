@@ -5,7 +5,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -17,7 +17,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -29,7 +29,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -41,7 +41,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -53,7 +53,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -65,7 +65,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
@@ -77,7 +77,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -89,7 +89,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
@@ -101,7 +101,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -113,7 +113,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
@@ -125,7 +125,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -137,7 +137,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -149,7 +149,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -161,7 +161,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }

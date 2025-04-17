@@ -5,7 +5,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
