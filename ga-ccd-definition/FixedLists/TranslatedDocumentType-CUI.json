@@ -67,56 +67,44 @@
   },
   {
     "ID": "TranslatedDocumentType",
-    "ListElementCode": "UPLOADED_DOCUMENTS_APPLICANT",
-    "ListElement": "Uploaded documents - applicant",
-    "DisplayOrder": 12
-  },
-  {
-    "ID": "TranslatedDocumentType",
-    "ListElementCode": "UPLOADED_DOCUMENTS_RESPONDENT",
-    "ListElement": "Uploaded documents - respondent",
-    "DisplayOrder": 13
-  },
-  {
-    "ID": "TranslatedDocumentType",
     "ListElementCode": "WRITTEN_REPRESENTATIONS_APPLICANT",
     "ListElement": "Written representations - applicant",
-    "DisplayOrder": 14
+    "DisplayOrder": 12
   },
   {
     "ID": "TranslatedDocumentType",
     "ListElementCode": "WRITTEN_REPRESENTATIONS_RESPONDENT",
     "ListElement": "Written representations - respondent",
-    "DisplayOrder": 15
+    "DisplayOrder": 13
   },
   {
     "ID": "TranslatedDocumentType",
     "ListElementCode": "REQUEST_MORE_INFORMATION_APPLICANT",
     "ListElement": "Request more information - applicant",
-    "DisplayOrder": 16
+    "DisplayOrder": 14
   },
   {
     "ID": "TranslatedDocumentType",
     "ListElementCode": "REQUEST_MORE_INFORMATION_RESPONDENT",
     "ListElement": "Request more information - respondent",
-    "DisplayOrder": 17
+    "DisplayOrder": 15
   },
   {
     "ID": "TranslatedDocumentType",
     "ListElementCode": "JUDGES_DIRECTIONS_APPLICANT",
     "ListElement": "Judges Directions - applicant",
-    "DisplayOrder": 18
+    "DisplayOrder": 16
   },
   {
     "ID": "TranslatedDocumentType",
     "ListElementCode": "JUDGES_DIRECTIONS_RESPONDENT",
     "ListElement": "Judges Directions - respondent",
-    "DisplayOrder": 19
+    "DisplayOrder": 17
   },
   {
     "ID": "TranslatedDocumentType",
     "ListElementCode": "APPROVE_OR_EDIT_ORDER",
     "ListElement": "Approve or edit order",
-    "DisplayOrder": 20
+    "DisplayOrder": 18
   }
 ]
