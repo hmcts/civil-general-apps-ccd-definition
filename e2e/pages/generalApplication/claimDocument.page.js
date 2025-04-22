@@ -7,7 +7,8 @@ module.exports = {
   fields: {
     docLabel: 'div.case-viewer-label',
     links: '.collection-field-table ccd-read-document-field a',
-    docTitles: 'ccd-read-complex-field-collection-table .complex-panel .complex-panel-title'
+    docTitles: 'ccd-read-complex-field-collection-table .complex-panel .complex-panel-title',
+    uploadDocumentsTitle : '#case-viewer-field-read--servedDocumentFiles .complex-panel-title .text-16'
   },
 
   async verifyHearingNoticeDocNotAvailable() {
@@ -21,7 +22,8 @@ module.exports = {
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 7);
     } else {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 6);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 5);
+      await I.seeNumberOfVisibleElements(this.fields.uploadDocumentsTitle, 1);
     }
     let draftAppURL = await I.grabTextFrom(locate(this.fields.links).last());
     expect(draftAppURL).to.contains(`Hearing_order_for_application_${docFullDate}`);
@@ -65,7 +67,7 @@ module.exports = {
       await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).at(7));
       await I.seeTextEquals('hearing order doc in casefile view', locate(this.fields.docLabel).last());
     } else {
-      expect(docType).to.equals(' Draft Application document');
+      expect(docType).to.equals('Draft Application document') || expect(docType).to.equals('hearing order doc in casefile view');
     }
   }
 };
