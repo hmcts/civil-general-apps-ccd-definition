@@ -19,9 +19,9 @@ module.exports = {
     if (documentType === 'After SDO - Hearing Notice') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 5);
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 6);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 7);
     } else {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 5);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 6);
     }
     let draftAppURL = await I.grabTextFrom(locate(this.fields.links).last());
     expect(draftAppURL).to.contains(`Draft_application_${docFullDate}`);
