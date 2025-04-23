@@ -59,7 +59,7 @@ module.exports = {
     let docType = await I.grabTextFrom(locate(this.fields.docLabel).last());
     if (documentType === 'After SDO - Hearing Notice') {
       await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(5));
-      await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).last());
+      await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).at(6));
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeTextEquals('General order document', locate(this.fields.docLabel).at(5));
       await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(6));
