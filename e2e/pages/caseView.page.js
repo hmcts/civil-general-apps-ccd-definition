@@ -24,6 +24,7 @@ module.exports = {
   goButton: 'button[type="submit"]',
 
   async start(event) {
+    var flagForInitialEvent = true;
     switch (event) {
       case 'Make decision':
       case 'Make an application':
@@ -36,26 +37,38 @@ module.exports = {
       case 'Refer to Legal Advisor':
       case 'Make an order':
       case 'Approve Consent Order':
-        await I.waitForSelector(this.fields.eventDropdown, 20);
-        await I.selectOption(this.fields.eventDropdown, event);
         await I.retryUntilExists(async () => {
+          if (!flagForInitialEvent) {
+            await I.refreshPage();
+          }
+          await I.waitForSelector(this.fields.eventDropdown, 20);
+          await I.selectOption(this.fields.eventDropdown, event);
           await I.forceClick(this.goButton);
-          I.waitForInvisible('.spinner-container', 30);
+          flagForInitialEvent = false;
         }, this.fields.generalApps);
         break;
       case 'Create GA':
-        await I.waitForSelector(this.fields.eventDropdown, 20);
-        await I.selectOption(this.fields.eventDropdown, 'Make an application');
         await I.retryUntilExists(async () => {
+          if (!flagForInitialEvent) {
+            await I.refreshPage();
+          }
+          await I.waitForSelector(this.fields.eventDropdown, 20);
+          await I.selectOption(this.fields.eventDropdown,'Make an application');
           await I.forceClick(this.goButton);
-          I.waitForInvisible('.spinner-container', 30);
+          flagForInitialEvent = false;
         }, this.fields.errorMessage);
         break;
       default:
         await I.waitForClickable('.event-trigger .button', 10);
         await I.retryUntilExists(async () => {
           await I.forceClick(this.goButton);
-          I.waitForInvisible('.spinner-container', 30);
+          if (!flagForInitialEvent) {
+            await I.refreshPage();
+          }
+          await I.waitForSelector(this.fields.eventDropdown, 20);
+          await I.selectOption(this.fields.eventDropdown, event);
+          await I.forceClick(this.goButton);
+          flagForInitialEvent = false;
         }, this.fields.generalApps);
     }
   },
