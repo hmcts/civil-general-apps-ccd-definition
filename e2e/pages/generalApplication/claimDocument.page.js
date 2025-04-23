@@ -23,7 +23,8 @@ module.exports = {
     } else {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 5);
     }
-    let draftAppURL = await I.grabTextFrom(locate(this.fields.links).last());
+    let links = await I.grabTextFromAll(this.fields.links);
+    let draftAppURL = links[links.length - 2];
     expect(draftAppURL).to.contains(`Draft_application_${docFullDate}`);
 
     switch (documentType) {
