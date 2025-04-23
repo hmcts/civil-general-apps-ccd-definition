@@ -16,7 +16,7 @@ module.exports = {
   async verifyUploadedDocument(documentType) {
     await I.seeInCurrentUrl('documents');
     if (documentType === 'After SDO - Hearing Notice') {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 5);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 6);
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 7);
     }
