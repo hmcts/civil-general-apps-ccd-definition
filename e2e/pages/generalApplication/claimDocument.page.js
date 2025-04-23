@@ -1,5 +1,4 @@
 const {I} = inject();
-//const expect = require('chai').expect;
 const {docFullDate} = require('../generalAppCommons');
 
 module.exports = {
@@ -8,7 +7,6 @@ module.exports = {
     docLabel: 'div.case-viewer-label',
     links: '.collection-field-table ccd-read-document-field a',
     docTitles: 'ccd-read-complex-field-collection-table .complex-panel .complex-panel-title',
-    uploadDocumentsTitle : '#case-viewer-field-read--servedDocumentFiles .complex-panel-title .text-16'
   },
 
   async verifyHearingNoticeDocNotAvailable() {
