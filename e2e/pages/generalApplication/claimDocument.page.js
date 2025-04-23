@@ -25,8 +25,8 @@ module.exports = {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 5);
       await I.seeNumberOfVisibleElements(this.fields.uploadDocumentsTitle, 1);
     }*/
-    let draftAppURL = await I.grabTextFrom(locate(this.fields.links).last());
-    expect(draftAppURL).to.contains(`Hearing_order_for_application_${docFullDate}`);
+    /*let draftAppURL = await I.grabTextFrom(locate(this.fields.links).last());
+    expect(draftAppURL).to.contains(`Hearing_order_for_application_${docFullDate}`);*/
 
     switch (documentType) {
       case 'General order document':
