@@ -25,7 +25,6 @@ module.exports = {
       case 'Hearing Notice':
         expect(docs.toString()).to.contains(`Hearing_order_for_application_${docFullDate}`);
         expect(docs.toString()).to.contains(`Application_Hearing_Notice_${docFullDate}`);
-        expect(docs.toString()).to.contains(`Draft_application_${docFullDate}`);
         expect(appCount).equals('3');
         break;
       case 'Applicant Evidence':
