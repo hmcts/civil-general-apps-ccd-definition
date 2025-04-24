@@ -59,14 +59,14 @@ Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
 
   await I.login(config.defendantSolicitorUser);
-  const tabLabelsDef = await I.grabTextFromAll('div.mat-tab-label-content');
-  I.assert(!tabLabelsDef.includes('Applications'), '"Applications" tab should not be visible');
+  await I.verifyUploadedClaimDocument(civilCaseReference, 'After SDO - Hearing Notice');
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
+  await I.dontSee('Applications', 'div.mat-tab-label-content');
 
   await I.login(config.applicantSolicitorUser);
-  const tabLabelsClaimant = await I.grabTextFromAll('div.mat-tab-label-content');
-  I.assert(!tabLabelsClaimant.includes('Applications'), '"Applications" tab should not be visible');
+  await I.verifyUploadedClaimDocument(civilCaseReference, 'After SDO - Hearing Notice');
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
+  await I.dontSee('Applications', 'div.mat-tab-label-content');
 });
 
 AfterSuite(async ({api}) => {
