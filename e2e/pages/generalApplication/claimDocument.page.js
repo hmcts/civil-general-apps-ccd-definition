@@ -21,11 +21,10 @@ module.exports = {
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 7);
     } else {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 5);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 6);
     }
     let links = await I.grabTextFromAll(this.fields.links);
-    let draftAppURL = links[links.length - 2];
-    expect(draftAppURL).to.contains(`Draft_application_${docFullDate}`);
+    expect(links.some(link => link.includes(`Draft_application_${docFullDate}`))).to.be.true;
 
     switch (documentType) {
       case 'General order document':
@@ -60,6 +59,9 @@ module.exports = {
     if (documentType === 'After SDO - Hearing Notice') {
       await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(5));
       await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).at(6));
+    } else if (documentType === 'Hearing Notice') {
+      await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(4));
+      await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).at(5));
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeTextEquals('General order document', locate(this.fields.docLabel).at(5));
       await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(6));
