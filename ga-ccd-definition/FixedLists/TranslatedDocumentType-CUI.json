@@ -91,20 +91,8 @@
   },
   {
     "ID": "TranslatedDocumentType",
-    "ListElementCode": "JUDGES_DIRECTIONS_APPLICANT",
-    "ListElement": "Judges Directions - applicant",
-    "DisplayOrder": 16
-  },
-  {
-    "ID": "TranslatedDocumentType",
-    "ListElementCode": "JUDGES_DIRECTIONS_RESPONDENT",
-    "ListElement": "Judges Directions - respondent",
-    "DisplayOrder": 17
-  },
-  {
-    "ID": "TranslatedDocumentType",
     "ListElementCode": "APPROVE_OR_EDIT_ORDER",
     "ListElement": "Approve or edit order",
-    "DisplayOrder": 18
+    "DisplayOrder": 16
   }
 ]
