@@ -60,8 +60,8 @@ module.exports = {
       await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(5));
       await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).at(6));
     } else if (documentType === 'Hearing Notice') {
-      await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(4));
-      await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).at(5));
+      await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(5));
+      await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).at(6));
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeTextEquals('General order document', locate(this.fields.docLabel).at(5));
       await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(6));
