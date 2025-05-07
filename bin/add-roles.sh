@@ -49,7 +49,6 @@
 ./bin/utils/ccd-add-role.sh "caseworker-civil-rparobot"
 ./bin/utils/ccd-add-role.sh "wlu-admin"
 
-
 roles=("solicitor" "systemupdate" "admin" "staff" "judge")
 for role in "${roles[@]}"
 do
