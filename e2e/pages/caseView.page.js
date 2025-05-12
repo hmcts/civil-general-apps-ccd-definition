@@ -1,6 +1,8 @@
 const config = require('../config');
 const I = actor();
 
+const EVENT_TRIGGER_LOCATOR = 'ccd-case-event-trigger';
+
 module.exports = {
 
   tabs: {
@@ -24,48 +26,18 @@ module.exports = {
   goButton: 'button[type="submit"]',
 
   async start(event) {
-    switch (event) {
-      case 'Make decision':
-      case 'Make an application':
-      case 'Respond to application':
-      case 'Respond to judges written rep':
-      case 'Respond to judges directions':
-      case 'Respond to judges addn info':
-      case 'Respond to judges list for hearing':
-      case 'Refer to Judge':
-      case 'Refer to Legal Advisor':
-      case 'Make an order':
-      case 'Approve Consent Order':
-        await I.waitForSelector(this.fields.eventDropdown, 20);
-        await I.selectOption(this.fields.eventDropdown, event);
-        await I.retryUntilExists(async () => {
-          await I.forceClick(this.goButton);
-          I.waitForInvisible('.spinner-container', 60);
-        }, this.fields.generalApps);
-        break;
-      case 'Create GA':
-        await I.waitForSelector(this.fields.eventDropdown, 20);
-        await I.selectOption(this.fields.eventDropdown, 'Make an application');
-        await I.retryUntilExists(async () => {
-          await I.forceClick(this.goButton);
-          I.waitForInvisible('.spinner-container', 60);
-        }, this.fields.errorMessage);
-        break;
-      default:
-        await I.waitForClickable('.event-trigger .button', 10);
-        await I.retryUntilExists(async () => {
-          await I.forceClick(this.goButton);
-          I.waitForInvisible('.spinner-container', 60);
-        }, this.fields.generalApps);
-    }
+    await I.waitForElement(this.fields.eventDropdown, 90);
+    await I.selectOption(this.fields.eventDropdown, event);
+    await I.forceClick(this.goButton);
   },
 
   async startEvent(event, caseId) {
-    await I.retryUntilExists(async () => {
+      await waitForFinishedBusinessProcess(caseId);
+      await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
-      await this.start(event);
-      I.waitForInvisible('.spinner-container', 30);
-    }, locate(this.fields.generalApps));
+      // await this.start(event.name);
+      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/${event.id}/${event.id}`);
+    }, EVENT_TRIGGER_LOCATOR, 3, 45);
   },
 
   async assertNoEventsAvailable() {
