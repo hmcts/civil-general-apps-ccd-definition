@@ -41,7 +41,7 @@ Scenario('Without Notice Hearing notice journey', async ({api}) => {
   }
 
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, hnStateStatus);
-  await api.assertNullGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, doc);
+  await api.assertGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, doc);
   await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
@@ -50,7 +50,7 @@ Scenario('Without Notice Hearing notice journey', async ({api}) => {
     await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'FREE_FORM_ORDER', false);
   }
   const finalDoc = 'generalOrder';
-  await api.assertNullGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, finalDoc);
+  await api.assertGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, finalDoc);
   await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, finalDoc);
 
   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {

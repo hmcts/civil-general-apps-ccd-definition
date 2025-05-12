@@ -59,14 +59,12 @@ Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
 
   await I.login(config.defendantSolicitorUser);
-  await I.verifyHearingNoticeDocNotAvailable(civilCaseReference);
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
   await I.dontSee('Applications', 'div.mat-tab-label-content');
-  await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
 
   await I.login(config.applicantSolicitorUser);
-  await I.verifyHearingNoticeDocNotAvailable(civilCaseReference);
+  await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
   await I.dontSee('Applications', 'div.mat-tab-label-content');
-  await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
 });
 
 AfterSuite(async ({api}) => {
