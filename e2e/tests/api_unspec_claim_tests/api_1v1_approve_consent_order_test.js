@@ -6,7 +6,7 @@ let civilCaseReference, civilCaseReferenceAfterSDO, gaCaseReference;
 const genAppType = 'STAY_THE_CLAIM';
 const claimAmountJudge = '11000';
 
-Feature('GA 1v1 Consent Order API tests @debug');
+Feature('GA 1v1 Consent Order API tests');
 
 BeforeSuite(async ({api}) => {
  /* civilCaseReference = await api.createUnspecifiedClaim(

@@ -59,7 +59,7 @@
     "mochawesome": "^7.0.1",
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.7",
-    "playwright": "^1.41.1",
+    "playwright": "^1.47.1",
     "run-script-os": "^1.1.6",
     "totp-generator": "^0.0.7",
     "uuid": "^3.4.0",
