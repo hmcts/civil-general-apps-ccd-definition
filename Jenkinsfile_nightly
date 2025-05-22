@@ -1,7 +1,7 @@
 #!groovy
 
 properties([
-  pipelineTriggers([cron('H 12 * * 1-5')]),
+  copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-general-apps-ccd-definition/*'),
   parameters([
     string(name: 'FORCE_GREEN_BUILD', defaultValue: 'false', description: 'Should force pipeline to go green by not running any functional tests'),
     string(name: 'RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES', defaultValue: 'false', description: 'Runs the failed test and not executed test files from the first previous pipeline run that contains the following files \'failedTestFiles.json\' and \'notExecutedTestFiles.json\''),
