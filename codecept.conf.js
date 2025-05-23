@@ -1,4 +1,6 @@
-const { testFilesHelper } = require('./e2e/plugins/failedAndNotExecutedTestFilesPlugin');
+const { testFilesHelper } = require("./e2e/plugins/failedAndNotExecutedTestFilesPlugin");
+
+const functional = process.env.FUNCTIONAL;
 
 const getTests = () => {
   if (process.env.FAILED_TEST_FILES)
@@ -18,16 +20,20 @@ const getTests = () => {
 
 exports.config = {
   bootstrapAll: async () => {
-    await testFilesHelper.createTempFailedTestsFile();
-    await testFilesHelper.createPassedTestsFile();
-    await testFilesHelper.createToBeExecutedTestsFile();
-    await testFilesHelper.createNotExecutedTestsFile();
+    if (functional) {
+      await testFilesHelper.createTempFailedTestsFile();
+      await testFilesHelper.createPassedTestsFile();
+      await testFilesHelper.createToBeExecutedTestsFile();
+      await testFilesHelper.createNotExecutedTestsFile();
+    }
   },
   teardownAll: async () => {
-    await testFilesHelper.createFailedTestsFile();
-    await testFilesHelper.writeNotExecutedTestFiles();
-    await testFilesHelper.deleteTempFailedTestsFile();
-    await testFilesHelper.deleteToBeExecutedTestFiles();
+    if (functional) {
+      await testFilesHelper.createFailedTestsFile();
+      await testFilesHelper.writeNotExecutedTestFiles();
+      await testFilesHelper.deleteTempFailedTestsFile();
+      await testFilesHelper.deleteToBeExecutedTestFiles();
+    }
   },
   tests: getTests(),
   output: process.env.REPORT_DIR || "test-results/functional",
@@ -75,7 +81,7 @@ exports.config = {
       enabled: true,
     },
     failedAndNotExecutedTestFilesPlugin: {
-      enabled: true,
+      enabled: functional,
       require: "./e2e/plugins/failedAndNotExecutedTestFilesPlugin",
     },
   },
