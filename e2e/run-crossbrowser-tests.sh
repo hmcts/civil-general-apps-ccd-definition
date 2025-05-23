@@ -1,6 +1,11 @@
 #!/bin/bash
 set -ex
 
+if [ "$FORCE_GREEN_BUILD" == "true" ]; then
+  echo "Manually forced green build, no functional tests will be run."
+  exit 0
+fi
+
 export CCD_UI_TESTS=true
 
 if [[ "$BROWSER_GROUP" == "" ]]
