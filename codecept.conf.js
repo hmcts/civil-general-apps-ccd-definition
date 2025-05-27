@@ -1,8 +1,12 @@
-const { testFilesHelper } = require('./e2e/plugins/failedAndNotExecutedTestFilesPlugin');
+const { testFilesHelper } = require("./e2e/plugins/failedAndNotExecutedTestFilesPlugin");
+
+const functional = process.env.FUNCTIONAL;
 
 const getTests = () => {
-  if (process.env.FAILED_TEST_FILES)
-    return [...process.env.FAILED_TEST_FILES.split(","), ...process.env.NOT_EXECUTED_TEST_FILES.split(",")];
+  if (process.env.PREV_FAILED_TEST_FILES && process.env.PREV_NOT_EXECUTED_TEST_FILES)
+    return [...process.env.PREV_FAILED_TEST_FILES.split(","), ...process.env.PREV_NOT_EXECUTED_TEST_FILES.split(",")];
+
+  if (process.env.PREV_FAILED_TEST_FILES) return process.env.PREV_FAILED_TEST_FILES.split(",");
 
   if (process.env.CCD_UI_TESTS === "true")
     return [
@@ -18,16 +22,19 @@ const getTests = () => {
 
 exports.config = {
   bootstrapAll: async () => {
-    await testFilesHelper.createTempFailedTestsFile();
-    await testFilesHelper.createPassedTestsFile();
-    await testFilesHelper.createToBeExecutedTestsFile();
-    await testFilesHelper.createNotExecutedTestsFile();
+    if (functional) {
+      await testFilesHelper.createTempFailedTestsFile();
+      await testFilesHelper.createTempPassedTestsFile();
+      await testFilesHelper.createTempToBeExecutedTestsFile();
+    }
   },
   teardownAll: async () => {
-    await testFilesHelper.createFailedTestsFile();
-    await testFilesHelper.writeNotExecutedTestFiles();
-    await testFilesHelper.deleteTempFailedTestsFile();
-    await testFilesHelper.deleteToBeExecutedTestFiles();
+    if (functional) {
+      await testFilesHelper.createTestFilesReport();
+      await testFilesHelper.deleteTempFailedTestsFile();
+      await testFilesHelper.deleteTempPassedTestsFile();
+      await testFilesHelper.deleteTempToBeExecutedTestFiles();
+    }
   },
   tests: getTests(),
   output: process.env.REPORT_DIR || "test-results/functional",
@@ -75,12 +82,12 @@ exports.config = {
       enabled: true,
     },
     failedAndNotExecutedTestFilesPlugin: {
-      enabled: true,
+      enabled: functional,
       require: "./e2e/plugins/failedAndNotExecutedTestFilesPlugin",
     },
   },
   mocha: {
-    bail: process.env.PROCEED_ON_FAILURE === true || false,
+    bail: process.env.PROCEED_ON_FAILURE !== "true",
     reporterOptions: {
       "codeceptjs-cli-reporter": {
         stdout: "-",
