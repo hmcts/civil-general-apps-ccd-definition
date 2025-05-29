@@ -1,6 +1,6 @@
 #!groovy
 properties([
-  copyArtifactPermission('/HMCTS_a_to_c/civil-ccd-definition/*'),
+  copyArtifactPermission('/HMCTS_a_to_c/civil-general-apps-ccd-definition/*'),
 ]);
 
 @Library("Infrastructure")
