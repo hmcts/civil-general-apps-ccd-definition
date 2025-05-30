@@ -169,8 +169,7 @@ let eventNumber = 0;
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
 
-const selectApplicationType = (eventName, applicationType) => [
-  () => caseViewPage.start(eventName),
+const selectApplicationType = (applicationType) => [
   () => applicationTypePage.selectApplicationType(applicationType),
 ];
 
@@ -1146,7 +1145,8 @@ module.exports = function () {
     async createGeneralApplication(appTypes, caseId, consentCheck, isUrgent, notice, hearingScheduled, trialRequired, unavailableTrailRequired, supportRequirement) {
       eventName = gaEvents.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
-        ...selectApplicationType(eventName, appTypes),
+        () => caseViewPage.startEvent(gaEvents.INITIATE_GENERAL_APPLICATION.id),
+        ...selectApplicationType(appTypes),
         () => hearingDatePage.selectHearingScheduled(hearingScheduled),
         ...selectConsentCheck(consentCheck),
         ...isUrgentApplication(isUrgent),
