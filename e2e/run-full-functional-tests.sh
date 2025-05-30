@@ -30,6 +30,10 @@ else
 
   else
     echo "Running failed and not executed functional test files on ${ENVIRONMENT} env"
+
+    # Collect array elements into a comma-separated string
+    PREV_FAILED_TEST_FILES=$(jq -r '.failedTestFiles[]' "$PREV_TEST_FILES_REPORT" | paste -sd "," -)
+    
     # Move testFilesReport.json to prevTestFilesReport.json
     mv "$TEST_FILES_REPORT" "$PREV_TEST_FILES_REPORT"
 
