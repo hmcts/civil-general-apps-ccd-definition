@@ -20,7 +20,7 @@
     "test:api:win32": "FUNCTIONAL=true npx codeceptjs run-workers --suites 5 --grep @api-tests --reporter mocha-multi --verbose",
     "test:api:darwin:linux": "MOCHAWESOME_REPORTFILENAME=api FUNCTIONAL=true npx codeceptjs run-workers --suites 5 --grep '@api-tests' --reporter mocha-multi --verbose",
     "test:e2e-nonprod": "MOCHAWESOME_REPORTFILENAME=api-preview-nonprod FUNCTIONAL=true npx codeceptjs  run-workers --suites 10 --grep '@e2e-nonprod|@e2e-tests|@api-nonprod|@api-tests' --reporter mocha-multi --verbose",
-    "test:api-nonprod": "MOCHAWESOME_REPORTFILENAME=api-preview-nonprod FUNCTIONAL=true npx codeceptjs  run-workers --suites 5 --grep @api-nonprod --reporter mocha-multi --verbose",
+    "test:api-nonprod": "MOCHAWESOME_REPORTFILENAME=api-preview-nonprod FUNCTIONAL=true npx codeceptjs  run-workers --suites 7 --grep '@api-nonprod|@api-tests' --reporter mocha-multi --verbose",
     "test:e2e": "MOCHAWESOME_REPORTFILENAME=e2e npx codeceptjs run --grep @e2e-tests --reporter mocha-multi --verbose",
     "test:e2e-multiparty": "MOCHAWESOME_REPORTFILENAME=e2e-multiparty npx codeceptjs run --grep @multiparty-e2e-tests --reporter mocha-multi --verbose",
     "test:functional": "./e2e/run-functional-tests.sh",
