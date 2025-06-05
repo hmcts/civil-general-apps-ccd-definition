@@ -420,5 +420,12 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "mainCaseSubmittedDate",
+    "FieldType": "DateTime",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
   }
 ]
