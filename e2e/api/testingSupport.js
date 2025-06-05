@@ -6,7 +6,7 @@ const totp = require('totp-generator');
 
 let incidentMessage;
 
-const MAX_RETRIES = 60;
+const MAX_RETRIES = 25;
 const RETRY_TIMEOUT_MS = 5000;
 
 module.exports = {
