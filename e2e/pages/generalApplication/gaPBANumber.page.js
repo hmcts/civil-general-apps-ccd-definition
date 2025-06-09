@@ -15,10 +15,13 @@ module.exports = {
     I.see('You will be able to pay for your application once it has been submitted.');
     I.see('Application fee to pay');
     if (('no' === consentCheck && 'yes' === notice) && ('Vary payment terms of judgment' !== appType || 'Vary order' !== appType)) {
-      I.see('£303.00');
+      I.see('£313.00');
     } else if ('Vary payment terms of judgment' === appType || 'Vary order' === appType) {
       I.see('£15.00');
+    } else if ('Strike out,Summary judgment,Stay the claim,Extend time' === appType) {
+      I.see('£123.00');
     } else {
+      console.log('The application type : ' + appType);
       I.see('£119.00');
     }
     await I.clickContinue();

@@ -139,7 +139,7 @@ const claimant = (claimantType) => {
   }
 };
 
-const createClaimDataLIP = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000',sdoR2) => {
+const createClaimDataLIP = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000') => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
@@ -247,14 +247,8 @@ const createClaimDataLIP = (pbaV3, legalRepresentation, useValidPba, mpScenario,
       SecondDefendantSolicitorEmail: {},
       SameLegalRepresentative: {},
     } : {},
-    ...(sdoR2 === true) ? {
-      ClaimTypeUnSpec: {
-        claimTypeUnSpec: 'CONSUMER_CREDIT'
-      }
-    } : {
-      ClaimType: {
-        claimType: 'CONSUMER_CREDIT'
-      }
+    ClaimTypeUnSpec: {
+      claimTypeUnSpec: 'CONSUMER_CREDIT'
     },
     Details: {
       detailsOfClaim: 'Test details of claim'
@@ -431,7 +425,7 @@ const createClaimDataLIP = (pbaV3, legalRepresentation, useValidPba, mpScenario,
   }
 };
 
-const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType, claimAmount = '30000', sdoR2, useBirminghamCourt) => {
+const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantType, claimAmount = '30000', useBirminghamCourt) => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
@@ -561,14 +555,8 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimantT
       SecondDefendantSolicitorEmail: {},
       SameLegalRepresentative: {},
     } : {},
-    ...(sdoR2 === true) ? {
-      ClaimTypeUnSpec: {
-        claimTypeUnSpec: 'CONSUMER_CREDIT'
-      }
-    } : {
-      ClaimType: {
-        claimType: 'CONSUMER_CREDIT'
-      }
+    ClaimTypeUnSpec: {
+      claimTypeUnSpec: 'CONSUMER_CREDIT'
     },
     Details: {
       detailsOfClaim: 'Test details of claim'
@@ -697,7 +685,7 @@ const hasRespondent2 = (mpScenario) => {
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE', claimantType, claimAmount = '30000', sdoR2, useBirminghamCourt = false) => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimantType, claimAmount = '30000', useBirminghamCourt = false) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -730,7 +718,7 @@ module.exports = {
         },
       },
       valid: {
-        ...createClaimData('Yes', true, mpScenario, 'Company', claimAmount, sdoR2, useBirminghamCourt),
+        ...createClaimData('Yes', true, mpScenario, 'Company', claimAmount, useBirminghamCourt),
       },
       invalid: {
         Upload: {

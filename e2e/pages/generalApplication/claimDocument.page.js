@@ -16,15 +16,18 @@ module.exports = {
 
   async verifyUploadedDocument(documentType) {
     await I.seeInCurrentUrl('documents');
+    console.log('The Document Type' + documentType);
     if (documentType === 'After SDO - Hearing Notice') {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 5);
-    } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 6);
-    } else {
+    } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 7);
+    } else if (documentType === 'Directions order document') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 5);
+    } else {
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 6);
     }
-    let draftAppURL = await I.grabTextFrom(locate(this.fields.links).last());
-    expect(draftAppURL).to.contains(`Draft_application_${docFullDate}`);
+    let links = await I.grabTextFromAll(this.fields.links);
+    expect(links.some(link => link.includes(`Draft_application_${docFullDate}`))).to.be.true;
 
     switch (documentType) {
       case 'General order document':
@@ -58,11 +61,14 @@ module.exports = {
     let docType = await I.grabTextFrom(locate(this.fields.docLabel).last());
     if (documentType === 'After SDO - Hearing Notice') {
       await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(5));
-      await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).last());
+      await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).at(6));
+    } else if (documentType === 'Hearing Notice') {
+      await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(5));
+      await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).at(6));
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeTextEquals('General order document', locate(this.fields.docLabel).at(5));
       await I.seeTextEquals('Hearing Notice', locate(this.fields.docLabel).at(6));
-      await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).last());
+      await I.seeTextEquals('Draft Application document', locate(this.fields.docLabel).at(7));
     } else {
       expect(docType).to.equals(' Draft Application document');
     }

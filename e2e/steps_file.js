@@ -1121,7 +1121,7 @@ module.exports = function () {
         ...selectConsentCheck(consentCheck),
         ...isUrgentApplication(isUrgent),
         ...enterApplicationDetails(),
-        ...fillHearingDetails(hearingScheduled, 'no', 'no', 'no', 'yes', 'disabledAccess'),
+        ...fillHearingDetails(hearingScheduled,  'no', 'no', 'yes', 'disabledAccess'),
         ...verifyApplicationFee(consentCheck, 'no', appTypes),
         ...verifyCheckAnswerForm(caseId, consentCheck),
         ...submitApplication('You have submitted an application'),

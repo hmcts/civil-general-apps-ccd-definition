@@ -120,6 +120,18 @@ module.exports = {
           ...responseData.midEventData,
         };
         break;
+
+      case 'PART_ADMISSION_IMMEDIATELY':
+        responseData.userInput = {
+          ...responseData.userInput,
+          RespondentResponse: {
+            applicant1AcceptAdmitAmountPaidSpec: 'Yes',
+          }
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+        };
+        break;
     }
     return responseData;
   }
