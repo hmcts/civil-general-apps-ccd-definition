@@ -3,33 +3,33 @@ appVersion: "1.0"
 description: A Helm chart for civil-general-apps-ccd-definition App
 name: civil-ga-ccd
 home: https://github.com/hmcts/civil-general-apps-ccd-definition
-version: 0.0.66
+version: 0.0.67
 maintainers:
   - name: HMCTS Civil team
 
 dependencies:
   - name: civil-general-applications
-    version: 0.0.64
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 0.0.72
+    repository: 'oci://hmctspublic.azurecr.io/helm'
   - name: civil-service
-    version: 0.0.67
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 0.0.85
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: civil-service.enabled
   - name: ccd
-    version: 9.2.1
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 9.2.2
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: ccd.enabled
   - name: xui-webapp
-    version: ~1.0.8
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: ~1.0.31
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: xui-webapp.enabled
   - name: idam-pr
     version: ~2.3.0
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: idam-pr.enabled
   - name: camunda-bpm
-    version: 0.0.47
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 0.0.48
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: camunda-bpm.enabled
   - name: servicebus
     version: 1.1.0
@@ -43,6 +43,6 @@ dependencies:
     condition: civil-wa.enabled
   # CCD message publisher
   - name: ccd-message-publisher
-    version: ~0.1.7
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: ~0.1.22
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: civil-wa.enabled
