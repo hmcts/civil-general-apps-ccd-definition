@@ -295,10 +295,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codeceptjs/helper@npm:2.0.1, @codeceptjs/helper@npm:^2.0.1":
+"@codeceptjs/helper@npm:2.0.1":
   version: 2.0.1
   resolution: "@codeceptjs/helper@npm:2.0.1"
   checksum: f4dfc1a916943a708b19c172fb34bcb437734f15fa44b8804b794d31b919d3dad4de859c8b8aa1d1a2f40374044987fa6b6bc307258e0cebee2272bf755931ef
+  languageName: node
+  linkType: hard
+
+"@codeceptjs/helper@npm:^2.0.1":
+  version: 2.0.4
+  resolution: "@codeceptjs/helper@npm:2.0.4"
+  dependencies:
+    typescript: ^5.1.3
+  checksum: 004e229f156a172f37965eb93d7d0926c5cc0cb2eeb772cb81e46eb2a32092ac162e9ccca7b521f2b09a5a3ca6b58f6f7537831b9590c5927e0e37c699bf1093
   languageName: node
   linkType: hard
 
@@ -5815,6 +5824,26 @@ __metadata:
   version: 2.7.2
   resolution: "type@npm:2.7.2"
   checksum: 0f42379a8adb67fe529add238a3e3d16699d95b42d01adfe7b9a7c5da297f5c1ba93de39265ba30ffeb37dfd0afb3fb66ae09f58d6515da442219c086219f6f4
+  languageName: node
+  linkType: hard
+
+"typescript@npm:^5.1.3":
+  version: 5.8.3
+  resolution: "typescript@npm:5.8.3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: cb1d081c889a288b962d3c8ae18d337ad6ee88a8e81ae0103fa1fecbe923737f3ba1dbdb3e6d8b776c72bc73bfa6d8d850c0306eed1a51377d2fccdfd75d92c4
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^5.1.3#~builtin<compat/typescript>":
+  version: 5.8.3
+  resolution: "typescript@patch:typescript@npm%3A5.8.3#~builtin<compat/typescript>::version=5.8.3&hash=ad5954"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 1b503525a88ff0ff5952e95870971c4fb2118c17364d60302c21935dedcd6c37e6a0a692f350892bafcef6f4a16d09073fe461158547978d2f16fbe4cb18581c
   languageName: node
   linkType: hard
 
