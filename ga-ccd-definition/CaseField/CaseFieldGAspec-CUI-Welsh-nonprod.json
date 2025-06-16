@@ -16,5 +16,24 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "preTranslationGaDocuments",
+    "Label": "Documents to be translated",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "preTranslationGaDocumentType",
+    "Label": "Type of document to be translated",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "PreTranslationGaDocumentType",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
   }
 ]
