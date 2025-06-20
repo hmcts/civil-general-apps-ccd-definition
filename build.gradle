@@ -14,18 +14,31 @@ targetCompatibility = 11
 repositories {
   mavenLocal()
   mavenCentral()
-  maven { url 'https://jitpack.io' }
+  maven {
+    url 'https://pkgs.dev.azure.com/hmcts/Artifacts/_packaging/hmcts-lib/maven/v1'
+  }
 }
 
-task highLevelDataSetup(type: JavaExec) {
+tasks.register('highLevelDataSetup', JavaExec) {
   main = "uk.gov.hmcts.reform.civil.HighLevelDataSetupApp"
   classpath += sourceSets.main.runtimeClasspath
   jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
 }
 
 dependencies {
-
-  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.9.0'
+  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.2.4'
   implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.11'
+}
 
+publishing {
+  repositories {
+    maven {
+      name = "AzureArtifacts"
+      url = uri("https://pkgs.dev.azure.com/hmcts/Artifacts/_packaging/hmcts-lib/maven/v1")
+      credentials {
+        username = System.getenv("AZURE_DEVOPS_ARTIFACT_USERNAME")
+        password = System.getenv("AZURE_DEVOPS_ARTIFACT_TOKEN")
+      }
+    }
+  }
 }
