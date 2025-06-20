@@ -8,8 +8,12 @@ plugins {
 group 'com.github.hmcts'
 version 'DEV-SNAPSHOT'
 
-sourceCompatibility = 11
-targetCompatibility = 11
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(21)
+  }
+}
+
 
 repositories {
   mavenLocal()
@@ -20,7 +24,7 @@ repositories {
 }
 
 tasks.register('highLevelDataSetup', JavaExec) {
-  main = "uk.gov.hmcts.reform.civil.HighLevelDataSetupApp"
+  mainClass = "uk.gov.hmcts.reform.civil.HighLevelDataSetupApp"
   classpath += sourceSets.main.runtimeClasspath
   jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
 }
