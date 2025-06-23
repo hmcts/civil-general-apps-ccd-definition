@@ -3,16 +3,16 @@ appVersion: "1.0"
 description: A Helm chart for civil-general-apps-ccd-definition App
 name: civil-ga-ccd
 home: https://github.com/hmcts/civil-general-apps-ccd-definition
-version: 0.0.67
+version: 0.0.68
 maintainers:
   - name: HMCTS Civil team
 
 dependencies:
   - name: civil-general-applications
-    version: 0.0.72
+    version: 0.0.73
     repository: 'oci://hmctspublic.azurecr.io/helm'
   - name: civil-service
-    version: 0.0.85
+    version: 0.0.86
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: civil-service.enabled
   - name: ccd
