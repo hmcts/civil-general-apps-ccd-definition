@@ -7,7 +7,7 @@ run:
 ```
 ./bin/import-ccd-definition-dev.sh
 ```
-## Testing
+## Testing   
 
 The repo uses codeceptjs framework for e2e tests.
 
