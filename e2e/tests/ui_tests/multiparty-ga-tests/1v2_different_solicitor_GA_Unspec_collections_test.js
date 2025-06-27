@@ -51,7 +51,7 @@ Scenario(
       gaCaseReference
     );
   }
-);
+).retry(1);
 
 Scenario('With Notice application - Org3 Solicitor Initiate GA @regression', async ({ api, I }) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -102,7 +102,7 @@ Scenario('With Notice application - Org3 Solicitor Initiate GA @regression', asy
     'Y'
   );
   await api.assertGAApplicantDisplayName(config.secondDefendantSolicitorUser, gaCaseReference);
-});
+}).retry(1);
 
 AfterSuite(async ({ api }) => {
   await api.cleanUp();

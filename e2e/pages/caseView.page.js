@@ -26,12 +26,19 @@ module.exports = {
   goButton: 'button[type="submit"]',
 
   async start(event) {
-    await I.waitForElement(this.fields.eventDropdown, 90);
+    await I.waitForElement(this.fields.eventDropdown);
     await I.selectOption(this.fields.eventDropdown, event);
     await I.forceClick(this.goButton);
   },
 
   async startEvent(event, caseId) {
+      await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetails(caseId);
+      await this.start(event.name);
+    }, EVENT_TRIGGER_LOCATOR, 3, 45);
+  },
+
+  async startEventWithUrl(event, caseId) {
       await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
       // await this.start(event.name);

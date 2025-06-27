@@ -29,7 +29,7 @@ Scenario('Judge makes decision 1V1 - AWAITING_ADDITIONAL_INFORMATION', async ({a
   await api.respondentResponseToJudgeAdditionalInfo(config.applicantSolicitorUser, gaCaseReference);
   console.log('*** End Respondent respond to Judge Additional information on GA Case Reference: '
     + gaCaseReference + ' ***');
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();

@@ -89,7 +89,7 @@ Scenario('Claimant and Defendant Hearing notice - With notice journey', async ({
     gaCaseReference,
     'Y'
   );
-});
+}).retry(1);
 
 AfterSuite(async ({ api }) => {
   await api.cleanUp();

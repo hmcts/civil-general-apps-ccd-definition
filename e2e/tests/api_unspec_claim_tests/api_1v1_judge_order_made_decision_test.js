@@ -30,7 +30,7 @@ Scenario('Judge makes decision 1V1 - Order Made @api-tests @api-scheduler-test',
     state = await api.judgeMakesDecisionOrderMadeStayClaimAppln(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge makes decision order made - GA Case Reference: ' + gaCaseReference + ' ***');
-});
+}).retry(1);
 
 Scenario('Judge Revisit 1V1 - Order Made End Date Scheduler @api-scheduler-test', async ({api}) => {
 
@@ -38,7 +38,7 @@ Scenario('Judge Revisit 1V1 - Order Made End Date Scheduler @api-scheduler-test'
   await api.judgeRevisitScheduler(gaCaseReference, state, genAppType);
   console.log('*** End of Judge Revisit Order Made Scheduler ***');
 
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();

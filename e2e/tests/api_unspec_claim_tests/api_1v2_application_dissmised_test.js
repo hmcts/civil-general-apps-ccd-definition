@@ -26,14 +26,14 @@ Scenario('Judge makes decision 1V2 - DISMISS_THE_APPLICATION', async ({api}) => 
   // await api.respondentResponse1v2(config.defendantSolicitorUser, config.secondDefendantSolicitorUser, gaCaseReference);
   // console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-  // console.log('*** Start Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReference + ' ***');
-  // if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-  //   await api.judgeDismissApplication(config.judgeUser2WithRegionId2, gaCaseReference);
-  // } else {
-  //   await api.judgeDismissApplication(config.judgeLocalUser, gaCaseReference);
-  // }
-  // console.log('*** End Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReference + ' ***');
-});
+//   console.log('*** Start Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReference + ' ***');
+//   if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
+//     await api.judgeDismissApplication(config.judgeUser2WithRegionId2, gaCaseReference);
+//   } else {
+//     await api.judgeDismissApplication(config.judgeLocalUser, gaCaseReference);
+//   }
+//   console.log('*** End Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReference + ' ***');
+// }).retry(1);
 
 // AfterSuite(async ({api}) => {
 //   await api.cleanUp();
