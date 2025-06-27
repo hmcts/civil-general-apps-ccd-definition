@@ -22,7 +22,6 @@ Scenario(
     await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
     console.log('Case created for general application: ' + civilCaseReference);
     await I.login(config.applicantSolicitorUser);
-    await I.navigateToCaseDetails(civilCaseReference);
     await I.createGeneralApplication(
       getAppTypes().slice(0, 4),
       civilCaseReference,
