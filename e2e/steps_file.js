@@ -348,7 +348,7 @@ module.exports = function () {
       eventName = ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM.name;
 
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM, caseId),
+        () => caseViewPage.startEventWithUrl(ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM, caseId),
         () => continuePage.continue(),
         () => event.submit('Submit', 'Notification of claim sent'),
         () => event.returnToCaseDetails()
@@ -359,7 +359,7 @@ module.exports = function () {
       eventName = ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS.name;
 
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS, caseId),
+        () => caseViewPage.startEventWithUrl(ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS, caseId),
         () => continuePage.continue(),
         () => event.submit('Submit', 'Defendant notified'),
         () => event.returnToCaseDetails()
@@ -370,7 +370,7 @@ module.exports = function () {
       eventName = ccdEvents.ACKNOWLEDGE_CLAIM.name;
 
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(ccdEvents.ACKNOWLEDGE_CLAIM, caseId),
+        () => caseViewPage.startEventWithUrl(ccdEvents.ACKNOWLEDGE_CLAIM, caseId),
         () => respondentDetails.verifyDetails(),
         () => responseIntentionPage.selectResponseIntention(responseIntention),
         () => confirmDetailsPage.confirmReference(),
@@ -384,7 +384,7 @@ module.exports = function () {
       eventName = ccdEvents.INFORM_AGREED_EXTENSION_DATE.name;
 
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(ccdEvents.INFORM_AGREED_EXTENSION_DATE, caseId),
+        () => caseViewPage.startEventWithUrl(ccdEvents.INFORM_AGREED_EXTENSION_DATE, caseId),
         () => extensionDatePage.enterExtensionDate(respondentSolicitorNumber),
         () => event.submit('Submit', 'Extension deadline submitted'),
         () => event.returnToCaseDetails()
@@ -395,7 +395,7 @@ module.exports = function () {
       eventName = ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND.name;
 
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND, caseId),
+        () => caseViewPage.startEventWithUrl(ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND, caseId),
         () => defendantLitigationFriendPage.enterLitigantFriendWithDifferentAddressToDefendant(address, TEST_FILE_PATH),
         () => event.submit('Submit', 'You have added litigation friend details'),
         () => event.returnToCaseDetails()
@@ -406,7 +406,7 @@ module.exports = function () {
       eventName = ccdEvents.DEFENDANT_RESPONSE.name;
 
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(ccdEvents.DEFENDANT_RESPONSE, caseId),
+        () => caseViewPage.startEventWithUrl(ccdEvents.DEFENDANT_RESPONSE, caseId),
         () => responseTypePage.selectResponseType(responseType),
         ...conditionalSteps(responseType === 'fullDefence', [
           () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH),
@@ -434,7 +434,7 @@ module.exports = function () {
       eventName = ccdEvents.CLAIMANT_RESPONSE.name;
 
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(ccdEvents.CLAIMANT_RESPONSE, caseId),
+        () => caseViewPage.startEventWithUrl(ccdEvents.CLAIMANT_RESPONSE, caseId),
         () => proceedPage.proceedWithClaim(),
         () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH),
         () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
@@ -458,7 +458,7 @@ module.exports = function () {
       eventName = ccdEvents.CLAIMANT_RESPONSE.name;
 
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(ccdEvents.CLAIMANT_RESPONSE, caseId),
+        () => caseViewPage.startEventWithUrl(ccdEvents.CLAIMANT_RESPONSE, caseId),
         () => proceedPage.dropClaim(),
         () => event.submit('Submit your response', 'You have chosen not to proceed with the claim'),
         () => this.click('Close and Return to case details')
@@ -470,7 +470,7 @@ module.exports = function () {
       eventName = ccdEvents.CASE_PROCEEDS_IN_CASEMAN.name;
 
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(ccdEvents.CASE_PROCEEDS_IN_CASEMAN, caseId),
+        () => caseViewPage.startEventWithUrl(ccdEvents.CASE_PROCEEDS_IN_CASEMAN, caseId),
         () => caseProceedsInCasemanPage.enterTransferDate(),
         () => takeCaseOffline.takeCaseOffline()
       ]);
@@ -643,7 +643,7 @@ module.exports = function () {
     async acknowledgeClaimSpec() {
       eventName = ccdEvents.ACKNOWLEDGEMENT_OF_SERVICE.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(ccdEvents.ACKNOWLEDGEMENT_OF_SERVICE, caseId),
+        () => caseViewPage.startEventWithUrl(ccdEvents.ACKNOWLEDGEMENT_OF_SERVICE, caseId),
         () => specConfirmDefendantsDetails.confirmDetails(),
         () => specConfirmLegalRepDetails.confirmDetails(),
         () => event.submit('Acknowledge claim', ''),
@@ -654,7 +654,7 @@ module.exports = function () {
     async respondToClaimSpec(responseType, defenceType, paidAmount) {
       eventName = ccdEvents.DEFENDANT_RESPONSE_SPEC.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(ccdEvents.DEFENDANT_RESPONSE_SPEC, caseId),
+        () => caseViewPage.startEventWithUrl(ccdEvents.DEFENDANT_RESPONSE_SPEC, caseId),
         () => respondentCheckListPage.claimTimelineTemplate(),
         () => specConfirmDefendantsDetails.confirmDetails(),
         () => specConfirmLegalRepDetails.confirmDetails(),
@@ -789,7 +789,7 @@ module.exports = function () {
     async respondToApplication(caseId, consentCheck, hearingScheduled, trialRequired, unavailableTrailRequired, supportRequirement, appTypes) {
       eventName = gaEvents.RESPOND_TO_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_APPLICATION,caseId),
+        () => caseViewPage.startEventWithUrl(gaEvents.RESPOND_TO_APPLICATION,caseId),
         () => respConsentCheckPage.selectConsentCheck(consentCheck),
         () => respHearingDetailsPage.isRespHearingScheduled(hearingScheduled),
         () => respHearingDetailsPage.isRespTrialRequired(trialRequired),
@@ -808,7 +808,7 @@ module.exports = function () {
     async respondToVaryJudgementApp(caseId, appTypes, type, paymentPlanType) {
       eventName = gaEvents.RESPOND_TO_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_APPLICATION,caseId),
+        () => caseViewPage.startEventWithUrl(gaEvents.RESPOND_TO_APPLICATION,caseId),
         () => respondentDebtorResponsePage.selectDebtorOffer(type, paymentPlanType),
         () => respHearingDetailsPage.isRespHearingScheduled('yes'),
         () => respHearingDetailsPage.isRespTrialRequired('yes'),
@@ -833,7 +833,7 @@ module.exports = function () {
     async judgeMakeDecision(decision, order, notice, caseNumber, documentType, orderType) {
       eventName = gaEvents.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(gaEvents.MAKE_DECISION, caseNumber),
+        () => caseViewPage.startEventWithUrl(gaEvents.MAKE_DECISION, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => makeAnOrderPage.selectAnOrder(order, notice, orderType),
         () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
@@ -846,7 +846,7 @@ module.exports = function () {
     async judgeRequestMoreInfo(decision, infoType, caseNumber, withoutNotice, documentType) {
       eventName = gaEvents.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(gaEvents.MAKE_DECISION, caseNumber),
+        () => caseViewPage.startEventWithUrl(gaEvents.MAKE_DECISION, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => requestMoreInfoPage.requestMoreInfoOrder(infoType, withoutNotice),
         () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
@@ -873,7 +873,7 @@ module.exports = function () {
         await this.wait(3);
       }
 
-      await caseViewPage.startEvent(gaEvents.APPROVE_CONSENT_ORDER, gaCaseNumber);
+      await caseViewPage.startEventWithUrl(gaEvents.APPROVE_CONSENT_ORDER, gaCaseNumber);
       await consentOrderPage.approveConsentOrder();
       await consentOrderReviewPage.reviewOrderDocument();
       await consentOrderCYAPage.verifyConsentOrderCheckAnswerForm(gaCaseNumber, 1);
@@ -889,7 +889,7 @@ module.exports = function () {
       }
       eventName = gaEvents.GENERATE_DIRECTIONS_ORDER.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(gaEvents.GENERATE_DIRECTIONS_ORDER, gaCaseNumber),
+        () => caseViewPage.startEventWithUrl(gaEvents.GENERATE_DIRECTIONS_ORDER, gaCaseNumber),
         () => judgeOrderPage.verifyErrorMessage(),
         () => judgeOrderPage.selectOrderType(orderType),
         ...conditionalSteps(orderType === 'freeFromOrder', [
@@ -924,7 +924,7 @@ module.exports = function () {
     async respondToJudgeAdditionalInfo(caseNumber) {
       eventName = gaEvents.RESPOND_TO_JUDGE_ADDITIONAL_INFO.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_JUDGE_ADDITIONAL_INFO, caseNumber),
+        () => caseViewPage.startEventWithUrl(gaEvents.RESPOND_TO_JUDGE_ADDITIONAL_INFO, caseNumber),
         () => uploadScreenPage.uploadSupportingFile(gaEvents.RESPOND_TO_JUDGE_ADDITIONAL_INFO.id, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
         () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
@@ -971,7 +971,7 @@ module.exports = function () {
     async respondToJudgesDirections(caseNumber) {
       eventName = gaEvents.RESPOND_TO_JUDGE_DIRECTIONS.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_JUDGE_DIRECTIONS, caseNumber),
+        () => caseViewPage.startEventWithUrl(gaEvents.RESPOND_TO_JUDGE_DIRECTIONS, caseNumber),
         () => uploadScreenPage.uploadSupportingFile(gaEvents.RESPOND_TO_JUDGE_DIRECTIONS.id, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
         () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
@@ -982,7 +982,7 @@ module.exports = function () {
     async respondToJudgesWrittenRep(caseNumber, documentType) {
       eventName = gaEvents.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION, caseNumber),
+        () => caseViewPage.startEventWithUrl(gaEvents.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION, caseNumber),
         () => uploadScreenPage.uploadSupportingFile(gaEvents.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.id, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
         () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
@@ -993,7 +993,7 @@ module.exports = function () {
     async judgeListForAHearingDecision(decision, caseNumber, notice, documentType) {
       eventName = gaEvents.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(gaEvents.MAKE_DECISION, caseNumber),
+        () => caseViewPage.startEventWithUrl(gaEvents.MAKE_DECISION, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => listForHearingPage.selectJudicialHearingPreferences('inPerson'),
         () => listForHearingPage.selectJudicialTimeEstimate('fifteenMin'),
@@ -1032,7 +1032,7 @@ module.exports = function () {
     async judgeWrittenRepresentationsDecision(decision, representationsType, caseNumber, notice, documentType, orderType) {
       eventName = gaEvents.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(gaEvents.MAKE_DECISION, caseNumber),
+        () => caseViewPage.startEventWithUrl(gaEvents.MAKE_DECISION, caseNumber),
         ...conditionalSteps(notice !== 'withOutNotice', [
           () => judgeDecisionPage.selectJudgeDecision(decision),
           () => writtenRepresentationsPage.selectWrittenRepresentations(representationsType),
@@ -1113,7 +1113,7 @@ module.exports = function () {
     async initiateVaryJudgementGA(caseId, appTypes, hearingScheduled, consentCheck, isUrgent) {
       eventName = gaEvents.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
+        () => caseViewPage.startEventWithUrl(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
         () => applicationTypePage.chooseAppType(getAppTypes().slice(6, 11)),
         ...selectApplicationType(eventName, appTypes),
         () => hearingDatePage.selectHearingScheduled(hearingScheduled),
@@ -1132,7 +1132,7 @@ module.exports = function () {
     async verifyNoN245Form(caseId, appTypes, hearingScheduled) {
       eventName = gaEvents.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
+        () => caseViewPage.startEventWithUrl(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
         () => applicationTypePage.chooseAppType(getAppTypes().slice(6, 11)),
         ...selectApplicationType(eventName, appTypes),
         () => hearingDatePage.selectHearingScheduled(hearingScheduled),
