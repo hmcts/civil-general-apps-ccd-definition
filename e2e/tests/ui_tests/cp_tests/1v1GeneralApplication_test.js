@@ -101,7 +101,7 @@ Scenario.skip('GA for 1v1 - Make an order journey @e2e-tests', async ({ I, api }
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Applicant Evidence');
 });
 
-Scenario('GA for 1v1 - Direction order journey @regression @debug', async ({ I, api }) => {
+Scenario('GA for 1v1 - Direction order journey @regression', async ({ I, api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
