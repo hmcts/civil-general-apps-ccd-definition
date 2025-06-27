@@ -111,7 +111,6 @@ Scenario('GA for 1v1 - Direction order journey @regression', async ({ I, api }) 
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(
     getAppTypes().slice(0, 4),
     civilCaseReference,
@@ -188,7 +187,6 @@ Scenario.skip('GA for 1v1 Specified Claim- Dismissal order journey @regression',
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(
     getAppTypes().slice(0, 4),
     civilCaseReference,
@@ -272,7 +270,6 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(
     getAppTypes().slice(0, 5),
     civilCaseReference,

@@ -20,7 +20,6 @@ Scenario.skip(
     civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
     console.log('Case created for general application: ' + civilCaseReference);
     await I.login(config.defendantSolicitorUser);
-    await I.navigateToCaseDetails(civilCaseReference);
     await I.createGeneralApplication(
       getAppTypes().slice(0, 3),
       civilCaseReference,
