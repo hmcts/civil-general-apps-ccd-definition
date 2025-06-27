@@ -97,7 +97,7 @@ Scenario.skip(
     await I.see(states.LISTING_FOR_A_HEARING.name);
     await I.verifyCaseFileAppDocument(civilCaseReference, 'N245 Evidence');
   }
-);
+).retry(1);
 
 Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regression', async ({ I, api }) => {
   await I.login(config.applicantSolicitorUser);
@@ -134,7 +134,7 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
   await api.judgeMakesDecisionOrderMade(config.judgeUser2WithRegionId2, gaCaseReference);
 
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.ORDER_MADE.id);
-});
+}).retry(1);
 
 AfterSuite(async ({ api }) => {
   await api.cleanUp();

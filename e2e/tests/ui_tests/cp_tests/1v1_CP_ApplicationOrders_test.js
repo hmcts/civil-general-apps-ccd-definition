@@ -55,7 +55,7 @@ Scenario.skip('1v1 - Free form order - With notice journey @e2e-tests', async ({
   await I.verifyUploadedClaimDocument(civilCaseReference, 'Free From Order');
   await I.verifyCaseFileOrderDocument(civilCaseReference, 'General order document');
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
-});
+}).retry(1);
 
 Scenario.skip('1v1 - Assisted order - Without Further Hearing @regression', async ({ api, I }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
@@ -96,7 +96,7 @@ Scenario.skip('1v1 - Assisted order - Without Further Hearing @regression', asyn
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(judgeApproveOrderStatus);
   await I.verifyUploadedClaimDocument(civilCaseReference, 'Assisted Order');
-});
+}).retry(1);
 
 AfterSuite(async ({ api }) => {
   await api.cleanUp();

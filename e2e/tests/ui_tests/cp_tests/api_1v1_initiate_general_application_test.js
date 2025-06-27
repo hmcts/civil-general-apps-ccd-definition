@@ -19,7 +19,7 @@ Scenario.skip('1v1 unspecified assert general application unavailable before res
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
 
-});
+}).retry(1);
 
 Scenario.skip('1v1 specified assert general application unavailable before respondent assigned @e2e-tests', async ({I,api}) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, false);
@@ -31,7 +31,7 @@ Scenario.skip('1v1 specified assert general application unavailable before respo
   await assignCaseRoleToUser(civilCaseReference, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
