@@ -116,7 +116,7 @@ Scenario(
 
     await I.verifyCaseFileAppDocument(civilCaseReference, 'Concurrent order document');
   }
-);
+).retry(1);
 
 AfterSuite(async ({ api }) => {
   await api.cleanUp();

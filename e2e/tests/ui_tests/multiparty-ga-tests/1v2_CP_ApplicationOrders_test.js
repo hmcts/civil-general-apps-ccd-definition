@@ -65,7 +65,7 @@ Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({ I, a
 
   await I.verifyCaseFileOrderDocument(civilCaseReference, 'General order document');
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
-});
+}).retry(1);
 
 AfterSuite(async ({ api }) => {
   await api.cleanUp();

@@ -29,7 +29,7 @@ Scenario.skip('GA 1v1 Without Notice  - LR initiates GA vs LIP', async ({api, I}
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser,
     civilCaseReference);
-});
+}).retry(1);
 
 
 AfterSuite(async ({api}) => {

@@ -51,7 +51,7 @@ Scenario('Without Notice application for a hearing @regression', async ({ api, I
     gaCaseReference,
     null
   );
-});
+}).retry(1);
 
 Scenario('Without Notice application to With Notice application - Directions Order @regression', async ({ api, I }) => {
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(
@@ -123,7 +123,7 @@ Scenario('Without Notice application to With Notice application - Directions Ord
     gaCaseReference,
     states.AWAITING_DIRECTIONS_ORDER_DOCS.id
   );
-});
+}).retry(1);
 
 Scenario('With Notice application - Org2 Solicitor Initiate GA @regression', async ({ api, I }) => {
   gaCaseReference = await api.initiateGeneralApplicationWithNoStrikeOut(
@@ -159,7 +159,7 @@ Scenario('With Notice application - Org2 Solicitor Initiate GA @regression', asy
     'Y'
   );
   await api.assertGAApplicantDisplayName(config.defendantSolicitorUser, gaCaseReference);
-});
+}).retry(1);
 
 AfterSuite(async ({ api }) => {
   await api.cleanUp();

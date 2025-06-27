@@ -3,10 +3,14 @@ const { testFilesHelper } = require("./e2e/plugins/failedAndNotExecutedTestFiles
 const functional = process.env.FUNCTIONAL;
 
 const getTests = () => {
-  if (process.env.PREV_FAILED_TEST_FILES && process.env.PREV_NOT_EXECUTED_TEST_FILES)
-    return [...process.env.PREV_FAILED_TEST_FILES.split(","), ...process.env.PREV_NOT_EXECUTED_TEST_FILES.split(",")];
+  let prevFailedTestFiles = process.env.PREV_FAILED_TEST_FILES;
+  let prevNotExecutedTestFiles = process.env.PREV_NOT_EXECUTED_TEST_FILES;
 
-  if (process.env.PREV_FAILED_TEST_FILES) return process.env.PREV_FAILED_TEST_FILES.split(",");
+  if (prevFailedTestFiles !== undefined || prevNotExecutedTestFiles !== undefined) {
+    prevFailedTestFiles = prevFailedTestFiles ? prevFailedTestFiles.split(',') : [];
+    prevNotExecutedTestFiles = prevNotExecutedTestFiles ? prevNotExecutedTestFiles.split(',') : [];
+    return [...prevFailedTestFiles, ...prevNotExecutedTestFiles];
+  }
 
   if (process.env.CCD_UI_TESTS === "true")
     return [

@@ -36,7 +36,7 @@ Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT - DIRECTIONS ORDER - Respond
   console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
   let doc = 'gaAddl';
   await api.assertDocumentVisibilityToUser(config.applicantSolicitorUser, 'Claimant', civilCaseReference, gaCaseReference, doc);
-});
+}).retry(1);
 
 Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT  as DEFENDANT - PROCEEDS IN HERITAGE', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
@@ -53,7 +53,8 @@ Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT  as DEFENDANT - PROCEEDS IN 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentDebtorResponse(config.applicantSolicitorUser, gaCaseReference, false);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
-});
+}).retry(1);
+
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });

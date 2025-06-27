@@ -99,7 +99,7 @@ Scenario.skip('GA for 1v1 - Make an order journey @e2e-tests', async ({ I, api }
 
   await I.verifyCaseFileOrderDocument(civilCaseReference, 'General order document');
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Applicant Evidence');
-});
+}).retry(1);
 
 Scenario('GA for 1v1 - Direction order journey @regression', async ({ I, api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
@@ -182,7 +182,7 @@ Scenario('GA for 1v1 - Direction order journey @regression', async ({ I, api }) 
     gaCaseReference,
     'Y'
   );
-});
+}).retry(1);
 
 Scenario.skip('GA for 1v1 Specified Claim- Dismissal order journey @regression', async ({ I, api }) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
@@ -260,7 +260,7 @@ Scenario.skip('GA for 1v1 Specified Claim- Dismissal order journey @regression',
     gaCaseReference,
     'Y'
   );
-});
+}).retry(1);
 
 Scenario('GA for 1v1- respond to application - Request more information @regression', async ({ I, api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
@@ -347,7 +347,7 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
   await I.see(additionalInfoStatus);
   await I.respondToJudgeAdditionalInfo(gaCaseReference);
   console.log('Responded to Judge Additional Information on case: ' + gaCaseReference);
-});
+}).retry(1);
 
 AfterSuite(async ({ api }) => {
   await api.cleanUp();

@@ -124,7 +124,7 @@ Scenario.skip(
     await I.see(listForHearingStatus);
     await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing order');
   }
-);
+).retry(1);
 
 AfterSuite(async ({ api }) => {
   await api.cleanUp();
