@@ -1145,7 +1145,7 @@ module.exports = function () {
     async createGeneralApplication(appTypes, caseId, consentCheck, isUrgent, notice, hearingScheduled, trialRequired, unavailableTrailRequired, supportRequirement) {
       eventName = gaEvents.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(gaEvents.INITIATE_GENERAL_APPLICATION.id),
+        () => caseViewPage.startEventWithUrl(gaEvents.INITIATE_GENERAL_APPLICATION.id, caseId),
         ...selectApplicationType(appTypes),
         () => hearingDatePage.selectHearingScheduled(hearingScheduled),
         ...selectConsentCheck(consentCheck),
