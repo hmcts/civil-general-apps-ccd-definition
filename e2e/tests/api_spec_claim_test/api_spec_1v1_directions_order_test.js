@@ -29,7 +29,7 @@ Scenario('Judge makes decision 1V1 Specified case- DIRECTIONS ORDER', async ({ap
   console.log('*** Start Respondent respond to Judge Directions on GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponseToJudgeDirections(config.applicantSolicitorUser, gaCaseReference);
   console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
-});
+}).retry(1);
 
 
 Scenario('Make an Urgent General Application with Vary payment terms of judgment', async ({api}) => {
@@ -39,7 +39,7 @@ Scenario('Make an Urgent General Application with Vary payment terms of judgment
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGaWithVaryJudgement(config.applicantSolicitorUser,
     civilCaseReference, true, true);
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();

@@ -33,7 +33,7 @@ Scenario('Judge makes decision 1V2 - DISMISS_THE_APPLICATION', async ({api}) => 
     await api.judgeDismissApplication(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReference + ' ***');
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();

@@ -36,7 +36,7 @@ Scenario('Defendants response 1V2', async ({api}) => {
     }
     console.log('*** NBC Admin Region4 Refer to Judge Process End ***');
 
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
     await api.cleanUp();

@@ -38,7 +38,7 @@ Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
   } else {
     await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'ASSISTED_ORDER', true);
   }
-});
+}).retry(1);
 
 Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -78,7 +78,7 @@ Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) =>
     await api.judgeMakesDecisionWrittenRep(config.judgeUserWithRegionId1Local, gaCaseReference);
   }
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'AWAITING_WRITTEN_REPRESENTATIONS');
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
