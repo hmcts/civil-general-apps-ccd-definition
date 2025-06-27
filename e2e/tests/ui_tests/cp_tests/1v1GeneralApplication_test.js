@@ -29,7 +29,6 @@ Scenario.skip('GA for 1v1 - Make an order journey @e2e-tests', async ({ I, api }
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(
     getAppTypes().slice(3, 4),
     civilCaseReference,
