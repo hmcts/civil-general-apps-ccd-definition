@@ -10,5 +10,11 @@
     "ListElementCode": "RESPOND_TO_APPLICATION_SUMMARY_DOC",
     "ListElement": "Respondent Response doc",
     "DisplayOrder": 2
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "WRITTEN_REPRESENTATION_ORDER_DOC",
+    "ListElement": "Written concurrent doc",
+    "DisplayOrder": 3
   }
 ]
