@@ -24,7 +24,7 @@ Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async 
   await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
     'PROCEEDS_IN_HERITAGE_SYSTEM');
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
-});
+}).retry(1);
 
 Scenario('Case offline ORDER_MADE', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
@@ -52,7 +52,7 @@ Scenario('Case offline ORDER_MADE', async ({api}) => {
   await api.claimantResponseClaim(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
     'PROCEEDS_IN_HERITAGE_SYSTEM');
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();

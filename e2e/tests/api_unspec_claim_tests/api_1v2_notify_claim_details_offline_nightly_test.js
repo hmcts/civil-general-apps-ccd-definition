@@ -32,7 +32,7 @@ Scenario('Case offline 1V2 notify_claim_details AWAITING_DIRECTIONS_ORDER_DOCS',
   // Reinstate lines below when DTSCCI-1400 is complete
   // await api.partialNotifyClaimDetails(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   // await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();

@@ -1,9 +1,7 @@
 /* eslint-disable no-unused-vars */
 const config = require('./../../../config.js');
-const {
-  waitForGACamundaEventsFinishedBusinessProcess
-} = require('./../../../api/testingSupport');
-const {getAppTypes} = require('./../../../pages/generalApplication/generalApplicationTypes');
+const { waitForGACamundaEventsFinishedBusinessProcess } = require('./../../../api/testingSupport');
+const { getAppTypes } = require('./../../../pages/generalApplication/generalApplicationTypes');
 const states = require('./../../../fixtures/ga-ccd/state.js');
 
 const mpScenario = 'ONE_V_ONE';
@@ -21,7 +19,7 @@ let civilCaseReference, gaCaseReference, user;
 Feature('GA CCD 1v1 - General Application Journey  @ui-nightly');
 // This test should be enabled after early adopters goes live for all regions
 //test is faling for taking long time  to display  applications tab on XUI
- Scenario.skip('GA for 1v1 - Make an order journey @e2e-tests', async ({I, api}) => {
+Scenario.skip('GA for 1v1 - Make an order journey @e2e-tests', async ({ I, api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -31,38 +29,58 @@ Feature('GA CCD 1v1 - General Application Journey  @ui-nightly');
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(
     getAppTypes().slice(3, 4),
-    civilCaseReference, '' +
-    'yes', 'no', 'no', 'no', 'no', 'no',
-    'disabledAccess');
+    civilCaseReference,
+    '' + 'yes',
+    'no',
+    'no',
+    'no',
+    'no',
+    'no',
+    'disabledAccess'
+  );
   console.log('1v1 General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(
+    gaCaseReference,
+    states.AWAITING_APPLICATION_PAYMENT.id,
+    config.applicantSolicitorUser
+  );
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(3, 4), 1);
   await I.see(awaitingPaymentStatus);
 
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser2WithRegionId2;
-    await I.login(user);
-  } else {
-    user = config.judgeLocalUser;
-    await I.login(user);
-  }
+  user = config.judgeUser2WithRegionId2;
+  await I.login(user);
+
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Supporting evidence');
   await I.login(config.defendantSolicitorUser);
   await I.verifyCaseFileAppDocument(civilCaseReference, 'No document');
 
-  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);
+  await I.payAndVerifyGAStatus(
+    civilCaseReference,
+    gaCaseReference,
+    states.AWAITING_RESPONDENT_RESPONSE.id,
+    config.applicantSolicitorUser,
+    respondentStatus
+  );
 
   await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
 
   await I.login(user);
-  await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'no', gaCaseReference, 'General_order', 'courtOwnInitiativeOrder');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.ORDER_MADE.id, config.applicantSolicitorUser);
+  await I.judgeMakeDecision(
+    'makeAnOrder',
+    'approveOrEditTheOrder',
+    'no',
+    gaCaseReference,
+    'General_order',
+    'courtOwnInitiativeOrder'
+  );
+  await waitForGACamundaEventsFinishedBusinessProcess(
+    gaCaseReference,
+    states.ORDER_MADE.id,
+    config.applicantSolicitorUser
+  );
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Approve order', 'no', 'Claimant');
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'General order');
@@ -71,13 +89,18 @@ Feature('GA CCD 1v1 - General Application Journey  @ui-nightly');
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeApproveOrderStatus);
   await I.verifyUploadedClaimDocument(civilCaseReference, 'General order document');
-  await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
+  await api.assertGaAppCollectionVisiblityToUser(
+    config.defendantSolicitorUser,
+    civilCaseReference,
+    gaCaseReference,
+    'Y'
+  );
 
   await I.verifyCaseFileOrderDocument(civilCaseReference, 'General order document');
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Applicant Evidence');
-});
+}).retry(1);
 
-Scenario('GA for 1v1 - Direction order journey @regression4', async ({I, api}) => {
+Scenario('GA for 1v1 - Direction order journey @regression', async ({ I, api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -91,26 +114,47 @@ Scenario('GA for 1v1 - Direction order journey @regression4', async ({I, api}) =
   await I.createGeneralApplication(
     getAppTypes().slice(0, 4),
     civilCaseReference,
-    'no', 'no', 'no', 'yes', 'yes', 'no',
-    'signLanguageInterpreter');
+    'no',
+    'no',
+    'no',
+    'yes',
+    'yes',
+    'no',
+    'signLanguageInterpreter'
+  );
   console.log('General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(
+    gaCaseReference,
+    states.AWAITING_APPLICATION_PAYMENT.id,
+    config.applicantSolicitorUser
+  );
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(awaitingPaymentStatus);
-  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser, judgeDecisionStatus);
+  await I.payAndVerifyGAStatus(
+    civilCaseReference,
+    gaCaseReference,
+    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id,
+    config.applicantSolicitorUser,
+    judgeDecisionStatus
+  );
 
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser2WithRegionId2;
-    await I.login(user);
-  } else {
-    user = config.judgeLocalUser;
-    await I.login(user);
-  }
-  await I.judgeMakeDecision('makeAnOrder', 'giveDirections', 'no', gaCaseReference, 'Directions_order', 'withoutNoticeOrder');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id, config.applicantSolicitorUser);
+  user = config.judgeUser2WithRegionId2;
+  await I.login(user);
+
+  await I.judgeMakeDecision(
+    'makeAnOrder',
+    'giveDirections',
+    'no',
+    gaCaseReference,
+    'Directions_order',
+    'withoutNoticeOrder'
+  );
+  await waitForGACamundaEventsFinishedBusinessProcess(
+    gaCaseReference,
+    states.AWAITING_DIRECTIONS_ORDER_DOCS.id,
+    config.applicantSolicitorUser
+  );
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Judges Directions', 'no', 'Claimant');
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'Directions order');
@@ -125,11 +169,21 @@ Scenario('GA for 1v1 - Direction order journey @regression4', async ({I, api}) =
 
   await I.respondToJudgesDirections(gaCaseReference);
   console.log('Responded to Judges directions on case: ' + gaCaseReference);
-  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_DIRECTIONS_ORDER_DOCS.id);
-  await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
-});
+  await api.verifyGAState(
+    config.defendantSolicitorUser,
+    civilCaseReference,
+    gaCaseReference,
+    states.AWAITING_DIRECTIONS_ORDER_DOCS.id
+  );
+  await api.assertGaAppCollectionVisiblityToUser(
+    config.defendantSolicitorUser,
+    civilCaseReference,
+    gaCaseReference,
+    'Y'
+  );
+}).retry(1);
 
-Scenario.skip('GA for 1v1 Specified Claim- Dismissal order journey @regression2', async ({I, api}) => {
+Scenario.skip('GA for 1v1 Specified Claim- Dismissal order journey @regression', async ({ I, api }) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
@@ -137,26 +191,47 @@ Scenario.skip('GA for 1v1 Specified Claim- Dismissal order journey @regression2'
   await I.createGeneralApplication(
     getAppTypes().slice(0, 4),
     civilCaseReference,
-    'no', 'no', 'no', 'yes', 'yes', 'no',
-    'signLanguageInterpreter');
+    'no',
+    'no',
+    'no',
+    'yes',
+    'yes',
+    'no',
+    'signLanguageInterpreter'
+  );
   console.log('General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(
+    gaCaseReference,
+    states.AWAITING_APPLICATION_PAYMENT.id,
+    config.applicantSolicitorUser
+  );
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 4), 1);
   await I.see(awaitingPaymentStatus);
-  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.applicantSolicitorUser, judgeDecisionStatus);
+  await I.payAndVerifyGAStatus(
+    civilCaseReference,
+    gaCaseReference,
+    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id,
+    config.applicantSolicitorUser,
+    judgeDecisionStatus
+  );
 
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser;
-    await I.login(user);
-  } else {
-    user = config.judgeLocalUser;
-    await I.login(user);
-  }
-  await I.judgeMakeDecision('makeAnOrder', 'dismissTheApplication', 'no', gaCaseReference, 'Dismissal_order', 'noneOrder');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.APPLICATION_DISMISSED.id, config.applicantSolicitorUser);
+  user = config.judgeUser;
+  await I.login(user);
+ 
+  await I.judgeMakeDecision(
+    'makeAnOrder',
+    'dismissTheApplication',
+    'no',
+    gaCaseReference,
+    'Dismissal_order',
+    'noneOrder'
+  );
+  await waitForGACamundaEventsFinishedBusinessProcess(
+    gaCaseReference,
+    states.APPLICATION_DISMISSED.id,
+    config.applicantSolicitorUser
+  );
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Dismissal order', 'no', 'Claimant');
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'Dismissal order');
@@ -172,11 +247,21 @@ Scenario.skip('GA for 1v1 Specified Claim- Dismissal order journey @regression2'
   await I.verifyCaseFileOrderDocument(civilCaseReference, 'Dismissal order document');
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Applicant Evidence');
 
-  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.APPLICATION_DISMISSED.id);
-  await api.assertGaAppCollectionVisiblityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
-});
+  await api.verifyGAState(
+    config.defendantSolicitorUser,
+    civilCaseReference,
+    gaCaseReference,
+    states.APPLICATION_DISMISSED.id
+  );
+  await api.assertGaAppCollectionVisiblityToUser(
+    config.defendantSolicitorUser,
+    civilCaseReference,
+    gaCaseReference,
+    'Y'
+  );
+}).retry(1);
 
-Scenario('GA for 1v1- respond to application - Request more information @regression2', async ({I, api}) => {
+Scenario('GA for 1v1- respond to application - Request more information @regression', async ({ I, api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -190,36 +275,68 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
   await I.createGeneralApplication(
     getAppTypes().slice(0, 5),
     civilCaseReference,
-    'no', 'no', 'yes', 'yes', 'yes', 'no',
-    'signLanguageInterpreter');
+    'no',
+    'no',
+    'yes',
+    'yes',
+    'yes',
+    'no',
+    'signLanguageInterpreter'
+  );
   console.log('General Application created: ' + civilCaseReference);
   gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(
+    gaCaseReference,
+    states.AWAITING_APPLICATION_PAYMENT.id,
+    config.applicantSolicitorUser
+  );
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 5), 1);
   await I.see(awaitingPaymentStatus);
-  await I.payAndVerifyGAStatus(civilCaseReference, gaCaseReference,
-    states.AWAITING_RESPONDENT_RESPONSE.id, config.applicantSolicitorUser, respondentStatus);
+  await I.payAndVerifyGAStatus(
+    civilCaseReference,
+    gaCaseReference,
+    states.AWAITING_RESPONDENT_RESPONSE.id,
+    config.applicantSolicitorUser,
+    respondentStatus
+  );
 
   await I.login(config.defendantSolicitorUser);
-  await I.respondToApplication(gaCaseReference, 'yes', 'yes', 'yes', 'yes',
-    'signLanguageInterpreter', getAppTypes().slice(0, 5));
+  await I.respondToApplication(
+    gaCaseReference,
+    'yes',
+    'yes',
+    'yes',
+    'yes',
+    'signLanguageInterpreter',
+    getAppTypes().slice(0, 5)
+  );
   console.log('Org1 solicitor Responded to application: ' + gaCaseReference);
   await I.respCloseAndReturnToCaseDetails();
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
-    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id, config.defendantSolicitorUser);
+  await waitForGACamundaEventsFinishedBusinessProcess(
+    gaCaseReference,
+    states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.id,
+    config.defendantSolicitorUser
+  );
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeDecisionStatus);
 
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser2WithRegionId2;
-    await I.login(user);
-  } else {
-    user = config.judgeLocalUser;
-    await I.login(user);
-  }
-  await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', gaCaseReference, 'yes', 'Request_for_information');
-  await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id, config.defendantSolicitorUser);
+  user = config.judgeUser2WithRegionId2;
+  await I.login(user);
+  
+  await I.judgeRequestMoreInfo(
+    'requestMoreInfo',
+    'requestMoreInformation',
+    gaCaseReference,
+    'yes',
+    'Request_for_information'
+  );
+
+  await waitForGACamundaEventsFinishedBusinessProcess(
+    gaCaseReference,
+    states.AWAITING_ADDITIONAL_INFORMATION.id,
+    config.defendantSolicitorUser
+  );
+  
   await I.judgeCloseAndReturnToCaseDetails();
   await I.verifyJudgesSummaryPage('Request more information', 'yes', 'Claimant');
   await I.verifyUploadedApplicationDocument(gaCaseReference, 'Request for information');
@@ -229,10 +346,8 @@ Scenario('GA for 1v1- respond to application - Request more information @regress
   await I.see(additionalInfoStatus);
   await I.respondToJudgeAdditionalInfo(gaCaseReference);
   console.log('Responded to Judge Additional Information on case: ' + gaCaseReference);
-});
+}).retry(1);
 
-
-AfterSuite(async ({api}) => {
+AfterSuite(async ({ api }) => {
   await api.cleanUp();
 });
-

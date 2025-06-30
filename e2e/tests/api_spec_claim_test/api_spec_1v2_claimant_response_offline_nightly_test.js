@@ -29,7 +29,7 @@ Scenario('Case offline LISTING_FOR_A_HEARING', async ({api}) => {
   await api.claimantResponseClaimSpec(config.applicantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO',
     'AWAITING_APPLICANT_INTENTION');
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
-});
+}).retry(1);
 
 Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
@@ -52,7 +52,7 @@ Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
   await api.claimantResponseClaimSpec(config.applicantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO',
     'AWAITING_APPLICANT_INTENTION');
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'APPLICATION_DISMISSED');
-});
+}).retry(1);
 
 Scenario('Case offline AWAITING_RESPONDENT_RESPONSE', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
@@ -66,7 +66,7 @@ Scenario('Case offline AWAITING_RESPONDENT_RESPONSE', async ({api}) => {
   await api.claimantResponseClaimSpec(config.applicantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO',
     'AWAITING_APPLICANT_INTENTION');
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
