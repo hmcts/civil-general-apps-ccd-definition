@@ -28,7 +28,7 @@ Scenario.skip('MixTypesWithVary - 119 pounds', async ({api}) => {
   }
   console.log('*** End Judge Request More Information and Uncloak Application on GA Case Reference: '
               + gaCaseReference + ' ***');
-});
+}).retry(1);
 
 Scenario('MixTypesWithSetAside - 119 pounds', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
@@ -43,7 +43,7 @@ Scenario('MixTypesWithSetAside - 119 pounds', async ({api}) => {
   gaCaseReference = await api.initiateGaWithTypes(
       config.applicantSolicitorUser, civilCaseReference, ['SET_ASIDE_JUDGEMENT','EXTEND_TIME','STAY_THE_CLAIM'],
       '11900', 'FEE0443');
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();

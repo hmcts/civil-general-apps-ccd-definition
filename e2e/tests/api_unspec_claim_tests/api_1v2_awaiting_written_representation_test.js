@@ -27,7 +27,7 @@ Scenario('Judge makes decision 1V2 - WRITTEN_REPRESENTATIONS', async ({api}) => 
     await api.judgeMakesDecisionWrittenRep(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge Make Order GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();

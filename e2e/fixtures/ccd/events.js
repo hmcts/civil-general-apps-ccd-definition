@@ -17,6 +17,12 @@ module.exports = {
     description: 'Defendant solicitor is acknowledging claim',
     order: 4
   },
+  ACKNOWLEDGEMENT_OF_SERVICE: {
+    description: 'Acknowledgement of Service (AoS)',
+    id: 'ACKNOWLEDGEMENT_OF_SERVICE',
+    name: 'Acknowledgement of Service',
+    order: 4
+  },
   ADD_DEFENDANT_LITIGATION_FRIEND: {
     id: 'ADD_DEFENDANT_LITIGATION_FRIEND',
     name: 'Add litigation friend',
@@ -29,10 +35,22 @@ module.exports = {
     description: 'Defendant response to claim',
     order: 6
   },
+  DEFENDANT_RESPONSE_SPEC: {
+    id: 'DEFENDANT_RESPONSE_SPEC',
+    name: 'Respond to claim',
+    description: 'Defendant response to Specified claim',
+    order: 6
+  },
   CLAIMANT_RESPONSE: {
     id: 'CLAIMANT_RESPONSE',
     name: 'View and respond to defence',
     description: 'View and respond to defendant',
+    order: 7
+  },
+  CLAIMANT_RESPONSE_SPEC: {
+    description: 'View and respond to defendant (Specified)',
+    id: 'CLAIMANT_RESPONSE_SPEC',
+    name: 'View and respond to defence',
     order: 7
   },
   WITHDRAW_CLAIM: {

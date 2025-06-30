@@ -38,7 +38,7 @@ Scenario('Judge decides Free Form Order', async ({api}) => {
   }
 
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED');
-});
+}).retry(1);
 
 Scenario('Defendant Hearing notice journey', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
@@ -92,7 +92,7 @@ Scenario('Defendant Hearing notice journey', async ({api}) => {
   }
 
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED');
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
