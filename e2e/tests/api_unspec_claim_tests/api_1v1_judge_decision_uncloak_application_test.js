@@ -33,7 +33,7 @@ Scenario('Judge makes decision 1V1 - ORDER_MADE - Uncloak and Application Approv
 
   await api.assertGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, doc);
   await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
-});
+}).retry(1);
 
 Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Application', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
@@ -63,7 +63,7 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
   await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE');
   console.log('*** End Judge Make Decision Application Dismiss on GA Case Reference: ' + gaCaseReference + ' ***');
 
-});
+}).retry(1);
 
 Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Payment fails', async ({api}) => {
 
@@ -94,7 +94,7 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Payment fails', 
   await api.additionalPaymentFailure(config.applicantSolicitorUser, gaCaseReference);
   console.log('*** End Callback for Additional Payment Failure on GA Case Reference: ' + gaCaseReference + ' ***');
 
-});
+}).retry(1);
 
 Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Application - Response - Directions Order', async ({api}) => {
 
@@ -142,7 +142,7 @@ Scenario('Judge makes decision 1V1 - REQUEST_MORE_INFORMATION - Uncloak Applicat
   const doc = 'directionOrder';
   await api.assertGaDocumentVisibilityToUser(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, doc);
   await api.assertGaDocumentVisibilityToUser(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();

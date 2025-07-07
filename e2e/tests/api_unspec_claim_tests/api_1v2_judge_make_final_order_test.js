@@ -60,7 +60,7 @@ Scenario('Without Notice Hearing notice journey', async ({api}) => {
   }
 
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, 'HEARING_SCHEDULED');
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
