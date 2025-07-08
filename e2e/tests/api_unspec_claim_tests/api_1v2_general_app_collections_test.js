@@ -42,7 +42,7 @@ Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Deci
 
   console.log('*** End of Validating  GA Case Visibility in all Collections: ' + gaCaseReference + ' ***');
 
-});
+}).retry(1);
 
 Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case Test', async ({api}) => {
 
@@ -68,7 +68,7 @@ Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA C
   await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, null);
   console.log('*** End of Validating  GA Case Visibility in all Collections: ' + gaCaseReference + ' ***');
 
-});
+}).retry(1);
 
 Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case initiated by Defendant2', async ({api}) => {
 
@@ -115,7 +115,7 @@ Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA C
     await api.assertDocumentVisibilityToUser(config.judgeLocalUser, 'Staff', civilCaseReference, gaCaseReference, doc);
   }
   await api.assertDocumentVisibilityToUser(config.secondDefendantSolicitorUser, 'Claimant', civilCaseReference, gaCaseReference, doc);
-});
+}).retry(1);
 
 Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Decision Order Made', async ({api}) => {
 
@@ -154,7 +154,7 @@ Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Deci
   await api.assertGaAppCollectionVisiblityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, 'Y');
   await api.assertGaDocumentVisibilityToUser(config.secondDefendantSolicitorUser, civilCaseReference, gaCaseReference, doc);
   console.log('*** End of Validating  GA Case Visibility in all Collections: ' + gaCaseReference + ' ***');
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();

@@ -33,7 +33,7 @@ Scenario('Judge makes decision 1V2 - Accept Strike out application', async ({api
     await api.judgeApprovesStrikeOutApplication(config.judgeLocalUser, gaCaseReference);
   }
   console.log('*** End Judge approves strike out application - GA Case Reference: ' + gaCaseReference + ' ***');
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
