@@ -16,5 +16,11 @@
     "ListElementCode": "WRITTEN_REPRESENTATION_ORDER_DOC",
     "ListElement": "Written concurrent doc",
     "DisplayOrder": 3
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "DISMISSAL_ORDER_DOC",
+    "ListElement": "Dismissal doc",
+    "DisplayOrder": 4
   }
 ]
