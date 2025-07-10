@@ -1,9 +1,6 @@
 civil-general-applications:
   java:
     ingressHost: ${SERVICE_FQDN}
-    devcpuRequests: 500m
-    devmemoryRequests: 2048Mi
-    devmemoryLimits: 4096Mi
     keyVaults:
       civil:
         resourceGroup: civil
