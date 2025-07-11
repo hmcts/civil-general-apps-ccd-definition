@@ -22,5 +22,11 @@
     "ListElementCode": "REQUEST_MORE_INFORMATION_ORDER_DOC",
     "ListElement": "Request More Information doc",
     "DisplayOrder": 4
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "HEARING_ORDER_DOC",
+    "ListElement": "Hearing Order doc",
+    "DisplayOrder": 5
   }
 ]
