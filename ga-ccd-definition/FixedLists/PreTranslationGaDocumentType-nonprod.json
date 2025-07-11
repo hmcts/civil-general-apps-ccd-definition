@@ -22,5 +22,11 @@
     "ListElementCode": "DISMISSAL_ORDER_DOC",
     "ListElement": "Dismissal doc",
     "DisplayOrder": 4
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "FINAL_ORDER_DOC",
+    "ListElement": "Final order doc",
+    "DisplayOrder": 5
   }
 ]
