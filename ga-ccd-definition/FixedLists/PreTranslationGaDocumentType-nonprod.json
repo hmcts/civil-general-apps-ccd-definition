@@ -16,5 +16,11 @@
     "ListElementCode": "WRITTEN_REPRESENTATION_ORDER_DOC",
     "ListElement": "Written concurrent doc",
     "DisplayOrder": 3
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "HEARING_NOTICE_DOC",
+    "ListElement": "Hearing Notice doc",
+    "DisplayOrder": 4
   }
 ]
