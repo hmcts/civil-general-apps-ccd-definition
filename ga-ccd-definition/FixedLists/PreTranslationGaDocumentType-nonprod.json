@@ -10,5 +10,23 @@
     "ListElementCode": "RESPOND_TO_APPLICATION_SUMMARY_DOC",
     "ListElement": "Respondent Response doc",
     "DisplayOrder": 2
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "WRITTEN_REPRESENTATION_ORDER_DOC",
+    "ListElement": "Written concurrent doc",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "DISMISSAL_ORDER_DOC",
+    "ListElement": "Dismissal doc",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "FINAL_ORDER_DOC",
+    "ListElement": "Final order doc",
+    "DisplayOrder": 5
   }
 ]
