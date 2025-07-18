@@ -19,8 +19,14 @@
   },
   {
     "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "DIRECTIONS_ORDER_DOC",
+    "ListElement": "Directions doc",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
     "ListElementCode": "DISMISSAL_ORDER_DOC",
     "ListElement": "Dismissal doc",
-    "DisplayOrder": 4
+    "DisplayOrder": 5
   }
 ]
