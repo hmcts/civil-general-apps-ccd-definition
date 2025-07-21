@@ -25,8 +25,14 @@
   },
   {
     "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "REQUEST_MORE_INFORMATION_ORDER_DOC",
+    "ListElement": "Request More Information doc",
+    "DisplayOrder": 5
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
     "ListElementCode": "DISMISSAL_ORDER_DOC",
     "ListElement": "Dismissal doc",
-    "DisplayOrder": 5
+    "DisplayOrder": 6
   }
 ]
