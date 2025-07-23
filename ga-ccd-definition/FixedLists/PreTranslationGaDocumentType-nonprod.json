@@ -25,6 +25,12 @@
   },
   {
     "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "GENERAL_ORDER_DOC",
+    "ListElement": "Approve edit doc",
+    "DisplayOrder": 6
+  },
+   {
+    "ID": "PreTranslationGaDocumentType",
     "ListElementCode": "REQUEST_MORE_INFORMATION_ORDER_DOC",
     "ListElement": "Request More Information doc",
     "DisplayOrder": 5
