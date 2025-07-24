@@ -40,5 +40,11 @@
     "ListElementCode": "DISMISSAL_ORDER_DOC",
     "ListElement": "Dismissal doc",
     "DisplayOrder": 6
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "HEARING_ORDER_DOC",
+    "ListElement": "Hearing Order doc",
+    "DisplayOrder": 7
   }
 ]
