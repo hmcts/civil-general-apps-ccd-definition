@@ -9,7 +9,7 @@
     "CaseAccessCategories": "SPEC_CLAIM"
   },
   {
-    "RoleName": "idam:wlu-team-leader",
+    "RoleName": "wlu-team-leader",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "wlu-admin,GS_profile",
