@@ -11,7 +11,7 @@
   {
     "RoleName": "idam:wlu-team-leader",
     "Authorisation": "",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "AccessProfiles": "wlu-admin,GS_profile",
     "ReadOnly": "N",
     "Disabled": "F",
