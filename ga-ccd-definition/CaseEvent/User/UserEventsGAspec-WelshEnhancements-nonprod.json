@@ -15,9 +15,9 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "REMOVE_APPLICATION_PAYMENT_DASHBOARD_NOTIFICATION",
-    "Name": "Remove payment notification",
-    "Description": "Remove payment dashboard notification when applicant is Welsh",
+    "ID": "DELETE_APPLICATION_PAYMENT_DASHBOARD_NOTIFICATION",
+    "Name": "Delete payment notification",
+    "Description": "Delete payment dashboard notification when applicant is Welsh",
     "PreConditionState(s)": "AWAITING_APPLICATION_PAYMENT",
     "PostConditionState": "*",
     "SecurityClassification": "Public",

@@ -7,7 +7,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "REMOVE_APPLICATION_PAYMENT_DASHBOARD_NOTIFICATION",
+    "CaseEventID": "DELETE_APPLICATION_PAYMENT_DASHBOARD_NOTIFICATION",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
