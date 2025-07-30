@@ -12,18 +12,5 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
     "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "DELETE_APPLICATION_PAYMENT_DASHBOARD_NOTIFICATION",
-    "Name": "Delete payment notification",
-    "Description": "Delete payment dashboard notification when applicant is Welsh",
-    "PreConditionState(s)": "AWAITING_APPLICATION_PAYMENT",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_GEN_APP_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
 ]
