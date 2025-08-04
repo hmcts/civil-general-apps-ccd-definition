@@ -29,7 +29,7 @@ BeforeSuite(async ({api}) => {
   console.log('Civil Case After SDO claimant responded: ' + civilCaseReferenceAfterSDO);
 });
 
-Scenario('Caseworker makes decision 1V1 - CONSENT ORDER @api-tests @api-scheduler-test', async ({api}) => {
+Scenario('Caseworker makes decision 1V1 - CONSENT ORDER @api-scheduler-test', async ({api}) => {
 
   console.log('Make a General Application');
   gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, ['STAY_THE_CLAIM']);
@@ -45,7 +45,7 @@ Scenario('Caseworker makes decision 1V1 - CONSENT ORDER @api-tests @api-schedule
     await api.nbcAdminApproveConsentOrder(config.hearingCenterAdminLocal, gaCaseReference);
   }
   console.log('*** End CaseWorker Approve Consent Order on GA Case Reference: ' + gaCaseReference + ' ***');
-}).retry(1);
+}).retry(1).tag('@api-tests');
 
 Scenario('Judge Revisit 1V1 - consentOrder End Date Scheduler @api-scheduler-test', async ({api}) => {
 
@@ -53,9 +53,9 @@ Scenario('Judge Revisit 1V1 - consentOrder End Date Scheduler @api-scheduler-tes
   await api.judgeRevisitConsentScheduler(gaCaseReference, 'ORDER_MADE', genAppType);
   console.log('*** End of Judge Revisit Order Made Scheduler ***');
 
-}).retry(1);
+}).retry(1).tag('@api-nightly');
 
-Scenario('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application @api-tests', async ({api}) => {
+Scenario('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application', async ({api}) => {
 
   console.log('Make a General Application for Consent order');
   gaCaseReference = await api.initiateConsentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, ['STRIKE_OUT']);
@@ -78,7 +78,7 @@ Scenario('Judge makes decision 1V1 - CONSENT ORDER - Uncloak Application @api-te
   await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   console.log('*** End uncloaking consent order: ' + gaCaseReference + ' ***');
 
-}).retry(1);
+}).retry(1).tag('@api-nightly');
 
 Scenario('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application @api-tests', async ({api}) => {
 
@@ -103,7 +103,7 @@ Scenario('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application @api-
   await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   console.log('*** End uncloaking consent order: ' + gaCaseReference + ' ***');
 
-}).retry(1);
+}).retry(1).tag('@api-tests');
 
 Scenario('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Application @api-tests', async ({api}) => {
 
@@ -128,7 +128,7 @@ Scenario('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Application 
   await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-}).retry(1);
+}).retry(1).tag('@api-nightly');
 
 Scenario('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 1V1 - Uncloak Application @api-tests', async ({api, I}) => {
 
@@ -159,9 +159,9 @@ Scenario('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 
   await api.additionalPaymentSuccess(config.applicantSolicitorUser,gaCaseReference , 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   console.log('*** End uncloaking consent order: ' + gaCaseReference + ' ***');
 
-}).retry(1);
+}).retry(1).tag('@api-nightly');;
 
-Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1V1 -- URGENT - Uncloak Application @api-tests', async ({api, I}) => {
+Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1V1 -- URGENT - Uncloak Application', async ({api, I}) => {
 
   console.log('Make a Urgent General Application for Consent order');
   gaCaseReference = await api.initiateConsentUrgentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, ['STAY_THE_CLAIM']);
@@ -190,7 +190,7 @@ Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1
   await api.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-}).retry(1);
+}).retry(1).tag('@api-tests');
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
