@@ -159,7 +159,7 @@ Scenario('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 
   await api.additionalPaymentSuccess(config.applicantSolicitorUser,gaCaseReference , 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   console.log('*** End uncloaking consent order: ' + gaCaseReference + ' ***');
 
-}).retry(1).tag('@api-nightly');;
+}).retry(1).tag('@api-nightly');
 
 Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1V1 -- URGENT - Uncloak Application', async ({api, I}) => {
 
