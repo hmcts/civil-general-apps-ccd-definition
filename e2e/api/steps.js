@@ -1989,7 +1989,7 @@ module.exports = {
       let updatedData = await updateCaseDataWithPlaceholders(data.FINAL_ORDERS('FREE_FORM_ORDER'), document);
       await validateEventPages(updatedData);
     }
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('PREPARE_FOR_HEARING_CONDUCT_HEARING', {
       header: '',
       body: ''
     }, true);
