@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA SPEC Claim 1v1 Judge Make Order Directions Order API tests @api-nonprod');
+Feature('GA SPEC Claim 1v1 Judge Make Order Directions Order API tests');
 
 Scenario('Judge makes decision 1V1 Specified case- DIRECTIONS ORDER', async ({api}) => {
   civilCaseReference = await api.createSpecifiedClaim(
@@ -29,7 +29,7 @@ Scenario('Judge makes decision 1V1 Specified case- DIRECTIONS ORDER', async ({ap
   console.log('*** Start Respondent respond to Judge Directions on GA Case Reference: ' + gaCaseReference + ' ***');
   await api.respondentResponseToJudgeDirections(config.applicantSolicitorUser, gaCaseReference);
   console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
-}).retry(1);
+}).retry(1).tag('@api-nonprod');
 
 
 Scenario('Make an Urgent General Application with Vary payment terms of judgment', async ({api}) => {
@@ -39,7 +39,7 @@ Scenario('Make an Urgent General Application with Vary payment terms of judgment
   console.log('Make a General Application');
   gaCaseReference = await api.initiateGaWithVaryJudgement(config.applicantSolicitorUser,
     civilCaseReference, true, true);
-}).retry(1);
+}).retry(1).tag('@api-nightly');
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
