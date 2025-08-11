@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "TabID": "Documents",
+    "TabID": "ApplicationDocumentsCtsc",
     "TabLabel": "Application documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "preTranslationGaDocuments",
