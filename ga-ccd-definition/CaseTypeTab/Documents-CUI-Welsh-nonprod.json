@@ -186,5 +186,32 @@
     "CaseFieldID": "gaAddlDocBundle",
     "TabFieldDisplayOrder": 20,
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDocumentsCtsc",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "preTranslationGaDocuments",
+    "TabFieldDisplayOrder": 22,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "Application Documents",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "preTranslationGaDocuments",
+    "TabFieldDisplayOrder": 22,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "TabID": "ApplicationDocumentsLA",
+    "TabLabel": "Application Documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "preTranslationGaDocuments",
+    "TabFieldDisplayOrder": 22,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
   }
 ]
