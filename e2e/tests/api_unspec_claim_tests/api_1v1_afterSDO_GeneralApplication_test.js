@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 const claimAmountJudge = '11000';
 let civilCaseReference, gaCaseReference;
 
-Feature('Unspec 1v1 - General Application after SDO Journey @api-nonprod');
+Feature('Unspec 1v1 - General Application after SDO Journey');
 
 Scenario('Claimant create GA - JUDICIAL_REFERRAL state', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', claimAmountJudge);
@@ -27,9 +27,9 @@ Scenario('Claimant create GA - JUDICIAL_REFERRAL state', async ({api, I}) => {
   }
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   await api.verifyGALocation(config.applicantSolicitorUser, gaCaseReference, civilCaseReference);
-}).retry(1);
+}).retry(1).tag('@api-nightly');
 
-Scenario('Birmingham should have access to the GA Feature post SDO (JUDICIAL REFERRAL) @e2e-nonprod', async ({I,api}) => {
+Scenario('Birmingham should have access to the GA Feature post SDO (JUDICIAL REFERRAL)', async ({I,api}) => {
     civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario,
       'Company', '11000', true);
     await api.amendClaimDocuments(config.applicantSolicitorUser);
