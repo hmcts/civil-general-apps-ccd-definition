@@ -213,7 +213,6 @@ withPipeline(type, product, component) {
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
     env.CIVIL_SERVICE_URL="https://civil-service-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CIVIL_GENERAL_APPLICATIONS_URL="https://civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-
     copyPrevFailedAndNotExecutedTestFilesJson();
   }
 
