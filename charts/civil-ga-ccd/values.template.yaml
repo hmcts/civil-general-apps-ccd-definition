@@ -183,6 +183,7 @@ civil-service:
       RD_COMMONDATA_API_URL: http://rd-commondata-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
       RELEASE_REVISION: "{{ .Release.Revision }}"
       CIVIL_S2S_AUTHORISED_SERVICES: payment_app,ccd_data,civil_service,civil-citizen-ui
+      TASK_MANAGEMENT_ENABLED: false
 
 idam-pr:
   releaseNameOverride: ${SERVICE_NAME}-idam-pr
