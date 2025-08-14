@@ -6,6 +6,9 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "preTranslationGaDocuments",
     "TabFieldDisplayOrder": 21,
+    "UserRoles": [
+      "wlu-admin"
+    ],
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
   }
 ]
