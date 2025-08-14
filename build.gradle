@@ -31,7 +31,7 @@ tasks.register('highLevelDataSetup', JavaExec) {
 
 dependencies {
   implementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.2.4'
-  implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.11'
+  implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.17'
 }
 
 publishing {
