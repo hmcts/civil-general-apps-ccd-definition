@@ -44,5 +44,23 @@
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "preTranslationGaDocsApplicant",
+    "Label": "Documents to be translated",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "preTranslationGaDocsRespondent",
+    "Label": "Documents to be translated",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
