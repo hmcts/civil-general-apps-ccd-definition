@@ -1625,7 +1625,10 @@
         "UserRoles": [
           "wlu-admin",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "cui-admin-profile",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
