@@ -1625,7 +1625,8 @@
         "UserRoles": [
           "wlu-admin",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "cui-admin-profile"
         ],
         "CRUD": "R"
       }
