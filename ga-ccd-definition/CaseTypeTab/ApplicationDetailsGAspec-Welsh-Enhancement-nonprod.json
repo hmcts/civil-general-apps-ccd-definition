@@ -157,7 +157,7 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "judicialDecisionRequestMoreInfo",
     "TabFieldDisplayOrder": 6,
-    "FieldShowCondition": "preTranslationGaDocumentType != \"*\""
+    "FieldShowCondition": "preTranslationGaDocumentType = \"MORE_INFO_RESPONSE_DOC\" OR preTranslationGaDocumentType != \"*\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -174,7 +174,7 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "judicialDecisionMakeAnOrderForWrittenRepresentations",
     "TabFieldDisplayOrder": 8,
-    "FieldShowCondition": "preTranslationGaDocumentType != \"*\""
+    "FieldShowCondition": "preTranslationGaDocumentType = \"WRITTEN_REPS_RESPONSE_DOC\" OR preTranslationGaDocumentType != \"*\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -183,7 +183,7 @@
     "TabDisplayOrder": 2,
     "CaseFieldID": "judgeRecitalText",
     "TabFieldDisplayOrder": 8,
-    "FieldShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\" AND preTranslationGaDocumentType != \"*\""
+    "FieldShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\" AND preTranslationGaDocumentType = \"WRITTEN_REPS_RESPONSE_DOC\" OR preTranslationGaDocumentType != \"*\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -192,7 +192,7 @@
     "TabDisplayOrder": 3,
     "CaseFieldID": "directionInRelationToHearingText",
     "TabFieldDisplayOrder": 8,
-    "FieldShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\" AND preTranslationGaDocumentType != \"*\""
+    "FieldShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\" AND preTranslationGaDocumentType = \"WRITTEN_REPS_RESPONSE_DOC\" OR preTranslationGaDocumentType != \"*\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
@@ -201,7 +201,7 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "judicialByCourtsInitiativeForWrittenRep",
     "TabFieldDisplayOrder": 8,
-    "FieldShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\" AND preTranslationGaDocumentType != \"*\""
+    "FieldShowCondition": "judicialDecision.decision = \"MAKE_ORDER_FOR_WRITTEN_REPRESENTATIONS\" AND preTranslationGaDocumentType = \"WRITTEN_REPS_RESPONSE_DOC\" OR preTranslationGaDocumentType != \"*\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
