@@ -1626,7 +1626,9 @@
           "wlu-admin",
           "judge-profile",
           "legal-adviser",
-          "cui-admin-profile"
+          "cui-admin-profile",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
