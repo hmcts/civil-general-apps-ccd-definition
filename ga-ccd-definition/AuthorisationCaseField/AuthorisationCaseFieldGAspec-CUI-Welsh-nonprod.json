@@ -1642,5 +1642,26 @@
         "CRUD": "CRUD"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaDetailsTranslationCollection",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile",
+          "wlu-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-staff",
+          "civil-administrator-standard"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
