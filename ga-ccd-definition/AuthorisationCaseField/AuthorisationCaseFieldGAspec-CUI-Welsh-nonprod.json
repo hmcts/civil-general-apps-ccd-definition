@@ -1626,10 +1626,11 @@
           "wlu-admin",
           "CITIZEN-CLAIMANT-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile",
           "judge-profile",
           "legal-adviser"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
