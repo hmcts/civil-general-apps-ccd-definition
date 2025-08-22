@@ -1624,6 +1624,8 @@
       {
         "UserRoles": [
           "wlu-admin",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "judge-profile",
           "legal-adviser"
         ],
