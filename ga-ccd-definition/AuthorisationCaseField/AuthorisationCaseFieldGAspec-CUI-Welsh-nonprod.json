@@ -1649,7 +1649,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APPLICANT-PROFILE-SPEC"
+          "APPLICANT-PROFILE-SPEC",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1658,6 +1659,14 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "wlu-admin",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -1667,7 +1676,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RESPONDENT-ONE-PROFILE-SPEC"
+          "RESPONDENT-ONE-PROFILE-SPEC",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1676,6 +1686,14 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "wlu-admin",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "R"
       }
     ]
   }
