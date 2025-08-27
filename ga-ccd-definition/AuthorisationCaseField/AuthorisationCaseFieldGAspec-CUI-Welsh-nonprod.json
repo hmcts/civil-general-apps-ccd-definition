@@ -1649,14 +1649,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "wlu-admin",
           "caseworker-civil-systemupdate"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
+          "cui-admin-profile",
+          "wlu-admin",
           "caseworker-civil-staff",
           "civil-administrator-standard"
         ],
