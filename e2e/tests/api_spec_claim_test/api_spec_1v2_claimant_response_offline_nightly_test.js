@@ -27,9 +27,9 @@ Scenario('Case offline LISTING_FOR_A_HEARING', async ({api}) => {
   console.log('*** Case offline: ' + civilCaseReference + ' ***');
   await api.defendantResponseSpecClaim(config.defendantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO');
   await api.claimantResponseClaimSpec(config.applicantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO',
-    'AWAITING_APPLICANT_INTENTION');
+    'All_FINAL_ORDERS_ISSUED');
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
-}).retry(1);
+}).retry(0);
 
 Scenario('Case offline APPLICATION_DISMISSED', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
