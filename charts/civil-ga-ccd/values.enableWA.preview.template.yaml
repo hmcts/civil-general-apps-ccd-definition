@@ -135,6 +135,11 @@ ccd-message-publisher:
         secretRef: postgres
         key: PASSWORD
         disabled: true
+civil-service:
+  java:
+    environment:
+      TASK_MANAGEMENT_ENABLED: true
+      TASK_MANAGEMENT_API_URL: http://${SERVICE_NAME}-wa-task-management-api
 
 xui-webapp:
   nodejs:
