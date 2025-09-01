@@ -1624,13 +1624,16 @@
       {
         "UserRoles": [
           "wlu-admin",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile",
           "judge-profile",
           "legal-adviser",
           "cui-admin-profile",
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
@@ -1643,6 +1646,27 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaDetailsTranslationCollection",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "cui-admin-profile",
+          "wlu-admin",
+          "caseworker-civil-staff",
+          "civil-administrator-standard"
+        ],
+        "CRUD": "R"
       }
     ]
   }
