@@ -19,14 +19,44 @@
   },
   {
     "ID": "PreTranslationGaDocumentType",
-    "ListElementCode": "DISMISSAL_ORDER_DOC",
-    "ListElement": "Dismissal doc",
+    "ListElementCode": "REQUEST_MORE_INFORMATION_ORDER_DOC",
+    "ListElement": "Request More Information doc",
     "DisplayOrder": 4
   },
   {
     "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "DIRECTIONS_ORDER_DOC",
+    "ListElement": "Directions doc",
+    "DisplayOrder": 5
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "HEARING_ORDER_DOC",
+    "ListElement": "Hearing Order doc",
+     "DisplayOrder": 6
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "GENERAL_ORDER_DOC",
+    "ListElement": "Approve edit doc",
+    "DisplayOrder": 7
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "HEARING_NOTICE_DOC",
+    "ListElement": "Hearing Notice doc",
+     "DisplayOrder": 8
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "DISMISSAL_ORDER_DOC",
+    "ListElement": "Dismissal doc",
+    "DisplayOrder": 9
+  }
+  {
+    "ID": "PreTranslationGaDocumentType",
     "ListElementCode": "FINAL_ORDER_DOC",
     "ListElement": "Final order doc",
-    "DisplayOrder": 5
+    "DisplayOrder": 10
   }
 ]
