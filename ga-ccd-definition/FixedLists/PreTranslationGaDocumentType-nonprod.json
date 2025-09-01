@@ -52,7 +52,7 @@
     "ListElementCode": "DISMISSAL_ORDER_DOC",
     "ListElement": "Dismissal doc",
     "DisplayOrder": 9
-  }
+  },
   {
     "ID": "PreTranslationGaDocumentType",
     "ListElementCode": "FINAL_ORDER_DOC",
