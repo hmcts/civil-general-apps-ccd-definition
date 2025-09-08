@@ -21,7 +21,7 @@
     "ID": "PreTranslationGaDocumentType",
     "ListElementCode": "REQUEST_MORE_INFORMATION_ORDER_DOC",
     "ListElement": "Request More Information doc",
-      "DisplayOrder": 4
+    "DisplayOrder": 4
   },
   {
     "ID": "PreTranslationGaDocumentType",
@@ -52,5 +52,17 @@
     "ListElementCode": "DISMISSAL_ORDER_DOC",
     "ListElement": "Dismissal doc",
     "DisplayOrder": 9
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "WRITTEN_REPS_RESPONSE_DOC",
+    "ListElement": "Hearing Notice doc",
+    "DisplayOrder": 10
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "MORE_INFO_RESPONSE_DOC",
+    "ListElement": "Dismissal doc",
+    "DisplayOrder": 11
   }
 ]
