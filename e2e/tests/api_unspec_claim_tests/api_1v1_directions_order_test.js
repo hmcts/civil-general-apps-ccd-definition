@@ -6,7 +6,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v1 Judge Make Order Directions Order API tests @api-tests');
 
-Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT - DIRECTIONS ORDER - Respondent upload Directions Document', async ({api}) => {
+Scenario.only('Judge makes decision 1V1 - VARY-JUDGEMENT - DIRECTIONS ORDER - Respondent upload Directions Document', async ({api}) => {
 
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -54,8 +54,3 @@ Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT  as DEFENDANT - PROCEEDS IN 
   await api.respondentDebtorResponse(config.applicantSolicitorUser, gaCaseReference, false);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 }).retry(1);
-
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
-
