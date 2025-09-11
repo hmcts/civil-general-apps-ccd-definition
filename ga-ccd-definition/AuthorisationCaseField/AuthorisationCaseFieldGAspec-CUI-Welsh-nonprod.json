@@ -1449,7 +1449,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseFieldID": "  gaAddlDocClaimant",
+    "CaseFieldID": "gaAddlDocClaimant",
     "AccessControl": [
       {
         "UserRoles": [
