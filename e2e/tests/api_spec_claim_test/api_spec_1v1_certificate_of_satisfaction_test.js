@@ -15,7 +15,7 @@ Scenario('1v1 LR v LIP Spec case marked paid in full', async ({api}) => {
   await api.defaultJudgmentXuiPayImmediately(config.applicantSolicitorUser);
   await api.markJudgmentPaid(config.applicantSolicitorUser);
   await api.certificateOfSatisfactionCancellationCui(config.defendantCitizenUser2, civilCaseReference);
-}).retry(1).tag('@api-nonprod');
+}).retry(1).tag('@api-tests');
 
 Scenario('1v1 LIP v LIP Spec Case marked paid in full', async ({api}) => {
   civilCaseReference = await api.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', 'INDIVIDUAL');
