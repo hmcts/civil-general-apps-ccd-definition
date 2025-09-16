@@ -26,7 +26,7 @@ Scenario.skip('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', a
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 }).retry(1);
 
-Scenarios.skip('Case offline ORDER_MADE', async ({api}) => {
+Scenario.skip('Case offline ORDER_MADE', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
