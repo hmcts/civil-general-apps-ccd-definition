@@ -58,5 +58,17 @@
     "ListElementCode": "FINAL_ORDER_DOC",
     "ListElement": "Final order doc",
     "DisplayOrder": 10
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "WRITTEN_REPS_RESPONSE_DOC",
+    "ListElement": "written rep response doc",
+    "DisplayOrder": 11
+  },
+  {
+    "ID": "PreTranslationGaDocumentType",
+    "ListElementCode": "MORE_INFO_RESPONSE_DOC",
+    "ListElement": "more info response doc",
+    "DisplayOrder": 12
   }
 ]
