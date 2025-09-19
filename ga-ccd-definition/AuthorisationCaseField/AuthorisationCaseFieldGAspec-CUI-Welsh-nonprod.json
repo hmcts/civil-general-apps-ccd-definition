@@ -1628,7 +1628,10 @@
           "CITIZEN-DEFENDANT-PROFILE",
           "citizen-profile",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "cui-admin-profile",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
