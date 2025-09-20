@@ -48,6 +48,7 @@ civil-service:
   enabled: true
   java:
     ingressHost: civil-service-${SERVICE_FQDN}
+    image: hmctspublic.azurecr.io/civil/service:pr-6924
     keyVaults:
       civil:
         resourceGroup: civil
@@ -76,7 +77,7 @@ civil-service:
             alias: CMC_DB_USERNAME
           - name: cmc-db-host-v15
             alias: CMC_DB_HOST
-          - name: gov-notify-api-key
+          - name: gov-notify-live-api-key
             alias: GOV_NOTIFY_API_KEY
           - name: sendgrid-api-key
             alias: SENDGRID_API_KEY
