@@ -1437,6 +1437,30 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaAddlDocRespondentSol",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "wlu-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "gaAddlDocClaimant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "wlu-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "writtenRepSequentialDocument",
     "AccessControl": [
       {
@@ -1628,7 +1652,10 @@
           "CITIZEN-DEFENDANT-PROFILE",
           "citizen-profile",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "cui-admin-profile",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
