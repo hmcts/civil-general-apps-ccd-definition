@@ -1766,6 +1766,7 @@ module.exports = {
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidClaimData(claimantResponseData, pageId);
     }
+    deleteCaseFields('generalApplications');
 
     await assertSubmittedEvent(expectedEndState);
 

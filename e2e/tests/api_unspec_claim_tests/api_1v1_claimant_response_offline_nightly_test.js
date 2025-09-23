@@ -7,7 +7,7 @@ let civilCaseReference,
 
 Feature('GA Claim 1v1 Claimant Response Case Close API tests @api-offline-nightly @api-nightly');
 
-Scenario.skip('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api}) => {
+Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -26,7 +26,7 @@ Scenario.skip('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', a
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 }).retry(1);
 
-Scenario.skip('Case offline ORDER_MADE', async ({api}) => {
+Scenario('Case offline ORDER_MADE', async ({api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
