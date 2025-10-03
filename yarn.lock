@@ -4223,9 +4223,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mochawesome-report-generator@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "mochawesome-report-generator@npm:6.1.0"
+"mochawesome-report-generator@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "mochawesome-report-generator@npm:6.3.0"
   dependencies:
     chalk: ^4.1.2
     dateformat: ^4.5.1
@@ -4241,13 +4241,13 @@ __metadata:
     yargs: ^17.2.1
   bin:
     marge: bin/cli.js
-  checksum: e9967cccb37797dbba7089ace97cc29c2e3de752a36285f2f98f40c7fc515d8f488d3a00b036a057e70d37722f20a1d1bb179e82fcc3b32c8a7f6573bf1945e6
+  checksum: e8d380516b23160652eecb96392f0545de543676ad4ab4d8cc7ee7bb9c3cd4977a2cc4c781ce6dbfaeeb111edc12936e19b555eeb98e2e0d8e4f162212d7a377
   languageName: node
   linkType: hard
 
 "mochawesome@npm:^7.0.1":
-  version: 7.1.0
-  resolution: "mochawesome@npm:7.1.0"
+  version: 7.1.4
+  resolution: "mochawesome@npm:7.1.4"
   dependencies:
     chalk: ^4.1.2
     diff: ^5.0.0
@@ -4256,12 +4256,12 @@ __metadata:
     lodash.isfunction: ^3.0.9
     lodash.isobject: ^3.0.2
     lodash.isstring: ^4.0.1
-    mochawesome-report-generator: ^6.1.0
+    mochawesome-report-generator: ^6.3.0
     strip-ansi: ^6.0.1
     uuid: ^8.3.2
   peerDependencies:
     mocha: ">=7"
-  checksum: 5ec035b970edaefd2ad935ac32f6b85dcd89f23deb0fe25012c134124d3cfe02db2ad1b7626fd327ad7bee6f6b92c54f41746c8d2c7b74590b5a84dafead37b3
+  checksum: e7ed98f3fda3d779a0474ba2b27faab0a63f1880d8413c49f98b551d262fa693019934769dbc33fbd0a82f8176795862967c6ab5bb8bbbf5e8f92e2b0845eb57
   languageName: node
   linkType: hard
 
