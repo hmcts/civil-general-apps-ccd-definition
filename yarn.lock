@@ -4772,27 +4772,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.41.2":
-  version: 1.41.2
-  resolution: "playwright-core@npm:1.41.2"
+"playwright-core@npm:1.55.1":
+  version: 1.55.1
+  resolution: "playwright-core@npm:1.55.1"
   bin:
     playwright-core: cli.js
-  checksum: b41ede0db3fd3e3f7e0b0efbdfb2dbc4db345e113cf9c4451af21d1d5b5d9ab5e969f5662852925e37b2198ae5daab92aa48108fe3d4eb81c849ba8752aaf8cc
+  checksum: a2b981223fd8f5c50a4e0b6cc36a3ce40b41919d418b564561f085bcd6c8ce9df2354e687fbc76e662fddb9f2b28d0bc1f0124c085958406fcab6c6cf3b8228f
   languageName: node
   linkType: hard
 
 "playwright@npm:^1.41.1":
-  version: 1.41.2
-  resolution: "playwright@npm:1.41.2"
+  version: 1.55.1
+  resolution: "playwright@npm:1.55.1"
   dependencies:
     fsevents: 2.3.2
-    playwright-core: 1.41.2
+    playwright-core: 1.55.1
   dependenciesMeta:
     fsevents:
       optional: true
   bin:
     playwright: cli.js
-  checksum: acf166003ec42cd795f5fca096c5135880d78e84ec2d0a1911b2cab984cf75dc06e50d3aa24b56cbcbc5369ca8c61831e76c5f8674531a272fbd0f6e624fa387
+  checksum: 4935122ed687cd14861d64e6fdc79613d36d45f1363e911213a338da9993525d3872d7379300471f70209e1ad68ec91c0d65f0136e6c09c0775477943aaf7fb3
   languageName: node
   linkType: hard
 
