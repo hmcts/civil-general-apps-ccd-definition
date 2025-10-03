@@ -19,7 +19,7 @@ To run e2e tests enter `yarn test:e2e` in the command line.
 
 To run tests with browser window open set `SHOW_BROWSER_WINDOW=true`. By default, the browser window is hidden.
 
-### Smoke test
+### Smoke test 
 
 To run smoke tests enter `yarn test:smoke`.
 
