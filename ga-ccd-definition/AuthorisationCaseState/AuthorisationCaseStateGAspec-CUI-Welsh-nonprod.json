@@ -67,7 +67,7 @@
         "UserRoles": [
           "wlu-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
