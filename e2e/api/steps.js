@@ -1736,6 +1736,7 @@ module.exports = {
       claimantResponseData = await updateCaseDataWithPlaceholders(claimantResponseData, document);
       await assertValidClaimData(claimantResponseData, pageId);
     }
+    deleteCaseFields('generalApplications');
 
     let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
     if ((response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
@@ -1765,6 +1766,7 @@ module.exports = {
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidClaimData(claimantResponseData, pageId);
     }
+    deleteCaseFields('generalApplications');
 
     await assertSubmittedEvent(expectedEndState);
 
