@@ -57,7 +57,7 @@
     "mochawesome": "^7.0.1",
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.7",
-    "playwright": "^1.41.1",
+    "playwright": "^1.55.1",
     "proper-lockfile": "^4.1.2",
     "run-script-os": "^1.1.6",
     "totp-generator": "^0.0.7",
