@@ -142,6 +142,10 @@ def uploadCoreCaseDataDefinitions(env) {
   }
 }
 
+def checkForRunAllFunctionalTests(branch_name) {
+  return new GithubAPI(this).getLabelsbyPattern(branch_name, "runAllFunctionalTests").contains("runAllFunctionalTests")
+}
+
 def checkForEnableHelmLabel(branch_name) {
   return new GithubAPI(this).getLabelsbyPattern(branch_name, "enableHelm").contains("enableHelm")
 }
@@ -214,7 +218,11 @@ withPipeline(type, product, component) {
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
     env.CIVIL_SERVICE_URL="https://civil-service-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CIVIL_GENERAL_APPLICATIONS_URL="https://civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-    copyPrevFailedAndNotExecutedTestFilesJson();
+    if(checkForRunAllFunctionalTests(env.BRANCH_NAME)) {
+      env.RUN_ALL_FUNCTIONAL_TESTS = true
+    } else {
+      copyPrevFailedAndNotExecutedTestFilesJson();
+    }
   }
 
   before('functionalTest:aat') {
