@@ -23,6 +23,7 @@ class PlaywrightHelper extends Helper {
     const page = this.helpers[helperName].page;
     const tabXPath = `//div[text()='${tabTitle}']`;
     await page.locator(tabXPath).click();
+    await page.locator(tabXPath).click();
   }
 }
 module.exports = PlaywrightHelper;
