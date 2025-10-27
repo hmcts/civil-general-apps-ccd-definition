@@ -8,7 +8,7 @@ module.exports = {
     previewDocFields: {
       caseForm: '#caseEditForm',
       caseFieldLabel: '.case-field .case-field__label',
-      documentLink: '.case-field__value a[href]'
+      documentLink: '.case-field__value button'
     }
   },
 

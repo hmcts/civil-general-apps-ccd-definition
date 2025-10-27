@@ -6,7 +6,7 @@ module.exports = {
 
   fields: {
     docLabel: 'ccd-read-fixed-list-field span',
-    links: '.collection-field-table ccd-read-document-field a',
+    links: '.collection-field-table ccd-read-document-field button',
     appDocTable: '.Application.Documents',
     tab: 'div.mat-tab-label-content',
     docTitles: 'dl.complex-panel-title span'
