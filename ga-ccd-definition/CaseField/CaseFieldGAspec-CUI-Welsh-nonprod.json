@@ -35,5 +35,43 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "originalDocumentsBulkPrint",
+    "Label": "Original Document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "preTranslationGaDocsApplicant",
+    "Label": "Documents to be translated",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "preTranslationGaDocsRespondent",
+    "Label": "Documents to be translated",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "gaDetailsTranslationCollection",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case for wlu",
+    "_Category":  "COMMON"
   }
 ]

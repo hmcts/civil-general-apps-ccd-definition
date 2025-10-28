@@ -67,7 +67,7 @@
         "UserRoles": [
           "wlu-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
@@ -158,6 +158,18 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseStateID": "HEARING_SCHEDULED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "wlu-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseStateID": "PENDING_APPLICATION_ISSUED",
     "AccessControl": [
       {
         "UserRoles": [

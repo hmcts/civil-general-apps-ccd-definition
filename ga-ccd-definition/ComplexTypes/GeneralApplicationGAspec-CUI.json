@@ -28,5 +28,13 @@
     "FieldTypeParameter": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "certOfSC",
+    "FieldType": "CertOfSC",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

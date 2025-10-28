@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_TWO_SAME_SOL';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('Spec 1v2 - General Application after SDO Journey @api-nightly');
+Feature('Spec 1v2 - General Application after SDO Journey');
 
 Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -38,7 +38,7 @@ Scenario('Spec Claimant create GA - JUDICIAL_REFERRAL state', async ({api}) => {
   } else {
     await api.judgeMakeFinalOrder(config.judgeLocalUser, gaCaseReference, 'ASSISTED_ORDER', true);
   }
-}).retry(1);
+}).retry(1).tag(' @api-nightly');
 
 Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -78,7 +78,7 @@ Scenario('Spec Claimant create GA - CASE_PROGRESSION state', async ({api, I}) =>
     await api.judgeMakesDecisionWrittenRep(config.judgeUserWithRegionId1Local, gaCaseReference);
   }
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'AWAITING_WRITTEN_REPRESENTATIONS');
-}).retry(1);
+}).retry(1).tag('@api-nightly');
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();

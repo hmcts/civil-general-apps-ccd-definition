@@ -6,7 +6,7 @@ module.exports = {
     checkAnswerForm: {
       classname: '.check-your-answers',
       changeLink: '.case-field-change a',
-      uploadEvidenceLink: '.collection-field-table a'
+      uploadEvidenceLink: '.collection-field-table button'
     }
   },
 
