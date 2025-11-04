@@ -6,7 +6,7 @@ module.exports = {
 
   fields: {
     docLabel: 'div.case-viewer-label',
-    links: '.collection-field-table ccd-read-document-field a',
+    links: '.collection-field-table ccd-read-document-field button',
     docTitles: 'ccd-read-complex-field-collection-table .complex-panel .complex-panel-title'
   },
 

@@ -16,7 +16,7 @@ module.exports = {
     I.see('Hearing details');
     I.see('Preferred location');
     // I.dontSee(events.RESPOND_TO_APPLICATION.name);
-    I.seeTextEquals('examplePDF.pdf', '.Application ccd-read-document-field > a');
+    I.seeTextEquals('examplePDF.pdf', '.Application ccd-read-document-field > button');
     I.seeNumberOfVisibleElements('.Application a', 2);
     I.see('Respondent hearing details');
     I.see('Vulnerability questions');
