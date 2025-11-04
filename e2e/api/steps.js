@@ -1727,7 +1727,6 @@ module.exports = {
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
     deleteCaseFields('respondentSolGaAppDetails');
-    deleteCaseFields('generalApplications');
     let claimantResponseData = eventData['claimantResponsesSpec'][scenario][response];
 
     const document = await testingSupport.uploadDocument();
@@ -1741,6 +1740,8 @@ module.exports = {
     if ((response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
       validState = 'JUDICIAL_REFERRAL';
     }
+
+    deleteCaseFields('generalApplications');
 
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
@@ -1758,13 +1759,14 @@ module.exports = {
     eventName = 'CLAIMANT_RESPONSE';
     caseData = await apiRequest.startEvent(eventName, caseId);
     deleteCaseFields('respondentSolGaAppDetails');
-    deleteCaseFields('generalApplications');
     let claimantResponseData = eventData['claimantResponsesSpec'][scenario][response];
     claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidClaimData(claimantResponseData, pageId);
     }
+
+    deleteCaseFields('generalApplications');
 
     await assertSubmittedEvent(expectedEndState);
 
@@ -2812,7 +2814,7 @@ const assertValidClaimData = async (data, pageId) => {
   if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
     checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
   }
-
+  
   caseData = update(caseData, responseBody.data);
 };
 
