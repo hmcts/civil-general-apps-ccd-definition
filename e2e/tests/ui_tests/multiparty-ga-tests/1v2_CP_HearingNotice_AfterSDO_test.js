@@ -26,20 +26,12 @@ Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.secondDefendantSolicitorUser, civilCaseReference);
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeListApplicationForHearingInPerson(config.judgeUser2WithRegionId2, gaCaseReference);
-  } else {
-    await api.judgeListApplicationForHearingInPerson(config.judgeUserWithRegionId1, gaCaseReference);
-  }
+  await api.judgeListApplicationForHearingInPerson(config.judgeUser2WithRegionId2, gaCaseReference);
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.LISTING_FOR_A_HEARING.id);
   await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.LISTING_FOR_A_HEARING.id);
 
   console.log('Hearing Notice creation');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await I.login(config.hearingCenterAdminWithRegionId2);
-  } else {
-    await I.login(config.hearingCenterAdminLocal);
-  }
+  await I.login(config.hearingCenterAdminWithRegionId2);
 
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(states.LISTING_FOR_A_HEARING.name);
