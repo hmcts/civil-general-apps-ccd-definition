@@ -60,7 +60,7 @@
     "playwright": "^1.41.1",
     "proper-lockfile": "^4.1.2",
     "run-script-os": "^1.1.6",
-    "totp-generator": "^0.0.7",
+    "totp-generator": "^2.0.0",
     "uuid": "^3.4.0",
     "webdriverio": "^6.12.1"
   },
