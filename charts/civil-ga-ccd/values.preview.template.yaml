@@ -1,7 +1,7 @@
 civil-service:
   enabled: true
   java:
-    ingressHost: civil-service-${SERVICE_FQDN}
+    ingressHost: ${SERVICE_FQDN}
     keyVaults:
       civil:
         resourceGroup: civil
