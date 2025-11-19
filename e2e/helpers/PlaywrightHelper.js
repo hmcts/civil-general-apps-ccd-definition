@@ -21,9 +21,8 @@ class PlaywrightHelper extends Helper {
 
   async clickTab(tabTitle) {
     const page = this.helpers[helperName].page;
-    const tabXPath = `//div[text()='${tabTitle}']`;
-    await page.locator(tabXPath).click();
-    await page.locator(tabXPath).click();
+    const tabSelector = `div[role='tab'] >> '${tabTitle}'`;
+    await page.locator(tabSelector).click();
   }
 }
 module.exports = PlaywrightHelper;

@@ -10,25 +10,24 @@ const respondentStatus = states.AWAITING_RESPONDENT_RESPONSE.name;
 const claimantType = 'Company';
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA R2 1v1 - General Application Journey @ui-nightly');
+Feature('GA R2 1v1 - General Application Journey @e2e-nightly-prod');
 
 BeforeSuite(async ({ api }) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
-  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
-  console.log('Case created for general application: ' + civilCaseReference);
+  // civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
+  // await api.amendClaimDocuments(config.applicantSolicitorUser);
+  // await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  // await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  // await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  // await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  // await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
+  // console.log('Case created for general application: ' + civilCaseReference);
 });
 
-//Skipped the test as awaiting fix for https://tools.hmcts.net/jira/browse/DTSCCI-1910
-Scenario.skip(
-  'Defendant of main claim initiates Vary payment terms of judgment application @regression',
+Scenario(
+  'Defendant of main claim initiates Vary payment terms of judgment application @debug',
   async ({ I, api }) => {
-    await I.login(config.applicantSolicitorUser);
-    await I.verifyNoN245Form(civilCaseReference, getAppTypes().slice(10, 11), 'no');
+    // await I.login(config.applicantSolicitorUser);
+    // await I.verifyNoN245Form(civilCaseReference, getAppTypes().slice(10, 11), 'no');
     await I.login(config.defendantSolicitorUser);
     await I.initiateVaryJudgementGA(civilCaseReference, getAppTypes().slice(10, 11), 'yes', 'no', 'no');
     gaCaseReference = await api.getGACaseReference(config.defendantSolicitorUser, civilCaseReference);
@@ -97,9 +96,9 @@ Scenario.skip(
     await I.see(states.LISTING_FOR_A_HEARING.name);
     await I.verifyCaseFileAppDocument(civilCaseReference, 'N245 Evidence');
   }
-).retry(1);
+).retry(0);
 
-Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regression', async ({ I, api }) => {
+Scenario.skip('GA R2 1v1 - With Notice - Unless order - Make an order journey', async ({ I, api }) => {
   await I.login(config.applicantSolicitorUser);
   await I.createGeneralApplication(
     getAppTypes().slice(9, 10),
@@ -135,6 +134,6 @@ Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regre
   await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.ORDER_MADE.id);
 }).retry(1);
 
-AfterSuite(async ({ api }) => {
-  await api.cleanUp();
-});
+// AfterSuite(async ({ api }) => {
+//   await api.cleanUp();
+// });

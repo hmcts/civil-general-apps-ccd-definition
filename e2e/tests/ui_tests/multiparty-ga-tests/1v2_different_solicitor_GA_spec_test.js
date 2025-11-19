@@ -11,11 +11,11 @@ const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 let gaCaseReference, civilCaseReference, user;
 
-Feature('1v2 Different Solicitor Spec claim - GA Journey @multiparty-e2e-tests @ui-nightly');
+Feature('1v2 Different Solicitor Spec claim - GA Journey @multiparty-e2e-tests');
 // This test should be enabled after early adopters goes live for all regions
 
 Scenario.skip(
-  'GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey @regression',
+  'GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey @e2e-nightly-prod',
   async ({ api, I }) => {
     civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
     console.log('Case created for general application: ' + civilCaseReference);

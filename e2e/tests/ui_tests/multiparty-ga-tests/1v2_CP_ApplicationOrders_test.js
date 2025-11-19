@@ -7,7 +7,7 @@ const doc = 'hearingNotice';
 const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 let civilCaseReference, gaCaseReference, user;
 
-Feature('Before SDO 1v2 - GA CP - Applications Orders @ui-nightly @regression');
+Feature('Before SDO 1v2 - GA CP - Applications Orders @e2e-nightly-prod');
 
 Scenario('1v2 - Assisted order - With Further Hearing @e2e-tests', async ({ I, api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(

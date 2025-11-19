@@ -11,7 +11,7 @@ const claimantType = 'Company';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA CCD 2v1 - General Application Journey @multiparty-e2e-tests @ui-nightly @regression');
+Feature('GA CCD 2v1 - General Application Journey @multiparty-e2e-tests @e2e-nightly-prod');
 
 Scenario(
   'GA for 2v1 - Concurrent written representations - without notice to with notice journey',
