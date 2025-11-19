@@ -17,4 +17,4 @@ echo "export HEALTH_WORK_ALLOCATION_TASK_API=https://wa-task-management-api-ga-c
 
 # definition placeholders
 echo "export CCD_DEF_CASE_SERVICE_BASE_URL=http://civil-ga-ccd-pr-${pr}-civil-service"
-echo "export CCD_DEF_GEN_APP_SERVICE_BASE_URL=http://civil-ga-ccd-pr-${pr}-java"
+echo "export CCD_DEF_GEN_APP_SERVICE_BASE_URL=http://civil-ga-ccd-pr-${pr}-civil-service"
