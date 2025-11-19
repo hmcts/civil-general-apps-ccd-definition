@@ -345,7 +345,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   await I.see(additionalInfoStatus);
   await I.respondToJudgeAdditionalInfo(gaCaseReference);
   console.log('Responded to Judge Additional Information on case: ' + gaCaseReference);
-}).retry(0);
+}).retry(1);
 
 AfterSuite(async ({ api }) => {
   await api.cleanUp();
