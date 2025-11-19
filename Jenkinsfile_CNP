@@ -142,6 +142,14 @@ def uploadCoreCaseDataDefinitions(env) {
   }
 }
 
+def getCivilServiceImage() {
+  def githubApi = new GithubAPI(this)
+  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "civilServicePr:") ) {
+    return "pr-" + label.minus("civilServicePr:").trim()
+  }
+  return "latest"
+}
+
 def checkForRunAllFunctionalTests(branch_name) {
   return new GithubAPI(this).getLabelsbyPattern(branch_name, "runAllFunctionalTests").contains("runAllFunctionalTests")
 }
@@ -158,6 +166,8 @@ withPipeline(type, product, component) {
       env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
       env.YARN_ENABLE_IMMUTABLE_INSTALLS = false
       env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+      env.CIVIL_SERVICE_URL = "https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+      env.CIVIL_SERVICE_IMAGE = getCivilServiceImage()
       env.TEST_DATA_LOAD_SKIP_PERIOD = 3.0
       env.ENVIRONMENT = "preview"
       loadVaultSecrets(secrets);

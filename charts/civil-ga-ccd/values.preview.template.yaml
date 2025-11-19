@@ -1,6 +1,8 @@
 civil-service:
   enabled: true
   java:
+    imagePullPolicy: Always
+    image: hmctspublic.azurecr.io/civil/service:${CIVIL_SERVICE_IMAGE}
     ingressHost: ${SERVICE_FQDN}
     keyVaults:
       civil:
