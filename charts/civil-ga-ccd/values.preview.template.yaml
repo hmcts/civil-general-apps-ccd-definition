@@ -2,6 +2,7 @@ civil-service:
   enabled: true
   java:
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
+    image: hmctspublic.azurecr.io/civil/service:${CIVIL_SERVICE_IMAGE}
     keyVaults:
       civil:
         resourceGroup: civil
