@@ -13,7 +13,8 @@ properties([
     choice(name: 'FRONTEND_URL', 
       choices: [
                   'https://manage-case.aat.platform.hmcts.net', 
-                  'https://manage-case.demo.platform.hmcts.net', 
+                  'https://manage-case.demo.platform.hmcts.net',
+                  'https://manage-case-int.demo.platform.hmcts.net', 
                   'https://manage-case-int1.demo.platform.hmcts.net', 
                   'https://manage-case-int2.demo.platform.hmcts.net',
                   'https://manage-case-wa-int.demo.platform.hmcts.net',
@@ -99,7 +100,7 @@ withNightlyPipeline(type, product, component) {
   env.TESTS_FOR_ACCESSIBILITY = false
   env.CCD_UI_TESTS=true
   overrideVaultEnvironments([
-    'aat': params.ENVIRONMENT
+    'aat': params.ENVIRONMENT == 'preview' ? 'aat' : params.ENVIRONMENT
   ])
   loadVaultSecrets(secrets)
 

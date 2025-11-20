@@ -7,7 +7,7 @@ module.exports = {
     summaryTab: 'div.mat-tab-label-content',
     nextStep: '#next-step option',
     spinner: 'div.spinner-container',
-    n245FormLink: '[id$="generalAppN245FormUpload"] a'
+    n245FormLink: '[id$="generalAppN245FormUpload"] button'
   },
 
   async verifySummaryPage() {

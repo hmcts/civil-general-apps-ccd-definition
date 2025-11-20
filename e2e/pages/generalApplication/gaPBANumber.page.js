@@ -22,7 +22,7 @@ module.exports = {
       I.see('£123.00');
     } else {
       console.log('The application type : ' + appType);
-      I.see('£119.00');
+      I.see('£123.00');
     }
     await I.clickContinue();
   },
