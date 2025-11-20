@@ -3,15 +3,14 @@ appVersion: "1.0"
 description: A Helm chart for civil-general-apps-ccd-definition App
 name: civil-ga-ccd
 home: https://github.com/hmcts/civil-general-apps-ccd-definition
-version: 0.0.69
+version: 0.0.68
 maintainers:
   - name: HMCTS Civil team
 
 dependencies:
-  - name: postgresql
-    version: 1.0.2
+  - name: civil-general-applications
+    version: 0.0.73
     repository: 'oci://hmctspublic.azurecr.io/helm'
-    condition: postgresql.enabled
   - name: civil-service
     version: 0.0.86
     repository: 'oci://hmctspublic.azurecr.io/helm'
@@ -24,10 +23,6 @@ dependencies:
     version: ~1.0.31
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: xui-webapp.enabled
-  - name: aac-manage-case-assignment
-    version: 0.2.19
-    repository: 'oci://hmctspublic.azurecr.io/helm'
-    condition: aac-manage-case-assignment.enabled
   - name: idam-pr
     version: ~2.3.0
     repository: 'oci://hmctspublic.azurecr.io/helm'
@@ -51,26 +46,3 @@ dependencies:
     version: ~0.1.22
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: civil-wa.enabled
-  - name: ts-translation-service
-    version: 0.1.7
-    repository: 'oci://hmctspublic.azurecr.io/helm'
-    condition: civil-translation.enabled
-
-  # Stitching
-  - name: ccd-case-document-am-api
-    version: 1.7.17
-    repository: 'oci://hmctspublic.azurecr.io/helm'
-    condition: ccd-case-document-am-api.enabled
-  - name: em-ccdorc
-    version: 2.1.0
-    repository: 'oci://hmctspublic.azurecr.io/helm'
-    condition: em-ccdorc.enabled
-  - name: em-stitching
-    version: 1.1.0
-    repository: 'oci://hmctspublic.azurecr.io/helm'
-    condition: em-stitching.enabled
-
-  - name: wiremock
-    version: 0.0.5
-    repository: 'oci://hmctspublic.azurecr.io/helm'
-    condition: wiremock.enabled
