@@ -7,7 +7,7 @@ const doc = 'hearingNotice';
 let civilCaseReference, gaCaseReference, user;
 const judgeApproveOrderStatus = states.ORDER_MADE.name;
 
-Feature('Before SDO 1v1 - GA CP - Applications Orders @e2e-nightly-prod');
+Feature('Before SDO 1v1 - GA CP - Applications Orders @e2e-nightly-prod @after-sdo-orders');
 
 Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({ I, api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');

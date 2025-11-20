@@ -24,7 +24,7 @@ if (config.runWAApiTest) {
   expectedScheduleAppHearingAfterSDOTask = require('../../../../wa/tasks/scheduleAppHearingAfterSDOTask.js');
 }
 
-Feature('1v2 Spec claim: GA - WA Scenarios @e2e-wa');
+Feature('1v2 Spec claim: GA - WA Scenarios @e2e-wa @before-sdo-wa');
 //requires fixing
 
 Scenario.skip('LA refer to judge - R2 Judge Make decision - NBC admin schedule Hearing', async ({I, api, wa}) => {

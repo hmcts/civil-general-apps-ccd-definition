@@ -8,7 +8,7 @@ const judgeDecisionStatus = states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECIS
 const writtenRepStatus = states.AWAITING_WRITTEN_REPRESENTATIONS.name;
 let gaCaseReference, civilCaseReference;
 
-Feature('1v2 Different Solicitor - General Application Collections test Journey @multiparty-e2e-tests');
+Feature('1v2 Different Solicitor - General Application Collections test Journey @multiparty-e2e-tests @before-sdo-general');
 
 Scenario(
   'Without Notice application - Org2 Solicitor Initiate GA - Awaiting Written Representations @e2e-nightly-prod',
