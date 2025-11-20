@@ -41,16 +41,6 @@ dependencies:
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: servicebus.enabled
 
-  # CCD message publisher
-  - name: ccd-message-publisher
-    version: ~0.1.22
-    repository: 'oci://hmctspublic.azurecr.io/helm'
-    condition: ccd-events-topic.enabled
-  - name: ts-translation-service
-    version: 0.1.7
-    repository: 'oci://hmctspublic.azurecr.io/helm'
-    condition: civil-translation.enabled
-
   # WA
   - name: wa
     version: 1.1.0
