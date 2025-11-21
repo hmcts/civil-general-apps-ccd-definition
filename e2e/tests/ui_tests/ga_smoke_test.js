@@ -29,7 +29,7 @@ Scenario('GA 1v1  - Judge Makes Decision Order Made @smoke-tests', async ({api, 
   await I.see('Order Made');
 });
 
-Scenario('Claimant Hearing notice - Without notice journey @e2e-tests', async ({api, I}) => {
+Scenario('Claimant Hearing notice - Without notice journey @smoke-tests', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
