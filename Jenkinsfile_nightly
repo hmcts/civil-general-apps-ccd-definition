@@ -53,10 +53,17 @@ properties([
           'https://civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
           'https://civil-citizen-ui-pr-{PR_NUMBER}-civil-service.preview.platform.hmcts.net',
           'https://civil-service-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-          'https://civil-service-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net'
         ],
       description: 'The URL of civil service'),
-    choice(name: 'CIVIL_GENERAL_APPLICATIONS_URL', choices: ['http://civil-general-applications-aat.service.core-compute-aat.internal', 'http://civil-general-applications-demo.service.core-compute-demo.internal', 'http://civil-general-applications-{PR_NUMBER}.service.core-compute-{PR_NUMBER}.internal'],
+    choice(name: 'CIVIL_GENERAL_APPLICATIONS_URL',
+      choices: [
+        'http://civil-service-aat.service.core-compute-aat.internal',
+        'http://civil-service-demo.service.core-compute-demo.internal',
+        'https://civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+        'https://civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+        'https://civil-citizen-ui-pr-{PR_NUMBER}-civil-service.preview.platform.hmcts.net',
+        'https://civil-service-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net'
+      ],
       description: 'The URL of GA service'),
     string(name: 'WAIT_FOR_TIMEOUT_MS',
       defaultValue: '120000',
