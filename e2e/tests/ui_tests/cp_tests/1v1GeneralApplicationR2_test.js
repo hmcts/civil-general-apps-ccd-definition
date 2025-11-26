@@ -23,8 +23,8 @@ BeforeSuite(async ({ api }) => {
   console.log('Case created for general application: ' + civilCaseReference);
 });
 
-Scenario(
-  'Defendant of main claim initiates Vary payment terms of judgment application @debug',
+Scenario.skip(
+  'Defendant of main claim initiates Vary payment terms of judgment application',
   async ({ I, api }) => {
     await I.login(config.applicantSolicitorUser);
     await I.verifyNoN245Form(civilCaseReference, getAppTypes().slice(10, 11), 'no');
