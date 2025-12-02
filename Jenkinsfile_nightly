@@ -111,6 +111,22 @@ def copyPrevFailedAndNotExecutedTestFilesJson() {
 withNightlyPipeline(type, product, component) {
   env.FORCE_GREEN_BUILD=params.FORCE_GREEN_BUILD
   env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES=params.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES
+  def prNumber = params.PR_NUMBER?.trim()
+  def resolvePreviewUrl = { String value, String paramName ->
+    if (value?.contains('{PR_NUMBER}')) {
+      if (!prNumber) {
+        error "Parameter ${paramName} contains '{PR_NUMBER}' but PR_NUMBER was not provided."
+      }
+      return value.replace('{PR_NUMBER}', prNumber)
+    }
+    return value
+  }
+
+  def frontendUrl = resolvePreviewUrl(params.FRONTEND_URL, 'FRONTEND_URL')
+  def ccdDataStoreUrl = resolvePreviewUrl(params.CCD_DATA_STORE_URL, 'CCD_DATA_STORE_URL')
+  def civilServiceUrl = resolvePreviewUrl(params.CIVIL_SERVICE_URL, 'CIVIL_SERVICE_URL')
+  def aacApiUrl = resolvePreviewUrl(params.AAC_API_URL, 'AAC_API_URL')
+
   env.YARN_ENABLE_IMMUTABLE_INSTALLS = false
   env.TEST_URL = params.CIVIL_SERVICE_URL
   env.URL = params.FRONTEND_URL
