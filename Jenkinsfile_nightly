@@ -61,6 +61,10 @@ properties([
                                                              'http://civil-general-applications-demo.service.core-compute-demo.internal',
                                                              'https://civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net'],
       description: 'The URL of GA service'),
+    choice(name: 'WA_TASK_MGMT_URL', choices: ['http://wa-task-management-api-aat.service.core-compute-aat.internal',
+                                               'http://wa-task-management-api-demo.service.core-compute-demo.internal',
+                                               'https://wa-task-management-api-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net'],
+      description: 'The URL of wa task management'),
     string(name: 'WAIT_FOR_TIMEOUT_MS',
       defaultValue: '120000',
       description: 'Functional tests waitForTimeout value'),
@@ -131,6 +135,7 @@ withNightlyPipeline(type, product, component) {
   def ccdDataStoreUrl = resolvePreviewUrl(params.CCD_DATA_STORE_URL, 'CCD_DATA_STORE_URL')
   def civilServiceUrl = resolvePreviewUrl(params.CIVIL_SERVICE_URL, 'CIVIL_SERVICE_URL')
   def civilGeneralApplicationsUrl = resolvePreviewUrl(params.CIVIL_GENERAL_APPLICATIONS_URL, 'CIVIL_GENERAL_APPLICATIONS_URL')
+  def waTaskMgmtUrl = resolvePreviewUrl(params.WA_TASK_MGMT_URL, 'WA_TASK_MGMT_URL')
 
   env.URL=frontendUrl
   env.DM_STORE_URL=params.DM_STORE_URL
@@ -139,6 +144,7 @@ withNightlyPipeline(type, product, component) {
   env.CCD_DATA_STORE_URL = ccdDataStoreUrl
   env.CIVIL_SERVICE_URL = civilServiceUrl
   env.CIVIL_GENERAL_APPLICATIONS_URL = civilGeneralApplicationsUrl
+  env.WA_TASK_MGMT_URL = waTaskMgmtUrl
   env.WAIT_FOR_TIMEOUT_MS = params.WAIT_FOR_TIMEOUT_MS
   env.URL_FOR_SECURITY_SCAN = params.CIVIL_SERVICE_URL
   env.TESTS_FOR_ACCESSIBILITY = false
