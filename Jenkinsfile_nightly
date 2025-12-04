@@ -120,7 +120,6 @@ withNightlyPipeline(type, product, component) {
   env.FORCE_GREEN_BUILD=params.FORCE_GREEN_BUILD
   env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES=params.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES
   env.YARN_ENABLE_IMMUTABLE_INSTALLS = false
-  env.TEST_URL = params.CIVIL_SERVICE_URL
   def prNumber = params.PR_NUMBER?.trim()
   def resolvePreviewUrl = { String value, String paramName ->
     if (value?.contains('{PR_NUMBER}')) {
