@@ -21,7 +21,9 @@ properties([
                   'https://manage-case-wa-int.demo.platform.hmcts.net',
                   'https://manage-case-caa-assigned-case-view.demo.platform.hmcts.net',
                   'https://xui-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://xui-civil-citizen-ui-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://xui-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://xui-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                 ],
       description: 'The URL you want to run the full functional tests against'),
     choice(name: 'IDAM_API_URL', choices: ['https://idam-api.aat.platform.hmcts.net', 'https://idam-api.demo.platform.hmcts.net'],
@@ -39,7 +41,9 @@ properties([
                   'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
                   'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
                   'https://ccd-data-store-api-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://ccd-data-store-api-civil-citizen-ui-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://ccd-data-store-api-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://ccd-data-store-api-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                 ],
       description: 'The URL of ccd data store'),
     choice(name: 'CIVIL_SERVICE_URL',
@@ -47,7 +51,9 @@ properties([
                   'http://civil-service-aat.service.core-compute-aat.internal',
                   'http://civil-service-demo.service.core-compute-demo.internal',
                   'https://civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://civil-citizen-ui-pr-{PR_NUMBER}-civil-service.preview.platform.hmcts.net',
                   'https://civil-service-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://civil-service-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                 ],
     description: 'The URL of civil service'),
     choice(name: 'CIVIL_GENERAL_APPLICATIONS_URL', 
@@ -55,15 +61,15 @@ properties([
                   'http://civil-general-applications-aat.service.core-compute-aat.internal',
                   'http://civil-general-applications-demo.service.core-compute-demo.internal',
                   'https://ga-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://civil-citizen-ui-pr-{PR_NUMBER}-general-applications.preview.platform.hmcts.net',
                   'https://civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                 ],
       description: 'The URL of GA service'),
     choice(name: 'WA_TASK_MGMT_URL', 
       choices: [
                   'http://wa-task-management-api-aat.service.core-compute-aat.internal',
                   'http://wa-task-management-api-demo.service.core-compute-demo.internal',
-                  'https://wa-task-management-api-civil-ccd-pr-${PR_NUMBER}.preview.platform.hmcts.net',
-                  'https://wa-task-management-api-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                 ],
       description: 'The URL of wa task management'),
     string(name: 'WAIT_FOR_TIMEOUT_MS',
@@ -149,6 +155,7 @@ withNightlyPipeline(type, product, component) {
   env.URL_FOR_SECURITY_SCAN = params.CIVIL_SERVICE_URL
   env.TESTS_FOR_ACCESSIBILITY = false
   env.CCD_UI_TESTS=true
+  env.RUN_WA_API_TEST = params.ENVIRONMENT == 'preview' ? false : true
   overrideVaultEnvironments([
     'aat': params.ENVIRONMENT == 'preview' ? 'aat' : params.ENVIRONMENT
   ])
