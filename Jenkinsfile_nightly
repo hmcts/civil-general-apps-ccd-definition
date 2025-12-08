@@ -20,9 +20,7 @@ properties([
                   'https://manage-case-int2.demo.platform.hmcts.net',
                   'https://manage-case-wa-int.demo.platform.hmcts.net',
                   'https://manage-case-caa-assigned-case-view.demo.platform.hmcts.net',
-                  'https://manage-case-caa-assigned-case-view.demo.platform.hmcts.net',
                   'https://xui-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-                  'https://xui-civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://xui-civil-citizen-ui-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://xui-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://xui-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net',
@@ -32,32 +30,48 @@ properties([
       description: 'The URL of idam api'),
     choice(name: 'DM_STORE_URL', choices: ['http://dm-store-aat.service.core-compute-aat.internal', 'http://dm-store-demo.service.core-compute-demo.internal'],
       description: 'The URL of dm store'),
-    choice(name: 'SERVICE_AUTH_PROVIDER_API_BASE_URL', choices: ['http://rpe-service-auth-provider-aat.service.core-compute-aat.internal', 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal'],
+    choice(name: 'SERVICE_AUTH_PROVIDER_API_BASE_URL', 
+      choices: [
+                  'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+                  'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal'
+                ],
       description: 'The URL of service auth provider'),
-      choice(name: 'CCD_DATA_STORE_URL',
-        choices: [
-          'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
-          'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
-          'https://ccd-data-store-api-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-          'https://ccd-data-store-api-civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-          'https://ccd-data-store-api-civil-citizen-ui-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-          'https://ccd-data-store-api-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-          'https://ccd-data-store-api-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net'
-        ],
-        description: 'The URL of ccd data store'),
-      choice(name: 'CIVIL_SERVICE_URL',
-        choices: [
-          'http://civil-service-aat.service.core-compute-aat.internal',
-          'http://civil-service-demo.service.core-compute-demo.internal',
-          'https://civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-          'https://civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-          'https://civil-citizen-ui-pr-{PR_NUMBER}-civil-service.preview.platform.hmcts.net',
-          'https://civil-service-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-          'https://civil-service-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net'
-        ],
-      description: 'The URL of civil service'),
-    choice(name: 'CIVIL_GENERAL_APPLICATIONS_URL', choices: ['http://civil-general-applications-aat.service.core-compute-aat.internal', 'http://civil-general-applications-demo.service.core-compute-demo.internal', 'http://civil-general-applications-{PR_NUMBER}.service.core-compute-{PR_NUMBER}.internal'],
+    choice(name: 'CCD_DATA_STORE_URL',
+      choices: [
+                  'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
+                  'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
+                  'https://ccd-data-store-api-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://ccd-data-store-api-civil-citizen-ui-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://ccd-data-store-api-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://ccd-data-store-api-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                ],
+      description: 'The URL of ccd data store'),
+    choice(name: 'CIVIL_SERVICE_URL',
+      choices: [
+                  'http://civil-service-aat.service.core-compute-aat.internal',
+                  'http://civil-service-demo.service.core-compute-demo.internal',
+                  'https://civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://civil-citizen-ui-pr-{PR_NUMBER}-civil-service.preview.platform.hmcts.net',
+                  'https://civil-service-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://civil-service-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                ],
+    description: 'The URL of civil service'),
+    choice(name: 'CIVIL_GENERAL_APPLICATIONS_URL', 
+      choices: [
+                  'http://civil-general-applications-aat.service.core-compute-aat.internal',
+                  'http://civil-general-applications-demo.service.core-compute-demo.internal',
+                  'https://ga-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://civil-citizen-ui-pr-{PR_NUMBER}-general-applications.preview.platform.hmcts.net',
+                  'https://civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                ],
       description: 'The URL of GA service'),
+    choice(name: 'WA_TASK_MGMT_URL', 
+      choices: [
+                  'http://wa-task-management-api-aat.service.core-compute-aat.internal',
+                  'http://wa-task-management-api-demo.service.core-compute-demo.internal',
+                ],
+      description: 'The URL of wa task management'),
     string(name: 'WAIT_FOR_TIMEOUT_MS',
       defaultValue: '120000',
       description: 'Functional tests waitForTimeout value'),
@@ -112,20 +126,38 @@ withNightlyPipeline(type, product, component) {
   env.FORCE_GREEN_BUILD=params.FORCE_GREEN_BUILD
   env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES=params.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES
   env.YARN_ENABLE_IMMUTABLE_INSTALLS = false
-  env.TEST_URL = params.CIVIL_SERVICE_URL
-  env.URL = params.FRONTEND_URL
+  def prNumber = params.PR_NUMBER?.trim()
+  def resolvePreviewUrl = { String value, String paramName ->
+    if (value?.contains('{PR_NUMBER}')) {
+      if (!prNumber) {
+        error "Parameter ${paramName} contains '{PR_NUMBER}' but PR_NUMBER was not provided."
+      }
+      return value.replace('{PR_NUMBER}', prNumber)
+    }
+    return value
+  }
+
+  def frontendUrl = resolvePreviewUrl(params.FRONTEND_URL, 'FRONTEND_URL')
+  def ccdDataStoreUrl = resolvePreviewUrl(params.CCD_DATA_STORE_URL, 'CCD_DATA_STORE_URL')
+  def civilServiceUrl = resolvePreviewUrl(params.CIVIL_SERVICE_URL, 'CIVIL_SERVICE_URL')
+  def civilGeneralApplicationsUrl = resolvePreviewUrl(params.CIVIL_GENERAL_APPLICATIONS_URL, 'CIVIL_GENERAL_APPLICATIONS_URL')
+  def waTaskMgmtUrl = resolvePreviewUrl(params.WA_TASK_MGMT_URL, 'WA_TASK_MGMT_URL')
+
+  env.URL=frontendUrl
   env.DM_STORE_URL=params.DM_STORE_URL
   env.IDAM_API_URL=params.IDAM_API_URL
   env.SERVICE_AUTH_PROVIDER_API_BASE_URL = params.SERVICE_AUTH_PROVIDER_API_BASE_URL
-  env.CCD_DATA_STORE_URL = params.CCD_DATA_STORE_URL
-  env.CIVIL_SERVICE_URL = params.CIVIL_SERVICE_URL
-  env.CIVIL_GENERAL_APPLICATIONS_URL = params.CIVIL_GENERAL_APPLICATIONS_URL
+  env.CCD_DATA_STORE_URL = ccdDataStoreUrl
+  env.CIVIL_SERVICE_URL = civilServiceUrl
+  env.CIVIL_GENERAL_APPLICATIONS_URL = civilGeneralApplicationsUrl
+  env.WA_TASK_MGMT_URL = waTaskMgmtUrl
   env.WAIT_FOR_TIMEOUT_MS = params.WAIT_FOR_TIMEOUT_MS
   env.URL_FOR_SECURITY_SCAN = params.CIVIL_SERVICE_URL
   env.TESTS_FOR_ACCESSIBILITY = false
   env.CCD_UI_TESTS=true
+  env.RUN_WA_API_TEST = params.ENVIRONMENT == 'preview' ? false : true
   overrideVaultEnvironments([
-    'aat': params.ENVIRONMENT
+    'aat': params.ENVIRONMENT == 'preview' ? 'aat' : params.ENVIRONMENT
   ])
   loadVaultSecrets(secrets)
 
