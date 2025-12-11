@@ -7,9 +7,9 @@ const doc = 'hearingNotice';
 let civilCaseReference, gaCaseReference, user;
 const judgeApproveOrderStatus = states.ORDER_MADE.name;
 
-Feature('Before SDO 1v1 - GA CP - Applications Orders @ui-nightly');
+Feature('Before SDO 1v1 - GA CP - Applications Orders @e2e-nightly-prod');
 
-Scenario.skip('1v1 - Free form order - With notice journey @e2e-tests', async ({ I, api }) => {
+Scenario('1v1 - Free form order - With notice journey @e2e-tests', async ({ I, api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -26,11 +26,7 @@ Scenario.skip('1v1 - Free form order - With notice journey @e2e-tests', async ({
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeListApplicationForHearing(config.judgeUser2WithRegionId2, gaCaseReference);
-  } else {
-    await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
-  }
+  await api.judgeListApplicationForHearing(config.judgeUser2WithRegionId2, gaCaseReference);
 
   console.log('Hearing Notice creation');
   await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminWithRegionId2, gaCaseReference);
@@ -57,7 +53,7 @@ Scenario.skip('1v1 - Free form order - With notice journey @e2e-tests', async ({
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
 }).retry(1);
 
-Scenario.skip('1v1 - Assisted order - Without Further Hearing @regression', async ({ api, I }) => {
+Scenario('1v1 - Assisted order - Without Further Hearing', async ({ api, I }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
