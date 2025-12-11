@@ -49,8 +49,6 @@ def getFunctionalTestsGroups() {
   return functionalTestGroups.join(",")
 }
 
-env.PR_FT_GROUPS = getFunctionalTestsGroups()
-
 def secrets = [
         's2s-${env}': [
                 secret('microservicekey-ccd-gw', 'CCD_API_GATEWAY_S2S_SECRET'),

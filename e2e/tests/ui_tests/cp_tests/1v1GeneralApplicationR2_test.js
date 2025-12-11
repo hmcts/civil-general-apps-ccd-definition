@@ -10,7 +10,7 @@ const respondentStatus = states.AWAITING_RESPONDENT_RESPONSE.name;
 const claimantType = 'Company';
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA R2 1v1 - General Application Journey @e2e-nightly-prod @before-sdo-orders');
+Feature('GA R2 1v1 - General Application Journey @e2e-nightly-prod @e2e-before-sdo-orders');
 
 BeforeSuite(async ({ api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
