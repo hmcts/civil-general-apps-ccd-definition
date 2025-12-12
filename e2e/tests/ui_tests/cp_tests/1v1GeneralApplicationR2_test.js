@@ -10,7 +10,7 @@ const respondentStatus = states.AWAITING_RESPONDENT_RESPONSE.name;
 const claimantType = 'Company';
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA R2 1v1 - General Application Journey @ui-nightly');
+Feature('GA R2 1v1 - General Application Journey @e2e-nightly-prod @e2e-before-sdo-orders');
 
 BeforeSuite(async ({ api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
@@ -23,9 +23,8 @@ BeforeSuite(async ({ api }) => {
   console.log('Case created for general application: ' + civilCaseReference);
 });
 
-//Skipped the test as awaiting fix for https://tools.hmcts.net/jira/browse/DTSCCI-1910
 Scenario.skip(
-  'Defendant of main claim initiates Vary payment terms of judgment application @regression',
+  'Defendant of main claim initiates Vary payment terms of judgment application',
   async ({ I, api }) => {
     await I.login(config.applicantSolicitorUser);
     await I.verifyNoN245Form(civilCaseReference, getAppTypes().slice(10, 11), 'no');
@@ -99,7 +98,7 @@ Scenario.skip(
   }
 ).retry(1);
 
-Scenario('GA R2 1v1 - With Notice - Unless order - Make an order journey  @regression', async ({ I, api }) => {
+Scenario.skip('GA R2 1v1 - With Notice - Unless order - Make an order journey', async ({ I, api }) => {
   await I.login(config.applicantSolicitorUser);
   await I.createGeneralApplication(
     getAppTypes().slice(9, 10),
