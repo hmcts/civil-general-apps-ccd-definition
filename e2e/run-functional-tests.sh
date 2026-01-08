@@ -29,6 +29,7 @@ compare_ft_groups() {
 }
 
 run_functional_test_groups() {
+  command="yarn test:e2e-nonprod --grep "
   pr_ft_groups=$(echo "$PR_FT_GROUPS" | awk '{print tolower($0)}')
   
   regex_pattern=""
@@ -39,10 +40,10 @@ run_functional_test_groups() {
       if [ -n "$regex_pattern" ]; then
           regex_pattern+="|"
       fi
-      regex_pattern+="((?=.*@regression)(?=.*@$ft_group))"
+      regex_pattern+="@e2e-$ft_group"
   done
 
-  command="yarn test:e2e-nonprod --grep '$regex_pattern'"
+  command+="'$regex_pattern'"
   echo "Executing: $command"
   eval "$command"
 }

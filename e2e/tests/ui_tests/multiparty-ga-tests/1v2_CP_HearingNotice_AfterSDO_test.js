@@ -8,7 +8,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('After SDO 1v2 - GA CP - Hearing Notice document');
 
-Scenario('Claimant Hearing notice - Without notice journey @e2e-tests @before-sdo-orders', async ({api, I}) => {
+Scenario('Claimant Hearing notice - Without notice journey @e2e-tests @e2e-before-sdo-orders', async ({api, I}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);

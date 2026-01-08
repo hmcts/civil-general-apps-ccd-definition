@@ -10,26 +10,26 @@ Updated test files to include appropriate tags for functional test grouping:
 
 #### Files Modified (Examples):
 - `e2e/tests/ui_tests/ga_smoke_test.js`
-  - Added `@regression` and `@ga` tags
+  - Added `@ga` tags
   
 - `e2e/tests/ui_tests/cp_tests/1v1GeneralApplication_test.js`
-  - Added `@regression` and `@ga` tags to all scenarios
+  - Added `@ga` tags to all scenarios
   
 - `e2e/tests/ui_tests/multiparty-ga-tests/1v2_ConsentOrders_test.js`
-  - Added `@regression` and `@multiparty` tags
+  - Added `@multiparty` tags
   
 - `e2e/tests/ui_tests/wa_tests/1v1_Unspec_GA_WA_scheduleHearing_test.js`
-  - Added `@regression` and `@wa` tags to all scenarios
+  - Added `@wa` tags to all scenarios
 
 ### 2. Package.json Updates
 
 Added new npm scripts for running specific functional test groups:
 
 ```json
-"test:ft-after-sdo-orders": "MOCHAWESOME_REPORTFILENAME=ft-after-sdo-orders FUNCTIONAL=true npx codeceptjs run-workers --suites 10 --grep '((?=.*@regression)(?=.*@after-sdo-orders))' --reporter mocha-multi --verbose",
-"test:ft-before-sdo-orders": "MOCHAWESOME_REPORTFILENAME=ft-before-sdo-orders FUNCTIONAL=true npx codeceptjs run-workers --suites 10 --grep '((?=.*@regression)(?=.*@before-sdo-orders))' --reporter mocha-multi --verbose",
-"test:ft-before-sdo-general": "MOCHAWESOME_REPORTFILENAME=ft-before-sdo-general FUNCTIONAL=true npx codeceptjs run-workers --suites 10 --grep '((?=.*@regression)(?=.*@before-sdo-general))' --reporter mocha-multi --verbose",
-"test:ft-before-sdo-wa": "MOCHAWESOME_REPORTFILENAME=ft-before-sdo-wa FUNCTIONAL=true npx codeceptjs run-workers --suites 10 --grep '((?=.*@regression)(?=.*@before-sdo-wa))' --reporter mocha-multi --verbose"
+"test:e2e-after-sdo-orders": "MOCHAWESOME_REPORTFILENAME=e2e-after-sdo-orders FUNCTIONAL=true npx codeceptjs run-workers --suites 10 --grep @e2e-after-sdo-orders --reporter mocha-multi --verbose",
+"test:e2e-before-sdo-orders": "MOCHAWESOME_REPORTFILENAME=e2e-before-sdo-orders FUNCTIONAL=true npx codeceptjs run-workers --suites 10 --grep @e2e-before-sdo-orders --reporter mocha-multi --verbose",
+"test:e2e-before-sdo-general": "MOCHAWESOME_REPORTFILENAME=e2e-before-sdo-general FUNCTIONAL=true npx codeceptjs run-workers --suites 10 --grep @e2e-before-sdo-general --reporter mocha-multi --verbose",
+"test:e2e-before-sdo-wa": "MOCHAWESOME_REPORTFILENAME=e2e-before-sdo-wa FUNCTIONAL=true npx codeceptjs run-workers --suites 10 --grep @e2e-before-sdo-wa --reporter mocha-multi --verbose"
 ```
 
 ### 3. Jenkinsfile_CNP Updates
@@ -59,31 +59,7 @@ onPR {
 }
 ```
 
-### 4. run-functional-tests.sh Updates
-
-Modified the `run_functional_test_groups()` function to use the new tagging pattern:
-
-```bash
-run_functional_test_groups() {
-  pr_ft_groups=$(echo "$PR_FT_GROUPS" | awk '{print tolower($0)}')
-  
-  regex_pattern=""
-  IFS=',' read -ra ft_groups_array <<< "$pr_ft_groups"
-
-  for ft_group in "${ft_groups_array[@]}"; do
-      if [ -n "$regex_pattern" ]; then
-          regex_pattern+="|"
-      fi
-      regex_pattern+="((?=.*@regression)(?=.*@$ft_group))"
-  done
-
-  command="yarn test:e2e-nonprod --grep '$regex_pattern'"
-  echo "Executing: $command"
-  eval "$command"
-}
-```
-
-### 5. Documentation
+### 4. Documentation
 
 Created comprehensive documentation:
 
@@ -102,19 +78,19 @@ The following GitHub labels should be created in the repository:
 
 ## Test Group Definitions
 
-### After SDO Orders Tests (@after-sdo-orders)
+### After SDO Orders Tests (@e2e-after-sdo-orders)
 - General Application orders after Standard Directions Order (SDO)
 - Post-SDO order workflows
 
-### Before SDO Orders Tests (@before-sdo-orders)
+### Before SDO Orders Tests (@e2e-before-sdo-orders)
 - General Application orders before Standard Directions Order (SDO)
 - Pre-SDO order workflows
 
-### Before SDO General Tests (@before-sdo-general)
+### Before SDO General Tests (@e2e-before-sdo-general)
 - General scenarios before Standard Directions Order (SDO)
 - Pre-SDO general workflows
 
-### Before SDO Work Allocation Tests (@before-sdo-wa)
+### Before SDO Work Allocation Tests (@e2e-before-sdo-wa)
 - Work Allocation scenarios before Standard Directions Order (SDO)
 - Pre-SDO WA task management
 
@@ -123,8 +99,8 @@ The following GitHub labels should be created in the repository:
 1. **Developer adds GitHub label** to PR (e.g., `pr_ft_after-sdo-orders`)
 2. **Jenkinsfile detects label** via `getFunctionalTestsGroups()` function
 3. **Environment variable set**: `PR_FT_GROUPS=after-sdo-orders`
-4. **run-functional-tests.sh** builds regex pattern: `((?=.*@regression)(?=.*@after-sdo-orders))`
-5. **CodeceptJS runs** only tests matching both `@regression` AND `@after-sdo-orders` tags
+4. **run-functional-tests.sh** builds regex pattern: `@e2e-after-sdo-orders`
+5. **CodeceptJS runs** only tests matching the `@e2e-after-sdo-orders` tag
 
 ## Benefits
 
@@ -143,7 +119,7 @@ To complete the implementation:
    - `pr_ft_before-sdo-general`
    - `pr_ft_before-sdo-wa`
 
-2. **Verify all test files** have appropriate `@regression` and group tags
+2. **Verify all test files** has appropriate group tag
 
 3. **Test the implementation** by:
    - Creating a test PR
@@ -157,7 +133,7 @@ To complete the implementation:
 When adding new tests:
 
 1. Add appropriate tags to the Feature and Scenario declarations
-2. Ensure both `@regression` and a group tag (e.g., `@after-sdo-orders`) are present
+2. Ensure the group tag (e.g., `@e2e-after-sdo-orders`) are present
 3. Update documentation if creating a new test group
 
 ## Comparison with Reference Implementation
@@ -165,7 +141,6 @@ When adding new tests:
 This implementation follows the same pattern as the reference repository:
 
 - ✅ GitHub labels with `pr_ft_` prefix
-- ✅ Regex pattern matching with `@regression` base tag
 - ✅ Conditional execution in shell script
 - ✅ Jenkinsfile integration with GithubAPI
 - ✅ Support for multiple test groups via comma-separated labels
@@ -178,7 +153,6 @@ This implementation follows the same pattern as the reference repository:
 4. `e2e/tests/ui_tests/wa_tests/1v1_Unspec_GA_WA_scheduleHearing_test.js` (example)
 5. `package.json`
 6. `Jenkinsfile_CNP`
-7. `e2e/run-functional-tests.sh`
 8. `README.md`
 
 ## Files Created

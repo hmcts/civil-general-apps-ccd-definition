@@ -19,10 +19,10 @@ if (config.runWAApiTest) {
   expectedScheduleAppHearingAfterSDOTask = require('../../../../wa/tasks/scheduleAppHearingAfterSDOTask.js');
 }
 
-Feature('1v1 UnSpec claim: GA - WA Scenarios @e2e-wa @regression @before-sdo-wa');
+Feature('1v1 UnSpec claim: GA - WA Scenarios @e2e-wa @e2e-before-sdo-wa');
 //requires fixing
 
-Scenario.skip('Before SDO GA - Judge Make decision - NBC admin schedule Hearing @regression @wa', async ({I, api, wa}) => {
+Scenario.skip('Before SDO GA - Judge Make decision - NBC admin schedule Hearing @wa', async ({I, api, wa}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -69,7 +69,7 @@ Scenario.skip('Before SDO GA - Judge Make decision - NBC admin schedule Hearing 
   await wa.verifyNoActiveTask(gaCaseReference);
 });
 
-Scenario.skip('Before SDO GA - LA Make decision - NBC admin schedule Hearing @regression @wa', async ({I, api, wa}) => {
+Scenario.skip('Before SDO GA - LA Make decision - NBC admin schedule Hearing @wa', async ({I, api, wa}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -110,7 +110,7 @@ Scenario.skip('Before SDO GA - LA Make decision - NBC admin schedule Hearing @re
   await wa.verifyNoActiveTask(gaCaseReference);
 });
 
-Scenario('After SDO GA - Judge Make decision - HC admin schedule Hearing @e2e-wa @regression @wa', async ({I, api, wa}) => {
+Scenario('After SDO GA - Judge Make decision - HC admin schedule Hearing @e2e-wa @wa', async ({I, api, wa}) => {
   civilCaseReference = await api.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
