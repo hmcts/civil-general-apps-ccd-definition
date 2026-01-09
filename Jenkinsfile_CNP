@@ -170,6 +170,7 @@ withPipeline(type, product, component) {
       env.CIVIL_SERVICE_IMAGE = getCivilServiceImage()
       env.TEST_DATA_LOAD_SKIP_PERIOD = 3.0
       env.ENVIRONMENT = "preview"
+      env.PR_FT_GROUPS = getFunctionalTestsGroups()
       loadVaultSecrets(secrets);
   }
   onMaster {

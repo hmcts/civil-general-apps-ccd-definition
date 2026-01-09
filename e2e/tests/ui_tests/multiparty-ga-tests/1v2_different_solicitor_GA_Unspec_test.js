@@ -9,7 +9,7 @@ const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 const judgeDirectionsOrderStatus = states.AWAITING_DIRECTIONS_ORDER_DOCS.name;
 let gaCaseReference, civilCaseReference;
 
-Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests @ui-nightly');
+Feature('1v2 Different Solicitor - General Application Journey @multiparty-e2e-tests @e2e-before-sdo-general');
 
 BeforeSuite(async ({ api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(
@@ -28,7 +28,7 @@ BeforeSuite(async ({ api }) => {
   await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
 });
 
-Scenario('Without Notice application for a hearing @regression', async ({ api, I }) => {
+Scenario('Without Notice application for a hearing @e2e-nightly-prod', async ({ api, I }) => {
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(
     config.applicantSolicitorUser,
     civilCaseReference
@@ -53,7 +53,7 @@ Scenario('Without Notice application for a hearing @regression', async ({ api, I
   );
 }).retry(1);
 
-Scenario('Without Notice application to With Notice application - Directions Order @regression', async ({ api, I }) => {
+Scenario('Without Notice application to With Notice application - Directions Order @e2e-nightly-prod', async ({ api, I }) => {
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(
     config.secondDefendantSolicitorUser,
     civilCaseReference
@@ -125,7 +125,7 @@ Scenario('Without Notice application to With Notice application - Directions Ord
   );
 }).retry(1);
 
-Scenario('With Notice application - Org2 Solicitor Initiate GA @regression', async ({ api, I }) => {
+Scenario('With Notice application - Org2 Solicitor Initiate GA @e2e-nightly-prod', async ({ api, I }) => {
   gaCaseReference = await api.initiateGeneralApplicationWithNoStrikeOut(
     config.defendantSolicitorUser,
     civilCaseReference

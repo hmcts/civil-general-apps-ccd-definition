@@ -16,15 +16,17 @@ module.exports = {
 
   async verifyUploadedDocument(documentType) {
     await I.seeInCurrentUrl('documents');
-    console.log('The Document Type' + documentType);
-    if (documentType === 'After SDO - Hearing Notice') {
+    console.log('The Document Type ' + documentType);
+    if (documentType === 'After SDO - Hearing Notice' || documentType === 'Hearing Notice') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 6);
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 7);
     } else if (documentType === 'Directions order document') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 5);
+    } else if(documentType === 'Dismissal order document') {
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);
     } else {
-      await I.seeNumberOfVisibleElements(this.fields.docTitles, 6);
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 5);
     }
     let links = await I.grabTextFromAll(this.fields.links);
     expect(links.some(link => link.includes(`Draft_application_${docFullDate}`))).to.be.true;
