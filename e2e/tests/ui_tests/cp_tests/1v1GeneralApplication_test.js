@@ -16,10 +16,9 @@ const claimantType = 'Company';
 
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA CCD 1v1 - General Application Journey  @ui-nightly');
-// This test should be enabled after early adopters goes live for all regions
-//test is faling for taking long time  to display  applications tab on XUI
-Scenario.skip('GA for 1v1 - Make an order journey @e2e-tests', async ({ I, api }) => {
+Feature('GA CCD 1v1 - General Application Journey @e2e-nightly-prod @e2e-before-sdo-orders');
+
+Scenario('GA for 1v1 - Make an order journey @e2e-tests @ga', async ({ I, api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -100,7 +99,7 @@ Scenario.skip('GA for 1v1 - Make an order journey @e2e-tests', async ({ I, api }
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Applicant Evidence');
 }).retry(1);
 
-Scenario('GA for 1v1 - Direction order journey @regression', async ({ I, api }) => {
+Scenario('GA for 1v1 - Direction order journey @ga', async ({ I, api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
@@ -183,7 +182,7 @@ Scenario('GA for 1v1 - Direction order journey @regression', async ({ I, api }) 
   );
 }).retry(1);
 
-Scenario.skip('GA for 1v1 Specified Claim- Dismissal order journey @regression', async ({ I, api }) => {
+Scenario('GA for 1v1 Specified Claim- Dismissal order journey @ga', async ({ I, api }) => {
   civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
@@ -261,7 +260,7 @@ Scenario.skip('GA for 1v1 Specified Claim- Dismissal order journey @regression',
   );
 }).retry(1);
 
-Scenario('GA for 1v1- respond to application - Request more information @regression', async ({ I, api }) => {
+Scenario('GA for 1v1- respond to application - Request more information @ga', async ({ I, api }) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);

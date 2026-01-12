@@ -1114,8 +1114,7 @@ module.exports = function () {
       eventName = gaEvents.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEventWithUrl(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
-        () => applicationTypePage.chooseAppType(getAppTypes().slice(6, 11)),
-        ...selectApplicationType(eventName, appTypes),
+        ...selectApplicationType(appTypes),
         () => hearingDatePage.selectHearingScheduled(hearingScheduled),
         () => n245FormPage.uploadN245Form(TEST_FILE_PATH),
         ...selectConsentCheck(consentCheck),
@@ -1134,7 +1133,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEventWithUrl(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
         () => applicationTypePage.chooseAppType(getAppTypes().slice(6, 11)),
-        ...selectApplicationType(eventName, appTypes),
+        ...selectApplicationType(appTypes),
         () => hearingDatePage.selectHearingScheduled(hearingScheduled),
         () => consentCheckPage.notInN245FormPage(),
         () => this.clickOnElement('Cancel'),

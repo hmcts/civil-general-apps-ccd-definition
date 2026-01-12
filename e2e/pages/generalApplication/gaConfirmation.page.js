@@ -24,7 +24,7 @@ module.exports = {
       fee = '£123.00';
     } else {
       console.log('The application type : ' + appType);
-      fee = '£119.00';
+      fee = '£123.00';
     }
 
     let confirmation_msg = `Your application fee of ${fee} is now due for payment. Your application will not be processed further until this fee is paid.`;
