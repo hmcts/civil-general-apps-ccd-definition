@@ -364,16 +364,7 @@
         "UserRoles": [
           "hearing-schedule-access"
         ],
-        "CRUD": "RU"
-      },
-      {
-        "UserRoles": [
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "civil-administrator-standard",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
+        "CRUD": "U"
       }
     ]
   },
