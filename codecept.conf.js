@@ -16,9 +16,13 @@ const getTests = () => {
     return [
       './e2e/tests/ui_tests/{*,**/*}_test.js',
       './e2e/tests/api_tests/{*,**/*}_test.js',
+      './e2e/tests/ga_smoke_test.js',
     ];
 
-  return ['./e2e/tests/api_tests/{*,**/*}_test.js'];
+  return [
+    './e2e/tests/api_tests/{*,**/*}_test.js',
+    './e2e/tests/ga_smoke_test.js',
+  ];
 };
 
 exports.config = {
