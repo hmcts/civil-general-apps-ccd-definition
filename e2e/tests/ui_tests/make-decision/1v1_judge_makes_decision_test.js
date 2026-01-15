@@ -9,6 +9,8 @@ const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 const respondentStatus = states.AWAITING_RESPONDENT_RESPONSE.name;
 const judgeApproveOrderStatus = states.ORDER_MADE.name;
 
+let civilCaseReference, gaCaseReference, user;
+
 Feature('1v1 Judge makes a decision').tag('@ui-prod @ui-make-decision');
 
 Scenario('GA for 1v1 - Makes a decision', async ({ I, api }) => {
