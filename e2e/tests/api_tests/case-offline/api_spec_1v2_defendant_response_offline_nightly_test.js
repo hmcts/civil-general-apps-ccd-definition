@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-  const config = require('../../../config.js');
+const config = require('../../../config.js');
 
-  let civilCaseReference,
-  gaCaseReference;
+let civilCaseReference,
+gaCaseReference;
 
 Feature('GA SPEC Claim 1v2 Defendant Response Case Close API tests').tag('@api-nightly-prod @api-case-offline');
 
