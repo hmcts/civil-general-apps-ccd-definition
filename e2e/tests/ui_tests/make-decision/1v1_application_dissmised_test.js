@@ -6,7 +6,7 @@ const states = require('./../../../fixtures/ga-ccd/state.js');
 
 const mpScenario = 'ONE_V_ONE';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
-const judgeDecisionStatus = states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.name
+const judgeDecisionStatus = states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.name;
 const judgeDismissOrderStatus = states.APPLICATION_DISMISSED.name;
 const claimantType = 'Company';
 
