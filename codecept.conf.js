@@ -14,14 +14,11 @@ const getTests = () => {
 
   if (process.env.CCD_UI_TESTS === "true")
     return [
-      "./e2e/tests/ui_tests/cp_tests/**/*_test.js",
-      "./e2e/tests/ui_tests/multiparty-ga-tests/**/*_test.js",
-      "./e2e/tests/ui_tests/wa_tests/**/*_test.js",
-      "./e2e/tests/ui_tests/*_test.js",
-      "./e2e/tests/api*/**/*_test.js",
+      './e2e/tests/ui_tests/{*,**/*}_test.js',
+      './e2e/tests/api_tests/{*,**/*}_test.js',
     ];
 
-  return ["./e2e/tests/ui_tests/*_test.js", "./e2e/tests/api*/**/*_test.js"];
+  return ['./e2e/tests/api_tests/{*,**/*}_test.js'];
 };
 
 exports.config = {

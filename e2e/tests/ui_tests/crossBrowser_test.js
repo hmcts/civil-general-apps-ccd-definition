@@ -43,13 +43,9 @@ Scenario('GA - Make an order journey', async ({I, api}) => {
 
 /*  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
 
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser;
-    await I.login(user);
-  } else {
-    user = config.judgeLocalUser;
-    await I.login(user);
-  }
+
+  user = config.judgeUser;
+  await I.login(user);
   await I.judgeMakeDecision('makeAnOrder', 'approveOrEditTheOrder', 'no', gaCaseReference, 'General_order', 'courtOwnInitiativeOrder', user);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.ORDER_MADE.id, config.applicantSolicitorUser);
   await I.judgeCloseAndReturnToCaseDetails();
@@ -73,30 +69,18 @@ Scenario('GA - Case progression journey', async ({I, api}) => {
   gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.judgeListApplicationForHearing(config.judgeUser2WithRegionId2, gaCaseReference);
-  } else {
-    await api.judgeListApplicationForHearing(config.judgeLocalUser, gaCaseReference);
-  }
 
+  await api.judgeListApplicationForHearing(config.judgeUser2WithRegionId2, gaCaseReference);
   console.log('Hearing Notice creation');
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminWithRegionId2, gaCaseReference);
-    await api.assertGaDocumentVisibilityToUser(config.judgeUser2WithRegionId2, civilCaseReference, gaCaseReference, doc);
-  } else {
-    await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminLocal, gaCaseReference);
-    await api.assertGaDocumentVisibilityToUser(config.judgeLocalUser, civilCaseReference, gaCaseReference, doc);
-  }
+
+  await api.hearingCenterAdminScheduleHearing(config.hearingCenterAdminWithRegionId2, gaCaseReference);
+  await api.assertGaDocumentVisibilityToUser(config.judgeUser2WithRegionId2, civilCaseReference, gaCaseReference, doc);
   console.log('Hearing Notice created for: ' + gaCaseReference);
 
 /*  console.log('Judge making Assisted order for: ' + gaCaseReference);
-  if (['preview', 'demo', 'aat'].includes(config.runningEnv)) {
-    user = config.judgeUser;
-    await I.login(user);
-  } else {
-    user = config.judgeLocalUser;
-    await I.login(user);
-  }
+
+user = config.judgeUser;
+  await I.login(user);
   await I.judgeMakeAppOrder(gaCaseReference, 'freeFromOrder', 'withoutNoticeOrder');
   await I.judgeCloseAndReturnToCaseDetails();
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.ORDER_MADE.id, user);
