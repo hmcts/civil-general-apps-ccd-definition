@@ -1,4 +1,4 @@
-const config = require('../../config.js');
+const config = require('../../../config.js');
 // eslint-disable-next-line no-unused-vars
 const {systemUpdate} = require('../../config');
 const mpScenario = 'ONE_V_ONE';
