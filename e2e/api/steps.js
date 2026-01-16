@@ -1489,7 +1489,7 @@ module.exports = {
   verifyGAState: async (user, parentCaseId, gaCaseId, expectedState) => {
     await apiRequest.setupTokens(user);
     await waitForFinishedBusinessProcess(parentCaseId, user);
-    await waitForGAFinishedBusinessProcess(gaCaseId, user);
+    await waitForGAFinishedBusinessProcess(parentCaseId, user);
     const updatedBusinessProcess = await apiRequest.fetchUpdatedGABusinessProcessData(gaCaseId, user);
     const updatedGABusinessProcessData = await updatedBusinessProcess.json();
     console.log('ccd state '+updatedGABusinessProcessData.ccdState);
@@ -2814,7 +2814,7 @@ const assertValidClaimData = async (data, pageId) => {
   if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
     checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
   }
-  
+
   caseData = update(caseData, responseBody.data);
 };
 
