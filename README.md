@@ -27,27 +27,7 @@ To run smoke tests enter `yarn test:smoke`.
 
 Before running API tests, you will need the `SENDGRID_API_KEY` environment variable setup and to be running the service locally along with all containers.
 
-To run API tests enter `yarn test:api`.
-
-### Functional Test Groups
-
-Functional tests are organized into groups that can be run selectively using GitHub PR labels. This allows you to run only the tests relevant to your changes.
-
-Available test groups:
-- **After SDO Orders tests** (`@e2e-after-sdo-orders`) - Run with label `pr_ft_after-sdo-orders`
-- **Before SDO Orders tests** (`@e2e-before-sdo-orders`) - Run with label `pr_ft_before-sdo-orders`
-- **Before SDO General tests** (`@e2e-before-sdo-general`) - Run with label `pr_ft_before-sdo-general`
-- **Before SDO Work Allocation tests** (`@e2e-before-sdo-wa`) - Run with label `pr_ft_before-sdo-wa`
-
-To run specific test groups locally:
-```bash
-yarn test:e2e-after-sdo-orders    # Run After SDO Orders tests
-yarn test:e2e-before-sdo-orders   # Run Before SDO Orders tests
-yarn test:e2e-before-sdo-general  # Run Before SDO General tests
-yarn test:e2e-before-sdo-wa       # Run Before SDO Work Allocation tests
-```
-
-For detailed information about functional test groups, GitHub labels, and how to add new test groups, see [Functional Test Groups Documentation](docs/FUNCTIONAL_TEST_GROUPS.md).
+To run API tests enter `yarn test:api-prod`.
 
 ## Adding Git Conventions
 
