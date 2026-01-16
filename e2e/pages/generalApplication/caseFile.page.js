@@ -5,10 +5,10 @@ const {docFullDate} = require('../generalAppCommons');
 module.exports = {
 
   fields: {
-    appFolder: 'div[aria-label*="Applications"] .node__count',
-    orderFolder: 'div[aria-label*="Orders"] .node__count',
+    appFolder: 'button[aria-label*="Applications"] .node__count',
+    orderFolder: 'button[aria-label*="Orders"] .node__count',
     expandedFolder: '[aria-expanded="true"] .node-name-document',
-    nameFolder: 'div[aria-label*="Applications"] + span',
+    nameFolder: 'button[aria-label*="Applications"] span',
   },
 
   async verifyCaseFileAppDocument(documentType) {
