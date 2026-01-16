@@ -59,6 +59,7 @@ properties([
     choice(name: 'CIVIL_GENERAL_APPLICATIONS_URL', 
       choices: [
                   'http://civil-general-applications-aat.service.core-compute-aat.internal',
+                  'http://civil-service-demo.service.core-compute-demo.internal',
                   'http://civil-general-applications-demo.service.core-compute-demo.internal',
                   'https://ga-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://civil-citizen-ui-pr-{PR_NUMBER}-general-applications.preview.platform.hmcts.net',
