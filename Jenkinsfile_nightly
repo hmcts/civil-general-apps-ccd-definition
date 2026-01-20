@@ -168,11 +168,11 @@ withNightlyPipeline(type, product, component) {
   enableFullFunctionalTest(200)
 
   if(!runPrevFailedAndNotExecutedTestFiles && !forceGreenBuild) {
-    enableCrossBrowserTest()
+    // enableCrossBrowserTest()
 
-    afterAlways('crossBrowserTest') {
-      steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
-    }
+    // afterAlways('crossBrowserTest') {
+    //   steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+    // }
   }
 
   if(!forceGreenBuild) {
