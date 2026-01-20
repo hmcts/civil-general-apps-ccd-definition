@@ -165,17 +165,28 @@ withNightlyPipeline(type, product, component) {
   boolean forceGreenBuild = env.FORCE_GREEN_BUILD.toBoolean();
   boolean runPrevFailedAndNotExecutedTestFiles = env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES.toBoolean();
 
+  enableFullFunctionalTest(200)
+
+  if(!runPrevFailedAndNotExecutedTestFiles && !forceGreenBuild) {
+    enableFortifyScan()
+    enableCrossBrowserTest()
+
+    afterAlways('fortify-scan') {
+      steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/Fortify Scan/**/*'
+    }
+
+    afterAlways('crossBrowserTest') {
+      steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+    }
+  }
+
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
       if(runPrevFailedAndNotExecutedTestFiles) {
         copyPrevFailedAndNotExecutedTestFilesJson()
       }
     }
-  }
 
-  enableFullFunctionalTest(200)
-
-  if(!forceGreenBuild) {
     afterAlways('fullFunctionalTest') {
       archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
     }
