@@ -1,6 +1,6 @@
 civil-service:
   java:
-    ingressHost: civil-ga-ccd-civil-service-staging.aat.platform.hmcts.net
+    ingressHost: ${SERVICE_NAME}.aat.platform.hmcts.net
     memoryRequests: 2Gi
     cpuRequests: 2000m
     memoryLimits: 4Gi
