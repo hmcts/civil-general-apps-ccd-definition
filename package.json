@@ -43,10 +43,17 @@
     "prepare": "husky install",
     "yarn-update": "yarn set version 3.x",
     "playwright-install": "yarn playwright install",
-    "install-dependencies": "/usr/bin/yarn install --immutable --silent"
+    "install-dependencies": "/usr/bin/yarn install --immutable --silent",
+    "test:generate:api-docs": "node e2e/e2e-documentation/generator/generate-codeceptjs-api-docs.js",
+    "test:generate:ui-docs": "node e2e/e2e-documentation/generator/generate-codeceptjs-ui-docs.js",
+    "test:confluence:api-docs": "node e2e/e2e-documentation/confluence/upload-api-tests.js",
+    "test:confluence:ui-docs": "node e2e/e2e-documentation/confluence/upload-ui-tests.js",
+    "test:readme:api-docs": "node e2e/e2e-documentation/readme/updateReadmeApi.js",
+    "test:readme:ui-docs": "node e2e/e2e-documentation/readme/updateReadmeUi.js"
   },
   "license": "MIT",
   "devDependencies": {
+    "axios": "^1.13.2",
     "chai": "^4.3.4",
     "codeceptjs": "^3.3.7",
     "deep-equal-in-any-order": "^1.0.28",
