@@ -54,7 +54,7 @@
     "faker": "^6.6.6",
     "html_codesniffer": "^2.5.1",
     "husky": "^7.0.2",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "mocha": "10.2.0",
     "mocha-junit-reporter": "^2.0.2",
     "mocha-multi": "^1.1.6",
