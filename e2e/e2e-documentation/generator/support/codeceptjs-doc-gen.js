@@ -23,9 +23,9 @@ const pipelineTagMap = {
   ],
   '@ui-nonprod': ['civil-general-apps-ccd-definition: PR'],
   '@ui-nightly-prod': ['civil-general-apps-ccd-definition: nightly'],
-  '@api-prod': ['civil-service: PR (with GitHub label)'],
-  '@api-nonprod': ['civil-service: PR (with GitHub label'],
-  '@api-nightly-prod': ['civil-service: nightly']
+  '@api-prod': ['civil-service: PR (with GitHub label)', 'civil-general-apps-ccd-definition: nightly'],
+  '@api-nonprod': ['civil-service: PR (with GitHub label)'],
+  '@api-nightly-prod': ['civil-general-apps-ccd-definition: nightly']
 };
 
 const pipelineTagSet = new Set(Object.keys(pipelineTagMap));
