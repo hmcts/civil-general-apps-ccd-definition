@@ -6,6 +6,8 @@ const idamTokenCache = new NodeCache({stdTTL: 25200, checkperiod: 1800});
 
 const loginEndpoint = config.idamStub.enabled ? 'oauth2/token' : 'loginUser';
 const idamUrl = config.idamStub.enabled ? config.idamStub.url : config.url.idamApi;
+const idamTestSupportUrl = config.idamStub.enabled ? config.idamStub.url : config.url.idamTestSupportApi;
+const adminUser = config.idamStub.enabled ? config.idamStub.url : config.ctscAdmin;
 
 async function getAccessTokenFromIdam(user) {
   return restHelper.retriedRequest(
@@ -32,8 +34,9 @@ async function accessToken(user) {
 
 async function createAccount(email, password) {
   try {
-    let body = {'email': email, 'password': password, 'forename': 'forename', 'surname': 'surname', 'roles': [{'code': 'citizen'}]};
-    await restHelper.request(`${idamUrl}/testing-support/accounts/`, {'Content-Type': 'application/json'}, body);
+    const token = await accessToken(adminUser);
+    let body = {'password': password, 'user': {'email': email, 'forename': 'forename', 'surname': 'surname', 'displayName': 'displayName', 'roleNames': ['citizen']}};
+    await restHelper.request(`${idamTestSupportUrl}/test/idam/users`, {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body);
 
     console.log('Account created: ', email);
 
@@ -45,8 +48,9 @@ async function createAccount(email, password) {
 
 async function deleteAccount(email) {
   try {
+    const token = await accessToken(adminUser);
     let method = 'DELETE';
-    await restHelper.request(`${idamUrl}/testing-support/accounts/${email}`, {'Content-Type': 'application/json'}, undefined, method);
+    await restHelper.request(`${idamTestSupportUrl}/test/idam/users/${email}`, {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, undefined, method);
 
     console.log('Account deleted: ' + email);
 

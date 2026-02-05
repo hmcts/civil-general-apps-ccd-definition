@@ -14,10 +14,10 @@ properties([
       defaultValue: '', description: 'PR Number of deployed environment to be used to run tests against'),
     choice(name: 'FRONTEND_URL',
       choices: [
-                  'https://manage-case.aat.platform.hmcts.net', 
+                  'https://manage-case.aat.platform.hmcts.net',
                   'https://manage-case.demo.platform.hmcts.net',
-                  'https://manage-case-int.demo.platform.hmcts.net', 
-                  'https://manage-case-int1.demo.platform.hmcts.net', 
+                  'https://manage-case-int.demo.platform.hmcts.net',
+                  'https://manage-case-int1.demo.platform.hmcts.net',
                   'https://manage-case-int2.demo.platform.hmcts.net',
                   'https://manage-case-wa-int.demo.platform.hmcts.net',
                   'https://manage-case-caa-assigned-case-view.demo.platform.hmcts.net',
@@ -29,6 +29,8 @@ properties([
       description: 'The URL you want to run the full functional tests against'),
     choice(name: 'IDAM_API_URL', choices: ['https://idam-api.aat.platform.hmcts.net', 'https://idam-api.demo.platform.hmcts.net'],
       description: 'The URL of idam api'),
+    choice(name: 'IDAM_TEST_URL', choices: ['https://idam-testing-support-api.aat.platform.hmcts.net', 'https://idam-testing-support-api.demo.platform.hmcts.net'],
+      description: 'The URL of idam test user creation api'),
     choice(name: 'DM_STORE_URL', choices: ['http://dm-store-aat.service.core-compute-aat.internal', 'http://dm-store-demo.service.core-compute-demo.internal'],
       description: 'The URL of dm store'),
     choice(name: 'SERVICE_AUTH_PROVIDER_API_BASE_URL',
@@ -147,6 +149,7 @@ withNightlyPipeline(type, product, component) {
   env.URL=frontendUrl
   env.DM_STORE_URL=params.DM_STORE_URL
   env.IDAM_API_URL=params.IDAM_API_URL
+  env.IDAM_TEST_URL=params.IDAM_TEST_URL
   env.SERVICE_AUTH_PROVIDER_API_BASE_URL = params.SERVICE_AUTH_PROVIDER_API_BASE_URL
   env.CCD_DATA_STORE_URL = ccdDataStoreUrl
   env.CIVIL_SERVICE_URL = civilServiceUrl
