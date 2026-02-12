@@ -142,6 +142,14 @@ def uploadCoreCaseDataDefinitions(env) {
   }
 }
 
+def getCivilServiceImage() {
+  def githubApi = new GithubAPI(this)
+  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "civilServicePr:") ) {
+    return "pr-" + label.minus("civilServicePr:").trim()
+  }
+  return "latest"
+}
+
 def checkForRunAllFunctionalTests(branch_name) {
   return new GithubAPI(this).getLabelsbyPattern(branch_name, "runAllFunctionalTests").contains("runAllFunctionalTests")
 }
@@ -158,6 +166,8 @@ withPipeline(type, product, component) {
       env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
       env.YARN_ENABLE_IMMUTABLE_INSTALLS = false
       env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+      env.CIVIL_SERVICE_URL = "https://civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+      env.CIVIL_SERVICE_IMAGE = getCivilServiceImage()
       env.TEST_DATA_LOAD_SKIP_PERIOD = 3.0
       env.ENVIRONMENT = "preview"
       env.PR_FT_GROUPS = getFunctionalTestsGroups()
@@ -198,7 +208,7 @@ withPipeline(type, product, component) {
       ./bin/pull-latest-camunda-wa-files.sh ${waStandaloneBranch}
     """
     env.URL="https://xui-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-    env.CIVIL_SERVICE_URL="https://civil-service-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+    env.CIVIL_SERVICE_URL="https://civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CIVIL_GENERAL_APPLICATIONS_URL="https://civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
     env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
@@ -217,7 +227,7 @@ withPipeline(type, product, component) {
     env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
     env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
-    env.CIVIL_SERVICE_URL="https://civil-service-civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+    env.CIVIL_SERVICE_URL="https://civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CIVIL_GENERAL_APPLICATIONS_URL="https://civil-ga-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     if(checkForRunAllFunctionalTests(env.BRANCH_NAME)) {
       env.RUN_ALL_FUNCTIONAL_TESTS = true
@@ -253,7 +263,7 @@ withPipeline(type, product, component) {
         """
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     env.URL="https://civil-ga-ccd-xui-staging.aat.platform.hmcts.net"
-    env.CIVIL_SERVICE_URL="https://civil-ga-ccd-civil-service-staging.aat.platform.hmcts.net"
+    env.CIVIL_SERVICE_URL="https://civil-ga-ccd-staging.aat.platform.hmcts.net"
     env.CIVIL_GENERAL_APPLICATIONS_URL="https://civil-ga-ccd-staging.aat.platform.hmcts.net"
     env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
     env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
