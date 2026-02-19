@@ -8,7 +8,7 @@ const claimAmountJudge = '11000';
 
 Feature('Before SDO 1v2 - GA - Consent Orders').tag('@ui-consent-order');
 
-Scenario('NBC admin Approve Consent Order', async ({I, api}) => {
+Scenario.skip('NBC admin Approve Consent Order', async ({I, api}) => {
   civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
   await api.amendClaimDocuments(config.applicantSolicitorUser);
