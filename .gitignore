@@ -36,3 +36,4 @@ test-results/
 /e2e/reporters/
 /e2e/reporters/accessibility-reporter/
 /test-results/result.xml
+e2e/e2e-documentation/results/

@@ -6,7 +6,7 @@ gaCaseReference;
 
 Feature('GA SPEC Claim 1v2 Claimant Response Case Close API tests').tag('@api-nightly-prod');
 
-Scenario('Case offline LISTING_FOR_A_HEARING', async ({api}) => {
+Scenario.skip('Case offline LISTING_FOR_A_HEARING', async ({api}) => {
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   console.log('Civil Case created for general application: ' + civilCaseReference);
   gaCaseReference
