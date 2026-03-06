@@ -210,7 +210,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "UPDATE_CASE_DATA",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
