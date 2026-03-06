@@ -211,12 +211,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "UPDATE_CASE_DATA",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseFieldID": "generalAppApplicantAddlSolicitors",
     "ListElementCode": "forename",
     "UserRole": "caseworker-civil-systemupdate",
