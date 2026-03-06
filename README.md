@@ -3,7 +3,7 @@
 ## Contents
 - [Generating CodeceptJS E2E Test Documentation](#generating-codeceptjs-e2e-test-documentation)
   - [UI Test Documentation](#ui-test-documentation)
-  - [API Test Documentation](#api-test-documentation)
+  - [API Test Documentation](#api-test-documentation) 
 
 ## Build (Dev)
 
