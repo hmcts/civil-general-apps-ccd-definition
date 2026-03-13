@@ -1330,6 +1330,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseHistory",
+    "Label": " ",
+    "FieldType": "CaseHistoryViewer",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "emailPartyReference",
     "Label": " ",
     "FieldType": "Text",
