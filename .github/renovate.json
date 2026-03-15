@@ -2,30 +2,43 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>hmcts/.github:renovate-config",
-    "local>hmcts/.github//renovate/automerge-minor"
+    "local>hmcts/.github//renovate/automerge-all"
   ],
   "labels": [
     "dependencies"
   ],
+  "automergeSchedule": ["after 8am and before 4pm every weekday"],
+  "schedule": ["after 8am and before 11am every weekday"],
+  "rebaseWhen": "conflicted",
+  "automergeStrategy": "squash",
+  "prConcurrentLimit": 5,
   "helmv3": {
     "bumpVersion": "patch"
   },
-  "automergeSchedule": ["after 8am and before 11am every weekday"],
-  "schedule": ["after 8am and before 11am every weekday"],
-  "rebaseWhen": "conflicted",
-  "prConcurrentLimit": 5,
   "packageRules": [
-    {
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "All non-major updates",
-      "groupSlug": "all-non-major",
-      "automerge": true
-    },
     {
       "matchManagers": ["helmv3"],
       "groupName": "Helm chart updates",
       "groupSlug": "helm-charts",
-      "automerge": true
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeSchedule": ["before 4pm every weekday"]
+    },
+    {
+      "matchManagers": ["gradle", "gradle-wrapper"],
+      "groupName": "Gradle dependencies",
+      "groupSlug": "gradle-deps",
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeSchedule": ["before 4pm every weekday"]
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "All non-major updates",
+      "groupSlug": "all-non-major",
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeSchedule": ["before 4pm every weekday"]
     }
   ]
 }
