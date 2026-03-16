@@ -18,5 +18,5 @@ docker run --rm --name json2xlsx \
   -v ${definition_input_dir}:/tmp/ccd-definition \
   -v ${definition_output_file}:/tmp/general-apps-ccd-definition.xlsx \
   -e CCD_DEF_CASE_SERVICE_BASE_URL=${CCD_DEF_CASE_SERVICE_BASE_URL:-http://${DOCKERFORLINUX}:4000} \
-  hmctspublic.azurecr.io/ccd/definition-processor:${definition_processor_version} \
+  hmctsprod.azurecr.io/ccd/definition-processor:${definition_processor_version} \
   json2xlsx -D /tmp/ccd-definition -o /tmp/general-apps-ccd-definition.xlsx ${additionalParameters}
