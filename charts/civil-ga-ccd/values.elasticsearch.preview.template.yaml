@@ -29,7 +29,7 @@ ccd:
         cpu: "25m"
         memory: "512Mi"
   logstash:
-    image: hmctspublic.azurecr.io/ccd/logstash
+    image: hmctsprod.azurecr.io/ccd/logstash
     imageTag: "latest"
     extraEnvs:
       - name: DATA_STORE_URL
